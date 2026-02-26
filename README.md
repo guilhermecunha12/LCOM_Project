@@ -72,10 +72,10 @@ Date: `2026/02/26`
 
 ## Authors and acknowledgment
 
-LCOM Project for group GRUPO_2LEIC<1><3>_<1>.
+LCOM Project for group GRUPO_2LEIC13_1.
 Group members:
 
-<Gabriel> <Magalhães> (<up202405890@up.pt>)
-<Guilherme> <Cunha> (<up202405961@up.pt>)
-<José> <Archer> (<up202307614@up.pt>)
-<Pedro> <Pires> (<up202405967@up.pt>)
+Gabriel Magalhães (<up202405890@up.pt>)
+Guilherme Cunha (<up202405961@up.pt>)
+José Archer (<up202307614@up.pt>)
+Pedro Pires (<up202405967@up.pt>)
