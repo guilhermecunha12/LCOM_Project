@@ -1,4 +1,6 @@
 #include "rtc.h"
+#include <minix/sysutil.h>
+#include <minix/syslib.h>
 
 #define TODO return -1
 
@@ -15,12 +17,23 @@
 static int bdc_to_bin(uint8_t bcd) { TODO; }
 
 int rtc_read_date(rtc_date *date) {
+    sys_outb(RTC_ADDR_REG, RTC_REG_A); // request RTC to write status (register 0x0A) in port 0x71 (data register)
+    
+    uint8_t status;
+    util_sys_inb(RTC_DATA_REG, &status); // read register with address 0x0A
+    while (RTC_UIP_MSK & status) { // while the UIP bit is set, wait and keep reading it until it is 0
+        util_sys_inb(RTC_DATA_REG, &status);
+        tickdelay(micros_to_ticks(100)); // 100 is enough, probably
+    }
+
+    TODO;
     // ler uip bit (if ! set, proceed) tickdelay /micro_to_ticks
-    //  ler DM bit (bit 2)
+    // ler DM bit (bit 2) (BCD é por words)
 }
+
 
 void util_sys_inb(int port, uint8_t *byte) {
     uint32_t casted_byte;
-    sys_inb(port, casted_byte);
-    byte = (uint8_t)casted_byte;
+    sys_inb(port, &casted_byte);
+    *byte = (uint8_t)casted_byte;
 }
