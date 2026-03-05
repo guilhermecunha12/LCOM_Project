@@ -2,6 +2,8 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include <stdarg.h>
+#include <stdio.h>
 
 #define MSK_END -1
 
