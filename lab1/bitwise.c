@@ -3,13 +3,11 @@
 #define TODO return 255
 
 uint8_t clear(uint8_t msk, int pos) { 
-    uint8_t new_mask = msk & ~(0x01 << pos);
-    return new_mask;
+    return msk & ~(0x01 << pos);
  }
 
 uint8_t set(uint8_t msk, int pos) {
-    uint8_t set_mask = msk | (0x01 << pos);
-    return set_mask;
+    return msk | (0x01 << pos);
 }
 
 bool is_set(uint8_t msk, int pos) {

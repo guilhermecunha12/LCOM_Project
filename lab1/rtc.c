@@ -14,4 +14,13 @@
 
 static int bdc_to_bin(uint8_t bcd) { TODO; }
 
-int rtc_read_date(rtc_date *date) { TODO; }
+int rtc_read_date(rtc_date *date) {
+    // ler uip bit (if ! set, proceed) tickdelay /micro_to_ticks
+    //  ler DM bit (bit 2)
+}
+
+void util_sys_inb(int port, uint8_t *byte) {
+    uint32_t casted_byte;
+    sys_inb(port, casted_byte);
+    byte = (uint8_t)casted_byte;
+}
