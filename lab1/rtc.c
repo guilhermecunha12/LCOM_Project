@@ -14,11 +14,10 @@
 #define RTC_UIP_MSK (1 << 7)
 #define RTC_DM_MSK (1 << 2)
 
-static int bdc_to_bin(uint8_t bcd) {
+static int bcd_to_bin(uint8_t bcd) {
     uint8_t lsw = bcd & 0xF;
     uint8_t msw = bcd >> 4;
-
-    return msw*10 + lsw;
+    return msw * 10 + lsw;
 }
 
 void get_dmy(uint8_t* d, uint8_t* m, uint8_t* y) {
@@ -48,10 +47,10 @@ int rtc_read_date(rtc_date *date) {
     sys_outb(RTC_ADDR_REG, RTC_REG_B); // request RTC to write date info in port 0x71
     util_sys_inb(RTC_DATA_REG, &info_date);
 
-    if (!(info_date & RTC_DM_MSK)) { // BDC format
-        days = bdc_to_bin(days);
-        month = bdc_to_bin(month);
-        year = bdc_to_bin(year);
+    if (!(info_date & RTC_DM_MSK)) { // BCD format
+        days = bcd_to_bin(days);
+        month = bcd_to_bin(month);
+        year = bcd_to_bin(year);
     }
 
     date->day = days;
