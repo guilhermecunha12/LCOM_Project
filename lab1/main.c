@@ -7,9 +7,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-//ssh lcom@localhost -p 2222
-// cp /home/lcom/labs/lab1/service/lab1 /etc/system.conf.d/
-// ./compile_run.sh
+
 
 #ifdef ASSERT
   #undef ASSERT
