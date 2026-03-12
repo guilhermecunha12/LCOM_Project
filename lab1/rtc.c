@@ -8,11 +8,15 @@
 #define RTC_DATA_REG 0x71
 #define RTC_REG_A 0x0A
 #define RTC_REG_B 0x0B
+#define RTC_REG_SECONDS 0x00
+#define RTC_REG_MINUTES 0x02
+#define RTC_REG_HOURS 0x04
 #define RTC_REG_DAY 0x07
 #define RTC_REG_MONTH 0x08
 #define RTC_REG_YEAR 0x09
 #define RTC_UIP_MSK (1 << 7)
 #define RTC_DM_MSK (1 << 2)
+#define RTC_24H_MSK (1 << 1)
 
 static int bcd_to_bin(uint8_t bcd) {
     uint8_t lsw = bcd & 0xF;
@@ -56,6 +60,55 @@ int rtc_read_date(rtc_date *date) {
     date->day = days;
     date->month = month;
     date->year = year;
+
+    return 0;
+}
+
+void get_hms(uint8_t* h, uint8_t* m, uint8_t* s) {
+    sys_outb(RTC_ADDR_REG, RTC_REG_SECONDS);
+    util_sys_inb(RTC_DATA_REG, s);
+    
+    sys_outb(RTC_ADDR_REG, RTC_REG_MINUTES);
+    util_sys_inb(RTC_DATA_REG, m);
+
+    sys_outb(RTC_ADDR_REG, RTC_REG_HOURS);
+    util_sys_inb(RTC_DATA_REG, h);
+}
+
+int rtc_read_time(rtc_time *time) {
+    // TODO
+    uint8_t status;
+    sys_outb(RTC_ADDR_REG, RTC_REG_A); // request RTC to write status
+    util_sys_inb(RTC_DATA_REG, &status); // read register with address 0x0A
+    while (RTC_UIP_MSK & status) { // while the UIP bit is set, wait and keep reading it until it is 0
+        util_sys_inb(RTC_DATA_REG, &status);
+        tickdelay(micros_to_ticks(100));
+    }
+
+    uint8_t seconds, minutes, hours;
+    get_hms(&hours, &minutes, &seconds);
+
+    uint8_t info_date;
+    sys_outb(RTC_ADDR_REG, RTC_REG_B); // request RTC to write date info in port 0x71
+    util_sys_inb(RTC_DATA_REG, &info_date);
+
+    if (!(info_date & RTC_DM_MSK)) { // BCD format
+        seconds = bcd_to_bin(seconds);
+        minutes = bcd_to_bin(minutes);
+        hours = bcd_to_bin(hours & 0x7F); // removes the last bit, wich is indicates if it's PM or AM in 12h mode
+    }
+
+    if(!(info_date & RTC_24H_MSK)) { // if it's in 12h mode, convert to 24h
+        if(hours & 0x80) { // PM
+            hours = (hours % 12) + 12;
+        } else if (hours == 12) { // if it's 12 AM, set to 0, midnight
+            hours = 0;
+        }
+    }
+
+    time->seconds = seconds;
+    time->minutes = minutes;
+    time->hours = hours;
 
     return 0;
 }
