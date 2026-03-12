@@ -47,19 +47,36 @@ void (timer_int_handler)() {
 }
 
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {
+  // Build the Read-Back command
   uint8_t read_back_command = 0;
-  read_back_command |= TIMER_RB_CMD;
+  // Indicate that we are going to perform a read-back command
+  read_back_command |= TIMER_RB_CMD; 
+
+  // Since we want to read the status byte, we must set the bit that allows reading the counter 
+  // and keep the bit associated with the Programmed Mode at 0, because this feature works as 
+  // "enabled when low" — functionality active when the bit is 0
   read_back_command |= TIMER_RB_COUNT_;
+  
+  // Select the counter of the specified timer
   read_back_command |= TIMER_RB_SEL(timer);
-  if (sys_outb(TIMER_CTRL, read_back_command)){
+
+  // Write to the control register - with error handling
+  // If the return value is 1, perform an early return indicating an error
+  if (sys_outb(TIMER_CTRL, read_back_command)) {
     return 1;
-  };
-  int port = TIMER_0 + timer;
-  if(util_sys_inb(port, st)) {
+  }
+
+  // Add the timer number to the base port address of the first timer to get the correct port address
+  int port = 0x40 + timer; 
+  // Read the status byte from the correct port and store it at the address where the status byte will be saved
+  // Error handling, same as in the outb case
+  if (util_sys_inb(port, st)) {
     return 1;
-  };
+  }
+
   return 0;
 }
+
 
 int (timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field field) {
   
