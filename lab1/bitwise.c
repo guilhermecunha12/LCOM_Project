@@ -4,7 +4,7 @@
 #define TODO return 255
 
 uint8_t clear(uint8_t msk, int pos) { 
-    return  msk & ~(0x01 << pos);
+    return msk & ~(0x01 << pos);
  }
 
 uint8_t set(uint8_t msk, int pos) {
@@ -24,14 +24,18 @@ uint8_t msb(uint16_t wide_msk) {
 }
 
 uint8_t mask(int pos, ...) { 
-    int count = 0;
-    va_list args;
-    va_start (args,pos);
-    uint8_t msk;
-    set(msk,pos);
-    while(args[count]!=MSK_END){
-        set(msk,args[count]);
-        count ++;
+    va_list ap; 
+
+    va_start(ap, pos);
+
+    uint8_t msk = 0x01 << pos;
+
+    int bit = va_arg (ap, int);
+    while(bit != MSK_END){
+        msk |= (0x01 << bit);
+        bit = va_arg (ap, int);
     }
+
+    va_end(ap);
     return msk;
- }
+}
