@@ -1,6 +1,6 @@
 #include <lcom/lcf.h>
 #include <lcom/lab2.h>
-
+#include <lcom/timer.h>
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -30,17 +30,26 @@ int main(int argc, char *argv[]) {
 }
 
 int(timer_test_read_config)(uint8_t timer, enum timer_status_field field) {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  uint8_t status_byte;
 
-  return 1;
+  if (timer_get_conf(timer, &status_byte)) { // read the status byte at the timer's port
+    return 1;
+  }
+
+  if (timer_display_conf(timer, status_byte, field)) { // displays the specified field of the status byte
+    return 1;
+  }
+
+  return 0;
 }
 
 int(timer_test_time_base)(uint8_t timer, uint32_t freq) {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
 
-  return 1;
+  if (timer_set_frequency(timer, freq)) {
+    return 1;
+  }
+
+  return 0;
 }
 
 int(timer_test_int)(uint8_t time) {
