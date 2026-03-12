@@ -63,20 +63,17 @@ int (timer_display_conf)(uint8_t timer, uint8_t st,
 
     case tsf_initial:
       /* Display the initialization mode only */
-      enum timer_init mode;
-      int init = (st & TIMER_LSB_MSB) >> 4; // convert the init mode to int;
-      conf.in_mode = init;
+      conf.in_mode = (st >> 1) & 0x7;
       break;
 
     case tsf_mode:
       /* Display the counting mode, only */
-      uint8_t countingMode = (st & 0x0E); //get the couting mode, by applying the mask
-      conf.in_mode = countingMode;
+      conf.count_mode= (uint8_t) (st & 0xE);  //get the couting mode, by applying the mask
       break;
 
     case tsf_base:
       /* Display the counting base, only */
-      conf.bcd = (st & TIMER_BCD) ? true : false; //see if it's in BCD
+      conf.bcd = (st & TIMER_BCD); //see if it's in BCD
       break;
 
     default:
