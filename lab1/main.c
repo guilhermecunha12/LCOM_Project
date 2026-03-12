@@ -64,13 +64,6 @@ void test_rtc_date() {
   ASSERT(date.year == tm_info->tm_year % 100, "rtc read year");
 }
 
-void test_rtc_time(){
-  rtc_time time = {0, 0, 0};
-  rtc_read_time(&time);
-
-  printf("%d:%d:%d",time.hours, time.minutes, time.seconds);
-}
-
 int main() {
   // During initialization, a privileged user process should synchronize with
   // the RS. This will be done by LCOM facilities later on, but for now we call
@@ -88,6 +81,5 @@ int main() {
   test_bitwise();
   test_privileged_operation();
   test_rtc_date();
-  //test_rtc_time();
   printf("All tests passed! Way to go.\n");
 }
