@@ -47,19 +47,17 @@ void (timer_int_handler)() {
 }
 
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {
-  // Timer: especifica o timer cuja configuração deve ser lida (0, 1 ou 2)
-  // st: address onde o status byte deve ser guardado
-  // Construir o comando readback correto
   uint8_t read_back_command = 0;
-  read_back_command |= TIMER_RB_CMD; // Sinalizar que iremos fazer um read-back command
-  // Colocamos bit do counter value a 1 porque queremos ler a 0 o status bit (Read programmed mode - enabled when low : 0)
+  read_back_command |= TIMER_RB_CMD;
   read_back_command |= TIMER_RB_COUNT_;
-  read_back_command |= TIMER_RB_SEL(timer); // Permite selecionar o counter do timer especificado
-  // Escrever no control register
-  sys_outb(TIMER_CTRL, read_back_command);
-  // Ler status byte do port correto e colocar no endereço onde vamos guardar o status byte
-  int port = 0x40 + timer;
-  util_sys_inb(port, st);
+  read_back_command |= TIMER_RB_SEL(timer);
+  if (sys_outb(TIMER_CTRL, read_back_command)){
+    return 1;
+  };
+  int port = TIMER_0 + timer;
+  if(util_sys_inb(port, st)) {
+    return 1;
+  };
   return 0;
 }
 
