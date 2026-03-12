@@ -1,4 +1,5 @@
 #include "bitwise.h"
+#include <stdarg.h>
 
 #define TODO return 255
 
