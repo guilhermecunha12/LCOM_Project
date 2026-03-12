@@ -78,7 +78,6 @@ void get_hms(uint8_t* h, uint8_t* m, uint8_t* s) {
 }
 
 int rtc_read_time(rtc_time *time) {
-    // TODO
     uint8_t status;
     sys_outb(RTC_ADDR_REG, RTC_REG_A); // request RTC to write status
     util_sys_inb(RTC_DATA_REG, &status); // read register with address 0x0A
@@ -97,7 +96,7 @@ int rtc_read_time(rtc_time *time) {
     if (!(info_date & RTC_DM_MSK)) { // BCD format
         seconds = bcd_to_bin(seconds);
         minutes = bcd_to_bin(minutes);
-        hours = bcd_to_bin(hours & 0x7F); // removes the last bit, wich is indicates if it's PM or AM in 12h mode
+        hours = bcd_to_bin(hours & 0x7F); // removes the last bit, which is indicates if it's PM or AM in 12h mode
     }
 
     if(!(info_date & RTC_24H_MSK)) { // if it's in 12h mode, convert to 24h

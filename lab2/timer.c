@@ -5,24 +5,21 @@
 
 #include "i8254.h"
 
-int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
-  uint8_t target_port = TIMER_0 + timer; // base port 0x40 + the timer selected
-  uint8_t rb_cmd = 0xE0  | TIMER_RB_SEL(timer); // build of the read back command to retreive a timer's config (avoid overwrite of 4 LSb)
-  
-  if(sys_outb(TIMER_CTRL,rb_cmd)!=0) return -1;
-  
+int (timer_set_frequency)(uint8_t timer, uint32_t freq) { 
+  int target_port = TIMER_0 + timer;
   uint8_t status_byte;
-  util_sys_inb(target_port,&status_byte); // read status byte
+  timer_get_conf(timer,&status_byte);
   uint8_t control_byte =  (timer << 6) | TIMER_LSB_MSB | (status_byte & 0x0F); // build control byte to configure our timer
 
-  if(sys_outb(TIMER_CTRL,control_byte)) return -1; // write control_byte to control_register
+  if(sys_outb(TIMER_CTRL,control_byte)) return 1; // write control_byte to control_register
 
   uint16_t divider = TIMER_FREQ / (uint16_t) freq;
   uint8_t lsb, msb; 
   // Write in the specified order defined in the control byte (LSB followed by MSB)
   util_get_LSB(divider,&lsb);
   util_get_MSB(divider,&msb);
-  if(sys_outb(target_port,lsb)!=0 || sys_outb(target_port,msb)!=0) return -1;
+
+  if(sys_outb(target_port,lsb)!=0 || sys_outb(target_port,msb)!=0) return 1;
  
   return 0;
 }
