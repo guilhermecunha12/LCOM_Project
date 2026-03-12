@@ -63,8 +63,7 @@ int (timer_get_conf)(uint8_t timer, uint8_t *st) {
   return 0;
 }
 
-int (timer_display_conf)(uint8_t timer, uint8_t st,
-                        enum timer_status_field field) {
+int (timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field field) {
   
   timer_get_conf(timer, &st);
   union timer_status_field_val conf;
@@ -78,25 +77,37 @@ int (timer_display_conf)(uint8_t timer, uint8_t st,
 
     case tsf_initial:
       /* Display the initialization mode only */
-      conf.in_mode = (st >> 1) & 0x7;
+      // Extract the Initialization Mode bits and shift them to convert to int for the enum
+      conf.in_mode = (st & TIMER_LSB_MSB) >> 4; 
       break;
 
     case tsf_mode:
       /* Display the counting mode, only */
-      conf.count_mode= (uint8_t) (st & 0xE);  //get the couting mode, by applying the mask
+
+      // Get the couting mode bits (3,2,1), first shifting them to the right
+      conf.count_mode = (uint8_t)((st >> 1) & 0x7); 
+
+      // Special cases
+      // 111* -> 3
+      // 110* -> 2
+
+      if (conf.count_mode == 7){
+        conf.count_mode = 3;
+      } else if (conf.count_mode == 6){
+        conf.count_mode = 2;
+      }
       break;
 
     case tsf_base:
       /* Display the counting base, only */
-      conf.bcd = (st & TIMER_BCD); //see if it's in BCD
+      // See if it's in BCD
+      conf.bcd = (st & TIMER_BCD);
       break;
 
     default:
-      printf("Unkown field\n");
+      printf("Unknown field\n");
       return 1;
   }
-  
-  timer_print_config(timer, field, conf);
 
-  return 0;
+  return timer_print_config(timer, field, conf);
 }
