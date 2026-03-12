@@ -19,9 +19,11 @@
 #define RTC_24H_MSK (1 << 1)
 
 static int bcd_to_bin(uint8_t bcd) {
-    uint8_t lsw = bcd & 0xF;
-    uint8_t ms  w = bcd >> 4;
-    return msw * 10 + lsw;
+    // lshb -> Least significant half-byte 
+    // mshb -> Most significant half-byte
+    uint8_t lshb = bcd & 0xF;
+    uint8_t mshb = bcd >> 4;
+    return mshb * 10 + lshb;
 }
 
 void get_dmy(uint8_t* d, uint8_t* m, uint8_t* y) {
@@ -115,7 +117,7 @@ int rtc_read_time(rtc_time *time) {
 
 
 void util_sys_inb(int port, uint8_t *byte) {
-    uint32_t casted_byte;
-    sys_inb(port, &casted_byte);
-    *byte = (uint8_t)casted_byte;
+    uint32_t temp;
+    sys_inb(port, &temp);
+    *byte = (uint8_t)temp;
 }
