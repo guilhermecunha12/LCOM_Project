@@ -93,20 +93,24 @@ int rtc_read_time(rtc_time *time) {
     sys_outb(RTC_ADDR_REG, RTC_REG_B); // request RTC to write date info in port 0x71
     util_sys_inb(RTC_DATA_REG, &info_date);
 
+    uint8_t PM_bit = hours & 0x80;
+    // Since the hours value will be updated, the PM bit will be erased as we only care for the numeric value of the hours.
+    // 92PM in BCD -> 1001 0010 will be converted to 12 PM but the ms bit will be erased
     if (!(info_date & RTC_DM_MSK)) { // BCD format
         seconds = bcd_to_bin(seconds);
         minutes = bcd_to_bin(minutes);
-        hours = bcd_to_bin(hours & 0x7F); // removes the last bit, which is indicates if it's PM or AM in 12h mode
+        hours = bcd_to_bin(hours & 0x7F); // removes the most significant bit, which is indicates if it's PM or AM in 12h mode
     }
 
     if(!(info_date & RTC_24H_MSK)) { // if it's in 12h mode, convert to 24h
-        if(hours & 0x80) { // PM
-            hours = (hours % 12) + 12;
-        } else if (hours == 12) { // if it's 12 AM, set to 0, midnight
+        if(PM_bit){ // If PM bit is 1 - true 
+            hours = (hours % 12) + 12; // The modulo guarantees that the function is correct when 12PM -> 12:00 in 24hr
+        }
+        else if (hours == 12){ // To handle the special case of 12AM being midnight
             hours = 0;
         }
+        // If the value is in AM the value is kept unchanged
     }
-
     time->seconds = seconds;
     time->minutes = minutes;
     time->hours = hours;
