@@ -5,10 +5,6 @@
 
 #include "i8254.h"
 
-// Global variable to count the number of identified interrupts
-int global_counter = 0;
-
-
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) { 
   int target_port = TIMER_0 + timer;
   uint8_t status_byte;
@@ -28,54 +24,42 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   return 0;
 }
 
-int hook_id = 0;
+// Subscribe the interrupts for a given IRQ Line 
+// Change the content of the given pointer to have the mask containing the active subscribed IRQ
+int hook_id; 
 int (timer_subscribe_int)(uint8_t *bit_no) {
-  *bit_no = hook_id;
-  if(sys_irqsetpolicy(TIMER0_IRQ,IRQ_REENABLE,&hook_id)) return 0;
-  return 1;
+  hook_id = *bit_no;
+  if(sys_irqsetpolicy(TIMER0_IRQ,IRQ_REENABLE,&hook_id)) return 1;
+  *bit_no = BIT(*bit_no);
+  return 0;
 }
 
 int (timer_unsubscribe_int)() {
-  // Disables interrupts on hook_id associated
-  if(sys_irqdisable(&hook_id)) return 1;
-  return 0;
+  /* To be implemented by the students */
+  printf("%s is not yet implemented!\n", __func__);
+
+  return 1;
 }
 
 void (timer_int_handler)() {
-  global_counter++;
+  /* To be implemented by the students */
+  printf("%s is not yet implemented!\n", __func__);
 }
 
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {
-  // Build the Read-Back command
   uint8_t read_back_command = 0;
-  // Indicate that we are going to perform a read-back command
-  read_back_command |= TIMER_RB_CMD; 
-
-  // Since we want to read the status byte, we must set the bit that allows reading the counter 
-  // and keep the bit associated with the Programmed Mode at 0, because this feature works as 
-  // "enabled when low" — functionality active when the bit is 0
+  read_back_command |= TIMER_RB_CMD;
   read_back_command |= TIMER_RB_COUNT_;
-  
-  // Select the counter of the specified timer
   read_back_command |= TIMER_RB_SEL(timer);
-
-  // Write to the control register - with error handling
-  // If the return value is 1, perform an early return indicating an error
-  if (sys_outb(TIMER_CTRL, read_back_command)) {
+  if (sys_outb(TIMER_CTRL, read_back_command)){
     return 1;
-  }
-
-  // Add the timer number to the base port address of the first timer to get the correct port address
-  int port = 0x40 + timer; 
-  // Read the status byte from the correct port and store it at the address where the status byte will be saved
-  // Error handling, same as in the outb case
-  if (util_sys_inb(port, st)) {
+  };
+  int port = TIMER_0 + timer;
+  if(util_sys_inb(port, st)) {
     return 1;
-  }
-
+  };
   return 0;
 }
-
 
 int (timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field field) {
   
