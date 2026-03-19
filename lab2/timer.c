@@ -32,10 +32,9 @@ int (timer_subscribe_int)(uint8_t *bit_no) {
 }
 
 int (timer_unsubscribe_int)() {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
-
-  return 1;
+  // Disables interrupts on hook_id associated
+  if(sys_irqdisable(&hook_id)) return 1;
+  return 0;
 }
 
 void (timer_int_handler)() {
