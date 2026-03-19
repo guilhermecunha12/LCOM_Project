@@ -114,7 +114,6 @@ int rtc_read_time(rtc_time *time) {
     time->seconds = seconds;
     time->minutes = minutes;
     time->hours = hours;
-
     return 0;
 }
 

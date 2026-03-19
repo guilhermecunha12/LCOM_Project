@@ -5,6 +5,10 @@
 
 #include "i8254.h"
 
+// Global variable to count the number of identified interrupts
+int global_counter = 0;
+
+
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) { 
   int target_port = TIMER_0 + timer;
   uint8_t status_byte;
@@ -32,15 +36,13 @@ int (timer_subscribe_int)(uint8_t *bit_no) {
 }
 
 int (timer_unsubscribe_int)() {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
-
-  return 1;
+  // Disables interrupts on hook_id associated
+  if(sys_irqdisable(&hook_id)) return 1;
+  return 0;
 }
 
 void (timer_int_handler)() {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  global_counter++;
 }
 
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {
