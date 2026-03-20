@@ -68,7 +68,7 @@ int(timer_test_int)(uint8_t time) {
 
   int r; // return value of the driver_receive function
 
-  while( global_counter < time * 60 ) {
+  while( global_counter < time * 60 ) { // the default interrupt frequency of timer 0 is 60Hz
       /* Get a request message. */
       if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
           printf("driver_receive failed with: %d", r);
@@ -79,7 +79,8 @@ int(timer_test_int)(uint8_t time) {
           switch (_ENDPOINT_P(msg.m_source)) { // allows to extract the process identifier from a process’s endpoint
               case HARDWARE: /* hardware interrupt notification */        
                   if (msg.m_notify.interrupts & bit_no) { /* subscribed interrupt */
-                    timer_int_handler();
+                    timer_int_handler(); // will happen 60 times per second, so global_counter will be incremented 60 times per second 
+
                     if (global_counter % 60 == 0) {
                       timer_print_elapsed_time();
                     }
