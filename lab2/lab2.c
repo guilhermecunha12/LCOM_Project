@@ -53,19 +53,22 @@ int(timer_test_time_base)(uint8_t timer, uint32_t freq) {
 }
 
 
-// subscribe, handle, unsubscribe
+
 // time: how long the function timer_print_elapsed_time will be invoked (once per second)
 // hook_id passed to irqsetpolicy -> bit position in the message bitmask
 // hook_id "returned"/modified by irqsetpolicy -> internal value used by the GIH (like a file descriptor)
+// this function subscribes IRQ line, handles interrupt and unsubscribes the IRQ line
 int(timer_test_int)(uint8_t time) {
-   uint32_t t = time * 60; // because it is the default frequency
   int ipc_status;
   message msg;
-  int bit_no = 0; // this function (caller) should initialize it with a int value (that will be the index position of the bit relative to this device driver in m_notify.interrupts)
-  timer_subscribe_int(&bit_no); // IMPORTANT: after this function call, the value of bit_no is not a bit index anymore, but a mask to apply to the received message to get the value of the IRQ line of the timer
+  uint8_t bit_no = 0; // this function (caller) should initialize it with a int value (that will be the index position of the bit relative to this device driver in m_notify.interrupts)
+  if (timer_subscribe_int(&bit_no)) { // IMPORTANT: after this function call, the value of bit_no is not a bit index anymore, but a mask to apply to the received message to get the value of the IRQ line of the timer
+    return 1;
+  }; 
+
   int r; // return value of the driver_receive function
 
-  while( t > 0 ) { /* You may want to use a different condition */
+  while( global_counter < time * 60 ) {
       /* Get a request message. */
       if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
           printf("driver_receive failed with: %d", r);
@@ -77,10 +80,9 @@ int(timer_test_int)(uint8_t time) {
               case HARDWARE: /* hardware interrupt notification */        
                   if (msg.m_notify.interrupts & bit_no) { /* subscribed interrupt */
                     timer_int_handler();
-                    if (t % 60 == 0) {
+                    if (global_counter % 60 == 0) {
                       timer_print_elapsed_time();
                     }
-                    t--;
                   }
                   break;
               default:
@@ -91,6 +93,9 @@ int(timer_test_int)(uint8_t time) {
       }
   }
 
-  timer_unsubscribe_int();
+  if (timer_unsubscribe_int()) {
+    return 1;
+  };
+
   return 0;
 }
