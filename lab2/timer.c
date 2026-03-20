@@ -41,7 +41,7 @@ int (timer_subscribe_int)(uint8_t *bit_no) {
 
 int (timer_unsubscribe_int)() {
   // Disables interrupts on hook_id associated
-  if(sys_irqdisable(&hook_id)) return 1;
+  if(sys_irqrmpolicy(&hook_id)) return 1;
   return 0;
 }
 
