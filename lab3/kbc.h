@@ -25,4 +25,8 @@ void (kbc_ih) ();
 int kbd_subscribe_int(uint8_t *bit_no);
 int kbd_unsubscribe_int();
 
+uint8_t (get_scancode) ();
+void set_scancode(uint8_t byte);
+
+
 #endif
