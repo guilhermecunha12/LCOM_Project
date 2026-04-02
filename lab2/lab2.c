@@ -52,9 +52,51 @@ int(timer_test_time_base)(uint8_t timer, uint32_t freq) {
   return timer_set_frequency(timer, freq);
 }
 
-int(timer_test_int)(uint8_t time) {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
 
-  return 1;
+
+// time: how long the function timer_print_elapsed_time will be invoked (once per second)
+// hook_id passed to irqsetpolicy -> bit position in the message bitmask
+// hook_id "returned"/modified by irqsetpolicy -> internal value used by the GIH (like a file descriptor)
+// this function subscribes IRQ line, handles interrupt and unsubscribes the IRQ line
+int(timer_test_int)(uint8_t time) {
+  int ipc_status;
+  message msg;
+  uint8_t bit_no = 0; // this function (caller) should initialize it with a int value (that will be the index position of the bit relative to this device driver in m_notify.interrupts)
+  if (timer_subscribe_int(&bit_no)) { // IMPORTANT: after this function call, the value of bit_no is not a bit index anymore, but a mask to apply to the received message to get the value of the IRQ line of the timer
+    return 1;
+  }; 
+
+  int r; // return value of the driver_receive function
+
+  while( global_counter < time * 60 ) { // the default interrupt frequency of timer 0 is 60Hz
+      /* Get a request message. */
+      if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
+          printf("driver_receive failed with: %d", r);
+          continue;
+      }
+
+      if (is_ipc_notify(ipc_status)) { /* received notification */
+          switch (_ENDPOINT_P(msg.m_source)) { // allows to extract the process identifier from a process’s endpoint
+              case HARDWARE: /* hardware interrupt notification */        
+                  if (msg.m_notify.interrupts & bit_no) { /* subscribed interrupt */
+                    timer_int_handler(); // will happen 60 times per second, so global_counter will be incremented 60 times per second 
+
+                    if (global_counter % 60 == 0) {
+                      timer_print_elapsed_time();
+                    }
+                  }
+                  break;
+              default:
+                  break; /* no other notifications expected: do nothing */  
+          }
+      } else { /* received a standard message, not a notification */
+          /* no standard messages expected: do nothing */
+      }
+  }
+
+  if (timer_unsubscribe_int()) {
+    return 1;
+  };
+
+  return 0;
 }
