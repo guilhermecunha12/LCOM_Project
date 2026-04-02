@@ -21,6 +21,11 @@
 // ATTEMPT NUMBER
 #define N_TRIES 10 // number of tries to read from the kbc
 
+//SCANCODES
+#define ESC_BREAKCODE 0x81 // breakcode of the ESC key
+#define TWO_BYTE_PREFIX 0xE0 // prefix of 2-byte long scancodes. Needed to know if the current scancode has 1 or 2 bytes (3 bytes not supported - lab guides). This is the only valid 2-byte scancode prefix considered.
+#define MSB(n) (n >> 7) // MSB of a byte
+
 void (kbc_ih) ();
 int kbd_subscribe_int(uint8_t *bit_no);
 int kbd_unsubscribe_int();
