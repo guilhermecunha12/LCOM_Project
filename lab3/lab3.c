@@ -1,9 +1,11 @@
 #include <lcom/lcf.h>
-
 #include <lcom/lab3.h>
+#include "kbc.h"
 
 #include <stdbool.h>
 #include <stdint.h>
+
+uint8_t scancode;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -30,13 +32,6 @@ int main(int argc, char *argv[]) {
 }
 
 int(kbd_test_scan)() {
-  /* To be completed by the students */
-  printf("%s is not yet implemented!\n", __func__);
-
-  return 1;
-}
-
-int(kbd_test_poll)() {
   /* To be completed by the students */
   printf("%s is not yet implemented!\n", __func__);
 

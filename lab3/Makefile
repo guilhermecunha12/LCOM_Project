@@ -1,20 +1,20 @@
 # name of the program (Minix service)
-PROG=lab2 
+PROG=lab3
 
 # source code files to be compiled
-SRCS = lab2.c timer.c utils.c
+SRCS = lab3.c kbc.c utils.c
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set
 CFLAGS += -pedantic
+CFLAGS += -DLAB3
 
-# list of library dependencies (for Lab 2, only LCF library)
 DPADD += ${LIBLCF} ${LIB_NAME}              # Let make track the versions of the new target
 LDADD += -llcf -L.                          # Tell the compiler to look in the current directory for libraries
-LDADD += -ltimer                            #   and link the library named libtimers.a
+LDADD += -lkbc   
 
-LIB_NAME = libtimer.a                       # The name filename for your library
-LIB_SRCS = timer.c utils.c                  # The source files to include
+LIB_NAME = libkbc.a                         # The name filename for your library
+LIB_SRCS = kbc.c utils.c                    # The source files to include
 LIB_OBJS = ${LIB_SRCS:.c=.o}                # The rule used to convert your .c source files in .object files
 CLEANFILES += ${LIB_NAME} ${LIB_OBJS}       # Add the library file and object files to the files to be cleaned
 
