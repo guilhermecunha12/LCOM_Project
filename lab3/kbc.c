@@ -1,6 +1,6 @@
+#include <lcom/lcf.h>
 #include "i8042.h"
 #include "kbc.h"
-#include <lcom/lcf.h>
 
 static uint8_t scancode;
 int kbd_hook_id;
@@ -49,6 +49,7 @@ void set_scancode(uint8_t byte){
    scancode = byte;
 }
 
+
 // Generic function to write a command byte to a port
 int write_KBC_command(uint8_t port, uint8_t command_byte){
   int n = N_TRIES;
@@ -74,7 +75,7 @@ int read_KBC_output_buf(uint8_t port, uint8_t* value){
       if(util_sys_inb(KBC_OB,value)) return 1;
       // Discard values if needed
       if(status_byte & KBC_ERROR) return 1;
-      if(status_byte & KBC_MOUSE_DATA) return 1;
+      return 0;
     } 
     tickdelay(micros_to_ticks(DELAY_US)); // wait up until 20ms (as described in lab report)
   }

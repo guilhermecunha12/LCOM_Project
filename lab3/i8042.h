@@ -1,6 +1,8 @@
 #ifndef I8042_H
 #define I8042_H
 
+#include <lcom/lcf.h>
+
 // Keyboard must respond to a command within 20ms
 #define DELAY_US 20000 
 // Keyboard Interrupt Line 
