@@ -1,8 +1,10 @@
-#include "kbc.h"
 #include <lcom/lcf.h>
+#include "i8042.h"
+#include "kbc.h"
 
 static uint8_t scancode;
 int kbd_hook_id;
+
 
 int (kbd_subscribe_int) (uint8_t *bit_no){
   kbd_hook_id = *bit_no;
@@ -25,7 +27,6 @@ int read_scancode(uint8_t *byte){
       return (status_byte & KBC_ERROR) ? 1 : 0; // if there was an error (signaled by 2 MSB parity and timeout return 1 else 0)
     } 
     tickdelay(micros_to_ticks(DELAY_US)); // wait up until 20ms (as described in lab report)
-
   }
   return 1;
 }
@@ -35,7 +36,6 @@ void (kbc_ih) () {
     if(read_scancode(&byte) == 0) scancode=byte;
 }
 
-
 // Instead of using extern, using getters and setters to access scancode elsewhere (lab report)
 
 uint8_t get_scancode(){
@@ -44,4 +44,52 @@ uint8_t get_scancode(){
 
 void set_scancode(uint8_t byte){
    scancode = byte;
+}
+
+// Generic function to write a command byte to a port
+int write_KBC_command(uint8_t port, uint8_t command_byte){
+  int n = N_TRIES;
+  uint8_t status_byte;
+  while(n--){ // we should wait long enough after some retries
+    if(util_sys_inb(KBC_STATUS_REG,&status_byte)) return 1;  // read the status byte from the status register
+    if(!(status_byte & KBC_IBF)){ // if the input buffer is empty - 0 - (we can issue command)
+      if(sys_outb(port, command_byte)) return 1;
+      return 0;
+    } 
+    tickdelay(micros_to_ticks(DELAY_US)); // wait up until 20ms (as described in lab report)
+  }
+  return 1;
+}
+
+// Generic function to read an output value from a port
+int read_KBC_output_buf(uint8_t port, uint8_t* value){
+  int n = N_TRIES;
+  uint8_t status_byte;
+  while(n--){ // we should wait long enough after some retries
+    if(util_sys_inb(KBC_STATUS_REG,&status_byte)) return 1;  // read the status byte from the status register
+    if(status_byte & KBC_OBF){ // if the output buffer is full (we can read the scancode)
+      if(util_sys_inb(KBC_OB,value)) return 1;
+      // Discard values if needed
+      if(status_byte & KBC_ERROR) return 1;
+      return 0;
+    } 
+    tickdelay(micros_to_ticks(DELAY_US)); // wait up until 20ms (as described in lab report)
+  }
+  return 1;
+}
+
+int reset_interrupts(){
+  // Restore interrupts
+  uint8_t command_byte;
+  // Write the read command byte to command register
+  if(write_KBC_command(KBC_CMD_REG, READ_COMMAND_BYTE)) return 1;
+  // Read the command byte from the output buffer
+  if(read_KBC_output_buf(KBC_OB, &command_byte)) return 1;
+  // Activate keyboard interrupts
+  command_byte |= ENABLE_KEYBOARD_INTERRUPTS;
+  // Issue the write command byte to the command register
+  if(write_KBC_command(KBC_CMD_REG, WRITE_COMMAND_BYTE)) return 1;
+  // Place the new command byte value in the input buffer
+  if(write_KBC_command(KBC_IB, command_byte)) return 1;
+  return 0;
 }

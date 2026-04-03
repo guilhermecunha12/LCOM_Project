@@ -111,10 +111,36 @@ int(kbd_test_scan)() {
 
 
 int(kbd_test_poll)() {
-  /* To be completed by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  // Since we will be using a while loop the variable will be initialized during the first iteration
+  uint8_t code;
+  // Polling loop
+  do {
+    // scancode will contain each key's scancode
+    // In this case we must check for the function to be returning 0 since the we can only consider the output buffer data when the return is valid (indicating that data there should be read)
+    if(read_KBC_output_buf(KBC_OB, &code) == 0){
+      // if scancode && BREAKCODE == 1 -> makeval = false
+      // if scancode && BREAKCODE == 0 -> makeval = true
+      bool makeval = !(code & BREAKCODE);
+      // Check if we have a situation where the scan code has 2 bytes
+      // Two byte long is 0xEO: if the first scancode is this one, the value has 2 bytes
+      if(code == TWO_BYTE_LONG){
+        // Read the second byte of the scan code
+        uint8_t second_byte;
+        if(read_KBC_output_buf(KBC_OB, &second_byte) == 0){
+          // The makeval will correspond to the most significant bit of the second byte
+          makeval = !(second_byte & BREAKCODE);
+          // Create the array for printing purposes with the first byte (E0) and then the second byte
+          uint8_t bytes[2] = {code, second_byte};
+          kbd_print_scancode(makeval, 2, bytes);
+        }
+      }
+      else{
+        kbd_print_scancode(makeval, 1, &code);
+      }
+    } 
+  } while(code != ESC_BREAKCODE);
 
-  return 1;
+  return reset_interrupts();
 }
 
 int(kbd_test_timed_scan)(uint8_t n) {
