@@ -36,7 +36,6 @@ void (kbc_ih) () {
     if(read_scancode(&byte) == 0) scancode=byte;
 }
 
-
 // Instead of using extern, using getters and setters to access scancode elsewhere (lab report)
 
 uint8_t get_scancode(){
@@ -46,7 +45,6 @@ uint8_t get_scancode(){
 void set_scancode(uint8_t byte){
    scancode = byte;
 }
-
 
 // Generic function to write a command byte to a port
 int write_KBC_command(uint8_t port, uint8_t command_byte){
