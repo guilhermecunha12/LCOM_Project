@@ -34,6 +34,6 @@
 // Key related macros
 #define ESC_BREAKCODE 0x81
 #define BREAKCODE BIT(7)
-#define TWO_BYTE_LONG 0xE0
+#define TWO_BYTE_PREFIX 0xE0
 
 #endif

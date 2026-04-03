@@ -113,6 +113,7 @@ int(kbd_test_scan)() {
 int(kbd_test_poll)() {
   // Since we will be using a while loop the variable will be initialized during the first iteration
   uint8_t code;
+  bool second_byte = false;
   // Polling loop
   do {
     // scancode will contain each key's scancode
@@ -121,23 +122,25 @@ int(kbd_test_poll)() {
       // if scancode && BREAKCODE == 1 -> makeval = false
       // if scancode && BREAKCODE == 0 -> makeval = true
       bool makeval = !(code & BREAKCODE);
-      // Check if we have a situation where the scan code has 2 bytes
-      // Two byte long is 0xEO: if the first scancode is this one, the value has 2 bytes
-      if(code == TWO_BYTE_LONG){
-        // Read the second byte of the scan code
-        uint8_t second_byte;
-        if(read_KBC_output_buf(KBC_OB, &second_byte) == 0){
-          // The makeval will correspond to the most significant bit of the second byte
-          makeval = !(second_byte & BREAKCODE);
-          // Create the array for printing purposes with the first byte (E0) and then the second byte
-          uint8_t bytes[2] = {code, second_byte};
-          kbd_print_scancode(makeval, 2, bytes);
+      if(second_byte){
+        makeval = !(second_byte & BREAKCODE);
+        // Create the array for printing purposes with the first byte (E0) and then the second byte
+        uint8_t bytes[2] = {TWO_BYTE_PREFIX, second_byte};
+        kbd_print_scancode(makeval, 2, bytes);
+        second_byte = false;
+      }
+      else {
+        // Check if we have a situation where the scan code has 2 bytes
+        // Two byte long is 0xEO: if the first scancode is this one, the value has 2 bytes
+        // In the next iteration the next byte will be read
+        if(code == TWO_BYTE_PREFIX){
+          second_byte = true;
+        }
+        else{
+          kbd_print_scancode(makeval, 1, &code);
         }
       }
-      else{
-        kbd_print_scancode(makeval, 1, &code);
-      }
-    } 
+    }
   } while(code != ESC_BREAKCODE);
 
   return reset_interrupts();
