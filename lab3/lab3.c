@@ -66,19 +66,7 @@ int(kbd_test_poll)() {
     } 
   } while(code != ESC_BREAKCODE);
 
-  // Restore interrupts
-  uint8_t command_byte;
-  // Write the read command byte to command register
-  if(write_KBC_command(KBC_CMD_REG, READ_COMMAND_BYTE)) return 1;
-  // Read the command byte from the output buffer
-  if(read_KBC_output_buf(KBC_OB, &command_byte)) return 1;
-  // Activate keyboard interrupts
-  command_byte |= ENABLE_KEYBOARD_INTERRUPTS;
-  // Issue the write command byte to the command register
-  if(write_KBC_command(KBC_CMD_REG, WRITE_COMMAND_BYTE)) return 1;
-  // Place the new command byte value in the input buffer
-  if(write_KBC_command(KBC_IB, command_byte)) return 1;
-  return 0;
+  return reset_interrupts();
 }
 
 int(kbd_test_timed_scan)(uint8_t n) {

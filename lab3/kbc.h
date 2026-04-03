@@ -16,4 +16,6 @@ int write_KBC_command(uint8_t port, uint8_t command_byte);
 
 int read_KBC_output_buf(uint8_t port, uint8_t* value);
 
+int reset_interrupts();
+
 #endif
