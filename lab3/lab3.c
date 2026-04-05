@@ -152,9 +152,14 @@ int(kbd_test_timed_scan)(uint8_t n) {
   // Similar to test_scan
   int ipc_status;
   message msg;
+  set_scancode(0);
+
+  bool second_byte = false; // flag for the 2 byte scancode
+  uint8_t first_byte = 0;        // store first byte if two byte
+  uint8_t scancode = get_scancode();
+  
   // Timer 0 interrupt bit, used for the idle time
   uint8_t timer0_int_bit = 0;
-
   // Keyboard interrupt bit
   uint8_t kbd_int_bit = 1;
 
@@ -174,7 +179,7 @@ int(kbd_test_timed_scan)(uint8_t n) {
   int r;
 
   // Break the while loop if ESC breakcode is received, or if keyboard didnt generated any interrupt in n seconds
-  while((idle < n * 60) && get_scancode() != 0x81){
+  while((idle < n * 60) && scancode != ESC_BREAKCODE){
     // não é 1, ou ESC ou n seconds
     if((r = driver_receive(ANY, &msg, &ipc_status)) != 0){
       printf("driver_receive failed with: %d\n", r);
@@ -188,16 +193,39 @@ int(kbd_test_timed_scan)(uint8_t n) {
             // Timer 0 interrupt
             idle++;
           }
+
           if(msg.m_notify.interrupts & kbd_int_bit){
             kbc_ih();
+            scancode = get_scancode();
+
+            if (!second_byte){
+              // reding the first byte
+              if (scancode == TWO_BYTE_PREFIX) {
+                second_byte = true;
+                first_byte = scancode;
+              } else {
+                uint8_t bytes[1] = { scancode };
+                bool make = !(MSB(scancode));
+                kbd_print_scancode(make, 1, bytes);
+              }
+
+            } else {
+              // second byte of two-byte scancode
+              // first byte stored previously
+              uint8_t bytes[2] = { first_byte, scancode };
+              bool make = !(MSB(scancode));
+              kbd_print_scancode(make, 2, bytes);
+              second_byte = false;
+            }
             idle = 0;
           }
           break;
         default:
           break;
+
       }
-    }else{
-       
+    }else{/* received a standard message, not a notification */
+        /* no standard messages expected: do nothing */  
     }
   }
 

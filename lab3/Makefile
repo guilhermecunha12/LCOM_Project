@@ -8,10 +8,13 @@ SRCS = lab3.c kbc.c utils.c
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set
 CFLAGS += -pedantic
 CFLAGS += -DLAB3
+CFLAGS += -I../lab2 
 
 DPADD += ${LIBLCF} ${LIB_NAME}              # Let make track the versions of the new target
 LDADD += -llcf -L.                          # Tell the compiler to look in the current directory for libraries
 LDADD += -lkbc   
+LDADD += -llcf -L../lab2  # Tell the compiler to look in the lab2 directory for libraries
+LDADD += -ltimer  
 
 LIB_NAME = libkbc.a                         # The name filename for your library
 LIB_SRCS = kbc.c utils.c                    # The source files to include
