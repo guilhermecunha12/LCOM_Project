@@ -1,9 +1,20 @@
 #include <lcom/lcf.h>
 #include <lcom/timer.h>
+#include "timer_count.h"
 
 #include <stdint.h>
 
 #include "i8254.h"
+
+static int global_counter = 0;
+
+int get_counter(){
+  return global_counter;
+}
+
+void set_counter(int n){
+  global_counter = n;
+}
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) { 
   int target_port = TIMER_0 + timer;
@@ -41,8 +52,7 @@ int (timer_unsubscribe_int)() {
 }
 
 void (timer_int_handler)() {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  global_counter++;
 }
 
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {

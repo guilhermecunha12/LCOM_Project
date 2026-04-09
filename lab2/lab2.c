@@ -1,10 +1,9 @@
 #include <lcom/lcf.h>
 #include <lcom/lab2.h>
 #include <lcom/timer.h>
+#include "timer_count.h"
 #include <stdbool.h>
 #include <stdint.h>
-
-extern int global_counter;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -67,8 +66,9 @@ int(timer_test_int)(uint8_t time) {
   }; 
 
   int r; // return value of the driver_receive function
+  int counter = get_counter();
 
-  while( global_counter < time * 60 ) { // the default interrupt frequency of timer 0 is 60Hz
+  while( counter < time * 60 ) { // the default interrupt frequency of timer 0 is 60Hz
       /* Get a request message. */
       if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
           printf("driver_receive failed with: %d", r);
@@ -80,9 +80,11 @@ int(timer_test_int)(uint8_t time) {
               case HARDWARE: /* hardware interrupt notification */        
                   if (msg.m_notify.interrupts & bit_no) { /* subscribed interrupt */
                     timer_int_handler(); // will happen 60 times per second, so global_counter will be incremented 60 times per second 
-
-                    if (global_counter % 60 == 0) {
+                    counter = get_counter();
+                    if (counter % 60 == 0) {
                       timer_print_elapsed_time();
+                      // guarantees no overflow for timer_counter
+                      set_counter(0);
                     }
                   }
                   break;
