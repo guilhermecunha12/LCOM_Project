@@ -32,8 +32,7 @@
 #define WRITE_COMMAND_BYTE 0x60
 
 // Key related macros
-#define ESC_BREAKCODE 0x81
-#define BREAKCODE BIT(7)
-#define TWO_BYTE_PREFIX 0xE0
-
+#define ESC_BREAKCODE 0x81 // breakcode of the ESC key
+#define MSB(n) (n >> 7) // MSB of a byte
+#define TWO_BYTE_PREFIX 0xE0 // prefix of 2-byte long scancodes. Needed to know if the current scancode has 1 or 2 bytes (3 bytes not supported - lab guides). This is the only valid 2-byte scancode prefix considered.
 #endif

@@ -118,14 +118,14 @@ int(kbd_test_poll)() {
   do {
     // scancode will contain each key's scancode
     // In this case we must check for the function to be returning 0 since the we can only consider the output buffer data when the return is valid (indicating that data there should be read)
-    if(read_KBC_output_buf(KBC_OB, &code) == 0){
+    if(read_KBC_output_buf(&code) == 0){
       // if scancode && BREAKCODE == 1 -> makeval = false
       // if scancode && BREAKCODE == 0 -> makeval = true
-      bool makeval = !(code & BREAKCODE);
+      bool makeval = !(MSB(code));
       if(second_byte){
-        makeval = !(second_byte & BREAKCODE);
+        makeval = !(MSB(code));
         // Create the array for printing purposes with the first byte (E0) and then the second byte
-        uint8_t bytes[2] = {TWO_BYTE_PREFIX, second_byte};
+        uint8_t bytes[2] = {TWO_BYTE_PREFIX, code};
         kbd_print_scancode(makeval, 2, bytes);
         second_byte = false;
       }

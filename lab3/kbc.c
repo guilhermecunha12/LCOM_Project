@@ -18,22 +18,12 @@ int (kbd_unsubscribe_int)(){
 }
 
 int read_scancode(uint8_t *byte){
-  int n = N_TRIES;
-  uint8_t status_byte;
-  while(n--){ // we should wait long enough after some retries
-    if(util_sys_inb(KBC_STATUS_REG,&status_byte)) return 1;  // read the status byte from the status register
-    if(status_byte & KBC_OBF){ // if the output buffer is full (we can read the scancode)
-      if(util_sys_inb(KBC_OB,byte)) return 1; 
-      return (status_byte & KBC_ERROR) ? 1 : 0; // if there was an error (signaled by 2 MSB parity and timeout return 1 else 0)
-    } 
-    tickdelay(micros_to_ticks(DELAY_US)); // wait up until 20ms (as described in lab report)
-  }
-  return 1;
+  return read_KBC_output_buf(byte) ? 1 : 0;
 }
 
 void (kbc_ih) () {
-    uint8_t byte;
-    if(read_scancode(&byte) == 0) scancode=byte;
+  uint8_t byte;
+  if(read_scancode(&byte) == 0) scancode=byte;
 }
 
 // Instead of using extern, using getters and setters to access scancode elsewhere (lab report)
@@ -53,8 +43,7 @@ int write_KBC_command(uint8_t port, uint8_t command_byte){
   while(n--){ // we should wait long enough after some retries
     if(util_sys_inb(KBC_STATUS_REG,&status_byte)) return 1;  // read the status byte from the status register
     if(!(status_byte & KBC_IBF)){ // if the input buffer is empty - 0 - (we can issue command)
-      if(sys_outb(port, command_byte)) return 1;
-      return 0;
+      return sys_outb(port, command_byte) ? 1 : 0;
     } 
     tickdelay(micros_to_ticks(DELAY_US)); // wait up until 20ms (as described in lab report)
   }
@@ -62,19 +51,15 @@ int write_KBC_command(uint8_t port, uint8_t command_byte){
 }
 
 // Generic function to read an output value from a port
-int read_KBC_output_buf(uint8_t port, uint8_t* value){
-  int n = N_TRIES;
+int read_KBC_output_buf(uint8_t* value){
   uint8_t status_byte;
-  while(n--){ // we should wait long enough after some retries
-    if(util_sys_inb(KBC_STATUS_REG,&status_byte)) return 1;  // read the status byte from the status register
-    if(status_byte & KBC_OBF){ // if the output buffer is full (we can read the scancode)
-      if(util_sys_inb(KBC_OB,value)) return 1;
-      // Discard values if needed
-      if(status_byte & KBC_ERROR) return 1;
-      return 0;
-    } 
-    tickdelay(micros_to_ticks(DELAY_US)); // wait up until 20ms (as described in lab report)
-  }
+  if(util_sys_inb(KBC_STATUS_REG,&status_byte)) return 1;  // read the status byte from the status register
+  if(status_byte & KBC_OBF){ // if the output buffer is full (we can read the scancode)
+    if(util_sys_inb(KBC_OB,value)) return 1;
+    // Discard values if needed
+    if(status_byte & KBC_ERROR) return 1;
+    return 0;
+  } 
   return 1;
 }
 
@@ -84,7 +69,7 @@ int reset_interrupts(){
   // Write the read command byte to command register
   if(write_KBC_command(KBC_CMD_REG, READ_COMMAND_BYTE)) return 1;
   // Read the command byte from the output buffer
-  if(read_KBC_output_buf(KBC_OB, &command_byte)) return 1;
+  if(read_KBC_output_buf(&command_byte)) return 1;
   // Activate keyboard interrupts
   command_byte |= ENABLE_KEYBOARD_INTERRUPTS;
   // Issue the write command byte to the command register
