@@ -33,7 +33,7 @@ uint8_t get_scancode(){
 }
 
 void set_scancode(uint8_t byte){
-   scancode = byte;
+  scancode = byte;
 }
 
 // Generic function to write a command byte to a port
