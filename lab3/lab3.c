@@ -1,9 +1,11 @@
 #include <lcom/lcf.h>
 #include <lcom/lab3.h>
 #include "kbc.h"
+#include "../lab2/timer_count.h"
 
 #include <stdbool.h>
 #include <stdint.h>
+
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -32,8 +34,6 @@ int main(int argc, char *argv[]) {
 
    
 int(kbd_test_scan)() {
-  #include <lcom/lcf.h>
-
   int ipc_status;
   message msg;
   int r; // return value of the driver_receive function
@@ -147,8 +147,88 @@ int(kbd_test_poll)() {
 }
 
 int(kbd_test_timed_scan)(uint8_t n) {
-  /* To be completed by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  // Similar to test_scan
+  int ipc_status;
+  message msg;
+  set_scancode(0);
 
-  return 1;
+  bool second_byte = false; // flag for the 2 byte scancode
+  uint8_t scancode = get_scancode();
+  
+  // Timer 0 interrupt bit, used for the idle time
+  uint8_t timer0_int_bit = 0;
+  // Keyboard interrupt bit
+  uint8_t kbd_int_bit = 1;
+
+  // Subscribe timer interrupts
+  if(timer_subscribe_int(&timer0_int_bit)){
+    return 1;
+  }
+
+  // Subscribe keyboard interrupts
+  if (kbd_subscribe_int(&kbd_int_bit)){
+    return 1;
+  }
+
+  int r;
+
+  // Break the while loop if ESC breakcode is received, or if keyboard didnt generated any interrupt in n seconds
+  // Time ellapsed since the last keybaord interrupt
+  while((get_counter() < n * 60) && scancode != ESC_BREAKCODE){
+    // não é 1, ou ESC ou n seconds
+    if((r = driver_receive(ANY, &msg, &ipc_status)) != 0){
+      printf("driver_receive failed with: %d\n", r);
+      continue;
+    }
+
+    if(is_ipc_notify(ipc_status)){
+      switch(_ENDPOINT_P(msg.m_source)){
+        case HARDWARE:
+          if(msg.m_notify.interrupts & timer0_int_bit){
+            // Timer 0 interrupt
+            timer_int_handler();
+          }
+
+          if(msg.m_notify.interrupts & kbd_int_bit){
+            kbc_ih();
+            scancode = get_scancode();
+            bool make = !(MSB(scancode));
+
+            if (!second_byte){
+              // reding the first byte
+              if (scancode == TWO_BYTE_PREFIX) {
+                second_byte = true;
+              } else {
+                uint8_t bytes[1] = { scancode };
+                kbd_print_scancode(make, 1, bytes);
+              }
+            } else {
+              // second byte of two-byte scancode
+              // first byte stored previously
+              uint8_t bytes[2] = { TWO_BYTE_PREFIX, scancode };
+              kbd_print_scancode(make, 2, bytes);
+              second_byte = false;
+            }
+            set_counter(0);
+          }
+          break;
+        default:
+          break;
+
+      }
+    }else{/* received a standard message, not a notification */
+        /* no standard messages expected: do nothing */  
+    }
+  }
+  // unsubscribe timer0
+  if(timer_unsubscribe_int()){
+    return 1;
+  }
+
+  //unsubscribe keyboard
+  if(kbd_unsubscribe_int()){
+    return 1;
+  }
+
+  return 0;
 }
