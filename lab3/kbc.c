@@ -17,10 +17,12 @@ int (kbd_unsubscribe_int)(){
   return sys_irqrmpolicy(&kbd_hook_id) ? 1 : 0;
 }
 
+// only for readability
 int read_scancode(uint8_t *byte){
   return read_KBC_output_buf(byte) ? 1 : 0;
 }
 
+// only modifies scancode variable if it was possible to correctly read a scancode
 void (kbc_ih) () {
   uint8_t byte;
   if(read_scancode(&byte) == 0) scancode=byte;
@@ -52,14 +54,18 @@ int write_KBC_command(uint8_t port, uint8_t command_byte){
 
 // Generic function to read an output value from a port
 int read_KBC_output_buf(uint8_t* value){
+  int n = N_TRIES;
   uint8_t status_byte;
-  if(util_sys_inb(KBC_STATUS_REG,&status_byte)) return 1;  // read the status byte from the status register
-  if(status_byte & KBC_OBF){ // if the output buffer is full (we can read the scancode)
-    if(util_sys_inb(KBC_OB,value)) return 1;
-    // Discard values if needed
-    if(status_byte & KBC_ERROR) return 1;
-    return 0;
-  } 
+  while(n--){ // we should wait long enough after some retries
+    if(util_sys_inb(KBC_STATUS_REG,&status_byte)) return 1;  // read the status byte from the status register
+    if(status_byte & KBC_OBF){ // if the output buffer is full (we can read the scancode)
+      if(util_sys_inb(KBC_OB,value)) return 1;
+      // Discard values if needed
+      if(status_byte & KBC_ERROR) return 1;
+      return 0;
+    }
+    tickdelay(micros_to_ticks(DELAY_US)); // wait up until 20ms (as described in lab report)
+  }
   return 1;
 }
 
