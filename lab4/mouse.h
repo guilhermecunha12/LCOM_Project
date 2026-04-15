@@ -3,6 +3,10 @@
 
 #include <lcom/lcf.h>
 
+// subscribe and unsubscribe mouse interrupts 
+int mouse_subscribe_int(uint8_t* bit_no);
+int mouse_unsubscribe_int();
+
 // Setter for mouse data
 void set_mouse_byte(uint8_t data);
 // Getter for mouse data
