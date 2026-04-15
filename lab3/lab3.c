@@ -93,7 +93,7 @@ int(kbd_test_poll)() {
   do {
     // scancode will contain each key's scancode
     // In this case we must check for the function to be returning 0 since the we can only consider the output buffer data when the return is valid (indicating that data there should be read)
-    if(read_KBC_output_buf(&code) == 0){
+    if(read_KBC_output_buf(&code, false) == 0){
       // if scancode && BREAKCODE == 1 -> makeval = false
       // if scancode && BREAKCODE == 0 -> makeval = true
       bool makeval = !(MSB(code));
