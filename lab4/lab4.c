@@ -39,8 +39,8 @@ int (mouse_test_packet)(uint32_t cnt) {
     return 1;
 }
 
-int (mouse_test_async)(uint8_t idle_time) {
 
+int (mouse_test_async)(uint8_t idle_time) {
   // Same structure as in previous labs to handle specific device interrupts 
     int ipc_status;
     message msg;
@@ -48,10 +48,14 @@ int (mouse_test_async)(uint8_t idle_time) {
     uint8_t timer0_int_bit = TIMER0_IRQ;
     uint8_t mouse_int_bit = MOUSE_IRQ; 
 
+    if(mouse_enable_data_reporting()) return 1;
     if(timer_subscribe_int(&timer0_int_bit)) return 1;
     if(mouse_subscribe_int(&mouse_int_bit)) return 1;
 
     int r;
+
+    // Subscribes and handles interrupts
+
     do{
       
       if((r = driver_receive(ANY,&msg,&ipc_status)) !=0){
@@ -80,10 +84,13 @@ int (mouse_test_async)(uint8_t idle_time) {
 
       else {}
 
-      } while((get_counter() < idle_time * sys_hz()));
+    } while((get_counter() < idle_time * sys_hz())); // determine the interrupt frequency of timer0 with kernell call sys_hz (lab report)
 
-      if(timer_unsubscribe_int()) return 1;
-      if(mouse_unsubscribe_int()) return 1;
-    
+
+    // Unsubscribe interrupts
+    if(timer_unsubscribe_int()) return 1;
+    if(mouse_disable_data_reporting()) return 1;
+    if(mouse_unsubscribe_int()) return 1;
+  
     return 0;
 }
