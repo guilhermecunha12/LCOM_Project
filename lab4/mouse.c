@@ -34,3 +34,30 @@ void (mouse_ih) () {
   if(read_KBC_output_buf(&mouse_data, true)) return;
   set_mouse_byte(mouse_data);
 }
+
+
+// Utility functions
+void sign_extend(int16_t* num) {
+  *num << 7;
+  *num >> 7; // arithmetic right shift
+}
+
+int16_t get_delta(int sign_bit, uint8_t mouse_byte) {
+    int16_t delta = 0; // will be a 9-bit 2's complement integer
+    
+    if (sign_bit) delta |= BIT(9);
+    delta |= mouse_byte; // LSByte of x_movement will now be equal to mouse_byte
+    sign_extend(delta); // to make it interpretable in 2's complement
+
+    return delta;
+}
+
+void parse_first_byte(struct packet* pp, int* x_sign_bit, int* y_sign_bit, uint8_t mouse_byte) {
+    pp->lb = mouse_byte & BIT(1);
+    pp->rb = mouse_byte & BIT(2);
+    pp->mb = mouse_byte & BIT(3);
+    x_sign_bit = mouse_byte & BIT(4);
+    y_sign_bit = mouse_byte & BIT(5);
+    pp->x_ov = mouse_byte & BIT(6);
+    pp->y_ov = mouse_byte & BIT(7);
+}
