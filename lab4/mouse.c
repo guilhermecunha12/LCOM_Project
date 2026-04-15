@@ -34,6 +34,3 @@ void (mouse_ih) () {
   if(read_KBC_output_buf(&mouse_data, true)) return;
   set_mouse_byte(mouse_data);
 }
-
-// Disable data reporting - possibly function could be placed in this file to abstract behaviour
-// int disable_data_reporting()
