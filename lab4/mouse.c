@@ -1,23 +1,22 @@
-// Probably will be able to use the same ideas for the mouse functions
-
-// Errors: 
-// 0xFE -> signals an error meaning will have to resend the entire command from the beginning
-// 0xFC -> should also attempt to resend the entire command, not just the argument byte
-
-// Acknowledgement byte -> 0xFA -> indicates that the mouse has successfully recieved the byte and is ready for the next one (doesnt necessarily indicates that the command has been fully executed)
-
-// Important, check the KBC status register before writing to 0x60 and 0x64 (not full and safe to write). Also check that the output buffer is not full and it is safe to write to (no parity or timeout errors)
-
-// Before sending any command to the mouse, disable data reporting to prevent interference from packets sent by the mouse
-
-// Check mouse data packets that will be returned, in this case, 3 bytes at a time, but need to find a way to be able to interpret each 3 byte "batch"
-
 #include <lcom/lcf.h>
 #include "lab3/i8042.h"
 #include "lab3/kbc.h"
 #include "mouse.h"
+#include "i8042_mouse.h"
 
 static uint8_t mouse_byte; // static variable that could be accessed anywhere in the file
+int mouse_hook_id;
+
+int mouse_subscribe_int(uint8_t* bit_no){
+  mouse_hook_id = *bit_no;
+  if(sys_irqsetpolicy(MOUSE_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &mouse_hook_id)) return 1;
+  *bit_no = BIT(*bit_no);
+  return 0;
+}
+
+int mouse_unsubscribe_int(){
+  return sys_irqrmpolicy(&mouse_hook_id) ? 1 : 0;
+}
 
 // Also need to implement subscribe and unsubscribe for the keyboard
 
@@ -35,3 +34,6 @@ void (mouse_ih) () {
   if(read_KBC_output_buf(&mouse_data, true)) return;
   set_mouse_byte(mouse_data);
 }
+
+// Disable data reporting - possibly function could be placed in this file to abstract behaviour
+// int disable_data_reporting()
