@@ -5,6 +5,8 @@
 #include <stdio.h>
 
 // Any header files included below this line should have been created by you
+#include "mouse.h"
+#include "../lab2/timer_count.h"
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -38,7 +40,50 @@ int (mouse_test_packet)(uint32_t cnt) {
 }
 
 int (mouse_test_async)(uint8_t idle_time) {
-    /* To be completed */
-    printf("%s(%u): under construction\n", __func__, idle_time);
-    return 1;
+
+  // Same structure as in previous labs to handle specific device interrupts 
+    int ipc_status;
+    message msg;
+
+    uint8_t timer0_int_bit = TIMER0_IRQ;
+    uint8_t mouse_int_bit = MOUSE_IRQ; 
+
+    if(timer_subscribe_int(&timer0_int_bit)) return 1;
+    if(mouse_subscribe_int(&mouse_int_bit)) return 1;
+
+    int r;
+    do{
+      
+      if((r = driver_receive(ANY,&msg,&ipc_status)) !=0){
+          printf("driver_receive failed with: %d\n", r);
+          continue;
+      }
+
+      if(is_ipc_notify(ipc_status)){
+          switch(_ENDPOINT_P(msg.m_source)){
+              case HARDWARE:
+                if(msg.m_notify.interrupts & timer0_int_bit){
+                    timer_int_handler();
+                }
+
+                if(msg.m_notify.interrupts & mouse_int_bit){
+                   // to_do
+                   set_counter(0);
+                   continue;
+                }
+                break;
+
+              default:
+                  break;
+          }
+      }
+
+      else {}
+
+      } while((get_counter() < idle_time * sys_hz()));
+
+      if(timer_unsubscribe_int()) return 1;
+      if(mouse_unsubscribe_int()) return 1;
+    
+    return 0;
 }

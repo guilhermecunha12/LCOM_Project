@@ -3,5 +3,7 @@
 
 // Mouse interrupt line
 #define MOUSE_IRQ 12
+#define TIMER0_IRQ 0
+
 
 #endif

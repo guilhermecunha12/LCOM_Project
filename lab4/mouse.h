@@ -2,6 +2,7 @@
 #define MOUSE_H
 
 #include <lcom/lcf.h>
+#include "i8042_mouse.h"
 
 // Setter for mouse data
 void set_mouse_byte(uint8_t data);
