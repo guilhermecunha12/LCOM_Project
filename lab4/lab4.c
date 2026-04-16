@@ -1,5 +1,6 @@
 // IMPORTANT: you must include the following line in all your C files
 #include <lcom/lcf.h>
+#include "mouse.h"
 
 #include <stdint.h>
 #include <stdio.h>
@@ -32,11 +33,84 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
-
 int (mouse_test_packet)(uint32_t cnt) {
-    /* To be completed */
-    printf("%s(%u): under construction\n", __func__, cnt);
-    return 1;
+  int ipc_status;
+  message msg;
+  int r; // return value of the driver_receive function
+  
+  uint8_t bit_no = 2; // index position in the bitmask msg.m_notify.interrupts
+  if (mouse_subscribe_int(&bit_no)) return 1; // bit_no is now the mask 000....010
+
+  // By default, Minix does not enable data reports
+  if (enable_mouse_data_reporting()) { // TODO: implement this functionally ourselves
+    mouse_unsubscribe_int();
+    return 1; 
+  }
+
+  struct packet pp;
+  int byte_index = 0; // byte index of the current mouse byte
+  bool x_sign_bit = 0;
+  bool y_sign_bit = 0;
+
+  while (cnt) {
+  /* Get a request message. */
+    if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
+        printf("driver_receive failed with: %d", r);
+        continue;
+    }
+
+    if (is_ipc_notify(ipc_status)) { /* received notification */
+        switch (_ENDPOINT_P(msg.m_source)) {
+          case HARDWARE: /* hardware interrupt notification */
+            if (msg.m_notify.interrupts & bit_no) { /*subscribed interrupt */
+              mouse_ih(); // note: if there is a read failure here, the old value of mouse_byte will be treated as the new packet byte in the next line (maybe add a static variable that would indicate an error, like if it was a return value)
+              uint8_t mouse_byte = get_mouse_byte();
+              
+              // naive way to find out the beggining of data packets (however it only checks the 3rd bit when it is actually waiting for the first byte, ie, byte_index == 0)
+              if (byte_index == 0 && (mouse_byte & BIT(3))) { // the 3rd bit of the first packet byte is always 1
+                byte_index = 1; // next interrupt byte index
+                pp.bytes[0] = mouse_byte;
+
+                // populate pp struct and sign bits variables
+                parse_first_byte(&pp, &x_sign_bit, &y_sign_bit, mouse_byte);
+
+                continue; // do nothing more..
+              }
+              // ...not the first byte from here on
+
+              if (byte_index == 1) {
+                pp.bytes[1] = mouse_byte;
+                pp.delta_x = get_delta(x_sign_bit, mouse_byte);
+
+                byte_index++; // next byte index
+
+              } else if (byte_index == 2) {
+                pp.bytes[2] = mouse_byte;
+                pp.delta_y = get_delta(y_sign_bit, mouse_byte);
+              
+                byte_index = 0; // reset byte_index
+                
+                mouse_print_packet(&pp);
+                cnt--; // one less packet to go
+              }
+            }
+            break;
+
+        default: break; /* no other notifications expected: do nothing */
+      }
+    } else { /* received a standard message, not a notification */
+        /* no standard messages expected: do nothing */
+    }
+  }
+  
+  if (disable_mouse_data_reporting()) {
+    mouse_unsubscribe_int();
+    return 1; // TODO: implement
+  } 
+  
+  if (mouse_unsubscribe_int()) return 1;
+
+  return 0;
 }
 
 
@@ -45,17 +119,28 @@ int (mouse_test_async)(uint8_t idle_time) {
     int ipc_status;
     message msg;
 
-    uint8_t timer0_int_bit = TIMER0_IRQ;
-    uint8_t mouse_int_bit = MOUSE_IRQ; 
+    uint8_t timer0_int_bit = 1;
+    uint8_t mouse_int_bit = 2;
 
-    if(mouse_enable_data_reporting()) return 1;
+    struct packet pp;
+    int byte_index = 0;
+    bool x_sign_bit = 0;
+    bool y_sign_bit = 0; 
+
+    
     if(timer_subscribe_int(&timer0_int_bit)) return 1;
     if(mouse_subscribe_int(&mouse_int_bit)) return 1;
+
+    if(enable_mouse_data_reporting()){
+        mouse_unsubscribe_int();
+        return 1;
+    }
 
     int r;
 
     // Subscribes and handles interrupts
 
+    
     do{
       
       if((r = driver_receive(ANY,&msg,&ipc_status)) !=0){
@@ -67,13 +152,32 @@ int (mouse_test_async)(uint8_t idle_time) {
           switch(_ENDPOINT_P(msg.m_source)){
               case HARDWARE:
                 if(msg.m_notify.interrupts & timer0_int_bit){
-                    timer_int_handler();
+                    timer_int_handler(); // Timer0 interrupt handler
                 }
 
                 if(msg.m_notify.interrupts & mouse_int_bit){
-                   // to_do
-                   set_counter(0);
-                   continue;
+                    mouse_ih();
+                    uint8_t mouse_byte = get_mouse_byte();
+                    
+                    if (byte_index == 0 && (mouse_byte & BIT(3))) {
+                      byte_index = 1;
+                      pp.bytes[0] = mouse_byte;
+                      parse_first_byte(&pp, &x_sign_bit, &y_sign_bit, mouse_byte);
+                      continue;
+                    }
+                    
+                    if (byte_index == 1) {
+                      pp.bytes[1] = mouse_byte;
+                      pp.delta_x = get_delta(x_sign_bit, mouse_byte);
+                      byte_index++;
+                    } 
+                    else if (byte_index == 2) {
+                      pp.bytes[2] = mouse_byte;
+                      pp.delta_y = get_delta(y_sign_bit, mouse_byte);
+                      byte_index = 0;
+                      mouse_print_packet(&pp);
+                      set_counter(0); // reset the counter when we arrive at a full data packet
+                    }
                 }
                 break;
 
@@ -84,13 +188,15 @@ int (mouse_test_async)(uint8_t idle_time) {
 
       else {}
 
-    } while((get_counter() < idle_time * sys_hz())); // determine the interrupt frequency of timer0 with kernell call sys_hz (lab report)
+    } while(((uint32_t)(get_counter()) < idle_time * sys_hz())); // determine the interrupt frequency of timer0 with kernell call sys_hz (lab report)
 
 
     // Unsubscribe interrupts
     if(timer_unsubscribe_int()) return 1;
-    if(mouse_disable_data_reporting()) return 1;
-    if(mouse_unsubscribe_int()) return 1;
+    if(disable_mouse_data_reporting()) return 1;
+    if(mouse_unsubscribe_int()) return 1; 
   
+
     return 0;
 }
+
