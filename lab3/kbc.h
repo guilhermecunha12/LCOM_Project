@@ -20,5 +20,7 @@ int write_KBC_command(uint8_t port, uint8_t command_byte);
 // If mouse_related is false, the available data at the buffer should be interpreted as KBC data
 int read_KBC_output_buf(uint8_t* value, bool mouse_related);
 int reset_interrupts();
+int disable_mouse_interrupts();
+int enable_mouse_interrupts();
 
 #endif
