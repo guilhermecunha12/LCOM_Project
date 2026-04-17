@@ -47,7 +47,7 @@ int send_to_mouse(uint8_t cmd){
 
     // disable data reporting before sending any other command to the mouse
     if(cmd != ENABLE_DATA_REPORTING && cmd != DISABLE_DATA_REPORTING){
-       printf("AJHHHHHHHHHHHHHHHHHHHHHHHH.\n");
+      printf("disabling mouse reports...\n");
       disable_mouse_data_reporting();
     }
     
@@ -58,7 +58,7 @@ int send_to_mouse(uint8_t cmd){
 
     // reenable data reporting after sending the command to the mouse
     if(cmd != ENABLE_DATA_REPORTING && cmd != DISABLE_DATA_REPORTING){
-      printf("EHHHHHHHHHHHHHHHHHHHHHHH.\n");
+      printf("reenabling mouse reports...\n");
       enable_mouse_data_reporting();
     }
 
@@ -72,7 +72,7 @@ int send_to_mouse(uint8_t cmd){
       return 0;
     }
   } 
-  printf("asdsadsae.\n");
+  printf("Could not send command to the mouse (exceeded retries).\n");
   return 1;
 } 
 

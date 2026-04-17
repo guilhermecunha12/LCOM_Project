@@ -57,34 +57,34 @@ int read_KBC_output_buf(uint8_t* value, bool mouse_related_data){
   
   while(n--){ // we should wait long enough after some retries
     if(util_sys_inb(KBC_STATUS_REG,&status_byte)) { // read the status byte from the status register
-      printf("Error while reading status byte.");
+      printf("Error while reading status byte.\n");
       return 1;  
     }
     if(status_byte & KBC_OBF){ // if the output buffer is full (we can read the scancode)
       if(util_sys_inb(KBC_OB,value)) {
-        printf("Error while reading output buffer inside read_KBC.");
+        printf("Error while reading output buffer inside read_KBC.\n");
         return 1;
       }
       // Discard values if needed
       if(status_byte & KBC_ERROR) {
-        printf("Status byte indicates error.");
+        printf("Status byte indicates error.\n");
         return 1;
       }
       // In case of wanting to read mouse data
       if(mouse_related_data && !(status_byte & KBC_MOUSE_DATA)){
         // If the desired data to be read is mouse related, when the bit is set, the value will be considered value for mouse. If bit not set, data is discarded
-        printf("Mouse related data expected but not from mouse.");
+        printf("Mouse related data expected but not from mouse.\n");
         return 1;
       }
       if(!mouse_related_data && (status_byte & KBC_MOUSE_DATA)){
-        printf("Not mouse related data expected but received from mouse.");
+        printf("Not mouse related data expected but received from mouse.\n");
         return 1;
       }
       return 0;
     }
     tickdelay(micros_to_ticks(DELAY_US)); // wait up until 20ms (as described in lab report)
   }
-  printf("HHHASDKHASDOIHSAODIH.");
+  printf("Ended read_KBC_output_buf.\n");
   return 1;
 }
 
