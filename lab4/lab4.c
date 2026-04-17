@@ -6,6 +6,8 @@
 #include <stdio.h>
 
 // Any header files included below this line should have been created by you
+#include "mouse.h"
+#include "../lab2/timer_count.h"
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -31,7 +33,6 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
-
 int (mouse_test_packet)(uint32_t cnt) {
   int ipc_status;
   message msg;
@@ -41,7 +42,7 @@ int (mouse_test_packet)(uint32_t cnt) {
   if (mouse_subscribe_int(&bit_no)) return 1; // bit_no is now the mask 000....010
 
   // By default, Minix does not enable data reports
-  if (mouse_enable_data_reporting()) { // TODO: implement this functionally ourselves
+  if (enable_mouse_data_reporting()) { // TODO: implement this functionally ourselves
     mouse_unsubscribe_int();
     return 1; 
   }
@@ -102,7 +103,7 @@ int (mouse_test_packet)(uint32_t cnt) {
     }
   }
   
-  if (mouse_disable_data_reporting()) {
+  if (disable_mouse_data_reporting()) {
     mouse_unsubscribe_int();
     return 1; // TODO: implement
   } 
@@ -112,8 +113,90 @@ int (mouse_test_packet)(uint32_t cnt) {
   return 0;
 }
 
+
 int (mouse_test_async)(uint8_t idle_time) {
-    /* To be completed */
-    printf("%s(%u): under construction\n", __func__, idle_time);
-    return 1;
+  // Same structure as in previous labs to handle specific device interrupts 
+    int ipc_status;
+    message msg;
+
+    uint8_t timer0_int_bit = 1;
+    uint8_t mouse_int_bit = 2;
+
+    struct packet pp;
+    int byte_index = 0;
+    bool x_sign_bit = 0;
+    bool y_sign_bit = 0; 
+
+    
+    if(timer_subscribe_int(&timer0_int_bit)) return 1;
+    if(mouse_subscribe_int(&mouse_int_bit)) return 1;
+
+    if(enable_mouse_data_reporting()){
+        mouse_unsubscribe_int();
+        return 1;
+    }
+
+    int r;
+
+    // Subscribes and handles interrupts
+
+    
+    do{
+      
+      if((r = driver_receive(ANY,&msg,&ipc_status)) !=0){
+          printf("driver_receive failed with: %d\n", r);
+          continue;
+      }
+
+      if(is_ipc_notify(ipc_status)){
+          switch(_ENDPOINT_P(msg.m_source)){
+              case HARDWARE:
+                if(msg.m_notify.interrupts & timer0_int_bit){
+                    timer_int_handler(); // Timer0 interrupt handler
+                }
+
+                if(msg.m_notify.interrupts & mouse_int_bit){
+                    mouse_ih();
+                    uint8_t mouse_byte = get_mouse_byte();
+                    
+                    if (byte_index == 0 && (mouse_byte & BIT(3))) {
+                      byte_index = 1;
+                      pp.bytes[0] = mouse_byte;
+                      parse_first_byte(&pp, &x_sign_bit, &y_sign_bit, mouse_byte);
+                      continue;
+                    }
+                    
+                    if (byte_index == 1) {
+                      pp.bytes[1] = mouse_byte;
+                      pp.delta_x = get_delta(x_sign_bit, mouse_byte);
+                      byte_index++;
+                    } 
+                    else if (byte_index == 2) {
+                      pp.bytes[2] = mouse_byte;
+                      pp.delta_y = get_delta(y_sign_bit, mouse_byte);
+                      byte_index = 0;
+                      mouse_print_packet(&pp);
+                      set_counter(0); // reset the counter when we arrive at a full data packet
+                    }
+                }
+                break;
+
+              default:
+                  break;
+          }
+      }
+
+      else {}
+
+    } while(((uint32_t)(get_counter()) < idle_time * sys_hz())); // determine the interrupt frequency of timer0 with kernell call sys_hz (lab report)
+
+
+    // Unsubscribe interrupts
+    if(timer_unsubscribe_int()) return 1;
+    if(disable_mouse_data_reporting()) return 1;
+    if(mouse_unsubscribe_int()) return 1; 
+  
+
+    return 0;
 }
+

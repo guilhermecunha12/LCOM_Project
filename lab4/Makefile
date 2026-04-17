@@ -7,12 +7,12 @@ SRCS = lab4.c mouse.c utils.c
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set
 CFLAGS += -pedantic
-CFLAGS += -I../lab2
+CFLAGS += -I../lab3
 
 DPADD += ${LIBLCF} ${LIB_NAME}              # Let make track the versions of the new target
 LDADD += -llcf -L../lab2 
 LDADD += -ltimer
-LDADD += -L. -lkbc
+LDADD += -L../lab3 -lkbc
 LDADD += -llcf
 
 LIB_NAME = libmouse.a                       # The name filename for your library
