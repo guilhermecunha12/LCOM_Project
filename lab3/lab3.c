@@ -194,7 +194,7 @@ int(kbd_test_timed_scan)(uint8_t n) {
         /* no standard messages expected: do nothing */  
     }
   } while((get_counter() < n * 60) && scancode != ESC_BREAKCODE);
-  // unsubscribe timer0
+  // unsubscribe timer 0
   if(timer_unsubscribe_int()){
     return 1;
   }

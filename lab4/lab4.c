@@ -1,6 +1,5 @@
 // IMPORTANT: you must include the following line in all your C files
 #include <lcom/lcf.h>
-#include "mouse.h"
 
 #include <stdint.h>
 #include <stdio.h>
@@ -8,6 +7,7 @@
 // Any header files included below this line should have been created by you
 #include "mouse.h"
 #include "../lab2/timer_count.h"
+#include "../lab3/kbc.h"
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -39,12 +39,14 @@ int (mouse_test_packet)(uint32_t cnt) {
   int r; // return value of the driver_receive function
   
   uint8_t bit_no = 2; // index position in the bitmask msg.m_notify.interrupts
-  if (mouse_subscribe_int(&bit_no)) return 1; // bit_no is now the mask 000....010
 
-  // By default, Minix does not enable data reports
-  if (enable_mouse_data_reporting()) { // TODO: implement this functionally ourselves
-    mouse_unsubscribe_int();
-    return 1; 
+  if(enable_mouse_data_reporting()){
+    return 1;
+  }
+
+  if(mouse_subscribe_int(&bit_no)){
+    disable_mouse_data_reporting();
+    return 1;
   }
 
   struct packet pp;
@@ -102,13 +104,15 @@ int (mouse_test_packet)(uint32_t cnt) {
         /* no standard messages expected: do nothing */
     }
   }
-  
-  if (disable_mouse_data_reporting()) {
-    mouse_unsubscribe_int();
-    return 1; // TODO: implement
-  } 
-  
-  if (mouse_unsubscribe_int()) return 1;
+
+  if(mouse_unsubscribe_int()){
+    disable_mouse_data_reporting();
+    return 1;
+  }
+
+  if(disable_mouse_data_reporting()){
+    return 1;
+  }
 
   return 0;
 }
@@ -127,14 +131,20 @@ int (mouse_test_async)(uint8_t idle_time) {
     bool x_sign_bit = 0;
     bool y_sign_bit = 0; 
 
-    
-    if(timer_subscribe_int(&timer0_int_bit)) return 1;
-    if(mouse_subscribe_int(&mouse_int_bit)) return 1;
-
     if(enable_mouse_data_reporting()){
-        mouse_unsubscribe_int();
-        return 1;
+      return 1;
     }
+    
+    if(timer_subscribe_int(&timer0_int_bit)){
+      disable_mouse_data_reporting();
+      return 1;
+    }
+
+    if(mouse_subscribe_int(&mouse_int_bit)){
+      disable_mouse_data_reporting();
+      timer_unsubscribe_int();
+      return 1;
+    } 
 
     int r;
 
@@ -190,13 +200,20 @@ int (mouse_test_async)(uint8_t idle_time) {
 
     } while(((uint32_t)(get_counter()) < idle_time * sys_hz())); // determine the interrupt frequency of timer0 with kernell call sys_hz (lab report)
 
+    if(mouse_unsubscribe_int()){
+      disable_mouse_data_reporting();
+      timer_unsubscribe_int();
+      return 1;
+    }
 
-    // Unsubscribe interrupts
-    if(timer_unsubscribe_int()) return 1;
-    if(disable_mouse_data_reporting()) return 1;
-    if(mouse_unsubscribe_int()) return 1; 
-  
+    if(timer_unsubscribe_int()){
+      disable_mouse_data_reporting();
+      return 1;
+    }
+
+    if(disable_mouse_data_reporting()){
+      return 1;
+    }
 
     return 0;
 }
-
