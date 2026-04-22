@@ -32,24 +32,24 @@ uint8_t get_mouse_byte(){
 
 // Generic function to send a command directly into the mouse
 int send_to_mouse(uint8_t cmd){
-
   uint8_t response;
   uint8_t n=N_TRIES;
 
   // Do while so we can check response and retry if we don't get an ACK by N_tries
   while(n--) {
-    // write_kbc_command already waits for input buffer being empty
-    // Request forwarding of command byte to the mouse
-    if(write_KBC_command(KBC_CMD_REG, WRITE_BYTE_TO_MOUSE_CMD)) {
-      printf("Error while writing command to the KBC Command Register.\n");
-      return 1;
-    } 
 
     // disable data reporting before sending any other command to the mouse
     if(cmd != ENABLE_DATA_REPORTING && cmd != DISABLE_DATA_REPORTING){
       printf("disabling mouse reports...\n");
       disable_mouse_data_reporting();
     }
+
+    // write_kbc_command already waits for input buffer being empty
+    // Request forwarding of command byte to the mouse
+    if(write_KBC_command(KBC_CMD_REG, WRITE_BYTE_TO_MOUSE_CMD)) {
+      printf("Error while writing command to the KBC Command Register.\n");
+      return 1;
+    } 
     
     if(write_KBC_command(KBC_IB, cmd)) {
       printf("Error while writing command to the KBC Input Buffer.\n");
@@ -61,7 +61,7 @@ int send_to_mouse(uint8_t cmd){
       printf("reenabling mouse reports...\n");
       enable_mouse_data_reporting();
     }
-
+    
     // Reads output buffer after checking for errors and waiting for it being full
     if(read_KBC_output_buf(&response, true)) {
       continue;
