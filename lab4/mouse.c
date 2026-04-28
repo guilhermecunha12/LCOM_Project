@@ -4,7 +4,7 @@
 #include "mouse.h"
 #include "i8042_mouse.h"
 
-static uint8_t mouse_byte; // static variable that could be accessed anywhere in the file
+static uint8_t mouse_byte; // static variable that can only be directly accessed by this file
 int mouse_hook_id;
 
 // IMPORTANT: bit_no can never be >= 8, otherwise, an overflow will happen in setting the bit mask
@@ -19,8 +19,6 @@ int mouse_unsubscribe_int(){
   return sys_irqrmpolicy(&mouse_hook_id) ? 1 : 0;
 }
 
-// Also need to implement subscribe and unsubscribe for the keyboard
-
 void set_mouse_byte(uint8_t data){
   mouse_byte = data;
 }
@@ -29,30 +27,31 @@ uint8_t get_mouse_byte(){
   return mouse_byte;
 }
 
-
 // Generic function to send a command directly into the mouse
 int send_to_mouse(uint8_t cmd){
   uint8_t response;
   uint8_t n = N_TRIES;
   // Do while so we can check response and retry if we don't get an ACK by N_tries
   while(n--) {
+    // Before sending any command to the mouse, data reporting must be disabled to prevent interference from packets sent by the mouse (lab guide)
     if(cmd != ENABLE_DATA_REPORTING && cmd != DISABLE_DATA_REPORTING){
       disable_mouse_data_reporting();
     }
     // write_kbc_command already waits for input buffer being empty
     // Request forwarding of command byte to the mouse
     if(write_KBC_command(KBC_CMD_REG, WRITE_BYTE_TO_MOUSE_CMD)) return 1;
-    if(write_KBC_command(KBC_IB,cmd)) return 1; // mouse command - argument of the previous command
+    if(write_KBC_command(KBC_IB,cmd)) return 1; // mouse command - argument of the previous command (no support for situations where multiple arguments are needed)
+
+    // Reenable data reporting
     if(cmd != ENABLE_DATA_REPORTING && cmd != DISABLE_DATA_REPORTING){
       enable_mouse_data_reporting();
     }
-    // Reads output buffer after checking for errors and waiting for it being full
-    if(util_sys_inb(KBC_OB, &response)) return 1;
+   
+    // Wait a bit to wait for the status byte of the KBC to be updated (to set the output buffer bit to 1)
+    tickdelay(micros_to_ticks(DELAY_US));
 
+    if(read_KBC_output_buf(&response, 1)) return 1;
 
-    // Ask teacher why this doesn't work
-
-    //if(read_KBC_output_buf(&response, 1)) return 1;
     if(response==ACK) return 0;
   }
   return 1;
@@ -69,7 +68,7 @@ int disable_mouse_data_reporting(){
 }
 
 
-// The function will be responsible by reading the byte from the buffer and then updating 
+// The function will be responsible by reading the byte from the buffer and then updating the mouse byte
 void (mouse_ih) () {
   uint8_t mouse_data;
   if(read_KBC_output_buf(&mouse_data, 1)) return;
@@ -81,7 +80,7 @@ int16_t get_delta(bool sign_bit, uint8_t mouse_byte) {
   int16_t delta = 0; // will be a 9-bit 2's complement integer
   
   if (sign_bit) delta |= 0xFF00; // sign extend if sign_bit == 1
-  delta |= mouse_byte; // LSByte of x_movement will now be equal to mouse_byte
+  delta |= mouse_byte; // LSByte of delta will now be equal to mouse_byte
 
   return delta;
 }

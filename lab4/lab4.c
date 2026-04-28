@@ -70,17 +70,14 @@ int (mouse_test_packet)(uint32_t cnt) {
               
               // naive way to find out the beggining of data packets (however it only checks the 3rd bit when it is actually waiting for the first byte, ie, byte_index == 0)
               if (byte_index == 0 && (mouse_byte & BIT(3))) { // the 3rd bit of the first packet byte is always 1
-                byte_index = 1; // next interrupt byte index
                 pp.bytes[0] = mouse_byte;
 
                 // populate pp struct and sign bits variables
                 parse_first_byte(&pp, &x_sign_bit, &y_sign_bit, mouse_byte);
 
-                continue; // do nothing more..
-              }
-              // ...not the first byte from here on
+                byte_index++; // next interrupt byte index
 
-              if (byte_index == 1) {
+              } else if (byte_index == 1) {
                 pp.bytes[1] = mouse_byte;
                 pp.delta_x = get_delta(x_sign_bit, mouse_byte);
 
@@ -147,9 +144,6 @@ int (mouse_test_async)(uint8_t idle_time) {
     } 
 
     int r;
-
-    // Subscribes and handles interrupts
-
     
     do{
       
@@ -161,8 +155,9 @@ int (mouse_test_async)(uint8_t idle_time) {
       if(is_ipc_notify(ipc_status)){
           switch(_ENDPOINT_P(msg.m_source)){
               case HARDWARE:
+                // check first timer 0 interrupts due to higher priority IRQ line
                 if(msg.m_notify.interrupts & timer0_int_bit){
-                    timer_int_handler(); // Timer0 interrupt handler
+                    timer_int_handler(); // Timer 0 interrupt handler
                 }
 
                 if(msg.m_notify.interrupts & mouse_int_bit){
@@ -170,13 +165,12 @@ int (mouse_test_async)(uint8_t idle_time) {
                     uint8_t mouse_byte = get_mouse_byte();
                     
                     if (byte_index == 0 && (mouse_byte & BIT(3))) {
-                      byte_index = 1;
                       pp.bytes[0] = mouse_byte;
                       parse_first_byte(&pp, &x_sign_bit, &y_sign_bit, mouse_byte);
-                      continue;
+                      byte_index++;
                     }
                     
-                    if (byte_index == 1) {
+                    else if (byte_index == 1) {
                       pp.bytes[1] = mouse_byte;
                       pp.delta_x = get_delta(x_sign_bit, mouse_byte);
                       byte_index++;
