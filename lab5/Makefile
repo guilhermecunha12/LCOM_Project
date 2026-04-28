@@ -8,7 +8,8 @@ SRCS = lab5.c
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set
 CFLAGS += -pedantic
 
-# DPADD += ${LIBLCF} ${LIB_NAME}              # Let make track the versions of the new target
+DPADD += ${LIBLCF} # ${LIB_NAME}              # Let make track the versions of the new target
+LDADD += -llcf
 
 # LIB_NAME = libvideo.a                       # The name filename for your library
 # LIB_SRCS = mouse.c utils.c                  # The source files to include
