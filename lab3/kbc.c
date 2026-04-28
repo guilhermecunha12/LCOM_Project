@@ -38,6 +38,9 @@ void set_scancode(uint8_t byte){
   scancode = byte;
 }
 
+
+// port == 0x64 -> KBC command
+// port == 0x60 -> KBC command argument
 int write_KBC_command(uint8_t port, uint8_t command_byte){
   int n = N_TRIES;
   uint8_t status_byte;
