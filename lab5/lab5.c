@@ -50,8 +50,10 @@ int(video_test_init)(uint16_t mode, uint8_t delay) {
 
 	// kernel call that switches to real mode (memory addresses map directly to physical RAM locations), makes a BIOS function call (in this case a VBE function call) and switches back to protected mode 
 	if (sys_int86(&reg) != OK) return 1; 
-	//...not checking VBE function return status
 
+	// Check VBE function call completion status (section 4.1. of https://www.phatcode.net/res/221/files/vbe20.pdf)
+	if (reg.ah != FUNCTION_CALL_SUCCESS || reg.al != SUPPORTED_FUNCTION) return 1;
+	
 	if (sleep(delay)) return 1; // wait 'delay' seconds before returning to text mode
 	
 	if(vg_exit()) return 1; // LCF function to return to Text Mode
