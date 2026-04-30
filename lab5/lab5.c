@@ -3,6 +3,7 @@
 
 #include <lcom/lab5.h>
 #include "video.h"
+#include "../lab3/kbc.h"
 
 #include <stdint.h>
 #include <stdio.h>
@@ -71,8 +72,57 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
 }
 
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
-    /* To be completed */
-    printf("%s(%8p, %u, %u): under construction\n", __func__, xpm, x, y);
+    // We should switch to VBE mode 0x105
+    if(config_Vram(0x105)) return 1;
+    if(vg_set_mode(0x105)) return 1;
 
-    return 1;
+    xpm_image_t img;
+    uint8_t *pixmap;
+    // Mode 0x105 uses indexed colors 
+    pixmap = xpm_load(xpm,XPM_INDEXED,&img);
+    // Should contain the address of the allocated memory for the Pixmap
+    if(pixmap == NULL) return 1;
+
+    // Traverse the 2D map normally and draw each pixel
+    for(int i=0; i<img.height;i++){
+        for(int j=0; j<img.width;j++){
+            uint8_t colour = pixmap[i*img.width+j]; // Extract the colour from the indexed color pallete 
+            if(vg_draw_pixel(x+j,y+i,colour)) return 1;
+        }
+    }
+
+    // Subscribe to the keyboard interrupts to wait for the ESC breakcode to exit the graphics mode
+    uint8_t bit_no = 1;
+    if(kbd_subscribe_int(&bit_no)) return 1;
+    uint8_t scancode;
+    int ipc_status;
+    message msg;
+    int r;
+    do {
+        if ((r = driver_receive(ANY, &msg, &ipc_status))   != 0 ) { 
+          printf("driver_receive failed with: %d", r);
+          continue;
+        } 
+        if (is_ipc_notify(ipc_status)) {
+            switch(_ENDPOINT_P(msg.m_source)) {
+                case HARDWARE:
+                    kbc_ih();
+                    scancode = get_scancode();
+                    break;
+                default:
+                    break;
+            }
+        }
+    } while (scancode != ESC_BREAKCODE);
+
+    // Unsubscribe keyboard interrupts and return to text mode
+    if(kbd_unsubscribe_int()) {
+        vg_exit();
+        return 1;
+    }
+    
+    // Return to text mode
+    if(vg_exit()) return 1;
+
+    return 0;
 }
