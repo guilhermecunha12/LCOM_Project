@@ -12,10 +12,12 @@
 #define SUPPORTED_FUNCTION      0x4F // Return status of AL register that indicates that the VBE function is supported.
 #define FUNCTION_CALL_SUCCESS   0x00 // Return status of AH register that indicates that the VBE function call was successful.
 
-void* (vg_init) (uint16_t mode);
 
+// Draws a pixel in the designated x and y positions with the given color
 int vg_draw_pixel (uint16_t x, uint16_t y, uint32_t color);
-
+int config_Vram(uint16_t mode);
+int vg_set_mode(uint16_t mode);
+int vg_draw_pixel (uint16_t x, uint16_t y, uint32_t color);
 int (vg_draw_hline) (uint16_t x, uint16_t y, uint16_t len, uint32_t color);
 
 

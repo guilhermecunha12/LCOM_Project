@@ -8,10 +8,10 @@ static uint16_t v_res;
 static vbe_mode_info_t vmi;
 static unsigned bytes_per_pixel;
 
-void* (vg_init) (uint16_t mode) {
-  // Get the mode info struct for the specified mode
+
+int config_Vram(uint16_t mode){
   if(vbe_get_mode_info(mode, &vmi) != 0) {
-    return NULL;
+    return 1;
   }
 
   // Store the horizontl and vertical resolutions in global variables
@@ -32,36 +32,36 @@ void* (vg_init) (uint16_t mode) {
   mr.mr_limit = mr.mr_base + frame_buffer_size;  
 
   int r;
-  if (OK != (r = sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr)))
-    return NULL;
+  if (OK != (r = sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr))) return 1;
 
   /* Map memory */
   video_mem = vm_map_phys(SELF, (void *)mr.mr_base, frame_buffer_size);
-
-  if(video_mem == MAP_FAILED)
-    return NULL;
-
-
-  // then set the mode similiar to vidoe_test_init
-  reg86_t reg;
-  memset(&reg, 0, sizeof(reg));
-
-  reg.intno = VIDEO_INTNO;
-  reg.ah = VBE_CALL_AH;
-  reg.al = VBE_SET_MODE_FUNCTION;
-
-  reg.bx = mode;
-  reg.bx |= BIT(14);
-  reg.bx &= ~BIT(15);
-
-  if(sys_int86(&reg) != OK) 
-    return NULL;
-
-  if(reg.ah != FUNCTION_CALL_SUCCESS || reg.al != SUPPORTED_FUNCTION) 
-    return NULL;
-
-  return video_mem;
+  if(video_mem == MAP_FAILED) return 1;
+  return 0;
 }
+
+
+int vg_set_mode(uint16_t mode){
+  reg86_t reg; // structure that will have the values to be loaded into the CPU registers before executing the BIOS function call
+  memset(&reg, 0, sizeof(reg)); // set reg86_t reg to zeros
+
+  reg.intno = VIDEO_INTNO; 		// Must invoke VBE function via INT 0x10 (software interrupt)
+  reg.ah = VBE_CALL_AH; 			// To invoke a VBE function, AH register should be 0x4F
+  reg.al = VBE_SET_MODE_FUNCTION; // VBE function being called is specified in the AL register.
+
+  reg.bx = mode; // the mode should be placed in the BX register
+  reg.bx |= BIT(14); // set Bit 14 to use linear frame buffer model
+  reg.bx &= ~BIT(15); // unset Bit 15 so that the display memory is cleared after switching to the desired graphics mode
+
+  // kernel call that switches to real mode (memory addresses map directly to physical RAM locations), makes a BIOS function call (in this case a VBE function call) and switches back to protected mode 
+  if (sys_int86(&reg) != OK) return 1; 
+
+  // Check VBE function call completion status (section 4.1. of https://www.phatcode.net/res/221/files/vbe20.pdf)
+  if (reg.ah != FUNCTION_CALL_SUCCESS || reg.al != SUPPORTED_FUNCTION) return 1;
+
+  return 0;
+}
+
 
 int vg_draw_pixel (uint16_t x, uint16_t y, uint32_t color) {
   // Check if coordinates are within the screen limits
@@ -70,7 +70,6 @@ int vg_draw_pixel (uint16_t x, uint16_t y, uint32_t color) {
   unsigned position = ((y * h_res) + x) * bytes_per_pixel;
   // Copy memory from color to VRAM position. This couls be done trough a for loop.
   if (memcpy(&video_mem[position], &color, bytes_per_pixel) == NULL) return 1;
-
   return 0;
 }
 
@@ -79,6 +78,7 @@ int (vg_draw_hline) (uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
   for(unsigned x_off = 0; x_off < len; x_off++){
     if(vg_draw_pixel(x + x_off, y, color)) return 1;
   }
-
   return 0;
 }
+
+
