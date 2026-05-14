@@ -7,6 +7,7 @@
 #include "i8254.h"
 
 static int global_counter = 0;
+int hook_id; 
 
 int get_counter(){
   return global_counter;
@@ -37,7 +38,6 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
 
 // Subscribe the interrupts for a given IRQ Line 
 // Change the content of the given pointer to have the mask containing the active subscribed IRQ
-int hook_id; 
 int (timer_subscribe_int)(uint8_t *bit_no) {
   hook_id = *bit_no;
   if(sys_irqsetpolicy(TIMER0_IRQ,IRQ_REENABLE,&hook_id)) return 1;
