@@ -103,20 +103,7 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
     if(config_Vram(0x105)) return 1;
     if(vg_set_mode(0x105)) return 1;
 
-    xpm_image_t img;
-    uint8_t *pixmap;
-    // Mode 0x105 uses indexed colors 
-    pixmap = xpm_load(xpm,XPM_INDEXED,&img);
-    // Should contain the address of the allocated memory for the Pixmap
-    if(pixmap == NULL) return 1;
-
-    // Traverse the 2D map normally and draw each pixel
-    for(int i=0; i<img.height;i++){
-        for(int j=0; j<img.width;j++){
-            uint8_t colour = pixmap[i*img.width+j]; // Extract the colour from the indexed color pallete 
-            if(vg_draw_pixel(x+j,y+i,colour)) return 1;
-        }
-    }
+    if (draw_xpm(xpm, x, y)) return 1;
 
     // Subscribe to the keyboard interrupts to wait for the ESC breakcode to exit the graphics mode
     uint8_t bit_no = 1;
