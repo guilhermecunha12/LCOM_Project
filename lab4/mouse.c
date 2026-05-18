@@ -4,11 +4,44 @@
 #include "mouse.h"
 #include "i8042_mouse.h"
 
-static uint8_t mouse_byte; // static variable that can only be directly accessed by this file
+/**
+ * @brief Index to track which byte of the mouse packet is being read.
+ * @details Ranges from 0 to 2, indicating the first, second, or third byte of the packet.
+ * Resets to 0 after a complete packet is parsed.
+ */
+static int byte_index = 0;
+
+/**
+ * @brief Sign bit for the x-coordinate delta value.
+ * @details Extracted from bit 4 of the first packet byte. Used to determine if delta_x is negative (2's complement).
+ */
+static bool x_sign_bit = 0;
+
+/**
+ * @brief Sign bit for the y-coordinate delta value.
+ * @details Extracted from bit 5 of the first packet byte. Used to determine if delta_y is negative (2's complement).
+ */
+static bool y_sign_bit = 0;
+
+/**
+ * @brief The current mouse packet being assembled.
+ * @details Populated incrementally as bytes are received from interrupts. Complete when all 3 bytes have been read.
+ */
+static struct packet pp;
+
+/**
+ * @brief The most recent byte read from the mouse.
+ * @details Updated by the mouse interrupt handler. Used for packet population.
+ */
+static uint8_t mouse_byte;
+
+/**
+ * @brief The interrupt hook ID for the mouse.
+ * @details Used for subscribing and unsubscribing mouse interrupts. Initially defined in mouse_subscribe_int() and used in mouse_unsubscribe_int().
+ */
 int mouse_hook_id;
 
-// IMPORTANT: bit_no can never be >= 8, otherwise, an overflow will happen in setting the bit mask
-int mouse_subscribe_int (uint8_t* bit_no){
+int mouse_subscribe_int(uint8_t* bit_no){
   mouse_hook_id = *bit_no;
   if(sys_irqsetpolicy(MOUSE_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &mouse_hook_id)) return 1;
   *bit_no = BIT(*bit_no);
@@ -19,15 +52,10 @@ int mouse_unsubscribe_int(){
   return sys_irqrmpolicy(&mouse_hook_id) ? 1 : 0;
 }
 
-void set_mouse_byte(uint8_t data){
-  mouse_byte = data;
+struct packet get_mouse_packet() {
+  return pp;
 }
 
-uint8_t get_mouse_byte(){
-  return mouse_byte;
-}
-
-// Generic function to send a command directly into the mouse
 int send_to_mouse(uint8_t cmd){
   uint8_t response;
   uint8_t n = N_TRIES;
@@ -46,35 +74,35 @@ int send_to_mouse(uint8_t cmd){
     if(cmd != ENABLE_DATA_REPORTING && cmd != DISABLE_DATA_REPORTING){
       enable_mouse_data_reporting();
     }
-   
+    
+    if (util_sys_inb(KBC_OB, &response)) return 1; // read the response byte from the output buffer of the KBC
+
+    /* Although recommended, this approach does not work
+
     // Wait a bit to wait for the status byte of the KBC to be updated (to set the output buffer bit to 1)
     tickdelay(micros_to_ticks(DELAY_US));
 
     if(read_KBC_output_buf(&response, 1)) return 1;
+    
+    */
 
     if(response==ACK) return 0;
   }
   return 1;
 }
 
-//Enable data reporting with command 0xF4
 int enable_mouse_data_reporting(){
   return send_to_mouse(ENABLE_DATA_REPORTING);
 } 
 
-//Disable data reporting with command 0xF5
 int disable_mouse_data_reporting(){
   return send_to_mouse(DISABLE_DATA_REPORTING);
 }
 
 
-// The function will be responsible by reading the byte from the buffer and then updating the mouse byte
 void (mouse_ih) () {
-  uint8_t mouse_data;
-  if(read_KBC_output_buf(&mouse_data, 1)) return;
-  set_mouse_byte(mouse_data);
+  if(read_KBC_output_buf(&mouse_byte, 1)) return;
 }
-
 
 int16_t get_delta(bool sign_bit, uint8_t mouse_byte) {
   int16_t delta = 0; // will be a 9-bit 2's complement integer
@@ -86,9 +114,6 @@ int16_t get_delta(bool sign_bit, uint8_t mouse_byte) {
 }
 
 void parse_first_byte(struct packet* pp, bool* x_sign_bit, bool* y_sign_bit, uint8_t mouse_byte) {
-
-  // Assigning results of conditions because all fields are bool types
-
   pp->lb = (mouse_byte & BIT(0)) != 0;
   pp->rb = (mouse_byte & BIT(1)) != 0;
   pp->mb = (mouse_byte & BIT(2)) != 0;
@@ -96,4 +121,33 @@ void parse_first_byte(struct packet* pp, bool* x_sign_bit, bool* y_sign_bit, uin
   *y_sign_bit = (mouse_byte & BIT(5)) != 0;
   pp->x_ov = (mouse_byte & BIT(6)) != 0;
   pp->y_ov = (mouse_byte & BIT(7)) != 0;
+}
+
+bool process_packet() {
+  mouse_ih(); // note: if there is a read failure here, the old value of mouse_byte will be treated as the new packet byte in the next line (maybe add a static variable that would indicate an error, like if it was a return value)
+
+  if (byte_index == 0 && (mouse_byte & BIT(3))) { // the 3rd bit of the first packet byte is always 1
+    pp.bytes[0] = mouse_byte;
+
+    // populate pp struct and sign bits variables
+    parse_first_byte(&pp, &x_sign_bit, &y_sign_bit, mouse_byte);
+
+    byte_index++; // next interrupt byte index
+
+  } else if (byte_index == 1) {
+    pp.bytes[1] = mouse_byte;
+    pp.delta_x = get_delta(x_sign_bit, mouse_byte);
+
+    byte_index++; // next byte index
+
+  } else if (byte_index == 2) {
+    pp.bytes[2] = mouse_byte;
+    pp.delta_y = get_delta(y_sign_bit, mouse_byte);
+  
+    byte_index = 0; // reset byte_index
+
+    return true; // packet is ready
+  }
+
+  return false;
 }
