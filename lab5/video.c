@@ -9,6 +9,61 @@ static vbe_mode_info_t vmi;
 static unsigned bytes_per_pixel;
 
 
+int(init_video_card)(uint16_t mode){
+  if(config_Vram(mode)) return 1;
+  if(vg_set_mode(mode)) return 1;
+  return 0;
+}
+
+int(switch_text_mode)(void){
+  return vg_exit() ? 1 : 0;
+}
+
+enum xpm_image_type(get_color_mode)(){
+  // Switch between the provided bits per pixel (as they mape to unique colors formats)
+  switch(vmi.BitsPerPixel){
+    case 8: return XPM_INDEXED;
+    case 15: return XPM_1_5_5_5;
+    case 16: return XPM_5_6_5;
+    case 24: return XPM_8_8_8;
+    case 32: return XPM_8_8_8_8;
+    default:
+      return INVALID_XPM;
+  }
+}
+
+int(draw_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
+
+    xpm_image_t img;
+    uint8_t *pixmap;
+
+    enum xpm_image_type color_format = get_color_mode();
+    if(color_format == INVALID_XPM) return 1;
+
+    pixmap = xpm_load(xpm,color_format,&img);
+    // Should contain the address of the allocated memory for the Pixmap
+    if(pixmap == NULL) return 1;
+
+    // Traverse the 2D map normally and draw each pixel
+    for(int i=0; i<img.height;i++){
+        for(int j=0; j<img.width;j++){
+          uint32_t colour =0;
+          // In direct mode each pixel stores directly its corresponding colour 
+          memcpy(&colour, &pixmap[(i*img.width +j)*bytes_per_pixel],bytes_per_pixel);
+          
+          if(vg_draw_pixel(x+j,y+i,colour)){
+            free(pixmap);
+            return 1;
+
+          } 
+        }
+    }
+
+    free(pixmap);
+    return 0;
+}
+
+
 int config_Vram(uint16_t mode){
   if(vbe_get_mode_info(mode, &vmi) != 0) {
     return 1;
@@ -80,5 +135,3 @@ int (vg_draw_hline) (uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
   }
   return 0;
 }
-
-
