@@ -74,11 +74,17 @@ int send_to_mouse(uint8_t cmd){
     if(cmd != ENABLE_DATA_REPORTING && cmd != DISABLE_DATA_REPORTING){
       enable_mouse_data_reporting();
     }
-   
+    
+    if (util_sys_inb(KBC_OB, &response)) return 1; // read the response byte from the output buffer of the KBC
+
+    /* Although recommended, this approach does not work
+
     // Wait a bit to wait for the status byte of the KBC to be updated (to set the output buffer bit to 1)
     tickdelay(micros_to_ticks(DELAY_US));
 
     if(read_KBC_output_buf(&response, 1)) return 1;
+    
+    */
 
     if(response==ACK) return 0;
   }
