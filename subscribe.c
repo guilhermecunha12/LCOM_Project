@@ -3,6 +3,14 @@
 #include "lab4/mouse.h"
 #include "lab5/video.h"
 
+/**
+ * @brief Subscribes to the timer, keyboard and mouse interrupts and sets the VBE mode. If any of the operations fail, it unsubscribes from all devices and returns 1. Otherwise, it returns 0.
+ * @param timer_bit_no Pointer to the variable that will store the bit number of the timer interrupt.
+ * @param kbd_bit_no Pointer to the variable that will store the bit number of the keyboard interrupt.
+ * @param mouse_bit_no Pointer to the variable that will store the bit number of the mouse interrupt.
+ * @param vbe_mode The VBE mode to set.
+ * @return 0 if all operations were successful, 1 otherwise.
+ */
 int subscribe_devices(uint8_t *timer_bit_no, uint8_t *kbd_bit_no, uint8_t *mouse_bit_no, uint16_t vbe_mode) {
 
   if (timer_subscribe_int(timer_bit_no)) return 1;
@@ -15,6 +23,10 @@ int subscribe_devices(uint8_t *timer_bit_no, uint8_t *kbd_bit_no, uint8_t *mouse
   return 0;
 }
 
+/**
+ * @brief Unsubscribes from the timer, keyboard and mouse interrupts and exits the VBE mode. If any of the operations fail, it returns 1. Otherwise, it returns 0.
+ * @return 0 if all operations were successful, 1 otherwise.
+ */
 int unsubscribe_devices() {
   int err = 0;
   err |= timer_unsubscribe_int();
@@ -25,6 +37,7 @@ int unsubscribe_devices() {
   return err;
 }
 
+// Example main function.
 int main(int argc, char *argv[]) {
   // Default values for bit num of all devices and VBE mode.
   uint8_t timer_bit_no = 0;
