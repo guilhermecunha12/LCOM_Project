@@ -77,8 +77,10 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
         if (is_ipc_notify(ipc_status)) {
             switch(_ENDPOINT_P(msg.m_source)) {
                 case HARDWARE:
-                    kbc_ih();
-                    scancode = get_scancode();
+                    if (msg.m_notify.interrupts & bit_no) {
+                        kbc_ih();
+                        scancode = get_scancode();
+                    }
                     break;
                 default:
                     break;
@@ -120,8 +122,10 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
         if (is_ipc_notify(ipc_status)) {
             switch(_ENDPOINT_P(msg.m_source)) {
                 case HARDWARE:
-                    kbc_ih();
-                    scancode = get_scancode();
+                    if (msg.m_notify.interrupts & bit_no) {
+                        kbc_ih();
+                        scancode = get_scancode();
+                    }
                     break;
                 default:
                     break;
