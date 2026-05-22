@@ -11,7 +11,28 @@ EventHandler get_event_handler(StateType state, EventType event);
 
 // Handlers
 void handle_main_menu_keyboard(GameState* state, const GameEvent* event);
-void handle_main_menu_mouse(GameState* state, const GameEvent* event);
+
+
+/**
+ * @brief Handler for mouse movement events, which updates the mouse coordinates in the global game state. It is used in MAIN_MENU and NIGHT_SURVIVAL states.
+ * @param state Pointer to the current game state, which will be modified with the new mouse coordinates.
+ * @param event Pointer to the current game event, which contains the mouse movement data (delta_x and delta_y).
+ */
+void handle_mouse_move(GameState* state, const GameEvent* event);
+
+/**
+ * @brief Handler for mouse left button click events in the main menu state. It checks if the click was on the "New Game" or "Exit Game" buttons and updates the game state accordingly (starting a new game or exiting).
+ * @param state Pointer to the current game state, which will be modified based on the click.
+ * @param event Pointer to the current game event, which contains the mouse click data. 
+ */
+void handle_main_menu_mouse_click(GameState* state, const GameEvent* event);
+
+/**
+ * @brief Handler for mouse left button click events in the night survival state. It checks if the click was on any interactive elements and updates the game state accordingly.
+ * @param state Pointer to the current game state, which will be modified based on the click.
+ * @param event Pointer to the current game event, which contains the mouse click data.
+ */
+void handle_night_survival_mouse_click(GameState* state, const GameEvent* event);
 /* Night survival handlers, other state handlers... */
 
 #endif /* HANDLERS_H */

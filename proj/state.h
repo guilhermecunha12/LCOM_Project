@@ -5,7 +5,7 @@
 
 typedef enum {
     TIMER_TICK,
-    MOUSE_CLICK,
+    MOUSE_LB_CLICK,
     MOUSE_MOVE,
     KEYBOARD_PRESS,
     KEYBOARD_RELEASE,
@@ -17,7 +17,7 @@ typedef struct {
     EventType type;
     union { // TODO: simplify this structs if only one field is needed for each event type
         uint8_t scancode; // TODO: this scancode can have more than just 1 byte (use uint16_t? or there can be 3 bytes?)
-        struct packet mouse_packet;
+        struct {int16_t delta_x; int16_t delta_y;} mouse_coords;
         int timer_ticks;
     } data;
 } GameEvent;
@@ -31,6 +31,7 @@ typedef enum {
     JUMPSCARE,
     NIGHT_NO_BATTERY, // countdown to possible Freedie jumpscare (PHASE 1: every 5 seconds, 20% chance of jumpscare. If there is a jumpscare, the night ends. Otherwise, after 4 failed tries, go to PHASE 2: every 2 seconds, 20% chance of jumpscare, max 20 seconds (10 tries). If those 10 tries fail, jumpscare guaranteed and night ends. If 6AM is reached, independent of the phase, the  night ends and the player passes the night)
     NIGHT_END,
+    GAME_OVER,
     EXIT,
     NUM_STATES
 } StateType;
@@ -47,8 +48,13 @@ typedef struct {
 // Camera IDs
 typedef enum { CAM_1A, CAM_1B, CAM_2A, CAM_2B } CameraID;
 
+typedef enum {
+    NEW_GAME,
+    EXIT_GAME
+} MainMenuOption;
+
 typedef struct {
-    int selected_option; // for keyboard navigation in main menu
+    MainMenuOption selected_option; // for keyboard navigation in main menu; 0 for no option selected
 } MainMenuState;
 
 typedef enum { FREEDDY, BONNIE, CHICA, FOXY } AnimatronicName;
@@ -67,6 +73,8 @@ typedef struct {
     int time_left; // equivalent to 8m 55s in ticks (assuming 60 ticks per second, 8m 55s would be 8*60*60 + 55*60 = 31800 ticks)
     int power_level; // 100 - 0
     int power_drain_rate; // number of ticks needed to decrement power by 1 unit
+    bool left_light_on;
+    bool right_light_on;
     bool left_door_closed;
     bool right_door_closed;
     bool camera_monitor_up; // Is the player looking at cameras?
