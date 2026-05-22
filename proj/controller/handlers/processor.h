@@ -12,7 +12,7 @@ EventHandler get_event_handler(StateType state, EventType event);
 // Handlers
 void handle_main_menu_keyboard(GameState* state, const GameEvent* event);
 void handle_main_menu_mouse(GameState* state, const GameEvent* event);
-/* Night survival handlers, other state handlers... */
+void handle_night_intro_timer(GameState* state, const GameEvent* event);
 
 #endif /* HANDLERS_H */
 

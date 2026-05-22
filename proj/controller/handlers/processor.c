@@ -10,6 +10,10 @@ static EventHandler eht[NUM_STATES][NUM_EVENTS] = {
         // Other main menu event handlers...
     },
 
+    [NIGHT_INTRO] = {
+        [TIMER_TICK] = handle_night_intro_timer,
+    },
+
     [NIGHT_SURVIVAL] = {
         // Night survival event handlers...
     },

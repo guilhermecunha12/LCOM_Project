@@ -3,6 +3,8 @@
 
 #include "../lab4/mouse.h"
 
+static const int DRAIN_RATE_PER_NIGHT[5] = {588, 360, 300, 240, 180}; // in ticks, equivalent to 9.6s, 6s, 5s, 4s, 3s
+
 typedef enum {
     TIMER_TICK,
     MOUSE_CLICK,
@@ -35,6 +37,12 @@ typedef enum {
     NUM_STATES
 } StateType;
 
+typedef enum {
+    NIGHT_WIN,
+    NIGHT_LOSE,
+    NIGHT_UNKOWN
+} NightResult;
+
 // Global game data that persists across states
 typedef struct {
     int current_night; // 0 (no current night), 1 to 5 - also used to determine night's gimmicks
@@ -42,6 +50,7 @@ typedef struct {
     // mouse coordinates for displaying it
     int mouse_x;
     int mouse_y;
+    NightResult last_night_result; 
 } PersistentData;
  
 // Camera IDs
@@ -51,16 +60,18 @@ typedef struct {
     int selected_option; // for keyboard navigation in main menu
 } MainMenuState;
 
-typedef enum { FREEDDY, BONNIE, CHICA, FOXY } AnimatronicName;
+typedef enum { FREDDY, BONNIE, CHICA, FOXY } AnimatronicName;
 
 // TODO: make a function to initialize the animotrics for each night
 typedef struct {
     AnimatronicName name;
-    CameraID* current_position; // where the animatronic currently is on the map (pointer to a CameraID in the path)
+    int current_position_index; // where the animatronic currently is on the map (pointer to a CameraID in the path)
+    int MAX_PATH_LENGTH; // length of the path array
     CameraID* path; // where the animatronic is trying to get to (if applicable)
 
+    // This is in ticks
     int time_to_move_opportunity; // counter that determines when the animatronic can move to the next position in its path (when this number reaches 0, a number from [1, 20] is randomly generated and if that number is less than or equal to the IA_level, the animatronic moves to the next position in its path)
-    int IA_level; // number that determines the probability of the animatronic to move
+    int AI_level; // number that determines the probability of the animatronic to move
 } Animatronic;
 
 typedef struct {
@@ -83,7 +94,7 @@ typedef struct {
 typedef struct {
     int frame_index; // Which frame of the jumpscare animation
     int tick_timer; // Counter to control animation speed
-    int animatronic_id; // Which character is jumpscaring?
+    AnimatronicName animatronic_name; // Which character is jumpscaring?
 } JumpscareState;
 
 // Tagged Union to represent the current game state
