@@ -84,4 +84,68 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             state->data.night.right_light_on = !state->data.night.right_light_on; // switch
         }
     }
+
+    void handle_night_survival_timer(GameState* state, const GameEvent* event) {
+
+        // DECREASE TIME LEFT
+
+        // Decrease time left
+        NightSurvivalState* night_state = &state->data.night;
+        night_state->time_left--; // This is in ticks
+
+        // Check if the player has survived the night
+        if(night_state->time_left <= 0) {
+            // Player survived the night
+            state->type = NIGHT_END;
+            state->global_data.last_night_result = NIGHT_WIN;
+            return;
+        }
+
+        // BATERRY DRAIN
+        
+        // Base: accumulate 1 per tick
+        int drain_rate = 1;
+        
+        // Increase the drain rate based on the what the player is using
+        if (night->left_door_closed) drain_rate += BATTERY_DRAIN_RATE_DOOR;
+        if (night->right_door_closed) drain_rate += BATTERY_DRAIN_RATE_DOOR;
+        if (night->left_light_on) drain_rate += BATTERY_DRAIN_RATE_LIGHT;
+        if (night->right_light_on) drain_rate += BATTERY_DRAIN_RATE_LIGHT;
+        if (night->camera_monitor_up) drain_rate += BATTERY_DRAIN_RATE_CAMERA;
+        
+        night->power_drain_accumulator += drain_rate;
+        
+        // Every 588 ticks (default), drain 1%
+        if (night->power_drain_accumulator >= night->power_drain_rate) {
+            night->power_level--;
+            night->power_drain_accumulator = 0;
+        }
+        
+        // ANIMATRONICS MOVEMENT
+
+        // Check animatronics
+        for (int i = 0; i < 4; i++) {
+            Animatronic* anim = &night_state->animatronics[i];
+
+            // Update the AI level of the animatronic based on the time ellapsed in the night
+            update_AI_level(anim, night_state->time_left);
+
+            if(should_animatronic_move(anim)) {
+                // Check if animatronic is nex to the player
+                if((anim->path[anim->current_position_index] == CAM_1A  && !night_state->left_door_closed) || 
+                    (anim->path[anim->current_position_index] == CAM_2A && !night_state->right_door_closed)) {
+                    // Player is jumpscared by animatronic
+                    state->type = JUMPSCARE;
+                    state->data.jumpscare.frame_index = 0;
+                    state->data.jumpscare.tick_timer = 0;
+                    state->data.jumpscare.animatronic_name = anim->name;
+                    // Set last night result to lose.
+                    state->global_data.last_night_result = NIGHT_LOSE;
+                    return;
+                }
+                // Move the animatronic to the next position in its path
+                move_animatronic(anim);
+            }
+        }
+    }
 }

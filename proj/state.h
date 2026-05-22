@@ -5,6 +5,11 @@
 
 static const int DRAIN_RATE_PER_NIGHT[5] = {588, 360, 300, 240, 180}; // in ticks, equivalent to 9.6s, 6s, 5s, 4s, 3s
 
+// Adjust this leves
+static const int BATTERY_DRAIN_RATE_DOOR = 3;
+static const int BATTERY_DRAIN_RATE_LIGHT = 1;
+static const int BATTERY_DRAIN_RATE_CAMERA = 2;
+
 typedef enum {
     TIMER_TICK,
     MOUSE_LB_CLICK,
@@ -82,8 +87,11 @@ typedef struct {
 
 typedef struct {
     int time_left; // equivalent to 8m 55s in ticks (assuming 60 ticks per second, 8m 55s would be 8*60*60 + 55*60 = 31800 ticks)
+
     int power_level; // 100 - 0
     int power_drain_rate; // number of ticks needed to decrement power by 1 unit
+    int power_drain_accumulator;
+
     bool left_light_on;
     bool right_light_on;
     bool left_door_closed;
