@@ -37,10 +37,18 @@ void initialize_animatronics(Animatronic animatronics[NUM_ANIMATRONICS], int nig
 bool update_animatronic(Animatronic* animatronic, int time_left, bool left_door_closed, bool right_door_closed);
 
 /**
- * @brief 
+ * @brief Initializes Freddy's data when the player's battery runs out.
+ * @return An initialized Animatronic struct representing Freddy in the no battery scenario. This struct has dummy values for certain fields that are not used in this case.
  */
 Animatronic initialize_freddy_no_battery();
 
+/**
+ * @brief Updates No-Battery-Freddy's state and checks if he should attack the player in a given frame.
+ * @param freddy The No-Battery-Freddy animatronic to be updated.
+ * @param phase1_duration The duration left of the first phase.
+ * @param phase2_duration The duration left of the second phase.
+ * @return true if Freddy attacks the player, false otherwise.
+ */
 bool update_freddy_no_battery(Animatronic* freddy, int phase1_duration, int phase2_duration);
 
 #endif /* ANIMATRONIC_H */

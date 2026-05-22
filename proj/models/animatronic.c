@@ -167,11 +167,11 @@ Animatronic initialize_freddy_no_battery() {
 
 bool update_freddy_no_battery(Animatronic* freddy, int phase1_duration, int phase2_duration) {
 
-    if (freddy->time_to_move_opportunity == FREDDY_NO_BATTERY_MOVE_INTERVAL_PHASE_1 && phase1_duration <= 0) {
+    if (phase1_duration <= 0 && phase2_duration == NO_BATTERY_PHASE_DURATION) { // phase 1 just ended
         freddy->time_to_move_opportunity = FREDDY_NO_BATTERY_MOVE_INTERVAL_PHASE_2;
     }
 
-    if (should_animatronic_move(freddy)) return true;
+    if (should_animatronic_move(freddy)) return true; // a single move is enough for attack
     else freddy->time_to_move_opportunity--;
 
      if (freddy->time_to_move_opportunity <= 0) {
