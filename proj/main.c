@@ -85,8 +85,9 @@ int(proj_main_loop)(int argc, char* argv[]) {
                             } else {
                                 current_event.type = KEYBOARD_RELEASE; // TODO: needed?
                             }
-
-                            current_event.data.scancode = get_scancode(); // TODO: this function only returns the last byte read, check if we need to return the whole scancode (2 bytes) in case of 2-byte scancodes (like arrow keys)
+                            
+                            // We could pass the key already decoded: that function itself would have to call get scancode internally and map it to a key enum
+                            current_event.data.scancode = get_key(); // TODO: this function only returns the last byte read, check if we need to return the whole scancode (2 bytes) in case of 2-byte scancodes (like arrow keys)
                             
                             process_event(&current_state, &current_event);
                         }

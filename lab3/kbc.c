@@ -2,7 +2,9 @@
 #include "i8042.h"
 #include "kbc.h"
 
-static uint8_t scancode;
+static uint8_t scancode[2]; 
+static uint8_t last_byte_read;
+static bool second_byte = false; // flag for the 2 byte scancode
 int kbd_hook_id;
 
 
@@ -25,19 +27,25 @@ int read_scancode(uint8_t *byte){
 // only modifies scancode variable if it was possible to correctly read a scancode
 void (kbc_ih) () {
   uint8_t byte;
-  if(read_scancode(&byte) == 0) scancode=byte;
+  if(read_scancode(&byte) == 0) last_byte_read=byte;
 }
 
-// Instead of using extern, using getters and setters to access scancode elsewhere (lab report)
-
-uint8_t get_scancode(){
+uint8_t* get_scancode(){
   return scancode;
 }
+// Instead of using extern, using getters and setters to access scancode elsewhere (lab report)
 
-void set_scancode(uint8_t byte){
-  scancode = byte;
+uint8_t get_last_byte_read(){
+  return last_byte_read;
 }
 
+void set_last_byte_read(uint8_t byte){
+  last_byte_read = byte;
+}
+
+uint8_t is_make_code(uint8_t scancode[2]){
+  return !(MSB(scancode[1]));
+}
 
 // port == 0x64 -> KBC command
 // port == 0x60 -> KBC command argument
@@ -84,3 +92,30 @@ int reset_interrupts(){
   if(write_KBC_command(KBC_IB, command_byte)) return 1;
   return 0;
 }
+
+bool process_scancode() {
+  kbc_ih(); // Call interrupt handler
+  // if MSB of the scancode == 0, it's a makecode; else if MSB == 1, it's a breakcode
+  last_byte_read = get_last_byte_read();
+  if (second_byte) { // we are reading the second byte of the scancode
+    scancode[0] = TWO_BYTE_PREFIX;
+    scancode[1] = last_byte_read; // 2-bytes read
+    second_byte = false; // reset the flag
+    return true;
+
+  } else { // not reading the second byte of a scancode
+
+    if (last_byte_read == TWO_BYTE_PREFIX) { // if this is true, the scancode we are reading has 2 bytes
+      second_byte = true; // in the next IRQ 1 line raise, the second byte of the scancode will be read
+      // do nothing more, only print in the next iteration (IRQ 1 line raise)
+      return false; // Not ready to print yet, need to wait for the second byte to be read
+    } else {
+      scancode[0] = 0;
+      scancode[1] = last_byte_read;
+      second_byte = false;
+      return true;
+    }
+  }
+}
+
+
