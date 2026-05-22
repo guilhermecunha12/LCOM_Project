@@ -102,7 +102,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
         }
 
         // BATERRY DRAIN
-        
+    
         // Base: accumulate 1 per tick
         int drain_rate = 1;
         
@@ -118,7 +118,12 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
         // Every 588 ticks (default), drain 1%
         if (night->power_drain_accumulator >= night->power_drain_rate) {
             night->power_level--;
-            night->power_drain_accumulator = 0;
+            night->power_drain_accumulator -= night->power_drain_rate;
+        }
+
+        if(night->power_level == 0) {
+            state->type = NIGHT_NO_BATTERY;
+            return;
         }
         
         // ANIMATRONICS MOVEMENT

@@ -1,10 +1,35 @@
 #include "animatronic.h"
 #include "../state.h"
 
-#define MAX_PATH_LENGTH 10 // TODO: review this value
-
 void initialize_animatronic(Animatronic* anim, int night_number){
-    // TODO
+    if(anim->name == FREDDY) {
+        if(night_number == 1) anim->AI_level = 0;
+        else if(night_number == 2) anim->AI_level = 0;
+        else if(night_number == 3) anim->AI_level = 1;
+        else if(night_number == 4) anim->AI_level = 2;
+        else if(night_number == 5) anim->AI_level = 13;
+
+    } else if(anim->name == BONNIE) {
+        if(night_number == 1) anim->AI_level = 0;
+        else if(night_number == 2) anim->AI_level = 3;
+        else if(night_number == 3) anim->AI_level = 0;
+        else if(night_number == 4) anim->AI_level = 2;
+        else if(night_number == 5) anim->AI_level = 9;
+
+    } else if(anim->name == CHICA) {
+        if(night_number == 1) anim->AI_level = 0;
+        else if(night_number == 2) anim->AI_level = 1;
+        else if(night_number == 3) anim->AI_level = 5;
+        else if(night_number == 4) anim->AI_level = 5;
+        else if(night_number == 5) anim->AI_level = 8;
+
+    } else if(anim->name == FOXY) {
+        if(night_number == 1) anim->AI_level = 0;
+        else if(night_number == 2) anim->AI_level = 1;
+        else if(night_number == 3) anim->AI_level = 2;
+        else if(night_number == 4) anim->AI_level = 6;
+        else if(night_number == 5) anim->AI_level = 9;
+    }
 }
 
 void move_animatronic(Animatronic* anim) {
@@ -29,13 +54,13 @@ bool should_animatronic_move(Animatronic* anim) {
 }
 
 void update_AI_level(Animatronic* anim, int time_left_ticks) {
-    if(time_left_ticks % UPDATE_INTERVAL == 0) {
-        if(time_left_ticks == UPDATE_INTERVAL * 1) {
+    if(time_left_ticks % UPDATE_AI_INTERVAL == 0) {
+        if(time_left_ticks == HOUR_0) {
             if(anim->name == FOXY) {
                 anim->AI_level++;
             }
         }
-        else if(time_left_ticks == UPDATE_INTERVAL * 2) {
+        else if(time_left_ticks == HOUR_1) {
             if(anim->name == BONNIE) {
                 anim->AI_level++;
             }
@@ -43,7 +68,7 @@ void update_AI_level(Animatronic* anim, int time_left_ticks) {
                 anim->AI_level++;
             }
         }
-        else if(time_left_ticks == UPDATE_INTERVAL * 3) {
+        else if(time_left_ticks == HOUR_2) {
             if(anim->name == BONNIE) {
                 anim->AI_level++;
             }
@@ -54,7 +79,7 @@ void update_AI_level(Animatronic* anim, int time_left_ticks) {
                 anim->AI_level += 2;
             }
         }
-        else if(time_left_ticks == UPDATE_INTERVAL * 4) {
+        else if(time_left_ticks == HOUR_3) {
             if(anim->name == BONNIE) {
                 anim->AI_level++;
             }
@@ -65,7 +90,7 @@ void update_AI_level(Animatronic* anim, int time_left_ticks) {
                 anim->AI_level++;
             }
         }
-        else if(time_left_ticks == UPDATE_INTERVAL * 5) {
+        else if(time_left_ticks == HOUR_4) {
             if(anim->name == CHICA) {
                 anim->AI_level++;
             }
