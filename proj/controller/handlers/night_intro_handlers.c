@@ -5,6 +5,8 @@ void handle_night_intro_timer(GameState* state, const GameEvent* event) {
     NightSurvivalState* night_state = &state->data.night;
     PersistentData* global_data = &state->global_data;
 
+    // Restart the night if player losses
+
     if(global_data->last_night_result == NIGHT_WIN) {
         // The player passed the previous night, so we increase the difficulty by increasing the AI level of the animatronics and maybe changing their paths
         global_data->current_night++;

@@ -19,7 +19,8 @@ static EventHandler eht[NUM_STATES][NUM_EVENTS] = {
     [NIGHT_SURVIVAL] = {
         [MOUSE_LB_CLICK] = handle_night_survival_mouse_click,
         [MOUSE_MOVE] = handle_mouse_move,
-        // Night survival event handlers...
+        
+        [TIMER_TICK] = handle_night_survival_timer,
     },
     // Other states...
 };

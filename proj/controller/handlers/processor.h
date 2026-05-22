@@ -40,6 +40,8 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
  */
 void handle_night_intro_timer(GameState* state, const GameEvent* event);
 
+void handle_night_survival_timer(GameState* state, const GameEvent* event);
+
 #endif /* HANDLERS_H */
 
 

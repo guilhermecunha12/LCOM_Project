@@ -3,7 +3,15 @@
 
 #include "../lab4/mouse.h"
 
-static const int DRAIN_RATE_PER_NIGHT[5] = {588, 360, 300, 240, 180}; // in ticks, equivalent to 9.6s, 6s, 5s, 4s, 3s
+
+// TODO: CHANGE
+#define DRAIN_RATE_PER_NIGHT {588, 360, 300, 240, 180} // in ticks, equivalent to 9.6s, 6s, 5s, 4s, 3s
+
+// Adjust this leves
+#define BATTERY_DRAIN_RATE_DOOR = 3;
+#define BATTERY_DRAIN_RATE_LIGHT = 1;
+#define BATTERY_DRAIN_RATE_CAMERA = 2;
+#define GAME_TIME = 31800;
 
 typedef enum {
     TIMER_TICK,
@@ -29,10 +37,11 @@ typedef enum {
     MAIN_MENU,
     NIGHT_INTRO,
     NIGHT_SURVIVAL,
-    NIGHT_TRANSITION, // E.g., The "6 AM! Next Night" screen
+    NIGHT_6AM, // E.g., The "6 AM! Next Night" screen
     JUMPSCARE,
     NIGHT_NO_BATTERY, // countdown to possible Freedie jumpscare (PHASE 1: every 5 seconds, 20% chance of jumpscare. If there is a jumpscare, the night ends. Otherwise, after 4 failed tries, go to PHASE 2: every 2 seconds, 20% chance of jumpscare, max 20 seconds (10 tries). If those 10 tries fail, jumpscare guaranteed and night ends. If 6AM is reached, independent of the phase, the  night ends and the player passes the night)
-    NIGHT_END,
+    WIN,
+    STATIC_SCREEN,
     GAME_OVER,
     EXIT,
     NUM_STATES
@@ -82,8 +91,11 @@ typedef struct {
 
 typedef struct {
     int time_left; // equivalent to 8m 55s in ticks (assuming 60 ticks per second, 8m 55s would be 8*60*60 + 55*60 = 31800 ticks)
+
     int power_level; // 100 - 0
     int power_drain_rate; // number of ticks needed to decrement power by 1 unit
+    int power_drain_accumulator;
+
     bool left_light_on;
     bool right_light_on;
     bool left_door_closed;
