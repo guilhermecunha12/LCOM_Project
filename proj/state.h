@@ -2,16 +2,35 @@
 #define STATE_H
 
 #include "../lab4/mouse.h"
+#include "models/animatronic.h"
 
+#define HOUR_0 GAME_TIME - 4628 * 1
+#define HOUR_1 GAME_TIME - 4628 * 2
+#define HOUR_2 GAME_TIME - 4628 * 3
+#define HOUR_3 GAME_TIME - 4628 * 4
+#define HOUR_4 GAME_TIME - 4628 * 5
+#define HOUR_5 GAME_TIME - 4628 * 6
+
+#define DRAIN_RATE_NIGHT_1 588 // 9.8 seconds per 1% battery drain
+#define DRAIN_RATE_NIGHT_2 360 // 6 seconds per 1% battery drain
+#define DRAIN_RATE_NIGHT_3 300 // 5 seconds per 1% battery drain
+#define DRAIN_RATE_NIGHT_4 240 // 4 seconds per 1% battery drain
+#define DRAIN_RATE_NIGHT_5 180 // 3 seconds per 1% battery drain
 
 // TODO: CHANGE
-#define DRAIN_RATE_PER_NIGHT {588, 360, 300, 240, 180} // in ticks, equivalent to 9.6s, 6s, 5s, 4s, 3s
+static const int DRAIN_RATE_PER_NIGHT[] = {
+    DRAIN_RATE_NIGHT_1,
+    DRAIN_RATE_NIGHT_2,
+    DRAIN_RATE_NIGHT_3,
+    DRAIN_RATE_NIGHT_4,
+    DRAIN_RATE_NIGHT_5
+};
 
-// Adjust this leves
-#define BATTERY_DRAIN_RATE_DOOR = 3;
-#define BATTERY_DRAIN_RATE_LIGHT = 1;
-#define BATTERY_DRAIN_RATE_CAMERA = 2;
-#define GAME_TIME = 31800;
+// TODO: Adjust this levels
+#define BATTERY_DRAIN_RATE_DOOR 3
+#define BATTERY_DRAIN_RATE_LIGHT 1
+#define BATTERY_DRAIN_RATE_CAMERA 2
+#define GAME_TIME 31800 // 8m 55s in ticks
 
 typedef enum {
     TIMER_TICK,
@@ -75,20 +94,6 @@ typedef struct {
     MainMenuOption selected_option; // for keyboard navigation in main menu; 0 for no option selected
 } MainMenuState;
 
-typedef enum { FREDDY, BONNIE, CHICA, FOXY } AnimatronicName;
-
-// TODO: make a function to initialize the animotrics for each night
-typedef struct {
-    AnimatronicName name;
-    int current_position_index; // where the animatronic currently is on the map (pointer to a CameraID in the path)
-    int MAX_PATH_LENGTH; // length of the path array
-    CameraID* path; // where the animatronic is trying to get to (if applicable)
-
-    // This is in ticks
-    int time_to_move_opportunity; // counter that determines when the animatronic can move to the next position in its path (when this number reaches 0, a number from [1, 20] is randomly generated and if that number is less than or equal to the IA_level, the animatronic moves to the next position in its path)
-    int AI_level; // number that determines the probability of the animatronic to move
-} Animatronic;
-
 typedef struct {
     int time_left; // equivalent to 8m 55s in ticks (assuming 60 ticks per second, 8m 55s would be 8*60*60 + 55*60 = 31800 ticks)
 
@@ -107,7 +112,7 @@ typedef struct {
     int fan_frame_index;
     int static_animation_timer;
 
-    Animatronic animatronics[4]; // Metadata for each animatronic
+    Animatronic animatronics[NUM_ANIMATRONICS]; // Metadata for each animatronic
 } NightSurvivalState;
 
 // Specific data for a sequence of changing images without player input
@@ -127,5 +132,13 @@ typedef struct {
         JumpscareState jumpscare;
     } data; // state-specific data
 } GameState;
+
+JumpscareState init_jumpscare_state(AnimatronicName animatronic_name) {
+    JumpscareState state;
+    state.frame_index = 0;
+    state.tick_timer = 0;
+    state.animatronic_name = animatronic_name;
+    return state;
+}
 
 #endif /* STATE_H */
