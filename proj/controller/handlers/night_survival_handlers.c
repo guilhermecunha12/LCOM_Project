@@ -38,7 +38,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_CAMERA_2B_W,
             NIGHT_CAMERA_2B_H)) {
 
-            state->data.night.viewing_camera = CAM_2B;
+            state->data.night_survival.viewing_camera = CAM_2B;
             }
 
     } else { // not checking the cameras
@@ -81,7 +81,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_RIGHT_LIGHT_BUTTON_H)) {
 
             state->data.night_survival.right_light_on = !state->data.night_survival.right_light_on; // switch
-            }
+        }
     }
 }
 
@@ -90,7 +90,7 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
     // DECREASE TIME LEFT
 
     // Decrease time left
-    NightSurvivalState* night_state = &state->data.night;
+    NightSurvivalState* night_state = &state->data.night_survival;
     night_state->time_left--; // This is in ticks
 
     // Check if the player has survived the night
@@ -102,55 +102,47 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
     }
 
     // BATERRY DRAIN
-
+    
     // Base: accumulate 1 per tick
     int drain_rate = 1;
-
+    
     // Increase the drain rate based on the what the player is using
-    if (night->left_door_closed) drain_rate += BATTERY_DRAIN_RATE_DOOR;
-    if (night->right_door_closed) drain_rate += BATTERY_DRAIN_RATE_DOOR;
-    if (night->left_light_on) drain_rate += BATTERY_DRAIN_RATE_LIGHT;
-    if (night->right_light_on) drain_rate += BATTERY_DRAIN_RATE_LIGHT;
-    if (night->camera_monitor_up) drain_rate += BATTERY_DRAIN_RATE_CAMERA;
-
-    night->power_drain_accumulator += drain_rate;
-
+    if (night_state->left_door_closed) drain_rate += BATTERY_DRAIN_RATE_DOOR;
+    if (night_state->right_door_closed) drain_rate += BATTERY_DRAIN_RATE_DOOR;
+    if (night_state->left_light_on) drain_rate += BATTERY_DRAIN_RATE_LIGHT;
+    if (night_state->right_light_on) drain_rate += BATTERY_DRAIN_RATE_LIGHT;
+    if (night_state->camera_monitor_up) drain_rate += BATTERY_DRAIN_RATE_CAMERA;
+    
+    night_state->power_drain_accumulator += drain_rate;
+    
     // Every 588 ticks (default), drain 1%
-    if (night->power_drain_accumulator >= night->power_drain_rate) {
-        night->power_level--;
-        night->power_drain_accumulator -= night->power_drain_rate;
+    if (night_state->power_drain_accumulator >= night_state->power_drain_rate) {
+        night_state->power_level--;
+        night_state->power_drain_accumulator -= night_state->power_drain_rate;
     }
 
-    if(night->power_level == 0) {
+    if (night_state->power_level == 0) {
         int remaining_time = state->data.night_survival.time_left;
         state->type = NIGHT_NO_BATTERY;
         state->data.night_no_battery = init_night_no_battery(remaining_time);
+        return;
     }
-
+    
     // ANIMATRONICS MOVEMENT
 
-    // Check animatronics
-    for (int i = 0; i < 4; i++) {
-        Animatronic* anim = &night_state->animatronics[i];
+    for(AnimatronicName name = 0; name < NUM_ANIMATRONICS; name++) {
+        
+        bool attacked = update_animatronic(
+            &night_state->animatronics[name], 
+            night_state->time_left, 
+            night_state->left_door_closed, 
+            night_state->right_door_closed
+        );
 
-        // Update the AI level of the animatronic based on the time ellapsed in the night
-        update_AI_level(anim, night_state->time_left);
-
-        if(should_animatronic_move(anim)) {
-            // Check if animatronic is nex to the player
-            if((anim->path[anim->current_position_index] == CAM_1A  && !night_state->left_door_closed) ||
-                (anim->path[anim->current_position_index] == CAM_2A && !night_state->right_door_closed)) {
-                // Player is jumpscared by animatronic
-                state->type = JUMPSCARE;
-                state->data.jumpscare.frame_index = 0;
-                state->data.jumpscare.tick_timer = 0;
-                state->data.jumpscare.animatronic_name = anim->name;
-                // Set last night result to lose.
-                state->global_data.last_night_result = NIGHT_LOSE;
-                return;
-            }
-            // Move the animatronic to the next position in its path
-            move_animatronic(anim);
+        if (attacked) { // jumpscare
+            state->type = JUMPSCARE;
+            state->data.jumpscare = init_jumpscare(night_state->animatronics[name].name);
+            return;
         }
     }
 }

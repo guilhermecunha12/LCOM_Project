@@ -2,25 +2,51 @@
 #define STATE_H
 
 #include "../lab4/mouse.h"
+#include "models/animatronic.h"
 #include <stdbool.h>
 
+#define FPS 60
+#define NIGHT_TIME (532 * FPS)
+#define HOUR_DURATION (NIGHT_TIME / 7) // Duration of each hour in ticks
+
+#define HOUR_0 NIGHT_TIME - HOUR_DURATION * 1
+#define HOUR_1 NIGHT_TIME - HOUR_DURATION * 2
+#define HOUR_2 NIGHT_TIME - HOUR_DURATION * 3
+#define HOUR_3 NIGHT_TIME - HOUR_DURATION * 4
+#define HOUR_4 NIGHT_TIME - HOUR_DURATION * 5
+#define HOUR_5 NIGHT_TIME - HOUR_DURATION * 6
+
+#define DRAIN_RATE_NIGHT_1 (10 * FPS) // 10 seconds per 1% battery drain
+#define DRAIN_RATE_NIGHT_2 (6 * FPS) // 6 seconds per 1% battery drain
+#define DRAIN_RATE_NIGHT_3 (5 * FPS) // 5 seconds per 1% battery drain
+#define DRAIN_RATE_NIGHT_4 (4 * FPS) // 4 seconds per 1% battery drain
+#define DRAIN_RATE_NIGHT_5 (3 * FPS) // 3 seconds per 1% battery drain
+
+// TODO: CHANGE
+static const int DRAIN_RATE_PER_NIGHT[] = {
+    DRAIN_RATE_NIGHT_1,
+    DRAIN_RATE_NIGHT_2,
+    DRAIN_RATE_NIGHT_3,
+    DRAIN_RATE_NIGHT_4,
+    DRAIN_RATE_NIGHT_5
+};
 
 // TODO: CHANGE to balance the game
 #define DEFAULT_POWER_LEVEL 100
-#define DRAIN_RATE_PER_NIGHT {588, 360, 300, 240, 180} // in ticks, equivalent to 9.6s, 6s, 5s, 4s, 3s
 
 // Adjust this to balance difficulty
 #define BATTERY_DRAIN_RATE_DOOR 3
 #define BATTERY_DRAIN_RATE_LIGHT 1
 #define BATTERY_DRAIN_RATE_CAMERA 2
 
-#define GAME_TIME 31800
-#define NIGHT_INTRO_DURATION 300
-#define NIGHT_6AM_DURATION 300
-#define WIN_SCREEN_DURATION 300
-#define STATIC_SCREEN_DURATION 300
+#define NIGHT_INTRO_DURATION (5 * FPS)
+#define NIGHT_6AM_DURATION (5 * FPS)
+#define WIN_SCREEN_DURATION (5 * FPS)
+#define STATIC_SCREEN_DURATION (5 * FPS)
 
-#define LAST_NIGHT 6
+#define NO_BATTERY_PHASE_DURATION (20 * FPS) // 20 seconds for both phases
+
+#define NUM_NIGHTS 6
 
 typedef enum {
     TIMER_TICK,
@@ -77,20 +103,6 @@ typedef struct {
     MainMenuOption selected_option; // for keyboard navigation in main menu; 0 for no option selected
 } MainMenuState;
 
-typedef enum { FREDDY, BONNIE, CHICA, FOXY } AnimatronicName;
-
-// TODO: make a function to initialize the animotrics for each night
-typedef struct {
-    AnimatronicName name;
-    int current_position_index; // where the animatronic currently is on the map (pointer to a CameraID in the path)
-    int MAX_PATH_LENGTH; // length of the path array
-    CameraID* path; // where the animatronic is trying to get to (if applicable)
-
-    // This is in ticks
-    int time_to_move_opportunity; // counter that determines when the animatronic can move to the next position in its path (when this number reaches 0, a number from [1, 20] is randomly generated and if that number is less than or equal to the IA_level, the animatronic moves to the next position in its path)
-    int AI_level; // number that determines the probability of the animatronic to move
-} Animatronic;
-
 typedef struct {
     int frame_index;
     int tick_timer;
@@ -98,7 +110,7 @@ typedef struct {
 } NightIntroState;
 
 typedef struct {
-    int time_left; // equivalent to 8m 55s in ticks (assuming 60 ticks per second, 8m 55s would be 8*60*60 + 55*60 = 31800 ticks)
+    int time_left;
 
     int power_level; // 100 - 0
     int power_drain_rate; // number of ticks needed to decrement power by 1 unit
@@ -115,11 +127,13 @@ typedef struct {
     int fan_frame_index;
     int static_animation_timer;
 
-    Animatronic animatronics[4]; // Metadata for each animatronic
+    Animatronic animatronics[NUM_ANIMATRONICS]; // Metadata for each animatronic
 } NightSurvivalState;
 
 typedef struct {
     int time_left;
+    int phase1_duration;
+    int phase2_duration;
     Animatronic freddy;
 } NightNoBatteryState;
 
@@ -163,7 +177,15 @@ typedef struct {
     } data; // state-specific data
 } GameState;
 
-        /* Initializers */
+/* Initializers */
+
+JumpscareState init_jumpscare(AnimatronicName animatronic_name) {
+    JumpscareState state;
+    state.frame_index = 0;
+    state.tick_timer = 0;
+    state.animatronic_name = animatronic_name;
+    return state;
+}
 
 NightIntroState init_night_intro() {
     NightIntroState state;
@@ -178,7 +200,7 @@ NightIntroState init_night_intro() {
 
 NightSurvivalState init_night_survival(int current_night) {
     NightSurvivalState state;
-    state.time_left = GAME_TIME;
+    state.time_left = NIGHT_TIME;
     state.power_level = DEFAULT_POWER_LEVEL;
     state.power_drain_rate = DRAIN_RATE_PER_NIGHT[current_night - 1];
     state.power_drain_accumulator = 0;
@@ -195,7 +217,7 @@ NightSurvivalState init_night_survival(int current_night) {
     state.fan_frame_index = 0;
     state.static_animation_timer = 0;
 
-    AnimatronicName animatronics[4];
+    AnimatronicName animatronics[NUM_ANIMATRONICS];
     initialize_animatronics(&animatronics, current_night);
 
     return state;
@@ -212,14 +234,16 @@ Night6AMScreen init_night_6am() {
 NightNoBatteryState init_night_no_battery(int duration) {
     NightNoBatteryState state;
     state.time_left = duration;
-    // TODO: Call function that sets freddy
-    state.freddy;
+    state.phase1_duration = NO_BATTERY_PHASE_DURATION;
+    state.phase2_duration = NO_BATTERY_PHASE_DURATION;
+    state.freddy = initialize_freddy_no_battery();
     return state;
 }
 
 WinState init_win_screen() {
     WinState state;
     state.duration = WIN_SCREEN_DURATION;
+    return state;
 }
 
 StaticScreenState init_static_screen() {
