@@ -1,11 +1,7 @@
 #ifndef ANIMATRONIC_H
 #define ANIMATRONIC_H
 
-#include "../state.h"
 #include <stdbool.h>
-
-#define UPDATE_AI_LEVEL_INTERVAL 4628 // 31800 ticks = 7 hours in game, so every 4628 ticks (approximately every hour) the animatronics will update their AI level and maybe their path.
-
 
 typedef enum { FREDDY, BONNIE, CHICA, FOXY, NUM_ANIMATRONICS } AnimatronicName;
 
@@ -39,5 +35,12 @@ void initialize_animatronics(Animatronic animatronics[NUM_ANIMATRONICS], int nig
  * @return true if the animatronic attacks the player, false otherwise.
  */
 bool update_animatronic(Animatronic* animatronic, int time_left, bool left_door_closed, bool right_door_closed);
+
+/**
+ * @brief 
+ */
+Animatronic initialize_freddy_no_battery();
+
+bool update_freddy_no_battery(Animatronic* freddy, int phase1_duration, int phase2_duration);
 
 #endif /* ANIMATRONIC_H */

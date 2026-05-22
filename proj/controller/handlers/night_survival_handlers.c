@@ -141,7 +141,7 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
 
         if (attacked) { // jumpscare
             state->type = JUMPSCARE;
-            state->data.jumpscare = init_jumpscare_state(night_state->animatronics[name].name);
+            state->data.jumpscare = init_jumpscare(night_state->animatronics[name].name);
             return;
         }
     }

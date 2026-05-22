@@ -5,14 +5,14 @@ static const CameraID PATHS[4][5] = {
     [FREDDY] = {CAM_1A, CAM_1B, CAM_2A, CAM_2B, CAM_1A},
     [BONNIE] = {CAM_1A, CAM_2A, CAM_2B, CAM_1A, CAM_2A},
     [CHICA] = {CAM_1A, CAM_1B, CAM_1A, CAM_1B, CAM_1A},
-    [FOXY] = {CAM_1A, CAM_2A, CAM_1A, CAM_2A, CAM_1A}
+    [FOXY] = {CAM_1A, CAM_2A, CAM_1A, CAM_2A, CAM_1A},
 };
 
-static const int ANIMATRONIC_PATH_LENGTHS[4] = {
+static const int ANIMATRONIC_PATH_LENGTHS[5] = {
     [FREDDY] = sizeof(PATHS[FREDDY])/sizeof(CameraID),
     [BONNIE] = sizeof(PATHS[BONNIE])/sizeof(CameraID),
     [CHICA] = sizeof(PATHS[CHICA])/sizeof(CameraID),
-    [FOXY] = sizeof(PATHS[FOXY])/sizeof(CameraID)
+    [FOXY] = sizeof(PATHS[FOXY])/sizeof(CameraID),
 };
 
 static const int INITIAL_AI_LEVELS[4][5] = {
@@ -23,10 +23,17 @@ static const int INITIAL_AI_LEVELS[4][5] = {
 };
 
 static const int MOVE_INTERVALS[4] = {
-  [FREDDY] = 181, // approx 3.02 seconds
-  [BONNIE] = 298, // approx 4.97 seconds
-  [CHICA] = 299, // approx 4.98 seconds
+    [FREDDY] = 3*FPS,
+    [BONNIE] = 5*FPS-1,
+    [CHICA] = 5*FPS,
+    [FOXY] = 2*FPS,
 };
+
+// Single-entry path for special no-battery Freddy state
+static const CameraID FREDDY_NO_BATTERY_PATH[1] = { CAM_1A };
+static const int FREDDY_NO_BATTERY_AI_LEVEL = 5; // 20% chance to attack
+static const int FREDDY_NO_BATTERY_MOVE_INTERVAL_PHASE_1 = 5*FPS; // 5 seconds
+static const int FREDDY_NO_BATTERY_MOVE_INTERVAL_PHASE_2 = 2*FPS; // 2 seconds
 
 static void initialize_animatronic(Animatronic animatronic, AnimatronicName name, int night_number){
     animatronic.name = name;
@@ -68,7 +75,7 @@ static bool should_animatronic_attack(Animatronic* animatronic, bool left_door_c
 }
 
 static void update_AI_level(Animatronic* animatronic, int time_left_ticks) {
-    if(time_left_ticks % UPDATE_AI_LEVEL_INTERVAL == 0) {
+    if(time_left_ticks % HOUR_DURATION == 0) {
         if(time_left_ticks == HOUR_0) {
             if(animatronic->name == FOXY) {
                 animatronic->AI_level++;
@@ -121,24 +128,59 @@ void initialize_animatronics(Animatronic animatronics[NUM_ANIMATRONICS], int nig
     }
 }
 
-// Returns true if the animatronic attacks, false otherwise.
 bool update_animatronic(Animatronic* animatronic, int time_left, bool left_door_closed, bool right_door_closed) {
     
     update_AI_level(animatronic, time_left);
 
     if(should_animatronic_move(animatronic)) {
-        
         if (should_animatronic_attack(animatronic, left_door_closed, right_door_closed)) {
             return true;
         }
-        
         move_animatronic(animatronic);
-        // Reset the counter after making a move check (successful or not)
-        animatronic->time_to_move_opportunity = MOVE_INTERVALS[animatronic->name]; 
     }
     else {
         animatronic->time_to_move_opportunity--; 
     }
 
+    // Reset time to move counter
+    if (animatronic->time_to_move_opportunity <= 0) {
+        animatronic->time_to_move_opportunity = MOVE_INTERVALS[animatronic->name]; 
+    }
+
     return false; // Did not attack
+}
+
+Animatronic initialize_freddy_no_battery() {
+    Animatronic freddy;
+
+    // ---dummy initializations
+    freddy.name = FREDDY;
+    freddy.current_position_index = 0;
+    freddy.path = NULL;
+    freddy.path_length = 0;
+    // ---
+    
+    freddy.time_to_move_opportunity = FREDDY_NO_BATTERY_MOVE_INTERVAL_PHASE_1;
+    freddy.AI_level = 5; // 20% chance to attack the player
+    return freddy;
+}
+
+bool update_freddy_no_battery(Animatronic* freddy, int phase1_duration, int phase2_duration) {
+
+    if (freddy->time_to_move_opportunity == FREDDY_NO_BATTERY_MOVE_INTERVAL_PHASE_1 && phase1_duration <= 0) {
+        freddy->time_to_move_opportunity = FREDDY_NO_BATTERY_MOVE_INTERVAL_PHASE_2;
+    }
+
+    if (should_animatronic_move(freddy)) return true;
+    else freddy->time_to_move_opportunity--;
+
+     if (freddy->time_to_move_opportunity <= 0) {
+        if (phase1_duration >= 0) {
+            freddy->time_to_move_opportunity = FREDDY_NO_BATTERY_MOVE_INTERVAL_PHASE_1;
+        } else {
+            freddy->time_to_move_opportunity = FREDDY_NO_BATTERY_MOVE_INTERVAL_PHASE_2;
+        }
+    }
+
+    return false;
 }

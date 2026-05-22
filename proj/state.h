@@ -5,18 +5,22 @@
 #include "models/animatronic.h"
 #include <stdbool.h>
 
-#define HOUR_0 GAME_TIME - 4628 * 1
-#define HOUR_1 GAME_TIME - 4628 * 2
-#define HOUR_2 GAME_TIME - 4628 * 3
-#define HOUR_3 GAME_TIME - 4628 * 4
-#define HOUR_4 GAME_TIME - 4628 * 5
-#define HOUR_5 GAME_TIME - 4628 * 6
+#define FPS 60
+#define NIGHT_TIME (532 * FPS)
+#define HOUR_DURATION (NIGHT_TIME / 7) // Duration of each hour in ticks
 
-#define DRAIN_RATE_NIGHT_1 588 // 9.8 seconds per 1% battery drain
-#define DRAIN_RATE_NIGHT_2 360 // 6 seconds per 1% battery drain
-#define DRAIN_RATE_NIGHT_3 300 // 5 seconds per 1% battery drain
-#define DRAIN_RATE_NIGHT_4 240 // 4 seconds per 1% battery drain
-#define DRAIN_RATE_NIGHT_5 180 // 3 seconds per 1% battery drain
+#define HOUR_0 NIGHT_TIME - HOUR_DURATION * 1
+#define HOUR_1 NIGHT_TIME - HOUR_DURATION * 2
+#define HOUR_2 NIGHT_TIME - HOUR_DURATION * 3
+#define HOUR_3 NIGHT_TIME - HOUR_DURATION * 4
+#define HOUR_4 NIGHT_TIME - HOUR_DURATION * 5
+#define HOUR_5 NIGHT_TIME - HOUR_DURATION * 6
+
+#define DRAIN_RATE_NIGHT_1 (10 * FPS) // 10 seconds per 1% battery drain
+#define DRAIN_RATE_NIGHT_2 (6 * FPS) // 6 seconds per 1% battery drain
+#define DRAIN_RATE_NIGHT_3 (5 * FPS) // 5 seconds per 1% battery drain
+#define DRAIN_RATE_NIGHT_4 (4 * FPS) // 4 seconds per 1% battery drain
+#define DRAIN_RATE_NIGHT_5 (3 * FPS) // 3 seconds per 1% battery drain
 
 // TODO: CHANGE
 static const int DRAIN_RATE_PER_NIGHT[] = {
@@ -35,13 +39,14 @@ static const int DRAIN_RATE_PER_NIGHT[] = {
 #define BATTERY_DRAIN_RATE_LIGHT 1
 #define BATTERY_DRAIN_RATE_CAMERA 2
 
-#define GAME_TIME 31800
-#define NIGHT_INTRO_DURATION 300
-#define NIGHT_6AM_DURATION 300
-#define WIN_SCREEN_DURATION 300
-#define STATIC_SCREEN_DURATION 300
+#define NIGHT_INTRO_DURATION (5 * FPS)
+#define NIGHT_6AM_DURATION (5 * FPS)
+#define WIN_SCREEN_DURATION (5 * FPS)
+#define STATIC_SCREEN_DURATION (5 * FPS)
 
-#define LAST_NIGHT 6
+#define NO_BATTERY_PHASE_DURATION (20 * FPS) // 20 seconds for both phases
+
+#define NUM_NIGHTS 6
 
 typedef enum {
     TIMER_TICK,
@@ -105,7 +110,7 @@ typedef struct {
 } NightIntroState;
 
 typedef struct {
-    int time_left; // equivalent to 8m 55s in ticks (assuming 60 ticks per second, 8m 55s would be 8*60*60 + 55*60 = 31800 ticks)
+    int time_left;
 
     int power_level; // 100 - 0
     int power_drain_rate; // number of ticks needed to decrement power by 1 unit
@@ -127,6 +132,8 @@ typedef struct {
 
 typedef struct {
     int time_left;
+    int phase1_duration;
+    int phase2_duration;
     Animatronic freddy;
 } NightNoBatteryState;
 
@@ -172,7 +179,7 @@ typedef struct {
 
 /* Initializers */
 
-JumpscareState init_jumpscare_state(AnimatronicName animatronic_name) {
+JumpscareState init_jumpscare(AnimatronicName animatronic_name) {
     JumpscareState state;
     state.frame_index = 0;
     state.tick_timer = 0;
@@ -193,7 +200,7 @@ NightIntroState init_night_intro() {
 
 NightSurvivalState init_night_survival(int current_night) {
     NightSurvivalState state;
-    state.time_left = GAME_TIME;
+    state.time_left = NIGHT_TIME;
     state.power_level = DEFAULT_POWER_LEVEL;
     state.power_drain_rate = DRAIN_RATE_PER_NIGHT[current_night - 1];
     state.power_drain_accumulator = 0;
@@ -210,7 +217,7 @@ NightSurvivalState init_night_survival(int current_night) {
     state.fan_frame_index = 0;
     state.static_animation_timer = 0;
 
-    AnimatronicName animatronics[4];
+    AnimatronicName animatronics[NUM_ANIMATRONICS];
     initialize_animatronics(&animatronics, current_night);
 
     return state;
@@ -227,14 +234,16 @@ Night6AMScreen init_night_6am() {
 NightNoBatteryState init_night_no_battery(int duration) {
     NightNoBatteryState state;
     state.time_left = duration;
-    // TODO: Call function that sets freddy
-    state.freddy;
+    state.phase1_duration = NO_BATTERY_PHASE_DURATION;
+    state.phase2_duration = NO_BATTERY_PHASE_DURATION;
+    state.freddy = initialize_freddy_no_battery();
     return state;
 }
 
 WinState init_win_screen() {
     WinState state;
     state.duration = WIN_SCREEN_DURATION;
+    return state;
 }
 
 StaticScreenState init_static_screen() {
