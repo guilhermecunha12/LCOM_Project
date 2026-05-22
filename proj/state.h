@@ -12,7 +12,7 @@ typedef enum {
     NUM_EVENTS
 } EventType;
 
-// Tagged Union
+// Tagged Union - TODO: instead of scancodes and mouse_packets, have enums that represent the keys
 typedef struct {
     EventType type;
     union { // TODO: simplify this structs if only one field is needed for each event type
@@ -29,6 +29,7 @@ typedef enum {
     NIGHT_SURVIVAL,
     NIGHT_TRANSITION, // E.g., The "6 AM! Next Night" screen
     JUMPSCARE,
+    NIGHT_NO_BATTERY, // countdown to possible Freedie jumpscare (PHASE 1: every 5 seconds, 20% chance of jumpscare. If there is a jumpscare, the night ends. Otherwise, after 4 failed tries, go to PHASE 2: every 2 seconds, 20% chance of jumpscare, max 20 seconds (10 tries). If those 10 tries fail, jumpscare guaranteed and night ends. If 6AM is reached, independent of the phase, the  night ends and the player passes the night)
     NIGHT_END,
     EXIT,
     NUM_STATES
@@ -36,7 +37,7 @@ typedef enum {
 
 // Global game data that persists across states
 typedef struct {
-    int current_night; // 1 to 5
+    int current_night; // 0 (no current night), 1 to 5 - also used to determine night's gimmicks
 
     // mouse coordinates for displaying it
     int mouse_x;
@@ -50,17 +51,32 @@ typedef struct {
     int selected_option; // for keyboard navigation in main menu
 } MainMenuState;
 
+typedef enum { FREEDDY, BONNIE, CHICA, FOXY } AnimatronicName;
+
+// TODO: make a function to initialize the animotrics for each night
 typedef struct {
-    int time_ticks; // E.g., 0 to roughly 6*60*60 (6 hours in game)
-    int power_level; // 10000 -> 100% (stored as int to allow slow drain?)
+    AnimatronicName name;
+    CameraID* current_position; // where the animatronic currently is on the map (pointer to a CameraID in the path)
+    CameraID* path; // where the animatronic is trying to get to (if applicable)
+
+    int time_to_move_opportunity; // counter that determines when the animatronic can move to the next position in its path (when this number reaches 0, a number from [1, 20] is randomly generated and if that number is less than or equal to the IA_level, the animatronic moves to the next position in its path)
+    int IA_level; // number that determines the probability of the animatronic to move
+} Animatronic;
+
+typedef struct {
+    int time_left; // equivalent to 8m 55s in ticks (assuming 60 ticks per second, 8m 55s would be 8*60*60 + 55*60 = 31800 ticks)
+    int power_level; // 100 - 0
+    int power_drain_rate; // number of ticks needed to decrement power by 1 unit
     bool left_door_closed;
     bool right_door_closed;
     bool camera_monitor_up; // Is the player looking at cameras?
     CameraID viewing_camera;
-    
+
     // For timer-driven animations (e.g., fan spinning, camera static)
     int fan_frame_index;
     int static_animation_timer;
+
+    Animatronic animatronics[4]; // Metadata for each animatronic
 } NightSurvivalState;
 
 // Specific data for a sequence of changing images without player input
