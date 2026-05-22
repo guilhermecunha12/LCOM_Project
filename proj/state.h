@@ -2,16 +2,25 @@
 #define STATE_H
 
 #include "../lab4/mouse.h"
+#include <stdbool.h>
 
 
-// TODO: CHANGE
+// TODO: CHANGE to balance the game
+#define DEFAULT_POWER_LEVEL 100
 #define DRAIN_RATE_PER_NIGHT {588, 360, 300, 240, 180} // in ticks, equivalent to 9.6s, 6s, 5s, 4s, 3s
 
-// Adjust this leves
-#define BATTERY_DRAIN_RATE_DOOR = 3;
-#define BATTERY_DRAIN_RATE_LIGHT = 1;
-#define BATTERY_DRAIN_RATE_CAMERA = 2;
-#define GAME_TIME = 31800;
+// Adjust this to balance difficulty
+#define BATTERY_DRAIN_RATE_DOOR 3
+#define BATTERY_DRAIN_RATE_LIGHT 1
+#define BATTERY_DRAIN_RATE_CAMERA 2
+
+#define GAME_TIME 31800
+#define NIGHT_INTRO_DURATION 300
+#define NIGHT_6AM_DURATION 300
+#define WIN_SCREEN_DURATION 300
+#define STATIC_SCREEN_DURATION 300
+
+#define LAST_NIGHT 6
 
 typedef enum {
     TIMER_TICK,
@@ -47,12 +56,6 @@ typedef enum {
     NUM_STATES
 } StateType;
 
-typedef enum {
-    NIGHT_WIN,
-    NIGHT_LOSE,
-    NIGHT_UNKOWN
-} NightResult;
-
 // Global game data that persists across states
 typedef struct {
     int current_night; // 0 (no current night), 1 to 5 - also used to determine night's gimmicks
@@ -60,11 +63,10 @@ typedef struct {
     // mouse coordinates for displaying it
     int mouse_x;
     int mouse_y;
-    NightResult last_night_result; 
 } PersistentData;
  
 // Camera IDs
-typedef enum { CAM_1A, CAM_1B, CAM_2A, CAM_2B } CameraID;
+typedef enum { CAM_1A, CAM_1B, CAM_2A, CAM_2B, } CameraID;
 
 typedef enum {
     NEW_GAME,
@@ -90,6 +92,12 @@ typedef struct {
 } Animatronic;
 
 typedef struct {
+    int frame_index;
+    int tick_timer;
+    int duration;
+} NightIntroState;
+
+typedef struct {
     int time_left; // equivalent to 8m 55s in ticks (assuming 60 ticks per second, 8m 55s would be 8*60*60 + 55*60 = 31800 ticks)
 
     int power_level; // 100 - 0
@@ -110,12 +118,34 @@ typedef struct {
     Animatronic animatronics[4]; // Metadata for each animatronic
 } NightSurvivalState;
 
+typedef struct {
+    int time_left;
+    Animatronic freddy;
+} NightNoBatteryState;
+
 // Specific data for a sequence of changing images without player input
 typedef struct {
     int frame_index; // Which frame of the jumpscare animation
-    int tick_timer; // Counter to control animation speed
+    int tick_timer; // Counter to control animation speedw
+    int duration;
     AnimatronicName animatronic_name; // Which character is jumpscaring?
 } JumpscareState;
+
+typedef struct {
+    int frame_index;
+    int tick_timer;
+    int duration;
+} Night6AMScreen;
+
+typedef struct {
+    int frame_index; // Which frame of the static screen animation
+    int tick_timer; // Counter to control animation speed
+    int duration; // Counter to control how long the static screen is displayed
+} StaticScreenState;
+
+typedef struct {
+    int duration; // Counter to control how long the win screen is displayed
+} WinState;
 
 // Tagged Union to represent the current game state
 typedef struct {
@@ -123,9 +153,81 @@ typedef struct {
     StateType type; // tag
     union {
         MainMenuState main_menu;
-        NightSurvivalState night;
+        NightIntroState night_intro;
+        NightSurvivalState night_survival;
         JumpscareState jumpscare;
+        Night6AMScreen night_6am;
+        NightNoBatteryState night_no_battery;
+        WinState win;
+        StaticScreenState static_screen;
     } data; // state-specific data
 } GameState;
+
+        /* Initializers */
+
+NightIntroState init_night_intro() {
+    NightIntroState state;
+
+    // TODO: Check this frames values
+    state.frame_index = 0;
+    state.tick_timer = 0;
+
+    state.duration = NIGHT_INTRO_DURATION;
+    return state;
+}
+
+NightSurvivalState init_night_survival(int current_night) {
+    NightSurvivalState state;
+    state.time_left = GAME_TIME;
+    state.power_level = DEFAULT_POWER_LEVEL;
+    state.power_drain_rate = DRAIN_RATE_PER_NIGHT[current_night - 1];
+    state.power_drain_accumulator = 0;
+
+    state.left_light_on = false;
+    state.right_light_on = false;
+    state.left_door_closed = false;
+    state.right_door_closed = false;
+    state.camera_monitor_up = false;
+    // TODO: Check this value, it should be a default cam
+    state.viewing_camera = CAM_1A;
+
+    // TODO: Check this frames values
+    state.fan_frame_index = 0;
+    state.static_animation_timer = 0;
+
+    AnimatronicName animatronics[4];
+    initialize_animatronics(&animatronics, current_night);
+
+    return state;
+}
+
+Night6AMScreen init_night_6am() {
+    Night6AMScreen state;
+    state.frame_index = 0;
+    state.tick_timer = 0;
+    state.duration = NIGHT_6AM_DURATION;
+    return state;
+}
+
+NightNoBatteryState init_night_no_battery(int duration) {
+    NightNoBatteryState state;
+    state.time_left = duration;
+    // TODO: Call function that sets freddy
+    state.freddy;
+    return state;
+}
+
+WinState init_win_screen() {
+    WinState state;
+    state.duration = WIN_SCREEN_DURATION;
+}
+
+StaticScreenState init_static_screen() {
+    StaticScreenState state;
+    state.frame_index = 0;
+    state.tick_timer = 0;
+    state.duration = STATIC_SCREEN_DURATION;
+    return state;
+}
 
 #endif /* STATE_H */

@@ -4,7 +4,7 @@
 
 // Implementation of main menu event handlers
 
-void handle_main_menu_mouse_click(GameState* state, GameEvent* event) {
+void handle_main_menu_mouse_click(GameState* state, const GameEvent* event) {
 
     int mouse_x = state->global_data.mouse_x;
     int mouse_y = state->global_data.mouse_y;
@@ -17,8 +17,8 @@ void handle_main_menu_mouse_click(GameState* state, GameEvent* event) {
 
         state->global_data.current_night = 1; // Start at night 1
         state->type = NIGHT_INTRO;
-        
-    } 
+        state->data.night_intro = init_night_intro();
+    }
 
     // Leave a space reserved to this button even if not rendered. 
     else if (state->global_data.current_night > 0 && is_mouse_inside(mouse_x, mouse_y,
@@ -28,6 +28,7 @@ void handle_main_menu_mouse_click(GameState* state, GameEvent* event) {
         MAIN_MENU_CONTINUE_BUTTON_H)) {
 
         state->type = NIGHT_INTRO;
+        state->data.night_intro = init_night_intro();
     }
 
     else if (is_mouse_inside(mouse_x, mouse_y,

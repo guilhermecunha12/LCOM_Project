@@ -10,3 +10,4 @@ lab5/lab5
 **/output.txt
 **/trace.txt
 .DS_Store
+.idea

@@ -22,7 +22,24 @@ static EventHandler eht[NUM_STATES][NUM_EVENTS] = {
         
         [TIMER_TICK] = handle_night_survival_timer,
     },
-    // Other states...
+
+    [NIGHT_NO_BATTERY] = {
+        [TIMER_TICK] = handle_night_no_battery_timer,
+    },
+
+    [JUMPSCARE] = {
+        [TIMER_TICK] = handle_jumpscare_timer,
+    },
+    
+    [STATIC_SCREEN] = {
+        [TIMER_TICK] = handle_static_screen_timer,
+    },
+
+    [WIN] = {
+        [TIMER_TICK] = handle_win_screen_timer,
+    },
+
+
 };
 
 void handle_mouse_move(GameState* state, const GameEvent* event) {
@@ -47,4 +64,3 @@ EventHandler get_event_handler(StateType state, EventType event) {
     }
     return eht[state][event];
 }
-
