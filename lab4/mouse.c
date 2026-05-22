@@ -123,6 +123,15 @@ void parse_first_byte(struct packet* pp, bool* x_sign_bit, bool* y_sign_bit, uin
   pp->y_ov = (mouse_byte & BIT(7)) != 0;
 }
 
+bool is_mouse_click() {
+  return pp.lb;
+}
+
+bool is_mouse_move() {
+  return pp.delta_x != 0 || pp.delta_y != 0;
+}
+
+
 bool process_packet() {
   mouse_ih(); // note: if there is a read failure here, the old value of mouse_byte will be treated as the new packet byte in the next line (maybe add a static variable that would indicate an error, like if it was a return value)
 

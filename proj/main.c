@@ -95,16 +95,24 @@ int(proj_main_loop)(int argc, char* argv[]) {
                     // Mouse interrupt
                     if (msg.m_notify.interrupts & mouse_irq_set) {
                         if (process_packet()) {
-                            
-                            if (is_mouse_click()) { // TODO: implement in mouse.c
-                                current_event.type = MOUSE_CLICK;
-                            } else {
-                                current_event.type = MOUSE_MOVE;
-                            }               
-                            
-                            current_event.data.mouse_packet = get_mouse_packet(); // TODO: check if every information of the packet is needed
+                            // TODO: maybe clear the current_event variable at the beginning of each interrupt?
+                            if (is_mouse_click()) {
+                                current_event.type = MOUSE_LB_CLICK;
+                                current_event.data.mouse_coords.delta_x = 0;
+                                current_event.data.mouse_coords.delta_y = 0;
 
-                            process_event(&current_state, &current_event);
+                            } else if (is_mouse_move()) {
+                                current_event.type = MOUSE_MOVE;
+
+                                struct packet current_packet = get_mouse_packet();
+                                current_event.data.mouse_coords.delta_x = current_packet.delta_x;
+                                current_event.data.mouse_coords.delta_y = current_packet.delta_y;
+                            }
+                            
+                            // only process left button clicks or mouse movements.
+                            if (current_event.type == MOUSE_LB_CLICK || current_event.type == MOUSE_MOVE) {
+                                process_event(&current_state, &current_event);
+                            }
                         }                        
                     }
                     break;
