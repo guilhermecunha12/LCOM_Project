@@ -1,10 +1,29 @@
 #include <lcom/lcf.h>
 #include "i8042.h"
 #include "kbc.h"
-
+/**
+ * @brief Array to store the scancode bytes read from the KBC output buffer.
+ * @details Has two bytes to accommodate both single-byte and two-byte scancodes. Conventions: if it's a single-byte scancode, scancode[0] will be 0 and scancode[1] will hold the byte read; if it's a two-byte scancode, scancode[0] will hold the prefix (0xE0) and scancode[1] will hold the second byte read.
+ */
 static uint8_t scancode[2]; 
+
+/**
+ * @brief Stores the last scancode byte read from the KBC output buffer.
+ * @details Updated by the keyboard interrupt handler.
+ */
 static uint8_t last_byte_read;
-static bool second_byte = false; // flag for the 2 byte scancode
+
+
+/**
+ * @brief This variable is used to indicate whether we are reading the second byte of a scancode.
+ * @details Set to true when the first byte of a two-byte scancode is received, being updated inside the process_scancode() function. Reset to false after the second byte is read or if a single-byte scancode is read.
+ */
+static bool second_byte = false;
+
+/**
+ * @brief This variable is used to store the hook ID for the keyboard interrupt.
+ * @details Used for subscribing and unsubscribing keyboard interrupts. Initialized in kbd_subscribe_int() and used in kbd_unsubscribe_int().
+ */
 int kbd_hook_id;
 
 
@@ -15,16 +34,17 @@ int (kbd_subscribe_int) (uint8_t *bit_no){
   return 0;
 }
 
+
 int (kbd_unsubscribe_int)(){
   return sys_irqrmpolicy(&kbd_hook_id) ? 1 : 0;
 }
 
-// only for readability
+
 int read_scancode(uint8_t *byte){
   return read_KBC_output_buf(byte, 0) ? 1 : 0;
 }
 
-// only modifies scancode variable if it was possible to correctly read a scancode
+
 void (kbc_ih) () {
   uint8_t byte;
   if(read_scancode(&byte) == 0) last_byte_read=byte;
@@ -33,22 +53,18 @@ void (kbc_ih) () {
 uint8_t* get_scancode(){
   return scancode;
 }
-// Instead of using extern, using getters and setters to access scancode elsewhere (lab report)
+
 
 uint8_t get_last_byte_read(){
   return last_byte_read;
 }
 
-void set_last_byte_read(uint8_t byte){
-  last_byte_read = byte;
-}
 
 uint8_t is_make_code(uint8_t scancode[2]){
   return !(MSB(scancode[1]));
 }
 
-// port == 0x64 -> KBC command
-// port == 0x60 -> KBC command argument
+
 int write_KBC_command(uint8_t port, uint8_t command_byte){
   int n = N_TRIES;
   uint8_t status_byte;
@@ -62,6 +78,7 @@ int write_KBC_command(uint8_t port, uint8_t command_byte){
   return 1;
 }
 
+
 int read_KBC_output_buf(uint8_t* value, bool mouse_data){
   uint8_t status_byte;
   if(util_sys_inb(KBC_STATUS_REG, &status_byte)) return 1;  // read the status byte from the status register
@@ -69,13 +86,13 @@ int read_KBC_output_buf(uint8_t* value, bool mouse_data){
     if(util_sys_inb(KBC_OB, value)) return 1;
     // Discard values if needed
     if(status_byte & KBC_ERROR) return 1;
-    // In case of wanting to read mouse data
-    if(mouse_data && !(status_byte & KBC_MOUSE_DATA)) return 1;
-    if(!mouse_data && (status_byte & KBC_MOUSE_DATA)) return 1;
+    if(mouse_data && !(status_byte & KBC_MOUSE_DATA)) return 1; // if we want to read mouse data but the mouse data bit is not set, discard the value read from the output buffer
+    if(!mouse_data && (status_byte & KBC_MOUSE_DATA)) return 1; // if we want to read keyboard data but the mouse data bit is set, discard the value read from the output buffer
     return 0;
   }
   return 1;
 }
+
 
 int reset_interrupts(){
   // Restore interrupts
@@ -94,22 +111,21 @@ int reset_interrupts(){
 }
 
 bool process_scancode() {
-  kbc_ih(); // Call interrupt handler
-  // if MSB of the scancode == 0, it's a makecode; else if MSB == 1, it's a breakcode
+  kbc_ih();
   last_byte_read = get_last_byte_read();
-  if (second_byte) { // we are reading the second byte of the scancode
+  if (second_byte) {
     scancode[0] = TWO_BYTE_PREFIX;
-    scancode[1] = last_byte_read; // 2-bytes read
+    scancode[1] = last_byte_read;
     second_byte = false; // reset the flag
     return true;
 
-  } else { // not reading the second byte of a scancode
+  } else {
 
-    if (last_byte_read == TWO_BYTE_PREFIX) { // if this is true, the scancode we are reading has 2 bytes
-      second_byte = true; // in the next IRQ 1 line raise, the second byte of the scancode will be read
-      // do nothing more, only print in the next iteration (IRQ 1 line raise)
+    if (last_byte_read == TWO_BYTE_PREFIX) {
+      second_byte = true;
       return false; // Not ready to print yet, need to wait for the second byte to be read
     } else {
+      // A single byte scancode was completely read
       scancode[0] = 0;
       scancode[1] = last_byte_read;
       second_byte = false;
