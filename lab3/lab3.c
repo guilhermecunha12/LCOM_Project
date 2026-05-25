@@ -38,9 +38,8 @@ int(kbd_test_scan)() {
   message msg;
   int r; // return value of the driver_receive function
   uint8_t bit_no = 1; // index position in the bitmask msg.m_notify.interrupts
-  bool second_byte = false; // flag that will be used in case the read scancode has two bytes
   if (kbd_subscribe_int(&bit_no)) return 1; // bit_no is now the mask 000....010
-  uint8_t scancode;
+  bool running = true;
   do { /* loop terminates with the breakcode of the ESC key (0x81) */
       /* Get a request message. */
       if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
@@ -51,22 +50,17 @@ int(kbd_test_scan)() {
           switch (_ENDPOINT_P(msg.m_source)) {
               case HARDWARE: /* hardware interrupt notification */
                   if (msg.m_notify.interrupts & bit_no) { /*subscribed interrupt */
-                    kbc_ih();
-                    // if MSB of the scancode == 0, it's a makecode; else if MSB == 1, it's a breakcode
-                    scancode = get_scancode();
-                    bool make = !(MSB(scancode));
-                    if (second_byte) { // we are reading the second byte of the scancode
-                      uint8_t bytes[2] = {TWO_BYTE_PREFIX, scancode}; // 2-bytes read
-                      kbd_print_scancode(make, 2, bytes);
-                      second_byte = false; // reset the flag
-
-                    } else { // not reading the second byte of a scancode
-
-                      if (scancode == TWO_BYTE_PREFIX) { // if this is true, the scancode we are reading has 2 bytes
-                        second_byte = true; // in the next IRQ 1 line raise, the second byte of the scancode will be read
-                        // do nothing more, only print in the next iteration (IRQ 1 line raise)
-                      } else {
-                        kbd_print_scancode(make, 1, &scancode);
+                    if(process_scancode()) {
+                      uint8_t* scancode = get_scancode();
+                      // Detect break code
+                      if(scancode[1] == ESC_BREAKCODE){
+                        running = false;
+                      }
+                      if(scancode[0] == TWO_BYTE_PREFIX){
+                        kbd_print_scancode(is_make_code(scancode), 2, scancode);
+                      }
+                      else{
+                        kbd_print_scancode(is_make_code(scancode), 1, &scancode[1]);
                       }
                     }
                   }
@@ -77,7 +71,7 @@ int(kbd_test_scan)() {
       } else { /* received a standard message, not a notification */
           /* no standard messages expected: do nothing */
       }
-  } while(scancode != ESC_BREAKCODE );
+  } while(running);
 
   if (kbd_unsubscribe_int()) return 1;
 
@@ -125,8 +119,7 @@ int(kbd_test_timed_scan)(uint8_t n) {
   int ipc_status;
   message msg;
 
-  bool second_byte = false; // flag for the 2 byte scancode
-  uint8_t scancode;
+  bool running = true; // flag for the while loop
   
   // Timer 0 interrupt bit, used for the idle time
   uint8_t timer0_int_bit = 0;
@@ -161,39 +154,31 @@ int(kbd_test_timed_scan)(uint8_t n) {
             // Timer 0 interrupt
             timer_int_handler();
           }
-
-          if(msg.m_notify.interrupts & kbd_int_bit){
-            kbc_ih();
-            scancode = get_scancode();
-            bool make = !(MSB(scancode));
-
-            if (second_byte) { // we are reading the second byte of the scancode
-              scancode = get_scancode();
-              uint8_t bytes[2] = {TWO_BYTE_PREFIX, scancode}; // 2-bytes read
-              kbd_print_scancode(make, 2, bytes);
-              second_byte = false; // reset the flag
-
-            } else { // not reading the second byte of a scancode
-              scancode = get_scancode();
-              if (scancode == TWO_BYTE_PREFIX) { // if this is true, the scancode we are reading has 2 bytes
-                second_byte = true; // in the next IRQ 1 line raise, the second byte of the scancode will be read
-                // do nothing more, only print in the next iteration (IRQ 1 line raise)
-              } else {
-                kbd_print_scancode(make, 1, &scancode);
+          if (msg.m_notify.interrupts & kbd_int_bit) { /*subscribed interrupt */
+            if(process_scancode()) {
+              uint8_t* scancode = get_scancode();
+              // Detect break code
+              if(scancode[1] == ESC_BREAKCODE){
+                running = false;
+              }
+              if(scancode[0] == TWO_BYTE_PREFIX){
+                kbd_print_scancode(is_make_code(scancode), 2, scancode);
+              }
+              else{
+                kbd_print_scancode(is_make_code(scancode), 1, &scancode[1]);
               }
             }
-            // Resets idle time counter due to key press
-            set_counter(0);
+            set_counter(0); // reset timer counter to 0 since we had a keyboard interrupt
           }
           break;
         default:
           break;
 
       }
-    }else{/* received a standard message, not a notification */
-        /* no standard messages expected: do nothing */  
+    }else{/* received a standard message, not a notification
+        no standard messages expected: do nothing   */ 
     }
-  } while((get_counter() < n * 60) && scancode != ESC_BREAKCODE);
+  } while((get_counter() < n * 60) && running); 
   // unsubscribe timer 0
   if(timer_unsubscribe_int()){
     return 1;
@@ -206,3 +191,4 @@ int(kbd_test_timed_scan)(uint8_t n) {
 
   return 0;
 }
+
