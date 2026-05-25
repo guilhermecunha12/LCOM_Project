@@ -11,8 +11,27 @@
  */
 void (kbc_ih) ();
 
+/**
+ * @brief Function to subscribe to keyboard interrupts.
+ * @details The value of *bit_no can never be greater than 7, otherwise, an overflow will occur when updating it with the bit mask.
+ * @param bit_no Initially, a pointer to the bit position in the interrupt mask to be set to 1 in case of an interrupt. On success, its value is updated with the corresponding bit mask with a 1 in the *bit_no position (i.e., 1 << *bit_no).
+ * @return int Returns 0 on success, 1 otherwise.
+ */
 int kbd_subscribe_int(uint8_t* bit_no);
+
+/**
+ * @brief Function to unsubscribe from keyboard interrupts.
+ * @return int Returns 0 on success, 1 otherwise.
+ */
 int kbd_unsubscribe_int();
+
+/**
+ * @brief Reads a scancode from the KBC output buffer.
+ * @details This function reads a single byte from the KBC output buffer and stores it in the provided variable.
+ * @param byte Pointer to the variable where the read byte will be stored.
+ * @return int 0 if successful, 1 otherwise.
+ */
+int read_scancode(uint8_t *byte);
 
 /**
  * @brief Getter function to access the scancode array.
@@ -63,7 +82,7 @@ int reset_interrupts();
 
 /**
  * @brief Function to process a key's scancode (one or two bytes).
- * @details This function is responsible for the bulk of work related to processing a scancode.
+ * @details This function is responsible for the bulk of work related to processing a scancode. Works as a higher level wrapper, abstracting lower level details by using the other functions defined in this file.
  * Calls the interrupt handler defined above to read the current byte issued from the KBC and available in the output buffer, then checks whether it's a single-byte or two-byte scancode and populates the scancode array accordingly.
  * @return true if the scancode has been completely read (whether it's a single-byte or two-byte scancode)
  * @return false if we are still reading a two-byte scancode 

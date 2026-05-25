@@ -16,7 +16,7 @@ static uint8_t last_byte_read;
 
 /**
  * @brief This variable is used to indicate whether we are reading the second byte of a scancode.
- * @details Set to true when the first byte of a two-byte scancode is received, being updated inside the process_scancode() function. Reset to false after the second byte is read.
+ * @details Set to true when the first byte of a two-byte scancode is received, being updated inside the process_scancode() function. Reset to false after the second byte is read or if a single-byte scancode is read.
  */
 static bool second_byte = false;
 
@@ -34,16 +34,12 @@ int (kbd_subscribe_int) (uint8_t *bit_no){
   return 0;
 }
 
+
 int (kbd_unsubscribe_int)(){
   return sys_irqrmpolicy(&kbd_hook_id) ? 1 : 0;
 }
 
-/**
- * @brief Reads a scancode from the KBC output buffer.
- * @details This function reads a single byte from the KBC output buffer and stores it in the provided variable.
- * @param byte Pointer to the variable where the read byte will be stored.
- * @return int 0 if successful, 1 otherwise.
- */
+
 int read_scancode(uint8_t *byte){
   return read_KBC_output_buf(byte, 0) ? 1 : 0;
 }
