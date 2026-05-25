@@ -38,7 +38,9 @@ void init_game_state(GameState* state) {
     state->type = MAIN_MENU;
     state->global_data.current_night = 0; // not started yet
     // TODO: initialize mouse coordinates in global data
-    state->data.main_menu.selected_option = 0; // first option selected
+    
+    // Initialization of the main menu considering the current night
+    state->data.main_menu = init_main_menu(state->global_data.current_night);
 }
 
 
