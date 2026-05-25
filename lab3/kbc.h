@@ -57,15 +57,6 @@ uint8_t is_make_code(uint8_t scancode[2]);
 
 
 /**
- * @brief Function to convert a break code to a make code.
- * @details If the scancode is already a make code, it is returned as is. If it's a break code, it is converted to a make code by setting the most significant bit to 0 (i.e., performing a bitwise AND with 0x7F). Useful for mapping codes to keys simplifying the switch case since for a make and a break code are related to the same key, although they differ in the MSB.
- * @param scancode Pointer to the scancode array.
- * @return uint8_t The make code corresponding to the given scancode, whether it's already a make code or a break code.
- */
-uint8_t convert_break_code_to_make_code(uint8_t scancode[2]);
-
-
-/**
  * @brief Function that writes a command byte to a specified port, with retries if the KBC input buffer is full.
  * @details This function attempts to write a command byte to a specified port.
  * @param port The port to which the command byte should be written.
