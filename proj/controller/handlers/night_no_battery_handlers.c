@@ -1,4 +1,5 @@
 #include "processor.h"
+#include "../handlers/helpers/player_screen_movement_handler.h"
 
 void handle_night_no_battery_timer(GameState* state, const GameEvent* event) {
     NightNoBatteryState* blackout = &state->data.night_no_battery;
@@ -32,5 +33,14 @@ void handle_night_no_battery_timer(GameState* state, const GameEvent* event) {
     if (attacked) {
         state->type = JUMPSCARE;
         state->data.jumpscare = init_jumpscare(FREDDY);
+    }
+}
+
+void handle_night_no_battery_keyboard(GameState* state, const GameEvent* event) {
+    if(event->data.key == KEY_LEFT) {
+        move_player_screen_left(state);
+    }
+    else if(event->data.key == KEY_RIGHT) {
+        move_player_screen_right(state);
     }
 }

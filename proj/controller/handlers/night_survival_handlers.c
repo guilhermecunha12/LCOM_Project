@@ -1,6 +1,7 @@
 #include "processor.h"
 #include "../../view/ui.h"
 #include "../../view/ui_utils.h"
+#include "../handlers/helpers/player_screen_movement_handler.h"
 
 void handle_night_survival_mouse_click(GameState* state, const GameEvent* event) {
     int mouse_x = state->global_data.mouse_x;
@@ -144,5 +145,18 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
             state->data.jumpscare = init_jumpscare(night_state->animatronics[name].name);
             return;
         }
+    }
+}
+
+void handle_night_survival_keyboard(GameState* state, const GameEvent* event) {
+    if(event->data.key == KEY_SPACE) {
+        state->data.night_survival.camera_monitor_up = !state->data.night_survival.camera_monitor_up; // switch    
+    }
+    // Add remaining functionality
+    else if(event->data.key == KEY_LEFT) {
+        move_player_screen_left(state);
+    }
+    else if(event->data.key == KEY_RIGHT) {
+        move_player_screen_right(state);
     }
 }

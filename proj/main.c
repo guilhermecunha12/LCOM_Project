@@ -41,6 +41,8 @@ void init_game_state(GameState* state) {
     
     // Initialization of the main menu considering the current night
     state->data.main_menu = init_main_menu(state->global_data.current_night);
+    
+    state->global_data.background_offset_x = 0; // Start with no background offset
 }
 
 

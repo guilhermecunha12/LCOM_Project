@@ -99,6 +99,9 @@ typedef struct {
     // mouse coordinates for displaying it
     int mouse_x;
     int mouse_y;
+
+    // Shared data for states that have camera movement (e.g., night survival and night no battery)
+    int background_offset_x;
 } PersistentData;
  
 // Camera IDs

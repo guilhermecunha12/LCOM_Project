@@ -9,9 +9,6 @@ typedef void (*EventHandler)(GameState*, const GameEvent*);
 // Function to get the appropriate event handler based on the current state and event type
 EventHandler get_event_handler(StateType state, EventType event);
 
-// Handlers
-void handle_main_menu_keyboard(GameState* state, const GameEvent* event);
-
 /**
  * @brief Handler for mouse movement events, which updates the mouse coordinates in the global game state. It is used in MAIN_MENU and NIGHT_SURVIVAL states.
  * @param state Pointer to the current game state, which will be modified with the new mouse coordinates.
@@ -83,6 +80,31 @@ void handle_night_no_battery_timer(GameState* state, const GameEvent* event);
  * @param event Pointer to the current game event, which contains the timer tick data.
  */
 void handle_jumpscare_timer(GameState* state, const GameEvent* event);
+
+
+/* Keyboard Related Handlers */
+
+/**
+ * @brief Handler for keyboard events in the main menu state. This handler manages keyboard input for navigating the main menu options (e.g., moving selection up/down and executing the selected option).
+ * @param state Pointer to the current game state, which will be modified to update the main menu selection.
+ * @param event Pointer to the current game event, which contains the keyboard input data.
+ */
+void handle_main_menu_keyboard(GameState* state, const GameEvent* event);
+
+
+/**
+ * @brief Handler for keyboard events in the night survival state. This handler manages keyboard input for controlling the player's actions during the night survival state (e.g., moving the camera view left or right) or consulting the camera menu by pressing space.
+ * @param state Pointer to the current game state, which will be modified based on the player's keyboard input during the night survival state.
+ * @param event Pointer to the current game event, which contains the keyboard input data.
+ */
+void handle_night_survival_keyboard(GameState* state, const GameEvent* event);
+
+/**
+ * @brief Handler for keyboard events in the night no battery state. This handler manages keyboard input such as moving the camera view left or right
+ * @param state Pointer to the current game state, which will be modified based on the player's keyboard input during the night no battery state.
+ * @param event Pointer to the current game event, which contains the keyboard input data.
+ */
+void handle_night_no_battery_keyboard(GameState* state, const GameEvent* event);
 
 #endif /* HANDLERS_H */
 
