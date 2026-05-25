@@ -6,6 +6,7 @@
 static EventHandler eht[NUM_STATES][NUM_EVENTS] = {
 
     [MAIN_MENU] = {
+        // Guarantees that only presses are registered in the main menu
         [KEYBOARD_PRESS] = handle_main_menu_keyboard,
         [MOUSE_LB_CLICK] = handle_main_menu_mouse_click,
         [MOUSE_MOVE] = handle_mouse_move,
@@ -17,13 +18,14 @@ static EventHandler eht[NUM_STATES][NUM_EVENTS] = {
     },
 
     [NIGHT_SURVIVAL] = {
+        [KEYBOARD_PRESS] = handle_night_survival_keyboard,
         [MOUSE_LB_CLICK] = handle_night_survival_mouse_click,
         [MOUSE_MOVE] = handle_mouse_move,
-        
         [TIMER_TICK] = handle_night_survival_timer,
     },
 
     [NIGHT_NO_BATTERY] = {
+        [KEYBOARD_PRESS] = handle_night_no_battery_keyboard,
         [TIMER_TICK] = handle_night_no_battery_timer,
     },
 

@@ -64,7 +64,6 @@ uint8_t is_make_code(uint8_t scancode[2]){
   return !(MSB(scancode[1]));
 }
 
-
 int write_KBC_command(uint8_t port, uint8_t command_byte){
   int n = N_TRIES;
   uint8_t status_byte;

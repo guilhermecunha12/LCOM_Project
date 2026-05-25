@@ -8,6 +8,10 @@
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
 
+// Step offset value (offset applied to background for movement, change this beforehand)
+#define BACKGROUND_STEP_OFFSET 5
+#define BACKGROUND_MAX_OFFSET 100
+
 // Main Menu UI
 #define MAIN_MENU_NEW_GAME_BUTTON_X 400
 #define MAIN_MENU_NEW_GAME_BUTTON_Y 300

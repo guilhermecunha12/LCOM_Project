@@ -55,6 +55,7 @@ uint8_t get_last_byte_read();
  */
 uint8_t is_make_code(uint8_t scancode[2]);
 
+
 /**
  * @brief Function that writes a command byte to a specified port, with retries if the KBC input buffer is full.
  * @details This function attempts to write a command byte to a specified port.

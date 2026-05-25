@@ -7,6 +7,7 @@
 #include "state.h"
 #include "controller/controller.h"
 #include "view/view.h"
+#include "input/keyboard.h"
 
 
 int main(int argc, char *argv[]) {
@@ -37,7 +38,11 @@ void init_game_state(GameState* state) {
     state->type = MAIN_MENU;
     state->global_data.current_night = 0; // not started yet
     // TODO: initialize mouse coordinates in global data
-    state->data.main_menu.selected_option = 0; // first option selected
+    
+    // Initialization of the main menu considering the current night
+    state->data.main_menu = init_main_menu(state->global_data.current_night);
+    
+    state->global_data.background_offset_x = 0; // Start with no background offset
 }
 
 
@@ -78,17 +83,7 @@ int(proj_main_loop)(int argc, char* argv[]) {
 
                     // Keyboard interrupt
                     if (msg.m_notify.interrupts & kbd_irq_set) {
-                        if (process_scancode()) { // implement in kbc.c
-
-                            if (is_keyboard_press()) { // TODO: implement in kbc.c
-                                current_event.type = KEYBOARD_PRESS;
-                            } else {
-                                current_event.type = KEYBOARD_RELEASE; // TODO: needed?
-                            }
-                            
-                            // We could pass the key already decoded: that function itself would have to call get scancode internally and map it to a key enum
-                            current_event.data.scancode = get_key(); // TODO: this function only returns the last byte read, check if we need to return the whole scancode (2 bytes) in case of 2-byte scancodes (like arrow keys)
-                            
+                        if (update_game_event(&current_event) == 0) { // if the scancode was successfully processed into a game event
                             process_event(&current_state, &current_event);
                         }
                     }

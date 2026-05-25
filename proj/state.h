@@ -57,11 +57,21 @@ typedef enum {
     NUM_EVENTS
 } EventType;
 
+typedef enum {
+    KEY_MENU_UP,
+    KEY_MENU_DOWN,
+    KEY_LEFT,
+    KEY_RIGHT,
+    KEY_ENTER,
+    KEY_SPACE,
+    KEY_ESCAPE,
+} Key;
+
 // Tagged Union - TODO: instead of scancodes and mouse_packets, have enums that represent the keys
 typedef struct {
     EventType type;
     union { // TODO: simplify this structs if only one field is needed for each event type
-        uint8_t scancode; // TODO: this scancode can have more than just 1 byte (use uint16_t? or there can be 3 bytes?)
+        Key key;
         struct {int16_t delta_x; int16_t delta_y;} mouse_coords;
         int timer_ticks;
     } data;
@@ -89,6 +99,9 @@ typedef struct {
     // mouse coordinates for displaying it
     int mouse_x;
     int mouse_y;
+
+    // Shared data for states that have camera movement (e.g., night survival and night no battery)
+    int background_offset_x;
 } PersistentData;
  
 // Camera IDs
@@ -101,6 +114,7 @@ typedef enum {
 
 typedef struct {
     MainMenuOption selected_option; // for keyboard navigation in main menu; 0 for no option selected
+    int num_options; // Allows a variable number of options in the main menu (according to the current night)
 } MainMenuState;
 
 typedef struct {
@@ -178,6 +192,19 @@ typedef struct {
 } GameState;
 
 /* Initializers */
+
+MainMenuState init_main_menu(int current_night) {
+    MainMenuState state;
+    state.selected_option = 0; // No option selected
+    // Decides the number of options based on the current night and checks if it's a fresh start or a continue
+    if(current_night == 0) {
+        state.num_options = 2; // New Game and Exit
+    } else {
+        state.num_options = 3; // Continue, New Game, and Exit
+    }
+    return state;
+}
+
 
 JumpscareState init_jumpscare(AnimatronicName animatronic_name) {
     JumpscareState state;
