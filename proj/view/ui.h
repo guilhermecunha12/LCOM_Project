@@ -1,0 +1,73 @@
+#ifndef UI_H
+#define UI_H
+
+// TODO: Define constants for where UI elements are drawn on the screen
+// These are dummy values
+
+// Screen dimensions; TODO: define these in accordance to the graphics mode used
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 600
+
+// Step offset value (offset applied to background for movement, change this beforehand)
+#define BACKGROUND_STEP_OFFSET 5
+#define BACKGROUND_MAX_OFFSET 100
+
+// Main Menu UI
+#define MAIN_MENU_NEW_GAME_BUTTON_X 400
+#define MAIN_MENU_NEW_GAME_BUTTON_Y 300
+#define MAIN_MENU_NEW_GAME_BUTTON_W 200
+#define MAIN_MENU_NEW_GAME_BUTTON_H 60
+
+#define MAIN_MENU_CONTINUE_BUTTON_X 400
+#define MAIN_MENU_CONTINUE_BUTTON_Y 360
+#define MAIN_MENU_CONTINUE_BUTTON_W 200
+#define MAIN_MENU_CONTINUE_BUTTON_H 60
+
+#define MAIN_MENU_EXIT_GAME_BUTTON_X 400
+#define MAIN_MENU_EXIT_GAME_BUTTON_Y 400
+#define MAIN_MENU_EXIT_GAME_BUTTON_W 200
+#define MAIN_MENU_EXIT_GAME_BUTTON_H 60
+
+// Night Survival UI (doors, cameras, power display, etc.)
+
+#define NIGHT_CAMERA_1A_X 150
+#define NIGHT_CAMERA_1A_Y 100
+#define NIGHT_CAMERA_1A_W 30
+#define NIGHT_CAMERA_1A_H 30
+
+#define NIGHT_CAMERA_1B_X 250
+#define NIGHT_CAMERA_1B_Y 100
+#define NIGHT_CAMERA_1B_W 30
+#define NIGHT_CAMERA_1B_H 30
+
+#define NIGHT_CAMERA_2A_X 350
+#define NIGHT_CAMERA_2A_Y 100
+#define NIGHT_CAMERA_2A_W 30
+#define NIGHT_CAMERA_2A_H 30
+
+#define NIGHT_CAMERA_2B_X 450
+#define NIGHT_CAMERA_2B_Y 100
+#define NIGHT_CAMERA_2B_W 30
+#define NIGHT_CAMERA_2B_H 30
+
+#define NIGHT_LEFT_DOOR_BUTTON_X 50
+#define NIGHT_LEFT_DOOR_BUTTON_Y 300
+#define NIGHT_LEFT_DOOR_BUTTON_W 40
+#define NIGHT_LEFT_DOOR_BUTTON_H 40
+
+#define NIGHT_RIGHT_DOOR_BUTTON_X 730
+#define NIGHT_RIGHT_DOOR_BUTTON_Y 300
+#define NIGHT_RIGHT_DOOR_BUTTON_W 40
+#define NIGHT_RIGHT_DOOR_BUTTON_H 40
+
+#define NIGHT_LEFT_LIGHT_BUTTON_X 150
+#define NIGHT_LEFT_LIGHT_BUTTON_Y 300
+#define NIGHT_LEFT_LIGHT_BUTTON_W 40
+#define NIGHT_LEFT_LIGHT_BUTTON_H 40
+
+#define NIGHT_RIGHT_LIGHT_BUTTON_X 650
+#define NIGHT_RIGHT_LIGHT_BUTTON_Y 300
+#define NIGHT_RIGHT_LIGHT_BUTTON_W 40
+#define NIGHT_RIGHT_LIGHT_BUTTON_H 40
+
+#endif /* UI_H */

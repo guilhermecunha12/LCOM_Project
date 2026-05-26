@@ -70,6 +70,19 @@ int16_t get_delta(bool sign_bit, uint8_t mouse_byte);
  */
 void parse_first_byte(struct packet* pp, bool* x_sign_bit, bool* y_sign_bit, uint8_t mouse_byte);
 
+
+/**
+ * @brief Checks if the current mouse packet corresponds to a mouse left button click.
+ * @return true if the left button is pressed in the current mouse packet, false otherwise.
+ */
+bool is_mouse_click();
+
+/**
+ * @brief Checks if the current mouse packet corresponds to a mouse movement (i.e., if there is any non-zero delta in the x or y coordinates).
+ * @return true if there is a movement in the current mouse packet, false otherwise.
+ */
+bool is_mouse_move();
+
 /**
  * @brief Performs a step in processing a mouse packet.
  * @details This functions is called every time a new interrupt is received from the mouse and reads the new byte of the packet, updates the packet struct being read, and checks if the packet is complete (i.e., all bytes have been read). The uses a static variable byte_index to keep track of the current byte being read (0, 1 or 2) and updates it accordingly. When a packet is complete, the function resets byte_index to 0 to start reading the next packet. The function uses a naive way to find out the beginning of data packets, which is to check if the 3rd bit of the first byte is set (as it should be for the first byte of any packet) when it is waiting for the first byte (i.e., byte_index == 0). 
