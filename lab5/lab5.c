@@ -65,7 +65,7 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
     // Subscribe to the keyboard interrupts to wait for the ESC breakcode to exit the graphics mode
     uint8_t bit_no = 1;
     if(kbd_subscribe_int(&bit_no)) return 1;
-    uint8_t scancode;
+    uint8_t scancode = 0;
     int ipc_status;
     message msg;
     int r;
@@ -77,9 +77,8 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
         if (is_ipc_notify(ipc_status)) {
             switch(_ENDPOINT_P(msg.m_source)) {
                 case HARDWARE:
-                    if (msg.m_notify.interrupts & bit_no) {
-                        kbc_ih();
-                        scancode = get_scancode();
+                    if (msg.m_notify.interrupts & bit_no && process_scancode()) {
+                        scancode = get_scancode()[1];
                     }
                     break;
                 default:
@@ -110,7 +109,7 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
     // Subscribe to the keyboard interrupts to wait for the ESC breakcode to exit the graphics mode
     uint8_t bit_no = 1;
     if(kbd_subscribe_int(&bit_no)) return 1;
-    uint8_t scancode;
+    uint8_t scancode = 0;
     int ipc_status;
     message msg;
     int r;
@@ -122,9 +121,8 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
         if (is_ipc_notify(ipc_status)) {
             switch(_ENDPOINT_P(msg.m_source)) {
                 case HARDWARE:
-                    if (msg.m_notify.interrupts & bit_no) {
-                        kbc_ih();
-                        scancode = get_scancode();
+                    if (msg.m_notify.interrupts & bit_no && process_scancode()) {
+                        scancode = get_scancode()[1];
                     }
                     break;
                 default:

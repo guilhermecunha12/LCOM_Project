@@ -2,29 +2,46 @@
 #include "assets.h"
 #include "sprite.h"
 
-// TODO: review how to access xpm files
-#include "xpm/cursor.xpm" 
-#include "xpm/bg.xpm"
+#include "xpm/menu/menu.xpm"
+#include "xpm/menu/title.xpm"
+#include "xpm/menu/newgame.xpm"
+#include "xpm/menu/newgame_sel.xpm"
+#include "xpm/menu/continue.xpm"
+#include "xpm/menu/continue_sel.xpm"
+#include "xpm/menu/custom_night.xpm"
+#include "xpm/menu/night1.xpm"
+#include "xpm/menu/night2.xpm"
+#include "xpm/menu/night3.xpm"
+#include "xpm/menu/night4.xpm"
+#include "xpm/menu/night5.xpm"
 
-static Sprite* cursor_sprite = NULL;
-static Sprite* main_menu_bg_sprite = NULL;
+static Sprite* assets[NUM_ASSETS] = {NULL};
 
-// TODO: review how to access xpm files...
 void load_all_assets() {
-    cursor_sprite = create_sprite(cursor_xpm); // the argument would be the xpm files
-    main_menu_bg_sprite = create_sprite(bg_xpm);
+    assets[MENU_BG] = create_sprite((xpm_map_t) menu_xpm);
+    assets[GAME_TITLE] = create_sprite((xpm_map_t) title_xpm);
+    assets[OPT_NEWGAME] = create_sprite((xpm_map_t) newgame_xpm);
+    assets[OPT_NEWGAME_SEL] = create_sprite((xpm_map_t) newgame_sel_xpm);
+    assets[OPT_CONTINUE] = create_sprite((xpm_map_t) continue_xpm);
+    assets[OPT_CONTINUE_SEL] = create_sprite((xpm_map_t) continue_sel_xpm);
+    assets[MENU_CUSTOM_NIGHT] = create_sprite((xpm_map_t) custom_night_xpm);
+    assets[MENU_NIGHT1] = create_sprite((xpm_map_t) night1_xpm);
+    assets[MENU_NIGHT2] = create_sprite((xpm_map_t) night2_xpm);
+    assets[MENU_NIGHT3] = create_sprite((xpm_map_t) night3_xpm);
+    assets[MENU_NIGHT4] = create_sprite((xpm_map_t) night4_xpm);
+    assets[MENU_NIGHT5] = create_sprite((xpm_map_t) night5_xpm);
 }
 
 void unload_all_assets() {
-    destroy_sprite(cursor_sprite);
-    destroy_sprite(main_menu_bg_sprite);
+    for (int i = 0; i < NUM_ASSETS; i++) {
+        destroy_sprite(assets[i]);
+        assets[i] = NULL;
+    }
 }
 
-// PUBLIC Getter functions
-Sprite* get_cursor_sprite() {
-    return cursor_sprite;
+Sprite* get_asset(xpmASSET asset) {
+    if (asset < 0 || asset >= NUM_ASSETS) return NULL;
+    return assets[asset];
 }
 
-Sprite* get_main_menu_bg_sprite() {
-    return main_menu_bg_sprite;
-}
+
