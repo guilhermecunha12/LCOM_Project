@@ -84,4 +84,24 @@ int(vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color);
  */
 int(vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color);
 
+
+/**
+ * @brief Initializes the back buffer that will be used for 
+ * double buffering
+ * 
+ * @return 0 on success, non-zero otherwise.
+ */
+int(initialize_back_buffer)(void);
+
+/**
+ * @brief Swaps the RAM contents of the back buffer to videoRAM 
+ * to the actual display the pixels on screen.
+ */
+void swap_buffers(void);
+
+/**
+ * @brief Clears the back buffer before drawing a new frame.
+ */
+void clear_back_buffer(void);
+
 #endif

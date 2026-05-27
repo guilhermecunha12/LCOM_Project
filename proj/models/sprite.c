@@ -1,7 +1,6 @@
 #include "sprite.h"
 
 Sprite* create_sprite(xpm_map_t xpm){
-
   // Allocate space for the object 
   Sprite* sp = (Sprite *) malloc (sizeof(Sprite));
   xpm_image_t img;

@@ -28,4 +28,9 @@ Sprite* create_sprite(xpm_map_t xpm);
  */
 void destroy_sprite(Sprite* sp);
 
+
+/**
+ * @brief 
+ */
+
 #endif

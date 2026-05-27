@@ -51,8 +51,8 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
                           uint16_t width, uint16_t height, uint32_t color) {
      
     // Call vg_init. It will map the Vram memory to the process logicla memory and initiliaze mode, respectly.
-    if(config_Vram(mode)) return 1;
-    if(vg_set_mode(mode)) return 1;
+    if(init_video_card(mode)) return 1;
+    clear_back_buffer();
 
     // Draw the rectangle by drawing horizontal lines height times
     for(unsigned y_off = 0; y_off < height; y_off++) {
@@ -61,6 +61,8 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
             return 1;
         }
     }
+
+    swap_buffers();
 
     // Subscribe to the keyboard interrupts to wait for the ESC breakcode to exit the graphics mode
     uint8_t bit_no = 1;
@@ -101,10 +103,12 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
 
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
     // We should switch to VBE mode 0x105
-    if(config_Vram(0x105)) return 1;
-    if(vg_set_mode(0x105)) return 1;
+    if(init_video_card(0x105)) return 1;
+    clear_back_buffer();
 
     if (draw_xpm(xpm, x, y)) return 1;
+
+    swap_buffers();
 
     // Subscribe to the keyboard interrupts to wait for the ESC breakcode to exit the graphics mode
     uint8_t bit_no = 1;

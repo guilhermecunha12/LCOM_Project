@@ -2,22 +2,33 @@
 #include "video.h"
 
 static char *video_mem;
+static char *back_buffer; 
 
 static uint16_t h_res;
 static uint16_t v_res;
 static vbe_mode_info_t vmi;
+
+static unsigned frame_buffer_size;
 static unsigned bytes_per_pixel;
 
 
 int(init_video_card)(uint16_t mode){
   if(config_Vram(mode)) return 1;
+  if(initialize_back_buffer()) return 1;
   if(vg_set_mode(mode)) return 1;
   return 0;
 }
 
+
 int(switch_text_mode)(void){
+  if(back_buffer != NULL) {
+    free(back_buffer);
+    back_buffer = NULL;
+  }
   return vg_exit() ? 1 : 0;
 }
+
+
 
 enum xpm_image_type(get_color_mode)(){
   // Switch between the provided bits per pixel (as they mape to unique colors formats)
@@ -79,7 +90,7 @@ int config_Vram(uint16_t mode){
 
   // Set the base address of the vram and its size
   unsigned int frame_buffer_base = vmi.PhysBasePtr;
-  unsigned int frame_buffer_size = h_res * v_res * bytes_per_pixel;
+  frame_buffer_size = h_res * v_res * bytes_per_pixel;
 
   /* Grant memory mapping permissions */
   struct minix_mem_range mr;
@@ -118,13 +129,34 @@ int vg_set_mode(uint16_t mode){
 }
 
 
+int initialize_back_buffer(){
+    if(back_buffer != NULL) return 0; 
+
+    back_buffer = malloc(frame_buffer_size);
+    if(back_buffer == NULL) return 1;
+
+    // Initializes back buffer from the info extracted of our    current mode
+    memset(back_buffer, 0, frame_buffer_size);
+    return 0;
+}
+
+void swap_buffers(){
+    if(back_buffer == NULL) return;
+    memcpy(video_mem,back_buffer, frame_buffer_size);
+}
+
+void clear_back_buffer(){
+    if(back_buffer == NULL) return;
+    memset(back_buffer, 0, frame_buffer_size);
+}
+
 int vg_draw_pixel (uint16_t x, uint16_t y, uint32_t color) {
   // Check if coordinates are within the screen limits
   if(x > h_res || y > v_res) return 1;
   // Caculate the position in VRAM of the pixel to be drawn 
   unsigned position = ((y * h_res) + x) * bytes_per_pixel;
-  // Copy memory from color to VRAM position. This couls be done trough a for loop.
-  if (memcpy(&video_mem[position], &color, bytes_per_pixel) == NULL) return 1;
+  // Copy memory from color to back buffer position. This couls be done trough a for loop.
+  if (memcpy(&back_buffer[position], &color, bytes_per_pixel) == NULL) return 1;
   return 0;
 }
 
@@ -135,3 +167,5 @@ int (vg_draw_hline) (uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
   }
   return 0;
 }
+
+
