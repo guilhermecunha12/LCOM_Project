@@ -2,6 +2,7 @@
 #define ANIMATRONIC_H
 
 #include <stdbool.h>
+#include "../state.h"
 
 typedef enum { FREDDY, BONNIE, CHICA, FOXY, NUM_ANIMATRONICS } AnimatronicName;
 

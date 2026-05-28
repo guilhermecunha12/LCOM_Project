@@ -247,7 +247,7 @@ NightSurvivalState init_night_survival(int current_night) {
     state.static_animation_timer = 0;
 
     AnimatronicName animatronics[NUM_ANIMATRONICS];
-    initialize_animatronics(&animatronics, current_night);
+    initialize_animatronics(animatronics, current_night);
 
     return state;
 }

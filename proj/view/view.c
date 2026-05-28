@@ -1,6 +1,7 @@
 #include "handlers/renderer.h"
 #include "../models/assets.h"
 #include "../models/sprite.h"
+#include "../../lab5/video.h"
 
 void draw_mouse(const GameState* state) {
     // only draw the mouse in states where it should be visible
@@ -15,6 +16,8 @@ void draw_mouse(const GameState* state) {
 
 void render_frame(const GameState* state) {
     if (state->type >= NUM_STATES) return;
+
+    clear_back_buffer();
   
     RenderHandler handler = get_render_handler(state->type);
 
@@ -23,5 +26,5 @@ void render_frame(const GameState* state) {
     }
 
     draw_mouse(state); // Draw the mouse on top of everything else
-    swap_buffers(); // TODO: implement double buffering inside video.c maybe
+    swap_buffers();
 }
