@@ -49,16 +49,16 @@ static void menu_move_down(MainMenuState* mm) {
  */
 static void menu_execute_selected(GameState* state) {
     int sel = state->data.main_menu.selected_option;
-    if (sel == 0) return;
+    if (sel == NO_OPTION) return;
 
     if (state->global_data.current_night == 0) {
         switch (sel) {
-            case 1: // New Game
+            case NEW_GAME: // New Game
                 state->global_data.current_night = 1;
                 state->type = NIGHT_INTRO;
                 state->data.night_intro = init_night_intro();
                 break;
-            case 2: // Exit
+            case EXIT_GAME: // Exit
                 state->type = EXIT;
                 break;
             default:
@@ -66,16 +66,16 @@ static void menu_execute_selected(GameState* state) {
         }
     } else {
         switch (sel) {
-            case 1: // New Game
+            case NEW_GAME: // New Game
                 state->global_data.current_night = 1;
                 state->type = NIGHT_INTRO;
                 state->data.night_intro = init_night_intro();
                 break;
-            case 2: // Continue
+            case CONTINUE: // Continue
                 state->type = NIGHT_INTRO;
                 state->data.night_intro = init_night_intro();
                 break;
-            case 3: // Exit
+            case EXIT_GAME: // Exit
                 state->type = EXIT;
                 break;
             default:
