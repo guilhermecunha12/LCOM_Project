@@ -1,4 +1,5 @@
 #include "sprite.h"
+#include "../../lab5/video.h"
 #include "../view/ui.h"
 #include <lcom/lcf.h>
 

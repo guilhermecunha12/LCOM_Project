@@ -40,8 +40,7 @@ void unload_all_assets() {
 }
 
 Sprite* get_asset(xpmASSET asset) {
-    if (asset < 0 || asset >= NUM_ASSETS) return NULL;
+    if (asset >= NUM_ASSETS) return NULL;
     return assets[asset];
 }
-
 
