@@ -2,16 +2,9 @@
 PROG=proj
 
 # source code files to be compiled
-SRCS = main.c \
-       controller/controller.c \
-       controller/handlers/main_menu_handlers.c \
-       controller/handlers/night_survival_handlers.c \
-       controller/handlers/processor.c \
-       models/assets.c \
-       models/sprite.c \
-       view/ui_utils.c \
-       view/view.c \
-       view/handlers/renderer.c
+.PATH: controller controller/handlers controller/handlers/helpers devices models view view/handlers
+
+SRCS = main.c controller.c main_menu_handlers.c night_survival_handlers.c processor.c player_screen_movement_handler.c subscribe.c assets.c sprite.c ui_utils.c view.c renderer.c models/animatronic.c 
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set

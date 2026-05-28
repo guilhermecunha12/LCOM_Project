@@ -1,13 +1,14 @@
  #include <lcom/lcf.h>
 
 // Device header files
-#include "../lab4/mouse.h"
-#include "../lab3/kbc.h"
+#include "devices/subscribe.h"
+
 
 #include "state.h"
 #include "controller/controller.h"
 #include "view/view.h"
 #include "input/keyboard.h"
+#include "models/assets.h"
 
 
 int main(int argc, char *argv[]) {
@@ -47,8 +48,13 @@ void init_game_state(GameState* state) {
 
 
 int(proj_main_loop)(int argc, char* argv[]) {
-    uint8_t timer_irq_set, kbd_irq_set, mouse_irq_set; // bitmasks for each IRQ; TODO: initialize them
-    if (general_subscribe()) return 1;
+  
+    uint8_t timer_irq_set = IRQ_TIMER;
+    uint8_t kbd_irq_set = IRQ_KBD;
+    uint8_t mouse_irq_set = IRQ_MOUSE;
+    uint16_t vbe_mode = 0x14C; 
+
+    if (subscribe_devices(&timer_irq_set, &kbd_irq_set, &mouse_irq_set, vbe_mode)) return 1;
 
     GameState current_state;
     GameEvent current_event;
@@ -119,6 +125,6 @@ int(proj_main_loop)(int argc, char* argv[]) {
     }
 
     unload_all_assets(); // TODO: review - Frees the heap memory cleanly before Minix exits
-    if (general_unsubscribe()) return 1;
+    if (unsubscribe_devices()) return 1;
     return 0;
 }
