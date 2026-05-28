@@ -108,7 +108,9 @@ typedef struct {
 typedef enum { CAM_1A, CAM_1B, CAM_2A, CAM_2B, } CameraID;
 
 typedef enum {
+    NO_OPTION,
     NEW_GAME,
+    CONTINUE,
     EXIT_GAME
 } MainMenuOption;
 
@@ -195,7 +197,7 @@ typedef struct {
 
 MainMenuState init_main_menu(int current_night) {
     MainMenuState state;
-    state.selected_option = 0; // No option selected
+    state.selected_option = NO_OPTION; // No option selected
     // Decides the number of options based on the current night and checks if it's a fresh start or a continue
     if(current_night == 0) {
         state.num_options = 2; // New Game and Exit
