@@ -30,7 +30,13 @@ void destroy_sprite(Sprite* sp);
 
 
 /**
- * @brief 
+ * @brief Function responsible for drawing the sprite onto the back buffer
+ * @details As in our game the camera will be moving horizontally, we can pass values of x that might be negative thus it is an integer. Also, XPM can specify "none" values that *represent transparent pixels, we must also ignored them by checking the one *considered transparent in the XPM file
+ * @param sp pointer to the sprite that we want to draw
+ * @param x x-coordinate of the sprite's position
+ * @param y y-coordinate of the sprite's position
+ * @return 0 on success, 1 on failure
  */
+int draw_sprite(const Sprite* sp, int x, uint16_t y);
 
 #endif

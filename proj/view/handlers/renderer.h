@@ -11,6 +11,6 @@ void draw_mouse(int x, int y); // TODO: implement: draws the mouse cursor at the
 
 // Render handlers for each state
 void render_main_menu(const GameState* state);
-void render_night_survival(const GameState* state);
+
 
 #endif /* RENDERER_H */

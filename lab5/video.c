@@ -29,7 +29,6 @@ int(switch_text_mode)(void){
 }
 
 
-
 enum xpm_image_type(get_color_mode)(){
   // Switch between the provided bits per pixel (as they mape to unique colors formats)
   switch(vmi.BitsPerPixel){

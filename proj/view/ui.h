@@ -1,8 +1,10 @@
 #ifndef UI_H
 #define UI_H
 
-// Screen resolutions for mode 0x14C
+// Screen resolutions for mode 0x14C (instead of having getters for the values in
+//the lab5 header file, as they are static for the whole project)
 #define VBE_MODE 0x14C
+#define BYTES_PER_PIXEL 4
 #define SCREEN_WIDTH 1152
 #define SCREEN_HEIGHT 864
 
@@ -12,17 +14,24 @@
 
 // Main Menu UI
 
-#define GAME_TITLE 
+#define GAME_TITLE_X 86
+#define GAME_TITLE_Y 117
+#define NEW_GAME_SEL_X 75
+#define NEW_GAME_SEL_Y 476
+#define CONTINUE_SEL_X 75
+#define CONTINUE_SEL_Y 572
+#define NEW_GAME_X 153
+#define NEW_GAME_Y 476
+#define CONTINUE_X 153
+#define CONTINUE_Y 572  
+#define NIGHT_TEXT_X 162
+#define NIGHT_TEXT_Y 627
 
-#define MAIN_MENU_NEW_GAME_BUTTON_X 400
-#define MAIN_MENU_NEW_GAME_BUTTON_Y 300
-#define MAIN_MENU_NEW_GAME_BUTTON_W 200
-#define MAIN_MENU_NEW_GAME_BUTTON_H 60
+#define BOX_NEW_GAME_WIDTH 300
+#define BOX_NEW_GAME_HEIGHT 70
 
-#define MAIN_MENU_CONTINUE_BUTTON_X 400
-#define MAIN_MENU_CONTINUE_BUTTON_Y 360
-#define MAIN_MENU_CONTINUE_BUTTON_W 200
-#define MAIN_MENU_CONTINUE_BUTTON_H 60
+#define BOX_CONTINUE_WIDTH 300
+#define BOX_CONTINUE_HEIGHT 90
 
 
 // Night Survival UI (doors, cameras, power display, etc.)
