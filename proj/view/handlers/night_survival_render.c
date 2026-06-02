@@ -37,6 +37,8 @@ void render_night_survival(const GameState *state) {
             case CAM_5: draw_sprite(get_asset(cam5_assets[key])); break;
             case CAM_6: draw_sprite(get_asset(cam6_assets[key])); break;
             case CAM_7: draw_sprite(get_asset(cam7_assets[key])); break;
+            case LEFT_DOOR: break; //TODO: see what to draw
+            case RIGHT_DOOR: break; //TODO: see what to draw 
         }
     } else {
         // Player is on office
@@ -52,7 +54,7 @@ void render_night_survival(const GameState *state) {
         }
 
         for (int i = 0; i < NUM_ANIMATRONICS; i++) {
-            if (animatronics[i].path[animatronics[i].current_position_index] == CAM_2B) {
+            if (animatronics[i].path[animatronics[i].current_position_index] == LEFT_DOOR) {
                 // LEFT side
                 if (animatronics[i].name == BONNIE) {
                     draw_sprite(get_asset(BONNIE_LEFT_DOOR));
@@ -60,7 +62,7 @@ void render_night_survival(const GameState *state) {
                     draw_sprite(get_asset(FOXY_LEFT_DOOR));
                 }
             }
-            if (animatronics[i].path[animatronics[i].current_position_index] == CAM_4B) {
+            if (animatronics[i].path[animatronics[i].current_position_index] == RIGHT_DOOR) {
                 // RIGHT side
                 if (animatronics[i].name == FREDDY) {
                     draw_sprite(get_asset(FREDDY_RIGHT_DOOR));

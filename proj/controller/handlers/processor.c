@@ -1,5 +1,6 @@
 #include "processor.h"
 #include "../../view/ui.h"
+#include "../../view/ui_utils.h"
 
 // 2D array of event handlers indexed by state and event type (eth - event handler table)
 // Using Designated Initializers
@@ -9,8 +10,7 @@ static EventHandler eht[NUM_STATES][NUM_EVENTS] = {
         // Guarantees that only presses are registered in the main menu
         [KEYBOARD_PRESS] = handle_main_menu_keyboard,
         [MOUSE_LB_CLICK] = handle_main_menu_mouse_click,
-        [MOUSE_MOVE] = handle_mouse_move,
-        // Other main menu event handlers...
+        [MOUSE_MOVE] = handle_main_menu_mouse_move,
     },
 
     [NIGHT_INTRO] = {
@@ -20,7 +20,7 @@ static EventHandler eht[NUM_STATES][NUM_EVENTS] = {
     [NIGHT_SURVIVAL] = {
         [KEYBOARD_PRESS] = handle_night_survival_keyboard,
         [MOUSE_LB_CLICK] = handle_night_survival_mouse_click,
-        [MOUSE_MOVE] = handle_mouse_move,
+        [MOUSE_MOVE] = general_mouse_move,
         [TIMER_TICK] = handle_night_survival_timer,
     },
 
@@ -44,7 +44,7 @@ static EventHandler eht[NUM_STATES][NUM_EVENTS] = {
 
 };
 
-void handle_mouse_move(GameState* state, const GameEvent* event) {
+void general_mouse_move(GameState* state, const GameEvent* event) {
 
     if (state->type == MAIN_MENU) {
         state->data.main_menu.selected_option = 0; // deselect main menu keyboard selection on mouse move
@@ -60,7 +60,7 @@ void handle_mouse_move(GameState* state, const GameEvent* event) {
     if (state->global_data.mouse_y > SCREEN_HEIGHT-1) state->global_data.mouse_y = SCREEN_HEIGHT-1;
 }
 
-EventHandler get_event_handler(StateType state, EventType event) {
+EventHandler get_event_handler(const StateType state, const EventType event) {
     if (state >= NUM_STATES || event >= NUM_EVENTS) {
         return NULL; // Invalid state or event
     }

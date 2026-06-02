@@ -8,9 +8,9 @@ static RenderHandler rht[NUM_STATES] = {
     [NIGHT_SURVIVAL] = render_night_survival,
 };
 
-RenderHandler get_render_handler(StateType state) {
-  if (state >= NUM_STATES) { // TODO: needed?
-    return NULL;             // Invalid state
+RenderHandler get_render_handler(const StateType state) {
+  if (state >= NUM_STATES) {
+    return NULL; // invalid state
   }
 
   return rht[state];
