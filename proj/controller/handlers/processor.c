@@ -60,7 +60,7 @@ void general_mouse_move(GameState* state, const GameEvent* event) {
     if (state->global_data.mouse_y > SCREEN_HEIGHT-1) state->global_data.mouse_y = SCREEN_HEIGHT-1;
 }
 
-EventHandler get_event_handler(StateType state, EventType event) {
+EventHandler get_event_handler(const StateType state, const EventType event) {
     if (state >= NUM_STATES || event >= NUM_EVENTS) {
         return NULL; // Invalid state or event
     }

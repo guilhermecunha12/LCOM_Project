@@ -2,11 +2,12 @@
 
 #include <stdlib.h>
 
-static CameraID PATHS[4][5] = {
-    [FREDDY] = {CAM_1A, CAM_1B, CAM_2A, CAM_2B, CAM_1A},
-    [BONNIE] = {CAM_1A, CAM_2A, CAM_2B, CAM_1A, CAM_2A},
-    [CHICA] = {CAM_1A, CAM_1B, CAM_1A, CAM_1B, CAM_1A},
-    [FOXY] = {CAM_1A, CAM_2A, CAM_1A, CAM_2A, CAM_1A},
+// TODO: if animatronic have paths with different lenght, how to do?
+static CameraID PATHS[4][6] = {
+    [FREDDY] = {CAM_1A, CAM_1B, CAM_2A, CAM_2B, CAM_1A, RIGHT_DOOR},
+    [BONNIE] = {CAM_1A, CAM_2A, CAM_2B, CAM_1A, CAM_2A, LEFT_DOOR},
+    [CHICA] = {CAM_1A, CAM_1B, CAM_1A, CAM_1B, CAM_1A, RIGHT_DOOR},
+    [FOXY] = {CAM_1A, CAM_2A, CAM_1A, CAM_2A, CAM_1A, LEFT_DOOR},
 };
 
 static const int ANIMATRONIC_PATH_LENGTHS[5] = {

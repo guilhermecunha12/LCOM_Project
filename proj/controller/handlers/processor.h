@@ -3,11 +3,19 @@
 
 #include "../../state.h"
 
-// Type alias for event handler functions (return void and take pointers to GameState and GameEvent)
+/**
+ * @brief Type alias for event handler functions (return void and take pointers to GameState and GameEvent)
+ */
 typedef void (*EventHandler)(GameState*, const GameEvent*);
 
-// Function to get the appropriate event handler based on the current state and event type
-EventHandler get_event_handler(StateType state, EventType event);
+/**
+ * @brief Get the appropriate event handler for the given GameState and EventType
+ * @details Internally, the implementation uses a 2D array indexed with GameState and EventType to retrieve the correct handler function. If no handler is defined for the given state and event type, it returns NULL.
+ * @param state The current state of the game, used to determine which set of event handlers to use.
+ * @param event The current event type, used to determine which specific handler to call.
+ * @return The appropriate function pointer to a event handler function. 
+ */
+EventHandler get_event_handler(const StateType state, const EventType event);
 
 /**
  * @brief Handler for mouse movement events, which updates the mouse coordinates in the global game state. It is used in MAIN_MENU and NIGHT_SURVIVAL states.

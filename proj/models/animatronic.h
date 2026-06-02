@@ -5,10 +5,15 @@
 
 #include <stdbool.h>
 
-
+/**
+ * @brief Enum with the animatronic names
+ */
 typedef enum { FREDDY, BONNIE, CHICA, FOXY, NUM_ANIMATRONICS } AnimatronicName;
 
-// TODO: make a function to initialize the animotrics for each night
+
+/**
+ * @brief Struct representing an animatronic, which contains information about it.
+ */
 typedef struct {
     AnimatronicName name;
     int current_position_index; // where the animatronic currently is on the map (pointer to a CameraID in the path)
