@@ -25,10 +25,10 @@ void load_all_assets() {
     assets[GAME_TITLE] = create_sprite((xpm_map_t) title_xpm,GAME_TITLE_X, GAME_TITLE_Y);
     assets[OPT_NEWGAME] = create_sprite((xpm_map_t) newgame_xpm, NEW_GAME_X, NEW_GAME_Y);
     assets[OPT_NEWGAME_SEL] = create_sprite((xpm_map_t) newgame_sel_xpm,NEW_GAME_SEL_X, NEW_GAME_SEL_Y);
-    assets[OPT_CONTINUE] = create_sprite((xpm_map_t) newgame_xpm, CONTINUE_X, CONTINUE_Y);
-    assets[OPT_CONTINUE_SEL] = create_sprite((xpm_map_t) newgame_sel_xpm, CONTINUE_SEL_X, CONTINUE_SEL_Y);
-    assets[OPT_EXIT] = create_sprite((xpm_map_t) newgame_xpm, EXIT_GAME_X, EXIT_GAME_Y);
-    assets[OPT_EXIT_SEL] = create_sprite((xpm_map_t) newgame_sel_xpm, EXIT_GAME_SEL_X, EXIT_GAME_SEL_Y);
+    assets[OPT_CONTINUE] = create_sprite((xpm_map_t) continue_xpm, CONTINUE_X, CONTINUE_Y);
+    assets[OPT_CONTINUE_SEL] = create_sprite((xpm_map_t) continue_sel_xpm, CONTINUE_SEL_X, CONTINUE_SEL_Y);
+    assets[OPT_EXIT] = create_sprite((xpm_map_t) exit_game_xpm, EXIT_GAME_X, EXIT_GAME_Y);
+    assets[OPT_EXIT_SEL] = create_sprite((xpm_map_t) exit_game_sel_xpm, EXIT_GAME_SEL_X, EXIT_GAME_SEL_Y);
     assets[MENU_CUSTOM_NIGHT] = create_sprite((xpm_map_t) custom_night_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
     assets[MENU_NIGHT1] = create_sprite((xpm_map_t) night1_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
     assets[MENU_NIGHT2] = create_sprite((xpm_map_t) night2_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
