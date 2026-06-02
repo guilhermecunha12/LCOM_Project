@@ -10,70 +10,157 @@
 
 // Step offset value (offset applied to background for movement, change this beforehand)
 #define BACKGROUND_STEP_OFFSET 5
-#define BACKGROUND_MAX_OFFSET 100
+// For cameras only 
+#define BACKGROUND_MAX_OFFSET 320
 
-// Main Menu UI
+////// MAIN MENU UI //////////////////////////
+  #define GAME_TITLE_X 86
+  #define GAME_TITLE_Y 117
+  #define NEW_GAME_SEL_X 75
+  #define NEW_GAME_SEL_Y 405
+  #define CONTINUE_SEL_X 75
+  #define CONTINUE_SEL_Y 485
+  #define NEW_GAME_X 153
+  #define NEW_GAME_Y 405
+  #define CONTINUE_X 153
+  #define CONTINUE_Y 485
+  #define EXIT_GAME_SEL_X 75
+  #define EXIT_GAME_SEL_Y 588
+  #define EXIT_GAME_X 153
+  #define EXIT_GAME_Y 588
+  #define NIGHT_TEXT_X 144
+  #define NIGHT_TEXT_Y 525
 
-#define GAME_TITLE_X 86
-#define GAME_TITLE_Y 117
-#define NEW_GAME_SEL_X 75
-#define NEW_GAME_SEL_Y 476
-#define CONTINUE_SEL_X 75
-#define CONTINUE_SEL_Y 572
-#define NEW_GAME_X 153
-#define NEW_GAME_Y 476
-#define CONTINUE_X 153
-#define CONTINUE_Y 572  
-#define NIGHT_TEXT_X 162
-#define NIGHT_TEXT_Y 627
+// Use this for both exit game and new game 
+  #define BOX_NORMAL_WIDTH 320
+  #define BOX_NORMAL_HEIGHT 70
 
-#define BOX_NEW_GAME_WIDTH 300
-#define BOX_NEW_GAME_HEIGHT 70
-
-#define BOX_CONTINUE_WIDTH 300
-#define BOX_CONTINUE_HEIGHT 90
+  #define BOX_CONTINUE_WIDTH 300
+  #define BOX_CONTINUE_HEIGHT 80
+//////////////////////////////////////////////////////
 
 
-// Night Survival UI (doors, cameras, power display, etc.)
+//////////////////// CAMERA UI ////////////////////////////
+// The night text is defined as (Button.x + 3, Button.y -3)
+#define NIGHT_TEXT_POS(x,y) (x + 3), (y - 3)
 
-#define NIGHT_CAMERA_1A_X 150
-#define NIGHT_CAMERA_1A_Y 100
-#define NIGHT_CAMERA_1A_W 30
-#define NIGHT_CAMERA_1A_H 30
+// Map layout position
+#define MAP_LAYOUT_X 736
+#define MAP_LAYOUT_Y 488
 
-#define NIGHT_CAMERA_1B_X 250
-#define NIGHT_CAMERA_1B_Y 100
-#define NIGHT_CAMERA_1B_W 30
-#define NIGHT_CAMERA_1B_H 30
+// Size of each of the night cam buttons (selected or normal ones, as they have the same size)
+#define BUTTON_SIZE_WIDTH 59
+#define BUTTON_SIZE_HEIGHT 40
 
-#define NIGHT_CAMERA_2A_X 350
-#define NIGHT_CAMERA_2A_Y 100
-#define NIGHT_CAMERA_2A_W 30
-#define NIGHT_CAMERA_2A_H 30
+// Text saying which cam is selected
+#define SELECTED_CAM_TEXT_X 736
+#define SELECTED_CAM_TEXT_Y 419
 
-#define NIGHT_CAMERA_2B_X 450
-#define NIGHT_CAMERA_2B_Y 100
-#define NIGHT_CAMERA_2B_W 30
-#define NIGHT_CAMERA_2B_H 30
+// Positions of each button in the map layout
+  #define NIGHT_CAMERA_1A_X 833
+  #define NIGHT_CAMERA_1A_Y 477
 
-#define NIGHT_LEFT_DOOR_BUTTON_X 50
-#define NIGHT_LEFT_DOOR_BUTTON_Y 300
-#define NIGHT_LEFT_DOOR_BUTTON_W 40
-#define NIGHT_LEFT_DOOR_BUTTON_H 40
+  #define NIGHT_CAMERA_1B_X 815
+  #define NIGHT_CAMERA_1B_Y 528
 
-#define NIGHT_RIGHT_DOOR_BUTTON_X 730
-#define NIGHT_RIGHT_DOOR_BUTTON_Y 300
-#define NIGHT_RIGHT_DOOR_BUTTON_W 40
-#define NIGHT_RIGHT_DOOR_BUTTON_H 40
+  #define NIGHT_CAMERA_1C_X 777
+  #define NIGHT_CAMERA_1C_Y 608
 
-#define NIGHT_LEFT_LIGHT_BUTTON_X 150
-#define NIGHT_LEFT_LIGHT_BUTTON_Y 300
-#define NIGHT_LEFT_LIGHT_BUTTON_W 40
-#define NIGHT_LEFT_LIGHT_BUTTON_H 40
+  #define NIGHT_CAMERA_3_X 748
+  #define NIGHT_CAMERA_3_Y 702
 
-#define NIGHT_RIGHT_LIGHT_BUTTON_X 650
-#define NIGHT_RIGHT_LIGHT_BUTTON_Y 300
-#define NIGHT_RIGHT_LIGHT_BUTTON_W 40
-#define NIGHT_RIGHT_LIGHT_BUTTON_H 40
+  #define NIGH_CAMERA_5_X 709
+  #define NIGHT_CAMERA_5_Y 550
+
+  #define NIGHT_CAMERA_7_x 1048
+  #define NIGHT_CAMERA_7_Y 556
+
+  #define NIGHT_CAMERA_6_X 1037
+  #define NIGHT_CAMERA_6_Y 685
+
+  #define NIGHT_CAMERA_2A_X 834
+  #define NIGHT_CAMERA_2A_Y 725
+
+  #define NIGHT_CAMERA_2B_X 834
+  #define NIGHT_CAMERA_2B_Y 769
+
+  #define NIGHT_CAMERA_4A_X 940
+  #define NIGHT_CAMERA_4A_Y 725
+
+  #define NIGHT_CAMERA_4B_X 940
+  #define NIGHT_CAMERA_4B_Y 769
+
+// Record symbol
+#define REC_SYMBOL_X 56
+#define REC_SYMBOL_Y 48
+////////////////////////////////////////////////////////
+
+//////// GAME START UI /////////////////////////////////
+
+// Maybe clear screen first and then draw these sprites on top (upon selecting our night)
+#define SCREEN_TEXT_X 473
+#define SCREEN_TEXT_Y 384
+
+// Clock
+#define CLOCK_X 1058
+#define CLOCK_Y 796
+
+//////////////////////////////////////////////////////////
+
+//////////// OFFICE LAYOUT UI ////////////////////////////
+
+// Camera flip button
+  #define CAMERA_FLIP_BUTTON_X 263
+  #define CAMERA_FLIP_BUTTON_Y 780
+
+  #define CAMERA_FLIP_BUTTON_WIDTH 482
+  #define CAMERA_FLIP_BUTTON_HEIGHT 57
+
+// Text describing current night and hours
+
+  #define NIGHT_HOURS_TEXT_X 967
+  #define NIGHT_HOURS_TEXT_Y 53
+
+  #define AM_TEXT_X 1028
+  #define AM_TEXT_Y 53
+
+  #define NIGHT_COUNT_TEXT_X 978
+  #define NIGHT_COUNT_TEXT_Y 101
+
+// Battery details and usage
+
+  // Usage
+  #define USAGE_TEXT_X 44
+  #define USAGE_TEXT_Y 797
+
+  #define INDICATOR_USAGE_X 143
+  #define INDICATOR_USAGE_Y 799
+  // Percentage
+  #define POWER_LEFT_TEXT_X 44
+  #define POWER_LEFT_TEXT_Y 758
+
+  #define I_DIGIT_POWER_X 213
+  #define I_DIGIT_POWER_Y 760
+
+  #define II_DIGIT_POWER_X 233
+  #define II_DIGIT_POWER_Y 760
+
+  #define PERCENTAGE_SIGN_X 255
+  #define PERCENTAGE_SIGN_Y 764
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////
+
+
+
+
+
+
 
 #endif /* UI_H */

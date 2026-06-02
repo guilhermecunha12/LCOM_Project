@@ -22,7 +22,7 @@ typedef enum {
     MENU_NIGHT3,
     MENU_NIGHT4,
     MENU_NIGHT5,
-
+    
     NUM_ASSETS
 } xpmASSET;
 
