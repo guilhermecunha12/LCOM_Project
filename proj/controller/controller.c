@@ -1,7 +1,6 @@
 #include <lcom/lcf.h>
 
 #include "controller.h"
-#include "../state.h"
 #include "handlers/processor.h"
 
 void process_event(GameState* state, GameEvent* event) {

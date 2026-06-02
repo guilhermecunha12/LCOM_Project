@@ -9,7 +9,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
 
     if (state->data.night_survival.camera_monitor_up) {
         // If the camera monitor is up, check if the click was on a camera feed to switch to it
-        if (mouse_inside(mouse_x, mouse_y,
+        if (is_mouse_inside(mouse_x, mouse_y,
             NIGHT_CAMERA_1A_X,
             NIGHT_CAMERA_1A_Y,
             NIGHT_CAMERA_1A_W,
@@ -17,7 +17,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
 
             state->data.night_survival.viewing_camera = CAM_1A;
             }
-        else if (mouse_inside(mouse_x, mouse_y,
+        else if (is_mouse_inside(mouse_x, mouse_y,
             NIGHT_CAMERA_1B_X,
             NIGHT_CAMERA_1B_Y,
             NIGHT_CAMERA_1B_W,
@@ -25,7 +25,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
 
             state->data.night_survival.viewing_camera = CAM_1B;
             }
-        else if (mouse_inside(mouse_x, mouse_y,
+        else if (is_mouse_inside(mouse_x, mouse_y,
             NIGHT_CAMERA_2A_X,
             NIGHT_CAMERA_2A_Y,
             NIGHT_CAMERA_2A_W,
@@ -33,7 +33,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
 
             state->data.night_survival.viewing_camera = CAM_2A;
             }
-        else if (mouse_inside(mouse_x, mouse_y,
+        else if (is_mouse_inside(mouse_x, mouse_y,
             NIGHT_CAMERA_2B_X,
             NIGHT_CAMERA_2B_Y,
             NIGHT_CAMERA_2B_W,
@@ -45,7 +45,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
     } else { // not checking the cameras
 
         // Clicked to close left door
-        if (mouse_inside(mouse_x, mouse_y,
+        if (is_mouse_inside(mouse_x, mouse_y,
             NIGHT_LEFT_DOOR_BUTTON_X,
             NIGHT_LEFT_DOOR_BUTTON_Y,
             NIGHT_LEFT_DOOR_BUTTON_W,
@@ -55,7 +55,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             }
 
         // Clicked to close right door
-        else if (mouse_inside(mouse_x, mouse_y,
+        else if (is_mouse_inside(mouse_x, mouse_y,
             NIGHT_RIGHT_DOOR_BUTTON_X,
             NIGHT_RIGHT_DOOR_BUTTON_Y,
             NIGHT_RIGHT_DOOR_BUTTON_W,
@@ -65,7 +65,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             }
 
         // Clicked to turn on/off left light
-        else if (mouse_inside(mouse_x, mouse_y,
+        else if (is_mouse_inside(mouse_x, mouse_y,
             NIGHT_LEFT_LIGHT_BUTTON_X,
             NIGHT_LEFT_LIGHT_BUTTON_Y,
             NIGHT_LEFT_LIGHT_BUTTON_W,
@@ -75,7 +75,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             }
 
         // Clicked to turn on/off right light
-        else if (mouse_inside(mouse_x, mouse_y,
+        else if (is_mouse_inside(mouse_x, mouse_y,
             NIGHT_RIGHT_LIGHT_BUTTON_X,
             NIGHT_RIGHT_LIGHT_BUTTON_Y,
             NIGHT_RIGHT_LIGHT_BUTTON_W,

@@ -1,14 +1,13 @@
  #include <lcom/lcf.h>
 
 // Device header files
-#include "../lab4/mouse.h"
-#include "../lab3/kbc.h"
+#include "devices/subscribe.h"
 
 #include "state.h"
 #include "controller/controller.h"
 #include "view/view.h"
-#include "input/keyboard.h"
-
+#include "devices/event_updater.h"
+#include "models/assets.h"
 
 int main(int argc, char *argv[]) {
     // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -47,67 +46,54 @@ void init_game_state(GameState* state) {
 
 
 int(proj_main_loop)(int argc, char* argv[]) {
-    uint8_t timer_irq_set, kbd_irq_set, mouse_irq_set; // bitmasks for each IRQ; TODO: initialize them
-    if (general_subscribe()) return 1;
+  
+    uint8_t timer_irq_set = IRQ_TIMER;
+    uint8_t kbd_irq_set = IRQ_KBD;
+    uint8_t mouse_irq_set = IRQ_MOUSE;
+    uint16_t vbe_mode = 0x14C; 
 
-    GameState current_state;
-    GameEvent current_event;
+    if (subscribe_devices(&timer_irq_set, &kbd_irq_set, &mouse_irq_set, vbe_mode)) return 1;
 
-    init_game_state(&current_state);
+    GameState* current_state = (GameState*) malloc(sizeof(GameState));
+    GameEvent* current_event = (GameEvent*) malloc(sizeof(GameEvent));
+
+    init_game_state(current_state);
     load_all_assets(); // TODO: review - Parses all XPMs into Sprite structs in RAM
 
     int ipc_status, r;
     message msg;
     
-    while (current_state.type != EXIT) {
-
-        if ((r = driver_receive(ANY, &msg, &ipc_status))   != 0 ) { 
+    while (current_state->type != EXIT) {
+        current_event = NULL; // Clear current event
+        if ((r = driver_receive(ANY, &msg, &ipc_status))   != 0 ){ 
           printf("driver_receive failed with: %d", r);
           continue;
         } 
         if (is_ipc_notify(ipc_status)) {
             switch(_ENDPOINT_P(msg.m_source)) {
                 case HARDWARE:
-
                     // Timer interrupt
                     if (msg.m_notify.interrupts & timer_irq_set) {
-                        timer_int_handler(); // TODO: create a more readable function? There is no timer.h in lab2.
-                        current_event.type = TIMER_TICK;
-                        current_event.data.timer_ticks = get_counter();
-
-                        process_event(&current_state, &current_event); // TODO: process_event will run game logic based on the current state and the current event. This function can modify the current state.
-
-                        // Only render the screen on timer tick to ensure consistent frame rate.
-                        render_frame(&current_state);
+                        if(update_timer_game_event(current_event) == 0) {
+                            process_event(current_state, current_event); 
+                            // Only render the screen on timer tick to ensure consistent frame rate.
+                            render_frame(current_state);
+                        }
                     }
 
                     // Keyboard interrupt
                     if (msg.m_notify.interrupts & kbd_irq_set) {
-                        if (update_game_event(&current_event) == 0) { // if the scancode was successfully processed into a game event
-                            process_event(&current_state, &current_event);
+                        if (update_keyboard_game_event(current_event) == 0) { // if the scancode was successfully processed into a game event
+                            process_event(current_state, current_event);
                         }
                     }
 
                     // Mouse interrupt
                     if (msg.m_notify.interrupts & mouse_irq_set) {
-                        if (process_packet()) {
-                            // TODO: maybe clear the current_event variable at the beginning of each interrupt?
-                            if (is_mouse_click()) {
-                                current_event.type = MOUSE_LB_CLICK;
-                                current_event.data.mouse_coords.delta_x = 0;
-                                current_event.data.mouse_coords.delta_y = 0;
-
-                            } else if (is_mouse_move()) {
-                                current_event.type = MOUSE_MOVE;
-
-                                struct packet current_packet = get_mouse_packet();
-                                current_event.data.mouse_coords.delta_x = current_packet.delta_x;
-                                current_event.data.mouse_coords.delta_y = current_packet.delta_y;
-                            }
-                            
+                        if(update_mouse_game_event(current_event) == 0) {
                             // only process left button clicks or mouse movements.
-                            if (current_event.type == MOUSE_LB_CLICK || current_event.type == MOUSE_MOVE) {
-                                process_event(&current_state, &current_event);
+                            if (current_event->type == MOUSE_LB_CLICK || current_event->type == MOUSE_MOVE) {
+                                process_event(current_state, current_event);
                             }
                         }                        
                     }
@@ -119,6 +105,6 @@ int(proj_main_loop)(int argc, char* argv[]) {
     }
 
     unload_all_assets(); // TODO: review - Frees the heap memory cleanly before Minix exits
-    if (general_unsubscribe()) return 1;
+    if (unsubscribe_devices()) return 1;
     return 0;
 }

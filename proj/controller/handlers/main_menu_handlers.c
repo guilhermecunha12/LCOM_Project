@@ -22,9 +22,9 @@ static void menu_select_first_if_none(MainMenuState* mm) {
  */
 static void menu_move_up(MainMenuState* mm) {
     menu_select_first_if_none(mm);
-    if (mm->selected_option == 1) {
-        mm->selected_option = mm->num_options;
-    } else if (mm->selected_option > 1) {
+    if (mm->selected_option == NEW_GAME) {
+        mm->selected_option = EXIT_GAME;
+    } else if (mm->selected_option > NEW_GAME) {
         mm->selected_option--;
     }
 }
@@ -35,9 +35,9 @@ static void menu_move_up(MainMenuState* mm) {
  */
 static void menu_move_down(MainMenuState* mm) {
     menu_select_first_if_none(mm);
-    if (mm->selected_option == mm->num_options) {
-        mm->selected_option = 1;
-    } else if (mm->selected_option < mm->num_options) {
+    if (mm->selected_option == NUM_OPTIONS) {
+        mm->selected_option = NEW_GAME;
+    } else if (mm->selected_option < NUM_OPTIONS) {
         mm->selected_option++;
     }
 }
@@ -90,10 +90,10 @@ void handle_main_menu_mouse_click(GameState* state, const GameEvent* event) {
     int mouse_y = state->global_data.mouse_y;
 
     if (is_mouse_inside(mouse_x, mouse_y,
-        MAIN_MENU_NEW_GAME_BUTTON_X,
-        MAIN_MENU_NEW_GAME_BUTTON_Y,
-        MAIN_MENU_NEW_GAME_BUTTON_W,
-        MAIN_MENU_NEW_GAME_BUTTON_H)) {
+        NEW_GAME_X,
+        NEW_GAME_Y,
+        BOX_NEW_GAME_WIDTH,
+        BOX_NEW_GAME_HEIGHT)) {
 
         state->global_data.current_night = 1; // Start at night 1
         state->type = NIGHT_INTRO;
@@ -102,22 +102,13 @@ void handle_main_menu_mouse_click(GameState* state, const GameEvent* event) {
 
     // Leave a space reserved to this button even if not rendered. 
     else if (state->global_data.current_night > 0 && is_mouse_inside(mouse_x, mouse_y,
-        MAIN_MENU_CONTINUE_BUTTON_X,
-        MAIN_MENU_CONTINUE_BUTTON_Y,
-        MAIN_MENU_CONTINUE_BUTTON_W,
-        MAIN_MENU_CONTINUE_BUTTON_H)) {
+        CONTINUE_X,
+        CONTINUE_Y,
+        BOX_CONTINUE_WIDTH,
+        BOX_CONTINUE_HEIGHT)) {
 
         state->type = NIGHT_INTRO;
         state->data.night_intro = init_night_intro();
-    }
-
-    else if (is_mouse_inside(mouse_x, mouse_y,
-        MAIN_MENU_EXIT_GAME_BUTTON_X,
-        MAIN_MENU_EXIT_GAME_BUTTON_Y,
-        MAIN_MENU_EXIT_GAME_BUTTON_W,
-        MAIN_MENU_EXIT_GAME_BUTTON_H)) {
-
-        state->type = EXIT;
     }
 }
 

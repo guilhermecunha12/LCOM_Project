@@ -1,7 +1,10 @@
 #ifndef ANIMATRONIC_H
 #define ANIMATRONIC_H
 
+#include "../game_constants.h"
+
 #include <stdbool.h>
+
 
 typedef enum { FREDDY, BONNIE, CHICA, FOXY, NUM_ANIMATRONICS } AnimatronicName;
 

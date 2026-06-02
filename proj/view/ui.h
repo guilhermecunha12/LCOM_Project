@@ -1,32 +1,38 @@
 #ifndef UI_H
 #define UI_H
 
-// TODO: Define constants for where UI elements are drawn on the screen
-// These are dummy values
-
-// Screen dimensions; TODO: define these in accordance to the graphics mode used
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 600
+// Screen resolutions for mode 0x14C (instead of having getters for the values in
+//the lab5 header file, as they are static for the whole project)
+#define VBE_MODE 0x14C
+#define BYTES_PER_PIXEL 4
+#define SCREEN_WIDTH 1152
+#define SCREEN_HEIGHT 864
 
 // Step offset value (offset applied to background for movement, change this beforehand)
 #define BACKGROUND_STEP_OFFSET 5
 #define BACKGROUND_MAX_OFFSET 100
 
 // Main Menu UI
-#define MAIN_MENU_NEW_GAME_BUTTON_X 400
-#define MAIN_MENU_NEW_GAME_BUTTON_Y 300
-#define MAIN_MENU_NEW_GAME_BUTTON_W 200
-#define MAIN_MENU_NEW_GAME_BUTTON_H 60
 
-#define MAIN_MENU_CONTINUE_BUTTON_X 400
-#define MAIN_MENU_CONTINUE_BUTTON_Y 360
-#define MAIN_MENU_CONTINUE_BUTTON_W 200
-#define MAIN_MENU_CONTINUE_BUTTON_H 60
+#define GAME_TITLE_X 86
+#define GAME_TITLE_Y 117
+#define NEW_GAME_SEL_X 75
+#define NEW_GAME_SEL_Y 476
+#define CONTINUE_SEL_X 75
+#define CONTINUE_SEL_Y 572
+#define NEW_GAME_X 153
+#define NEW_GAME_Y 476
+#define CONTINUE_X 153
+#define CONTINUE_Y 572  
+#define NIGHT_TEXT_X 162
+#define NIGHT_TEXT_Y 627
 
-#define MAIN_MENU_EXIT_GAME_BUTTON_X 400
-#define MAIN_MENU_EXIT_GAME_BUTTON_Y 400
-#define MAIN_MENU_EXIT_GAME_BUTTON_W 200
-#define MAIN_MENU_EXIT_GAME_BUTTON_H 60
+#define BOX_NEW_GAME_WIDTH 300
+#define BOX_NEW_GAME_HEIGHT 70
+
+#define BOX_CONTINUE_WIDTH 300
+#define BOX_CONTINUE_HEIGHT 90
+
 
 // Night Survival UI (doors, cameras, power display, etc.)
 

@@ -7,10 +7,10 @@
 typedef void (*RenderHandler)(const GameState*);
 
 RenderHandler get_render_handler(StateType state);
-void draw_mouse(int x, int y); // TODO: implement: draws the mouse cursor at the given coordinates
+void draw_mouse(const GameState* state);
 
 // Render handlers for each state
 void render_main_menu(const GameState* state);
-void render_night_survival(const GameState* state);
+
 
 #endif /* RENDERER_H */

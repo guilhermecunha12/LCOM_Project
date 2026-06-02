@@ -3,15 +3,40 @@
 
 #include <lcom/lcf.h>
 
-// TODO: review (see LCOM slides about sprites)
-// Holds the metadata about the picture
+/**
+ *  @brief Basic sprite structure that holds basic information about the sprite now loaded from a XPM. 
+ * @param width width of the sprite in pixels
+ * @param height height of the sprite in pixels
+ * @param map points to the pixels of the sprite 
+ */
 typedef struct {
-    int width, height; // dimensions
-    uint8_t* map; // the pixel array (TODO: correct type?)
+    uint16_t width, height; // xpm_image_type comes in uint16_t
+    uint8_t* map; 
 } Sprite;
 
-// A generic function to load an XPM into your Sprite struct
+/**
+ * @brief Creates a new sprite from an XPM array
+ * @details Follows closely to the function given in "Lab5 & sprites with our indexation mode being XPM_8_8_8_8 following our choice of using mode 0x104C. We used Gimpo to load the XPMs so colors are represented using 3 bytes (no opacity factor) and thus we can use xpm_load without any trouble" 
+ * @param xpm pointer to xpm array that represents our sprite
+ * @return Pointer to the created sprite
+ */
 Sprite* create_sprite(xpm_map_t xpm);
+
+/**
+ * @brief Destroys the sprite object by freeing its allocated memory
+ * @param sp pointer to the sprite that we want destroyed
+ */
 void destroy_sprite(Sprite* sp);
+
+
+/**
+ * @brief Function responsible for drawing the sprite onto the back buffer
+ * @details As in our game the camera will be moving horizontally, we can pass values of x that might be negative thus it is an integer. Also, XPM can specify "none" values that *represent transparent pixels, we must also ignored them by checking the one *considered transparent in the XPM file
+ * @param sp pointer to the sprite that we want to draw
+ * @param x x-coordinate of the sprite's position
+ * @param y y-coordinate of the sprite's position
+ * @return 0 on success, 1 on failure
+ */
+int draw_sprite(const Sprite* sp, int x, uint16_t y);
 
 #endif
