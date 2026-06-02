@@ -19,6 +19,7 @@ int unsubscribe_devices() {
   int err = 0;
   err |= timer_unsubscribe_int();
   err |= kbd_unsubscribe_int();
+  err |= reset_interrupts();
   err |= mouse_unsubscribe_int();
   err |= vg_exit();
 

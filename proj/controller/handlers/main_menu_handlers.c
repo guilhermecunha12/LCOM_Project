@@ -92,8 +92,8 @@ void handle_main_menu_mouse_click(GameState* state, const GameEvent* event) {
     if (is_mouse_inside(mouse_x, mouse_y,
         NEW_GAME_X,
         NEW_GAME_Y,
-        BOX_NEW_GAME_WIDTH,
-        BOX_NEW_GAME_HEIGHT)) {
+        BOX_NORMAL_WIDTH,
+        BOX_NORMAL_HEIGHT)) {
 
         state->global_data.current_night = 1; // Start at night 1
         state->type = NIGHT_INTRO;

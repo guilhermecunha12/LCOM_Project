@@ -24,7 +24,9 @@ SRCS = main.c \
        sprite.c \
        ui_utils.c \
        view.c \
-       renderer.c
+       renderer.c \
+       main_menu_render.c \
+       night_intro_render.c
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set

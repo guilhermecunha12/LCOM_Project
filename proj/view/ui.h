@@ -72,7 +72,7 @@
   #define NIGH_CAMERA_5_X 709
   #define NIGHT_CAMERA_5_Y 550
 
-  #define NIGHT_CAMERA_7_x 1048
+  #define NIGHT_CAMERA_7_X 1048
   #define NIGHT_CAMERA_7_Y 556
 
   #define NIGHT_CAMERA_6_X 1037
