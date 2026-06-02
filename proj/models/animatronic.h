@@ -5,12 +5,6 @@
 
 #include <stdbool.h>
 
-#define CAM_EMPTY 0
-#define CAM_FREDDY (1 << FREDDY)
-#define CAM_BONNIE (1 << BONNIE)
-#define CAM_CHICA (1 << CHICA)
-#define CAM_FOXY (1 << FOXY)
-
 typedef enum { FREDDY, BONNIE, CHICA, FOXY, NUM_ANIMATRONICS } AnimatronicName;
 
 // TODO: make a function to initialize the animotrics for each night
