@@ -64,7 +64,6 @@ int(proj_main_loop)(int argc, char* argv[]) {
     message msg;
     
     while (current_state->type != EXIT) {
-        current_event = NULL; // Clear current event
         if ((r = driver_receive(ANY, &msg, &ipc_status))   != 0 ){ 
           printf("driver_receive failed with: %d", r);
           continue;
@@ -75,6 +74,7 @@ int(proj_main_loop)(int argc, char* argv[]) {
                     // Timer interrupt
                     if (msg.m_notify.interrupts & timer_irq_set) {
                         if(update_timer_game_event(current_event) == 0) {
+                            printf("Timer tick event processed into game event successfully.\n");
                             process_event(current_state, current_event); 
                             // Only render the screen on timer tick to ensure consistent frame rate.
                             render_frame(current_state);
