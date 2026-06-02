@@ -182,11 +182,22 @@ int vg_draw_pixel (uint16_t x, uint16_t y, uint32_t color) {
 }
 
 int (vg_draw_hline) (uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
-  // Draw a horizontal line by drwaing pixel by pixel, len times
   for(unsigned x_off = 0; x_off < len; x_off++){
     if(vg_draw_pixel(x + x_off, y, color)) return 1;
   }
   return 0;
+}
+
+char* vg_get_back_buffer(void) {
+  return back_buffer;
+}
+
+uint16_t vg_get_h_res(void) {
+  return h_res;
+}
+
+unsigned vg_get_bytes_per_pixel(void) {
+  return bytes_per_pixel;
 }
 
 

@@ -95,4 +95,19 @@ int(clear_back_buffer)(void);
 
 void vg_flip_buffer();
 
+/**
+ * @brief Returns a pointer to the back buffer for direct pixel writes.
+ */
+char* vg_get_back_buffer(void);
+
+/**
+ * @brief Returns the horizontal resolution of the current mode.
+ */
+uint16_t vg_get_h_res(void);
+
+/**
+ * @brief Returns bytes per pixel for the current mode.
+ */
+unsigned vg_get_bytes_per_pixel(void);
+
 #endif

@@ -19,14 +19,12 @@ void draw_mouse(const GameState* state) {
 void render_frame(const GameState* state) {
     if (state->type >= NUM_STATES) return;
 
-  
-    RenderHandler handler = get_render_handler(state->type);
+    clear_back_buffer();
 
+    RenderHandler handler = get_render_handler(state->type);
     if (handler) {
-        handler(state); // Dispatch to the specific state's drawing code
+        handler(state);
     }
 
-    
-    //draw_mouse(state); // Draw the mouse on top of everything else
     vg_flip_buffer();
 }
