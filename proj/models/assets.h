@@ -3,6 +3,7 @@
 #define ASSETS_H
 
 #include "sprite.h"
+#include "animatronic.h"
 
 /**
  * @brief Enum that simplifies the code visually in the corresponding functions as we'll load them by an enum val that is easily retrievable through an array that points to a specific sprite asset.

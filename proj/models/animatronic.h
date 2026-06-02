@@ -10,14 +10,6 @@
  */
 typedef enum { FREDDY, BONNIE, CHICA, FOXY, NUM_ANIMATRONICS } AnimatronicName;
 
-#define CAM_EMPTY 0
-#define CAM_FREDDY (1 << FREDDY)
-#define CAM_BONNIE (1 << BONNIE)
-#define CAM_CHICA (1 << CHICA)
-#define CAM_FOXY (1 << FOXY)
-
-
-
 /**
  * @brief Struct representing an animatronic, which contains information about it.
  */
