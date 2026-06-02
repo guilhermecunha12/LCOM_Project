@@ -4,6 +4,7 @@
 #include "../view/ui.h"
 
 #include "xpm/menu/menu.xpm"
+#include "xpm/cursor.xpm"
 #include "xpm/menu/title.xpm"
 #include "xpm/menu/newgame.xpm"
 #include "xpm/menu/newgame_sel.xpm"
@@ -20,6 +21,7 @@ static Sprite* assets[NUM_ASSETS] = {NULL};
 
 void load_all_assets() {
     assets[MENU_BG] = create_sprite((xpm_map_t) menu_xpm, 0, 0);
+    assets[CURSOR] = create_sprite((xpm_map_t) cursor_xpm, SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
     assets[GAME_TITLE] = create_sprite((xpm_map_t) title_xpm,GAME_TITLE_X, GAME_TITLE_Y);
     assets[OPT_NEWGAME] = create_sprite((xpm_map_t) newgame_xpm, NEW_GAME_X, NEW_GAME_Y);
     assets[OPT_NEWGAME_SEL] = create_sprite((xpm_map_t) newgame_sel_xpm,NEW_GAME_SEL_X, NEW_GAME_SEL_Y);

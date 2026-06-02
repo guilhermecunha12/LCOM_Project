@@ -11,6 +11,7 @@
  
 typedef enum {
     MENU_BG,
+    CURSOR,
     GAME_TITLE,
     OPT_NEWGAME,
     OPT_NEWGAME_SEL,

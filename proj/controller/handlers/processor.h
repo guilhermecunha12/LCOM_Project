@@ -14,7 +14,15 @@ EventHandler get_event_handler(StateType state, EventType event);
  * @param state Pointer to the current game state, which will be modified with the new mouse coordinates.
  * @param event Pointer to the current game event, which contains the mouse movement data (delta_x and delta_y).
  */
-void handle_mouse_move(GameState* state, const GameEvent* event);
+void general_mouse_move(GameState* state, const GameEvent* event);
+
+/**
+ * @brief Calls general_mouse_move and then checks if the mouse is inside any of the main menu options (New Game, Continue, Exit Game) to update the selected option in the main menu state accordingly.
+ * @param state Pointer to the current game state, which will be modified based on the mouse coordinates.
+ * @param event Pointer to the current game event, which contains the mouse movement data (delta_x and delta_y).
+ */
+void handle_main_menu_mouse_move(GameState* state, const GameEvent* event);
+
 
 /**
  * @brief Handler for mouse left button click events in the main menu state. It checks if the click was on the "New Game" "Continue" or "Exit Game" buttons and updates the game state accordingly (starting a new game or exiting).
