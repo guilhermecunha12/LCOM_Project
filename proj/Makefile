@@ -2,7 +2,7 @@
 PROG=proj
 
 # source code files to be compiled
-.PATH: controller controller/handlers controller/handlers/helpers devices input models view view/handlers
+.PATH: controller controller/handlers controller/handlers/helpers devices models view view/handlers
 
 SRCS = main.c \
        state.c \
