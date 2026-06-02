@@ -2,6 +2,9 @@
 
 static RenderHandler rht[NUM_STATES] = {
     [MAIN_MENU] = render_main_menu,
+    [NIGHT_INTRO] = render_night_intro,
+    //[NIGHT_SURVIVAL] = render_night_survival,
+    // Other states...
     [NIGHT_SURVIVAL] = render_night_survival,
 };
 

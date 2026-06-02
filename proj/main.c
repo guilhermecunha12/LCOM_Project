@@ -74,7 +74,6 @@ int(proj_main_loop)(int argc, char* argv[]) {
                     // Timer interrupt
                     if (msg.m_notify.interrupts & timer_irq_set) {
                         if(update_timer_game_event(current_event) == 0) {
-                            printf("Timer tick event processed into game event successfully.\n");
                             process_event(current_state, current_event); 
                             // Only render the screen on timer tick to ensure consistent frame rate.
                             render_frame(current_state);

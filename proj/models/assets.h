@@ -3,11 +3,12 @@
 #define ASSETS_H
 
 #include "sprite.h"
-#include "../models/animatronic.h"
 
 /**
  * @brief Enum tha simplifies the code visually in the corresponding functions as we'll load them by an enum val that is easily etirable through an array that points to a specific sprite asset.
  */
+
+ 
 typedef enum {
     MENU_BG,
     GAME_TITLE,
