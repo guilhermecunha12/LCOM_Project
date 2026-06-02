@@ -1,7 +1,7 @@
 #ifndef SHARED_GAME_CONSTANTS_H
 #define SHARED_GAME_CONSTANTS_H
 
-#define FPS 60
+#define FPS 20
 #define NIGHT_TIME (532 * FPS)
 #define HOUR_DURATION (NIGHT_TIME / 7) // Duration of each hour in ticks
 
@@ -45,6 +45,6 @@ static const int DRAIN_RATE_PER_NIGHT[] = {
 #define NUM_NIGHTS 6
 
 
-typedef enum { CAM_1A, CAM_1B, CAM_2A, CAM_2B } CameraID;
+typedef enum { CAM_1A, CAM_1B, CAM_2A, CAM_2B, CAM_1C, CAM_3, CAM_4A, CAM_4B, CAM_5, CAM_6, CAM_7 } CameraID;
 
 #endif //SHARED_GAME_CONSTANTS_H

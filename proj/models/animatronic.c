@@ -36,13 +36,13 @@ static const int MOVE_INTERVALS[4] = {
 static const int FREDDY_NO_BATTERY_MOVE_INTERVAL_PHASE_1 = 5*FPS; // 5 seconds
 static const int FREDDY_NO_BATTERY_MOVE_INTERVAL_PHASE_2 = 2*FPS; // 2 seconds
 
-static void initialize_animatronic(Animatronic animatronic, AnimatronicName name, int night_number){
-    animatronic.name = name;
-    animatronic.current_position_index = 0;
-    animatronic.path = PATHS[name];
-    animatronic.path_length = ANIMATRONIC_PATH_LENGTHS[name];
-    animatronic.time_to_move_opportunity = MOVE_INTERVALS[name];
-    animatronic.AI_level = INITIAL_AI_LEVELS[name][night_number - 1];
+static void initialize_animatronic(Animatronic* animatronic, AnimatronicName name, int night_number){
+    animatronic->name = name;
+    animatronic->current_position_index = 0;
+    animatronic->path = PATHS[name];
+    animatronic->path_length = ANIMATRONIC_PATH_LENGTHS[name];
+    animatronic->time_to_move_opportunity = MOVE_INTERVALS[name];
+    animatronic->AI_level = INITIAL_AI_LEVELS[name][night_number - 1];
 }
 
 static void move_animatronic(Animatronic* animatronic) {
@@ -125,7 +125,7 @@ static void update_AI_level(Animatronic* animatronic, int time_left_ticks) {
 
 void initialize_animatronics(Animatronic animatronics[NUM_ANIMATRONICS], int night_number) {
     for(AnimatronicName name = 0; name < NUM_ANIMATRONICS; name++) {
-        initialize_animatronic(animatronics[name], name, night_number);
+        initialize_animatronic(&animatronics[name], name, night_number);
     }
 }
 

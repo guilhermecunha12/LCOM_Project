@@ -1,6 +1,7 @@
 // models/assets.c
 #include "assets.h"
 #include "sprite.h"
+#include "../view/ui.h"
 
 #include "xpm/menu/menu.xpm"
 #include "xpm/menu/title.xpm"
@@ -18,18 +19,18 @@
 static Sprite* assets[NUM_ASSETS] = {NULL};
 
 void load_all_assets() {
-    assets[MENU_BG] = create_sprite((xpm_map_t) menu_xpm);
-    assets[GAME_TITLE] = create_sprite((xpm_map_t) title_xpm);
-    assets[OPT_NEWGAME] = create_sprite((xpm_map_t) newgame_xpm);
-    assets[OPT_NEWGAME_SEL] = create_sprite((xpm_map_t) newgame_sel_xpm);
-    assets[OPT_CONTINUE] = create_sprite((xpm_map_t) continue_xpm);
-    assets[OPT_CONTINUE_SEL] = create_sprite((xpm_map_t) continue_sel_xpm);
-    assets[MENU_CUSTOM_NIGHT] = create_sprite((xpm_map_t) custom_night_xpm);
-    assets[MENU_NIGHT1] = create_sprite((xpm_map_t) night1_xpm);
-    assets[MENU_NIGHT2] = create_sprite((xpm_map_t) night2_xpm);
-    assets[MENU_NIGHT3] = create_sprite((xpm_map_t) night3_xpm);
-    assets[MENU_NIGHT4] = create_sprite((xpm_map_t) night4_xpm);
-    assets[MENU_NIGHT5] = create_sprite((xpm_map_t) night5_xpm);
+    assets[MENU_BG] = create_sprite((xpm_map_t) menu_xpm, 0, 0);
+    assets[GAME_TITLE] = create_sprite((xpm_map_t) title_xpm,GAME_TITLE_X, GAME_TITLE_Y);
+    assets[OPT_NEWGAME] = create_sprite((xpm_map_t) newgame_xpm, NEW_GAME_X, NEW_GAME_Y);
+    assets[OPT_NEWGAME_SEL] = create_sprite((xpm_map_t) newgame_sel_xpm,NEW_GAME_SEL_X, NEW_GAME_SEL_Y);
+    assets[OPT_CONTINUE] = create_sprite((xpm_map_t) continue_xpm, CONTINUE_X, CONTINUE_Y);
+    assets[OPT_CONTINUE_SEL] = create_sprite((xpm_map_t) continue_sel_xpm, CONTINUE_SEL_X, CONTINUE_SEL_Y);
+    assets[MENU_CUSTOM_NIGHT] = create_sprite((xpm_map_t) custom_night_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
+    assets[MENU_NIGHT1] = create_sprite((xpm_map_t) night1_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
+    assets[MENU_NIGHT2] = create_sprite((xpm_map_t) night2_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
+    assets[MENU_NIGHT3] = create_sprite((xpm_map_t) night3_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
+    assets[MENU_NIGHT4] = create_sprite((xpm_map_t) night4_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
+    assets[MENU_NIGHT5] = create_sprite((xpm_map_t) night5_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
 }
 
 void unload_all_assets() {

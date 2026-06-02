@@ -3,6 +3,23 @@
 #include "../../view/ui_utils.h"
 #include "../handlers/helpers/player_screen_movement_handler.h"
 
+#define NIGHT_LEFT_DOOR_BUTTON_W 50
+#define NIGHT_LEFT_DOOR_BUTTON_H 50
+#define NIGHT_LEFT_DOOR_BUTTON_X 50
+#define NIGHT_LEFT_DOOR_BUTTON_Y 400
+#define NIGHT_RIGHT_DOOR_BUTTON_W 50
+#define NIGHT_RIGHT_DOOR_BUTTON_H 50
+#define NIGHT_RIGHT_DOOR_BUTTON_X 500
+#define NIGHT_RIGHT_DOOR_BUTTON_Y 400
+#define NIGHT_LEFT_LIGHT_BUTTON_W 50
+#define NIGHT_LEFT_LIGHT_BUTTON_H 50
+#define NIGHT_LEFT_LIGHT_BUTTON_X 150
+#define NIGHT_LEFT_LIGHT_BUTTON_Y 400
+#define NIGHT_RIGHT_LIGHT_BUTTON_W 50
+#define NIGHT_RIGHT_LIGHT_BUTTON_H 50
+#define NIGHT_RIGHT_LIGHT_BUTTON_X 400
+#define NIGHT_RIGHT_LIGHT_BUTTON_Y 400
+
 void handle_night_survival_mouse_click(GameState* state, const GameEvent* event) {
     int mouse_x = state->global_data.mouse_x;
     int mouse_y = state->global_data.mouse_y;
@@ -12,35 +29,101 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
         if (is_mouse_inside(mouse_x, mouse_y,
             NIGHT_CAMERA_1A_X,
             NIGHT_CAMERA_1A_Y,
-            NIGHT_CAMERA_1A_W,
-            NIGHT_CAMERA_1A_H)) {
+            BUTTON_SIZE_WIDTH,
+            BUTTON_SIZE_HEIGHT)) {
 
             state->data.night_survival.viewing_camera = CAM_1A;
             }
+
         else if (is_mouse_inside(mouse_x, mouse_y,
             NIGHT_CAMERA_1B_X,
             NIGHT_CAMERA_1B_Y,
-            NIGHT_CAMERA_1B_W,
-            NIGHT_CAMERA_1B_H)) {
+            BUTTON_SIZE_WIDTH,
+            BUTTON_SIZE_HEIGHT)) {
 
             state->data.night_survival.viewing_camera = CAM_1B;
             }
+
         else if (is_mouse_inside(mouse_x, mouse_y,
             NIGHT_CAMERA_2A_X,
             NIGHT_CAMERA_2A_Y,
-            NIGHT_CAMERA_2A_W,
-            NIGHT_CAMERA_2A_H)) {
+            BUTTON_SIZE_WIDTH,
+            BUTTON_SIZE_HEIGHT)) {
 
             state->data.night_survival.viewing_camera = CAM_2A;
             }
+
         else if (is_mouse_inside(mouse_x, mouse_y,
             NIGHT_CAMERA_2B_X,
             NIGHT_CAMERA_2B_Y,
-            NIGHT_CAMERA_2B_W,
-            NIGHT_CAMERA_2B_H)) {
+            BUTTON_SIZE_WIDTH,
+            BUTTON_SIZE_HEIGHT)) {
 
             state->data.night_survival.viewing_camera = CAM_2B;
             }
+
+        else if (is_mouse_inside(mouse_x, mouse_y,
+            NIGHT_CAMERA_1C_X,
+            NIGHT_CAMERA_1C_Y,
+            BUTTON_SIZE_WIDTH,
+            BUTTON_SIZE_HEIGHT)) {
+
+            state->data.night_survival.viewing_camera = CAM_1C;
+            }
+
+        else if (is_mouse_inside(mouse_x, mouse_y,
+            NIGHT_CAMERA_3_X,
+            NIGHT_CAMERA_3_Y,
+            BUTTON_SIZE_WIDTH,
+            BUTTON_SIZE_HEIGHT)) {
+
+            state->data.night_survival.viewing_camera = CAM_3;
+            }
+
+        else if (is_mouse_inside(mouse_x, mouse_y,
+            NIGHT_CAMERA_4A_X,
+            NIGHT_CAMERA_4A_Y,
+            BUTTON_SIZE_WIDTH,
+            BUTTON_SIZE_HEIGHT)) {
+
+            state->data.night_survival.viewing_camera = CAM_4A;
+            }
+
+        else if (is_mouse_inside(mouse_x, mouse_y,
+            NIGHT_CAMERA_4B_X,
+            NIGHT_CAMERA_4B_Y,
+            BUTTON_SIZE_WIDTH,
+            BUTTON_SIZE_HEIGHT)){
+                
+            state->data.night_survival.viewing_camera = CAM_4B;
+        }
+
+        else if (is_mouse_inside(mouse_x, mouse_y,
+            NIGH_CAMERA_5_X,
+            NIGHT_CAMERA_5_Y,
+            BUTTON_SIZE_WIDTH,
+            BUTTON_SIZE_HEIGHT)) {
+
+            state->data.night_survival.viewing_camera = CAM_5;
+            }
+
+        else if (is_mouse_inside(mouse_x, mouse_y,
+            NIGHT_CAMERA_6_X,
+            NIGHT_CAMERA_6_Y,
+            BUTTON_SIZE_WIDTH,
+            BUTTON_SIZE_HEIGHT)) {
+
+            state->data.night_survival.viewing_camera = CAM_6;
+            }
+
+        else if (is_mouse_inside(mouse_x, mouse_y,
+            NIGHT_CAMERA_7_X,
+            NIGHT_CAMERA_7_Y,
+            BUTTON_SIZE_WIDTH,
+            BUTTON_SIZE_HEIGHT)) {
+
+            state->data.night_survival.viewing_camera = CAM_7;
+        }
 
     } else { // not checking the cameras
 
