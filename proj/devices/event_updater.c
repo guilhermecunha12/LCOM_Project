@@ -1,4 +1,11 @@
-#include "keyboard.h"
+#include "event_updater.h"
+
+int update_timer_game_event(GameEvent* ge) {
+	timer_int_handler();
+	ge->type = TIMER_TICK;
+	ge->data.timer_ticks = get_counter();
+	return 0;
+}
 
 /**
  * @brief Get the mapped key from the scancode.
@@ -32,18 +39,41 @@ static Key get_key(uint8_t scancode[2]) {
   }
 }
 
-int update_game_event(GameEvent* ge){
-  if (!process_scancode()) {
-    return -1;
-  }
 
-  uint8_t* scancode = get_scancode();
-  Key key = get_key(scancode);
-  if (key == KEY_INVALID) {
-    return -1;
-  }
+int update_keyboard_game_event(GameEvent* ge){
+    if (!process_scancode()) {
+      return 1;
+    }
 
-  ge->type = is_make_code(scancode) ? KEYBOARD_PRESS : KEYBOARD_RELEASE;
-  ge->data.key = key;
-  return 0;
+    uint8_t* scancode = get_scancode();
+    Key key = get_key(scancode);
+    if (key == KEY_INVALID) {
+      return 1;
+    }
+
+    ge->type = is_make_code(scancode) ? KEYBOARD_PRESS : KEYBOARD_RELEASE;
+    ge->data.key = key;
+    return 0;
+}
+
+int update_mouse_game_event(GameEvent* ge) {
+	if(!process_packet()) {
+		return 1;
+	}
+
+	if(is_mouse_click()){
+		ge->type = MOUSE_LB_CLICK;
+		ge->data.mouse_coords.delta_x = 0;
+		ge->data.mouse_coords.delta_y = 0;
+	}
+	else if(is_mouse_move()) {
+		ge->type = MOUSE_MOVE;
+		struct packet current_packet = get_mouse_packet();
+		ge->data.mouse_coords.delta_x = current_packet.delta_x;
+		ge->data.mouse_coords.delta_y = current_packet.delta_y;
+	}
+	else {
+		return 1; // No relevant mouse event
+	}
+	return 0;
 }

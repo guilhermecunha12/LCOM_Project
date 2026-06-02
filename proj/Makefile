@@ -5,6 +5,7 @@ PROG=proj
 .PATH: controller controller/handlers controller/handlers/helpers devices input models view view/handlers
 
 SRCS = main.c \
+       state.c \
        controller.c \
        main_menu_handlers.c \
        night_intro_handlers.c \
@@ -17,7 +18,7 @@ SRCS = main.c \
        processor.c \
        player_screen_movement_handler.c \
        subscribe.c \
-       keyboard.c \
+       event_updater.c \
        assets.c \
        animatronic.c \
        sprite.c \
