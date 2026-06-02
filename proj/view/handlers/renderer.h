@@ -13,5 +13,6 @@ void draw_mouse(const GameState* state);
 void render_main_menu(const GameState* state);
 void render_night_intro(const GameState* state);
 
+void render_night_survival(const GameState *state);
 
 #endif /* RENDERER_H */
