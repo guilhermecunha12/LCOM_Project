@@ -3,6 +3,7 @@
 #include "../models/sprite.h"
 #include "../../lab5/video.h"
 
+/*
 void draw_mouse(const GameState* state) {
     // only draw the mouse in states where it should be visible
     if (state->type == MAIN_MENU || state->type == NIGHT_SURVIVAL) {
@@ -13,6 +14,7 @@ void draw_mouse(const GameState* state) {
         }
     }
 }
+*/
 
 void render_frame(const GameState* state) {
     if (state->type >= NUM_STATES) return;
@@ -25,6 +27,6 @@ void render_frame(const GameState* state) {
         handler(state); // Dispatch to the specific state's drawing code
     }
 
-    draw_mouse(state); // Draw the mouse on top of everything else
+    //draw_mouse(state); // Draw the mouse on top of everything else
     swap_buffers();
 }

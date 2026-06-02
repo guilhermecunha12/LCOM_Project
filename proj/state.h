@@ -3,50 +3,9 @@
 
 #include "../lab4/mouse.h"
 #include "models/animatronic.h"
+#include "game_constants.h"
+
 #include <stdbool.h>
-
-#define FPS 60
-#define NIGHT_TIME (532 * FPS)
-#define HOUR_DURATION (NIGHT_TIME / 7) // Duration of each hour in ticks
-
-#define HOUR_0 NIGHT_TIME - HOUR_DURATION * 1
-#define HOUR_1 NIGHT_TIME - HOUR_DURATION * 2
-#define HOUR_2 NIGHT_TIME - HOUR_DURATION * 3
-#define HOUR_3 NIGHT_TIME - HOUR_DURATION * 4
-#define HOUR_4 NIGHT_TIME - HOUR_DURATION * 5
-#define HOUR_5 NIGHT_TIME - HOUR_DURATION * 6
-
-#define DRAIN_RATE_NIGHT_1 (10 * FPS) // 10 seconds per 1% battery drain
-#define DRAIN_RATE_NIGHT_2 (6 * FPS) // 6 seconds per 1% battery drain
-#define DRAIN_RATE_NIGHT_3 (5 * FPS) // 5 seconds per 1% battery drain
-#define DRAIN_RATE_NIGHT_4 (4 * FPS) // 4 seconds per 1% battery drain
-#define DRAIN_RATE_NIGHT_5 (3 * FPS) // 3 seconds per 1% battery drain
-
-// TODO: CHANGE
-static const int DRAIN_RATE_PER_NIGHT[] = {
-    DRAIN_RATE_NIGHT_1,
-    DRAIN_RATE_NIGHT_2,
-    DRAIN_RATE_NIGHT_3,
-    DRAIN_RATE_NIGHT_4,
-    DRAIN_RATE_NIGHT_5
-};
-
-// TODO: CHANGE to balance the game
-#define DEFAULT_POWER_LEVEL 100
-
-// Adjust this to balance difficulty
-#define BATTERY_DRAIN_RATE_DOOR 3
-#define BATTERY_DRAIN_RATE_LIGHT 1
-#define BATTERY_DRAIN_RATE_CAMERA 2
-
-#define NIGHT_INTRO_DURATION (5 * FPS)
-#define NIGHT_6AM_DURATION (5 * FPS)
-#define WIN_SCREEN_DURATION (5 * FPS)
-#define STATIC_SCREEN_DURATION (5 * FPS)
-
-#define NO_BATTERY_PHASE_DURATION (20 * FPS) // 20 seconds for both phases
-
-#define NUM_NIGHTS 6
 
 typedef enum {
     TIMER_TICK,
@@ -65,6 +24,7 @@ typedef enum {
     KEY_ENTER,
     KEY_SPACE,
     KEY_ESCAPE,
+    KEY_INVALID,
 } Key;
 
 // Tagged Union - TODO: instead of scancodes and mouse_packets, have enums that represent the keys
@@ -103,18 +63,17 @@ typedef struct {
     // Shared data for states that have camera movement (e.g., night survival and night no battery)
     int background_offset_x;
 } PersistentData;
- 
-// Camera IDs
-typedef enum { CAM_1A, CAM_1B, CAM_2A, CAM_2B, } CameraID;
 
 typedef enum {
+    NO_OPTION,
     NEW_GAME,
-    EXIT_GAME
+    CONTINUE,
+    EXIT_GAME,
+    NUM_OPTIONS
 } MainMenuOption;
 
 typedef struct {
     MainMenuOption selected_option; // for keyboard navigation in main menu; 0 for no option selected
-    int num_options; // Allows a variable number of options in the main menu (according to the current night)
 } MainMenuState;
 
 typedef struct {
@@ -191,94 +150,14 @@ typedef struct {
     } data; // state-specific data
 } GameState;
 
-/* Initializers */
 
-MainMenuState init_main_menu(int current_night) {
-    MainMenuState state;
-    state.selected_option = 0; // No option selected
-    // Decides the number of options based on the current night and checks if it's a fresh start or a continue
-    if(current_night == 0) {
-        state.num_options = 2; // New Game and Exit
-    } else {
-        state.num_options = 3; // Continue, New Game, and Exit
-    }
-    return state;
-}
-
-
-JumpscareState init_jumpscare(AnimatronicName animatronic_name) {
-    JumpscareState state;
-    state.frame_index = 0;
-    state.tick_timer = 0;
-    state.animatronic_name = animatronic_name;
-    return state;
-}
-
-NightIntroState init_night_intro() {
-    NightIntroState state;
-
-    // TODO: Check this frames values
-    state.frame_index = 0;
-    state.tick_timer = 0;
-
-    state.duration = NIGHT_INTRO_DURATION;
-    return state;
-}
-
-NightSurvivalState init_night_survival(int current_night) {
-    NightSurvivalState state;
-    state.time_left = NIGHT_TIME;
-    state.power_level = DEFAULT_POWER_LEVEL;
-    state.power_drain_rate = DRAIN_RATE_PER_NIGHT[current_night - 1];
-    state.power_drain_accumulator = 0;
-
-    state.left_light_on = false;
-    state.right_light_on = false;
-    state.left_door_closed = false;
-    state.right_door_closed = false;
-    state.camera_monitor_up = false;
-    // TODO: Check this value, it should be a default cam
-    state.viewing_camera = CAM_1A;
-
-    // TODO: Check this frames values
-    state.fan_frame_index = 0;
-    state.static_animation_timer = 0;
-
-    AnimatronicName animatronics[NUM_ANIMATRONICS];
-    initialize_animatronics(animatronics, current_night);
-
-    return state;
-}
-
-Night6AMScreen init_night_6am() {
-    Night6AMScreen state;
-    state.frame_index = 0;
-    state.tick_timer = 0;
-    state.duration = NIGHT_6AM_DURATION;
-    return state;
-}
-
-NightNoBatteryState init_night_no_battery(int duration) {
-    NightNoBatteryState state;
-    state.time_left = duration;
-    state.phase1_duration = NO_BATTERY_PHASE_DURATION;
-    state.phase2_duration = NO_BATTERY_PHASE_DURATION;
-    state.freddy = initialize_freddy_no_battery();
-    return state;
-}
-
-WinState init_win_screen() {
-    WinState state;
-    state.duration = WIN_SCREEN_DURATION;
-    return state;
-}
-
-StaticScreenState init_static_screen() {
-    StaticScreenState state;
-    state.frame_index = 0;
-    state.tick_timer = 0;
-    state.duration = STATIC_SCREEN_DURATION;
-    return state;
-}
+MainMenuState init_main_menu(int current_night);
+NightIntroState init_night_intro();
+NightSurvivalState init_night_survival(int current_night);
+Night6AMScreen init_night_6am();
+NightNoBatteryState init_night_no_battery(int duration);
+JumpscareState init_jumpscare(AnimatronicName animatronic_name);
+StaticScreenState init_static_screen();
+WinState init_win_screen();
 
 #endif /* STATE_H */

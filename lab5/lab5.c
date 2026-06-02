@@ -61,13 +61,14 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
             return 1;
         }
     }
-
+                              // TODO: yhyh
     swap_buffers();
 
     // Subscribe to the keyboard interrupts to wait for the ESC breakcode to exit the graphics mode
     uint8_t bit_no = 1;
     if(kbd_subscribe_int(&bit_no)) return 1;
-    uint8_t scancode = 0;
+    uint8_t* scancode;
+    bool running = true;
     int ipc_status;
     message msg;
     int r;
@@ -79,15 +80,20 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
         if (is_ipc_notify(ipc_status)) {
             switch(_ENDPOINT_P(msg.m_source)) {
                 case HARDWARE:
-                    if (msg.m_notify.interrupts & bit_no && process_scancode()) {
-                        scancode = get_scancode()[1];
+                    if (msg.m_notify.interrupts & bit_no) {
+                        if(process_scancode()) {
+                            scancode = get_scancode();
+                            if(scancode[1] == ESC_BREAKCODE){
+                                running = false;
+                            }
+                        }
                     }
                     break;
                 default:
                     break;
             }
         }
-    } while (scancode != ESC_BREAKCODE);
+    } while (running);
 
     // Unsubscribe keyboard interrupts and return to text mode
     if(kbd_unsubscribe_int()) {
@@ -104,16 +110,19 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
     // We should switch to VBE mode 0x105
     if(init_video_card(0x105)) return 1;
+    // TODO: YHyh
     clear_back_buffer();
 
     if (draw_xpm(xpm, x, y)) return 1;
 
+    // TOOD: YES
     swap_buffers();
 
     // Subscribe to the keyboard interrupts to wait for the ESC breakcode to exit the graphics mode
     uint8_t bit_no = 1;
     if(kbd_subscribe_int(&bit_no)) return 1;
-    uint8_t scancode = 0;
+    uint8_t* scancode;
+    bool running = true;
     int ipc_status;
     message msg;
     int r;
@@ -125,15 +134,20 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
         if (is_ipc_notify(ipc_status)) {
             switch(_ENDPOINT_P(msg.m_source)) {
                 case HARDWARE:
-                    if (msg.m_notify.interrupts & bit_no && process_scancode()) {
-                        scancode = get_scancode()[1];
+                    if (msg.m_notify.interrupts & bit_no) {
+                        if(process_scancode()) {
+                            scancode = get_scancode();
+                            if(scancode[1] == ESC_BREAKCODE){
+                                running = false;
+                            }
+                        }
                     }
                     break;
                 default:
                     break;
             }
         }
-    } while (scancode != ESC_BREAKCODE);
+    } while (running);
 
     // Unsubscribe keyboard interrupts and return to text mode
     if(kbd_unsubscribe_int()) {
