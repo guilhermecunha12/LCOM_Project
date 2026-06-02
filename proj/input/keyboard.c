@@ -28,7 +28,7 @@ static Key get_key(uint8_t scancode[2]) {
     case 0x01: // Escape key
       return KEY_ESCAPE;
     default:
-      return -1; // Return -1 for unmapped keys, should be handled by the caller
+      return KEY_INVALID; // Return -1 for unmapped keys, should be handled by the caller
   }
 }
 
@@ -39,7 +39,7 @@ int update_game_event(GameEvent* ge){
 
   uint8_t* scancode = get_scancode();
   Key key = get_key(scancode);
-  if (key == -1) {
+  if (key == KEY_INVALID) {
     return -1;
   }
 

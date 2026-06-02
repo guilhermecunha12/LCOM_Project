@@ -1,7 +1,8 @@
 #include "animatronic.h"
-#include "../state.h"
 
-static const CameraID PATHS[4][5] = {
+#include <stdlib.h>
+
+static CameraID PATHS[4][5] = {
     [FREDDY] = {CAM_1A, CAM_1B, CAM_2A, CAM_2B, CAM_1A},
     [BONNIE] = {CAM_1A, CAM_2A, CAM_2B, CAM_1A, CAM_2A},
     [CHICA] = {CAM_1A, CAM_1B, CAM_1A, CAM_1B, CAM_1A},
@@ -30,8 +31,8 @@ static const int MOVE_INTERVALS[4] = {
 };
 
 // Single-entry path for special no-battery Freddy state
-static const CameraID FREDDY_NO_BATTERY_PATH[1] = { CAM_1A };
-static const int FREDDY_NO_BATTERY_AI_LEVEL = 5; // 20% chance to attack
+//static const CameraID FREDDY_NO_BATTERY_PATH[1] = { CAM_1A };
+//static const int FREDDY_NO_BATTERY_AI_LEVEL = 5; // 20% chance to attack
 static const int FREDDY_NO_BATTERY_MOVE_INTERVAL_PHASE_1 = 5*FPS; // 5 seconds
 static const int FREDDY_NO_BATTERY_MOVE_INTERVAL_PHASE_2 = 2*FPS; // 2 seconds
 

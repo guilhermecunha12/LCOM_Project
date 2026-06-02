@@ -3,13 +3,11 @@
 // Device header files
 #include "devices/subscribe.h"
 
-
 #include "state.h"
 #include "controller/controller.h"
 #include "view/view.h"
 #include "input/keyboard.h"
 #include "models/assets.h"
-
 
 int main(int argc, char *argv[]) {
     // sets the language of LCF messages (can be either EN-US or PT-PT)
