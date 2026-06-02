@@ -7,7 +7,7 @@
 
 void render_main_menu(const GameState *state) {
     if (state == NULL)
-    return;
+        return;
 
     draw_sprite(get_asset(MENU_BG));
     draw_sprite(get_asset(GAME_TITLE));
@@ -31,7 +31,3 @@ void render_main_menu(const GameState *state) {
         }
     } 
 }
-
-
-    
-

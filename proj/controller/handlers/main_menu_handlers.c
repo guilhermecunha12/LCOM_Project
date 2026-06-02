@@ -116,6 +116,36 @@ void handle_main_menu_mouse_click(GameState* state, const GameEvent* event) {
     }
 }
 
+
+void handle_main_menu_mouse_move(GameState* state, const GameEvent* event) {
+    general_mouse_move(state, event);
+    
+    if (state->type == MAIN_MENU) {
+        if (is_mouse_inside(state->global_data.mouse_x, state->global_data.mouse_y,
+            NEW_GAME_X,
+            NEW_GAME_Y,
+            BOX_NORMAL_WIDTH,
+            BOX_NORMAL_HEIGHT)) {
+            state->data.main_menu.selected_option = NEW_GAME;
+        }
+        else if (state->global_data.current_night > 0 && is_mouse_inside(state->global_data.mouse_x, state->global_data.mouse_y,
+            CONTINUE_X,
+            CONTINUE_Y,
+            BOX_CONTINUE_WIDTH,
+            BOX_CONTINUE_HEIGHT)) {
+            state->data.main_menu.selected_option = CONTINUE;
+        }
+        else if (is_mouse_inside(state->global_data.mouse_x, state->global_data.mouse_y,
+            EXIT_GAME_X,
+            EXIT_GAME_Y,
+            BOX_NORMAL_WIDTH,
+            BOX_NORMAL_HEIGHT)) {
+            state->data.main_menu.selected_option = EXIT_GAME;
+        }
+    }
+}
+
+
 void handle_main_menu_keyboard(GameState* state, const GameEvent* event) {
     MainMenuState* mm = &state->data.main_menu;
 

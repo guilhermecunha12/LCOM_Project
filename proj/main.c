@@ -9,6 +9,8 @@
 #include "devices/event_updater.h"
 #include "models/assets.h"
 
+#include "view/ui.h"
+
 int main(int argc, char *argv[]) {
     // sets the language of LCF messages (can be either EN-US or PT-PT)
     lcf_set_language("EN-US");
@@ -36,7 +38,10 @@ int main(int argc, char *argv[]) {
 void init_game_state(GameState* state) {
     state->type = MAIN_MENU;
     state->global_data.current_night = 0; // not started yet
-    // TODO: initialize mouse coordinates in global data
+    
+    // Start with mouse in the middle of the screen
+    state->global_data.mouse_x = SCREEN_WIDTH / 2; 
+    state->global_data.mouse_y = SCREEN_HEIGHT / 2;
     
     // Initialization of the main menu considering the current night
     state->data.main_menu = init_main_menu(state->global_data.current_night);
@@ -74,15 +79,21 @@ int(proj_main_loop)(int argc, char* argv[]) {
                     // Timer interrupt
                     if (msg.m_notify.interrupts & timer_irq_set) {
                         if(update_timer_game_event(current_event) == 0) {
-                            process_event(current_state, current_event);
+                            process_event(current_state, current_event); 
+                            // Only render the screen on timer tick to ensure consistent frame rate.
                             render_frame(current_state);
                         }
                     }
 
                     // Keyboard interrupt
                     if (msg.m_notify.interrupts & kbd_irq_set) {
-                        if (update_keyboard_game_event(current_event) == 0) { // if the scancode was successfully processed into a game event
-                            process_event(current_state, current_event);
+                        if (update_keyboard_game_event(current_event) == 0) {
+                            // TODO: this is only to test
+                            if (current_event->type == KEYBOARD_PRESS && current_event->data.key == KEY_ESCAPE) {
+                                current_state->type = EXIT;
+                            } else {
+                                process_event(current_state, current_event);
+                            }
                         }
                     }
 

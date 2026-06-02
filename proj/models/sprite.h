@@ -27,7 +27,6 @@ typedef struct {
  * @param cur_fig current pixmap
  * @param map array of pointers to pixmaps
  */
-
 typedef struct{
     Sprite* sp;
     int aspeed;
