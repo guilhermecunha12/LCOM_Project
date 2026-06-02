@@ -83,8 +83,13 @@ int(proj_main_loop)(int argc, char* argv[]) {
 
                     // Keyboard interrupt
                     if (msg.m_notify.interrupts & kbd_irq_set) {
-                        if (update_keyboard_game_event(current_event) == 0) { // if the scancode was successfully processed into a game event
-                            process_event(current_state, current_event);
+                        if (update_keyboard_game_event(current_event) == 0) {
+                            // TODO: this is only to test
+                            if (current_event->type == KEYBOARD_PRESS && current_event->data.key == KEY_ESCAPE) {
+                                current_state->type = EXIT;
+                            } else {
+                                process_event(current_state, current_event);
+                            }
                         }
                     }
 
