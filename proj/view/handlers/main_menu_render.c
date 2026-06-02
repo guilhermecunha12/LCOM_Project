@@ -9,8 +9,8 @@ void render_main_menu(const GameState *state) {
   if (state == NULL)
     return;
 
-  draw_sprite(get_asset(MENU_BG), 0, 0);
-  draw_sprite(get_asset(GAME_TITLE), GAME_TITLE_X, GAME_TITLE_Y);
+  draw_sprite(get_asset(MENU_BG));
+  draw_sprite(get_asset(GAME_TITLE));
 
   if (state->data.main_menu.selected_option == 1)
     draw_sprite(get_asset(OPT_NEWGAME_SEL));
