@@ -16,13 +16,14 @@ typedef enum {
     OPT_NEWGAME_SEL,
     OPT_CONTINUE,
     OPT_CONTINUE_SEL,
+    OPT_EXIT,
+    OPT_EXIT_SEL,
     MENU_CUSTOM_NIGHT,
     MENU_NIGHT1,
     MENU_NIGHT2,
     MENU_NIGHT3,
     MENU_NIGHT4,
     MENU_NIGHT5,
-    
     NUM_ASSETS
 } xpmASSET;
 

@@ -44,7 +44,7 @@ typedef struct{
  * @param xpm pointer to xpm array that represents our sprite
  * @return Pointer to the created sprite
  */
-Sprite* create_sprite(xpm_map_t xpm);
+Sprite* create_sprite(xpm_map_t xpm, int x, uint16_t y);
 
 /**
  * @brief Destroys the sprite object by freeing its allocated memory

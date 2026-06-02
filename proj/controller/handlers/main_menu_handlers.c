@@ -23,9 +23,11 @@ static void menu_select_first_if_none(MainMenuState* mm) {
 static void menu_move_up(MainMenuState* mm) {
     menu_select_first_if_none(mm);
     if (mm->selected_option == NEW_GAME) {
-        mm->selected_option = EXIT_GAME;
-    } else if (mm->selected_option > NEW_GAME) {
-        mm->selected_option--;
+        mm->selected_option = EXIT_GAME;  // Wrap to last
+    } else if (mm->selected_option == CONTINUE) {
+        mm->selected_option = NEW_GAME;
+    } else if (mm->selected_option == EXIT_GAME) {
+        mm->selected_option = (mm->num_options == 3) ? CONTINUE : NEW_GAME;
     }
 }
 
@@ -35,10 +37,12 @@ static void menu_move_up(MainMenuState* mm) {
  */
 static void menu_move_down(MainMenuState* mm) {
     menu_select_first_if_none(mm);
-    if (mm->selected_option == NUM_OPTIONS) {
-        mm->selected_option = NEW_GAME;
-    } else if (mm->selected_option < NUM_OPTIONS) {
-        mm->selected_option++;
+    if (mm->selected_option == NEW_GAME) {
+        mm->selected_option = (mm->num_options == 3) ? CONTINUE : EXIT_GAME;
+    } else if (mm->selected_option == CONTINUE) {
+        mm->selected_option = EXIT_GAME;
+    } else if (mm->selected_option == EXIT_GAME) {
+        mm->selected_option = NEW_GAME;  // Wrap to first
     }
 }
 
@@ -92,8 +96,8 @@ void handle_main_menu_mouse_click(GameState* state, const GameEvent* event) {
     if (is_mouse_inside(mouse_x, mouse_y,
         NEW_GAME_X,
         NEW_GAME_Y,
-        BOX_NEW_GAME_WIDTH,
-        BOX_NEW_GAME_HEIGHT)) {
+        BOX_NORMAL_WIDTH,
+        BOX_NORMAL_HEIGHT)) {
 
         state->global_data.current_night = 1; // Start at night 1
         state->type = NIGHT_INTRO;

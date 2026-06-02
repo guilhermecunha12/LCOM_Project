@@ -3,10 +3,11 @@
 #include "../../view/ui_utils.h"
 #include "../handlers/helpers/player_screen_movement_handler.h"
 
+
 void handle_night_survival_mouse_click(GameState* state, const GameEvent* event) {
+    /*
     int mouse_x = state->global_data.mouse_x;
     int mouse_y = state->global_data.mouse_y;
-
     if (state->data.night_survival.camera_monitor_up) {
         // If the camera monitor is up, check if the click was on a camera feed to switch to it
         if (is_mouse_inside(mouse_x, mouse_y,
@@ -84,6 +85,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             state->data.night_survival.right_light_on = !state->data.night_survival.right_light_on; // switch
         }
     }
+        */
 }
 
 void handle_night_survival_timer(GameState* state, const GameEvent* event) {

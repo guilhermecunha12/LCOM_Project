@@ -1,7 +1,7 @@
 #include "handlers/renderer.h"
 #include "../models/assets.h"
 #include "../models/sprite.h"
-#include "../../lab5/video.h"
+#include "../devices/video/video.h"
 
 /*
 void draw_mouse(const GameState* state) {
@@ -19,7 +19,6 @@ void draw_mouse(const GameState* state) {
 void render_frame(const GameState* state) {
     if (state->type >= NUM_STATES) return;
 
-    clear_back_buffer();
   
     RenderHandler handler = get_render_handler(state->type);
 
@@ -27,6 +26,7 @@ void render_frame(const GameState* state) {
         handler(state); // Dispatch to the specific state's drawing code
     }
 
+    
     //draw_mouse(state); // Draw the mouse on top of everything else
-    swap_buffers();
+    vg_flip_buffer();
 }

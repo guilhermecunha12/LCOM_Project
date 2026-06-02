@@ -3,8 +3,8 @@
 
 int subscribe_devices(uint8_t *timer_bit_no, uint8_t *kbd_bit_no, uint8_t *mouse_bit_no, uint16_t vbe_mode) {
 
+  timer_set_frequency(0, 30);
   if (timer_subscribe_int(timer_bit_no)) return 1;
-  timer_set_frequency(0, FPS);
 
   if (kbd_subscribe_int(kbd_bit_no))   { timer_unsubscribe_int(); return 1; }
   if (mouse_subscribe_int(mouse_bit_no)) { timer_unsubscribe_int(); 
