@@ -2,10 +2,7 @@
 #include "video.h"
 
 static char *video_mem;
-static char *front_buffer;
-static char *back_buffer;
-
-static uint8_t curr_buffer;
+static char *back_buffer; 
 
 static uint16_t h_res;
 static uint16_t v_res;
@@ -15,24 +12,10 @@ static unsigned frame_buffer_size;
 static unsigned bytes_per_pixel;
 
 
-static void set_display_start(uint32_t first_line) {
-  struct reg86 r;
-  memset(&r, 0, sizeof(r));
-  r.intno = 0x10;
-  r.ah = 0x4F;
-  r.al = 0x07;
-  r.bx = 0x0000;   
-  r.cx = 0;      
-  r.dx = first_line;
-  if (sys_int86(&r) != OK)
-    panic("set_display_start: sys_int86 failed");
-}
-
-
 int(init_video_card)(uint16_t mode){
   if(config_Vram(mode)) return 1;
+  if(initialize_back_buffer()) return 1;
   if(vg_set_mode(mode)) return 1;
-  if(clear_back_buffer()) return 1;
   return 0;
 }
 
@@ -44,6 +27,7 @@ int(switch_text_mode)(void){
   }
   return vg_exit() ? 1 : 0;
 }
+
 
 
 enum xpm_image_type(get_color_mode)(){
@@ -81,7 +65,6 @@ int(draw_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
           if(vg_draw_pixel(x+j,y+i,colour)){
             free(pixmap);
             return 1;
-
           } 
         }
     }
@@ -108,23 +91,17 @@ int config_Vram(uint16_t mode){
   unsigned int frame_buffer_base = vmi.PhysBasePtr;
   frame_buffer_size = h_res * v_res * bytes_per_pixel;
 
-  unsigned int total_mapped_vram = frame_buffer_size * 2;
-
   /* Grant memory mapping permissions */
   struct minix_mem_range mr;
   mr.mr_base = (phys_bytes) frame_buffer_base;
-  mr.mr_limit = mr.mr_base + total_mapped_vram;  
+  mr.mr_limit = mr.mr_base + frame_buffer_size;  
 
   int r;
   if (OK != (r = sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr))) return 1;
 
   /* Map memory */
-  video_mem = vm_map_phys(SELF, (void *)mr.mr_base, mr.mr_limit - mr.mr_base);
+  video_mem = vm_map_phys(SELF, (void *)mr.mr_base, frame_buffer_size);
   if(video_mem == MAP_FAILED) return 1;
-
-  front_buffer = video_mem; // currently displayed
-  back_buffer = video_mem + frame_buffer_size; // will be drawn
-  curr_buffer = 0;
   return 0;
 }
 
@@ -150,30 +127,32 @@ int vg_set_mode(uint16_t mode){
   return 0;
 }
 
-void vg_flip_buffer() {
-  if(curr_buffer){
-    front_buffer = video_mem;
-    back_buffer = video_mem + frame_buffer_size;
-    curr_buffer = 0;
-    set_display_start(0); // starts drawing from the first half of the mapped VRAM
-  }
-  else {
-    front_buffer = video_mem + frame_buffer_size;
-    back_buffer = video_mem;
-    curr_buffer = 1;
-    set_display_start(v_res); // starts drawing from the first half of the mapped VRAM
-  }
+
+int initialize_back_buffer(){
+    if(back_buffer != NULL) return 0; 
+
+    back_buffer = malloc(frame_buffer_size);
+    if(back_buffer == NULL) return 1;
+
+    // Initializes back buffer from the info extracted of our    current mode
+    memset(back_buffer, 0, frame_buffer_size);
+    return 0;
 }
 
-int clear_back_buffer() {
-  if(back_buffer == NULL) return 1;
-  memset(back_buffer, 0, frame_buffer_size);
-  return 0;
+void swap_buffers(){
+    if(back_buffer == NULL) return;
+    memcpy(video_mem, back_buffer, frame_buffer_size);
+}
+
+int clear_back_buffer(){
+    if(back_buffer == NULL) return 1;
+    memset(back_buffer, 0, frame_buffer_size);
+    return 0;
 }
 
 int vg_draw_pixel (uint16_t x, uint16_t y, uint32_t color) {
   // Check if coordinates are within the screen limits
-  if(x >= h_res || y >= v_res) return 1;
+  if(x > h_res || y > v_res) return 1;
   // Caculate the position in VRAM of the pixel to be drawn 
   unsigned position = ((y * h_res) + x) * bytes_per_pixel;
   // Copy memory from color to back buffer position. This couls be done trough a for loop.
@@ -182,22 +161,10 @@ int vg_draw_pixel (uint16_t x, uint16_t y, uint32_t color) {
 }
 
 int (vg_draw_hline) (uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
+  // Draw a horizontal line by drwaing pixel by pixel, len times
   for(unsigned x_off = 0; x_off < len; x_off++){
     if(vg_draw_pixel(x + x_off, y, color)) return 1;
   }
   return 0;
 }
-
-char* vg_get_back_buffer(void) {
-  return back_buffer;
-}
-
-uint16_t vg_get_h_res(void) {
-  return h_res;
-}
-
-unsigned vg_get_bytes_per_pixel(void) {
-  return bytes_per_pixel;
-}
-
 
