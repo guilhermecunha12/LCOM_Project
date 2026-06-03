@@ -171,8 +171,6 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
 
 void handle_night_survival_timer(GameState* state, const GameEvent* event) {
 
-    // DECREASE TIME LEFT
-
     // Decrease time left
     NightSurvivalState* night_state = &state->data.night_survival;
     night_state->time_left--; // This is in ticks
@@ -188,21 +186,23 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
     // BATERRY DRAIN
     
     // Base: accumulate 1 per tick
-    int drain_rate = 1;
+    int* drain_speed = &night_state->power_drain_speed;
+    int* drain_rate = &night_state->power_drain_rate;
+
+    *drain_speed = 1;
     
     // Increase the drain rate based on the what the player is using
-    if (night_state->left_door_closed) drain_rate += BATTERY_DRAIN_RATE_DOOR;
-    if (night_state->right_door_closed) drain_rate += BATTERY_DRAIN_RATE_DOOR;
-    if (night_state->left_light_on) drain_rate += BATTERY_DRAIN_RATE_LIGHT;
-    if (night_state->right_light_on) drain_rate += BATTERY_DRAIN_RATE_LIGHT;
-    if (night_state->camera_monitor_up) drain_rate += BATTERY_DRAIN_RATE_CAMERA;
+    if (night_state->left_door_closed) *drain_speed += BATTERY_DRAIN_RATE_DOOR;
+    if (night_state->right_door_closed) *drain_speed += BATTERY_DRAIN_RATE_DOOR;
+    if (night_state->left_light_on) *drain_speed += BATTERY_DRAIN_RATE_LIGHT;
+    if (night_state->right_light_on) *drain_speed += BATTERY_DRAIN_RATE_LIGHT;
+    if (night_state->camera_monitor_up) *drain_speed += BATTERY_DRAIN_RATE_CAMERA;
     
-    night_state->power_drain_accumulator += drain_rate;
+    *drain_rate -= *drain_speed;
     
-    // Every 588 ticks (default), drain 1%
-    if (night_state->power_drain_accumulator >= night_state->power_drain_rate) {
+    if (night_state->power_drain_rate <= 0) {
         night_state->power_level--;
-        night_state->power_drain_accumulator -= night_state->power_drain_rate;
+        *drain_rate = DRAIN_RATE_PER_NIGHT[state->global_data.current_night - 1] + *drain_rate; // carry over the power drained
     }
 
     if (night_state->power_level == 0) {

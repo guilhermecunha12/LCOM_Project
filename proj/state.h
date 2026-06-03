@@ -86,8 +86,8 @@ typedef struct {
     int time_left;
 
     int power_level; // 100 - 0
-    int power_drain_rate; // number of ticks needed to decrement power by 1 unit
-    int power_drain_accumulator;
+    int power_drain_rate; // number of units needed to decrement power by 1 unit
+    int power_drain_speed; // number of units equivalent for each tick
 
     bool left_light_on;
     bool right_light_on;

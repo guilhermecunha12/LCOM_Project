@@ -15,12 +15,16 @@ static uint8_t animatronics_at_cam(const Animatronic *animatronics, CameraID cam
 }
 
 
-void draw_battery_indicator(int power_level) {
+void draw_battery_indicator(int power_level, int power_drain_speed, int current_night) {
     draw_sprite(get_asset(POWER_LEFT));
     
-    // Draw decimal digit
-    if (power_level == 100) {
-        draw_sprite(get_asset(II_POWER9)); // assume 99% for 100%
+    xpmASSET second_digit = power2_to_asset[power_level % 10];
+
+
+    // Draw decimal digit 
+    if (power_level == 100) { // assume 99% for 100%
+        draw_sprite(get_asset(I_POWER9)); 
+        second_digit = II_POWER9;
 
     } else if (power_level >= 10) {
         xpmASSET first_digit = power1_to_asset[power_level / 10];
@@ -28,21 +32,19 @@ void draw_battery_indicator(int power_level) {
     }
 
     // Draw unit digit
-    xpmASSET second_digit = power2_to_asset[power_level % 10];
     draw_sprite(get_asset(second_digit));
-
     draw_sprite(get_asset(PERCENTAGE_SIGN));
     draw_sprite(get_asset(POWER_USAGE));
 
-    // Power consumption
-    if (power_level >= 75) {
-        draw_sprite(get_asset(USAGE4));
-    } else if (power_level >= 50) {
-        draw_sprite(get_asset(USAGE3));
-    } else if (power_level >= 25) {
-        draw_sprite(get_asset(USAGE2));
-    } else {
+    // Power consumption speed
+    if (power_drain_speed == 1) {
         draw_sprite(get_asset(USAGE1));
+    } else if (power_drain_speed <= 3) {
+        draw_sprite(get_asset(USAGE2));
+    } else if (power_drain_speed <= 5) {
+        draw_sprite(get_asset(USAGE3));
+    } else {
+        draw_sprite(get_asset(USAGE4));
     }
 }
 
@@ -104,5 +106,5 @@ void render_night_survival(const GameState *state) {
             }
         }
     }
-    draw_battery_indicator(state->data.night_survival.power_level);
+    draw_battery_indicator(state->data.night_survival.power_level, state->data.night_survival.power_drain_speed, state->global_data.current_night);
 }
