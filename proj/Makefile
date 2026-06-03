@@ -26,6 +26,7 @@ LIB_SRCS = state.c \
            main_menu_render.c \
            night_intro_render.c \
            night_survival_render.c \
+           jumpscare_render.c \
            video.c
 
 LIB_OBJS = ${LIB_SRCS:.c=.o}

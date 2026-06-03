@@ -52,3 +52,23 @@ Sprite* get_asset(xpmASSET asset) {
     return assets[asset];
 }
 
+int get_jumpscare_frame_count(AnimatronicName anim, bool is_freddy_lightout) {
+    switch (anim) {
+        case FREDDY: return is_freddy_lightout ? NUM_JUMPSCARE_FREDDY_LIGHTOUT : NUM_JUMPSCARE_FREDDY_NORMAL;
+        case BONNIE: return NUM_JUMPSCARE_BONNIE;
+        case CHICA: return NUM_JUMPSCARE_CHICA;
+        case FOXY: return NUM_JUMSCARE_FOXY;
+        default: return 0;
+    }
+}
+
+xpmASSET get_jumpscare_asset(AnimatronicName anim, bool is_freddy_lightout, int frame) {
+    switch (anim) {
+        case FREDDY: return (xpmASSET)((is_freddy_lightout ? JUMPSCARE_FREDDY_LIGHTOUT_FIRST : JUMPSCARE_FREDDY_FIRST) + frame);
+        case BONNIE: return (xpmASSET)(JUMPSCARE_BONNIE_FIRST + frame);
+        case CHICA: return (xpmASSET)(JUMPSCARE_CHICA_FIRST + frame);
+        case FOXY: return (xpmASSET)(JUMPSCARE_FOXY_FIRST + frame);
+        default: return MENU_BG; //TODO: check this
+    }
+}
+
