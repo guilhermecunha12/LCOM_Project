@@ -22,11 +22,12 @@ MainMenuState init_main_menu(int current_night) {
 }
 
 
-JumpscareState init_jumpscare(AnimatronicName animatronic_name) {
+JumpscareState init_jumpscare(AnimatronicName animatronic_name, bool freddy_lights_out) {
     JumpscareState state;
     state.frame_index = 0;
     state.tick_timer = 0;
     state.animatronic_name = animatronic_name;
+    state.is_freddy_lightout = freddy_lights_out;
     return state;
 }
 

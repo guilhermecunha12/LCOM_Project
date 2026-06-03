@@ -113,10 +113,11 @@ typedef struct {
 
 // Specific data for a sequence of changing images without player input
 typedef struct {
-    int frame_index; // Which frame of the jumpscare animation
-    int tick_timer; // Counter to control animation speedw
+    int frame_index;
+    int tick_timer;
     int duration;
-    AnimatronicName animatronic_name; // Which character is jumpscaring?
+    AnimatronicName animatronic_name;
+    bool is_freddy_lightout; // Freddy has two jumpscares: normal (21 frames) and light-out (28 frames)
 } JumpscareState;
 
 typedef struct {
@@ -157,7 +158,7 @@ NightIntroState init_night_intro();
 NightSurvivalState init_night_survival(int current_night);
 Night6AMScreen init_night_6am();
 NightNoBatteryState init_night_no_battery(int duration);
-JumpscareState init_jumpscare(AnimatronicName animatronic_name);
+JumpscareState init_jumpscare(AnimatronicName animatronic_name, bool freddy_lights_out);
 StaticScreenState init_static_screen();
 WinState init_win_screen();
 

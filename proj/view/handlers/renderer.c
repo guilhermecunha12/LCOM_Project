@@ -6,6 +6,7 @@ static RenderHandler rht[NUM_STATES] = {
     //[NIGHT_SURVIVAL] = render_night_survival,
     // Other states...
     [NIGHT_SURVIVAL] = render_night_survival,
+    [JUMPSCARE] = render_jumpscare,
 };
 
 RenderHandler get_render_handler(const StateType state) {
