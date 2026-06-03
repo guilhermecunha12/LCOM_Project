@@ -1,5 +1,5 @@
 /* XPM */
-static char * night4_xpm[] = {
+static char * menu_night4_xpm[] = {
 "92 27 2 1",
 " 	c None",
 ".	c #FFFFFF",

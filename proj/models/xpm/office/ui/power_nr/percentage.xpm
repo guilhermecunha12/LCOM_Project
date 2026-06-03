@@ -1,5 +1,5 @@
 /* XPM */
-static char * %_xpm[] = {
+static char * percentage_xpm[] = {
 "14 16 2 1",
 " 	c None",
 ".	c #FFFFFF",

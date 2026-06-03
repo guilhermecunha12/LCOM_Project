@@ -1,5 +1,5 @@
 /* XPM */
-static char * night4_xpm[] = {
+static char * start_night4_xpm[] = {
 "227 97 17 1",
 " 	c None",
 ".	c #FFFFFF",

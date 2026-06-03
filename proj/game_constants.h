@@ -32,7 +32,7 @@ static const int DRAIN_RATE_PER_NIGHT[] = {
 
 // Adjust this to balance difficulty
 #define BATTERY_DRAIN_RATE_DOOR 3
-#define BATTERY_DRAIN_RATE_LIGHT 1
+#define BATTERY_DRAIN_RATE_LIGHT 2
 #define BATTERY_DRAIN_RATE_CAMERA 2
 
 #define NUM_JUMSCARE_FOXY 21

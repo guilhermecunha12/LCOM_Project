@@ -47,7 +47,7 @@ NightSurvivalState init_night_survival(int current_night) {
     state.time_left = NIGHT_TIME;
     state.power_level = DEFAULT_POWER_LEVEL;
     state.power_drain_rate = DRAIN_RATE_PER_NIGHT[current_night - 1];
-    state.power_drain_accumulator = 0;
+    state.power_drain_speed = 1;
 
     state.left_light_on = false;
     state.right_light_on = false;
