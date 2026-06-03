@@ -33,6 +33,7 @@ void load_all_assets() {
     assets[MENU_NIGHT3] = create_sprite((xpm_map_t) night3_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
     assets[MENU_NIGHT4] = create_sprite((xpm_map_t) night4_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
     assets[MENU_NIGHT5] = create_sprite((xpm_map_t) night5_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
+    // TODO: include loops to load the jumpscare sprites
 }
 
 void unload_all_assets() {
