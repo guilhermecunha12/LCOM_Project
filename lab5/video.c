@@ -151,7 +151,7 @@ void clear_back_buffer(){
 
 int vg_draw_pixel (uint16_t x, uint16_t y, uint32_t color) {
   // Check if coordinates are within the screen limits
-  if(x > h_res || y > v_res) return 1;
+  if(x >= h_res || y >= v_res) return 1;
   // Caculate the position in VRAM of the pixel to be drawn 
   unsigned position = ((y * h_res) + x) * bytes_per_pixel;
   // Copy memory from color to back buffer position. This couls be done trough a for loop.

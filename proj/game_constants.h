@@ -1,7 +1,7 @@
 #ifndef SHARED_GAME_CONSTANTS_H
 #define SHARED_GAME_CONSTANTS_H
 
-#define FPS 20
+#define FPS 30
 #define NIGHT_TIME (532 * FPS)
 #define HOUR_DURATION (NIGHT_TIME / 7) // Duration of each hour in ticks
 

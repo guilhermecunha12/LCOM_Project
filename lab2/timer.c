@@ -41,7 +41,7 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
 
   if(sys_outb(TIMER_CTRL,control_byte)) return 1; // write control_byte to control_register
 
-  uint16_t divider = TIMER_FREQ / (uint16_t) freq;
+  uint16_t divider = (uint16_t) (TIMER_FREQ / freq);
   uint8_t lsb, msb; 
   // Write in the specified order defined in the control byte (LSB followed by MSB)
   util_get_LSB(divider,&lsb);

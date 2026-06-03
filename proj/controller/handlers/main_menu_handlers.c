@@ -23,9 +23,11 @@ static void menu_select_first_if_none(MainMenuState* mm) {
 static void menu_move_up(MainMenuState* mm) {
     menu_select_first_if_none(mm);
     if (mm->selected_option == NEW_GAME) {
-        mm->selected_option = EXIT_GAME;
-    } else if (mm->selected_option > NEW_GAME) {
-        mm->selected_option--;
+        mm->selected_option = EXIT_GAME;  // Wrap to last
+    } else if (mm->selected_option == CONTINUE) {
+        mm->selected_option = NEW_GAME;
+    } else if (mm->selected_option == EXIT_GAME) {
+        mm->selected_option = (mm->num_options == 3) ? CONTINUE : NEW_GAME;
     }
 }
 
@@ -35,10 +37,12 @@ static void menu_move_up(MainMenuState* mm) {
  */
 static void menu_move_down(MainMenuState* mm) {
     menu_select_first_if_none(mm);
-    if (mm->selected_option == NUM_OPTIONS) {
-        mm->selected_option = NEW_GAME;
-    } else if (mm->selected_option < NUM_OPTIONS) {
-        mm->selected_option++;
+    if (mm->selected_option == NEW_GAME) {
+        mm->selected_option = (mm->num_options == 3) ? CONTINUE : EXIT_GAME;
+    } else if (mm->selected_option == CONTINUE) {
+        mm->selected_option = EXIT_GAME;
+    } else if (mm->selected_option == EXIT_GAME) {
+        mm->selected_option = NEW_GAME;  // Wrap to first
     }
 }
 
