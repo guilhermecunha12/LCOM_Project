@@ -54,11 +54,19 @@ int(draw_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
     // Should contain the address of the allocated memory for the Pixmap
     if(pixmap == NULL) return 1;
 
-    // Replace nested per-pixel writes with per-row memcpy
-    for (int i = 0; i < img.height; i++) {
-        uint8_t *src_row = &pixmap[i * img.width * bytes_per_pixel];
-        uint8_t *dst_row = (uint8_t*)&back_buffer[( (y + i) * h_res + x) * bytes_per_pixel];
-        memcpy(dst_row, src_row, img.width * bytes_per_pixel);
+    // Traverse the 2D map normally and draw each pixel
+    for(int i=0; i<img.height;i++){
+        for(int j=0; j<img.width;j++){
+          uint32_t colour =0;
+          // In direct mode each pixel stores directly its corresponding colour 
+          memcpy(&colour, &pixmap[(i*img.width +j)*bytes_per_pixel],bytes_per_pixel);
+          
+          if(vg_draw_pixel(x+j,y+i,colour)){
+            free(pixmap);
+            return 1;
+
+          } 
+        }
     }
 
     free(pixmap);
