@@ -98,7 +98,7 @@
 //////// GAME START UI /////////////////////////////////
 
 // Maybe clear screen first and then draw these sprites on top (upon selecting our night)
-#define SCREEN_TEXT_X 473
+#define SCREEN_TEXT_X 450
 #define SCREEN_TEXT_Y 384
 
 //////////////////////////////////////////////////////////
@@ -106,7 +106,7 @@
 //////////// OFFICE LAYOUT UI ////////////////////////////
 
 // Camera flip button
-  #define CAMERA_FLIP_BUTTON_X 263
+  #define CAMERA_FLIP_BUTTON_X 280
   #define CAMERA_FLIP_BUTTON_Y 780
 
   #define CAMERA_FLIP_BUTTON_WIDTH 482
@@ -120,7 +120,7 @@
   #define AM_TEXT_X 1028
   #define AM_TEXT_Y 53
 
-  #define NIGHT_COUNT_TEXT_X 978
+  #define NIGHT_COUNT_TEXT_X 980
   #define NIGHT_COUNT_TEXT_Y 101
 
 // Battery details and usage
@@ -129,7 +129,7 @@
   #define USAGE_TEXT_X 44
   #define USAGE_TEXT_Y 797
 
-  #define INDICATOR_USAGE_X 143
+  #define INDICATOR_USAGE_X 150
   #define INDICATOR_USAGE_Y 799
   // Percentage
   #define POWER_LEFT_TEXT_X 44

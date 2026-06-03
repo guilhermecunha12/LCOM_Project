@@ -3,16 +3,31 @@
 
 MainMenuState init_main_menu(int current_night) {
     MainMenuState state;
-    state.selected_option = NO_OPTION; // No option selected
+    state.selected_option = 0; // No option selected by default
+    int num_options = (current_night == 0) ? 2 : 3; // Determine number of options based on current night
+    state.options = (MainMenuOption*) malloc(sizeof(MainMenuOption) * (num_options + 1));
+    if (current_night == 0) {
+        state.num_options = 2;
+        state.options[0] = NO_OPTION; // Placeholder for no selection
+        state.options[1] = NEW_GAME;
+        state.options[2] = EXIT_GAME;
+    } else {
+        state.num_options = 3;
+        state.options[0] = NO_OPTION; // Placeholder for no selection
+        state.options[1] = NEW_GAME;
+        state.options[2] = CONTINUE;
+        state.options[3] = EXIT_GAME;
+    }
     return state;
 }
 
 
-JumpscareState init_jumpscare(AnimatronicName animatronic_name) {
+JumpscareState init_jumpscare(AnimatronicName animatronic_name, bool freddy_lights_out) {
     JumpscareState state;
     state.frame_index = 0;
     state.tick_timer = 0;
     state.animatronic_name = animatronic_name;
+    state.is_freddy_lightout = freddy_lights_out;
     return state;
 }
 

@@ -11,3 +11,5 @@ lab5/lab5
 **/trace.txt
 .DS_Store
 .idea
+proj
+libproj.a

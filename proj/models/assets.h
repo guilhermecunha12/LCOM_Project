@@ -16,6 +16,8 @@ typedef enum {
     OPT_NEWGAME_SEL,
     OPT_CONTINUE,
     OPT_CONTINUE_SEL,
+    OPT_EXIT,
+    OPT_EXIT_SEL,
     MENU_CUSTOM_NIGHT,
     MENU_NIGHT1,
     MENU_NIGHT2,
@@ -119,6 +121,14 @@ typedef enum {
     NIGHT_TEXT_5,
 
     /* OFFICE */
+    // assests contiguos em memory for easier access in jumpscare animation frames
+    /* JUMPSCARES — base index per animatronic, use FIRST + frame_index to address */
+    JUMPSCARE_FREDDY_FIRST,  // 21 frames
+    JUMPSCARE_FREDDY_LIGHTOUT_FIRST = JUMPSCARE_FREDDY_FIRST + NUM_JUMPSCARE_FREDDY_NORMAL, // 28 frames
+    JUMPSCARE_BONNIE_FIRST = JUMPSCARE_FREDDY_LIGHTOUT_FIRST + NUM_JUMPSCARE_FREDDY_LIGHTOUT, // 11 frames
+    JUMPSCARE_CHICA_FIRST = JUMPSCARE_BONNIE_FIRST + NUM_JUMPSCARE_BONNIE, // 16 frames
+    JUMPSCARE_FOXY_FIRST = JUMPSCARE_CHICA_FIRST + NUM_JUMPSCARE_CHICA, // 21 frames
+
     OFFICE,
     LEFT_DOOR_CLOSED,
     RIGHT_DOOR_CLOSED,
@@ -126,7 +136,6 @@ typedef enum {
     FOXY_LEFT_DOOR,
     FREDDY_RIGHT_DOOR,
     CHICA_RIGHT_DOOR,
-
 
     NUM_ASSETS
 } xpmASSET;
@@ -237,8 +246,11 @@ static const xpmASSET cam7_assets[] = {
     [CAM_FREDDY | CAM_CHICA] = CAM_7_FREDDY_CHICA,
 };
 
+int get_jumpscare_frame_count(AnimatronicName anim, bool is_freddy_lightout);
+xpmASSET get_jumpscare_asset(AnimatronicName anim, bool is_freddy_lightout, int frame);
+
 /**
- * @brief Loads all the existing assets into memory by initializing them to an array of 
+ * @brief Loads all the existing assets into memory by initializing them to an array of
  * pointers to sprite objects.
  */
 void load_all_assets();

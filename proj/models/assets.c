@@ -16,6 +16,8 @@
 #include "xpm/menu/night3.xpm"
 #include "xpm/menu/night4.xpm"
 #include "xpm/menu/night5.xpm"
+#include "xpm/menu/exit_game.xpm"
+#include "xpm/menu/exit_game_sel.xpm"
 
 #include "xpm/night_start/night1.xpm"
 #include "xpm/night_start/night2.xpm"
@@ -67,6 +69,8 @@ void load_all_assets() {
     assets[OPT_NEWGAME_SEL] = create_sprite((xpm_map_t) newgame_sel_xpm,NEW_GAME_SEL_X, NEW_GAME_SEL_Y);
     assets[OPT_CONTINUE] = create_sprite((xpm_map_t) continue_xpm, CONTINUE_X, CONTINUE_Y);
     assets[OPT_CONTINUE_SEL] = create_sprite((xpm_map_t) continue_sel_xpm, CONTINUE_SEL_X, CONTINUE_SEL_Y);
+    assets[OPT_EXIT] = create_sprite((xpm_map_t) exit_game_xpm, EXIT_GAME_X, EXIT_GAME_Y);
+    assets[OPT_EXIT_SEL] = create_sprite((xpm_map_t) exit_game_sel_xpm, EXIT_GAME_SEL_X, EXIT_GAME_SEL_Y);
     assets[MENU_CUSTOM_NIGHT] = create_sprite((xpm_map_t) custom_night_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
     assets[MENU_NIGHT1] = create_sprite((xpm_map_t) menu_night1_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
     assets[MENU_NIGHT2] = create_sprite((xpm_map_t) menu_night2_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
@@ -122,6 +126,8 @@ void load_all_assets() {
     assets[NIGHT_TEXT_3] = create_sprite((xpm_map_t) night3_xpm, NIGHT_COUNT_TEXT_X, NIGHT_COUNT_TEXT_Y);
     assets[NIGHT_TEXT_4] = create_sprite((xpm_map_t) night4_xpm, NIGHT_COUNT_TEXT_X, NIGHT_COUNT_TEXT_Y);
     assets[NIGHT_TEXT_5] = create_sprite((xpm_map_t) night5_xpm, NIGHT_COUNT_TEXT_X, NIGHT_COUNT_TEXT_Y);
+    
+    // TODO: include loops to load the jumpscare sprites
 }
 
 void unload_all_assets() {
@@ -134,5 +140,25 @@ void unload_all_assets() {
 Sprite* get_asset(xpmASSET asset) {
     if (asset >= NUM_ASSETS) return NULL;
     return assets[asset];
+}
+
+int get_jumpscare_frame_count(AnimatronicName anim, bool is_freddy_lightout) {
+    switch (anim) {
+        case FREDDY: return is_freddy_lightout ? NUM_JUMPSCARE_FREDDY_LIGHTOUT : NUM_JUMPSCARE_FREDDY_NORMAL;
+        case BONNIE: return NUM_JUMPSCARE_BONNIE;
+        case CHICA: return NUM_JUMPSCARE_CHICA;
+        case FOXY: return NUM_JUMSCARE_FOXY;
+        default: return 0;
+    }
+}
+
+xpmASSET get_jumpscare_asset(AnimatronicName anim, bool is_freddy_lightout, int frame) {
+    switch (anim) {
+        case FREDDY: return (xpmASSET)((is_freddy_lightout ? JUMPSCARE_FREDDY_LIGHTOUT_FIRST : JUMPSCARE_FREDDY_FIRST) + frame);
+        case BONNIE: return (xpmASSET)(JUMPSCARE_BONNIE_FIRST + frame);
+        case CHICA: return (xpmASSET)(JUMPSCARE_CHICA_FIRST + frame);
+        case FOXY: return (xpmASSET)(JUMPSCARE_FOXY_FIRST + frame);
+        default: return MENU_BG; //TODO: check this
+    }
 }
 
