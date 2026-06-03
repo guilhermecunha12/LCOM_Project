@@ -68,7 +68,8 @@ int draw_sprite(const Sprite* sp);
  * @param y y-coordinate of the sprite's position
  * @param aspeed number of frames to wait before switching to the next pixmap 
  */
-AnimSprite *create_anim_sprite(uint8_t pic_no, int x, uint16_t y, int aspeed, char *pic1[], ...);
+
+AnimSprite *create_anim_sprite(uint8_t no_pic, int x, uint16_t y, int aspeed, xpm_map_t pic1, ...);
 
 /**
  * @brief Function responsible for animating the sprite by switching between its pixmaps according to the specified animation speed

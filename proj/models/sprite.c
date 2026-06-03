@@ -62,19 +62,19 @@ AnimSprite *create_anim_sprite(uint8_t no_pic, int x, uint16_t y, int aspeed, xp
    AnimSprite *asp = (AnimSprite *) malloc(sizeof(AnimSprite));
 
    // Initialize all constructor values
-   asp->map = create_sprite(pic1,0,0);
+   asp->map = create_sprite(pic1,x,y);
    asp->num_fig = no_pic;
    asp->cur_fig = 0;
    asp->aspeed = aspeed;
    asp->cur_aspeed = aspeed;
-   asp->map =  malloc((no_pic) * sizeof(char *));
+   asp->map =  malloc((no_pic) * sizeof(uint8_t *));
    asp -> map[0] = asp->sp->map;
 
    va_list ap;
    va_start(ap, pic1);
 
-   for(int i = 0; i < no_pic; i++){
-      char **tmp = va_arg(ap, char **);
+   for(int i = 1; i < no_pic; i++){
+      xpm_map_t tmp = va_arg(ap, xpm_map_t);
 
       xpm_image_t img;
       asp->map[i] = xpm_load(tmp, XPM_8_8_8_8, &img);
