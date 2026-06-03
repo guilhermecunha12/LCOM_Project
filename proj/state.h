@@ -68,12 +68,13 @@ typedef enum {
     NO_OPTION,
     NEW_GAME,
     CONTINUE,
-    EXIT_GAME,
-    NUM_OPTIONS
+    EXIT_GAME
 } MainMenuOption;
 
 typedef struct {
+    int num_options; // number of options to display in the main menu
     MainMenuOption selected_option; // for keyboard navigation in main menu; 0 for no option selected
+    MainMenuOption* options; // options to display in the main menu, determined by the current night (if current_night is 0, options are "New Game" and "Exit". If current_night is greater than 0, options are "New Game", "Continue", and "Exit")
 } MainMenuState;
 
 typedef struct {
