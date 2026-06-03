@@ -67,6 +67,37 @@ typedef enum {
     CAM_7_CHICA,
     CAM_7_FREDDY_CHICA,
 
+    /* BATTERY NUMBERS */
+    I_POWER0,
+    I_POWER1,
+    I_POWER2,
+    I_POWER3,
+    I_POWER4,
+    I_POWER5,
+    I_POWER6,
+    I_POWER7,
+    I_POWER8,
+    I_POWER9,
+
+    II_POWER0,
+    II_POWER1,
+    II_POWER2,
+    II_POWER3,
+    II_POWER4,
+    II_POWER5,
+    II_POWER6,
+    II_POWER7,
+    II_POWER8,
+    II_POWER9,
+
+    PERCENTAGE_SIGN,
+    POWER_USAGE,
+    POWER_LEFT,
+    USAGE1,
+    USAGE2,
+    USAGE3,
+    USAGE4,
+
     /* OFFICE */
     OFFICE,
     LEFT_DOOR_CLOSED,
@@ -79,6 +110,31 @@ typedef enum {
 
     NUM_ASSETS
 } xpmASSET;
+
+static const xpmASSET power1_to_asset[] = {
+    [1] = I_POWER1,
+    [2] = I_POWER2,
+    [3] = I_POWER3,
+    [4] = I_POWER4,
+    [5] = I_POWER5,
+    [6] = I_POWER6,
+    [7] = I_POWER7,
+    [8] = I_POWER8,
+    [9] = I_POWER9
+};
+
+static const xpmASSET power2_to_asset[] = {
+    [0] = II_POWER0,
+    [1] = II_POWER1,
+    [2] = II_POWER2,
+    [3] = II_POWER3,
+    [4] = II_POWER4,
+    [5] = II_POWER5,
+    [6] = II_POWER6,
+    [7] = II_POWER7,
+    [8] = II_POWER8,
+    [9] = II_POWER9
+};
 
 #define CAM_EMPTY  0
 #define CAM_FREDDY (1 << FREDDY)
@@ -108,7 +164,7 @@ static const xpmASSET cam1b_assets[] = {
 
 static const xpmASSET cam1c_assets[] = {
     [CAM_EMPTY] = CAM_1C_EMPTY,
-    [CAM_FOXY] = CAM_1C_FOXY,
+    [CAM_FOXY] = CAM_1C_FOXY // TODO: Foxy has states  
 };
 
 static const xpmASSET cam2a_assets[] = {

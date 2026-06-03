@@ -1,5 +1,5 @@
 /* XPM */
-static char * 1_xpm[] = {
+static char * p1_xpm[] = {
 "17 21 2 1",
 " 	c None",
 ".	c #FFFFFF",

@@ -1,5 +1,5 @@
 /* XPM */
-static char * 8_xpm[] = {
+static char * p8_xpm[] = {
 "17 21 2 1",
 " 	c None",
 ".	c #FFFFFF",

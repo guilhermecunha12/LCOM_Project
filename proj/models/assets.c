@@ -17,6 +17,25 @@
 #include "xpm/menu/night4.xpm"
 #include "xpm/menu/night5.xpm"
 
+#include "xpm/office/ui/power_nr/0.xpm"
+#include "xpm/office/ui/power_nr/1.xpm"
+#include "xpm/office/ui/power_nr/2.xpm"
+#include "xpm/office/ui/power_nr/3.xpm"
+#include "xpm/office/ui/power_nr/4.xpm"
+#include "xpm/office/ui/power_nr/5.xpm"
+#include "xpm/office/ui/power_nr/6.xpm"
+#include "xpm/office/ui/power_nr/7.xpm"
+#include "xpm/office/ui/power_nr/8.xpm"
+#include "xpm/office/ui/power_nr/9.xpm"
+#include "xpm/office/ui/power_nr/percentage.xpm"
+
+#include "xpm/office/ui/power.xpm"
+#include "xpm/office/ui/usage.xpm"
+#include "xpm/office/ui/power_nr/usage_1.xpm"
+#include "xpm/office/ui/power_nr/usage_2.xpm"
+#include "xpm/office/ui/power_nr/usage_3.xpm"
+#include "xpm/office/ui/power_nr/usage_4.xpm"
+
 static Sprite* assets[NUM_ASSETS] = {NULL};
 
 void load_all_assets() {
@@ -33,6 +52,34 @@ void load_all_assets() {
     assets[MENU_NIGHT3] = create_sprite((xpm_map_t) night3_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
     assets[MENU_NIGHT4] = create_sprite((xpm_map_t) night4_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
     assets[MENU_NIGHT5] = create_sprite((xpm_map_t) night5_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
+    
+    assets[I_POWER0] = create_sprite((xpm_map_t) p0_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
+    assets[I_POWER1] = create_sprite((xpm_map_t) p1_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
+    assets[I_POWER2] = create_sprite((xpm_map_t) p2_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
+    assets[I_POWER3] = create_sprite((xpm_map_t) p3_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
+    assets[I_POWER4] = create_sprite((xpm_map_t) p4_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
+    assets[I_POWER5] = create_sprite((xpm_map_t) p5_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
+    assets[I_POWER6] = create_sprite((xpm_map_t) p6_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
+    assets[I_POWER7] = create_sprite((xpm_map_t) p7_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
+    assets[I_POWER8] = create_sprite((xpm_map_t) p8_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
+    assets[I_POWER9] = create_sprite((xpm_map_t) p9_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
+    assets[II_POWER0] = create_sprite((xpm_map_t) p0_xpm, II_DIGIT_POWER_X, II_DIGIT_POWER_Y);
+    assets[II_POWER1] = create_sprite((xpm_map_t) p1_xpm, II_DIGIT_POWER_X, II_DIGIT_POWER_Y);
+    assets[II_POWER2] = create_sprite((xpm_map_t) p2_xpm, II_DIGIT_POWER_X, II_DIGIT_POWER_Y);
+    assets[II_POWER3] = create_sprite((xpm_map_t) p3_xpm, II_DIGIT_POWER_X, II_DIGIT_POWER_Y);
+    assets[II_POWER4] = create_sprite((xpm_map_t) p4_xpm, II_DIGIT_POWER_X, II_DIGIT_POWER_Y);
+    assets[II_POWER5] = create_sprite((xpm_map_t) p5_xpm, II_DIGIT_POWER_X, II_DIGIT_POWER_Y);
+    assets[II_POWER6] = create_sprite((xpm_map_t) p6_xpm, II_DIGIT_POWER_X, II_DIGIT_POWER_Y);
+    assets[II_POWER7] = create_sprite((xpm_map_t) p7_xpm, II_DIGIT_POWER_X, II_DIGIT_POWER_Y);
+    assets[II_POWER8] = create_sprite((xpm_map_t) p8_xpm, II_DIGIT_POWER_X, II_DIGIT_POWER_Y);
+    assets[II_POWER9] = create_sprite((xpm_map_t) p9_xpm, II_DIGIT_POWER_X, II_DIGIT_POWER_Y);
+    assets[PERCENTAGE_SIGN] = create_sprite((xpm_map_t) percentage_xpm, PERCENTAGE_SIGN_X, PERCENTAGE_SIGN_Y);
+    assets[POWER_LEFT] = create_sprite((xpm_map_t) power_xpm, POWER_LEFT_TEXT_X, POWER_LEFT_TEXT_Y);
+    assets[POWER_USAGE] = create_sprite((xpm_map_t) usage_xpm, USAGE_TEXT_X, USAGE_TEXT_Y);
+    assets[USAGE1] = create_sprite((xpm_map_t) usage_1_xpm, INDICATOR_USAGE_X, INDICATOR_USAGE_Y);
+    assets[USAGE2] = create_sprite((xpm_map_t) usage_2_xpm, INDICATOR_USAGE_X, INDICATOR_USAGE_Y);
+    assets[USAGE3] = create_sprite((xpm_map_t) usage_3_xpm, INDICATOR_USAGE_X, INDICATOR_USAGE_Y);
+    assets[USAGE4] = create_sprite((xpm_map_t) usage_4_xpm, INDICATOR_USAGE_X, INDICATOR_USAGE_Y);
 }
 
 void unload_all_assets() {
