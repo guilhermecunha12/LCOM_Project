@@ -23,6 +23,9 @@
  */
 int(init_video_card)(uint16_t mode);
 
+
+int initialize_back_buffer();
+
 /**
  * @brief Returns the video card to Minix text mode.
  *
@@ -93,7 +96,7 @@ int(vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color);
 int(clear_back_buffer)(void);
 
 
-void vg_flip_buffer();
+void swap_buffers();
 
 /**
  * @brief Returns a pointer to the back buffer for direct pixel writes.

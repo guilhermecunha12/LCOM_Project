@@ -26,30 +26,23 @@ Sprite* create_sprite(xpm_map_t xpm, int x, uint16_t y){
 int draw_sprite(const Sprite* sp){
    if(sp == NULL || sp->map == NULL) return 1;
 
-   char* buf = vg_get_back_buffer();
-   uint16_t h_res = vg_get_h_res();
-   unsigned bpp = vg_get_bytes_per_pixel();
+   int start_x = 0;
+   if(sp->x < 0) start_x = -sp->x; // If x is negative, we need to start drawing at that given offset left shift on pixmap
 
-   int start_x = (sp->x < 0) ? -sp->x : 0;
+   for(int i=0; i<sp->height;i++){
+      for(int j=start_x; j<sp->width;j++){
+        // Our games camera will only move horizontally
+         int shift_horizontal = sp->x + j;
 
-   for(int i = 0; i < sp->height; i++){
-      int screen_y = sp->y + i;
-      if(screen_y < 0 || screen_y >= SCREEN_HEIGHT) continue;
-
-      for(int j = start_x; j < sp->width; j++){
-         int screen_x = sp->x + j;
-         if(screen_x >= SCREEN_WIDTH) break;
+         if(shift_horizontal < 0 || shift_horizontal >= SCREEN_WIDTH 
+          ||(sp->y+i >= SCREEN_HEIGHT)) continue; 
 
          uint32_t color = 0;
-         memcpy(&color, &sp->map[(i * sp->width + j) * bpp], bpp);
+         memcpy(&color, &sp->map[(i * sp->width + j) * BYTES_PER_PIXEL], BYTES_PER_PIXEL);
 
-         if(color != TRANSPARENCY_COLOR_8_8_8_8){
-            unsigned pos = (screen_y * h_res + screen_x) * bpp;
-            memcpy(&buf[pos], &color, bpp);
-         }
+         if(color != TRANSPARENCY_COLOR_8_8_8_8) vg_draw_pixel(shift_horizontal,sp->y+i,color);
       }
    }
-
    return 0;
 }
 
