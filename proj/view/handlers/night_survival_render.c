@@ -75,8 +75,7 @@ void render_night_survival(const GameState *state) {
             case RIGHT_DOOR: break; //TODO: see what to draw 
         }
     } else {
-        // Player is on office
-        // how to display the correct part of the Office??
+        // Player is in office
         draw_sprite(get_asset(OFFICE));
 
         // Check if light is on or not.
@@ -107,4 +106,33 @@ void render_night_survival(const GameState *state) {
         }
     }
     draw_battery_indicator(state->data.night_survival.power_level, state->data.night_survival.power_drain_speed, state->global_data.current_night);
+    draw_sprite(get_asset(CAMERA_FLIP_BUTTON));
+
+    if (state->data.night_survival.time_left > HOUR_0) {
+        draw_sprite(get_asset(HOUR_12AM));
+    } else if (state->data.night_survival.time_left > HOUR_1) {
+        draw_sprite(get_asset(HOUR_1AM));
+    } else if (state->data.night_survival.time_left > HOUR_2) {
+        draw_sprite(get_asset(HOUR_2AM));
+    } else if (state->data.night_survival.time_left > HOUR_3) {
+        draw_sprite(get_asset(HOUR_3AM));
+    } else if (state->data.night_survival.time_left > HOUR_4) {
+        draw_sprite(get_asset(HOUR_4AM));
+    } else {
+        draw_sprite(get_asset(HOUR_5AM));
+    }
+
+    draw_sprite(get_asset(AM_TEXT));
+    
+    if (state->global_data.current_night == 1) {
+        draw_sprite(get_asset(NIGHT_TEXT_1));
+    } else if (state->global_data.current_night == 2) {
+        draw_sprite(get_asset(NIGHT_TEXT_2));
+    } else if (state->global_data.current_night == 3) {
+        draw_sprite(get_asset(NIGHT_TEXT_3));
+    } else if (state->global_data.current_night == 4) {
+        draw_sprite(get_asset(NIGHT_TEXT_4));
+    } else if (state->global_data.current_night == 5) {
+        draw_sprite(get_asset(NIGHT_TEXT_5));
+    }
 }

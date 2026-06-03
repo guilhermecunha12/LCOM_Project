@@ -17,6 +17,13 @@
 #include "xpm/menu/night4.xpm"
 #include "xpm/menu/night5.xpm"
 
+#include "xpm/night_start/night1.xpm"
+#include "xpm/night_start/night2.xpm"
+#include "xpm/night_start/night3.xpm"
+#include "xpm/night_start/night4.xpm"
+#include "xpm/night_start/night5.xpm"
+
+#include "xpm/office/office.xpm"
 #include "xpm/office/ui/power_nr/0.xpm"
 #include "xpm/office/ui/power_nr/1.xpm"
 #include "xpm/office/ui/power_nr/2.xpm"
@@ -35,6 +42,20 @@
 #include "xpm/office/ui/power_nr/usage_2.xpm"
 #include "xpm/office/ui/power_nr/usage_3.xpm"
 #include "xpm/office/ui/power_nr/usage_4.xpm"
+#include "xpm/office/ui/flip.xpm"
+
+#include "xpm/office/ui/1.xpm"
+#include "xpm/office/ui/2.xpm"
+#include "xpm/office/ui/3.xpm"
+#include "xpm/office/ui/4.xpm"
+#include "xpm/office/ui/5.xpm"
+#include "xpm/office/ui/12.xpm"
+#include "xpm/office/ui/AM.xpm"
+#include "xpm/office/ui/night1.xpm"
+#include "xpm/office/ui/night2.xpm"
+#include "xpm/office/ui/night3.xpm"
+#include "xpm/office/ui/night4.xpm"
+#include "xpm/office/ui/night5.xpm"
 
 static Sprite* assets[NUM_ASSETS] = {NULL};
 
@@ -47,12 +68,18 @@ void load_all_assets() {
     assets[OPT_CONTINUE] = create_sprite((xpm_map_t) continue_xpm, CONTINUE_X, CONTINUE_Y);
     assets[OPT_CONTINUE_SEL] = create_sprite((xpm_map_t) continue_sel_xpm, CONTINUE_SEL_X, CONTINUE_SEL_Y);
     assets[MENU_CUSTOM_NIGHT] = create_sprite((xpm_map_t) custom_night_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
-    assets[MENU_NIGHT1] = create_sprite((xpm_map_t) night1_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
-    assets[MENU_NIGHT2] = create_sprite((xpm_map_t) night2_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
-    assets[MENU_NIGHT3] = create_sprite((xpm_map_t) night3_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
-    assets[MENU_NIGHT4] = create_sprite((xpm_map_t) night4_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
-    assets[MENU_NIGHT5] = create_sprite((xpm_map_t) night5_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
+    assets[MENU_NIGHT1] = create_sprite((xpm_map_t) menu_night1_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
+    assets[MENU_NIGHT2] = create_sprite((xpm_map_t) menu_night2_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
+    assets[MENU_NIGHT3] = create_sprite((xpm_map_t) menu_night3_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
+    assets[MENU_NIGHT4] = create_sprite((xpm_map_t) menu_night4_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
+    assets[MENU_NIGHT5] = create_sprite((xpm_map_t) menu_night5_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
+    assets[START_NIGHT1] = create_sprite((xpm_map_t) start_night1_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
+    assets[START_NIGHT2] = create_sprite((xpm_map_t) start_night2_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
+    assets[START_NIGHT3] = create_sprite((xpm_map_t) start_night3_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
+    assets[START_NIGHT4] = create_sprite((xpm_map_t) start_night4_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
+    assets[START_NIGHT5] = create_sprite((xpm_map_t) start_night5_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
     
+    assets[OFFICE] = create_sprite((xpm_map_t) office_xpm, 0, 0);
     assets[I_POWER0] = create_sprite((xpm_map_t) p0_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
     assets[I_POWER1] = create_sprite((xpm_map_t) p1_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
     assets[I_POWER2] = create_sprite((xpm_map_t) p2_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
@@ -80,6 +107,21 @@ void load_all_assets() {
     assets[USAGE2] = create_sprite((xpm_map_t) usage_2_xpm, INDICATOR_USAGE_X, INDICATOR_USAGE_Y);
     assets[USAGE3] = create_sprite((xpm_map_t) usage_3_xpm, INDICATOR_USAGE_X, INDICATOR_USAGE_Y);
     assets[USAGE4] = create_sprite((xpm_map_t) usage_4_xpm, INDICATOR_USAGE_X, INDICATOR_USAGE_Y);
+
+    assets[CAMERA_FLIP_BUTTON] = create_sprite((xpm_map_t) flip_xpm, CAMERA_FLIP_BUTTON_X, CAMERA_FLIP_BUTTON_Y);
+    assets[HOUR_12AM] = create_sprite((xpm_map_t) h12_xpm, NIGHT_HOURS_TEXT_X, NIGHT_HOURS_TEXT_Y);
+    assets[HOUR_1AM] = create_sprite((xpm_map_t) h1_xpm, NIGHT_HOURS_TEXT_X, NIGHT_HOURS_TEXT_Y);
+    assets[HOUR_2AM] = create_sprite((xpm_map_t) h2_xpm, NIGHT_HOURS_TEXT_X, NIGHT_HOURS_TEXT_Y);
+    assets[HOUR_3AM] = create_sprite((xpm_map_t) h3_xpm, NIGHT_HOURS_TEXT_X, NIGHT_HOURS_TEXT_Y);
+    assets[HOUR_4AM] = create_sprite((xpm_map_t) h4_xpm, NIGHT_HOURS_TEXT_X, NIGHT_HOURS_TEXT_Y);
+    assets[HOUR_5AM] = create_sprite((xpm_map_t) h5_xpm, NIGHT_HOURS_TEXT_X, NIGHT_HOURS_TEXT_Y);
+    assets[AM_TEXT] = create_sprite((xpm_map_t) AM_xpm, AM_TEXT_X, AM_TEXT_Y);
+
+    assets[NIGHT_TEXT_1] = create_sprite((xpm_map_t) night1_xpm, NIGHT_COUNT_TEXT_X, NIGHT_COUNT_TEXT_Y);
+    assets[NIGHT_TEXT_2] = create_sprite((xpm_map_t) night2_xpm, NIGHT_COUNT_TEXT_X, NIGHT_COUNT_TEXT_Y);
+    assets[NIGHT_TEXT_3] = create_sprite((xpm_map_t) night3_xpm, NIGHT_COUNT_TEXT_X, NIGHT_COUNT_TEXT_Y);
+    assets[NIGHT_TEXT_4] = create_sprite((xpm_map_t) night4_xpm, NIGHT_COUNT_TEXT_X, NIGHT_COUNT_TEXT_Y);
+    assets[NIGHT_TEXT_5] = create_sprite((xpm_map_t) night5_xpm, NIGHT_COUNT_TEXT_X, NIGHT_COUNT_TEXT_Y);
 }
 
 void unload_all_assets() {

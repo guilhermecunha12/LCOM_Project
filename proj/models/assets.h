@@ -23,6 +23,12 @@ typedef enum {
     MENU_NIGHT4,
     MENU_NIGHT5,
 
+    START_NIGHT1,
+    START_NIGHT2,
+    START_NIGHT3,
+    START_NIGHT4,
+    START_NIGHT5,
+
     /* CAMS */
     CAM_1A_EMPTY,
     CAM_1A_FREDDY,
@@ -97,6 +103,20 @@ typedef enum {
     USAGE2,
     USAGE3,
     USAGE4,
+
+    CAMERA_FLIP_BUTTON,
+    HOUR_12AM,
+    HOUR_1AM,
+    HOUR_2AM,
+    HOUR_3AM,
+    HOUR_4AM,
+    HOUR_5AM,
+    AM_TEXT,
+    NIGHT_TEXT_1,
+    NIGHT_TEXT_2,
+    NIGHT_TEXT_3,
+    NIGHT_TEXT_4,
+    NIGHT_TEXT_5,
 
     /* OFFICE */
     OFFICE,

@@ -101,10 +101,6 @@
 #define SCREEN_TEXT_X 473
 #define SCREEN_TEXT_Y 384
 
-// Clock
-#define CLOCK_X 1058
-#define CLOCK_Y 796
-
 //////////////////////////////////////////////////////////
 
 //////////// OFFICE LAYOUT UI ////////////////////////////
@@ -147,13 +143,6 @@
 
   #define PERCENTAGE_SIGN_X 255
   #define PERCENTAGE_SIGN_Y 764
-
-
-
-
-
-
-
 
 /////////////////////////////////////////////////////////
 
