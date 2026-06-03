@@ -66,7 +66,18 @@ int(config_Vram)(uint16_t mode);
 int(vg_set_mode)(uint16_t mode);
 
 /**
- * @brief Draws one pixel in the current frame buffer.
+ * @brief Draws an entire row of pixels in the back buffer, starting at given coordinates, by performing a single memcpy operation.
+ * @details This function is useful for efficient drawing of sprites without transparency, as we can draw entire rows of the sprite at once without needing to check each pixel for transparency.
+ * @param x The horizontal coordinate of the first pixel in the row.
+ * @param y The vertical coordinate of the row.
+ * @param src The source array of pixel of colors to be drawn.
+ * @param pixels Number of pixels to draw (length of the src array).
+ * @return 0 on success, non-zero otherwise.
+ */
+int vg_draw_row(uint16_t x, uint16_t y, const uint32_t* src, int pixels);
+
+/**
+ * @brief Draws one pixel in the back buffer at given coordinates with a given color.
  *
  *
  * @param x Horizontal coordinate.
@@ -77,7 +88,7 @@ int(vg_set_mode)(uint16_t mode);
 int(vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color);
 
 /**
- * @brief Draws a horizontal line in the current frame buffer.
+ * @brief Draws a horizontal line in the back buffer at given coordinates with a given color.
  *
  * @param x Horizontal coordinate of the first pixel.
  * @param y Vertical coordinate of the line.

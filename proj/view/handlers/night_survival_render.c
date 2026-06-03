@@ -48,6 +48,12 @@ void draw_battery_indicator(int power_level, int power_drain_speed, int current_
     }
 }
 
+void draw_office(int background_offset_x) {
+    Sprite* office_sprite = get_asset(OFFICE);
+    office_sprite->x = background_offset_x;
+    draw_sprite(office_sprite);
+}
+
 void render_night_survival(const GameState *state) {
     if (state == NULL) return;
 
@@ -76,7 +82,7 @@ void render_night_survival(const GameState *state) {
         }
     } else {
         // Player is in office
-        draw_sprite(get_asset(OFFICE));
+        draw_office(state->global_data.background_offset_x);
 
         // Check if light is on or not.
         if (state->data.night_survival.left_door_closed) {
