@@ -12,7 +12,8 @@ current_process = None
 def stop():
     global current_process
     if current_process and current_process.poll() is None:
-        current_process.terminate()
+        current_process.kill()
+        current_process.wait()
     current_process = None
 
 def play(sound_file):
