@@ -128,11 +128,9 @@ typedef struct {
 
 // Specific data for a sequence of changing images without player input
 typedef struct {
-    int frame_index;
-    int tick_timer;
-    int duration;
+    AnimSprite* jumpscare_sprite;
     AnimatronicName animatronic_name;
-    bool is_freddy_lightout; // Freddy has two jumpscares: normal (21 frames) and light-out (28 frames)
+    bool is_freddy_lightout; // Freddy has two jumpscares: normal (24 frames) and light-out (28 frames)
 } JumpscareState;
 
 typedef struct {

@@ -36,12 +36,12 @@ static const int DRAIN_RATE_PER_NIGHT[] = {
 #define BATTERY_DRAIN_RATE_CAMERA 2
 
 #define TICKS_PER_CAMERA_ANIMATION_FRAME (int) (0.034f * FPS) 
-#define TICKS_PER_JUMPSCARE_FRAME (int) (0.067f * FPS)  // ~66ms per frame at 60Hz (~15fps animation)
+#define TICKS_PER_JUMPSCARE_FRAME (int) (0.034f * FPS)  // ~66ms per frame at 60Hz (~15fps animation)
 
 #define NUM_JUMSCARE_FOXY 21
 #define NUM_JUMPSCARE_BONNIE 11
 #define NUM_JUMPSCARE_CHICA 16
-#define NUM_JUMPSCARE_FREDDY_NORMAL 21
+#define NUM_JUMPSCARE_FREDDY_NORMAL 24
 #define NUM_JUMPSCARE_FREDDY_LIGHTOUT 28
 
 
