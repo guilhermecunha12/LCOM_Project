@@ -102,22 +102,33 @@ void render_night_survival(const GameState *state) {
         const CameraID cam = state->data.night_survival.viewing_camera;
         uint8_t key = animatronics_at_cam(animatronics, cam);
 
+        Sprite* curr_sprite = NULL;
+
         switch (cam) {
-            case CAM_1A: draw_sprite(get_asset(cam1a_assets[key])); break;
-            case CAM_1B: draw_sprite(get_asset(cam1b_assets[key])); break;
-            case CAM_1C: draw_sprite(get_asset(cam1c_assets[key])); break;
-            case CAM_2A: draw_sprite(get_asset(cam2a_assets[key])); break;
-            case CAM_2B: draw_sprite(get_asset(cam2b_assets[key])); break;
-            case CAM_3: draw_sprite(get_asset(cam3_assets[key])); break;
-            case CAM_4A: draw_sprite(get_asset(cam4a_assets[key])); break;
-            case CAM_4B: draw_sprite(get_asset(cam4b_assets[key])); break;
-            case CAM_5: draw_sprite(get_asset(cam5_assets[key])); break;
-            case CAM_6: draw_sprite(get_asset(cam6_assets[key])); break;
-            case CAM_7: draw_sprite(get_asset(cam7_assets[key])); break;
-            case LEFT_DOOR: break; //TODO: see what to draw
-            case RIGHT_DOOR: break; //TODO: see what to draw 
+            case CAM_1A: curr_sprite = get_asset(cam1a_assets[key]); break;
+            case CAM_1B: curr_sprite = get_asset(cam1b_assets[key]); break;
+            case CAM_1C: curr_sprite = get_asset(cam1c_assets[key]); break;
+            case CAM_2A: curr_sprite = get_asset(cam2a_assets[key]); break;
+            case CAM_2B: curr_sprite = get_asset(cam2b_assets[key]); break;
+            case CAM_3: curr_sprite = get_asset(cam3_assets[key]); break;
+            case CAM_4A: curr_sprite = get_asset(cam4a_assets[key]); break;
+            case CAM_4B: curr_sprite = get_asset(cam4b_assets[key]); break;
+            case CAM_5: curr_sprite = get_asset(cam5_assets[key]); break;
+            case CAM_6: curr_sprite = get_asset(cam6_assets[key]); break;
+            case CAM_7: curr_sprite = get_asset(cam7_assets[key]); break;
+            case RIGHT_DOOR: break;
+            case LEFT_DOOR: break;
         }
 
+        if(curr_sprite == NULL) {
+            printf("Error: No sprite found for camera %d with key %d\n", cam, key);
+        }
+
+        // Avoids cameras whose camera feed should not move (CAM_3 and CAM_6)
+        if(cam != CAM_6 && cam != CAM_3) {
+            curr_sprite->x = state->data.night_survival.camera_offset_x;
+        }
+        draw_sprite(curr_sprite);
         draw_map(cam);
     } else {
         // Player is looking at the office

@@ -26,9 +26,9 @@ static const int ANIMATRONIC_PATH_LENGTHS[4] = {
 
 
 static const int INITIAL_AI_LEVELS[4][5] = {
-    [FREDDY] = {20, 0, 1, 2, 13},
+    [FREDDY] = {0, 0, 1, 2, 13},
     [BONNIE] = {20, 3, 0, 2, 9},
-    [CHICA] = {20, 1, 5, 5, 8},
+    [CHICA] = {0, 1, 5, 5, 8},
     [FOXY] = {0, 1, 2, 6, 9}
 };
 

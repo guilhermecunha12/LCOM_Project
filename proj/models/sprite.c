@@ -90,6 +90,7 @@ AnimSprite *create_anim_sprite(uint8_t no_pic, int x, uint16_t y, int aspeed, xp
     asp->cur_aspeed = aspeed;
     asp->map =  malloc((no_pic) * sizeof(uint8_t *));
     asp -> map[0] = asp->sp->map;
+    asp->is_finished = false;
 
     va_list ap;
     va_start(ap, pic1);
