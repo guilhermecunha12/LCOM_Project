@@ -24,6 +24,8 @@
 #include "xpm/night_start/night3.xpm"
 #include "xpm/night_start/night4.xpm"
 #include "xpm/night_start/night5.xpm"
+#include "xpm/office/game_over.xpm"
+#include "xpm/office/win_6am.xpm"
 
 #include "xpm/office/office.xpm"
 #include "xpm/office/ui/power_nr/0.xpm"
@@ -233,6 +235,8 @@ void load_all_assets() {
     assets[MENU_NIGHT5] = create_sprite((xpm_map_t) menu_night5_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
 
     assets[NEWSPAPER_FEUP] = create_sprite((xpm_map_t) newspaper_xpm, 0, 0);
+    assets[NIGHT_6AM_SCREEN] = create_sprite((xpm_map_t) win_6am_xpm, 0, 0);
+    assetes[GAME_OVER_SCREEN] = create_sprite((xpm_map_t) game_over_xpm, 0, 0);
     assets[START_NIGHT1] = create_sprite((xpm_map_t) start_night1_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
     assets[START_NIGHT2] = create_sprite((xpm_map_t) start_night2_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
     assets[START_NIGHT3] = create_sprite((xpm_map_t) start_night3_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
@@ -364,8 +368,9 @@ void load_all_assets() {
 
     // Here we load the animated sprites, with all needed data: number of frames, position, speed and all xpm's needed
     assets_anim[ANIM_STATIC_SCREEN] = create_anim_sprite(7, 0, 0, TICKS_PER_CAMERA_ANIMATION_FRAME,
-        (xpm_map_t) static1_xpm, (xpm_map_t) static2_xpm, (xpm_map_t) static3_xpm,
-        (xpm_map_t) static4_xpm, (xpm_map_t) static5_xpm, (xpm_map_t) static6_xpm, (xpm_map_t) static7_xpm);
+    (xpm_map_t) static1_xpm, (xpm_map_t) static2_xpm, (xpm_map_t) static3_xpm,
+    (xpm_map_t) static4_xpm, (xpm_map_t) static5_xpm, (xpm_map_t) static6_xpm, 
+    (xpm_map_t) static7_xpm);
 
     assets_anim[ANIM_CAMERA_MONITOR] = create_anim_sprite(11, 0, 0, TICKS_PER_CAMERA_ANIMATION_FRAME,
     (xpm_map_t) monitor1_xpm, (xpm_map_t) monitor2_xpm, (xpm_map_t) monitor3_xpm, 
