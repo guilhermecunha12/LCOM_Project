@@ -172,6 +172,20 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
 
 void handle_night_survival_timer(GameState* state, const GameEvent* event) {
 
+    // Update background offset based on movement
+    if (state->global_data.moving == LEFT && state->global_data.background_offset_x <= 0) {
+        state->global_data.background_offset_x += BACKGROUND_MOVE_VELOCITY;
+        if (state->global_data.background_offset_x > 0 || state->global_data.background_offset_x == CENTER_BACKGROUND_OFFSET) {
+            state->global_data.moving = NO_MOVEMENT; // stop movement when reaching the leftmost position or the center
+        }
+    }
+    else if (state->global_data.moving == RIGHT && state->global_data.background_offset_x >= -BACKGROUND_MAX_OFFSET) {
+        state->global_data.background_offset_x -= BACKGROUND_MOVE_VELOCITY;
+        if (state->global_data.background_offset_x < -BACKGROUND_MAX_OFFSET || state->global_data.background_offset_x == CENTER_BACKGROUND_OFFSET) {
+            state->global_data.moving = NO_MOVEMENT;
+        }
+    }
+
     // Decrease time left
     NightSurvivalState* night_state = &state->data.night_survival;
     night_state->time_left--; // This is in ticks

@@ -52,6 +52,12 @@ typedef enum {
     NUM_STATES
 } StateType;
 
+typedef enum {
+    LEFT,
+    RIGHT,
+    NO_MOVEMENT
+} MovementDirection;
+
 // Global game data that persists across states
 typedef struct {
     int current_night; // 0 (no current night), 1 to 5 - also used to determine night's gimmicks
@@ -62,6 +68,7 @@ typedef struct {
 
     // Shared data for states that have camera movement (e.g., night survival and night no battery)
     int background_offset_x;
+    MovementDirection moving; // -1 for moving left, 0 for not moving, 1 for moving right
 } PersistentData;
 
 typedef enum {
@@ -155,7 +162,7 @@ typedef struct {
 
 MainMenuState init_main_menu(int current_night);
 NightIntroState init_night_intro();
-NightSurvivalState init_night_survival(int current_night);
+void init_night_survival(GameState* state); // TODO: make all the init functions like these? In this case, it's useful because the initialization of a night survival includes modifications to the global data of the state.
 Night6AMScreen init_night_6am();
 NightNoBatteryState init_night_no_battery(int duration);
 JumpscareState init_jumpscare(AnimatronicName animatronic_name, bool freddy_lights_out);
