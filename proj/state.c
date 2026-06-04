@@ -26,10 +26,20 @@ MainMenuState init_main_menu(int current_night) {
 
 JumpscareState init_jumpscare(AnimatronicName animatronic_name, bool freddy_lights_out) {
     JumpscareState state;
-    state.frame_index = 0;
-    state.tick_timer = 0;
+    switch (animatronic_name) {
+        case BONNIE:
+            state.jumpscare_sprite = get_anim_asset(ANIM_BONNIE_JUMPSCARE);
+            break;
+        case CHICA:
+            state.jumpscare_sprite = get_anim_asset(ANIM_CHICA_JUMPSCARE);
+            break;
+        case FREDDY:
+            state.jumpscare_sprite = get_anim_asset(ANIM_FREDDY_JUMPSCARE);
+            break;
+        default:
+            state.jumpscare_sprite = NULL; // Handle other animatronics as needed
+    }
     state.animatronic_name = animatronic_name;
-    state.is_freddy_lightout = freddy_lights_out;
     return state;
 }
 

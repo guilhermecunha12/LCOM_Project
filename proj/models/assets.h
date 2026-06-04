@@ -177,6 +177,9 @@ typedef enum {
 
 typedef enum {
     ANIM_CAMERA_MONITOR,
+    ANIM_BONNIE_JUMPSCARE,
+    ANIM_CHICA_JUMPSCARE,
+    ANIM_FREDDY_JUMPSCARE,
     NUM_ANIM_ASSETS
 } AnimAsset;
 

@@ -139,6 +139,62 @@
 #include "xpm/cams/rooms/east_hall_corner_freddy.xpm"
 #include "xpm/cams/rooms/east_hall_corner_chica.xpm"
 
+#include "xpm/office/jumpscares/bonnie/bonnie1.xpm"
+#include "xpm/office/jumpscares/bonnie/bonnie2.xpm"
+#include "xpm/office/jumpscares/bonnie/bonnie3.xpm"
+#include "xpm/office/jumpscares/bonnie/bonnie4.xpm"
+#include "xpm/office/jumpscares/bonnie/bonnie5.xpm"
+#include "xpm/office/jumpscares/bonnie/bonnie6.xpm"
+#include "xpm/office/jumpscares/bonnie/bonnie7.xpm"
+#include "xpm/office/jumpscares/bonnie/bonnie8.xpm"
+#include "xpm/office/jumpscares/bonnie/bonnie9.xpm"
+#include "xpm/office/jumpscares/bonnie/bonnie10.xpm"
+#include "xpm/office/jumpscares/bonnie/bonnie11.xpm"
+
+#include "xpm/office/jumpscares/chica/1.xpm"
+#include "xpm/office/jumpscares/chica/2.xpm"
+#include "xpm/office/jumpscares/chica/3.xpm"
+#include "xpm/office/jumpscares/chica/4.xpm"
+#include "xpm/office/jumpscares/chica/5.xpm"
+#include "xpm/office/jumpscares/chica/6.xpm"
+#include "xpm/office/jumpscares/chica/7.xpm"
+#include "xpm/office/jumpscares/chica/8.xpm"
+#include "xpm/office/jumpscares/chica/9.xpm"
+#include "xpm/office/jumpscares/chica/10.xpm"
+#include "xpm/office/jumpscares/chica/11.xpm"
+#include "xpm/office/jumpscares/chica/12.xpm"
+#include "xpm/office/jumpscares/chica/13.xpm"
+#include "xpm/office/jumpscares/chica/14.xpm"
+#include "xpm/office/jumpscares/chica/15.xpm"
+#include "xpm/office/jumpscares/chica/16.xpm"
+
+#include "xpm/office/jumpscares/freddy/0.xpm"
+#include "xpm/office/jumpscares/freddy/1.xpm"
+#include "xpm/office/jumpscares/freddy/2.xpm"
+#include "xpm/office/jumpscares/freddy/3.xpm"
+#include "xpm/office/jumpscares/freddy/4.xpm"
+#include "xpm/office/jumpscares/freddy/5.xpm"
+#include "xpm/office/jumpscares/freddy/6.xpm"
+#include "xpm/office/jumpscares/freddy/7.xpm"
+#include "xpm/office/jumpscares/freddy/8.xpm"
+#include "xpm/office/jumpscares/freddy/9.xpm"
+#include "xpm/office/jumpscares/freddy/10.xpm"
+#include "xpm/office/jumpscares/freddy/11.xpm"
+#include "xpm/office/jumpscares/freddy/12.xpm"
+#include "xpm/office/jumpscares/freddy/13.xpm"
+#include "xpm/office/jumpscares/freddy/14.xpm"
+#include "xpm/office/jumpscares/freddy/15.xpm"
+#include "xpm/office/jumpscares/freddy/16.xpm"
+#include "xpm/office/jumpscares/freddy/17.xpm"
+#include "xpm/office/jumpscares/freddy/18.xpm"
+#include "xpm/office/jumpscares/freddy/19.xpm"
+#include "xpm/office/jumpscares/freddy/20.xpm"
+#include "xpm/office/jumpscares/freddy/21.xpm"
+#include "xpm/office/jumpscares/freddy/22.xpm"
+#include "xpm/office/jumpscares/freddy/23.xpm"
+
+
+
 static Sprite* assets[NUM_ASSETS] = {NULL};
 
 // Array to store animated sprites
@@ -285,7 +341,16 @@ void load_all_assets() {
     (xpm_map_t) monitor1_xpm, (xpm_map_t) monitor2_xpm, (xpm_map_t) monitor3_xpm, 
     (xpm_map_t) monitor4_xpm, (xpm_map_t) monitor5_xpm, (xpm_map_t) monitor6_xpm, 
     (xpm_map_t) monitor7_xpm, (xpm_map_t) monitor8_xpm, (xpm_map_t) monitor9_xpm, 
-    (xpm_map_t) monitor10_xpm, (xpm_map_t) monitor11_xpm); 
+    (xpm_map_t) monitor10_xpm, (xpm_map_t) monitor11_xpm);
+    
+    assets_anim[ANIM_BONNIE_JUMPSCARE] = create_anim_sprite(NUM_JUMPSCARE_BONNIE, 0, 0, TICKS_PER_JUMPSCARE_FRAME,
+    (xpm_map_t) bonnie1_xpm, (xpm_map_t) bonnie2_xpm, (xpm_map_t) bonnie3_xpm, (xpm_map_t) bonnie4_xpm, (xpm_map_t) bonnie5_xpm, 
+    (xpm_map_t) bonnie6_xpm, (xpm_map_t) bonnie7_xpm, (xpm_map_t) bonnie8_xpm, (xpm_map_t) bonnie9_xpm, (xpm_map_t) bonnie10_xpm, (xpm_map_t) bonnie11_xpm);
+
+    assets_anim[ANIM_CHICA_JUMPSCARE] = create_anim_sprite(NUM_JUMPSCARE_CHICA, 0, 0, TICKS_PER_JUMPSCARE_FRAME,
+    (xpm_map_t) chica1_xpm, (xpm_map_t) chica2_xpm, (xpm_map_t) chica3_xpm, (xpm_map_t) chica4_xpm, (xpm_map_t) chica5_xpm, (xpm_map_t) chica6_xpm, (xpm_map_t) chica7_xpm, (xpm_map_t) chica8_xpm, (xpm_map_t) chica9_xpm, (xpm_map_t) chica10_xpm, (xpm_map_t) chica11_xpm, (xpm_map_t) chica12_xpm, (xpm_map_t) chica13_xpm, (xpm_map_t) chica14_xpm, (xpm_map_t) chica15_xpm, (xpm_map_t) chica16_xpm);
+
+    assets_anim[ANIM_FREDDY_JUMPSCARE] = create_anim_sprite(NUM_JUMPSCARE_FREDDY_NORMAL, 0, 0, TICKS_PER_JUMPSCARE_FRAME, (xpm_map_t) freddy0_xpm, (xpm_map_t) freddy1_xpm, (xpm_map_t) freddy2_xpm, (xpm_map_t) freddy3_xpm, (xpm_map_t) freddy4_xpm, (xpm_map_t) freddy5_xpm, (xpm_map_t) freddy6_xpm, (xpm_map_t) freddy7_xpm, (xpm_map_t) freddy8_xpm, (xpm_map_t) freddy9_xpm, (xpm_map_t) freddy10_xpm, (xpm_map_t) freddy11_xpm, (xpm_map_t) freddy12_xpm, (xpm_map_t) freddy13_xpm, (xpm_map_t) freddy14_xpm, (xpm_map_t) freddy15_xpm, (xpm_map_t) freddy16_xpm, (xpm_map_t) freddy17_xpm, (xpm_map_t) freddy18_xpm, (xpm_map_t) freddy19_xpm, (xpm_map_t) freddy20_xpm, (xpm_map_t) freddy21_xpm, (xpm_map_t) freddy22_xpm, (xpm_map_t) freddy23_xpm);
 }
 
 void unload_all_assets() {
@@ -309,24 +374,4 @@ Sprite* get_asset(xpmASSET asset) {
 AnimSprite* get_anim_asset(AnimAsset asset) {
     if (asset >= NUM_ANIM_ASSETS) return NULL;
     return assets_anim[asset];
-}
-
-int get_jumpscare_frame_count(AnimatronicName anim, bool is_freddy_lightout) {
-    switch (anim) {
-        case FREDDY: return is_freddy_lightout ? NUM_JUMPSCARE_FREDDY_LIGHTOUT : NUM_JUMPSCARE_FREDDY_NORMAL;
-        case BONNIE: return NUM_JUMPSCARE_BONNIE;
-        case CHICA: return NUM_JUMPSCARE_CHICA;
-        case FOXY: return NUM_JUMSCARE_FOXY;
-        default: return 0;
-    }
-}
-
-xpmASSET get_jumpscare_asset(AnimatronicName anim, bool is_freddy_lightout, int frame) {
-    switch (anim) {
-        case FREDDY: return (xpmASSET)((is_freddy_lightout ? JUMPSCARE_FREDDY_LIGHTOUT_FIRST : JUMPSCARE_FREDDY_FIRST) + frame);
-        case BONNIE: return (xpmASSET)(JUMPSCARE_BONNIE_FIRST + frame);
-        case CHICA: return (xpmASSET)(JUMPSCARE_CHICA_FIRST + frame);
-        case FOXY: return (xpmASSET)(JUMPSCARE_FOXY_FIRST + frame);
-        default: return MENU_BG; //TODO: check this
-    }
 }
