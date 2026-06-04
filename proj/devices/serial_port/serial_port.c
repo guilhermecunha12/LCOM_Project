@@ -7,10 +7,12 @@
 #define BIT_RATE 10
 
 static int serial_port_hook_id;
+static uint8_t received_data;
 
 int setup_fifos() {
     uint8_t fcr = 0x00;
     fcr |= FCR_ENABLE_FIFO | FCR_CLEAR_RECEIVER_FIFO | FCR_CLEAR_TRANSMITTER_FIFO;
+    fcr &= FCR_1BYTE_TRIGGER_LEVEL;
     return sys_outb(COM1_BASE + FCR_OFFSET, fcr);
 }
 
@@ -90,6 +92,7 @@ int enable_received_data_interrupt() {
     return sys_outb(COM1_BASE + IER_OFFSET, ier);
 }
 
+//TODO: remove
 int enable_transmitter_holding_register_empty_interrupt() {
     uint8_t ier;
     if (get_ier(&ier)) return 1;
@@ -114,6 +117,14 @@ int get_ier(uint8_t *ier) {
 
 int get_lcr(uint8_t *lcr) {
     return util_sys_inb(COM1_BASE + LCR_OFFSET, lcr);
+}
+
+int get_iir(uint8_t *iir) {
+    return util_sys_inb(COM1_BASE + IIR_OFFSET, iir);
+}
+
+int get_lsr(uint8_t *lsr) {
+    return util_sys_inb(COM1_BASE + LSR_OFFSET, lsr);
 }
 
 int set_bit_rate(uint16_t bit_rate) {
@@ -161,7 +172,6 @@ int setup_serial_port_receiver(uint8_t *bit_no) {
 int setup_serial_port_transmitter(uint8_t *bit_no) {
     if (setup_fifos()) return 1;
     if (setup_lcr(CHAR_LENGTH, STOP_BITS, PARITY)) return 1;
-    if (enable_transmitter_holding_register_empty_interrupt()) return 1;
     if (enable_line_status_interrupt()) return 1;
     if (set_bit_rate(BIT_RATE)) return 1;
     if (serial_port_subscribe_int(&bit_no)) return 1;
@@ -186,5 +196,59 @@ int serial_port_undo() {
     uint8_t ier;
     if (get_ier(&ier)) return 1;
     if (sys_outb(COM1_BASE + IER_OFFSET, ier & IER_CLEAR_INTERRUPTS)) return 1; // Disable interrupts
+    return 0;
+}
+
+uint8_t get_received_data() {
+    return received_data;
+}
+
+int send_data(uint8_t data) {
+    uint8_t lsr;
+    if (get_lsr(&lsr)) return 1;
+
+    // Wait until THR is empty
+    while ((lsr & LSR_TRANSMITTER_HOLDING_REGISTER_EMPTY) == 0) {
+        if (get_lsr(&lsr)) return 1;
+    }
+
+    // Send the data by writing it to the Transmitter Holding Register (THR) of the serial port
+    return sys_outb(COM1_BASE + THR_OFFSET, data);
+}
+
+int serial_port_ih() {
+    // Read the IIR to determine the source of the interrupt
+    uint8_t iir;
+    if (get_iir(&iir)) return 1;
+
+    if (iir & IIR_NO_INTERRUPT_PENDING) return 1;
+
+    uint8_t interrupt_type = IIR_INTERRUPT_TYPE(iir);
+    uint8_t lsr;
+
+    if (interrupt_type == IIR_RECEIVER_LINE_STATUS_INTERRUPT) {
+        // Read the Line Status Register to clear the interrupt (datasheet)
+        get_lsr(&lsr);
+        return 1;
+
+    } else if (interrupt_type == IIR_RECEIVED_DATA_AVAILABLE_INTERRUPT || interrupt_type == IIR_CHARACTER_TIMEOUT_INTERRUPT) {
+        // Read the received data from the Receiver Buffer Register (RBR)
+        // Handle character timeout interrupt the same way as received data available interrupt.
+        
+        // Check for errors in the LSR error bits
+        if (get_lsr(&lsr)) return 1;
+        if (lsr & (LSR_OVERRUN_ERROR | LSR_PARITY_ERROR | LSR_FRAMING_ERROR)) return 1;
+
+        // Check if the FIFOS are enabled by checking FIFO related bits in the IIR (TODO: can be wrong)
+        if (!(iir & IIR_FIFOS_ENABLED)) return 1;
+
+        if (lsr & LSR_DATA_READY) {
+            if (util_sys_inb(COM1_BASE + RBR_OFFSET, &received_data)) return 1;
+        }
+
+    } else {
+        return 1; // Unexpected interrupt type
+    }
+
     return 0;
 }
