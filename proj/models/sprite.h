@@ -33,7 +33,8 @@ typedef struct{
     int cur_aspeed;
     int num_fig;
     int cur_fig;
-    char **map;
+    bool is_finished;
+    uint8_t **map;
 } AnimSprite;
 
 
@@ -61,10 +62,31 @@ void destroy_sprite(Sprite* sp);
  */
 int draw_sprite(const Sprite* sp);
 
+/**
+ * @brief Initializes an animated sprite struct from an array of XPMs
+ * @param pic_no number of pixmaps existent pixmaps present in the variable argument list
+ * @param x x-coordinate of the sprite's position
+ * @param y y-coordinate of the sprite's position
+ * @param aspeed number of frames to wait before switching to the next pixmap 
+ */
 
-AnimSprite *create_anim_sprite(uint8_t pic_no, char *pic1[], ...);
+AnimSprite *create_anim_sprite(uint8_t no_pic, int x, uint16_t y, int aspeed, xpm_map_t pic1, ...);
 
+/**
+ * @brief Function responsible for animating the sprite by switching between its pixmaps according to the specified animation speed
+ * @param asp pointer to the animated sprite that we want to animate
+ * @return 0 on success, 1 on failure
+ */
 int animate_sprite(AnimSprite *sp);
+
+int animate_sprite_once(AnimSprite *sp);
+
+int animate_sprite_once_reverse(AnimSprite *sp);
+
+/**
+ * @brief Destroys the animated sprite object by freeing its allocated memory
+ * @param asp pointer to the animated sprite that we want to destroy
+ */
 void destroy_anim_sprite(AnimSprite *sp);
 
 

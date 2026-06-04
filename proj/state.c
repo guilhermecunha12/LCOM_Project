@@ -1,4 +1,5 @@
 #include "state.h"
+#include "models/assets.h"
 
 
 MainMenuState init_main_menu(int current_night) {
@@ -54,6 +55,7 @@ NightSurvivalState init_night_survival(int current_night) {
     state.left_door_closed = false;
     state.right_door_closed = false;
     state.camera_monitor_up = false;
+    state.camera_monitor = get_anim_asset(ANIM_CAMERA_MONITOR);
     // TODO: Check this value, it should be a default cam
     state.viewing_camera = CAM_1A;
 

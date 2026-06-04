@@ -53,7 +53,13 @@ void render_night_survival(const GameState *state) {
 
     const Animatronic *animatronics = state->data.night_survival.animatronics;
 
-    if (state->data.night_survival.camera_monitor_up) {
+    if(state->data.night_survival.camera_animation_playing) {
+        draw_sprite(get_asset(OFFICE));
+        draw_sprite((Sprite*) state->data.night_survival.camera_monitor->sp);
+    }
+        
+
+    else if (state->data.night_survival.camera_monitor_up) {
         // Player is on cams
 
         const CameraID cam = state->data.night_survival.viewing_camera;
@@ -75,6 +81,7 @@ void render_night_survival(const GameState *state) {
             case RIGHT_DOOR: break; //TODO: see what to draw 
         }
     } else {
+
         // Player is in office
         draw_sprite(get_asset(OFFICE));
 

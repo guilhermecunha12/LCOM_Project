@@ -4,6 +4,7 @@
 #include "../lab4/mouse.h"
 #include "models/animatronic.h"
 #include "game_constants.h"
+#include "models/sprite.h"
 
 #include <stdbool.h>
 
@@ -95,6 +96,8 @@ typedef struct {
     bool left_door_closed;
     bool right_door_closed;
     bool camera_monitor_up; // Is the player looking at cameras?
+    bool camera_animation_playing;
+    AnimSprite* camera_monitor;
     CameraID viewing_camera;
 
     // For timer-driven animations (e.g., fan spinning, camera static)

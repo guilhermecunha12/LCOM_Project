@@ -140,6 +140,11 @@ typedef enum {
     NUM_ASSETS
 } xpmASSET;
 
+typedef enum {
+    ANIM_CAMERA_MONITOR,
+    NUM_ANIM_ASSETS
+} AnimAsset;
+
 static const xpmASSET power1_to_asset[] = {
     [1] = I_POWER1,
     [2] = I_POWER2,
@@ -264,5 +269,7 @@ void unload_all_assets();
  * @brief Getter for a sprite represented by a specific enum values
  */
 Sprite* get_asset(xpmASSET asset);
+
+AnimSprite* get_anim_asset(AnimAsset asset);
 
 #endif
