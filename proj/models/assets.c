@@ -59,7 +59,23 @@
 #include "xpm/office/ui/night4.xpm"
 #include "xpm/office/ui/night5.xpm"
 
+#include "xpm/cams/monitor_anim/monitor1.xpm"
+#include "xpm/cams/monitor_anim/monitor2.xpm"
+#include "xpm/cams/monitor_anim/monitor3.xpm"
+#include "xpm/cams/monitor_anim/monitor4.xpm"
+#include "xpm/cams/monitor_anim/monitor5.xpm"
+#include "xpm/cams/monitor_anim/monitor6.xpm"
+#include "xpm/cams/monitor_anim/monitor7.xpm"
+#include "xpm/cams/monitor_anim/monitor8.xpm"
+#include "xpm/cams/monitor_anim/monitor9.xpm"
+#include "xpm/cams/monitor_anim/monitor10.xpm"
+#include "xpm/cams/monitor_anim/monitor11.xpm"
+
+
 static Sprite* assets[NUM_ASSETS] = {NULL};
+
+// Array to store animated sprites
+static AnimSprite* assets_anim[NUM_ANIM_ASSETS] = {NULL};
 
 void load_all_assets() {
     assets[MENU_BG] = create_sprite((xpm_map_t) menu_xpm, 0, 0);
@@ -126,8 +142,13 @@ void load_all_assets() {
     assets[NIGHT_TEXT_3] = create_sprite((xpm_map_t) night3_xpm, NIGHT_COUNT_TEXT_X, NIGHT_COUNT_TEXT_Y);
     assets[NIGHT_TEXT_4] = create_sprite((xpm_map_t) night4_xpm, NIGHT_COUNT_TEXT_X, NIGHT_COUNT_TEXT_Y);
     assets[NIGHT_TEXT_5] = create_sprite((xpm_map_t) night5_xpm, NIGHT_COUNT_TEXT_X, NIGHT_COUNT_TEXT_Y);
-    
-    // TODO: include loops to load the jumpscare sprites
+
+    // Here we load the animated sprites, with all needed data: number of frames, position, speed and all xpm's needed
+    assets_anim[ANIM_CAMERA_MONITOR] = create_anim_sprite(11, 0, 0, TICKS_PER_CAMERA_ANIMATION_FRAME,
+    (xpm_map_t) monitor1_xpm, (xpm_map_t) monitor2_xpm, (xpm_map_t) monitor3_xpm, 
+    (xpm_map_t) monitor4_xpm, (xpm_map_t) monitor5_xpm, (xpm_map_t) monitor6_xpm, 
+    (xpm_map_t) monitor7_xpm, (xpm_map_t) monitor8_xpm, (xpm_map_t) monitor9_xpm, 
+    (xpm_map_t) monitor10_xpm, (xpm_map_t) monitor11_xpm); 
 }
 
 void unload_all_assets() {
@@ -135,11 +156,22 @@ void unload_all_assets() {
         destroy_sprite(assets[i]);
         assets[i] = NULL;
     }
+
+    // Add a new loop to destroy the animated sprites as well
+    for (int i = 0; i < NUM_ANIM_ASSETS; i++) {
+        destroy_anim_sprite(assets_anim[i]);
+        assets_anim[i] = NULL;
+    }
 }
 
 Sprite* get_asset(xpmASSET asset) {
     if (asset >= NUM_ASSETS) return NULL;
     return assets[asset];
+}
+
+AnimSprite* get_anim_asset(AnimAsset asset) {
+    if (asset >= NUM_ANIM_ASSETS) return NULL;
+    return assets_anim[asset];
 }
 
 int get_jumpscare_frame_count(AnimatronicName anim, bool is_freddy_lightout) {

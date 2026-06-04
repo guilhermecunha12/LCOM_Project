@@ -59,9 +59,9 @@ void render_night_survival(const GameState *state) {
 
     const Animatronic *animatronics = state->data.night_survival.animatronics;
 
+    // Draw what the player is currently viewing (cameras)
     if (state->data.night_survival.camera_monitor_up) {
         // Player is on cams
-
         const CameraID cam = state->data.night_survival.viewing_camera;
         uint8_t key = animatronics_at_cam(animatronics, cam);
 
@@ -81,7 +81,7 @@ void render_night_survival(const GameState *state) {
             case RIGHT_DOOR: break; //TODO: see what to draw 
         }
     } else {
-        // Player is in office
+        // Player is looking at the office
         draw_office(state->global_data.background_offset_x);
 
         // Check if light is on or not.
@@ -111,6 +111,13 @@ void render_night_survival(const GameState *state) {
             }
         }
     }
+
+    // Draw the animation for when the player flips the camera monitor, both up or down, in thiis case (should be "overlaid" on top of the office or camera feed)    
+    if(state->data.night_survival.camera_animation_playing) {
+        // The sp field of the AnimSprite struct already points to the current frame of the animation, so we can just draw it (updated by animate_sprite_once in the handlers)
+        draw_sprite((Sprite*) state->data.night_survival.camera_monitor->sp);
+    }
+
     draw_battery_indicator(state->data.night_survival.power_level, state->data.night_survival.power_drain_speed, state->global_data.current_night);
     draw_sprite(get_asset(CAMERA_FLIP_BUTTON));
 

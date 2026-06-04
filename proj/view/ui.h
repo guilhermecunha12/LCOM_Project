@@ -8,7 +8,7 @@
 #define SCREEN_WIDTH 1152
 #define SCREEN_HEIGHT 864
 
-#define BACKGROUND_MOVE_VELOCITY 8
+#define BACKGROUND_MOVE_VELOCITY (int) (8 * 60.0f / FPS) // For lower fps, the number of updates is lower so we want to increase the velocity to make the movement smoother and consistent for different fps values.
 #define BACKGROUND_MAX_OFFSET 300
 #define CENTER_BACKGROUND_OFFSET -150
 

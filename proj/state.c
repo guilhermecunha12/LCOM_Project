@@ -1,4 +1,5 @@
 #include "state.h"
+#include "models/assets.h"
 #include "view/ui.h"
 
 
@@ -47,20 +48,20 @@ void init_night_survival(GameState* state) {
     state->type = NIGHT_SURVIVAL;
     state->global_data.background_offset_x = CENTER_BACKGROUND_OFFSET;
     state->global_data.moving = NO_MOVEMENT;
-
     NightSurvivalState night_state;
     night_state.time_left = NIGHT_TIME;
     night_state.power_level = DEFAULT_POWER_LEVEL;
     night_state.power_drain_rate = DRAIN_RATE_PER_NIGHT[state->global_data.current_night - 1];
     night_state.power_drain_speed = 1;
-
+    night_state.camera_monitor_up = false;
+    // TODO: Check this value, it should be a default cam
+    night_state.viewing_camera = CAM_1A;
     night_state.left_light_on = false;
     night_state.right_light_on = false;
     night_state.left_door_closed = false;
     night_state.right_door_closed = false;
     night_state.camera_monitor_up = false;
-    // TODO: Check this value, it should be a default cam
-    night_state.viewing_camera = CAM_1A;
+    night_state.camera_monitor = get_anim_asset(ANIM_CAMERA_MONITOR);
 
     // TODO: Check this frames values
     night_state.fan_frame_index = 0;

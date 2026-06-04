@@ -1,5 +1,5 @@
 /* XPM */
-static char * 10_xpm[] = {
+static char * monitor10_xpm[] = {
 "1152 864 1353 2",
 "  	c #000000",
 ". 	c #262626",

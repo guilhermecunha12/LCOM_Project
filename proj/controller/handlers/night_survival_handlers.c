@@ -2,6 +2,7 @@
 #include "../../view/ui.h"
 #include "../../view/ui_utils.h"
 #include "../handlers/helpers/player_screen_movement_handler.h"
+#include "../../models/sprite.h"
 
 #define NIGHT_LEFT_DOOR_BUTTON_W 50
 #define NIGHT_LEFT_DOOR_BUTTON_H 50
@@ -197,6 +198,25 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
         state->data.night_6am = init_night_6am();
         return;
     }
+    // CAMERA ANIMATION
+
+    
+    // If the camera monitor is up and the animation is playing, it means the space was pressed and the camera monitor was flipped up, so its animation should be playing forward
+    if(night_state->camera_monitor_up && night_state->camera_animation_playing ) {
+        // Update the animation
+        animate_sprite_once(state->data.night_survival.camera_monitor);
+        // Check if the animation has finished playing to reset the state (essentially finish the animation playing)
+        if (state->data.night_survival.camera_monitor->is_finished) {
+            state->data.night_survival.camera_animation_playing = false;
+        }
+    }
+
+    if(!night_state->camera_monitor_up && night_state->camera_animation_playing) {
+        animate_sprite_once_reverse(state->data.night_survival.camera_monitor);
+        if (state->data.night_survival.camera_monitor->is_finished) {
+            state->data.night_survival.camera_animation_playing = false;
+        }
+    }
 
     // BATERRY DRAIN
     
@@ -249,7 +269,21 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
 
 void handle_night_survival_keyboard(GameState* state, const GameEvent* event) {
     if(event->data.key == KEY_SPACE) {
-        state->data.night_survival.camera_monitor_up = !state->data.night_survival.camera_monitor_up; // switch    
+        AnimSprite *mon = state->data.night_survival.camera_monitor;
+        // Reset animation state before playing
+        mon->is_finished = false;
+        mon->cur_aspeed = mon->aspeed;
+
+        if (state->data.night_survival.camera_monitor_up) {
+            // The animation curent fig should be the last one (then animating in reverse)
+            mon->cur_fig = mon->num_fig - 1;
+        } else {
+            // The other way around
+            mon->cur_fig = 0;
+        }
+        mon->sp->map = mon->map[mon->cur_fig];
+        state->data.night_survival.camera_animation_playing = true;
+        state->data.night_survival.camera_monitor_up = !state->data.night_survival.camera_monitor_up; // switch
     }
     // Add remaining functionality
     else if(event->data.key == KEY_LEFT) {
