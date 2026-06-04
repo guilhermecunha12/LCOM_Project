@@ -8,10 +8,9 @@
 #define SCREEN_WIDTH 1152
 #define SCREEN_HEIGHT 864
 
-// Step offset value (offset applied to background for movement, change this beforehand)
-#define BACKGROUND_STEP_OFFSET 5
-// For cameras only 
-#define BACKGROUND_MAX_OFFSET 320
+#define BACKGROUND_MOVE_VELOCITY 8
+#define BACKGROUND_MAX_OFFSET 300
+#define CENTER_BACKGROUND_OFFSET -150
 
 ////// MAIN MENU UI //////////////////////////
   #define GAME_TITLE_X 86
