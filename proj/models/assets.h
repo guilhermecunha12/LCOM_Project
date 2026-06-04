@@ -32,6 +32,38 @@ typedef enum {
     START_NIGHT4,
     START_NIGHT5,
 
+    CAMS_MAP,
+
+    /* CAM UI BUTTONS */
+    CAM_BUTTON_ACTIVE,
+    CAM_BUTTON_INACTIVE,
+
+    /* CAM LABEL TEXTS (drawn on top of each button) */
+    CAM_TEXT_1A,
+    CAM_TEXT_1B,
+    CAM_TEXT_1C,
+    CAM_TEXT_2A,
+    CAM_TEXT_2B,
+    CAM_TEXT_3,
+    CAM_TEXT_4A,
+    CAM_TEXT_4B,
+    CAM_TEXT_5,
+    CAM_TEXT_6,
+    CAM_TEXT_7,
+
+    /* SELECTED CAMERA ROOM NAME TEXTS (drawn at SELECTED_CAM_TEXT_X/Y) */
+    SEL_TEXT_1A,
+    SEL_TEXT_1B,
+    SEL_TEXT_1C,
+    SEL_TEXT_2A,
+    SEL_TEXT_2B,
+    SEL_TEXT_3,
+    SEL_TEXT_4A,
+    SEL_TEXT_4B,
+    SEL_TEXT_5,
+    SEL_TEXT_6,
+    SEL_TEXT_7,
+
     /* CAMS */
     CAM_1A_EMPTY,
     CAM_1A_FREDDY,
@@ -255,7 +287,7 @@ static const xpmASSET cam7_assets[] = {
 int get_jumpscare_frame_count(AnimatronicName anim, bool is_freddy_lightout);
 xpmASSET get_jumpscare_asset(AnimatronicName anim, bool is_freddy_lightout, int frame);
 
-/**
+/** 
  * @brief Loads all the existing assets into memory by initializing them to an array of
  * pointers to sprite objects.
  */

@@ -71,6 +71,75 @@
 #include "xpm/cams/monitor_anim/monitor10.xpm"
 #include "xpm/cams/monitor_anim/monitor11.xpm"
 
+#include "xpm/cams/map.xpm"
+
+#include "xpm/cams/cam_button_active.xpm"
+#include "xpm/cams/cam_button_inactive.xpm"
+
+#include "xpm/cams/cam_texts/CAM1A.xpm"
+#include "xpm/cams/cam_texts/CAM1B.xpm"
+#include "xpm/cams/cam_texts/CAM1C.xpm"
+#include "xpm/cams/cam_texts/CAM2A.xpm"
+#include "xpm/cams/cam_texts/CAM2B.xpm"
+#include "xpm/cams/cam_texts/CAM3.xpm"
+#include "xpm/cams/cam_texts/CAM4A.xpm"
+#include "xpm/cams/cam_texts/CAM4B.xpm"
+#include "xpm/cams/cam_texts/CAM5.xpm"
+#include "xpm/cams/cam_texts/CAM6.xpm"
+#include "xpm/cams/cam_texts/CAM7.xpm"
+
+// Rename conflicting selected-text XPMs (same var name as room XPMs)
+#include "xpm/cams/cam_texts/selected/library_lounge.xpm"
+#include "xpm/cams/cam_texts/selected/computer_room.xpm"
+#include "xpm/cams/cam_texts/selected/council_chamber.xpm"
+#include "xpm/cams/cam_texts/selected/east_hall.xpm"
+#include "xpm/cams/cam_texts/selected/east_hall_corner.xpm"
+#include "xpm/cams/cam_texts/selected/lecture_hallway.xpm"
+#include "xpm/cams/cam_texts/selected/locker_room.xpm"    
+#include "xpm/cams/cam_texts/selected/west_hall.xpm"
+#include "xpm/cams/cam_texts/selected/west_hall_corner.xpm"
+
+// Non-conflicting selected texts
+#include "xpm/cams/cam_texts/selected/auditorium.xpm"
+#include "xpm/cams/cam_texts/selected/lcom_lab.xpm"
+
+#include "xpm/cams/rooms/library_lounge.xpm"
+#include "xpm/cams/rooms/library_lounge_b.xpm"
+#include "xpm/cams/rooms/library_lounge_bc.xpm"
+#include "xpm/cams/rooms/library_lounge_bf.xpm"
+#include "xpm/cams/rooms/library_lounge_c.xpm"
+#include "xpm/cams/rooms/library_lounge_cf.xpm"
+#include "xpm/cams/rooms/library_lounge_f.xpm"
+#include "xpm/cams/rooms/library_lounge_all.xpm"
+
+#include "xpm/cams/rooms/computer_room.xpm"
+#include "xpm/cams/rooms/computer_room_bonnie.xpm"
+#include "xpm/cams/rooms/computer_room_chica.xpm"
+#include "xpm/cams/rooms/computer_room_bonnie_chica.xpm"
+
+#include "xpm/cams/rooms/the_auditorium.xpm"
+#include "xpm/cams/rooms/auditorium_stage_2.xpm"
+
+#include "xpm/cams/rooms/locker_room.xpm"
+#include "xpm/cams/rooms/locker_room_bonnie.xpm"
+
+#include "xpm/cams/rooms/council_chamber.xpm"
+#include "xpm/cams/rooms/council_chamber_bonnie_close.xpm"
+
+#include "xpm/cams/rooms/lecture_hallway.xpm"
+#include "xpm/cams/rooms/lecture_hallway_chica.xpm"
+
+#include "xpm/cams/rooms/west_hall.xpm"
+#include "xpm/cams/rooms/west_hall_bonnie.xpm"
+
+#include "xpm/cams/rooms/west_hall_corner.xpm"
+
+#include "xpm/cams/rooms/east_hall.xpm"
+#include "xpm/cams/rooms/east_hall_chica.xpm"
+
+#include "xpm/cams/rooms/east_hall_corner.xpm"
+#include "xpm/cams/rooms/east_hall_corner_freddy.xpm"
+#include "xpm/cams/rooms/east_hall_corner_chica.xpm"
 
 static Sprite* assets[NUM_ASSETS] = {NULL};
 
@@ -145,6 +214,72 @@ void load_all_assets() {
     assets[NIGHT_TEXT_4] = create_sprite((xpm_map_t) night4_xpm, NIGHT_COUNT_TEXT_X, NIGHT_COUNT_TEXT_Y);
     assets[NIGHT_TEXT_5] = create_sprite((xpm_map_t) night5_xpm, NIGHT_COUNT_TEXT_X, NIGHT_COUNT_TEXT_Y);
 
+    assets[CAM_1A_EMPTY] = create_sprite((xpm_map_t) library_lounge_xpm, 0, 0);
+    assets[CAM_1A_FREDDY] = create_sprite((xpm_map_t) library_lounge_f_xpm, 0, 0);
+    assets[CAM_1A_BONNIE] = create_sprite((xpm_map_t) library_lounge_b_xpm, 0, 0);
+    assets[CAM_1A_CHICA] = create_sprite((xpm_map_t) library_lounge_c_xpm, 0, 0);
+    assets[CAM_1A_BONNIE_CHICA] = create_sprite((xpm_map_t) library_lounge_bc_xpm, 0, 0);
+    assets[CAM_1A_FREDDY_BONNIE] = create_sprite((xpm_map_t) library_lounge_bf_xpm, 0, 0);
+    assets[CAM_1A_FREDDY_BONNIE_CHICA] = create_sprite((xpm_map_t) library_lounge_all_xpm, 0, 0);
+
+    assets[CAM_1B_EMPTY] = create_sprite((xpm_map_t) computer_room_xpm, 0, 0);
+    assets[CAM_1B_BONNIE] = create_sprite((xpm_map_t) computer_room_bonnie_xpm, 0, 0);
+    assets[CAM_1B_CHICA] = create_sprite((xpm_map_t) computer_room_chica_xpm, 0, 0);
+    assets[CAM_1B_BONNIE_CHICA] = create_sprite((xpm_map_t) computer_room_bonnie_chica_xpm, 0, 0);
+
+    assets[CAM_1C_EMPTY] = create_sprite((xpm_map_t) the_auditorium_xpm, 0, 0);
+    assets[CAM_1C_FOXY] = create_sprite((xpm_map_t) auditorium_stage_2_xpm, 0, 0);
+
+    assets[CAM_2A_EMPTY] = create_sprite((xpm_map_t) west_hall_xpm, 0, 0);
+    assets[CAM_2A_BONNIE] = create_sprite((xpm_map_t) west_hall_bonnie_xpm, 0, 0);
+
+    assets[CAM_2B_EMPTY] = create_sprite((xpm_map_t) west_hall_corner_xpm, 0, 0);
+
+    assets[CAM_3_EMPTY] = create_sprite((xpm_map_t) locker_room_xpm, 0, 0);
+    assets[CAM_3_BONNIE] = create_sprite((xpm_map_t) locker_room_bonnie_xpm, 0, 0);
+
+    assets[CAM_4A_EMPTY] = create_sprite((xpm_map_t) east_hall_xpm, 0, 0);
+    assets[CAM_4A_CHICA] = create_sprite((xpm_map_t) east_hall_chica_xpm, 0, 0);
+
+    assets[CAM_4B_EMPTY] = create_sprite((xpm_map_t) east_hall_corner_xpm, 0, 0);
+    assets[CAM_4B_FREDDY] = create_sprite((xpm_map_t) east_hall_corner_freddy_xpm, 0, 0);
+    assets[CAM_4B_CHICA] = create_sprite((xpm_map_t) east_hall_corner_chica_xpm, 0, 0);
+
+    assets[CAM_5_EMPTY] = create_sprite((xpm_map_t) council_chamber_xpm, 0, 0);
+    assets[CAM_5_BONNIE] = create_sprite((xpm_map_t) council_chamber_bonnie_close_xpm, 0, 0);
+
+    assets[CAM_7_EMPTY] = create_sprite((xpm_map_t) lecture_hallway_xpm, 0, 0);
+    assets[CAM_7_CHICA] = create_sprite((xpm_map_t) lecture_hallway_chica_xpm, 0, 0);
+
+    assets[CAM_BUTTON_ACTIVE]   = create_sprite((xpm_map_t) cam_button_active_xpm,   0, 0);
+    assets[CAM_BUTTON_INACTIVE] = create_sprite((xpm_map_t) cam_button_inactive_xpm, 0, 0);
+
+    assets[CAM_TEXT_1A] = create_sprite((xpm_map_t) CAM1A_xpm, NIGHT_TEXT_POS(NIGHT_CAMERA_1A_X, NIGHT_CAMERA_1A_Y));
+    assets[CAM_TEXT_1B] = create_sprite((xpm_map_t) CAM1B_xpm, NIGHT_TEXT_POS(NIGHT_CAMERA_1B_X, NIGHT_CAMERA_1B_Y));
+    assets[CAM_TEXT_1C] = create_sprite((xpm_map_t) CAM1C_xpm, NIGHT_TEXT_POS(NIGHT_CAMERA_1C_X, NIGHT_CAMERA_1C_Y));
+    assets[CAM_TEXT_2A] = create_sprite((xpm_map_t) CAM2A_xpm, NIGHT_TEXT_POS(NIGHT_CAMERA_2A_X, NIGHT_CAMERA_2A_Y));
+    assets[CAM_TEXT_2B] = create_sprite((xpm_map_t) CAM2B_xpm, NIGHT_TEXT_POS(NIGHT_CAMERA_2B_X, NIGHT_CAMERA_2B_Y));
+    assets[CAM_TEXT_3]  = create_sprite((xpm_map_t) CAM3_xpm,  NIGHT_TEXT_POS(NIGHT_CAMERA_3_X,  NIGHT_CAMERA_3_Y));
+    assets[CAM_TEXT_4A] = create_sprite((xpm_map_t) CAM4A_xpm, NIGHT_TEXT_POS(NIGHT_CAMERA_4A_X, NIGHT_CAMERA_4A_Y));
+    assets[CAM_TEXT_4B] = create_sprite((xpm_map_t) CAM4B_xpm, NIGHT_TEXT_POS(NIGHT_CAMERA_4B_X, NIGHT_CAMERA_4B_Y));
+    assets[CAM_TEXT_5]  = create_sprite((xpm_map_t) CAM5_xpm,  NIGHT_TEXT_POS(NIGHT_CAMERA_5_X,   NIGHT_CAMERA_5_Y));
+    assets[CAM_TEXT_6]  = create_sprite((xpm_map_t) CAM6_xpm,  NIGHT_TEXT_POS(NIGHT_CAMERA_6_X,  NIGHT_CAMERA_6_Y));
+    assets[CAM_TEXT_7]  = create_sprite((xpm_map_t) CAM7_xpm,  NIGHT_TEXT_POS(NIGHT_CAMERA_7_X,  NIGHT_CAMERA_7_Y));
+
+    assets[SEL_TEXT_1A] = create_sprite((xpm_map_t) sel_library_lounge_xpm,    SELECTED_CAM_TEXT_X, SELECTED_CAM_TEXT_Y);
+    assets[SEL_TEXT_1B] = create_sprite((xpm_map_t) sel_computer_room_xpm,     SELECTED_CAM_TEXT_X, SELECTED_CAM_TEXT_Y);
+    assets[SEL_TEXT_1C] = create_sprite((xpm_map_t) auditorium_xpm,            SELECTED_CAM_TEXT_X, SELECTED_CAM_TEXT_Y);
+    assets[SEL_TEXT_2A] = create_sprite((xpm_map_t) sel_west_hall_xpm,         SELECTED_CAM_TEXT_X, SELECTED_CAM_TEXT_Y);
+    assets[SEL_TEXT_2B] = create_sprite((xpm_map_t) sel_west_hall_corner_xpm,  SELECTED_CAM_TEXT_X, SELECTED_CAM_TEXT_Y);
+    assets[SEL_TEXT_3]  = create_sprite((xpm_map_t) sel_locker_room_xpm,       SELECTED_CAM_TEXT_X, SELECTED_CAM_TEXT_Y);
+    assets[SEL_TEXT_4A] = create_sprite((xpm_map_t) sel_east_hall_xpm,         SELECTED_CAM_TEXT_X, SELECTED_CAM_TEXT_Y);
+    assets[SEL_TEXT_4B] = create_sprite((xpm_map_t) sel_east_hall_corner_xpm,  SELECTED_CAM_TEXT_X, SELECTED_CAM_TEXT_Y);
+    assets[SEL_TEXT_5]  = create_sprite((xpm_map_t) sel_council_chamber_xpm,   SELECTED_CAM_TEXT_X, SELECTED_CAM_TEXT_Y);
+    assets[SEL_TEXT_6]  = create_sprite((xpm_map_t) lcom_lab_xpm,              SELECTED_CAM_TEXT_X, SELECTED_CAM_TEXT_Y);
+    assets[SEL_TEXT_7]  = create_sprite((xpm_map_t) sel_lecture_hallway_xpm,   SELECTED_CAM_TEXT_X, SELECTED_CAM_TEXT_Y);
+
+    assets[CAMS_MAP] = create_sprite((xpm_map_t) map_xpm, MAP_LAYOUT_X, MAP_LAYOUT_Y);
+
     // Here we load the animated sprites, with all needed data: number of frames, position, speed and all xpm's needed
     assets_anim[ANIM_CAMERA_MONITOR] = create_anim_sprite(11, 0, 0, TICKS_PER_CAMERA_ANIMATION_FRAME,
     (xpm_map_t) monitor1_xpm, (xpm_map_t) monitor2_xpm, (xpm_map_t) monitor3_xpm, 
@@ -195,4 +330,3 @@ xpmASSET get_jumpscare_asset(AnimatronicName anim, bool is_freddy_lightout, int 
         default: return MENU_BG; //TODO: check this
     }
 }
-

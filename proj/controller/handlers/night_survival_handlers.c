@@ -22,7 +22,6 @@
 #define NIGHT_RIGHT_LIGHT_BUTTON_Y 400
 
 void handle_night_survival_mouse_click(GameState* state, const GameEvent* event) {
-    /*
     int mouse_x = state->global_data.mouse_x;
     int mouse_y = state->global_data.mouse_y;
     if (state->data.night_survival.camera_monitor_up) {
@@ -100,7 +99,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
         }
 
         else if (is_mouse_inside(mouse_x, mouse_y,
-            NIGH_CAMERA_5_X,
+            NIGHT_CAMERA_5_X,
             NIGHT_CAMERA_5_Y,
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
@@ -168,7 +167,6 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             state->data.night_survival.right_light_on = !state->data.night_survival.right_light_on; // switch
         }
     }
-        */
 }
 
 void handle_night_survival_timer(GameState* state, const GameEvent* event) {
