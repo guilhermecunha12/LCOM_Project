@@ -59,13 +59,14 @@
 #include "xpm/office/ui/night4.xpm"
 #include "xpm/office/ui/night5.xpm"
 
-#include "xpm/white_bars/white_bar1.xpm"
-#include "xpm/white_bars/white_bar2.xpm"
-#include "xpm/white_bars/white_bar3.xpm"
-#include "xpm/white_bars/white_bar4.xpm"
-#include "xpm/white_bars/white_bar5.xpm"
-#include "xpm/white_bars/white_bar6.xpm"
-#include "xpm/white_bars/white_bar7.xpm"
+#include "xpm/static_full/static1.xpm"
+#include "xpm/static_full/static2.xpm"
+#include "xpm/static_full/static3.xpm"
+#include "xpm/static_full/static4.xpm"
+#include "xpm/static_full/static5.xpm"
+#include "xpm/static_full/static6.xpm"
+#include "xpm/static_full/static7.xpm"
+#include "xpm/static_full/static8.xpm"
 
 #include "xpm/cams/monitor_anim/monitor1.xpm"
 #include "xpm/cams/monitor_anim/monitor2.xpm"
@@ -345,7 +346,7 @@ void load_all_assets() {
     assets[CAMS_MAP] = create_sprite((xpm_map_t) map_xpm, MAP_LAYOUT_X, MAP_LAYOUT_Y);
 
     // Here we load the animated sprites, with all needed data: number of frames, position, speed and all xpm's needed
-    assets_anim[ANIM_WHITE_BARS] = create_anim_sprite(7, 0, 0, TICKS_PER_CAMERA_ANIMATION_FRAME,
+    assets_anim[ANIM_STATIC_SCREEN] = create_anim_sprite(7, 0, 0, TICKS_PER_CAMERA_ANIMATION_FRAME,
         (xpm_map_t) white_bar1_xpm, (xpm_map_t) white_bar2_xpm, (xpm_map_t) white_bar3_xpm,
         (xpm_map_t) white_bar4_xpm, (xpm_map_t) white_bar5_xpm, (xpm_map_t) white_bar6_xpm, (xpm_map_t) white_bar7_xpm);
 

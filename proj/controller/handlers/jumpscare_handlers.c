@@ -10,7 +10,6 @@ void handle_jumpscare_timer(GameState* state, const GameEvent* event) {
 
     if(state->data.jumpscare.jumpscare_sprite->is_finished) {
         stop_sound();
-        state->type = STATIC_SCREEN;
-        state->data.static_screen = init_static_screen();
+        init_static_screen(state);
     }
 }
