@@ -1,5 +1,5 @@
 /* XPM */
-static char * auditorium_xpm[] = {
+static char * sel_auditorium_xpm[] = {
 "296 33 2 1",
 " 	c None",
 ".	c #FFFFFF",
