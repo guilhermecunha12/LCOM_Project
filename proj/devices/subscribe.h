@@ -6,7 +6,7 @@
 #define IRQ_TIMER 0
 #define IRQ_KBD 1
 #define IRQ_MOUSE 2
-
+#define IRQ_COM1 4
 
 /**
  * @brief Subscribes to the timer, keyboard and mouse interrupts and sets the VBE mode. If any of the operations fail, it unsubscribes from all devices and returns 1. Otherwise, it returns 0.
@@ -17,7 +17,7 @@
  * @return 0 if all operations were successful, 1 otherwise.
  */
 
- int subscribe_devices(uint8_t *timer_bit_no, uint8_t *kbd_bit_no, uint8_t *mouse_bit_no, uint16_t vbe_mode);
+ int subscribe_devices(uint8_t *timer_bit_no, uint8_t *kbd_bit_no, uint8_t *mouse_bit_no, uint8_t *com1_bit_no, uint16_t vbe_mode);
 
 
  /**

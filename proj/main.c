@@ -55,9 +55,10 @@ int(proj_main_loop)(int argc, char* argv[]) {
     uint8_t timer_irq_set = IRQ_TIMER;
     uint8_t kbd_irq_set = IRQ_KBD;
     uint8_t mouse_irq_set = IRQ_MOUSE;
+    uint8_t com1_irq_set = IRQ_COM1;
     uint16_t vbe_mode = 0x14C; 
 
-    if (subscribe_devices(&timer_irq_set, &kbd_irq_set, &mouse_irq_set, vbe_mode)) return 1;
+    if (subscribe_devices(&timer_irq_set, &kbd_irq_set, &mouse_irq_set, &com1_irq_set, vbe_mode)) return 1;
 
     GameState* current_state = (GameState*) malloc(sizeof(GameState));
     GameEvent* current_event = (GameEvent*) malloc(sizeof(GameEvent));
