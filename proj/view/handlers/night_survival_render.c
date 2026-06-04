@@ -137,6 +137,7 @@ void render_night_survival(const GameState *state) {
 
     draw_sprite(get_asset(AM_TEXT));
     
+    printf("Current night: %d\n", state->global_data.current_night);
     if (state->global_data.current_night == 1) {
         draw_sprite(get_asset(NIGHT_TEXT_1));
     } else if (state->global_data.current_night == 2) {

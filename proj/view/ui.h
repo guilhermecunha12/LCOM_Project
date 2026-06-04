@@ -16,14 +16,14 @@
   #define GAME_TITLE_X 86
   #define GAME_TITLE_Y 117
   #define NEW_GAME_SEL_X 75
-  #define NEW_GAME_SEL_Y 405
+  #define NEW_GAME_SEL_Y 407
   #define CONTINUE_SEL_X 75
   #define CONTINUE_SEL_Y 485
   #define NEW_GAME_X 153
   #define NEW_GAME_Y 405
   #define CONTINUE_X 153
   #define CONTINUE_Y 485
-  #define EXIT_GAME_SEL_X 75
+  #define EXIT_GAME_SEL_X 90
   #define EXIT_GAME_SEL_Y 588
   #define EXIT_GAME_X 153
   #define EXIT_GAME_Y 588

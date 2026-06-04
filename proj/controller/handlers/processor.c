@@ -13,6 +13,11 @@ static EventHandler eht[NUM_STATES][NUM_EVENTS] = {
         [MOUSE_MOVE] = handle_main_menu_mouse_move,
     },
 
+    [NEWSPAPER] = {
+        [TIMER_TICK] = handle_newspaper_timer,
+        [KEYBOARD_PRESS] = go_to_night_survive // TODO: REMOVE! ONLY FOR FASTER TESTING
+    },
+
     [NIGHT_INTRO] = {
         [TIMER_TICK] = handle_night_intro_timer,
     },
