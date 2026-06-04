@@ -146,9 +146,7 @@ typedef struct {
 } Night6AMScreen;
 
 typedef struct {
-    int frame_index; // Which frame of the static screen animation
-    int tick_timer; // Counter to control animation speed
-    int duration; // Counter to control how long the static screen is displayed
+    AnimSprite* static_sprite;
 } StaticScreenState;
 
 typedef struct {
