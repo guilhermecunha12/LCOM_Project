@@ -47,8 +47,4 @@ void render_jumpscare(const GameState *state);
 
 void render_static_screen(const GameState *state);
 
-void render_night_6am(const GameState *state);
-
-void render_game_over(const GameState *state);
-
 #endif /* RENDERER_H */

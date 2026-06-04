@@ -1,4 +1,4 @@
-z#ifndef STATE_H
+#ifndef STATE_H
 #define STATE_H
 
 #include "../lab4/mouse.h"
