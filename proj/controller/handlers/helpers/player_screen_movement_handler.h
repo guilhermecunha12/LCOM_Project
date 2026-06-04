@@ -6,15 +6,15 @@
 
 /**
  * @brief Helper function to move the player's screen to the left.
- * @details This function was created since code would be duplicated in both night survival and night no battery handlers, and it is better to have it in a single place. It modifies the background offset in the global game state to simulate camera movement to the left, while ensuring that the offset does not exceed the defined maximum.
- * @param state Pointer to the current game state, which will be modified to update the background offset for simulating camera movement to the left.
+ * @details This function was created since code would be duplicated in both night survival and night no battery handlers, and it is better to have it in a single place. It modifies the background movement direction to LEFT.
+ * @param state Pointer to the current game state, which will be modified to update the background movement direction.
  */
 void move_player_screen_left(GameState* state);
 
 /**
  * @brief Helper function to move the player's screen to the right.
- * @details This function was created since code would be duplicated in both night survival and night no battery handlers, and it is better to have it in a single place. It modifies the background offset in the global game state to simulate camera movement to the right, while ensuring that the offset does not exceed the defined maximum.
- * @param state Pointer to the current game state, which will be modified to update the background offset for simulating camera movement to the right.
+ * @details This function was created since code would be duplicated in both night survival and night no battery handlers, and it is better to have it in a single place. It modifies the background movement direction to RIGHT.
+ * @param state Pointer to the current game state, which will be modified to update the background movement direction.
  */
 void move_player_screen_right(GameState* state);
 

@@ -150,6 +150,14 @@ int clear_back_buffer(){
     return 0;
 }
 
+
+int vg_draw_row(uint16_t x, uint16_t y, const uint32_t* src, int pixels) {
+    void* dst = &back_buffer[(y * h_res + x) * bytes_per_pixel];
+    if (memcpy(dst, src, pixels * bytes_per_pixel) == NULL) return 1;
+    return 0;
+}
+
+
 int vg_draw_pixel (uint16_t x, uint16_t y, uint32_t color) {
   // Check if coordinates are within the screen limits
   if(x > h_res || y > v_res) return 1;

@@ -10,12 +10,14 @@
  * @param width width of the sprite in pixels
  * @param height height of the sprite in pixels
  * @param map points to the pixels of the sprite 
+ * @param has_transparency boolean that indicates if the sprite has transparency. Useful for eficient drawing as we can draw entire rows of the sprite if this field is false.
  */
 typedef struct {
     uint16_t y;
     int x; 
     uint16_t width, height; // xpm_image_type comes in uint16_t
-    uint8_t* map; 
+    uint8_t* map;
+    bool has_transparency;
 } Sprite;
 
 /**
