@@ -49,6 +49,13 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
                 /* Timer Related Handlers */
 
 /**
+ * @brief Handler for timer tick events in the newspaper state.
+ * @param state Pointer to the current game state, which will be modified based on the timer event.
+ * @param event Pointer to the current game event.
+ */
+void handle_newspaper_timer(GameState* state, const GameEvent* event);
+
+/**
  * @brief Handler for timer tick events in the night intro state. This handler decrements the duration of the night intro screen and transitions to the night survival state when the duration reaches zero. It also initializes the night survival state with the current night number from the global game state.
  * @param state Pointer to the current game state, which will be modified to transition to the night survival state when the night intro duration ends.
  * @param event Pointer to the current game event, which contains the timer tick data.
@@ -121,6 +128,9 @@ void handle_night_survival_keyboard(GameState* state, const GameEvent* event);
  * @param event Pointer to the current game event, which contains the keyboard input data.
  */
 void handle_night_no_battery_keyboard(GameState* state, const GameEvent* event);
+
+// TODO: REMOVE! ONLY FOR FASTER TESTING
+void go_to_night_survive(GameState* state, const GameEvent* event);
 
 #endif /* HANDLERS_H */
 

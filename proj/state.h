@@ -43,6 +43,7 @@ typedef enum {
     MAIN_MENU,
     NIGHT_INTRO,
     NIGHT_SURVIVAL,
+    NEWSPAPER,
     NIGHT_6AM, // E.g., The "6 AM! Next Night" screen
     JUMPSCARE,
     NIGHT_NO_BATTERY, // countdown to possible Freedie jumpscare (PHASE 1: every 5 seconds, 20% chance of jumpscare. If there is a jumpscare, the night ends. Otherwise, after 4 failed tries, go to PHASE 2: every 2 seconds, 20% chance of jumpscare, max 20 seconds (10 tries). If those 10 tries fail, jumpscare guaranteed and night ends. If 6AM is reached, independent of the phase, the  night ends and the player passes the night)
@@ -84,6 +85,10 @@ typedef struct {
     MainMenuOption selected_option; // for keyboard navigation in main menu; 0 for no option selected
     MainMenuOption* options; // options to display in the main menu, determined by the current night (if current_night is 0, options are "New Game" and "Exit". If current_night is greater than 0, options are "New Game", "Continue", and "Exit")
 } MainMenuState;
+
+typedef struct {
+    int duration;
+} NewspaperState;
 
 typedef struct {
     int frame_index;
@@ -152,6 +157,7 @@ typedef struct {
     StateType type; // tag
     union {
         MainMenuState main_menu;
+        NewspaperState newspaper;
         NightIntroState night_intro;
         NightSurvivalState night_survival;
         JumpscareState jumpscare;
@@ -164,7 +170,8 @@ typedef struct {
 
 
 MainMenuState init_main_menu(int current_night);
-NightIntroState init_night_intro();
+void init_night_intro(GameState* state);
+void init_newspaper(GameState* state);
 void init_night_survival(GameState* state); // TODO: make all the init functions like these? In this case, it's useful because the initialization of a night survival includes modifications to the global data of the state.
 Night6AMScreen init_night_6am();
 NightNoBatteryState init_night_no_battery(int duration);

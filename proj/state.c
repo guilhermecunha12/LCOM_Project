@@ -33,15 +33,23 @@ JumpscareState init_jumpscare(AnimatronicName animatronic_name, bool freddy_ligh
     return state;
 }
 
-NightIntroState init_night_intro() {
-    NightIntroState state;
+void init_night_intro(GameState* state) {
+    NightIntroState night_intro_state;
 
     // TODO: Check this frames values
-    state.frame_index = 0;
-    state.tick_timer = 0;
+    night_intro_state.frame_index = 0;
+    night_intro_state.tick_timer = 0;
+    night_intro_state.duration = NIGHT_INTRO_DURATION;
 
-    state.duration = NIGHT_INTRO_DURATION;
-    return state;
+    state->type = NIGHT_INTRO;
+    state->data.night_intro = night_intro_state;
+}
+
+void init_newspaper(GameState* state) {
+    NewspaperState newspaper_state;
+    newspaper_state.duration = NEWSPAPER_DURATION;
+    state->type = NEWSPAPER;
+    state->data.newspaper = newspaper_state;
 }
 
 void init_night_survival(GameState* state) {
