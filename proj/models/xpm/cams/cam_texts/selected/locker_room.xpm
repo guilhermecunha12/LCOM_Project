@@ -1,5 +1,5 @@
 /* XPM */
-static char * locker_room_xpm[] = {
+static char * sel_locker_room_xpm[] = {
 "296 33 2 1",
 " 	c None",
 ".	c #FFFFFF",

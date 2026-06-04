@@ -41,7 +41,7 @@
 
 //////////////////// CAMERA UI ////////////////////////////
 // The night text is defined as (Button.x + 3, Button.y -3)
-#define NIGHT_TEXT_POS(x,y) (x + 3), (y - 3)
+#define NIGHT_TEXT_POS(x,y) (x + 5), (y + 4)
 
 // Map layout position
 #define MAP_LAYOUT_X 736
@@ -68,7 +68,7 @@
   #define NIGHT_CAMERA_3_X 748
   #define NIGHT_CAMERA_3_Y 702
 
-  #define NIGH_CAMERA_5_X 709
+  #define NIGHT_CAMERA_5_X 709
   #define NIGHT_CAMERA_5_Y 550
 
   #define NIGHT_CAMERA_7_X 1048

@@ -89,41 +89,15 @@
 #include "xpm/cams/cam_texts/CAM7.xpm"
 
 // Rename conflicting selected-text XPMs (same var name as room XPMs)
-#define library_lounge_xpm    sel_library_lounge_xpm
 #include "xpm/cams/cam_texts/selected/library_lounge.xpm"
-#undef library_lounge_xpm
-
-#define computer_room_xpm     sel_computer_room_xpm
 #include "xpm/cams/cam_texts/selected/computer_room.xpm"
-#undef computer_room_xpm
-
-#define council_chamber_xpm   sel_council_chamber_xpm
 #include "xpm/cams/cam_texts/selected/council_chamber.xpm"
-#undef council_chamber_xpm
-
-#define east_hall_xpm         sel_east_hall_xpm
 #include "xpm/cams/cam_texts/selected/east_hall.xpm"
-#undef east_hall_xpm
-
-#define east_hall_corner_xpm  sel_east_hall_corner_xpm
 #include "xpm/cams/cam_texts/selected/east_hall_corner.xpm"
-#undef east_hall_corner_xpm
-
-#define lecture_hallway_xpm   sel_lecture_hallway_xpm
 #include "xpm/cams/cam_texts/selected/lecture_hallway.xpm"
-#undef lecture_hallway_xpm
-
-#define locker_room_xpm       sel_locker_room_xpm
-#include "xpm/cams/cam_texts/selected/locker_room.xpm"
-#undef locker_room_xpm
-
-#define west_hall_xpm         sel_west_hall_xpm
+#include "xpm/cams/cam_texts/selected/locker_room.xpm"    
 #include "xpm/cams/cam_texts/selected/west_hall.xpm"
-#undef west_hall_xpm
-
-#define west_hall_corner_xpm  sel_west_hall_corner_xpm
 #include "xpm/cams/cam_texts/selected/west_hall_corner.xpm"
-#undef west_hall_corner_xpm
 
 // Non-conflicting selected texts
 #include "xpm/cams/cam_texts/selected/auditorium.xpm"
@@ -288,7 +262,7 @@ void load_all_assets() {
     assets[CAM_TEXT_3]  = create_sprite((xpm_map_t) CAM3_xpm,  NIGHT_TEXT_POS(NIGHT_CAMERA_3_X,  NIGHT_CAMERA_3_Y));
     assets[CAM_TEXT_4A] = create_sprite((xpm_map_t) CAM4A_xpm, NIGHT_TEXT_POS(NIGHT_CAMERA_4A_X, NIGHT_CAMERA_4A_Y));
     assets[CAM_TEXT_4B] = create_sprite((xpm_map_t) CAM4B_xpm, NIGHT_TEXT_POS(NIGHT_CAMERA_4B_X, NIGHT_CAMERA_4B_Y));
-    assets[CAM_TEXT_5]  = create_sprite((xpm_map_t) CAM5_xpm,  NIGHT_TEXT_POS(NIGH_CAMERA_5_X,   NIGHT_CAMERA_5_Y));
+    assets[CAM_TEXT_5]  = create_sprite((xpm_map_t) CAM5_xpm,  NIGHT_TEXT_POS(NIGHT_CAMERA_5_X,   NIGHT_CAMERA_5_Y));
     assets[CAM_TEXT_6]  = create_sprite((xpm_map_t) CAM6_xpm,  NIGHT_TEXT_POS(NIGHT_CAMERA_6_X,  NIGHT_CAMERA_6_Y));
     assets[CAM_TEXT_7]  = create_sprite((xpm_map_t) CAM7_xpm,  NIGHT_TEXT_POS(NIGHT_CAMERA_7_X,  NIGHT_CAMERA_7_Y));
 
@@ -356,4 +330,3 @@ xpmASSET get_jumpscare_asset(AnimatronicName anim, bool is_freddy_lightout, int 
         default: return MENU_BG; //TODO: check this
     }
 }
-

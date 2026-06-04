@@ -1,5 +1,5 @@
 /* XPM */
-static char * library_lounge_xpm[] = {
+static char * sel_library_lounge_xpm[] = {
 "296 33 2 1",
 " 	c None",
 ".	c #FFFFFF",

@@ -1,5 +1,5 @@
 /* XPM */
-static char * council_chamber_xpm[] = {
+static char * sel_council_chamber_xpm[] = {
 "296 33 2 1",
 " 	c None",
 ".	c #FFFFFF",

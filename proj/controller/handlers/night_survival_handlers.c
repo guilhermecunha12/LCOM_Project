@@ -99,7 +99,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
         }
 
         else if (is_mouse_inside(mouse_x, mouse_y,
-            NIGH_CAMERA_5_X,
+            NIGHT_CAMERA_5_X,
             NIGHT_CAMERA_5_Y,
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
