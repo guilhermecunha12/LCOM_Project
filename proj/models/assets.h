@@ -31,6 +31,8 @@ typedef enum {
     START_NIGHT4,
     START_NIGHT5,
 
+    CAMS_MAP,
+
     /* CAMS */
     CAM_1A_EMPTY,
     CAM_1A_FREDDY,

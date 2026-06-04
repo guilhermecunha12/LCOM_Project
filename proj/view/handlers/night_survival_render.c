@@ -54,6 +54,17 @@ void draw_office(int background_offset_x) {
     draw_sprite(office_sprite);
 }
 
+void draw_map(CameraID camera_id) {
+    Sprite* map_sprite = draw_sprite(get_asset(CAMS_MAP));
+
+    // Iterate over all camera id's and draw buttons
+    for(CameraID cam = CAM_1A; cam <= CAM_7; cam++) {
+        if (cam == camera_id) {
+            // Draw selected sprite for the selected camera
+        }
+    }
+}
+
 void render_night_survival(const GameState *state) {
     if (state == NULL) return;
 
@@ -80,6 +91,8 @@ void render_night_survival(const GameState *state) {
             case LEFT_DOOR: break; //TODO: see what to draw
             case RIGHT_DOOR: break; //TODO: see what to draw 
         }
+
+        draw_sprite(get_asset(CAMS_MAP));
     } else {
         // Player is looking at the office
         draw_office(state->global_data.background_offset_x);

@@ -71,6 +71,16 @@
 #include "xpm/cams/monitor_anim/monitor10.xpm"
 #include "xpm/cams/monitor_anim/monitor11.xpm"
 
+#include "xpm/cams/map.xpm"
+
+#include "xpm/cams/rooms/library_lounge.xpm"
+#include "xpm/cams/rooms/library_lounge_b.xpm"
+#include "xpm/cams/rooms/library_lounge_bc.xpm"
+#include "xpm/cams/rooms/library_lounge_bf.xpm"
+#include "xpm/cams/rooms/library_lounge_c.xpm"
+#include "xpm/cams/rooms/library_lounge_cf.xpm"
+#include "xpm/cams/rooms/library_lounge_f.xpm"
+#include "xpm/cams/rooms/library_lounge_all.xpm"
 
 static Sprite* assets[NUM_ASSETS] = {NULL};
 
@@ -142,6 +152,16 @@ void load_all_assets() {
     assets[NIGHT_TEXT_3] = create_sprite((xpm_map_t) night3_xpm, NIGHT_COUNT_TEXT_X, NIGHT_COUNT_TEXT_Y);
     assets[NIGHT_TEXT_4] = create_sprite((xpm_map_t) night4_xpm, NIGHT_COUNT_TEXT_X, NIGHT_COUNT_TEXT_Y);
     assets[NIGHT_TEXT_5] = create_sprite((xpm_map_t) night5_xpm, NIGHT_COUNT_TEXT_X, NIGHT_COUNT_TEXT_Y);
+
+    assets[CAM_1A_EMPTY] = create_sprite((xpm_map_t) library_lounge_xpm, 0, 0);
+    assets[CAM_1A_FREDDY] = create_sprite((xpm_map_t) library_lounge_f_xpm, 0, 0);
+    assets[CAM_1A_BONNIE] = create_sprite((xpm_map_t) library_lounge_b_xpm, 0, 0);
+    assets[CAM_1A_CHICA] = create_sprite((xpm_map_t) library_lounge_c_xpm, 0, 0);
+    assets[CAM_1A_BONNIE_CHICA] = create_sprite((xpm_map_t) library_lounge_bc_xpm, 0, 0);
+    assets[CAM_1A_FREDDY_BONNIE] = create_sprite((xpm_map_t) library_lounge_bf_xpm, 0, 0);
+    assets[CAM_1A_FREDDY_BONNIE_CHICA] = create_sprite((xpm_map_t) library_lounge_all_xpm, 0, 0);
+
+    assets[CAMS_MAP] = create_sprite((xpm_map_t) map_xpm, MAP_LAYOUT_X, MAP_LAYOUT_Y);
 
     // Here we load the animated sprites, with all needed data: number of frames, position, speed and all xpm's needed
     assets_anim[ANIM_CAMERA_MONITOR] = create_anim_sprite(11, 0, 0, TICKS_PER_CAMERA_ANIMATION_FRAME,
