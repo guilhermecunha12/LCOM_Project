@@ -116,7 +116,6 @@
 #include "xpm/cams/rooms/library_lounge_cf.xpm"
 #include "xpm/cams/rooms/library_lounge_f.xpm"
 #include "xpm/cams/rooms/library_lounge_all.xpm"
-
 #include "xpm/cams/rooms/computer_room.xpm"
 #include "xpm/cams/rooms/computer_room_bonnie.xpm"
 #include "xpm/cams/rooms/computer_room_chica.xpm"
@@ -125,31 +124,34 @@
 #include "xpm/cams/rooms/computer_room_freddy_bonnie.xpm"
 #include "xpm/cams/rooms/computer_room_freddy_chica.xpm"
 #include "xpm/cams/rooms/computer_room_all.xpm"
-
 #include "xpm/cams/rooms/the_auditorium.xpm"
 #include "xpm/cams/rooms/auditorium_stage_2.xpm"
-
 #include "xpm/cams/rooms/locker_room.xpm"
 #include "xpm/cams/rooms/locker_room_bonnie.xpm"
-
 #include "xpm/cams/rooms/council_chamber.xpm"
 #include "xpm/cams/rooms/council_chamber_bonnie_close.xpm"
-
 #include "xpm/cams/rooms/lecture_hallway.xpm"
 #include "xpm/cams/rooms/lecture_hallway_chica.xpm"
+// #include "xpm/cams/rooms/lecture_hallway_freddy.xpm"
+// #include "xpm/cams/rooms/lecture_hallway_freddy_chica.xpm"
 
 #include "xpm/cams/rooms/west_hall.xpm"
 #include "xpm/cams/rooms/west_hall_bonnie.xpm"
+// #include "xpm/cams/rooms/west_hall_foxy.xpm"
+// #include "xpm/cams/rooms/west_hall_foxy_bonnie.xpm"
 
 #include "xpm/cams/rooms/west_hall_corner.xpm"
 #include "xpm/cams/rooms/west_hall_corner_bonnie.xpm"
+// #include "xpm/cams/rooms/west_hall_corner_foxy.xpm"
+// #include "xpm/cams/rooms/west_hall_corner_foxy_bonnie.xpm"
+
 
 #include "xpm/cams/rooms/east_hall.xpm"
 #include "xpm/cams/rooms/east_hall_chica.xpm"
-
 #include "xpm/cams/rooms/east_hall_corner.xpm"
 #include "xpm/cams/rooms/east_hall_corner_freddy.xpm"
 #include "xpm/cams/rooms/east_hall_corner_chica.xpm"
+// #include "xpm/cams/rooms/east_hall_corner_chica_freddy.xpm"
 
 #include "xpm/office/jumpscares/bonnie/bonnie1.xpm"
 #include "xpm/office/jumpscares/bonnie/bonnie2.xpm"
@@ -303,9 +305,13 @@ void load_all_assets() {
 
     assets[CAM_2A_EMPTY] = create_sprite((xpm_map_t) west_hall_xpm, 0, 0);
     assets[CAM_2A_BONNIE] = create_sprite((xpm_map_t) west_hall_bonnie_xpm, 0, 0);
+    // assets[CAM_2A_FOXY] = create_sprite((xpm_map_t) west_hall_foxy_xpm, 0, 0);
+    // assets[CAM_2A_BONNIE_FOXY] = create_sprite((xpm_map_t) west_hall_bonnie_foxy_xpm, 0, 0);
 
     assets[CAM_2B_EMPTY] = create_sprite((xpm_map_t) west_hall_corner_xpm, 0, 0);
     assets[CAM_2B_BONNIE] = create_sprite((xpm_map_t) west_hall_corner_bonnie_xpm, 0, 0);
+    // assets[CAM_2B_FOXY] = create_sprite((xpm_map_t) west_hall_corner_foxy_xpm, 0, 0);
+    //assets[CAM_2B_BONNIE_FOXY] = create_sprite((xpm_map_t) west_hall_corner_bonnie_foxy_xpm, 0, 0);
 
     assets[CAM_3_EMPTY] = create_sprite((xpm_map_t) locker_room_xpm, 0, 0);
     assets[CAM_3_BONNIE] = create_sprite((xpm_map_t) locker_room_bonnie_xpm, 0, 0);
@@ -316,12 +322,15 @@ void load_all_assets() {
     assets[CAM_4B_EMPTY] = create_sprite((xpm_map_t) east_hall_corner_xpm, 0, 0);
     assets[CAM_4B_FREDDY] = create_sprite((xpm_map_t) east_hall_corner_freddy_xpm, 0, 0);
     assets[CAM_4B_CHICA] = create_sprite((xpm_map_t) east_hall_corner_chica_xpm, 0, 0);
+    // assets[CAM_4B_FREDDY_CHICA] = create_sprite((xpm_map_t) east_hall_corner_chica_freddy_xpm, 0, 0);
 
     assets[CAM_5_EMPTY] = create_sprite((xpm_map_t) council_chamber_xpm, 0, 0);
     assets[CAM_5_BONNIE] = create_sprite((xpm_map_t) council_chamber_bonnie_close_xpm, 0, 0);
 
     assets[CAM_7_EMPTY] = create_sprite((xpm_map_t) lecture_hallway_xpm, 0, 0);
     assets[CAM_7_CHICA] = create_sprite((xpm_map_t) lecture_hallway_chica_xpm, 0, 0);
+    // assets[CAM_7_FREDDY] = create_sprite((xpm_map_t) lecture_hallway_freddy_xpm, 0, 0);
+    // assets[CAM_7_FREDDY_CHICA] = create_sprite((xpm_map_t) lecture_hallway_chica_freddy_xpm, 0, 0);
 
     assets[CAM_BUTTON_ACTIVE]   = create_sprite((xpm_map_t) cam_button_active_xpm,   0, 0);
     assets[CAM_BUTTON_INACTIVE] = create_sprite((xpm_map_t) cam_button_inactive_xpm, 0, 0);
