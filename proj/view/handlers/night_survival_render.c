@@ -55,14 +55,40 @@ void draw_office(int background_offset_x) {
 }
 
 void draw_map(CameraID camera_id) {
-    Sprite* map_sprite = draw_sprite(get_asset(CAMS_MAP));
+    // TODO: Review this struct
+    static const struct {
+        int x, y;
+        xpmASSET text;
+        xpmASSET sel_text;
+    } cam_info[] = {
+        [CAM_1A] = { NIGHT_CAMERA_1A_X, NIGHT_CAMERA_1A_Y, CAM_TEXT_1A, SEL_TEXT_1A },
+        [CAM_1B] = { NIGHT_CAMERA_1B_X, NIGHT_CAMERA_1B_Y, CAM_TEXT_1B, SEL_TEXT_1B },
+        [CAM_2A] = { NIGHT_CAMERA_2A_X, NIGHT_CAMERA_2A_Y, CAM_TEXT_2A, SEL_TEXT_2A },
+        [CAM_2B] = { NIGHT_CAMERA_2B_X, NIGHT_CAMERA_2B_Y, CAM_TEXT_2B, SEL_TEXT_2B },
+        [CAM_1C] = { NIGHT_CAMERA_1C_X, NIGHT_CAMERA_1C_Y, CAM_TEXT_1C, SEL_TEXT_1C },
+        [CAM_3]  = { NIGHT_CAMERA_3_X,  NIGHT_CAMERA_3_Y,  CAM_TEXT_3,  SEL_TEXT_3  },
+        [CAM_4A] = { NIGHT_CAMERA_4A_X, NIGHT_CAMERA_4A_Y, CAM_TEXT_4A, SEL_TEXT_4A },
+        [CAM_4B] = { NIGHT_CAMERA_4B_X, NIGHT_CAMERA_4B_Y, CAM_TEXT_4B, SEL_TEXT_4B },
+        [CAM_5]  = { NIGH_CAMERA_5_X,   NIGHT_CAMERA_5_Y,  CAM_TEXT_5,  SEL_TEXT_5  },
+        [CAM_6]  = { NIGHT_CAMERA_6_X,  NIGHT_CAMERA_6_Y,  CAM_TEXT_6,  SEL_TEXT_6  },
+        [CAM_7]  = { NIGHT_CAMERA_7_X,  NIGHT_CAMERA_7_Y,  CAM_TEXT_7,  SEL_TEXT_7  },
+    };
 
-    // Iterate over all camera id's and draw buttons
-    for(CameraID cam = CAM_1A; cam <= CAM_7; cam++) {
-        if (cam == camera_id) {
-            // Draw selected sprite for the selected camera
-        }
+    draw_sprite(get_asset(CAMS_MAP));
+
+    Sprite *btn_active   = get_asset(CAM_BUTTON_ACTIVE);
+    Sprite *btn_inactive = get_asset(CAM_BUTTON_INACTIVE);
+
+    for (CameraID cam = CAM_1A; cam <= CAM_7; cam++) {
+        bool selected = (cam == camera_id);
+        Sprite *btn = selected ? btn_active : btn_inactive;
+        btn->x = cam_info[cam].x;
+        btn->y = cam_info[cam].y;
+        draw_sprite(btn);
+        draw_sprite(get_asset(cam_info[cam].text));
     }
+
+    draw_sprite(get_asset(cam_info[camera_id].sel_text));
 }
 
 void render_night_survival(const GameState *state) {
@@ -92,7 +118,7 @@ void render_night_survival(const GameState *state) {
             case RIGHT_DOOR: break; //TODO: see what to draw 
         }
 
-        draw_sprite(get_asset(CAMS_MAP));
+        draw_map(cam);
     } else {
         // Player is looking at the office
         draw_office(state->global_data.background_offset_x);
