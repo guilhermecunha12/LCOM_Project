@@ -30,6 +30,12 @@ void draw_mouse(const GameState* state);
 void render_main_menu(const GameState* state);
 
 /**
+ * @brief Handler for rendering the newspaper when a new game is started.
+ * @param state The current GameState.
+ */
+void render_newspaper(const GameState* state);
+
+/**
  * @brief Handler for rendering each night intro, which is shown at the beginning of each night and introduces it.
  * @param state The current GameState.
  */

@@ -58,9 +58,7 @@ static void menu_execute_selected(GameState* state) {
     if (state->global_data.current_night == 0) {
         switch (sel) {
             case NEW_GAME: // New Game
-                state->global_data.current_night = 1;
-                state->type = NIGHT_INTRO;
-                state->data.night_intro = init_night_intro();
+                init_newspaper(state);
                 break;
             case EXIT_GAME: // Exit
                 state->type = EXIT;
@@ -71,13 +69,10 @@ static void menu_execute_selected(GameState* state) {
     } else {
         switch (sel) {
             case NEW_GAME: // New Game
-                state->global_data.current_night = 1;
-                state->type = NIGHT_INTRO;
-                state->data.night_intro = init_night_intro();
+                init_newspaper(state);
                 break;
             case CONTINUE: // Continue
-                state->type = NIGHT_INTRO;
-                state->data.night_intro = init_night_intro();
+                init_night_intro(state);
                 break;
             case EXIT_GAME: // Exit
                 state->type = EXIT;
@@ -99,9 +94,7 @@ void handle_main_menu_mouse_click(GameState* state, const GameEvent* event) {
         BOX_NORMAL_WIDTH,
         BOX_NORMAL_HEIGHT)) {
 
-        state->global_data.current_night = 1; // Start at night 1
-        state->type = NIGHT_INTRO;
-        state->data.night_intro = init_night_intro();
+        init_newspaper(state);
     }
 
     // Leave a space reserved to this button even if not rendered. 
@@ -111,8 +104,15 @@ void handle_main_menu_mouse_click(GameState* state, const GameEvent* event) {
         BOX_CONTINUE_WIDTH,
         BOX_CONTINUE_HEIGHT)) {
 
-        state->type = NIGHT_INTRO;
-        state->data.night_intro = init_night_intro();
+        init_night_intro(state);
+
+    } else if (is_mouse_inside(mouse_x, mouse_y,
+        EXIT_GAME_X,
+        EXIT_GAME_Y,
+        BOX_NORMAL_WIDTH,
+        BOX_NORMAL_HEIGHT)) {
+
+        state->type = EXIT;
     }
 }
 

@@ -18,7 +18,7 @@
 #include "xpm/menu/night5.xpm"
 #include "xpm/menu/exit_game.xpm"
 #include "xpm/menu/exit_game_sel.xpm"
-
+#include "xpm/night_start/newspaper.xpm"
 #include "xpm/night_start/night1.xpm"
 #include "xpm/night_start/night2.xpm"
 #include "xpm/night_start/night3.xpm"
@@ -103,6 +103,8 @@ void load_all_assets() {
     assets[MENU_NIGHT3] = create_sprite((xpm_map_t) menu_night3_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
     assets[MENU_NIGHT4] = create_sprite((xpm_map_t) menu_night4_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
     assets[MENU_NIGHT5] = create_sprite((xpm_map_t) menu_night5_xpm, NIGHT_TEXT_X, NIGHT_TEXT_Y);
+
+    assets[NEWSPAPER_FEUP] = create_sprite((xpm_map_t) newspaper_xpm, 0, 0);
     assets[START_NIGHT1] = create_sprite((xpm_map_t) start_night1_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
     assets[START_NIGHT2] = create_sprite((xpm_map_t) start_night2_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
     assets[START_NIGHT3] = create_sprite((xpm_map_t) start_night3_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);

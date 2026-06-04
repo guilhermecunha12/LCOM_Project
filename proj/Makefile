@@ -6,6 +6,7 @@ LIB_NAME = libproj.a
 LIB_SRCS = state.c \
            controller.c \
            main_menu_handlers.c \
+           newspaper_handlers.c \
            night_intro_handlers.c \
            night_survival_handlers.c \
            night_no_battery_handlers.c \
@@ -24,6 +25,7 @@ LIB_SRCS = state.c \
            view.c \
            renderer.c \
            main_menu_render.c \
+           newspaper_render.c \
            night_intro_render.c \
            night_survival_render.c \
            jumpscare_render.c \

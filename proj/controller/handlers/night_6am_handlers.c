@@ -9,8 +9,7 @@ void handle_night_6am_timer(GameState* state, const GameEvent* event) {
             state->global_data.current_night = 0; // reset night count for win screen
             state->data.win = init_win_screen();
         }else {
-            state->type = NIGHT_INTRO;
-            state->data.night_intro = init_night_intro();
+            init_night_intro(state);
         }
     }
 }
