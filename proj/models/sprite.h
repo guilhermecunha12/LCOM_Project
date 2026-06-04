@@ -27,6 +27,7 @@ typedef struct {
  * @param cur_aspeed no. frames left for the current pixmap
  * @param num_fig total number of pixmaps
  * @param cur_fig current pixmap
+ * @param is_finished boolean that indicates if the animation has finished playing (useful for animations that should only play once)
  * @param map array of pointers to pixmaps
  */
 typedef struct{
@@ -81,8 +82,21 @@ AnimSprite *create_anim_sprite(uint8_t no_pic, int x, uint16_t y, int aspeed, xp
  */
 int animate_sprite(AnimSprite *sp);
 
+
+/**
+ * @brief Function responsible for animating the sprite once, by switching between its pixmaps and then stopping at the last one.
+ * @details This function is useful for animations that should only play once, such as the camera monitor flip animation.
+ * @param sp pointer to the animated sprite that we want to animate once
+ * @return int 0 on success, 1 on failure
+ */
 int animate_sprite_once(AnimSprite *sp);
 
+/**
+ * @brief Function responsible for animating the sprite once in reverse, by switching between its pixmaps and then stopping at the first one.
+ * @details This function is useful for animations that should only play once in reverse.
+ * @param sp pointer to the animated sprite that we want to animate in reverse
+ * @return int 0 on success, 1 on failure
+ */
 int animate_sprite_once_reverse(AnimSprite *sp);
 
 /**

@@ -200,9 +200,12 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
     }
     // CAMERA ANIMATION
 
-    // Opening the camera monitor
+    
+    // If the camera monitor is up and the animation is playing, it means the space was pressed and the camera monitor was flipped up, so its animation should be playing forward
     if(night_state->camera_monitor_up && night_state->camera_animation_playing ) {
+        // Update the animation
         animate_sprite_once(state->data.night_survival.camera_monitor);
+        // Check if the animation has finished playing to reset the state (essentially finish the animation playing)
         if (state->data.night_survival.camera_monitor->is_finished) {
             state->data.night_survival.camera_animation_playing = false;
         }
@@ -271,10 +274,12 @@ void handle_night_survival_keyboard(GameState* state, const GameEvent* event) {
         mon->is_finished = false;
         mon->cur_aspeed = mon->aspeed;
 
-        if (!state->data.night_survival.camera_monitor_up) {
-            mon->cur_fig = 0;                    // forward: start at frame 0
+        if (state->data.night_survival.camera_monitor_up) {
+            // The animation curent fig should be the last one (then animating in reverse)
+            mon->cur_fig = mon->num_fig - 1;
         } else {
-            mon->cur_fig = mon->num_fig - 1;     // reverse: start at last frame
+            // The other way around
+            mon->cur_fig = 0;
         }
         mon->sp->map = mon->map[mon->cur_fig];
         state->data.night_survival.camera_animation_playing = true;

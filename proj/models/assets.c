@@ -74,6 +74,7 @@
 
 static Sprite* assets[NUM_ASSETS] = {NULL};
 
+// Array to store animated sprites
 static AnimSprite* assets_anim[NUM_ANIM_ASSETS] = {NULL};
 
 void load_all_assets() {
@@ -142,7 +143,7 @@ void load_all_assets() {
     assets[NIGHT_TEXT_4] = create_sprite((xpm_map_t) night4_xpm, NIGHT_COUNT_TEXT_X, NIGHT_COUNT_TEXT_Y);
     assets[NIGHT_TEXT_5] = create_sprite((xpm_map_t) night5_xpm, NIGHT_COUNT_TEXT_X, NIGHT_COUNT_TEXT_Y);
 
-    // TODO: include loops to load the jumpscare sprites
+    // Here we load the animated sprites, with all needed data: number of frames, position, speed and all xpm's needed
     assets_anim[ANIM_CAMERA_MONITOR] = create_anim_sprite(11, 0, 0, TICKS_PER_CAMERA_ANIMATION_FRAME,
     (xpm_map_t) monitor1_xpm, (xpm_map_t) monitor2_xpm, (xpm_map_t) monitor3_xpm, 
     (xpm_map_t) monitor4_xpm, (xpm_map_t) monitor5_xpm, (xpm_map_t) monitor6_xpm, 
@@ -156,6 +157,7 @@ void unload_all_assets() {
         assets[i] = NULL;
     }
 
+    // Add a new loop to destroy the animated sprites as well
     for (int i = 0; i < NUM_ANIM_ASSETS; i++) {
         destroy_anim_sprite(assets_anim[i]);
         assets_anim[i] = NULL;

@@ -132,7 +132,7 @@ int animate_sprite(AnimSprite *asp){
 
 int animate_sprite_once(AnimSprite *asp) {
     if (asp == NULL || asp->map == NULL) return 1;
-    if (asp->is_finished) return 0;   // ← add this
+    if (asp->is_finished) return 0;
     asp->cur_aspeed--;
     if (asp->cur_aspeed == 0) {
         if (asp->cur_fig < asp->num_fig - 1) {

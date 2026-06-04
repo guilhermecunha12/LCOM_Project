@@ -270,6 +270,9 @@ void unload_all_assets();
  */
 Sprite* get_asset(xpmASSET asset);
 
+/**
+ * @brief Getter for an animated sprite represented by a specific enum value
+ */
 AnimSprite* get_anim_asset(AnimAsset asset);
 
 #endif
