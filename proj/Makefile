@@ -27,7 +27,8 @@ SRCS = main.c \
        night_intro_render.c \
        night_survival_render.c \
        jumpscare_render.c \
-       video.c
+       video.c \
+       sound.c
 
 .PATH: controller controller/handlers controller/handlers/helpers devices devices/video input models view view/handlers
 
