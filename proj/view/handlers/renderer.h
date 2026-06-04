@@ -45,4 +45,6 @@ void render_night_survival(const GameState *state);
 
 void render_jumpscare(const GameState *state);
 
+void render_static_screen(const GameState *state);
+
 #endif /* RENDERER_H */

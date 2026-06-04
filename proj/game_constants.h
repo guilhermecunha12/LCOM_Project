@@ -50,6 +50,8 @@ static const int DRAIN_RATE_PER_NIGHT[] = {
 #define NIGHT_6AM_DURATION (5 * FPS)
 #define WIN_SCREEN_DURATION (5 * FPS)
 #define STATIC_SCREEN_DURATION (5 * FPS)
+#define GAME_OVER_DURATION (5 * FPS)
+#define STATIC_SCREEN_FRAME_DURATION (3 * FPS) // 100ms per frame
 
 #define NO_BATTERY_PHASE_DURATION (20 * FPS) // 20 seconds for both phases
 

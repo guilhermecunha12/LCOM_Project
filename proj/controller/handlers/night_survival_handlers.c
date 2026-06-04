@@ -220,9 +220,7 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
 
     // Check if the player has survived the night
     if(night_state->time_left <= 0) {
-        // Player survived the night
-        state->type = NIGHT_6AM;
-        state->data.night_6am = init_night_6am();
+        init_night_6am(state);
         return;
     }
     // CAMERA ANIMATION
@@ -293,9 +291,7 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
     }
 
     if (night_state->power_level == 0) {
-        int remaining_time = state->data.night_survival.time_left;
-        state->type = NIGHT_NO_BATTERY;
-        state->data.night_no_battery = init_night_no_battery(remaining_time);
+        init_night_no_battery(state);
         return;
     }
     
@@ -311,9 +307,7 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
         );
 
         if (attacked) {
-            // jumpscare
-            state->type = JUMPSCARE;
-            state->data.jumpscare = init_jumpscare(night_state->animatronics[name].name, 0);
+            init_jumpscare(state, night_state->animatronics[name].name);
             return;
         }
     }
