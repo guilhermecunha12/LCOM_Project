@@ -56,28 +56,24 @@ void init_night_survival(GameState* state) {
     state->type = NIGHT_SURVIVAL;
     state->global_data.background_offset_x = CENTER_BACKGROUND_OFFSET;
     state->global_data.moving = NO_MOVEMENT;
-    NightSurvivalState night_state;
-    night_state.time_left = NIGHT_TIME;
-    night_state.power_level = DEFAULT_POWER_LEVEL;
-    night_state.power_drain_rate = DRAIN_RATE_PER_NIGHT[state->global_data.current_night - 1];
-    night_state.power_drain_speed = 1;
-    night_state.camera_monitor_up = false;
-    // TODO: Check this value, it should be a default cam
-    night_state.viewing_camera = CAM_1A;
-    night_state.left_light_on = false;
-    night_state.right_light_on = false;
-    night_state.left_door_closed = false;
-    night_state.right_door_closed = false;
-    night_state.camera_monitor_up = false;
-    night_state.camera_monitor = get_anim_asset(ANIM_CAMERA_MONITOR);
 
-    // TODO: Check this frames values
-    night_state.fan_frame_index = 0;
-    night_state.static_animation_timer = 0;
+    NightSurvivalState* ns = &state->data.night_survival;
+    ns->time_left = NIGHT_TIME;
+    ns->power_level = DEFAULT_POWER_LEVEL;
+    ns->power_drain_rate = DRAIN_RATE_PER_NIGHT[state->global_data.current_night - 1];
+    ns->power_drain_speed = 1;
+    ns->camera_monitor_up = false;
+    ns->camera_animation_playing = false;
+    ns->viewing_camera = CAM_1A;
+    ns->left_light_on = false;
+    ns->right_light_on = false;
+    ns->left_door_closed = false;
+    ns->right_door_closed = false;
+    ns->camera_monitor = get_anim_asset(ANIM_CAMERA_MONITOR);
+    ns->fan_frame_index = 0;
+    ns->static_animation_timer = 0;
 
-    initialize_animatronics(night_state.animatronics, state->global_data.current_night);
-
-    state->data.night_survival = night_state;
+    initialize_animatronics(ns->animatronics, state->global_data.current_night);
 }
 
 Night6AMScreen init_night_6am() {

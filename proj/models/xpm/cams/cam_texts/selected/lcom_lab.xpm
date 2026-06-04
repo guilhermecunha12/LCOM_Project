@@ -1,5 +1,5 @@
 /* XPM */
-static char * lcom_lab_xpm[] = {
+static char * sel_lcom_lab_xpm[] = {
 "296 33 2 1",
 " 	c None",
 ".	c #FFFFFF",

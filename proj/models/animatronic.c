@@ -1,34 +1,42 @@
 #include "animatronic.h"
 
 #include <stdlib.h>
+#include <stdio.h>
 
-// TODO: if animatronic have paths with different lenght, how to do?
-static CameraID PATHS[4][6] = {
-    [FREDDY] = {CAM_1A, CAM_1B, CAM_2A, CAM_2B, CAM_1A, RIGHT_DOOR},
-    [BONNIE] = {CAM_1A, CAM_2A, CAM_2B, CAM_1A, CAM_2A, LEFT_DOOR},
-    [CHICA] = {CAM_1A, CAM_1B, CAM_1A, CAM_1B, CAM_1A, RIGHT_DOOR},
-    [FOXY] = {CAM_1C, CAM_2A, CAM_2B, LEFT_DOOR},
+static CameraID FREDDY_PATH[] = {CAM_1A, CAM_1B, CAM_7, CAM_6, CAM_4B, RIGHT_DOOR};
+static CameraID BONNIE_PATH[] = {CAM_1A, CAM_1B, CAM_5, CAM_3, CAM_2A, CAM_2B, LEFT_DOOR};
+static CameraID CHICA_PATH[]  = {CAM_1A, CAM_1B, CAM_7, CAM_6, CAM_4A, CAM_4B, RIGHT_DOOR};
+static CameraID FOXY_PATH[]   = {CAM_1C, CAM_2A, CAM_2B, LEFT_DOOR};
+
+// Initialize paths
+static CameraID *PATHS[4] = {
+    [FREDDY] = FREDDY_PATH,
+    [BONNIE] = BONNIE_PATH,
+    [CHICA]  = CHICA_PATH,
+    [FOXY]   = FOXY_PATH,
 };
 
-static const int ANIMATRONIC_PATH_LENGTHS[5] = {
-    [FREDDY] = sizeof(PATHS[FREDDY])/sizeof(CameraID),
-    [BONNIE] = sizeof(PATHS[BONNIE])/sizeof(CameraID),
-    [CHICA] = sizeof(PATHS[CHICA])/sizeof(CameraID),
-    [FOXY] = sizeof(PATHS[FOXY])/sizeof(CameraID),
+// Calculate dynamically the lengths of the paths
+static const int ANIMATRONIC_PATH_LENGTHS[4] = {
+    [FREDDY] = sizeof(FREDDY_PATH) / sizeof(FREDDY_PATH[0]),
+    [BONNIE] = sizeof(BONNIE_PATH) / sizeof(BONNIE_PATH[0]),
+    [CHICA]  = sizeof(CHICA_PATH) / sizeof(CHICA_PATH[0]),
+    [FOXY]   = sizeof(FOXY_PATH) / sizeof(FOXY_PATH[0]),
 };
+
 
 static const int INITIAL_AI_LEVELS[4][5] = {
     [FREDDY] = {0, 0, 1, 2, 13},
     [BONNIE] = {0, 3, 0, 2, 9},
     [CHICA] = {0, 1, 5, 5, 8},
-    [FOXY] = {0, 1, 2, 6, 9}
+    [FOXY] = {10, 1, 2, 6, 9}
 };
 
 static const int MOVE_INTERVALS[4] = {
-    [FREDDY] = 3*FPS,
-    [BONNIE] = 5*FPS-1,
-    [CHICA] = 5*FPS,
-    [FOXY] = 2*FPS,
+    [FREDDY] = 3 * FPS,
+    [BONNIE] = 5 * FPS -1,
+    [CHICA] = 5 * FPS,
+    [FOXY] = 2 * FPS,
 };
 
 // Single-entry path for special no-battery Freddy state
@@ -47,11 +55,11 @@ static void initialize_animatronic(Animatronic* animatronic, AnimatronicName nam
 }
 
 static void move_animatronic(Animatronic* animatronic) {
-    if(animatronic->current_position_index == animatronic->path_length) {
+    animatronic->current_position_index++;
+    if(animatronic->current_position_index >= animatronic->path_length) {
         // Loop back to the start of the path if it reaches the end.
         animatronic->current_position_index = 0;
     }
-    animatronic->current_position_index++;
 }
 
 static bool should_animatronic_move(Animatronic* animatronic) {
@@ -69,8 +77,8 @@ static bool should_animatronic_move(Animatronic* animatronic) {
 
 static bool should_animatronic_attack(Animatronic* animatronic, bool left_door_closed, bool right_door_closed) {
     CameraID current_position = animatronic->path[animatronic->current_position_index];
-    if((current_position == CAM_1A && !left_door_closed) || 
-       (current_position == CAM_2A && !right_door_closed)) {
+    if((current_position == LEFT_DOOR && !left_door_closed) || 
+       (current_position == RIGHT_DOOR && !right_door_closed)) {
         return true; // The animatronic should attack
     }
     return false;
@@ -124,32 +132,29 @@ static void update_AI_level(Animatronic* animatronic, int time_left_ticks) {
     }
 }
 
-void initialize_animatronics(Animatronic animatronics[NUM_ANIMATRONICS], int night_number) {
+void initialize_animatronics(Animatronic* animatronics, int night_number) {
     for(AnimatronicName name = 0; name < NUM_ANIMATRONICS; name++) {
         initialize_animatronic(&animatronics[name], name, night_number);
     }
 }
 
 bool update_animatronic(Animatronic* animatronic, int time_left, bool left_door_closed, bool right_door_closed) {
-    
     update_AI_level(animatronic, time_left);
 
-    if(should_animatronic_move(animatronic)) {
-        if (should_animatronic_attack(animatronic, left_door_closed, right_door_closed)) {
-            return true;
-        }
-        move_animatronic(animatronic);
-    }
-    else {
-        animatronic->time_to_move_opportunity--; 
-    }
+    animatronic->time_to_move_opportunity--;
 
-    // Reset time to move counter
     if (animatronic->time_to_move_opportunity <= 0) {
-        animatronic->time_to_move_opportunity = MOVE_INTERVALS[animatronic->name]; 
+        bool should_move = should_animatronic_move(animatronic);
+        animatronic->time_to_move_opportunity = MOVE_INTERVALS[animatronic->name];
+        if (should_move) {
+            if (should_animatronic_attack(animatronic, left_door_closed, right_door_closed)) {
+                return true;
+            }
+            move_animatronic(animatronic);
+        }
     }
 
-    return false; // Did not attack
+    return false;
 }
 
 Animatronic initialize_freddy_no_battery() {
