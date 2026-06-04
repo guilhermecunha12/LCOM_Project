@@ -111,8 +111,6 @@ WinState init_win_screen() {
 
 StaticScreenState init_static_screen() {
     StaticScreenState state;
-    state.frame_index = 0;
-    state.tick_timer = 0;
-    state.duration = STATIC_SCREEN_DURATION;
+    state.static_sprite = get_anim_asset(ANIM_WHITE_BARS);
     return state;
 }
