@@ -347,8 +347,8 @@ void load_all_assets() {
 
     // Here we load the animated sprites, with all needed data: number of frames, position, speed and all xpm's needed
     assets_anim[ANIM_STATIC_SCREEN] = create_anim_sprite(7, 0, 0, TICKS_PER_CAMERA_ANIMATION_FRAME,
-        (xpm_map_t) white_bar1_xpm, (xpm_map_t) white_bar2_xpm, (xpm_map_t) white_bar3_xpm,
-        (xpm_map_t) white_bar4_xpm, (xpm_map_t) white_bar5_xpm, (xpm_map_t) white_bar6_xpm, (xpm_map_t) white_bar7_xpm);
+        (xpm_map_t) static1_xpm, (xpm_map_t) static2_xpm, (xpm_map_t) static3_xpm,
+        (xpm_map_t) static4_xpm, (xpm_map_t) static5_xpm, (xpm_map_t) static6_xpm, (xpm_map_t) static7_xpm);
 
     assets_anim[ANIM_CAMERA_MONITOR] = create_anim_sprite(11, 0, 0, TICKS_PER_CAMERA_ANIMATION_FRAME,
     (xpm_map_t) monitor1_xpm, (xpm_map_t) monitor2_xpm, (xpm_map_t) monitor3_xpm, 
