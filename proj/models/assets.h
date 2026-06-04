@@ -138,6 +138,11 @@ typedef enum {
     FREDDY_RIGHT_DOOR,
     CHICA_RIGHT_DOOR,
 
+
+    /* RECEIVER ASSETS */
+    WAITING_FOR_DATA_SCREEN,
+    RECEIVING_DATA_SCREEN,
+
     NUM_ASSETS
 } xpmASSET;
 
@@ -255,11 +260,16 @@ static const xpmASSET cam7_assets[] = {
 int get_jumpscare_frame_count(AnimatronicName anim, bool is_freddy_lightout);
 xpmASSET get_jumpscare_asset(AnimatronicName anim, bool is_freddy_lightout, int frame);
 
+
+
+
 /**
  * @brief Loads all the existing assets into memory by initializing them to an array of
  * pointers to sprite objects.
  */
 void load_all_assets();
+
+void load_receiver_assets();
 
 /**
  * @brief Erases all existing assets from memory and evades memory leaks

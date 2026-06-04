@@ -153,6 +153,13 @@ void load_all_assets() {
     (xpm_map_t) monitor10_xpm, (xpm_map_t) monitor11_xpm); 
 }
 
+void load_receiver_assets() {
+    // TODO: load the correct assets for the receiver
+    
+    assets[WAITING_FOR_DATA_SCREEN] = create_sprite((xpm_map_t) start_night1_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
+    assets[RECEIVING_DATA_SCREEN] = create_sprite((xpm_map_t) start_night2_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
+}
+
 void unload_all_assets() {
     for (int i = 0; i < NUM_ASSETS; i++) {
         destroy_sprite(assets[i]);

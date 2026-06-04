@@ -14,6 +14,8 @@ LIB_SRCS = state.c \
            jumpscare_handlers.c \
            static_screen_handlers.c \
            win_handlers.c \
+           waiting_for_data_handlers.c \
+           receiving_data_handlers.c \
            processor.c \
            player_screen_movement_handler.c \
            subscribe.c \
@@ -29,11 +31,15 @@ LIB_SRCS = state.c \
            night_intro_render.c \
            night_survival_render.c \
            jumpscare_render.c \
-           video.c
+           receiving_data_render.c \
+           waiting_for_data_render.c \
+           video.c \
+           serial_port.c \
+           utils.c
 
 LIB_OBJS = ${LIB_SRCS:.c=.o}
 
-.PATH: controller controller/handlers controller/handlers/helpers devices devices/video input models view view/handlers
+.PATH: controller controller/handlers controller/handlers/helpers devices devices/video devices/serial_port input models view view/handlers
 
 CFLAGS += -pedantic
 

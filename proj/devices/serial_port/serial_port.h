@@ -1,5 +1,9 @@
+#ifndef SERIAL_PORT_H
+#define SERIAL_PORT_H
+
 #include <lcom/lcf.h>
-#include "../subscribe.h"
+
+#define IRQ_COM1 4
 
 /**
  * @brief This is used as a numerator to set the bit-rate (number of bits trasmitted per second) of the serial port (clock frequency divided by 16).
@@ -69,10 +73,6 @@
  */
 #define FCR_CLEAR_TRANSMITTER_FIFO BIT(2)
 
-/**
- * @brief Mask for clearing the bits relative to the FIFOs of the FCR.
- */
-#define FCR_CLEAR_FIFOS 0xF8
 
 /**
  * @brief Mask for clearing the bits relative to the trigger level of the FCR (bits 6 and 7), which is equivalent to setting the receiver FIFO trigger level to 1 byte, meaning that an interrupt will be generated as soon as there is at least 1 byte in the receiver FIFO.
@@ -153,7 +153,6 @@ int enable_transmitter_holding_register_empty_interrupt();
  */
 int enable_line_status_interrupt();
 
-int get_fcr(uint8_t *fcr);
 int get_ier(uint8_t *ier);
 int get_lcr(uint8_t *lcr);
 int get_irr(uint8_t *irr);
@@ -164,9 +163,13 @@ int set_bit_rate(uint16_t bit_rate);
 // Uses flag IRQ_EXCLUSIVE because MINIX has a default interrupt handler for the UART.
 int serial_port_subscribe_int(uint8_t *bit_no);
 
-int setup_serial_port();
+int setup_serial_port_transmitter(uint8_t *bit_no);
+
+int setup_serial_port_receiver(uint8_t *bit_no);
 
 int serial_port_unsubscribe_int();
+
+int serial_port_undo();
 
 uint8_t get_received_data();
 
@@ -174,3 +177,5 @@ int send_data(uint8_t data);
 
 // To receive data - called after a received data interrupt is generated.
 int serial_port_ih();
+
+#endif /* SERIAL_PORT_H */

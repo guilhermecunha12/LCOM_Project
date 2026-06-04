@@ -1,6 +1,7 @@
 #include "processor.h"
 #include "../../view/ui.h"
 #include "../../view/ui_utils.h"
+#include "../../devices/serial_port/serial_port.h"
 
 // Implementation of main menu event handlers
 

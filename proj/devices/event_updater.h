@@ -1,7 +1,11 @@
+#ifndef EVENT_UPDATER_H
+#define EVENT_UPDATER_H
+
 #include "../state.h"
 #include "../../lab2/timer_count.h"
 #include "../../lab3/kbc.h"
 #include "../../lab4/mouse.h"
+#include "serial_port/serial_port.h"
 
 /**
  * @brief Updates the GameEvent struct with timer tick information.
@@ -19,6 +23,8 @@ int update_timer_game_event(GameEvent* ge);
 int update_keyboard_game_event(GameEvent* ge);
 
 
-
-
 int update_mouse_game_event(GameEvent* ge);
+
+int update_serial_port_game_event(GameEvent* ge);
+
+#endif /* EVENT_UPDATER_H */

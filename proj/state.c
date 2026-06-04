@@ -2,7 +2,6 @@
 #include "models/assets.h"
 #include "view/ui.h"
 
-
 MainMenuState init_main_menu(int current_night) {
     MainMenuState state;
     state.selected_option = 0; // No option selected by default

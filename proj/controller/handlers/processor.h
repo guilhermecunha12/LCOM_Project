@@ -1,5 +1,5 @@
-#ifndef HANDLERS_H
-#define HANDLERS_H
+#ifndef PROCESSOR_H
+#define PROCESSOR_H
 
 #include "../../state.h"
 
@@ -129,9 +129,26 @@ void handle_night_survival_keyboard(GameState* state, const GameEvent* event);
  */
 void handle_night_no_battery_keyboard(GameState* state, const GameEvent* event);
 
+/**
+ * @brief Handler for keyboard events in the waiting for data state, in the receiver's perspective. This handler only listens for the escape key to allow exiting the game while waiting for data, since there is no other interaction possible in this state.
+ * 
+ * @param state Pointer to the current game state, which will be modified to exit the game if the escape key is pressed.
+ * @param event Pointer to the current game event, which contains the keyboard input data.
+ */
+void handle_waiting_for_data_keyboard(GameState* state, const GameEvent* event);
+
+void handle_receiving_data_keyboard(GameState* state, const GameEvent* event);
+
+
+/* Serial Port Related Handlers */
+
+void handle_waiting_for_data_serial_port(GameState* state, const GameEvent* event);
+
+void handle_receiving_data_serial_port(GameState* state, const GameEvent* event);
+
 // TODO: REMOVE! ONLY FOR FASTER TESTING
 void go_to_night_survive(GameState* state, const GameEvent* event);
 
-#endif /* HANDLERS_H */
+#endif /* PROCESSOR_H */
 
 

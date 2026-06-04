@@ -46,6 +46,15 @@ static EventHandler eht[NUM_STATES][NUM_EVENTS] = {
         [TIMER_TICK] = handle_win_screen_timer,
     },
 
+    [WAITING_FOR_DATA] = {
+        [KEYBOARD_PRESS] = handle_waiting_for_data_keyboard,
+        [SERIAL_PORT_DATA] = handle_waiting_for_data_serial_port,
+    },
+
+    [RECEIVING_DATA] = {
+        [KEYBOARD_PRESS] = handle_receiving_data_keyboard,
+        [SERIAL_PORT_DATA] = handle_receiving_data_serial_port,
+    }
 
 };
 

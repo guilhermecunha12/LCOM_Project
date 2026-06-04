@@ -14,6 +14,7 @@ typedef enum {
     MOUSE_MOVE,
     KEYBOARD_PRESS,
     KEYBOARD_RELEASE,
+    SERIAL_PORT_DATA,
     NUM_EVENTS
 } EventType;
 
@@ -35,6 +36,7 @@ typedef struct {
         Key key;
         struct {int16_t delta_x; int16_t delta_y;} mouse_coords;
         int timer_ticks;
+        uint8_t serial_data;
     } data;
 } GameEvent;
 
@@ -51,6 +53,11 @@ typedef enum {
     STATIC_SCREEN,
     GAME_OVER,
     EXIT,
+
+    // States for the receiver of the serial port data
+    WAITING_FOR_DATA,
+    RECEIVING_DATA,
+
     NUM_STATES
 } StateType;
 

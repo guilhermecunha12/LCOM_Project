@@ -4,7 +4,7 @@
 #define CHAR_LENGTH 8
 #define STOP_BITS 1
 #define PARITY 2 // Even parity
-#define BIT_RATE 10
+#define BIT_RATE 9600
 
 static int serial_port_hook_id;
 static uint8_t received_data;
@@ -18,7 +18,7 @@ int setup_fifos() {
 
 int setup_lcr(int char_length, int stop_bits, int parity) {
     
-    uint8_t lcr;
+    uint8_t lcr = 0;
 
     // Set character length
     switch (char_length) {
@@ -107,10 +107,6 @@ int enable_line_status_interrupt() {
     return sys_outb(COM1_BASE + IER_OFFSET, ier);
 }
 
-int get_fcr(uint8_t *fcr) {
-    return util_sys_inb(COM1_BASE + FCR_OFFSET, fcr);
-}
-
 int get_ier(uint8_t *ier) {
     return util_sys_inb(COM1_BASE + IER_OFFSET, ier);
 }
@@ -165,7 +161,7 @@ int setup_serial_port_receiver(uint8_t *bit_no) {
     if (enable_received_data_interrupt()) return 1;
     if (enable_line_status_interrupt()) return 1;
     if (set_bit_rate(BIT_RATE)) return 1;
-    if (serial_port_subscribe_int(&bit_no)) return 1;
+    if (serial_port_subscribe_int(bit_no)) return 1;
     return 0;
 }
 
@@ -174,7 +170,7 @@ int setup_serial_port_transmitter(uint8_t *bit_no) {
     if (setup_lcr(CHAR_LENGTH, STOP_BITS, PARITY)) return 1;
     if (enable_line_status_interrupt()) return 1;
     if (set_bit_rate(BIT_RATE)) return 1;
-    if (serial_port_subscribe_int(&bit_no)) return 1;
+    if (serial_port_subscribe_int(bit_no)) return 1;
     return 0;
 }
 
@@ -185,9 +181,7 @@ int serial_port_unsubscribe_int() {
 int serial_port_undo() {
     if (serial_port_unsubscribe_int()) return 1; // Unsubscribe from serial port interrupts
 
-    uint8_t fcr;
-    if (get_fcr(&fcr)) return 1;
-    if (sys_outb(COM1_BASE + FCR_OFFSET, fcr & FCR_CLEAR_FIFOS)) return 1; // Disable FIFOs
+    if (sys_outb(COM1_BASE + FCR_OFFSET, 0)) return 1; // Disable FIFOs
 
     uint8_t lcr;
     if (get_lcr(&lcr)) return 1;
@@ -221,7 +215,7 @@ int serial_port_ih() {
     uint8_t iir;
     if (get_iir(&iir)) return 1;
 
-    if (iir & IIR_NO_INTERRUPT_PENDING) return 1;
+    if (iir & IIR_NO_INTERRUPT_PENDING) return 0; // could have been a "spurious" interrupt
 
     uint8_t interrupt_type = IIR_INTERRUPT_TYPE(iir);
     uint8_t lsr;
@@ -237,10 +231,11 @@ int serial_port_ih() {
         
         // Check for errors in the LSR error bits
         if (get_lsr(&lsr)) return 1;
-        if (lsr & (LSR_OVERRUN_ERROR | LSR_PARITY_ERROR | LSR_FRAMING_ERROR)) return 1;
-
-        // Check if the FIFOS are enabled by checking FIFO related bits in the IIR (TODO: can be wrong)
-        if (!(iir & IIR_FIFOS_ENABLED)) return 1;
+        if (lsr & (LSR_OVERRUN_ERROR | LSR_PARITY_ERROR | LSR_FRAMING_ERROR)) {
+            uint8_t junk;
+            util_sys_inb(COM1_BASE + RBR_OFFSET, &junk); // Flush the bad byte on the top of the receiver FIFO
+            return 1;
+        }
 
         if (lsr & LSR_DATA_READY) {
             if (util_sys_inb(COM1_BASE + RBR_OFFSET, &received_data)) return 1;
