@@ -10,6 +10,9 @@
 
 #define BACKGROUND_MOVE_VELOCITY (int) (8 * 60.0f / FPS) // For lower fps, the number of updates is lower so we want to increase the velocity to make the movement smoother and consistent for different fps values.
 #define BACKGROUND_MAX_OFFSET 300
+#define CAMERA_MAX_OFFSET 200
+#define CAMERA_MOVE_VELOCITY (int) (2 * 60.0f / FPS)
+#define CAMERA_MOVEMENT_WAIT_TIME 1 * FPS
 #define CENTER_BACKGROUND_OFFSET -150
 
 ////// MAIN MENU UI //////////////////////////

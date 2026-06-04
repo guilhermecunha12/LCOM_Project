@@ -72,16 +72,19 @@ void init_night_survival(GameState* state) {
     ns->power_level = DEFAULT_POWER_LEVEL;
     ns->power_drain_rate = DRAIN_RATE_PER_NIGHT[state->global_data.current_night - 1];
     ns->power_drain_speed = 1;
-    ns->camera_monitor_up = false;
-    ns->camera_animation_playing = false;
-    ns->viewing_camera = CAM_1A;
     ns->left_light_on = false;
     ns->right_light_on = false;
     ns->left_door_closed = false;
     ns->right_door_closed = false;
+    ns->camera_monitor_up = false;
+    ns->camera_animation_playing = false;
     ns->camera_monitor = get_anim_asset(ANIM_CAMERA_MONITOR);
+    ns->viewing_camera = CAM_1A;
     ns->fan_frame_index = 0;
     ns->static_animation_timer = 0;
+    ns->camera_offset_x = 0;
+    ns->moving = RIGHT;
+    ns->wait_timer = 0;
 
     initialize_animatronics(ns->animatronics, state->global_data.current_night);
 }

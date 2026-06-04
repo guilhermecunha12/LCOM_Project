@@ -116,6 +116,12 @@ typedef struct {
     int fan_frame_index;
     int static_animation_timer;
 
+
+    int wait_timer;
+    int camera_offset_x;
+    MovementDirection moving; // -1 for moving left, 0 for not moving, 1 for moving right
+    MovementDirection last_camera_direction; // used to determine the direction of the next camera movement after waiting
+
     Animatronic animatronics[NUM_ANIMATRONICS]; // Metadata for each animatronic
 } NightSurvivalState;
 
