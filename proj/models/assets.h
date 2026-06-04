@@ -287,7 +287,7 @@ static const xpmASSET cam7_assets[] = {
 int get_jumpscare_frame_count(AnimatronicName anim, bool is_freddy_lightout);
 xpmASSET get_jumpscare_asset(AnimatronicName anim, bool is_freddy_lightout, int frame);
 
-/**
+/** 
  * @brief Loads all the existing assets into memory by initializing them to an array of
  * pointers to sprite objects.
  */
