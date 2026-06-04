@@ -8,3 +8,10 @@ void play_sound(const char *sound_name) {
     fprintf(f, "%s\n", sound_name);
     fclose(f);
 }
+
+void stop_sound(void) {
+    FILE *f = fopen(SOUND_TRIGGER_PATH, "w");
+    if (!f) return;
+    fprintf(f, "stop\n");
+    fclose(f);
+}
