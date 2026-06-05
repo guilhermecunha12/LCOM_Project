@@ -8,6 +8,9 @@
 
 #include <stdbool.h>
 
+/**
+ * @brief Enum that defines the type of events that can occur in the game.
+ */
 typedef enum {
     TIMER_TICK,
     MOUSE_LB_CLICK,
@@ -17,6 +20,9 @@ typedef enum {
     NUM_EVENTS
 } EventType;
 
+/**
+ * @brief Enum that defines the keys that can be pressed in the game.
+ */
 typedef enum {
     KEY_MENU_UP,
     KEY_MENU_DOWN,
@@ -29,6 +35,9 @@ typedef enum {
 } Key;
 
 // Tagged Union - TODO: instead of scancodes and mouse_packets, have enums that represent the keys
+/**
+ * @brief Struct that represents an event in the game. It uses a tagged union to store the relevant data for each type of event.
+ */
 typedef struct {
     EventType type;
     union { // TODO: simplify this structs if only one field is needed for each event type
@@ -38,7 +47,9 @@ typedef struct {
     } data;
 } GameEvent;
 
-// Game states
+/**
+ * @brief Enum that defines the different states of the game. Each state can have its own specific data, but they all share the same global data defined in the GameState struct.
+ */
 typedef enum {
     MAIN_MENU,
     NIGHT_INTRO,
@@ -54,6 +65,9 @@ typedef enum {
     NUM_STATES
 } StateType;
 
+/**
+ * @brief Enum that defines the direction of movement for states that have camera movement. This is used to determine the direction of the next camera movement after waiting.
+ */
 typedef enum {
     LEFT,
     RIGHT,
@@ -61,6 +75,9 @@ typedef enum {
 } MovementDirection;
 
 // Global game data that persists across states
+/**
+ * @brief Enum that defines the global game data that persists across states. This includes the current night, mouse coordinates for displaying the cursor, and shared data for states that have camera movement.
+ */
 typedef struct {
     int current_night; // 0 (no current night), 1 to 5 - also used to determine night's gimmicks
 
@@ -73,6 +90,9 @@ typedef struct {
     MovementDirection moving; // -1 for moving left, 0 for not moving, 1 for moving right
 } PersistentData;
 
+/**
+ * @brief Enum that defines the options available in the main menu. This is used to determine which options to display in the main menu based on the current night.
+ */
 typedef enum {
     NO_OPTION,
     NEW_GAME,
@@ -80,6 +100,7 @@ typedef enum {
     EXIT_GAME
 } MainMenuOption;
 
+/* GAME STATES */
 typedef struct {
     int num_options; // number of options to display in the main menu
     MainMenuOption selected_option; // for keyboard navigation in main menu; 0 for no option selected
@@ -155,7 +176,9 @@ typedef struct {
     int duration;
 } GameOverState;
 
-// Tagged Union to represent the current game state
+/**
+ * @brief Struct that represents the overall game state. It contains a type field that indicates the current state of the game, a union that holds the specific data for each state, and a PersistentData struct that holds data that persists across all states.
+ */
 typedef struct {
     PersistentData global_data; // Global data across all states
     StateType type; // tag
@@ -173,16 +196,65 @@ typedef struct {
     } data; // state-specific data
 } GameState;
 
-
+/**
+ * @brief Function that initializes the game state to the main menu and sets up the global data.
+ * @param state Pointer to the GameState struct to initialize.
+ */
 void init_main_menu(GameState* state);
+
+/**
+ * @brief Function that initializes the game state to the night intro state and sets up the relevant data.
+ * @param state Pointer to the GameState struct to initialize.
+ */
 void init_night_intro(GameState* state);
+
+/**
+ * @brief Function that initializes the game state to the newspaper state and sets up the relevant data.
+ * @param state Pointer to the GameState struct to initialize.
+ */
 void init_newspaper(GameState* state);
+
+/**
+ * @brief Function that initializes the game state to the night survival state and sets up the relevant data, including the animatronics' paths and AI levels based on the current night.
+ * @param state Pointer to the GameState struct to initialize.
+ */
 void init_night_survival(GameState* state);
+
+/**
+ * @brief Function that initializes the game state to the 6 AM screen state and sets up the relevant data.
+ * @param state Pointer to the GameState struct to initialize.
+ */
 void init_night_6am(GameState* state);
+
+/**
+ * @brief Function that initializes the game state to the night no battery state and sets up the relevant data.
+ * @param state Pointer to the GameState struct to initialize.
+ */
 void init_night_no_battery(GameState* state);
+
+/**
+ * @brief Function that initializes the game state to the jumpscare state and sets up the relevant data, including the jumpscare sprite based on the animatronic that is performing the jumpscare.
+ * @param state Pointer to the GameState struct to initialize.
+ * @param animatronic_name The name of the animatronic that is performing the jumpscare, used to determine which jumpscare sprite to display.
+ */
 void init_jumpscare(GameState* state, AnimatronicName animatronic_name);
+
+/**
+ * @brief Function that initializes the game state to the win screen state and sets up the relevant data.
+ * @param state Pointer to the GameState struct to initialize.
+ */
 void init_static_screen(GameState* state);
+
+/**
+ * @brief Function that initializes the game state to the game over state and sets up the relevant data.
+ * @param state Pointer to the GameState struct to initialize.
+ */
 void init_game_over(GameState* state);
+
+/**
+ * @brief Function that initializes the game state to the win screen state and sets up the relevant data.
+ * @param state Pointer to the GameState struct to initialize.
+ */
 void init_win_screen(GameState* state);
 
 #endif /* STATE_H */

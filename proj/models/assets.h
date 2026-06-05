@@ -9,8 +9,11 @@
  * @brief Enum that simplifies the code visually in the corresponding functions as we'll load them by an enum val that is easily retrievable through an array that points to a specific sprite asset.
  */ 
 typedef enum {
-    MENU_BG,
+    /* CURSOR */
     CURSOR,
+
+    /* MAIN MENU */
+    MENU_BG,
     GAME_TITLE,
     OPT_NEWGAME,
     OPT_NEWGAME_SEL,
@@ -25,16 +28,23 @@ typedef enum {
     MENU_NIGHT4,
     MENU_NIGHT5,
 
+    /* NIGHT 6AM */
     NIGHT_6AM_SCREEN,
+
+    /* GAME OVER */
     GAME_OVER_SCREEN,
 
+    /* NEWSPAPER */
     NEWSPAPER_FEUP,
+
+    /* NIGHT INTRO */
     START_NIGHT1,
     START_NIGHT2,
     START_NIGHT3,
     START_NIGHT4,
     START_NIGHT5,
 
+    /* CAMS MAP LAYOUT */
     CAMS_MAP,
 
     /* CAM UI BUTTONS */
@@ -178,6 +188,9 @@ typedef enum {
     NUM_ASSETS
 } xpmASSET;
 
+/**
+ * @brief Enum for animated sprites. These are sprites that have multiple frames that need to be displayed in sequence to create an animation effect, such as the animatronic jumpscares.
+ */
 typedef enum {
     ANIM_CAMERA_MONITOR,
     ANIM_BONNIE_JUMPSCARE,
@@ -187,6 +200,9 @@ typedef enum {
     NUM_ANIM_ASSETS
 } AnimAsset;
 
+/**
+ * @brief Mapping of power level first digit to their corresponding sprit assets.
+ */
 static const xpmASSET power1_to_asset[] = {
     [1] = I_POWER1,
     [2] = I_POWER2,
@@ -199,6 +215,9 @@ static const xpmASSET power1_to_asset[] = {
     [9] = I_POWER9
 };
 
+/**
+ * @brief Mapping of power level digits to their corresponding sprit assets for the second of the power percentage display.
+ */
 static const xpmASSET power2_to_asset[] = {
     [0] = II_POWER0,
     [1] = II_POWER1,
@@ -218,6 +237,10 @@ static const xpmASSET power2_to_asset[] = {
 #define CAM_CHICA  (1 << CHICA)
 #define CAM_FOXY   (1 << FOXY)
 
+/**
+ * @brief Mapping of CAM1A states.
+ * @details Each animatronic is represented by a bit in the index, so we can combine them to get the correct asset for each possible combination of animatronics in the camera view. For example, if Freddy and Bonnie are in the camera view, we can use the index CAM_FREDDY | CAM_BONNIE to get the corresponding asset from the cam1a_assets array. 
+ */
 static const xpmASSET cam1a_assets[] = {
     [CAM_EMPTY] = CAM_1A_EMPTY,
     [CAM_FREDDY] = CAM_1A_FREDDY,
@@ -229,6 +252,10 @@ static const xpmASSET cam1a_assets[] = {
     [CAM_FREDDY | CAM_BONNIE | CAM_CHICA] = CAM_1A_FREDDY_BONNIE_CHICA,
 };
 
+/**
+ * @brief Mapping of CAM1B states.
+ * @details Each animatronic is represented by a bit in the index, so we can combine them to get the correct asset for each possible combination of animatronics in the camera view. For example, if Freddy and Bonnie are in the camera view, we can use the index CAM_FREDDY | CAM_BONNIE to get the corresponding asset from the cam1a_assets array. 
+ */
 static const xpmASSET cam1b_assets[] = {
     [CAM_EMPTY] = CAM_1B_EMPTY,
     [CAM_FREDDY] = CAM_1B_FREDDY,
@@ -240,11 +267,19 @@ static const xpmASSET cam1b_assets[] = {
     [CAM_FREDDY | CAM_BONNIE | CAM_CHICA] = CAM_1B_FREDDY_BONNIE_CHICA,
 };
 
+/**
+ * @brief Mapping of CAM1C states.
+ * @details Each animatronic is represented by a bit in the index, so we can combine them to get the correct asset for each possible combination of animatronics in the camera view. For example, if Freddy and Bonnie are in the camera view, we can use the index CAM_FREDDY | CAM_BONNIE to get the corresponding asset from the cam1a_assets array. 
+ */
 static const xpmASSET cam1c_assets[] = {
     [CAM_EMPTY] = CAM_1C_EMPTY,
     [CAM_FOXY] = CAM_1C_FOXY // TODO: Foxy has states  
 };
 
+/**
+ * @brief Mapping of CAM2A states.
+ * @details Each animatronic is represented by a bit in the index, so we can combine them to get the correct asset for each possible combination of animatronics in the camera view. For example, if Freddy and Bonnie are in the camera view, we can use the index CAM_FREDDY | CAM_BONNIE to get the corresponding asset from the cam1a_assets array. 
+ */
 static const xpmASSET cam2a_assets[] = {
     [CAM_EMPTY] = CAM_2A_EMPTY,
     [CAM_BONNIE] = CAM_2A_BONNIE,
@@ -252,6 +287,10 @@ static const xpmASSET cam2a_assets[] = {
     [CAM_BONNIE | CAM_FOXY] = CAM_2A_BONNIE_FOXY,
 };
 
+/**
+ * @brief Mapping of CAM2B states.
+ * @details Each animatronic is represented by a bit in the index, so we can combine them to get the correct asset for each possible combination of animatronics in the camera view. For example, if Freddy and Bonnie are in the camera view, we can use the index CAM_FREDDY | CAM_BONNIE to get the corresponding asset from the cam1a_assets array. 
+ */
 static const xpmASSET cam2b_assets[] = {
     [CAM_EMPTY] = CAM_2B_EMPTY,
     [CAM_BONNIE] = CAM_2B_BONNIE,
@@ -259,16 +298,28 @@ static const xpmASSET cam2b_assets[] = {
     [CAM_BONNIE | CAM_FOXY] = CAM_2B_BONNIE_FOXY,
 };
 
+/**
+ * @brief Mapping of CAM3 states.
+ * @details Each animatronic is represented by a bit in the index, so we can combine them to get the correct asset for each possible combination of animatronics in the camera view. For example, if Freddy and Bonnie are in the camera view, we can use the index CAM_FREDDY | CAM_BONNIE to get the corresponding asset from the cam1a_assets array. 
+ */
 static const xpmASSET cam3_assets[] = {
     [CAM_EMPTY] = CAM_3_EMPTY,
     [CAM_BONNIE] = CAM_3_BONNIE,
 };
 
+/**
+ * @brief Mapping of CAM4A states.
+ * @details Each animatronic is represented by a bit in the index, so we can combine them to get the correct asset for each possible combination of animatronics in the camera view. For example, if Freddy and Bonnie are in the camera view, we can use the index CAM_FREDDY | CAM_BONNIE to get the corresponding asset from the cam1a_assets array. 
+ */
 static const xpmASSET cam4a_assets[] = {
     [CAM_EMPTY] = CAM_4A_EMPTY,
     [CAM_CHICA] = CAM_4A_CHICA,
 };
 
+/**
+ * @brief Mapping of CAM4B states.
+ * @details Each animatronic is represented by a bit in the index, so we can combine them to get the correct asset for each possible combination of animatronics in the camera view. For example, if Freddy and Bonnie are in the camera view, we can use the index CAM_FREDDY | CAM_BONNIE to get the corresponding asset from the cam1a_assets array. 
+ */
 static const xpmASSET cam4b_assets[] = {
     [CAM_EMPTY] = CAM_4B_EMPTY,
     [CAM_FREDDY] = CAM_4B_FREDDY,
@@ -276,11 +327,19 @@ static const xpmASSET cam4b_assets[] = {
     [CAM_FREDDY | CAM_CHICA] = CAM_4B_FREDDY_CHICA,
 };
 
+/**
+ * @brief Mapping of CAM5 states.
+ * @details Each animatronic is represented by a bit in the index, so we can combine them to get the correct asset for each possible combination of animatronics in the camera view. For example, if Freddy and Bonnie are in the camera view, we can use the index CAM_FREDDY | CAM_BONNIE to get the corresponding asset from the cam1a_assets array. 
+ */
 static const xpmASSET cam5_assets[] = {
     [CAM_EMPTY] = CAM_5_EMPTY,
     [CAM_BONNIE] = CAM_5_BONNIE,
 };
 
+/**
+ * @brief Mapping of CAM6 states.
+ * @details Each animatronic is represented by a bit in the index, so we can combine them to get the correct asset for each possible combination of animatronics in the camera view. For example, if Freddy and Bonnie are in the camera view, we can use the index CAM_FREDDY | CAM_BONNIE to get the corresponding asset from the cam1a_assets array. 
+ */
 static const xpmASSET cam6_assets[] = {
     [CAM_EMPTY] = CAM_6_EMPTY,
     [CAM_FREDDY] = CAM_6_FREDDY,
@@ -288,15 +347,16 @@ static const xpmASSET cam6_assets[] = {
     [CAM_FREDDY | CAM_CHICA] = CAM_6_FREDDY_CHICA,
 };
 
+/**
+ * @brief Mapping of CAM7 states.
+ * @details Each animatronic is represented by a bit in the index, so we can combine them to get the correct asset for each possible combination of animatronics in the camera view. For example, if Freddy and Bonnie are in the camera view, we can use the index CAM_FREDDY | CAM_BONNIE to get the corresponding asset from the cam1a_assets array. 
+ */
 static const xpmASSET cam7_assets[] = {
     [CAM_EMPTY] = CAM_7_EMPTY,
     [CAM_FREDDY] = CAM_7_FREDDY,
     [CAM_CHICA] = CAM_7_CHICA,
     [CAM_FREDDY | CAM_CHICA] = CAM_7_FREDDY_CHICA,
 };
-
-int get_jumpscare_frame_count(AnimatronicName anim, bool is_freddy_lightout);
-xpmASSET get_jumpscare_asset(AnimatronicName anim, bool is_freddy_lightout, int frame);
 
 /** 
  * @brief Loads all the existing assets into memory by initializing them to an array of

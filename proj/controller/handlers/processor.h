@@ -17,6 +17,8 @@ typedef void (*EventHandler)(GameState*, const GameEvent*);
  */
 EventHandler get_event_handler(const StateType state, const EventType event);
 
+                /* Mouse  Related Handlers */
+
 /**
  * @brief Handler for mouse movement events, which updates the mouse coordinates in the global game state. It is used in MAIN_MENU and NIGHT_SURVIVAL states.
  * @param state Pointer to the current game state, which will be modified with the new mouse coordinates.
@@ -105,7 +107,7 @@ void handle_night_no_battery_timer(GameState* state, const GameEvent* event);
 void handle_jumpscare_timer(GameState* state, const GameEvent* event);
 
 
-/* Keyboard Related Handlers */
+                /* Keyboard Related Handlers */
 
 /**
  * @brief Handler for keyboard events in the main menu state. This handler manages keyboard input for navigating the main menu options (e.g., moving selection up/down and executing the selected option).
