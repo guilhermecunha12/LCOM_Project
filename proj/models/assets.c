@@ -152,8 +152,10 @@
 #include "xpm/cams/rooms/computer_room_freddy_bonnie.xpm"
 #include "xpm/cams/rooms/computer_room_freddy_chica.xpm"
 #include "xpm/cams/rooms/computer_room_all.xpm"
-#include "xpm/cams/rooms/the_auditorium.xpm"
+#include "xpm/cams/rooms/auditorium_empty.xpm"
+#include "xpm/cams/rooms/auditorium_stage_1.xpm"
 #include "xpm/cams/rooms/auditorium_stage_2.xpm"
+#include "xpm/cams/rooms/auditorium_stage_3.xpm"
 #include "xpm/cams/rooms/locker_room.xpm"
 #include "xpm/cams/rooms/locker_room_bonnie.xpm"
 #include "xpm/cams/rooms/council_chamber.xpm"
@@ -330,8 +332,10 @@ void load_all_assets() {
     assets[CAM_1B_FREDDY_CHICA] = create_sprite((xpm_map_t) computer_room_freddy_chica_xpm, 0, 0);
     assets[CAM_1B_FREDDY_BONNIE_CHICA] = create_sprite((xpm_map_t) computer_room_all_xpm, 0, 0);
 
-    assets[CAM_1C_EMPTY] = create_sprite((xpm_map_t) the_auditorium_xpm, 0, 0);
-    assets[CAM_1C_FOXY] = create_sprite((xpm_map_t) auditorium_stage_2_xpm, 0, 0);
+    assets[CAM_1C_EMPTY] = create_sprite((xpm_map_t) auditorium_empty_xpm, 0, 0);
+    assets[CAM_1C_FOXY_1] = create_sprite((xpm_map_t) auditorium_stage_1_xpm, 0, 0);
+    assets[CAM_1C_FOXY_2] = create_sprite((xpm_map_t) auditorium_stage_2_xpm, 0, 0);
+    assets[CAM_1C_FOXY_3] = create_sprite((xpm_map_t) auditorium_stage_3_xpm, 0, 0);
 
     assets[CAM_2A_EMPTY] = create_sprite((xpm_map_t) west_hall_xpm, 0, 0);
     assets[CAM_2A_BONNIE] = create_sprite((xpm_map_t) west_hall_bonnie_xpm, 0, 0);

@@ -123,7 +123,14 @@ void render_night_survival(const GameState *state) {
         switch (cam) {
             case CAM_1A: curr_sprite = get_asset(cam1a_assets[key]); break;
             case CAM_1B: curr_sprite = get_asset(cam1b_assets[key]); break;
-            case CAM_1C: curr_sprite = get_asset(cam1c_assets[key]); break;
+            case CAM_1C: {
+                static const xpmASSET foxy_cam1c_states[] = {CAM_1C_FOXY_1, CAM_1C_FOXY_2, CAM_1C_FOXY_3};
+                if (key & CAM_FOXY)
+                    curr_sprite = get_asset(foxy_cam1c_states[animatronics[FOXY].current_position_index]);
+                else
+                    curr_sprite = get_asset(CAM_1C_EMPTY);
+                break;
+            }
             case CAM_2A: curr_sprite = get_asset(cam2a_assets[key]); break;
             case CAM_2B: curr_sprite = get_asset(cam2b_assets[key]); break;
             case CAM_3: curr_sprite = get_asset(cam3_assets[key]); break;

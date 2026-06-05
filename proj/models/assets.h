@@ -94,8 +94,12 @@ typedef enum {
     CAM_1B_FREDDY_BONNIE,
     CAM_1B_FREDDY_CHICA,
     CAM_1B_FREDDY_BONNIE_CHICA,
+
     CAM_1C_EMPTY,
-    CAM_1C_FOXY,
+    CAM_1C_FOXY_1,
+    CAM_1C_FOXY_2,
+    CAM_1C_FOXY_3,
+    
     CAM_2A_EMPTY,
     CAM_2A_BONNIE,
     CAM_2A_FOXY,
@@ -265,15 +269,6 @@ static const xpmASSET cam1b_assets[] = {
     [CAM_FREDDY | CAM_BONNIE] = CAM_1B_FREDDY_BONNIE,
     [CAM_FREDDY | CAM_CHICA] = CAM_1B_FREDDY_CHICA,
     [CAM_FREDDY | CAM_BONNIE | CAM_CHICA] = CAM_1B_FREDDY_BONNIE_CHICA,
-};
-
-/**
- * @brief Mapping of CAM1C states.
- * @details Each animatronic is represented by a bit in the index, so we can combine them to get the correct asset for each possible combination of animatronics in the camera view. For example, if Freddy and Bonnie are in the camera view, we can use the index CAM_FREDDY | CAM_BONNIE to get the corresponding asset from the cam1a_assets array. 
- */
-static const xpmASSET cam1c_assets[] = {
-    [CAM_EMPTY] = CAM_1C_EMPTY,
-    [CAM_FOXY] = CAM_1C_FOXY // TODO: Foxy has states  
 };
 
 /**
