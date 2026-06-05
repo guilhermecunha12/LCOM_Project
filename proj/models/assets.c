@@ -38,6 +38,7 @@
 
 // Office Screen
 #include "xpm/office/office.xpm"
+#include "xpm/office/office_lights_out.xpm"
 
 // Power xpms 
 #include "xpm/office/ui/power_nr/0.xpm"
@@ -245,6 +246,30 @@
 #include "xpm/receiver/animatronic_ids/freddy.xpm"
 #include "xpm/receiver/animatronic_ids/foxy.xpm"
 
+#include "xpm/office/jumpscares/foxy/1.xpm"
+#include "xpm/office/jumpscares/foxy/2.xpm"
+#include "xpm/office/jumpscares/foxy/3.xpm"
+#include "xpm/office/jumpscares/foxy/4.xpm"
+#include "xpm/office/jumpscares/foxy/5.xpm"
+#include "xpm/office/jumpscares/foxy/6.xpm"
+#include "xpm/office/jumpscares/foxy/7.xpm"
+#include "xpm/office/jumpscares/foxy/8.xpm"
+#include "xpm/office/jumpscares/foxy/9.xpm"
+#include "xpm/office/jumpscares/foxy/10.xpm"
+#include "xpm/office/jumpscares/foxy/11.xpm"
+#include "xpm/office/jumpscares/foxy/12.xpm"
+#include "xpm/office/jumpscares/foxy/13.xpm"
+#include "xpm/office/jumpscares/foxy/14.xpm"
+#include "xpm/office/jumpscares/foxy/15.xpm"
+#include "xpm/office/jumpscares/foxy/16.xpm"
+#include "xpm/office/jumpscares/foxy/17.xpm"
+#include "xpm/office/jumpscares/foxy/18.xpm"
+#include "xpm/office/jumpscares/foxy/19.xpm"
+#include "xpm/office/jumpscares/foxy/20.xpm"
+#include "xpm/office/jumpscares/foxy/21.xpm"
+
+
+
 static Sprite* assets[NUM_ASSETS] = {NULL};
 
 // Array to store animated sprites
@@ -277,6 +302,7 @@ void load_all_assets() {
     assets[START_NIGHT5] = create_sprite((xpm_map_t) start_night5_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
     
     assets[OFFICE] = create_sprite((xpm_map_t) office_xpm, 0, 0);
+    assets[OFFICE_LIGHTS_OUT] = create_sprite((xpm_map_t) office_lights_out_xpm, 0, 0);
     assets[I_POWER0] = create_sprite((xpm_map_t) p0_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
     assets[I_POWER1] = create_sprite((xpm_map_t) p1_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
     assets[I_POWER2] = create_sprite((xpm_map_t) p2_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
@@ -420,6 +446,12 @@ void load_all_assets() {
     (xpm_map_t) chica1_xpm, (xpm_map_t) chica2_xpm, (xpm_map_t) chica3_xpm, (xpm_map_t) chica4_xpm, (xpm_map_t) chica5_xpm, (xpm_map_t) chica6_xpm, (xpm_map_t) chica7_xpm, (xpm_map_t) chica8_xpm, (xpm_map_t) chica9_xpm, (xpm_map_t) chica10_xpm, (xpm_map_t) chica11_xpm, (xpm_map_t) chica12_xpm, (xpm_map_t) chica13_xpm, (xpm_map_t) chica14_xpm, (xpm_map_t) chica15_xpm, (xpm_map_t) chica16_xpm);
 
     assets_anim[ANIM_FREDDY_JUMPSCARE] = create_anim_sprite(NUM_JUMPSCARE_FREDDY_NORMAL, 0, 0, TICKS_PER_JUMPSCARE_FRAME, (xpm_map_t) freddy0_xpm, (xpm_map_t) freddy1_xpm, (xpm_map_t) freddy2_xpm, (xpm_map_t) freddy3_xpm, (xpm_map_t) freddy4_xpm, (xpm_map_t) freddy5_xpm, (xpm_map_t) freddy6_xpm, (xpm_map_t) freddy7_xpm, (xpm_map_t) freddy8_xpm, (xpm_map_t) freddy9_xpm, (xpm_map_t) freddy10_xpm, (xpm_map_t) freddy11_xpm, (xpm_map_t) freddy12_xpm, (xpm_map_t) freddy13_xpm, (xpm_map_t) freddy14_xpm, (xpm_map_t) freddy15_xpm, (xpm_map_t) freddy16_xpm, (xpm_map_t) freddy17_xpm, (xpm_map_t) freddy18_xpm, (xpm_map_t) freddy19_xpm, (xpm_map_t) freddy20_xpm, (xpm_map_t) freddy21_xpm, (xpm_map_t) freddy22_xpm, (xpm_map_t) freddy23_xpm);
+
+    assets_anim[ANIM_FOXY_JUMPSCARE] = create_anim_sprite(NUM_JUMPSCARE_FOXY, 0, 0, TICKS_PER_JUMPSCARE_FRAME,
+    (xpm_map_t) foxy1_xpm, (xpm_map_t) foxy2_xpm, (xpm_map_t) foxy3_xpm, (xpm_map_t) foxy4_xpm, (xpm_map_t) foxy5_xpm, 
+    (xpm_map_t) foxy6_xpm, (xpm_map_t) foxy7_xpm, (xpm_map_t) foxy8_xpm, (xpm_map_t) foxy9_xpm, (xpm_map_t) foxy10_xpm, (xpm_map_t) foxy11_xpm, (xpm_map_t) foxy12_xpm, 
+    (xpm_map_t) foxy13_xpm, (xpm_map_t) foxy14_xpm, (xpm_map_t) foxy15_xpm, (xpm_map_t) foxy16_xpm, (xpm_map_t) foxy17_xpm, (xpm_map_t) foxy18_xpm, 
+    (xpm_map_t) foxy19_xpm, (xpm_map_t) foxy20_xpm, (xpm_map_t) foxy21_xpm);
 }
 
 void load_receiver_assets() {

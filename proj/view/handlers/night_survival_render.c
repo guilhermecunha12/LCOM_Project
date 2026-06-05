@@ -71,7 +71,6 @@ void draw_office(int background_offset_x) {
  * @param camera_id The camera that the player is currently viewing, used to know which camera indicator to draw on the map and which camera name to write on top of it.
  */
 void draw_map(CameraID camera_id) {
-    // TODO: Review this struct
     static const struct {
         int x, y;
         xpmASSET text;

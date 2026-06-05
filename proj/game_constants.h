@@ -1,7 +1,7 @@
 #ifndef SHARED_GAME_CONSTANTS_H
 #define SHARED_GAME_CONSTANTS_H
 
-#define FPS 60
+#define FPS 30
 #define NIGHT_TIME (532 * FPS)
 #define HOUR_DURATION (NIGHT_TIME / 7) // Duration of each hour in ticks
 
@@ -18,7 +18,6 @@
 #define DRAIN_RATE_NIGHT_4 (4 * FPS) // 4 seconds per 1% battery drain
 #define DRAIN_RATE_NIGHT_5 (3 * FPS) // 3 seconds per 1% battery drain
 
-// TODO: CHANGE
 static const int DRAIN_RATE_PER_NIGHT[] = {
     DRAIN_RATE_NIGHT_1,
     DRAIN_RATE_NIGHT_2,
@@ -27,7 +26,6 @@ static const int DRAIN_RATE_PER_NIGHT[] = {
     DRAIN_RATE_NIGHT_5
 };
 
-// TODO: CHANGE to balance the game
 #define DEFAULT_POWER_LEVEL 100
 
 // Adjust this to balance difficulty
@@ -38,7 +36,7 @@ static const int DRAIN_RATE_PER_NIGHT[] = {
 #define TICKS_PER_CAMERA_ANIMATION_FRAME (int) (0.034f * FPS) 
 #define TICKS_PER_JUMPSCARE_FRAME (int) (0.034f * FPS)  // ~66ms per frame at 60Hz (~15fps animation)
 
-#define NUM_JUMSCARE_FOXY 21
+#define NUM_JUMPSCARE_FOXY 21
 #define NUM_JUMPSCARE_BONNIE 11
 #define NUM_JUMPSCARE_CHICA 16
 #define NUM_JUMPSCARE_FREDDY_NORMAL 24

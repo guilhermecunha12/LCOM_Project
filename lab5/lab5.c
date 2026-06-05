@@ -61,7 +61,7 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
             return 1;
         }
     }
-                              // TODO: yhyh
+                            
     swap_buffers();
 
     // Subscribe to the keyboard interrupts to wait for the ESC breakcode to exit the graphics mode
@@ -110,7 +110,7 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
     // We should switch to VBE mode 0x105
     if(init_video_card(0x105)) return 1;
-    // TODO: YHyh
+
     clear_back_buffer();
 
     if (draw_xpm(xpm, x, y)) return 1;

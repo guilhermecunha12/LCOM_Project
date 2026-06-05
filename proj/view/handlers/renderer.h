@@ -72,6 +72,12 @@ void render_night_6am(const GameState *state);
 void render_game_over(const GameState *state);
 
 /**
+ * @brief Handler for rendering the night no battery screen.
+ * @param state The current GameState.
+ */
+void render_night_no_battery(const GameState* state);
+
+/**
  * @brief Handler for rendering the Waiting for Data screen, which is shown in the receiver's perspective while waiting for data from the sender to start the night survival mode.
  * @param state The current GameState.
  */

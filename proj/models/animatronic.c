@@ -203,14 +203,14 @@ void initialize_animatronics(Animatronic* animatronics, int night_number) {
     }
 }
 
-
-bool update_animatronic(Animatronic* animatronic, int time_left, bool left_door_closed, bool right_door_closed) {
+bool update_animatronic(Animatronic* animatronic, int time_left, bool left_door_closed, bool right_door_closed, bool camera_monitor_up, CameraID viewing_camera) {
     update_AI_level(animatronic, time_left);
 
     animatronic->time_to_move_opportunity--;
 
     if (animatronic->time_to_move_opportunity <= 0) {
         bool should_move = should_animatronic_move(animatronic);
+        if (animatronic->name == FOXY && camera_monitor_up && animatronic->path[animatronic->current_position_index] == CAM_1C && viewing_camera == CAM_1C) should_move = false;
         // CHECK if it's foxy and updates to FOXY_FAST_MOVE_INTERVAL
         if (animatronic->name == FOXY && animatronic->path[animatronic->current_position_index] != CAM_1C)
             animatronic->time_to_move_opportunity = FOXY_FAST_MOVE_INTERVAL;

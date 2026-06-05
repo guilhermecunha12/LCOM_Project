@@ -131,7 +131,7 @@ int(proj_main_loop)(int argc, char* argv[]) {
     GameEvent* current_event = (GameEvent*) malloc(sizeof(GameEvent));
 
     init_game_state(current_state);
-    load_all_assets(); // TODO: review - Parses all XPMs into Sprite structs in RAM
+    load_all_assets();
 
     int ipc_status, r;
     message msg;
@@ -158,10 +158,6 @@ int(proj_main_loop)(int argc, char* argv[]) {
                     if (msg.m_notify.interrupts & kbd_irq_set) {
                         
                         if (update_keyboard_game_event(current_event) == 0) {
-                            // TODO: this is only to test
-                            if (current_event->type == KEYBOARD_PRESS && current_event->data.key == KEY_ESCAPE) {
-                                current_state->type = EXIT;
-                            } else {
                                 process_event(current_state, current_event);
                             }
                         }

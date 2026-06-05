@@ -39,7 +39,8 @@ SRCS = main.c \
        static_screen_render.c \
        night_6am_render.c \
        game_over_render.c \
-       game_over_handlers.c
+       game_over_handlers.c \
+       night_no_battery_render.c \
 
 .PATH: controller controller/handlers controller/handlers/helpers devices devices/video devices/serial_port input models view view/handlers
 
