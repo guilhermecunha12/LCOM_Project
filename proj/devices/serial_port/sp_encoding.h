@@ -1,8 +1,8 @@
 #ifndef SP_ENCODING_H
 #define SP_ENCODING_H
 
-#include "models/animatronic.h"
-#include "game_constants.h"
+#include "../../models/animatronic.h"
+#include "../../game_constants.h"
 
 #include <stdint.h>
 
@@ -33,6 +33,5 @@
 #define EXTRACT_CAMERA_LETTER(data) (data & 0x03)
 
 uint8_t encode_animatronic_data(AnimatronicName name, CameraID position);
-
 
 #endif // SP_ENCODING_H

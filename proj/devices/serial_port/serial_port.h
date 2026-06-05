@@ -2,6 +2,7 @@
 #define SERIAL_PORT_H
 
 #include <lcom/lcf.h>
+#include "queue.h"
 
 #define IRQ_COM1 4
 
@@ -171,7 +172,7 @@ int serial_port_unsubscribe_int();
 
 int serial_port_undo();
 
-uint8_t get_received_data();
+Queue get_received_data();
 
 int send_sp_data(uint8_t data);
 

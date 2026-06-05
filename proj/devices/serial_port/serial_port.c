@@ -1,4 +1,5 @@
 #include "serial_port.h"
+#include "queue.h"
 
 // These are defined here, so they can be easily modified
 #define CHAR_LENGTH 8
@@ -8,6 +9,7 @@
 
 static int serial_port_hook_id;
 static uint8_t received_data;
+static Queue rx_queue;
 
 int setup_fifos() {
     uint8_t fcr = 0x00;
@@ -156,6 +158,7 @@ int serial_port_subscribe_int(uint8_t *bit_no) {
 }
 
 int setup_serial_port_receiver(uint8_t *bit_no) {
+    rx_queue = create_queue();
     if (setup_fifos()) return 1;
     if (setup_lcr(CHAR_LENGTH, STOP_BITS, PARITY)) return 1;
     if (enable_received_data_interrupt()) return 1;
@@ -193,8 +196,8 @@ int serial_port_undo() {
     return 0;
 }
 
-uint8_t get_received_data() {
-    return received_data;
+Queue get_received_data() {
+    return rx_queue;
 }
 
 int send_sp_data(uint8_t data) {
@@ -237,8 +240,10 @@ int serial_port_ih() {
             return 1;
         }
 
-        if (lsr & LSR_DATA_READY) {
+        while (lsr & LSR_DATA_READY) {
             if (util_sys_inb(COM1_BASE + RBR_OFFSET, &received_data)) return 1;
+            if (enqueue(&rx_queue, received_data)) return 1;
+            if (get_lsr(&lsr)) return 1;
         }
 
     } else {

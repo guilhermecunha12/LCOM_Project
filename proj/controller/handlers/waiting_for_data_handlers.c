@@ -1,5 +1,5 @@
 #include "processor.h"
-#include "../../sp_encoding.h"
+#include "../../devices/serial_port/sp_encoding.h"
 
 void handle_waiting_for_data_keyboard(GameState* state, const GameEvent* event) {
     if (event->data.key == KEY_ESCAPE) {
@@ -8,7 +8,11 @@ void handle_waiting_for_data_keyboard(GameState* state, const GameEvent* event) 
 }
 
 void handle_waiting_for_data_serial_port(GameState* state, const GameEvent* event) {
-    if (event->data.serial_port_data == STARTED_NIGHT_SURVIVAL) {
-        state->type = RECEIVING_DATA;
+    uint8_t data;
+    Queue data_queue = event->data.serial_port_data;
+    dequeue(&data_queue, &data);
+
+    if (data == STARTED_NIGHT_SURVIVAL) {
+        init_receiving_data_state(state);
     }
 }

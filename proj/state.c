@@ -2,6 +2,8 @@
 #include "models/assets.h"
 #include "view/ui.h"
 #include "sound.h"
+#include "devices/serial_port/serial_port.h"
+#include "devices/serial_port/sp_encoding.h"
 
 void init_main_menu(GameState* state) {
     int current_night = state->global_data.current_night;
@@ -29,7 +31,7 @@ void init_main_menu(GameState* state) {
 }
 
 void init_jumpscare(GameState* state, AnimatronicName animatronic_name) {
-
+    send_sp_data(ENDED_NIGHT_SURVIVAL);
     JumpscareState jumpscare_state;
     switch (animatronic_name) {
         case BONNIE:
@@ -70,6 +72,7 @@ void init_newspaper(GameState* state) {
 }
 
 void init_night_survival(GameState* state) {
+    send_sp_data(STARTED_NIGHT_SURVIVAL);
     state->type = NIGHT_SURVIVAL;
     state->global_data.background_offset_x = CENTER_BACKGROUND_OFFSET;
     state->global_data.moving = NO_MOVEMENT;
@@ -97,6 +100,7 @@ void init_night_survival(GameState* state) {
 }
 
 void init_night_6am(GameState* state) {
+    send_sp_data(ENDED_NIGHT_SURVIVAL);
     Night6AMScreen night_6am_state;
     night_6am_state.frame_index = 0;
     night_6am_state.tick_timer = 0;

@@ -31,6 +31,9 @@ SRCS = main.c \
        jumpscare_render.c \
        waiting_for_data_render.c \
        receiving_data_render.c \
+       serial_port.c \
+       queue.c \
+       sp_encoding.c \
        video.c \
        sound.c \
        static_screen_render.c \

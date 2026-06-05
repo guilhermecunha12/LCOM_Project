@@ -1,6 +1,6 @@
 #include "animatronic.h"
 #include "../devices/serial_port/serial_port.h"
-#include "../sp_encoding.h"
+#include "../devices/serial_port/sp_encoding.h"
 
 #include <stdlib.h>
 #include <stdio.h>

@@ -1,6 +1,5 @@
 #include "sp_encoding.h"
 
-
 uint8_t encode_animatronic_data(AnimatronicName name, CameraID position) {
    
     uint8_t animatronic_data = 0;
@@ -19,6 +18,8 @@ uint8_t encode_animatronic_data(AnimatronicName name, CameraID position) {
             break;
         case FOXY:
             animatronic_data = ENC_FOXY;
+            break;
+        case NUM_ANIMATRONICS:
             break;
     }
 
@@ -74,6 +75,8 @@ uint8_t encode_animatronic_data(AnimatronicName name, CameraID position) {
         case LEFT_DOOR:
             camera_number = DOOR;
             camera_letter = CAMERA_A;
+            break;
+        case NUM_CAMERAS:
             break;
     }
 

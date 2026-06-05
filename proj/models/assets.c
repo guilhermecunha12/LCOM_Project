@@ -211,7 +211,12 @@
 #include "xpm/office/jumpscares/freddy/22.xpm"
 #include "xpm/office/jumpscares/freddy/23.xpm"
 
-
+#include "xpm/receiver/waiting_for_data.xpm"
+#include "xpm/receiver/map_sp.xpm"
+#include "xpm/receiver/animatronic_ids/bonnie.xpm"
+#include "xpm/receiver/animatronic_ids/chica.xpm"
+#include "xpm/receiver/animatronic_ids/freddy.xpm"
+#include "xpm/receiver/animatronic_ids/foxy.xpm"
 
 static Sprite* assets[NUM_ASSETS] = {NULL};
 
@@ -391,8 +396,28 @@ void load_all_assets() {
 void load_receiver_assets() {
     // TODO: load the correct assets for the receiver
     
-    assets[WAITING_FOR_DATA_SCREEN] = create_sprite((xpm_map_t) start_night1_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
-    assets[RECEIVING_DATA_SCREEN] = create_sprite((xpm_map_t) start_night2_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
+    assets[WAITING_FOR_DATA_SCREEN] = create_sprite((xpm_map_t) waiting_for_data_xpm, 0, 0);
+    assets[MAP_SCREEN] = create_sprite((xpm_map_t) map_sp_xpm, 0, 0);
+    assets[FREDDY_CAM_1A] = create_sprite((xpm_map_t) freddy_id_xpm, MAP_CAM_1A_X + ID_OFFSET_X, MAP_CAM_1A_Y + FREDDY_ID_OFFSET_Y);
+    assets[BONNIE_CAM_1A] = create_sprite((xpm_map_t) bonnie_id_xpm, MAP_CAM_1A_X + ID_OFFSET_X, MAP_CAM_1A_Y + BONNIE_ID_OFFSET_Y);
+    assets[CHICA_CAM_1A] = create_sprite((xpm_map_t) chica_id_xpm, MAP_CAM_1A_X + ID_OFFSET_X, MAP_CAM_1A_Y + CHICA_ID_OFFSET_Y);
+    assets[FREDDY_CAM_1B] = create_sprite((xpm_map_t) freddy_id_xpm, MAP_CAM_1B_X + ID_OFFSET_X, MAP_CAM_1B_Y + FREDDY_ID_OFFSET_Y);
+    assets[BONNIE_CAM_1B] = create_sprite((xpm_map_t) bonnie_id_xpm, MAP_CAM_1B_X + ID_OFFSET_X, MAP_CAM_1B_Y + BONNIE_ID_OFFSET_Y);
+    assets[CHICA_CAM_1B] = create_sprite((xpm_map_t) chica_id_xpm, MAP_CAM_1B_X + ID_OFFSET_X, MAP_CAM_1B_Y + CHICA_ID_OFFSET_Y);
+    assets[FOXY_CAM_1C] = create_sprite((xpm_map_t) foxy_id_xpm, MAP_CAM_1C_X + ID_OFFSET_X, MAP_CAM_1C_Y + FOXY_ID_OFFSET_Y);
+    assets[BONNIE_CAM_2A] = create_sprite((xpm_map_t) bonnie_id_xpm, MAP_CAM_2A_X + ID_OFFSET_X, MAP_CAM_2A_Y + BONNIE_ID_OFFSET_Y);
+    assets[FOXY_CAM_2A] = create_sprite((xpm_map_t) foxy_id_xpm, MAP_CAM_2A_X + ID_OFFSET_X, MAP_CAM_2A_Y + FOXY_ID_OFFSET_Y);
+    assets[FREDDY_CAM_2B] = create_sprite((xpm_map_t) freddy_id_xpm, MAP_CAM_2B_X + ID_OFFSET_X, MAP_CAM_2B_Y + FREDDY_ID_OFFSET_Y);
+    assets[CHICA_CAM_2B] = create_sprite((xpm_map_t) chica_id_xpm, MAP_CAM_2B_X + ID_OFFSET_X, MAP_CAM_2B_Y + CHICA_ID_OFFSET_Y);
+    assets[BONNIE_CAM_3] = create_sprite((xpm_map_t) bonnie_id_xpm, MAP_CAM_3_X + ID_OFFSET_X, MAP_CAM_3_Y + BONNIE_ID_OFFSET_Y);
+    assets[CHICA_CAM_4A] = create_sprite((xpm_map_t) chica_id_xpm, MAP_CAM_4A_X + ID_OFFSET_X, MAP_CAM_4A_Y + CHICA_ID_OFFSET_Y);
+    assets[FREDDY_CAM_4B] = create_sprite((xpm_map_t) freddy_id_xpm, MAP_CAM_4B_X + ID_OFFSET_X, MAP_CAM_4B_Y + FREDDY_ID_OFFSET_Y);
+    assets[CHICA_CAM_4B] = create_sprite((xpm_map_t) chica_id_xpm, MAP_CAM_4B_X + ID_OFFSET_X, MAP_CAM_4B_Y + CHICA_ID_OFFSET_Y);
+    assets[BONNIE_CAM_5] = create_sprite((xpm_map_t) bonnie_id_xpm, MAP_CAM_5_X + ID_OFFSET_X, MAP_CAM_5_Y + BONNIE_ID_OFFSET_Y);
+    assets[FREDDY_CAM_6] = create_sprite((xpm_map_t) freddy_id_xpm, MAP_CAM_6_X + ID_OFFSET_X, MAP_CAM_6_Y + FREDDY_ID_OFFSET_Y);
+    assets[CHICA_CAM_6] = create_sprite((xpm_map_t) chica_id_xpm, MAP_CAM_6_X + ID_OFFSET_X, MAP_CAM_6_Y + CHICA_ID_OFFSET_Y);
+    assets[FREDDY_CAM_7] = create_sprite((xpm_map_t) freddy_id_xpm, MAP_CAM_7_X + ID_OFFSET_X, MAP_CAM_7_Y + FREDDY_ID_OFFSET_Y);
+    assets[CHICA_CAM_7] = create_sprite((xpm_map_t) chica_id_xpm, MAP_CAM_7_X + ID_OFFSET_X, MAP_CAM_7_Y + CHICA_ID_OFFSET_Y);
 }
 
 void unload_all_assets() {

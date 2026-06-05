@@ -5,6 +5,7 @@
 #include "models/animatronic.h"
 #include "game_constants.h"
 #include "models/sprite.h"
+#include "devices/serial_port/queue.h"
 
 #include <stdbool.h>
 
@@ -36,7 +37,7 @@ typedef struct {
         Key key;
         struct {int16_t delta_x; int16_t delta_y;} mouse_coords;
         int timer_ticks;
-        uint8_t serial_port_data;
+        Queue serial_port_data;
     } data;
 } GameEvent;
 
