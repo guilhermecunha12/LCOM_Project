@@ -104,6 +104,8 @@ void init_night_survival(GameState* state) {
     night_survival_state->wait_timer = 0;
 
     initialize_animatronics(night_survival_state->animatronics, state->global_data.current_night);
+
+    play_sound("night_music");
 }
 
 void init_night_6am(GameState* state) {

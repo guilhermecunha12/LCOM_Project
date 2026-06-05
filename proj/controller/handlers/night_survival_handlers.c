@@ -210,6 +210,7 @@ static void clamp_left_side(NightSurvivalState* night_state) {
 
 
 void handle_night_survival_timer(GameState* state, const GameEvent* event) {
+
     // Update background offset based on movement
     if (state->global_data.moving == LEFT && state->global_data.background_offset_x <= 0) {
         state->global_data.background_offset_x += BACKGROUND_MOVE_VELOCITY;
@@ -230,6 +231,7 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
 
     // Check if the player has survived the night
     if(night_state->time_left <= 0) {
+        stop_sound();
         init_night_6am(state);
         return;
     }
@@ -300,6 +302,7 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
     }
 
     if (night_state->power_level == 0) {
+        stop_sound();
         init_night_no_battery(state);
         return;
     }
@@ -309,22 +312,16 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
     for(AnimatronicName name = 0; name < NUM_ANIMATRONICS; name++) {
         
         bool attacked = update_animatronic(
-<<<<<<< HEAD
-            &night_state->animatronics[name], 
-            night_state->time_left, 
-            night_state->left_door_closed, 
-            night_state->right_door_closed
-=======
             &night_state->animatronics[name],
             night_state->time_left,
             night_state->left_door_closed,
             night_state->right_door_closed,
             night_state->camera_monitor_up,
             night_state->viewing_camera
->>>>>>> main
         );
 
         if (attacked) {
+            stop_sound();
             init_jumpscare(state, night_state->animatronics[name].name);
             return;
         }
