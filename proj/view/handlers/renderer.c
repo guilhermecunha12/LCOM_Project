@@ -12,6 +12,7 @@ static RenderHandler rht[NUM_STATES] = {
     [STATIC_SCREEN] = render_static_screen,
     [NIGHT_6AM] = render_night_6am,
     [GAME_OVER] = render_game_over,
+    [NIGHT_NO_BATTERY] = render_night_no_battery
 };
 
 RenderHandler get_render_handler(const StateType state) {

@@ -38,6 +38,7 @@
 
 // Office Screen
 #include "xpm/office/office.xpm"
+#include "xpm/office/office_lights_out.xpm"
 
 // Power xpms 
 #include "xpm/office/ui/power_nr/0.xpm"
@@ -239,6 +240,30 @@
 #include "xpm/office/jumpscares/freddy/23.xpm"
 
 
+#include "xpm/office/jumpscares/foxy/1.xpm"
+#include "xpm/office/jumpscares/foxy/2.xpm"
+#include "xpm/office/jumpscares/foxy/3.xpm"
+#include "xpm/office/jumpscares/foxy/4.xpm"
+#include "xpm/office/jumpscares/foxy/5.xpm"
+#include "xpm/office/jumpscares/foxy/6.xpm"
+#include "xpm/office/jumpscares/foxy/7.xpm"
+#include "xpm/office/jumpscares/foxy/8.xpm"
+#include "xpm/office/jumpscares/foxy/9.xpm"
+#include "xpm/office/jumpscares/foxy/10.xpm"
+#include "xpm/office/jumpscares/foxy/11.xpm"
+#include "xpm/office/jumpscares/foxy/12.xpm"
+#include "xpm/office/jumpscares/foxy/13.xpm"
+#include "xpm/office/jumpscares/foxy/14.xpm"
+#include "xpm/office/jumpscares/foxy/15.xpm"
+#include "xpm/office/jumpscares/foxy/16.xpm"
+#include "xpm/office/jumpscares/foxy/17.xpm"
+#include "xpm/office/jumpscares/foxy/18.xpm"
+#include "xpm/office/jumpscares/foxy/19.xpm"
+#include "xpm/office/jumpscares/foxy/20.xpm"
+#include "xpm/office/jumpscares/foxy/21.xpm"
+
+
+
 static Sprite* assets[NUM_ASSETS] = {NULL};
 
 // Array to store animated sprites
@@ -271,6 +296,7 @@ void load_all_assets() {
     assets[START_NIGHT5] = create_sprite((xpm_map_t) start_night5_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
     
     assets[OFFICE] = create_sprite((xpm_map_t) office_xpm, 0, 0);
+    assets[OFFICE_LIGHTS_OUT] = create_sprite((xpm_map_t) office_lights_out_xpm, 0, 0);
     assets[I_POWER0] = create_sprite((xpm_map_t) p0_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
     assets[I_POWER1] = create_sprite((xpm_map_t) p1_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
     assets[I_POWER2] = create_sprite((xpm_map_t) p2_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);

@@ -181,8 +181,7 @@ static void wait_no_movement(NightSurvivalState* night_state) {
     night_state->wait_timer++;
     if (night_state->wait_timer >= CAMERA_MOVEMENT_WAIT_TIME) {
         night_state->wait_timer = 0;
-        night_state->moving =
-            (night_state->last_camera_direction == LEFT) ? RIGHT : LEFT;
+        night_state->moving = (night_state->last_camera_direction == LEFT) ? RIGHT : LEFT;
     }
 }
 
