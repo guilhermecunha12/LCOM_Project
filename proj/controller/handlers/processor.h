@@ -1,5 +1,5 @@
-#ifndef HANDLERS_H
-#define HANDLERS_H
+#ifndef PROCESSOR_H
+#define PROCESSOR_H
 
 #include "../../state.h"
 
@@ -16,6 +16,14 @@ typedef void (*EventHandler)(GameState*, const GameEvent*);
  * @return The appropriate function pointer to a event handler function. 
  */
 EventHandler get_event_handler(const StateType state, const EventType event);
+
+/**
+ * @brief This function processes the animatronic movements based on the data received from the serial port. It updates the game state with the new positions of the animatronics as they move through the cameras. The function takes in the current game state and a queue of data received from the serial port, which contains information about the animatronic movements. This function must be called inside the 
+ * 
+ * @param state 
+ * @param data_queue 
+ */
+void process_animatronic_movements(GameState* state, Queue* data_queue);
 
                 /* Mouse  Related Handlers */
 
@@ -132,12 +140,38 @@ void handle_night_survival_keyboard(GameState* state, const GameEvent* event);
 void handle_night_no_battery_keyboard(GameState* state, const GameEvent* event);
 
 /**
+ * @brief Handler for keyboard events in the waiting for data state, in the receiver's perspective. This handler only listens for the escape key to allow exiting the game while waiting for data, since there is no other interaction possible in this state.
+ * 
+ * @param state Pointer to the current game state, which will be modified to exit the game if the escape key is pressed.
+ * @param event Pointer to the current game event, which contains the keyboard input data.
+ */
+void handle_waiting_for_data_keyboard(GameState* state, const GameEvent* event);
+
+void handle_receiving_data_keyboard(GameState* state, const GameEvent* event);
+
+
+/* Serial Port Related Handlers */
+
+/**
+ * @brief Handler for serial port data events in the waiting for data state, in the receiver's perspective. This handler listens for data indicating the start of the night survival mode.
+ * @details Only transitions to the receiving data state after a night survival is started. Therefore, if the receiver is set up in the middle of a night, it will only receive data from the next night forward.
+ * @param state Pointer to the current game state, which can be modified to transition to the receiving data state.
+ * @param event Pointer to the current game event, which contains the serial port data received.
+ */
+void handle_waiting_for_data_serial_port(GameState* state, const GameEvent* event);
+
+/**
+ * @brief Handler for serial port data events in the receiving data state, in the receiver's perspective. This handler processes the incoming data from the serial port, which contains information about the animatronic movements.
+ * @param state Pointer to the current game state, which can be modified based on the animatronic movements received from the serial port data.
+ * @param event Pointer to the current game event, which contains the serial port data received.
+ */
+void handle_receiving_data_serial_port(GameState* state, const GameEvent* event);
+
+/**
  * @brief Handler for timer tick events in the game over state. This handler manages the countdown for the game over screen display and transitions to the main menu state when the duration reaches zero.
  * @param state Pointer to the current game state, which will be modified to transition to the main menu state when the game over duration ends.
  * @param event Pointer to the current game event, which contains the timer tick data.
  */
 void handle_game_over_timer(GameState* state, const GameEvent* event);
 
-#endif /* HANDLERS_H */
-
-
+#endif /* PROCESSOR_H */

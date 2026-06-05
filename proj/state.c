@@ -2,6 +2,9 @@
 #include "models/assets.h"
 #include "view/ui.h"
 #include "sound.h"
+#include "devices/serial_port/serial_port.h"
+#include "devices/serial_port/sp_encoding.h"
+#include "controller/handlers/processor.h"
 
 void init_main_menu(GameState* state) {
     int current_night = state->global_data.current_night;
@@ -29,7 +32,7 @@ void init_main_menu(GameState* state) {
 }
 
 void init_jumpscare(GameState* state, AnimatronicName animatronic_name) {
-
+    send_sp_data(ENDED_NIGHT_SURVIVAL);
     JumpscareState jumpscare_state;
     switch (animatronic_name) {
         case BONNIE:
@@ -80,6 +83,7 @@ void init_newspaper(GameState* state) {
 }
 
 void init_night_survival(GameState* state) {
+    send_sp_data(STARTED_NIGHT_SURVIVAL);
     state->type = NIGHT_SURVIVAL;
     state->global_data.background_offset_x = CENTER_BACKGROUND_OFFSET;
     state->global_data.moving = NO_MOVEMENT;
@@ -109,6 +113,7 @@ void init_night_survival(GameState* state) {
 }
 
 void init_night_6am(GameState* state) {
+    send_sp_data(ENDED_NIGHT_SURVIVAL);
     Night6AMScreen night_6am_state;
     night_6am_state.frame_index = 0;
     night_6am_state.tick_timer = 0;
@@ -153,4 +158,22 @@ void init_game_over(GameState* state) {
 
     state->type = GAME_OVER;
     state->data.game_over = game_over_state;
+}
+
+void init_receiving_data_state(GameState* state, Queue* data_queue) {
+    state->type = RECEIVING_DATA;
+
+    // Initialize the animatronics in cam data to false
+    for (int cam = 0; cam < NUM_CAMERAS; cam++) {
+        for (int anim = 0; anim < NUM_ANIMATRONICS; anim++) {
+            state->data.receiving_data.animatronics_in_cam[cam][anim] = false;
+        }
+    }
+
+    // Initialize the current cam of each animatronic to NUM_CAMERAS (sentinel)
+    for (int anim = 0; anim < NUM_ANIMATRONICS; anim++) {
+        state->data.receiving_data.animatronic_current_cam[anim] = NUM_CAMERAS;
+    }
+
+    process_animatronic_movements(state, data_queue); // for the initial animatronic data
 }

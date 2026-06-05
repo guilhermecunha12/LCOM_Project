@@ -1,4 +1,6 @@
 #include "animatronic.h"
+#include "../devices/serial_port/serial_port.h"
+#include "../devices/serial_port/sp_encoding.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -44,10 +46,10 @@ static const int ANIMATRONIC_PATH_LENGTHS[4] = {
  * @brief Initial AI levels for each animatronic for each night.
  */
 static const int INITIAL_AI_LEVELS[4][5] = {
-    [FREDDY] = {0, 0, 1, 2, 3},
-    [BONNIE] = {0, 3, 0, 2, 9},
-    [CHICA] = {0, 1, 5, 5, 8},
-    [FOXY] = {20, 1, 2, 6, 9}
+    [FREDDY] = {3, 0, 1, 2, 3},
+    [BONNIE] = {3, 3, 0, 2, 9},
+    [CHICA] = {3, 1, 5, 5, 8},
+    [FOXY] = {0, 1, 2, 6, 9}
 };
 
 /**
@@ -85,6 +87,10 @@ static void initialize_animatronic(Animatronic* animatronic, AnimatronicName nam
     animatronic->path_length = ANIMATRONIC_PATH_LENGTHS[name];
     animatronic->time_to_move_opportunity = MOVE_INTERVALS[name];
     animatronic->AI_level = INITIAL_AI_LEVELS[name][night_number - 1];
+
+    // Send initial animatronic data through serial port
+    uint8_t encoded_data = encode_animatronic_data(animatronic->name, animatronic->path[animatronic->current_position_index]);
+    send_sp_data(encoded_data);
 }
 
 /**
@@ -215,6 +221,10 @@ bool update_animatronic(Animatronic* animatronic, int time_left, bool left_door_
                 return true;
             }
             move_animatronic(animatronic);
+
+            // Send animatronic data through serial port
+            uint8_t encoded_data = encode_animatronic_data(animatronic->name, animatronic->path[animatronic->current_position_index]);
+            send_sp_data(encoded_data);
         }
     }
 

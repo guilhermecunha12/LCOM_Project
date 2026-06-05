@@ -77,3 +77,15 @@ int update_mouse_game_event(GameEvent* ge) {
 	}
 	return 0;
 }
+
+int update_serial_port_game_event(GameEvent* ge) {
+  // Update the received data by calling the serial port interrupt handler
+  if (serial_port_ih()) return 1;
+
+  Queue* data_queue = get_received_data();
+
+  ge->type = SERIAL_PORT_DATA;
+  ge->data.serial_port_data = data_queue;
+  
+  return 0;
+}

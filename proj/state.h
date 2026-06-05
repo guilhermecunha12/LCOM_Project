@@ -5,6 +5,7 @@
 #include "models/animatronic.h"
 #include "game_constants.h"
 #include "models/sprite.h"
+#include "devices/serial_port/queue.h"
 
 #include <stdbool.h>
 
@@ -17,6 +18,7 @@ typedef enum {
     MOUSE_MOVE,
     KEYBOARD_PRESS,
     KEYBOARD_RELEASE,
+    SERIAL_PORT_DATA,
     NUM_EVENTS
 } EventType;
 
@@ -43,6 +45,7 @@ typedef struct {
         Key key;
         struct {int16_t delta_x; int16_t delta_y;} mouse_coords;
         int timer_ticks;
+        Queue* serial_port_data;
     } data;
 } GameEvent;
 
@@ -61,6 +64,11 @@ typedef enum {
     STATIC_SCREEN,
     GAME_OVER,
     EXIT,
+
+    // States for the receiver of the serial port data
+    WAITING_FOR_DATA,
+    RECEIVING_DATA,
+
     NUM_STATES
 } StateType;
 
@@ -172,6 +180,10 @@ typedef struct {
 } WinState;
 
 typedef struct {
+    bool animatronics_in_cam[NUM_CAMERAS][NUM_ANIMATRONICS];
+    CameraID animatronic_current_cam[NUM_ANIMATRONICS];
+} ReceivingDataState;
+typedef struct {
     int duration;
 } GameOverState;
 
@@ -192,6 +204,9 @@ typedef struct {
         WinState win;
         StaticScreenState static_screen;
         GameOverState game_over;
+        
+        // Receiver-specific state
+        ReceivingDataState receiving_data;
     } data; // state-specific data
 } GameState;
 
@@ -255,5 +270,12 @@ void init_game_over(GameState* state);
  * @param state Pointer to the GameState struct to initialize.
  */
 void init_win_screen(GameState* state);
+
+/**
+ * @brief Function that initializes the game state to the receiving data state and sets up the relevant data.
+ * @param state Pointer to the GameState struct to initialize.
+ * @param data_queue The queue containing the data received from the serial port. This is necessary because animatronic's position data is sent in the begginning of the night survival mode (in the same interrupt as the data that starts the night), so we need to process that data to initialize the animatronics' positions in the receiving data state.
+ */
+void init_receiving_data_state(GameState* state, Queue* data_queue);
 
 #endif /* STATE_H */

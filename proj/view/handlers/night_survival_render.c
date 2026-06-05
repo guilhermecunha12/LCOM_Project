@@ -140,6 +140,7 @@ void render_night_survival(const GameState *state) {
             case CAM_7: curr_sprite = get_asset(cam7_assets[key]); break;
             case RIGHT_DOOR: break;
             case LEFT_DOOR: break;
+            case NUM_CAMERAS: break;
         }
 
         if(curr_sprite == NULL) {

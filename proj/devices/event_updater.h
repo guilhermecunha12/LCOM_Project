@@ -1,7 +1,11 @@
+#ifndef EVENT_UPDATER_H
+#define EVENT_UPDATER_H
+
 #include "../state.h"
 #include "../../lab2/timer_count.h"
 #include "../../lab3/kbc.h"
 #include "../../lab4/mouse.h"
+#include "serial_port/serial_port.h"
 
 /**
  * @brief Updates the GameEvent struct with timer tick information.
@@ -18,8 +22,6 @@ int update_timer_game_event(GameEvent* ge);
  */
 int update_keyboard_game_event(GameEvent* ge);
 
-
-
 /**
  * @brief Updates the GameEvent struct based on the mouse event information received from the mouse interrupt.
  * @details This function processes the mouse event information received from the mouse interrupt, including button states and movement deltas. It updates the GameEvent struct with the appropriate event type and fills in the event data with the relevant information.
@@ -27,3 +29,13 @@ int update_keyboard_game_event(GameEvent* ge);
  * @return int Returns 0 if the GameEvent was successfully updated with a mouse event, or 1 if there was no relevant mouse event to process.
  */
 int update_mouse_game_event(GameEvent* ge);
+
+/**
+ * @brief Updates the GameEvent struct based on the serial port data received from the serial port interrupt.
+ * @details This function retrieves the data queue from the serial port event and updates the GameEvent struct with a serial port event type and fills in the event data with the serial port data queue.
+ * @param ge A pointer to the GameEvent struct to be updated with the serial port event information.
+ * @return 0 on success, 1 on error.
+ */
+int update_serial_port_game_event(GameEvent* ge);
+
+#endif /* EVENT_UPDATER_H */

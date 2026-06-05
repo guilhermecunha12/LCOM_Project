@@ -190,6 +190,36 @@ typedef enum {
     FREDDY_RIGHT_DOOR,
     CHICA_RIGHT_DOOR,
 
+
+    /* RECEIVER ASSETS */
+    WAITING_FOR_DATA_SCREEN,
+    MAP_SCREEN,
+    FREDDY_CAM_1A,
+    BONNIE_CAM_1A,
+    CHICA_CAM_1A,
+    FREDDY_CAM_1B,
+    BONNIE_CAM_1B,
+    CHICA_CAM_1B,
+    FOXY_CAM_1C,
+    BONNIE_CAM_2A,
+    FOXY_CAM_2A,
+    FREDDY_CAM_2B,
+    CHICA_CAM_2B,
+    FOXY_CAM_2B,
+    BONNIE_CAM_3,
+    CHICA_CAM_4A,
+    FREDDY_CAM_4B,
+    CHICA_CAM_4B,
+    BONNIE_CAM_5,
+    FREDDY_CAM_6,
+    CHICA_CAM_6,
+    FREDDY_CAM_7,
+    CHICA_CAM_7,
+    FREDDY_ID_RIGHT_DOOR,
+    BONNIE_ID_LEFT_DOOR,
+    CHICA_ID_RIGHT_DOOR,
+    FOXY_ID_LEFT_DOOR,
+
     NUM_ASSETS
 } xpmASSET;
 
@@ -360,6 +390,8 @@ static const xpmASSET cam7_assets[] = {
  * pointers to sprite objects.
  */
 void load_all_assets();
+
+void load_receiver_assets();
 
 /**
  * @brief Erases all existing assets from memory and evades memory leaks

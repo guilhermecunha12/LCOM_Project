@@ -17,7 +17,8 @@ Sprite* create_sprite(xpm_map_t xpm, int x, uint16_t y){
       return NULL;
    }
 
-   // Checks if the sprite has transparency colors
+   sp->has_transparency = false;
+    // Checks if the sprite has transparency colors
    const uint32_t* map32 = (const uint32_t*) sp->map;
    sp->has_transparency = false;
    int pixels = img.width * img.height;
