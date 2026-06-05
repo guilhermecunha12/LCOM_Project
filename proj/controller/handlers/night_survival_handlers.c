@@ -313,7 +313,8 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
             night_state->time_left,
             night_state->left_door_closed,
             night_state->right_door_closed,
-            night_state->camera_monitor_up
+            night_state->camera_monitor_up,
+            night_state->viewing_camera
         );
 
         if (attacked) {

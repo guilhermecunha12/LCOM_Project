@@ -41,6 +41,9 @@ void init_jumpscare(GameState* state, AnimatronicName animatronic_name) {
         case FREDDY:
             jumpscare_state.jumpscare_sprite = get_anim_asset(ANIM_FREDDY_JUMPSCARE);
             break;
+        case FOXY:
+            jumpscare_state.jumpscare_sprite = get_anim_asset(ANIM_FOXY_JUMPSCARE);
+            break;
         default:
             jumpscare_state.jumpscare_sprite = NULL;
             break;

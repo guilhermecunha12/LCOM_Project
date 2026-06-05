@@ -42,7 +42,7 @@ void initialize_animatronics(Animatronic animatronics[NUM_ANIMATRONICS], int nig
  * @param camera_monitor_up Whether the player has the camera monitor up, used to prevent Foxy from moving.
  * @return true if the animatronic attacks the player, false otherwise.
  */
-bool update_animatronic(Animatronic* animatronic, int time_left, bool left_door_closed, bool right_door_closed, bool camera_monitor_up);
+bool update_animatronic(Animatronic* animatronic, int time_left, bool left_door_closed, bool right_door_closed, bool camera_monitor_up, CameraID viewing_camera);
 
 /**
  * @brief Initializes Freddy's data when the player's battery runs out.
