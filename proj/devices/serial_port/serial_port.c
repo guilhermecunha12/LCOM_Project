@@ -197,7 +197,7 @@ uint8_t get_received_data() {
     return received_data;
 }
 
-int send_data(uint8_t data) {
+int send_sp_data(uint8_t data) {
     uint8_t lsr;
     if (get_lsr(&lsr)) return 1;
 

@@ -85,7 +85,7 @@ int update_serial_port_game_event(GameEvent* ge) {
   uint8_t data = get_received_data();
 
   ge->type = SERIAL_PORT_DATA;
-  ge->data.serial_data = data;
+  ge->data.serial_port_data = data;
   
   return 0;
 }

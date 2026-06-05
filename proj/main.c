@@ -178,7 +178,7 @@ int(proj_main_loop)(int argc, char* argv[]) {
         }
     }
 
-    unload_all_assets(); // TODO: review - Frees the heap memory cleanly before Minix exits
+    unload_all_assets();
     if (unsubscribe_devices()) return 1;
     return 0;
 }

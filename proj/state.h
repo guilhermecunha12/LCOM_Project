@@ -36,7 +36,7 @@ typedef struct {
         Key key;
         struct {int16_t delta_x; int16_t delta_y;} mouse_coords;
         int timer_ticks;
-        uint8_t serial_data;
+        uint8_t serial_port_data;
     } data;
 } GameEvent;
 
@@ -158,6 +158,11 @@ typedef struct {
     int duration; // Counter to control how long the win screen is displayed
 } WinState;
 
+typedef struct {
+    bool animatronics_in_cam[NUM_CAMERAS][NUM_ANIMATRONICS];
+    CameraID animatronic_current_cam[NUM_ANIMATRONICS];
+} ReceivingDataState;
+
 // Tagged Union to represent the current game state
 typedef struct {
     PersistentData global_data; // Global data across all states
@@ -172,6 +177,9 @@ typedef struct {
         NightNoBatteryState night_no_battery;
         WinState win;
         StaticScreenState static_screen;
+
+        // Receiver-specific state
+        ReceivingDataState receiving_data;
     } data; // state-specific data
 } GameState;
 
@@ -185,5 +193,6 @@ NightNoBatteryState init_night_no_battery(int duration);
 JumpscareState init_jumpscare(AnimatronicName animatronic_name, bool freddy_lights_out);
 StaticScreenState init_static_screen();
 WinState init_win_screen();
+void init_receiving_data_state(GameState* state);
 
 #endif /* STATE_H */

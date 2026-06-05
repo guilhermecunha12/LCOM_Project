@@ -1,4 +1,5 @@
 #include "processor.h"
+#include "../../sp_encoding.h"
 
 void handle_waiting_for_data_keyboard(GameState* state, const GameEvent* event) {
     if (event->data.key == KEY_ESCAPE) {
@@ -7,6 +8,7 @@ void handle_waiting_for_data_keyboard(GameState* state, const GameEvent* event) 
 }
 
 void handle_waiting_for_data_serial_port(GameState* state, const GameEvent* event) {
-    // TODO: encodings
-    state->type = RECEIVING_DATA;
+    if (event->data.serial_port_data == STARTED_NIGHT_SURVIVAL) {
+        state->type = RECEIVING_DATA;
+    }
 }

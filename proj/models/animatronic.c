@@ -1,4 +1,6 @@
 #include "animatronic.h"
+#include "../devices/serial_port/serial_port.h"
+#include "../sp_encoding.h"
 
 #include <stdlib.h>
 
@@ -44,6 +46,10 @@ static void initialize_animatronic(Animatronic* animatronic, AnimatronicName nam
     animatronic->path_length = ANIMATRONIC_PATH_LENGTHS[name];
     animatronic->time_to_move_opportunity = MOVE_INTERVALS[name];
     animatronic->AI_level = INITIAL_AI_LEVELS[name][night_number - 1];
+
+    // Send initial animatronic data through serial port
+    uint8_t encoded_data = encode_animatronic_data(animatronic->name, animatronic->path[animatronic->current_position_index]);
+    send_sp_data(encoded_data);
 }
 
 static void move_animatronic(Animatronic* animatronic) {
@@ -130,6 +136,7 @@ void initialize_animatronics(Animatronic animatronics[NUM_ANIMATRONICS], int nig
     }
 }
 
+
 bool update_animatronic(Animatronic* animatronic, int time_left, bool left_door_closed, bool right_door_closed) {
     
     update_AI_level(animatronic, time_left);
@@ -139,6 +146,10 @@ bool update_animatronic(Animatronic* animatronic, int time_left, bool left_door_
             return true;
         }
         move_animatronic(animatronic);
+
+        // Send animatronic data through serial port
+        uint8_t encoded_data = encode_animatronic_data(animatronic->name, animatronic->path[animatronic->current_position_index]);
+        send_sp_data(encoded_data);
     }
     else {
         animatronic->time_to_move_opportunity--; 

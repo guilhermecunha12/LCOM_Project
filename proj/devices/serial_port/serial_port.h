@@ -173,7 +173,7 @@ int serial_port_undo();
 
 uint8_t get_received_data();
 
-int send_data(uint8_t data);
+int send_sp_data(uint8_t data);
 
 // To receive data - called after a received data interrupt is generated.
 int serial_port_ih();
