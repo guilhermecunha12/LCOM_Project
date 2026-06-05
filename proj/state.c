@@ -93,7 +93,7 @@ void init_night_survival(GameState* state) {
     night_survival_state->camera_monitor_up = false;
     night_survival_state->camera_animation_playing = false;
     night_survival_state->camera_monitor = get_anim_asset(ANIM_CAMERA_MONITOR);
-    night_survival_state->viewing_camera = CAM_1C;
+    night_survival_state->viewing_camera = CAM_1A;
     night_survival_state->fan_frame_index = 0;
     night_survival_state->static_animation_timer = 0;
     night_survival_state->camera_offset_x = CENTER_CAMERA_OFFSET;
