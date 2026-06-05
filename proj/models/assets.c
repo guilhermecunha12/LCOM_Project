@@ -414,6 +414,12 @@ void load_all_assets() {
     (xpm_map_t) chica1_xpm, (xpm_map_t) chica2_xpm, (xpm_map_t) chica3_xpm, (xpm_map_t) chica4_xpm, (xpm_map_t) chica5_xpm, (xpm_map_t) chica6_xpm, (xpm_map_t) chica7_xpm, (xpm_map_t) chica8_xpm, (xpm_map_t) chica9_xpm, (xpm_map_t) chica10_xpm, (xpm_map_t) chica11_xpm, (xpm_map_t) chica12_xpm, (xpm_map_t) chica13_xpm, (xpm_map_t) chica14_xpm, (xpm_map_t) chica15_xpm, (xpm_map_t) chica16_xpm);
 
     assets_anim[ANIM_FREDDY_JUMPSCARE] = create_anim_sprite(NUM_JUMPSCARE_FREDDY_NORMAL, 0, 0, TICKS_PER_JUMPSCARE_FRAME, (xpm_map_t) freddy0_xpm, (xpm_map_t) freddy1_xpm, (xpm_map_t) freddy2_xpm, (xpm_map_t) freddy3_xpm, (xpm_map_t) freddy4_xpm, (xpm_map_t) freddy5_xpm, (xpm_map_t) freddy6_xpm, (xpm_map_t) freddy7_xpm, (xpm_map_t) freddy8_xpm, (xpm_map_t) freddy9_xpm, (xpm_map_t) freddy10_xpm, (xpm_map_t) freddy11_xpm, (xpm_map_t) freddy12_xpm, (xpm_map_t) freddy13_xpm, (xpm_map_t) freddy14_xpm, (xpm_map_t) freddy15_xpm, (xpm_map_t) freddy16_xpm, (xpm_map_t) freddy17_xpm, (xpm_map_t) freddy18_xpm, (xpm_map_t) freddy19_xpm, (xpm_map_t) freddy20_xpm, (xpm_map_t) freddy21_xpm, (xpm_map_t) freddy22_xpm, (xpm_map_t) freddy23_xpm);
+
+    assets_anim[ANIM_FOXY_JUMPSCARE] = create_anim_sprite(NUM_JUMPSCARE_FOXY, 0, 0, TICKS_PER_JUMPSCARE_FRAME,
+    (xpm_map_t) foxy1_xpm, (xpm_map_t) foxy2_xpm, (xpm_map_t) foxy3_xpm, (xpm_map_t) foxy4_xpm, (xpm_map_t) foxy5_xpm, 
+    (xpm_map_t) foxy6_xpm, (xpm_map_t) foxy7_xpm, (xpm_map_t) foxy8_xpm, (xpm_map_t) foxy9_xpm, (xpm_map_t) foxy10_xpm, (xpm_map_t) foxy11_xpm, (xpm_map_t) foxy12_xpm, 
+    (xpm_map_t) foxy13_xpm, (xpm_map_t) foxy14_xpm, (xpm_map_t) foxy15_xpm, (xpm_map_t) foxy16_xpm, (xpm_map_t) foxy17_xpm, (xpm_map_t) foxy18_xpm, 
+    (xpm_map_t) foxy19_xpm, (xpm_map_t) foxy20_xpm, (xpm_map_t) foxy21_xpm);
 }
 
 void unload_all_assets() {

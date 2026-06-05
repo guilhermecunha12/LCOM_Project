@@ -39,9 +39,10 @@ void initialize_animatronics(Animatronic animatronics[NUM_ANIMATRONICS], int nig
  * @param time_left The time left in the night, used to update the animatronic's AI level.
  * @param left_door_closed Whether the left door is closed, used to determine if the animatronic should attack the player.
  * @param right_door_closed Whether the right door is closed, used to determine if the animatronic should attack the player.
+ * @param camera_monitor_up Whether the player has the camera monitor up, used to prevent Foxy from moving.
  * @return true if the animatronic attacks the player, false otherwise.
  */
-bool update_animatronic(Animatronic* animatronic, int time_left, bool left_door_closed, bool right_door_closed);
+bool update_animatronic(Animatronic* animatronic, int time_left, bool left_door_closed, bool right_door_closed, bool camera_monitor_up);
 
 /**
  * @brief Initializes Freddy's data when the player's battery runs out.
