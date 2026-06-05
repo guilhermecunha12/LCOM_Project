@@ -87,9 +87,9 @@ EventHandler get_event_handler(const StateType state, const EventType event) {
     return eht[state][event];
 }
 
-void process_animatronic_movements(GameState* state, Queue data_queue) {
+void process_animatronic_movements(GameState* state, Queue* data_queue) {
     uint8_t data;
-    while (!dequeue(&data_queue, &data)) {
+    while (!dequeue(data_queue, &data)) {
         if (data == ENDED_NIGHT_SURVIVAL) {
             state->type = WAITING_FOR_DATA;
             return;

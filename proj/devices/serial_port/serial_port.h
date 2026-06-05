@@ -231,7 +231,7 @@ int serial_port_undo();
  * 
  * @return The queue of data received from the serial port.
  */
-Queue get_received_data();
+Queue* get_received_data();
 
 /**
  * @brief Sends data through the serial port, in the perspective of a transmitter. 

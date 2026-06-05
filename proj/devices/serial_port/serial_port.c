@@ -196,8 +196,8 @@ int serial_port_undo() {
     return 0;
 }
 
-Queue get_received_data() {
-    return rx_queue;
+Queue* get_received_data() {
+    return &rx_queue;
 }
 
 int send_sp_data(uint8_t data) {

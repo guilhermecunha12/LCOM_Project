@@ -23,7 +23,7 @@ EventHandler get_event_handler(const StateType state, const EventType event);
  * @param state 
  * @param data_queue 
  */
-void process_animatronic_movements(GameState* state, Queue data_queue);
+void process_animatronic_movements(GameState* state, Queue* data_queue);
 
                 /* Mouse  Related Handlers */
 

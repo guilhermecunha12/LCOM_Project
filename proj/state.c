@@ -158,7 +158,7 @@ void init_game_over(GameState* state) {
     state->data.game_over = game_over_state;
 }
 
-void init_receiving_data_state(GameState* state, Queue data_queue) {
+void init_receiving_data_state(GameState* state, Queue* data_queue) {
     state->type = RECEIVING_DATA;
 
     // Initialize the animatronics in cam data to false
