@@ -181,8 +181,7 @@ static void wait_no_movement(NightSurvivalState* night_state) {
     night_state->wait_timer++;
     if (night_state->wait_timer >= CAMERA_MOVEMENT_WAIT_TIME) {
         night_state->wait_timer = 0;
-        night_state->moving =
-            (night_state->last_camera_direction == LEFT) ? RIGHT : LEFT;
+        night_state->moving = (night_state->last_camera_direction == LEFT) ? RIGHT : LEFT;
     }
 }
 
@@ -314,7 +313,8 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
             night_state->time_left,
             night_state->left_door_closed,
             night_state->right_door_closed,
-            night_state->camera_monitor_up
+            night_state->camera_monitor_up,
+            night_state->viewing_camera
         );
 
         if (attacked) {
