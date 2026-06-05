@@ -41,14 +41,34 @@ void render_newspaper(const GameState* state);
  */
 void render_night_intro(const GameState* state);
 
+/**
+ * @brief Handler for rendering the night survival screen, which is the main gameplay screen during each night.
+ * @param state The current GameState.
+ */
 void render_night_survival(const GameState *state);
 
+/**
+ * @brief Handler for rendering the jumpscare screen.
+ * @param state The current GameState.
+ */
 void render_jumpscare(const GameState *state);
 
+/**
+ * @brief Handler for rendering the static screen, which is after a jumpscare occurs.
+ * @param state The current GameState.
+ */
 void render_static_screen(const GameState *state);
 
+/**
+ * @brief Handler for rendering the 6 AM screen, which is shown when the player successfully survives a night.
+ * @param state The current GameState.
+ */
 void render_night_6am(const GameState *state);
 
+/**
+ * @brief Handler for rendering the Game Over screen, which is after the static Screen, when the player loses.
+ * @param state The current GameState.
+ */
 void render_game_over(const GameState *state);
 
 void render_waiting_for_data(const GameState* state);

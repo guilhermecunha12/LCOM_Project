@@ -3,7 +3,6 @@
 #include "../../view/ui_utils.h"
 
 // 2D array of event handlers indexed by state and event type (eth - event handler table)
-// Using Designated Initializers
 static EventHandler eht[NUM_STATES][NUM_EVENTS] = {
 
     [MAIN_MENU] = {
@@ -44,6 +43,13 @@ static EventHandler eht[NUM_STATES][NUM_EVENTS] = {
 
     [WIN] = {
         [TIMER_TICK] = handle_win_screen_timer,
+    },
+    [NIGHT_6AM] = {
+        [TIMER_TICK] = handle_night_6am_timer,
+    },
+
+    [GAME_OVER] = {
+        [TIMER_TICK] = handle_game_over_timer,
     },
 
     [WAITING_FOR_DATA] = {

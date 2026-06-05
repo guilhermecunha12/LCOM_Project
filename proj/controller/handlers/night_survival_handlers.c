@@ -172,6 +172,11 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
 // Helper functions for camera movement logic
 
 // Timer for when the camera stops moving and waits before moving again in the opposite direction
+/**
+ * @brief Helper function to manage the waiting state when the camera is not moving in the night survival state. It increments the wait timer and checks if it has reached the defined wait time threshold (CAMERA_MOVEMENT_WAIT_TIME). If the threshold is reached, it resets the wait timer and changes the camera movement direction to the opposite of the last direction.
+ * @param night_state Pointer to the NightSurvivalState struct, which contains the current state
+ * of the night survival game, including the wait timer and movement direction. This function modifies the wait timer and movement direction based on the waiting logic for camera movement.
+ */
 static void wait_no_movement(NightSurvivalState* night_state) {
     night_state->wait_timer++;
     if (night_state->wait_timer >= CAMERA_MOVEMENT_WAIT_TIME) {
@@ -181,17 +186,23 @@ static void wait_no_movement(NightSurvivalState* night_state) {
     }
 }
 
-// Clamps the camera movement to the rightmost position and sets the state to wait before moving left
+/**
+ * @brief Helper function to clamp the camera movement to the rightmost position in the night survival state. It sets the camera offset to the maximum right offset (CAMERA_MAX_OFFSET), updates the last camera direction to LEFT, and sets the current movement to NO_MOVEMENT. This function is called when the camera tries to move beyond the rightmost limit, ensuring that it stays within bounds and prepares for a potential change in direction after waiting.
+ * @param night_state Pointer to the NightSurvivalState struct, which contains the current state of the nighyt survival game.
+ */
 static void clamp_right_side(NightSurvivalState* night_state) {
-    night_state->camera_offset_x = CAMERA_MAX_OFFSET;
+    night_state->camera_offset_x = CENTER_CAMERA_OFFSET + CAMERA_MAX_OFFSET;
     night_state->last_camera_direction = LEFT;
     night_state->moving = NO_MOVEMENT;
     night_state->wait_timer = 0;
 }
 
-// Clamps the camera movement to the leftmost position and sets the state to wait before moving right
+/**
+ * @brief Helper function to clamp the camera movement to the leftmost position in the night survival state. It sets the camera offset to the maximum left offset (-CAMERA_MAX_OFFSET), updates the last camera direction to RIGHT, and sets the current movement to NO_MOVEMENT. This function is called when the camera tries to move beyond the leftmost limit, ensuring that it stays within bounds and prepares for a potential change in direction after waiting.
+ * @param night_state Pointer to the NightSurvivalState struct, which contains the current state of the night survival game.
+ */
 static void clamp_left_side(NightSurvivalState* night_state) {
-    night_state->camera_offset_x = -CAMERA_MAX_OFFSET;
+    night_state->camera_offset_x = CENTER_CAMERA_OFFSET - CAMERA_MAX_OFFSET;
     night_state->last_camera_direction = RIGHT;
     night_state->moving = NO_MOVEMENT;
     night_state->wait_timer = 0;
@@ -223,9 +234,8 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
         init_night_6am(state);
         return;
     }
-    // CAMERA ANIMATION
 
-    
+    /* CAMERA ANIMATION */
     // If the camera monitor is up and the animation is playing, it means the space was pressed and the camera monitor was flipped up, so its animation should be playing forward
     if(night_state->camera_monitor_up && night_state->camera_animation_playing ) {
         // Update the animation
@@ -253,10 +263,10 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
             int step = (night_state->moving == LEFT) ? CAMERA_MOVE_VELOCITY : -CAMERA_MOVE_VELOCITY;
             int next = night_state->camera_offset_x + step;
 
-            if (next >= CAMERA_MAX_OFFSET) {
+            if (next >= CENTER_CAMERA_OFFSET + CAMERA_MAX_OFFSET) {
                 clamp_right_side(night_state);
             }
-            else if (next <= -CAMERA_MAX_OFFSET) {
+            else if (next <= CENTER_CAMERA_OFFSET - CAMERA_MAX_OFFSET) {
                 clamp_left_side(night_state);
             }
             else {
@@ -268,7 +278,7 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
         night_state->wait_timer = 0;
     }
 
-    // BATERRY DRAIN
+    /* BATTERY DRAIN */
     
     // Base: accumulate 1 per tick
     int* drain_speed = &night_state->power_drain_speed;
@@ -295,7 +305,7 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
         return;
     }
     
-    // ANIMATRONICS MOVEMENT
+    /* AMIMATRONIC MOVEMENT */
 
     for(AnimatronicName name = 0; name < NUM_ANIMATRONICS; name++) {
         

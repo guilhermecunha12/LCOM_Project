@@ -17,6 +17,8 @@ typedef void (*EventHandler)(GameState*, const GameEvent*);
  */
 EventHandler get_event_handler(const StateType state, const EventType event);
 
+                /* Mouse  Related Handlers */
+
 /**
  * @brief Handler for mouse movement events, which updates the mouse coordinates in the global game state. It is used in MAIN_MENU and NIGHT_SURVIVAL states.
  * @param state Pointer to the current game state, which will be modified with the new mouse coordinates.
@@ -105,7 +107,7 @@ void handle_night_no_battery_timer(GameState* state, const GameEvent* event);
 void handle_jumpscare_timer(GameState* state, const GameEvent* event);
 
 
-/* Keyboard Related Handlers */
+                /* Keyboard Related Handlers */
 
 /**
  * @brief Handler for keyboard events in the main menu state. This handler manages keyboard input for navigating the main menu options (e.g., moving selection up/down and executing the selected option).
@@ -149,6 +151,11 @@ void handle_receiving_data_serial_port(GameState* state, const GameEvent* event)
 // TODO: REMOVE! ONLY FOR FASTER TESTING
 void go_to_night_survive(GameState* state, const GameEvent* event);
 
+/**
+ * @brief Handler for timer tick events in the game over state. This handler manages the countdown for the game over screen display and transitions to the main menu state when the duration reaches zero.
+ * @param state Pointer to the current game state, which will be modified to transition to the main menu state when the game over duration ends.
+ * @param event Pointer to the current game event, which contains the timer tick data.
+ */
+void handle_game_over_timer(GameState* state, const GameEvent* event);
+
 #endif /* PROCESSOR_H */
-
-
