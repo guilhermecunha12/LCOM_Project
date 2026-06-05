@@ -3,12 +3,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/**
+ * @brief Paths that the animatronics follow to get to the player.
+ */
 static CameraID FREDDY_PATH[] = {CAM_1A, CAM_1B, CAM_7, CAM_6, CAM_4B, RIGHT_DOOR};
 static CameraID BONNIE_PATH[] = {CAM_1A, CAM_1B, CAM_5, CAM_3, CAM_2A, CAM_2B, LEFT_DOOR};
 static CameraID CHICA_PATH[]  = {CAM_1A, CAM_1B, CAM_7, CAM_6, CAM_4A, CAM_4B, RIGHT_DOOR};
 static CameraID FOXY_PATH[]   = {CAM_1C, CAM_2A, CAM_2B, LEFT_DOOR};
 
-// Initialize paths
+/**
+ * @brief Array of pointers to the paths, indexed by the AnimatronicName enum. This allows us to easily assign the correct path to each animatronic during initialization.
+ */
 static CameraID *PATHS[4] = {
     [FREDDY] = FREDDY_PATH,
     [BONNIE] = BONNIE_PATH,
@@ -16,7 +21,9 @@ static CameraID *PATHS[4] = {
     [FOXY]   = FOXY_PATH,
 };
 
-// Calculate dynamically the lengths of the paths
+/**
+ * @brief Array of the lengths of each animatronic's path, indexed by the AnimatronicName enum. This allows us to easily assign the correct path length to each animatronic during initialization.
+ */
 static const int ANIMATRONIC_PATH_LENGTHS[4] = {
     [FREDDY] = sizeof(FREDDY_PATH) / sizeof(FREDDY_PATH[0]),
     [BONNIE] = sizeof(BONNIE_PATH) / sizeof(BONNIE_PATH[0]),
@@ -24,7 +31,9 @@ static const int ANIMATRONIC_PATH_LENGTHS[4] = {
     [FOXY]   = sizeof(FOXY_PATH) / sizeof(FOXY_PATH[0]),
 };
 
-
+/**
+ * @brief Initial AI levels for each animatronic for each night.
+ */
 static const int INITIAL_AI_LEVELS[4][5] = {
     [FREDDY] = {0, 0, 1, 2, 13},
     [BONNIE] = {20, 3, 0, 2, 9},
@@ -32,6 +41,9 @@ static const int INITIAL_AI_LEVELS[4][5] = {
     [FOXY] = {0, 1, 2, 6, 9}
 };
 
+/**
+ * @brief Time intervals for each animatronic to have an opportunity to move.
+ */
 static const int MOVE_INTERVALS[4] = {
     [FREDDY] = 3 * FPS,
     [BONNIE] = 5 * FPS -1,
@@ -40,11 +52,21 @@ static const int MOVE_INTERVALS[4] = {
 };
 
 // Single-entry path for special no-battery Freddy state
+/**
+ * @brief Time intervals and AI level for Freddy in the not battery scenario.
+ */
 //static const CameraID FREDDY_NO_BATTERY_PATH[1] = { CAM_1A };
 //static const int FREDDY_NO_BATTERY_AI_LEVEL = 5; // 20% chance to attack
 static const int FREDDY_NO_BATTERY_MOVE_INTERVAL_PHASE_1 = 5*FPS; // 5 seconds
 static const int FREDDY_NO_BATTERY_MOVE_INTERVAL_PHASE_2 = 2*FPS; // 2 seconds
 
+/**
+ * @brief Function to initialize a specific animatronic's data.
+ * @details This function initializes the animatronic's name, current position, path, path length, time to move opportunity and AI level based on the animatronic's name and the current night number.
+ * @param animatronic The animatronic to be initialized.
+ * @param name The name of the animatronic, used to determine its path, path length, and initial AI level.
+ * @param night_number The current night number, used to determine the initial AI level of the animatronic based on the INITIAL_AI_LEVELS array.
+ */
 static void initialize_animatronic(Animatronic* animatronic, AnimatronicName name, int night_number){
     animatronic->name = name;
     animatronic->current_position_index = 0;
@@ -54,6 +76,11 @@ static void initialize_animatronic(Animatronic* animatronic, AnimatronicName nam
     animatronic->AI_level = INITIAL_AI_LEVELS[name][night_number - 1];
 }
 
+/**
+ * @brief Function to move the animatronic forward in its path.
+ * @details This function increments the animatronic's current position index to move it forward in its path. If the animatronic reaches the end of its path, it loops back to the start.
+ * @param animatronic The animatronic to be moved.
+ */
 static void move_animatronic(Animatronic* animatronic) {
     animatronic->current_position_index++;
     if(animatronic->current_position_index >= animatronic->path_length) {
@@ -62,6 +89,12 @@ static void move_animatronic(Animatronic* animatronic) {
     }
 }
 
+/**
+ * @brief Function to determine if the animatronic should move to the next positio in its path.
+ * @details This function checks if the animatronic's time to move opportunity has reached 0, and if so, generates a random number between 1 and 20. If the random number is less than or equal to the animatronic's AI level, the function return true.
+ * @param animatronic The animatronic to be checked.
+ * @return True if the animatronic should move, false otherwise.
+ */
 static bool should_animatronic_move(Animatronic* animatronic) {
     if(animatronic->time_to_move_opportunity <= 0) {
         // Generate a random number between 1 and 20
@@ -75,6 +108,14 @@ static bool should_animatronic_move(Animatronic* animatronic) {
     return false;
 }
 
+/**
+ * @brief Function to determine if the animatronic should attack the player.
+ * @details This function checks the animatronic's current position in its path, and if it's at the left or right door, it checks if the corresponding door is closed. If the animatronic is at a door and that door is not closed, the function returns true, indicating that the animatronic should attack the player.
+ * @param animatronic The animatronic to be checked.
+ * @param left_door_closed A boolean indicating whether the left door is closed.
+ * @param right_door_closed A boolean indicating whether the right door is closed.
+ * @return True if the animatronic should attack the player, false otherwise.
+ */
 static bool should_animatronic_attack(Animatronic* animatronic, bool left_door_closed, bool right_door_closed) {
     CameraID current_position = animatronic->path[animatronic->current_position_index];
     if((current_position == LEFT_DOOR && !left_door_closed) || 
@@ -84,6 +125,12 @@ static bool should_animatronic_attack(Animatronic* animatronic, bool left_door_c
     return false;
 }
 
+/**
+ * @brief Function to update the animatronic's AI level based on the time left in the night.
+ * @details The AI level is updated based on the animatronic's name and the time left in the night. The time left is checked against the HOUR_DURATION constant to determine when to update the AI level, and the specific updates are based on the animatronic's name and the current hour of the night.
+ * @param animatronic The animatronic whose AI level is to be updated.
+ * @param time_left_ticks The time left in the night, in ticks. This is used to determine when to update the AI level based on the HOUR_DURATION constant, which represents the duration of an hour in ticks.
+ */
 static void update_AI_level(Animatronic* animatronic, int time_left_ticks) {
     if(time_left_ticks % HOUR_DURATION == 0) {
         if(time_left_ticks == HOUR_0) {

@@ -2,7 +2,7 @@
 #include "../../view/ui.h"
 
 void handle_newspaper_timer(GameState* state, const GameEvent* event) {
-
+    
     state->data.newspaper.duration--;
 
     if (state->data.newspaper.duration <= 0) {

@@ -1,12 +1,11 @@
 #include "processor.h"
 
 void handle_static_screen_timer(GameState* state, const GameEvent* event) {
-    StaticScreenState* s = &state->data.static_screen;
 
-    animate_sprite(s->static_sprite);
-    s->duration--;
+    state->data.static_screen.duration--;
+    animate_sprite(state->data.static_screen.static_sprite);
 
-    if (s->duration <= 0) {
+    if (state->data.static_screen.duration <= 0) {
         init_game_over(state);
     }
 }
