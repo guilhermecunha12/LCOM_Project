@@ -1,43 +1,32 @@
 import time
 import os
 import sys
-import subprocess
+# Importa apenas a componente de som para que seja mais leve
+from pygame import mixer
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 SHARED_FILE = os.path.join(SCRIPT_DIR, "sound_trigger.txt")
 SOUNDS_DIR = os.path.join(SCRIPT_DIR, "sounds")
 
-current_process = None
+# Inicializar o mixer de som na arranque do script
+mixer.init()
+
 
 def stop():
-    global current_process
-    if sys.platform == "win32":
-        import winsound
-        winsound.PlaySound(None, winsound.SND_PURGE)  # stops any winsound
-    if current_process and current_process.poll() is None:
-        current_process.kill()
-        current_process.wait()
-    current_process = None
+    # Pára instantaneamente todos os sons que estejam a tocar
+    mixer.stop()
+
 
 def play(sound_file):
-    global current_process
-    stop()  # stop whatever is playing first
-    if sys.platform == "darwin":
-        current_process = subprocess.Popen(["afplay", sound_file])
-    elif sys.platform == "win32":
-        import winsound
-        # SND_ASYNC alone is not stoppable, run afplay equivalent via Popen
-        current_process = subprocess.Popen(
-            ["powershell", "-c",
-             f"(New-Object Media.SoundPlayer '{sound_file}').PlaySync()"]
-        )
-    else:
-        for player in ["aplay", "paplay", "ffplay"]:
-            if subprocess.call(["which", player],
-                               stdout=subprocess.DEVNULL,
-                               stderr=subprocess.DEVNULL) == 0:
-                current_process = subprocess.Popen([player, sound_file])
-                break
+    # Garante que um som que já esteja a tocar pare
+    stop()
+    # O Pygame pode carregar e iniciar sons sem bloquear o processo
+    try:
+        sound = mixer.Sound(sound_file)
+        sound.play()
+    except Exception as e:
+        print(f"[ERROR] Failed to play: {e}", file=sys.stderr)
+
 
 while True:
     content = ""
@@ -54,6 +43,8 @@ while True:
                 sound_file = os.path.join(SOUNDS_DIR, content + ".wav")
                 if os.path.exists(sound_file):
                     play(sound_file)
+                else:
+                    print(f"[ERROR] Sound not found: {sound_file}")
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"Error: {e}", file=sys.stderr)
     time.sleep(0.1)
