@@ -7,5 +7,4 @@ void handle_game_over_timer(GameState* state, const GameEvent* event) {
     if (state->data.game_over.duration <= 0) {
         init_main_menu(state);
     }
-
 }

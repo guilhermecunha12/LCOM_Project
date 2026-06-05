@@ -45,6 +45,13 @@ static EventHandler eht[NUM_STATES][NUM_EVENTS] = {
     [WIN] = {
         [TIMER_TICK] = handle_win_screen_timer,
     },
+    [NIGHT_6AM] = {
+        [TIMER_TICK] = handle_night_6am_timer,
+    },
+
+    [GAME_OVER] = {
+        [TIMER_TICK] = handle_game_over_timer,
+    },
 
 
 };

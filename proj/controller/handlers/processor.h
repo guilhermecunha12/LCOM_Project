@@ -132,6 +132,13 @@ void handle_night_no_battery_keyboard(GameState* state, const GameEvent* event);
 // TODO: REMOVE! ONLY FOR FASTER TESTING
 void go_to_night_survive(GameState* state, const GameEvent* event);
 
+/**
+ * @brief Handler for timer tick events in the game over state. This handler manages the countdown for the game over screen display and transitions to the main menu state when the duration reaches zero.
+ * @param state Pointer to the current game state, which will be modified to transition to the main menu state when the game over duration ends.
+ * @param event Pointer to the current game event, which contains the timer tick data.
+ */
+void handle_game_over_timer(GameState* state, const GameEvent* event);
+
 #endif /* HANDLERS_H */
 
 

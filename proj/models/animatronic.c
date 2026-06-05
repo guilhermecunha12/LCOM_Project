@@ -27,7 +27,7 @@ static const int ANIMATRONIC_PATH_LENGTHS[4] = {
 
 
 static const int INITIAL_AI_LEVELS[4][5] = {
-    [FREDDY] = {0, 0, 1, 2, 13},
+    [FREDDY] = {0, 0, 1, 2, 3},
     [BONNIE] = {0, 3, 0, 2, 9},
     [CHICA] = {0, 1, 5, 5, 8},
     [FOXY] = {0, 1, 2, 6, 9}
@@ -35,9 +35,9 @@ static const int INITIAL_AI_LEVELS[4][5] = {
 
 static const int MOVE_INTERVALS[4] = {
     [FREDDY] = 3 * FPS,
-    [BONNIE] = 5 * FPS -1,
+    [BONNIE] = (5 * FPS) - 1,
     [CHICA] = 5 * FPS,
-    [FOXY] = 2 * FPS,
+    [FOXY] = 5 * FPS,
 };
 
 // Single-entry path for special no-battery Freddy state

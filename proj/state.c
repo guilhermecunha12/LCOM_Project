@@ -46,6 +46,13 @@ void init_jumpscare(GameState* state, AnimatronicName animatronic_name) {
             break;
     }
 
+    // Reset animation state before playing
+    AnimSprite* js = jumpscare_state.jumpscare_sprite;
+    js->is_finished = false;
+    js->cur_aspeed = js->aspeed;
+    js->cur_fig = 0;
+    js->sp->map = js->map[js->cur_fig];
+
     jumpscare_state.animatronic_name = animatronic_name;
 
     state->type = JUMPSCARE;
