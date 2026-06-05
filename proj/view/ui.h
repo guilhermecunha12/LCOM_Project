@@ -31,8 +31,8 @@
 #define EXIT_GAME_SEL_Y 588
 #define EXIT_GAME_X 153
 #define EXIT_GAME_Y 588
-#define NIGHT_TEXT_X 144
-#define NIGHT_TEXT_Y 525
+#define NIGHT_TEXT_X 200
+#define NIGHT_TEXT_Y 550
 
 // Use this for both exit game and new game 
 #define BOX_NORMAL_WIDTH 320
@@ -145,7 +145,7 @@
 #define II_DIGIT_POWER_Y 760
 
 #define PERCENTAGE_SIGN_X 255
-  #define PERCENTAGE_SIGN_Y 764
+#define PERCENTAGE_SIGN_Y 764
 
 /////////////////////////////////////////////////////////
 
