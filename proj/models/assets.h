@@ -25,6 +25,9 @@ typedef enum {
     MENU_NIGHT4,
     MENU_NIGHT5,
 
+    NIGHT_6AM_SCREEN,
+    GAME_OVER_SCREEN,
+
     NEWSPAPER_FEUP,
     START_NIGHT1,
     START_NIGHT2,

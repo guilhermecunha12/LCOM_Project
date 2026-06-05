@@ -29,7 +29,10 @@ SRCS = main.c \
        jumpscare_render.c \
        video.c \
        sound.c \
-       static_screen_render.c 
+       static_screen_render.c \
+       night_6am_render.c \
+       game_over_render.c \
+       game_over_handlers.c
 
 .PATH: controller controller/handlers controller/handlers/helpers devices devices/video input models view view/handlers
 
