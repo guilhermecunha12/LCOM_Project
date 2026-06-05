@@ -191,7 +191,7 @@ static void wait_no_movement(NightSurvivalState* night_state) {
  * @param night_state Pointer to the NightSurvivalState struct, which contains the current state of the nighyt survival game.
  */
 static void clamp_right_side(NightSurvivalState* night_state) {
-    night_state->camera_offset_x = CAMERA_MAX_OFFSET;
+    night_state->camera_offset_x = CENTER_CAMERA_OFFSET + CAMERA_MAX_OFFSET;
     night_state->last_camera_direction = LEFT;
     night_state->moving = NO_MOVEMENT;
     night_state->wait_timer = 0;
@@ -202,7 +202,7 @@ static void clamp_right_side(NightSurvivalState* night_state) {
  * @param night_state Pointer to the NightSurvivalState struct, which contains the current state of the night survival game.
  */
 static void clamp_left_side(NightSurvivalState* night_state) {
-    night_state->camera_offset_x = -CAMERA_MAX_OFFSET;
+    night_state->camera_offset_x = CENTER_CAMERA_OFFSET - CAMERA_MAX_OFFSET;
     night_state->last_camera_direction = RIGHT;
     night_state->moving = NO_MOVEMENT;
     night_state->wait_timer = 0;
@@ -263,10 +263,10 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
             int step = (night_state->moving == LEFT) ? CAMERA_MOVE_VELOCITY : -CAMERA_MOVE_VELOCITY;
             int next = night_state->camera_offset_x + step;
 
-            if (next >= CAMERA_MAX_OFFSET) {
+            if (next >= CENTER_CAMERA_OFFSET + CAMERA_MAX_OFFSET) {
                 clamp_right_side(night_state);
             }
-            else if (next <= -CAMERA_MAX_OFFSET) {
+            else if (next <= CENTER_CAMERA_OFFSET - CAMERA_MAX_OFFSET) {
                 clamp_left_side(night_state);
             }
             else {

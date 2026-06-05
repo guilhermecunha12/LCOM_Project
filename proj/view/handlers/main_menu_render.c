@@ -19,6 +19,25 @@ void render_main_menu(const GameState *state) {
                 break;
             case CONTINUE:
                 draw_sprite(get_asset(is_selected ? OPT_CONTINUE_SEL : OPT_CONTINUE));
+                switch (state->global_data.current_night) {
+                    case 1:
+                        draw_sprite(get_asset(MENU_NIGHT1));
+                        break;
+                    case 2:
+                        draw_sprite(get_asset(MENU_NIGHT2));
+                        break;
+                    case 3:
+                        draw_sprite(get_asset(MENU_NIGHT3));
+                        break;
+                    case 4:
+                        draw_sprite(get_asset(MENU_NIGHT4));
+                        break;
+                    case 5:
+                        draw_sprite(get_asset(MENU_NIGHT5));
+                        break;
+                    default:
+                        break;
+                }
                 break;
             case EXIT_GAME:
                 draw_sprite(get_asset(is_selected ? OPT_EXIT_SEL : OPT_EXIT));

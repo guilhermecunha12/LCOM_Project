@@ -46,6 +46,13 @@ void init_jumpscare(GameState* state, AnimatronicName animatronic_name) {
             break;
     }
 
+    // Reset animation state before playing
+    AnimSprite* js = jumpscare_state.jumpscare_sprite;
+    js->is_finished = false;
+    js->cur_aspeed = js->aspeed;
+    js->cur_fig = 0;
+    js->sp->map = js->map[js->cur_fig];
+
     jumpscare_state.animatronic_name = animatronic_name;
 
     state->type = JUMPSCARE;
@@ -89,7 +96,7 @@ void init_night_survival(GameState* state) {
     night_survival_state->viewing_camera = CAM_1A;
     night_survival_state->fan_frame_index = 0;
     night_survival_state->static_animation_timer = 0;
-    night_survival_state->camera_offset_x = 0;
+    night_survival_state->camera_offset_x = CENTER_CAMERA_OFFSET;
     night_survival_state->moving = RIGHT;
     night_survival_state->wait_timer = 0;
 

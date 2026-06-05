@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 /**
  * @brief Paths that the animatronics follow to get to the player.
@@ -35,8 +36,8 @@ static const int ANIMATRONIC_PATH_LENGTHS[4] = {
  * @brief Initial AI levels for each animatronic for each night.
  */
 static const int INITIAL_AI_LEVELS[4][5] = {
-    [FREDDY] = {0, 0, 1, 2, 13},
-    [BONNIE] = {20, 3, 0, 2, 9},
+    [FREDDY] = {0, 0, 1, 2, 3},
+    [BONNIE] = {0, 3, 0, 2, 9},
     [CHICA] = {0, 1, 5, 5, 8},
     [FOXY] = {0, 1, 2, 6, 9}
 };
@@ -46,9 +47,9 @@ static const int INITIAL_AI_LEVELS[4][5] = {
  */
 static const int MOVE_INTERVALS[4] = {
     [FREDDY] = 3 * FPS,
-    [BONNIE] = 5 * FPS -1,
+    [BONNIE] = (5 * FPS) - 1,
     [CHICA] = 5 * FPS,
-    [FOXY] = 2 * FPS,
+    [FOXY] = 5 * FPS,
 };
 
 // Single-entry path for special no-battery Freddy state
@@ -97,6 +98,7 @@ static void move_animatronic(Animatronic* animatronic) {
  */
 static bool should_animatronic_move(Animatronic* animatronic) {
     if(animatronic->time_to_move_opportunity <= 0) {
+        srand((unsigned int)time(NULL)); // Seed the random number generator with the current time
         // Generate a random number between 1 and 20
         int random_number = (rand() % 20) + 1;
 

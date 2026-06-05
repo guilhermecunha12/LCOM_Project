@@ -326,8 +326,8 @@ void load_all_assets() {
     assets[CAM_1B_BONNIE] = create_sprite((xpm_map_t) computer_room_bonnie_xpm, 0, 0);
     assets[CAM_1B_CHICA] = create_sprite((xpm_map_t) computer_room_chica_xpm, 0, 0);
     assets[CAM_1B_BONNIE_CHICA] = create_sprite((xpm_map_t) computer_room_bonnie_chica_xpm, 0, 0);
-    assets[CAM_1B_FREDDY_BONNIE] = create_sprite((xpm_map_t) computer_room_freddy_xpm, 0, 0);
-    assets[CAM_1B_FREDDY_CHICA] = create_sprite((xpm_map_t) computer_room_chica_xpm, 0, 0);
+    assets[CAM_1B_FREDDY_BONNIE] = create_sprite((xpm_map_t) computer_room_freddy_bonnie_xpm, 0, 0);
+    assets[CAM_1B_FREDDY_CHICA] = create_sprite((xpm_map_t) computer_room_freddy_chica_xpm, 0, 0);
     assets[CAM_1B_FREDDY_BONNIE_CHICA] = create_sprite((xpm_map_t) computer_room_all_xpm, 0, 0);
 
     assets[CAM_1C_EMPTY] = create_sprite((xpm_map_t) the_auditorium_xpm, 0, 0);
