@@ -22,7 +22,6 @@
 #define NIGHT_RIGHT_LIGHT_BUTTON_Y 400
 
 void handle_night_survival_mouse_click(GameState* state, const GameEvent* event) {
-    /*
     int mouse_x = state->global_data.mouse_x;
     int mouse_y = state->global_data.mouse_y;
     if (state->data.night_survival.camera_monitor_up) {
@@ -100,7 +99,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
         }
 
         else if (is_mouse_inside(mouse_x, mouse_y,
-            NIGH_CAMERA_5_X,
+            NIGHT_CAMERA_5_X,
             NIGHT_CAMERA_5_Y,
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
@@ -168,11 +167,39 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             state->data.night_survival.right_light_on = !state->data.night_survival.right_light_on; // switch
         }
     }
-        */
 }
 
-void handle_night_survival_timer(GameState* state, const GameEvent* event) {
+// Helper functions for camera movement logic
 
+// Timer for when the camera stops moving and waits before moving again in the opposite direction
+static void wait_no_movement(NightSurvivalState* night_state) {
+    night_state->wait_timer++;
+    if (night_state->wait_timer >= CAMERA_MOVEMENT_WAIT_TIME) {
+        night_state->wait_timer = 0;
+        night_state->moving =
+            (night_state->last_camera_direction == LEFT) ? RIGHT : LEFT;
+    }
+}
+
+// Clamps the camera movement to the rightmost position and sets the state to wait before moving left
+static void clamp_right_side(NightSurvivalState* night_state) {
+    night_state->camera_offset_x = CAMERA_MAX_OFFSET;
+    night_state->last_camera_direction = LEFT;
+    night_state->moving = NO_MOVEMENT;
+    night_state->wait_timer = 0;
+}
+
+// Clamps the camera movement to the leftmost position and sets the state to wait before moving right
+static void clamp_left_side(NightSurvivalState* night_state) {
+    night_state->camera_offset_x = -CAMERA_MAX_OFFSET;
+    night_state->last_camera_direction = RIGHT;
+    night_state->moving = NO_MOVEMENT;
+    night_state->wait_timer = 0;
+}
+
+
+
+void handle_night_survival_timer(GameState* state, const GameEvent* event) {
     // Update background offset based on movement
     if (state->global_data.moving == LEFT && state->global_data.background_offset_x <= 0) {
         state->global_data.background_offset_x += BACKGROUND_MOVE_VELOCITY;
@@ -193,9 +220,7 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
 
     // Check if the player has survived the night
     if(night_state->time_left <= 0) {
-        // Player survived the night
-        state->type = NIGHT_6AM;
-        state->data.night_6am = init_night_6am();
+        init_night_6am(state);
         return;
     }
     // CAMERA ANIMATION
@@ -216,6 +241,31 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
         if (state->data.night_survival.camera_monitor->is_finished) {
             state->data.night_survival.camera_animation_playing = false;
         }
+    }
+    
+    // Avoids when camera monitor is not up and cameras where camera feed should not move (CAM_3 and CAM_6)
+    if (night_state->camera_monitor_up && night_state->viewing_camera != CAM_6 && night_state->viewing_camera != CAM_3) {
+        if (night_state->moving == NO_MOVEMENT) {
+            wait_no_movement(night_state);
+        }
+        else {
+            // Move camera left is the same of moving the background right
+            int step = (night_state->moving == LEFT) ? CAMERA_MOVE_VELOCITY : -CAMERA_MOVE_VELOCITY;
+            int next = night_state->camera_offset_x + step;
+
+            if (next >= CAMERA_MAX_OFFSET) {
+                clamp_right_side(night_state);
+            }
+            else if (next <= -CAMERA_MAX_OFFSET) {
+                clamp_left_side(night_state);
+            }
+            else {
+                night_state->camera_offset_x = next;
+            }
+        }
+    }
+    else {
+        night_state->wait_timer = 0;
     }
 
     // BATERRY DRAIN
@@ -241,9 +291,7 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
     }
 
     if (night_state->power_level == 0) {
-        int remaining_time = state->data.night_survival.time_left;
-        state->type = NIGHT_NO_BATTERY;
-        state->data.night_no_battery = init_night_no_battery(remaining_time);
+        init_night_no_battery(state);
         return;
     }
     
@@ -259,9 +307,7 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
         );
 
         if (attacked) {
-            // jumpscare
-            state->type = JUMPSCARE;
-            state->data.jumpscare = init_jumpscare(night_state->animatronics[name].name, 0);
+            init_jumpscare(state, night_state->animatronics[name].name);
             return;
         }
     }

@@ -54,6 +54,43 @@ void draw_office(int background_offset_x) {
     draw_sprite(office_sprite);
 }
 
+void draw_map(CameraID camera_id) {
+    // TODO: Review this struct
+    static const struct {
+        int x, y;
+        xpmASSET text;
+        xpmASSET sel_text;
+    } cam_info[] = {
+        [CAM_1A] = { NIGHT_CAMERA_1A_X, NIGHT_CAMERA_1A_Y, CAM_TEXT_1A, SEL_TEXT_1A },
+        [CAM_1B] = { NIGHT_CAMERA_1B_X, NIGHT_CAMERA_1B_Y, CAM_TEXT_1B, SEL_TEXT_1B },
+        [CAM_2A] = { NIGHT_CAMERA_2A_X, NIGHT_CAMERA_2A_Y, CAM_TEXT_2A, SEL_TEXT_2A },
+        [CAM_2B] = { NIGHT_CAMERA_2B_X, NIGHT_CAMERA_2B_Y, CAM_TEXT_2B, SEL_TEXT_2B },
+        [CAM_1C] = { NIGHT_CAMERA_1C_X, NIGHT_CAMERA_1C_Y, CAM_TEXT_1C, SEL_TEXT_1C },
+        [CAM_3]  = { NIGHT_CAMERA_3_X,  NIGHT_CAMERA_3_Y,  CAM_TEXT_3,  SEL_TEXT_3  },
+        [CAM_4A] = { NIGHT_CAMERA_4A_X, NIGHT_CAMERA_4A_Y, CAM_TEXT_4A, SEL_TEXT_4A },
+        [CAM_4B] = { NIGHT_CAMERA_4B_X, NIGHT_CAMERA_4B_Y, CAM_TEXT_4B, SEL_TEXT_4B },
+        [CAM_5]  = { NIGHT_CAMERA_5_X,   NIGHT_CAMERA_5_Y,  CAM_TEXT_5,  SEL_TEXT_5  },
+        [CAM_6]  = { NIGHT_CAMERA_6_X,  NIGHT_CAMERA_6_Y,  CAM_TEXT_6,  SEL_TEXT_6  },
+        [CAM_7]  = { NIGHT_CAMERA_7_X,  NIGHT_CAMERA_7_Y,  CAM_TEXT_7,  SEL_TEXT_7  },
+    };
+
+    draw_sprite(get_asset(CAMS_MAP));
+
+    Sprite *btn_active   = get_asset(CAM_BUTTON_ACTIVE);
+    Sprite *btn_inactive = get_asset(CAM_BUTTON_INACTIVE);
+
+    for (CameraID cam = CAM_1A; cam <= CAM_7; cam++) {
+        bool selected = (cam == camera_id);
+        Sprite *btn = selected ? btn_active : btn_inactive;
+        btn->x = cam_info[cam].x;
+        btn->y = cam_info[cam].y;
+        draw_sprite(btn);
+        draw_sprite(get_asset(cam_info[cam].text));
+    }
+
+    draw_sprite(get_asset(cam_info[camera_id].sel_text));
+}
+
 void render_night_survival(const GameState *state) {
     if (state == NULL) return;
 
@@ -65,21 +102,34 @@ void render_night_survival(const GameState *state) {
         const CameraID cam = state->data.night_survival.viewing_camera;
         uint8_t key = animatronics_at_cam(animatronics, cam);
 
+        Sprite* curr_sprite = NULL;
+
         switch (cam) {
-            case CAM_1A: draw_sprite(get_asset(cam1a_assets[key])); break;
-            case CAM_1B: draw_sprite(get_asset(cam1b_assets[key])); break;
-            case CAM_1C: draw_sprite(get_asset(cam1c_assets[key])); break;
-            case CAM_2A: draw_sprite(get_asset(cam2a_assets[key])); break;
-            case CAM_2B: draw_sprite(get_asset(cam2b_assets[key])); break;
-            case CAM_3: draw_sprite(get_asset(cam3_assets[key])); break;
-            case CAM_4A: draw_sprite(get_asset(cam4a_assets[key])); break;
-            case CAM_4B: draw_sprite(get_asset(cam4b_assets[key])); break;
-            case CAM_5: draw_sprite(get_asset(cam5_assets[key])); break;
-            case CAM_6: draw_sprite(get_asset(cam6_assets[key])); break;
-            case CAM_7: draw_sprite(get_asset(cam7_assets[key])); break;
-            case LEFT_DOOR: break; //TODO: see what to draw
-            case RIGHT_DOOR: break; //TODO: see what to draw 
+            case CAM_1A: curr_sprite = get_asset(cam1a_assets[key]); break;
+            case CAM_1B: curr_sprite = get_asset(cam1b_assets[key]); break;
+            case CAM_1C: curr_sprite = get_asset(cam1c_assets[key]); break;
+            case CAM_2A: curr_sprite = get_asset(cam2a_assets[key]); break;
+            case CAM_2B: curr_sprite = get_asset(cam2b_assets[key]); break;
+            case CAM_3: curr_sprite = get_asset(cam3_assets[key]); break;
+            case CAM_4A: curr_sprite = get_asset(cam4a_assets[key]); break;
+            case CAM_4B: curr_sprite = get_asset(cam4b_assets[key]); break;
+            case CAM_5: curr_sprite = get_asset(cam5_assets[key]); break;
+            case CAM_6: curr_sprite = get_asset(cam6_assets[key]); break;
+            case CAM_7: curr_sprite = get_asset(cam7_assets[key]); break;
+            case RIGHT_DOOR: break;
+            case LEFT_DOOR: break;
         }
+
+        if(curr_sprite == NULL) {
+            printf("Error: No sprite found for camera %d with key %d\n", cam, key);
+        }
+
+        // Avoids cameras whose camera feed should not move (CAM_3 and CAM_6)
+        if(cam != CAM_6 && cam != CAM_3) {
+            curr_sprite->x = state->data.night_survival.camera_offset_x;
+        }
+        draw_sprite(curr_sprite);
+        draw_map(cam);
     } else {
         // Player is looking at the office
         draw_office(state->global_data.background_offset_x);
@@ -137,7 +187,6 @@ void render_night_survival(const GameState *state) {
 
     draw_sprite(get_asset(AM_TEXT));
     
-    printf("Current night: %d\n", state->global_data.current_night);
     if (state->global_data.current_night == 1) {
         draw_sprite(get_asset(NIGHT_TEXT_1));
     } else if (state->global_data.current_night == 2) {

@@ -25,12 +25,47 @@ typedef enum {
     MENU_NIGHT4,
     MENU_NIGHT5,
 
+    NIGHT_6AM_SCREEN,
+    GAME_OVER_SCREEN,
+
     NEWSPAPER_FEUP,
     START_NIGHT1,
     START_NIGHT2,
     START_NIGHT3,
     START_NIGHT4,
     START_NIGHT5,
+
+    CAMS_MAP,
+
+    /* CAM UI BUTTONS */
+    CAM_BUTTON_ACTIVE,
+    CAM_BUTTON_INACTIVE,
+
+    /* CAM LABEL TEXTS (drawn on top of each button) */
+    CAM_TEXT_1A,
+    CAM_TEXT_1B,
+    CAM_TEXT_1C,
+    CAM_TEXT_2A,
+    CAM_TEXT_2B,
+    CAM_TEXT_3,
+    CAM_TEXT_4A,
+    CAM_TEXT_4B,
+    CAM_TEXT_5,
+    CAM_TEXT_6,
+    CAM_TEXT_7,
+
+    /* SELECTED CAMERA ROOM NAME TEXTS (drawn at SELECTED_CAM_TEXT_X/Y) */
+    SEL_TEXT_1A,
+    SEL_TEXT_1B,
+    SEL_TEXT_1C,
+    SEL_TEXT_2A,
+    SEL_TEXT_2B,
+    SEL_TEXT_3,
+    SEL_TEXT_4A,
+    SEL_TEXT_4B,
+    SEL_TEXT_5,
+    SEL_TEXT_6,
+    SEL_TEXT_7,
 
     /* CAMS */
     CAM_1A_EMPTY,
@@ -40,12 +75,14 @@ typedef enum {
     CAM_1A_BONNIE_CHICA,
     CAM_1A_FREDDY_BONNIE,
     CAM_1A_FREDDY_BONNIE_CHICA,
+    CAM_1A_FREDDY_CHICA,
     CAM_1B_EMPTY,
     CAM_1B_FREDDY,
     CAM_1B_BONNIE,
     CAM_1B_CHICA,
     CAM_1B_BONNIE_CHICA,
     CAM_1B_FREDDY_BONNIE,
+    CAM_1B_FREDDY_CHICA,
     CAM_1B_FREDDY_BONNIE_CHICA,
     CAM_1C_EMPTY,
     CAM_1C_FOXY,
@@ -54,9 +91,9 @@ typedef enum {
     CAM_2A_FOXY,
     CAM_2A_BONNIE_FOXY,
     CAM_2B_EMPTY,
-    CAM_2B_FREDDY,
-    CAM_2B_CHICA,
-    CAM_2B_FREDDY_CHICA,
+    CAM_2B_BONNIE,
+    CAM_2B_FOXY,
+    CAM_2B_BONNIE_FOXY,
     CAM_3_EMPTY,
     CAM_3_BONNIE,
     CAM_4A_EMPTY,
@@ -148,6 +185,10 @@ typedef enum {
 
 typedef enum {
     ANIM_CAMERA_MONITOR,
+    ANIM_BONNIE_JUMPSCARE,
+    ANIM_CHICA_JUMPSCARE,
+    ANIM_FREDDY_JUMPSCARE,
+    ANIM_STATIC_SCREEN,
     NUM_ANIM_ASSETS
 } AnimAsset;
 
@@ -189,6 +230,7 @@ static const xpmASSET cam1a_assets[] = {
     [CAM_CHICA] = CAM_1A_CHICA,
     [CAM_BONNIE | CAM_CHICA] = CAM_1A_BONNIE_CHICA,
     [CAM_FREDDY | CAM_BONNIE] = CAM_1A_FREDDY_BONNIE,
+    [CAM_FREDDY | CAM_CHICA] = CAM_1A_FREDDY_CHICA,
     [CAM_FREDDY | CAM_BONNIE | CAM_CHICA] = CAM_1A_FREDDY_BONNIE_CHICA,
 };
 
@@ -199,6 +241,7 @@ static const xpmASSET cam1b_assets[] = {
     [CAM_CHICA] = CAM_1B_CHICA,
     [CAM_BONNIE | CAM_CHICA] = CAM_1B_BONNIE_CHICA,
     [CAM_FREDDY | CAM_BONNIE] = CAM_1B_FREDDY_BONNIE,
+    // [CAM_FREDDY | CAM_CHICA] = CAM_1B_FREDDY_CHICA,
     [CAM_FREDDY | CAM_BONNIE | CAM_CHICA] = CAM_1B_FREDDY_BONNIE_CHICA,
 };
 
@@ -216,9 +259,9 @@ static const xpmASSET cam2a_assets[] = {
 
 static const xpmASSET cam2b_assets[] = {
     [CAM_EMPTY] = CAM_2B_EMPTY,
-    [CAM_FREDDY] = CAM_2B_FREDDY,
-    [CAM_CHICA] = CAM_2B_CHICA,
-    [CAM_FREDDY | CAM_CHICA] = CAM_2B_FREDDY_CHICA,
+    [CAM_BONNIE] = CAM_2B_BONNIE,
+    [CAM_FOXY] = CAM_2B_FOXY,
+    [CAM_BONNIE | CAM_FOXY] = CAM_2B_BONNIE_FOXY,
 };
 
 static const xpmASSET cam3_assets[] = {
@@ -260,10 +303,7 @@ static const xpmASSET cam7_assets[] = {
 int get_jumpscare_frame_count(AnimatronicName anim, bool is_freddy_lightout);
 xpmASSET get_jumpscare_asset(AnimatronicName anim, bool is_freddy_lightout, int frame);
 
-
-
-
-/**
+/** 
  * @brief Loads all the existing assets into memory by initializing them to an array of
  * pointers to sprite objects.
  */

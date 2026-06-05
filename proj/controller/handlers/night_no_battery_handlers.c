@@ -13,14 +13,12 @@ void handle_night_no_battery_timer(GameState* state, const GameEvent* event) {
     
     // If both phases are over and the player is still alive, Freddy attacks for sure
     if (blackout->phase1_duration <= 0 && blackout->phase2_duration <= 0) {
-        state->type = JUMPSCARE;
-        state->data.jumpscare = init_jumpscare(FREDDY, 1);
+        init_jumpscare(state, FREDDY);
         return;
     }
 
     if (blackout->time_left <= 0) {
-        state->type = NIGHT_6AM;
-        state->data.night_6am = init_night_6am();
+        init_night_6am(state);
         return;
     }
 
@@ -31,8 +29,7 @@ void handle_night_no_battery_timer(GameState* state, const GameEvent* event) {
     );
 
     if (attacked) {
-        state->type = JUMPSCARE;
-        state->data.jumpscare = init_jumpscare(FREDDY, 1);
+        init_jumpscare(state, FREDDY);
     }
 }
 

@@ -10,6 +10,9 @@
 
 #define BACKGROUND_MOVE_VELOCITY (int) (8 * 60.0f / FPS) // For lower fps, the number of updates is lower so we want to increase the velocity to make the movement smoother and consistent for different fps values.
 #define BACKGROUND_MAX_OFFSET 300
+#define CAMERA_MAX_OFFSET 200
+#define CAMERA_MOVE_VELOCITY (int) (2 * 60.0f / FPS)
+#define CAMERA_MOVEMENT_WAIT_TIME 1 * FPS
 #define CENTER_BACKGROUND_OFFSET -150
 
 ////// MAIN MENU UI //////////////////////////
@@ -41,7 +44,7 @@
 
 //////////////////// CAMERA UI ////////////////////////////
 // The night text is defined as (Button.x + 3, Button.y -3)
-#define NIGHT_TEXT_POS(x,y) (x + 3), (y - 3)
+#define NIGHT_TEXT_POS(x,y) (x + 5), (y + 4)
 
 // Map layout position
 #define MAP_LAYOUT_X 736
@@ -68,7 +71,7 @@
   #define NIGHT_CAMERA_3_X 748
   #define NIGHT_CAMERA_3_Y 702
 
-  #define NIGH_CAMERA_5_X 709
+  #define NIGHT_CAMERA_5_X 709
   #define NIGHT_CAMERA_5_Y 550
 
   #define NIGHT_CAMERA_7_X 1048

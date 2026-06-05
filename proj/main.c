@@ -37,17 +37,11 @@ int main(int argc, char *argv[]) {
 }
 
 void init_game_state(GameState* state) {
-    state->type = MAIN_MENU;
-    state->global_data.current_night = 0; // not started yet
-    
-    // Start with mouse in the middle of the screen
-    state->global_data.mouse_x = SCREEN_WIDTH / 2; 
+    state->global_data.current_night = 0;
+    state->global_data.mouse_x = SCREEN_WIDTH / 2;
     state->global_data.mouse_y = SCREEN_HEIGHT / 2;
-    
-    // Initialization of the main menu considering the current night
-    state->data.main_menu = init_main_menu(state->global_data.current_night);
-    
-    state->global_data.background_offset_x = 0; // Start with no background offset
+    state->global_data.background_offset_x = 0;
+    init_main_menu(state);
 }
 
 

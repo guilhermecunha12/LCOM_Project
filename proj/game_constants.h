@@ -1,7 +1,7 @@
 #ifndef SHARED_GAME_CONSTANTS_H
 #define SHARED_GAME_CONSTANTS_H
 
-#define FPS 30
+#define FPS 60
 #define NIGHT_TIME (532 * FPS)
 #define HOUR_DURATION (NIGHT_TIME / 7) // Duration of each hour in ticks
 
@@ -36,12 +36,12 @@ static const int DRAIN_RATE_PER_NIGHT[] = {
 #define BATTERY_DRAIN_RATE_CAMERA 2
 
 #define TICKS_PER_CAMERA_ANIMATION_FRAME (int) (0.034f * FPS) 
-#define TICKS_PER_JUMPSCARE_FRAME (int) (0.067f * FPS)  // ~66ms per frame at 60Hz (~15fps animation)
+#define TICKS_PER_JUMPSCARE_FRAME (int) (0.034f * FPS)  // ~66ms per frame at 60Hz (~15fps animation)
 
 #define NUM_JUMSCARE_FOXY 21
 #define NUM_JUMPSCARE_BONNIE 11
 #define NUM_JUMPSCARE_CHICA 16
-#define NUM_JUMPSCARE_FREDDY_NORMAL 21
+#define NUM_JUMPSCARE_FREDDY_NORMAL 24
 #define NUM_JUMPSCARE_FREDDY_LIGHTOUT 28
 
 
@@ -50,6 +50,8 @@ static const int DRAIN_RATE_PER_NIGHT[] = {
 #define NIGHT_6AM_DURATION (5 * FPS)
 #define WIN_SCREEN_DURATION (5 * FPS)
 #define STATIC_SCREEN_DURATION (5 * FPS)
+#define GAME_OVER_DURATION (5 * FPS)
+#define STATIC_SCREEN_FRAME_DURATION (3 * FPS) // 100ms per frame
 
 #define NO_BATTERY_PHASE_DURATION (20 * FPS) // 20 seconds for both phases
 

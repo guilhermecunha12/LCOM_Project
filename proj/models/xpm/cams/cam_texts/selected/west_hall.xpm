@@ -1,5 +1,5 @@
 /* XPM */
-static char * west_hall_xpm[] = {
+static char * sel_west_hall_xpm[] = {
 "237 34 2 1",
 " 	c None",
 ".	c #FFFFFF",

@@ -22,7 +22,6 @@ int update_timer_game_event(GameEvent* ge);
  */
 int update_keyboard_game_event(GameEvent* ge);
 
-
 int update_mouse_game_event(GameEvent* ge);
 
 int update_serial_port_game_event(GameEvent* ge);

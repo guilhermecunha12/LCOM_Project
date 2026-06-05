@@ -98,8 +98,6 @@ typedef struct {
 } NewspaperState;
 
 typedef struct {
-    int frame_index;
-    int tick_timer;
     int duration;
 } NightIntroState;
 
@@ -123,6 +121,12 @@ typedef struct {
     int fan_frame_index;
     int static_animation_timer;
 
+
+    int wait_timer;
+    int camera_offset_x;
+    MovementDirection moving; // -1 for moving left, 0 for not moving, 1 for moving right
+    MovementDirection last_camera_direction; // used to determine the direction of the next camera movement after waiting
+
     Animatronic animatronics[NUM_ANIMATRONICS]; // Metadata for each animatronic
 } NightSurvivalState;
 
@@ -135,11 +139,8 @@ typedef struct {
 
 // Specific data for a sequence of changing images without player input
 typedef struct {
-    int frame_index;
-    int tick_timer;
-    int duration;
+    AnimSprite* jumpscare_sprite;
     AnimatronicName animatronic_name;
-    bool is_freddy_lightout; // Freddy has two jumpscares: normal (21 frames) and light-out (28 frames)
 } JumpscareState;
 
 typedef struct {
@@ -149,9 +150,8 @@ typedef struct {
 } Night6AMScreen;
 
 typedef struct {
-    int frame_index; // Which frame of the static screen animation
-    int tick_timer; // Counter to control animation speed
-    int duration; // Counter to control how long the static screen is displayed
+    int duration;
+    AnimSprite* static_sprite;
 } StaticScreenState;
 
 typedef struct {
@@ -162,6 +162,9 @@ typedef struct {
     bool animatronics_in_cam[NUM_CAMERAS][NUM_ANIMATRONICS];
     CameraID animatronic_current_cam[NUM_ANIMATRONICS];
 } ReceivingDataState;
+typedef struct {
+    int duration;
+} GameOverState;
 
 // Tagged Union to represent the current game state
 typedef struct {
@@ -177,22 +180,24 @@ typedef struct {
         NightNoBatteryState night_no_battery;
         WinState win;
         StaticScreenState static_screen;
-
+        GameOverState game_over;
+        
         // Receiver-specific state
         ReceivingDataState receiving_data;
     } data; // state-specific data
 } GameState;
 
 
-MainMenuState init_main_menu(int current_night);
+void init_main_menu(GameState* state);
 void init_night_intro(GameState* state);
 void init_newspaper(GameState* state);
-void init_night_survival(GameState* state); // TODO: make all the init functions like these? In this case, it's useful because the initialization of a night survival includes modifications to the global data of the state.
-Night6AMScreen init_night_6am();
-NightNoBatteryState init_night_no_battery(int duration);
-JumpscareState init_jumpscare(AnimatronicName animatronic_name, bool freddy_lights_out);
-StaticScreenState init_static_screen();
-WinState init_win_screen();
+void init_night_survival(GameState* state);
+void init_night_6am(GameState* state);
+void init_night_no_battery(GameState* state);
+void init_jumpscare(GameState* state, AnimatronicName animatronic_name);
+void init_static_screen(GameState* state);
+void init_game_over(GameState* state);
+void init_win_screen(GameState* state);
 void init_receiving_data_state(GameState* state);
 
 #endif /* STATE_H */
