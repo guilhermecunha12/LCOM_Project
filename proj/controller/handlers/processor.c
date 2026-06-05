@@ -3,7 +3,6 @@
 #include "../../view/ui_utils.h"
 
 // 2D array of event handlers indexed by state and event type (eth - event handler table)
-// Using Designated Initializers
 static EventHandler eht[NUM_STATES][NUM_EVENTS] = {
 
     [MAIN_MENU] = {

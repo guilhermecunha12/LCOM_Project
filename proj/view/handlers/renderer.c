@@ -1,5 +1,8 @@
 #include "renderer.h"
 
+/**
+ * @brief Array of render handlers, indexed by StateType. Each entry corresponds to a specific game state and points to the appropriate rendering function for that state.
+ */
 static RenderHandler rht[NUM_STATES] = {
     [MAIN_MENU] = render_main_menu,
     [NEWSPAPER] = render_newspaper,

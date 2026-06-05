@@ -35,6 +35,10 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
+/** 
+ * @brief Initializes the game state to the main menu and sets up the global data.
+ * @param state Pointer to the GameState struct to initialize.
+ */
 void init_game_state(GameState* state) {
     state->global_data.current_night = 0;
     state->global_data.mouse_x = SCREEN_WIDTH / 2;

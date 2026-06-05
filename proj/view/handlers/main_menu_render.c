@@ -3,11 +3,8 @@
 #include "renderer.h"
 #include "../ui.h"
 
-#include <stdlib.h>
-
 void render_main_menu(const GameState *state) {
-    if (state == NULL)
-        return;
+    if (state->type != MAIN_MENU) return;
 
     draw_sprite(get_asset(MENU_BG));
     draw_sprite(get_asset(GAME_TITLE));

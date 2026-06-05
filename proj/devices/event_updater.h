@@ -20,5 +20,10 @@ int update_keyboard_game_event(GameEvent* ge);
 
 
 
-
+/**
+ * @brief Updates the GameEvent struct based on the mouse event information received from the mouse interrupt.
+ * @details This function processes the mouse event information received from the mouse interrupt, including button states and movement deltas. It updates the GameEvent struct with the appropriate event type and fills in the event data with the relevant information.
+ * @param ge A pointer to the GameEvent struct to be updated with the mouse event information.
+ * @return int Returns 0 if the GameEvent was successfully updated with a mouse event, or 1 if there was no relevant mouse event to process.
+ */
 int update_mouse_game_event(GameEvent* ge);

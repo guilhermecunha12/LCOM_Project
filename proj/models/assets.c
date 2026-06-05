@@ -3,8 +3,11 @@
 #include "sprite.h"
 #include "../view/ui.h"
 
-#include "xpm/menu/menu.xpm"
+// Cursor
 #include "xpm/cursor.xpm"
+
+// Menu Screen
+#include "xpm/menu/menu.xpm"
 #include "xpm/menu/title.xpm"
 #include "xpm/menu/newgame.xpm"
 #include "xpm/menu/newgame_sel.xpm"
@@ -18,6 +21,8 @@
 #include "xpm/menu/night5.xpm"
 #include "xpm/menu/exit_game.xpm"
 #include "xpm/menu/exit_game_sel.xpm"
+
+// Night Intro Screen
 #include "xpm/night_start/newspaper.xpm"
 #include "xpm/night_start/night1.xpm"
 #include "xpm/night_start/night2.xpm"
@@ -25,10 +30,16 @@
 #include "xpm/night_start/night4.xpm"
 #include "xpm/night_start/night5.xpm"
 
+// Game Over Screen
 #include "xpm/office/game_over.xpm"
+
+// 6am Screen
 #include "xpm/office/win_6am.xpm"
 
+// Office Screen
 #include "xpm/office/office.xpm"
+
+// Power xpms 
 #include "xpm/office/ui/power_nr/0.xpm"
 #include "xpm/office/ui/power_nr/1.xpm"
 #include "xpm/office/ui/power_nr/2.xpm"
@@ -41,14 +52,20 @@
 #include "xpm/office/ui/power_nr/9.xpm"
 #include "xpm/office/ui/power_nr/percentage.xpm"
 
+// Power text xpms
 #include "xpm/office/ui/power.xpm"
+
+// Power usage xpms
 #include "xpm/office/ui/usage.xpm"
 #include "xpm/office/ui/power_nr/usage_1.xpm"
 #include "xpm/office/ui/power_nr/usage_2.xpm"
 #include "xpm/office/ui/power_nr/usage_3.xpm"
 #include "xpm/office/ui/power_nr/usage_4.xpm"
+
+// Open camera xpm
 #include "xpm/office/ui/flip.xpm"
 
+// Night and hours xpms
 #include "xpm/office/ui/1.xpm"
 #include "xpm/office/ui/2.xpm"
 #include "xpm/office/ui/3.xpm"
@@ -62,6 +79,7 @@
 #include "xpm/office/ui/night4.xpm"
 #include "xpm/office/ui/night5.xpm"
 
+// Static Screen 
 #include "xpm/static_full/static1.xpm"
 #include "xpm/static_full/static2.xpm"
 #include "xpm/static_full/static3.xpm"
@@ -71,6 +89,7 @@
 #include "xpm/static_full/static7.xpm"
 #include "xpm/static_full/static8.xpm"
 
+// Camera animation xpms
 #include "xpm/cams/monitor_anim/monitor1.xpm"
 #include "xpm/cams/monitor_anim/monitor2.xpm"
 #include "xpm/cams/monitor_anim/monitor3.xpm"
@@ -83,11 +102,14 @@
 #include "xpm/cams/monitor_anim/monitor10.xpm"
 #include "xpm/cams/monitor_anim/monitor11.xpm"
 
+// Layout of the cameras map
 #include "xpm/cams/map.xpm"
 
+// Camera buttons xpms
 #include "xpm/cams/cam_button_active.xpm"
 #include "xpm/cams/cam_button_inactive.xpm"
 
+// Camera text xpms
 #include "xpm/cams/cam_texts/CAM1A.xpm"
 #include "xpm/cams/cam_texts/CAM1B.xpm"
 #include "xpm/cams/cam_texts/CAM1C.xpm"
@@ -100,6 +122,7 @@
 #include "xpm/cams/cam_texts/CAM6.xpm"
 #include "xpm/cams/cam_texts/CAM7.xpm"
 
+// Selected camera text xpms
 #include "xpm/cams/cam_texts/selected/library_lounge.xpm"
 #include "xpm/cams/cam_texts/selected/computer_room.xpm"
 #include "xpm/cams/cam_texts/selected/council_chamber.xpm"
@@ -112,6 +135,7 @@
 #include "xpm/cams/cam_texts/selected/auditorium.xpm"
 #include "xpm/cams/cam_texts/selected/lcom_lab.xpm"
 
+// Camera images xpms
 #include "xpm/cams/rooms/library_lounge.xpm"
 #include "xpm/cams/rooms/library_lounge_b.xpm"
 #include "xpm/cams/rooms/library_lounge_bc.xpm"
@@ -138,18 +162,14 @@
 #include "xpm/cams/rooms/lecture_hallway_chica.xpm"
 #include "xpm/cams/rooms/lecture_hallway_freddy.xpm"
 #include "xpm/cams/rooms/lecture_hallway_freddy_chica.xpm"
-
 #include "xpm/cams/rooms/west_hall.xpm"
 #include "xpm/cams/rooms/west_hall_bonnie.xpm"
 #include "xpm/cams/rooms/west_hall_foxy.xpm"
 #include "xpm/cams/rooms/west_hall_foxy_bonnie.xpm"
-
 #include "xpm/cams/rooms/west_hall_corner.xpm"
 #include "xpm/cams/rooms/west_hall_corner_bonnie.xpm"
 #include "xpm/cams/rooms/west_hall_corner_foxy.xpm"
 #include "xpm/cams/rooms/west_hall_corner_foxy_bonnie.xpm"
-
-
 #include "xpm/cams/rooms/east_hall.xpm"
 #include "xpm/cams/rooms/east_hall_chica.xpm"
 #include "xpm/cams/rooms/east_hall_corner.xpm"
@@ -157,6 +177,9 @@
 #include "xpm/cams/rooms/east_hall_corner_chica.xpm"
 #include "xpm/cams/rooms/east_hall_corner_chica_freddy.xpm"
 
+// Jumpscare xpms
+
+// Bonnie jumpscare xpms
 #include "xpm/office/jumpscares/bonnie/bonnie1.xpm"
 #include "xpm/office/jumpscares/bonnie/bonnie2.xpm"
 #include "xpm/office/jumpscares/bonnie/bonnie3.xpm"
@@ -169,6 +192,7 @@
 #include "xpm/office/jumpscares/bonnie/bonnie10.xpm"
 #include "xpm/office/jumpscares/bonnie/bonnie11.xpm"
 
+// Chica jumpscare xpms
 #include "xpm/office/jumpscares/chica/1.xpm"
 #include "xpm/office/jumpscares/chica/2.xpm"
 #include "xpm/office/jumpscares/chica/3.xpm"
@@ -186,6 +210,7 @@
 #include "xpm/office/jumpscares/chica/15.xpm"
 #include "xpm/office/jumpscares/chica/16.xpm"
 
+// Foxy jumpscare xpms
 #include "xpm/office/jumpscares/freddy/0.xpm"
 #include "xpm/office/jumpscares/freddy/1.xpm"
 #include "xpm/office/jumpscares/freddy/2.xpm"
@@ -210,7 +235,6 @@
 #include "xpm/office/jumpscares/freddy/21.xpm"
 #include "xpm/office/jumpscares/freddy/22.xpm"
 #include "xpm/office/jumpscares/freddy/23.xpm"
-
 
 
 static Sprite* assets[NUM_ASSETS] = {NULL};

@@ -2,6 +2,7 @@
 #include "../handlers/helpers/player_screen_movement_handler.h"
 
 void handle_night_no_battery_timer(GameState* state, const GameEvent* event) {
+    
     NightNoBatteryState* blackout = &state->data.night_no_battery;
 
     blackout->time_left--;

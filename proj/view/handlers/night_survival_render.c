@@ -3,8 +3,12 @@
 #include "renderer.h"
 #include "../ui.h"
 
-#include <stdlib.h>
-
+/**
+ * @brief Helper function that returns a key representing which animatronics are currently in the given camera.
+ * @param animatronics The array of animatronics in the game, used to check which ones are in the given camera.
+ * @param camera_id The camera for which we want to know which animatronics are in it.
+ * @return A uint8_t where each bit represents whether a certain animatronic is in the given camera or not (e.g. if bit 0 is 1, then anim
+ */
 static uint8_t animatronics_at_cam(const Animatronic *animatronics, CameraID camera_id) {
     uint8_t key = 0;
     for (int i = 0; i < NUM_ANIMATRONICS; i++) {
@@ -14,8 +18,12 @@ static uint8_t animatronics_at_cam(const Animatronic *animatronics, CameraID cam
     return key;
 }
 
-
-void draw_battery_indicator(int power_level, int power_drain_speed, int current_night) {
+/**
+ * @brief Helper function that draws the battery indicator on the screen, which includes the percentage of battery left and the current power drain speed.
+ * @param power_level The current power level of the player, from 0 to 100
+ * @param power_drain_speed The current power drain speed, from 1 to 20 (the higher, the faster the battery drains)
+ */
+void draw_battery_indicator(int power_level, int power_drain_speed) {
     draw_sprite(get_asset(POWER_LEFT));
     
     xpmASSET second_digit = power2_to_asset[power_level % 10];
@@ -48,12 +56,20 @@ void draw_battery_indicator(int power_level, int power_drain_speed, int current_
     }
 }
 
+/**
+ * @brief Helper function that draws the office background on the screen, with the given horizontal offset (used for the camera flip animation).
+ * @param background_offset_x The horizontal offset of the office background, used for the camera flip 
+ */
 void draw_office(int background_offset_x) {
     Sprite* office_sprite = get_asset(OFFICE);
     office_sprite->x = background_offset_x;
     draw_sprite(office_sprite);
 }
 
+/** 
+ * @brief Helper function that draws the map of the cameras on the screen, with an indicator of which camera the player is currently viewing.
+ * @param camera_id The camera that the player is currently viewing, used to know which camera indicator to draw on the map and which camera name to write on top of it.
+ */
 void draw_map(CameraID camera_id) {
     // TODO: Review this struct
     static const struct {
@@ -92,7 +108,7 @@ void draw_map(CameraID camera_id) {
 }
 
 void render_night_survival(const GameState *state) {
-    if (state == NULL) return;
+    if (state->type != NIGHT_SURVIVAL) return;
 
     const Animatronic *animatronics = state->data.night_survival.animatronics;
 
@@ -168,7 +184,7 @@ void render_night_survival(const GameState *state) {
         draw_sprite((Sprite*) state->data.night_survival.camera_monitor->sp);
     }
 
-    draw_battery_indicator(state->data.night_survival.power_level, state->data.night_survival.power_drain_speed, state->global_data.current_night);
+    draw_battery_indicator(state->data.night_survival.power_level, state->data.night_survival.power_drain_speed);
     draw_sprite(get_asset(CAMERA_FLIP_BUTTON));
 
     if (state->data.night_survival.time_left > HOUR_0) {
