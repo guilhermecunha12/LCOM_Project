@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 static CameraID FREDDY_PATH[] = {CAM_1A, CAM_1B, CAM_7, CAM_6, CAM_4B, RIGHT_DOOR};
 static CameraID BONNIE_PATH[] = {CAM_1A, CAM_1B, CAM_5, CAM_3, CAM_2A, CAM_2B, LEFT_DOOR};
@@ -27,7 +28,7 @@ static const int ANIMATRONIC_PATH_LENGTHS[4] = {
 
 static const int INITIAL_AI_LEVELS[4][5] = {
     [FREDDY] = {0, 0, 1, 2, 13},
-    [BONNIE] = {20, 3, 0, 2, 9},
+    [BONNIE] = {0, 3, 0, 2, 9},
     [CHICA] = {0, 1, 5, 5, 8},
     [FOXY] = {0, 1, 2, 6, 9}
 };
@@ -64,6 +65,7 @@ static void move_animatronic(Animatronic* animatronic) {
 
 static bool should_animatronic_move(Animatronic* animatronic) {
     if(animatronic->time_to_move_opportunity <= 0) {
+        srand((unsigned int)time(NULL)); // Seed the random number generator with the current time
         // Generate a random number between 1 and 20
         int random_number = (rand() % 20) + 1;
 
