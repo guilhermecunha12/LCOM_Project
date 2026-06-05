@@ -3,6 +3,7 @@
 #include "../../view/ui_utils.h"
 #include "../handlers/helpers/player_screen_movement_handler.h"
 #include "../../models/sprite.h"
+#include "../../sound.h"
 
 #define NIGHT_LEFT_DOOR_BUTTON_W 50
 #define NIGHT_LEFT_DOOR_BUTTON_H 50
