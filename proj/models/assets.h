@@ -204,6 +204,7 @@ typedef enum {
     FOXY_CAM_2A,
     FREDDY_CAM_2B,
     CHICA_CAM_2B,
+    FOXY_CAM_2B,
     BONNIE_CAM_3,
     CHICA_CAM_4A,
     FREDDY_CAM_4B,
@@ -213,6 +214,10 @@ typedef enum {
     CHICA_CAM_6,
     FREDDY_CAM_7,
     CHICA_CAM_7,
+    FREDDY_ID_RIGHT_DOOR,
+    BONNIE_ID_LEFT_DOOR,
+    CHICA_ID_RIGHT_DOOR,
+    FOXY_ID_LEFT_DOOR,
 
     NUM_ASSETS
 } xpmASSET;

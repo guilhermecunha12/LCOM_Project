@@ -438,6 +438,7 @@ void load_receiver_assets() {
     assets[FOXY_CAM_2A] = create_sprite((xpm_map_t) foxy_id_xpm, MAP_CAM_2A_X + ID_OFFSET_X, MAP_CAM_2A_Y + FOXY_ID_OFFSET_Y);
     assets[FREDDY_CAM_2B] = create_sprite((xpm_map_t) freddy_id_xpm, MAP_CAM_2B_X + ID_OFFSET_X, MAP_CAM_2B_Y + FREDDY_ID_OFFSET_Y);
     assets[CHICA_CAM_2B] = create_sprite((xpm_map_t) chica_id_xpm, MAP_CAM_2B_X + ID_OFFSET_X, MAP_CAM_2B_Y + CHICA_ID_OFFSET_Y);
+    assets[FOXY_CAM_2B] = create_sprite((xpm_map_t) foxy_id_xpm, MAP_CAM_2B_X + ID_OFFSET_X, MAP_CAM_2B_Y + FOXY_ID_OFFSET_Y);
     assets[BONNIE_CAM_3] = create_sprite((xpm_map_t) bonnie_id_xpm, MAP_CAM_3_X + ID_OFFSET_X, MAP_CAM_3_Y + BONNIE_ID_OFFSET_Y);
     assets[CHICA_CAM_4A] = create_sprite((xpm_map_t) chica_id_xpm, MAP_CAM_4A_X + ID_OFFSET_X, MAP_CAM_4A_Y + CHICA_ID_OFFSET_Y);
     assets[FREDDY_CAM_4B] = create_sprite((xpm_map_t) freddy_id_xpm, MAP_CAM_4B_X + ID_OFFSET_X, MAP_CAM_4B_Y + FREDDY_ID_OFFSET_Y);
@@ -447,6 +448,10 @@ void load_receiver_assets() {
     assets[CHICA_CAM_6] = create_sprite((xpm_map_t) chica_id_xpm, MAP_CAM_6_X + ID_OFFSET_X, MAP_CAM_6_Y + CHICA_ID_OFFSET_Y);
     assets[FREDDY_CAM_7] = create_sprite((xpm_map_t) freddy_id_xpm, MAP_CAM_7_X + ID_OFFSET_X, MAP_CAM_7_Y + FREDDY_ID_OFFSET_Y);
     assets[CHICA_CAM_7] = create_sprite((xpm_map_t) chica_id_xpm, MAP_CAM_7_X + ID_OFFSET_X, MAP_CAM_7_Y + CHICA_ID_OFFSET_Y);
+    assets[FREDDY_ID_RIGHT_DOOR] = create_sprite((xpm_map_t) freddy_id_xpm, MAP_RIGHT_DOOR_X + ID_OFFSET_X, MAP_RIGHT_DOOR_Y + FREDDY_ID_OFFSET_Y);
+    assets[BONNIE_ID_LEFT_DOOR] = create_sprite((xpm_map_t) bonnie_id_xpm, MAP_LEFT_DOOR_X + ID_OFFSET_X, MAP_LEFT_DOOR_Y + BONNIE_ID_OFFSET_Y);
+    assets[CHICA_ID_RIGHT_DOOR] = create_sprite((xpm_map_t) chica_id_xpm, MAP_RIGHT_DOOR_X + ID_OFFSET_X, MAP_RIGHT_DOOR_Y + CHICA_ID_OFFSET_Y);
+    assets[FOXY_ID_LEFT_DOOR] = create_sprite((xpm_map_t) foxy_id_xpm, MAP_LEFT_DOOR_X + ID_OFFSET_X, MAP_LEFT_DOOR_Y + FOXY_ID_OFFSET_Y);
 }
 
 void unload_all_assets() {

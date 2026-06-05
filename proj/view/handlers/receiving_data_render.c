@@ -25,7 +25,8 @@ static xpmASSET animatronic_asset[NUM_CAMERAS][NUM_ANIMATRONICS] = {
 
     [CAM_2B] = {
         [FREDDY] = FREDDY_CAM_2B,
-        [CHICA] = CHICA_CAM_2B
+        [CHICA] = CHICA_CAM_2B,
+        [FOXY] = FOXY_CAM_2B
     },
 
     [CAM_3] = {
@@ -53,10 +54,18 @@ static xpmASSET animatronic_asset[NUM_CAMERAS][NUM_ANIMATRONICS] = {
     [CAM_7] = {
         [FREDDY] = FREDDY_CAM_7,
         [CHICA] = CHICA_CAM_7
+    },
+
+    [RIGHT_DOOR] = {
+        [FREDDY] = FREDDY_ID_RIGHT_DOOR,
+        [CHICA] = CHICA_ID_RIGHT_DOOR
+    },
+
+    [LEFT_DOOR] = {
+        [BONNIE] = BONNIE_ID_LEFT_DOOR,
+        [FOXY] = FOXY_ID_LEFT_DOOR
     }
 };
-
-
 
 void render_receiving_data(const GameState* state) {
 

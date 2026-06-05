@@ -17,6 +17,14 @@ typedef void (*EventHandler)(GameState*, const GameEvent*);
  */
 EventHandler get_event_handler(const StateType state, const EventType event);
 
+/**
+ * @brief This function processes the animatronic movements based on the data received from the serial port. It updates the game state with the new positions of the animatronics as they move through the cameras. The function takes in the current game state and a queue of data received from the serial port, which contains information about the animatronic movements. This function must be called inside the 
+ * 
+ * @param state 
+ * @param data_queue 
+ */
+void process_animatronic_movements(GameState* state, Queue data_queue);
+
                 /* Mouse  Related Handlers */
 
 /**
@@ -144,8 +152,19 @@ void handle_receiving_data_keyboard(GameState* state, const GameEvent* event);
 
 /* Serial Port Related Handlers */
 
+/**
+ * @brief Handler for serial port data events in the waiting for data state, in the receiver's perspective. This handler listens for data indicating the start of the night survival mode.
+ * @details Only transitions to the receiving data state after a night survival is started. Therefore, if the receiver is set up in the middle of a night, it will only receive data from the next night forward.
+ * @param state Pointer to the current game state, which can be modified to transition to the receiving data state.
+ * @param event Pointer to the current game event, which contains the serial port data received.
+ */
 void handle_waiting_for_data_serial_port(GameState* state, const GameEvent* event);
 
+/**
+ * @brief Handler for serial port data events in the receiving data state, in the receiver's perspective. This handler processes the incoming data from the serial port, which contains information about the animatronic movements.
+ * @param state Pointer to the current game state, which can be modified based on the animatronic movements received from the serial port data.
+ * @param event Pointer to the current game event, which contains the serial port data received.
+ */
 void handle_receiving_data_serial_port(GameState* state, const GameEvent* event);
 
 // TODO: REMOVE! ONLY FOR FASTER TESTING

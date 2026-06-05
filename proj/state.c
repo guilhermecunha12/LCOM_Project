@@ -4,6 +4,7 @@
 #include "sound.h"
 #include "devices/serial_port/serial_port.h"
 #include "devices/serial_port/sp_encoding.h"
+#include "controller/handlers/processor.h"
 
 void init_main_menu(GameState* state) {
     int current_night = state->global_data.current_night;
@@ -154,7 +155,7 @@ void init_game_over(GameState* state) {
     state->data.game_over = game_over_state;
 }
 
-void init_receiving_data_state(GameState* state) {
+void init_receiving_data_state(GameState* state, Queue data_queue) {
     state->type = RECEIVING_DATA;
 
     // Initialize the animatronics in cam data to false
@@ -168,4 +169,6 @@ void init_receiving_data_state(GameState* state) {
     for (int anim = 0; anim < NUM_ANIMATRONICS; anim++) {
         state->data.receiving_data.animatronic_current_cam[anim] = NUM_CAMERAS;
     }
+
+    process_animatronic_movements(state, data_queue); // for the initial animatronic data
 }

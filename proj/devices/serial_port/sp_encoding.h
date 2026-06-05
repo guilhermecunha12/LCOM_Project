@@ -32,6 +32,13 @@
 #define EXTRACT_CAMERA_NUMBER(data) ((data >> 2) & 0x0F)
 #define EXTRACT_CAMERA_LETTER(data) (data & 0x03)
 
+/**
+ * @brief Encodes the animatronic's name and position (camera) into a single byte of data to be sent through the serial port.
+ * @details The encoding uses the 2 most significant bits to represent the animatronic's name, the next 4 bits to represent the camera number, and the 2 least significant bits to represent the camera letter (A, B or C).
+ * @param name The name of the animatronic to be encoded.
+ * @param position The camera position of the animatronic to be encoded, which includes both the camera number and letter.
+ * @return The encoded byte of data representing the animatronic's name and position. 
+ */
 uint8_t encode_animatronic_data(AnimatronicName name, CameraID position);
 
 #endif // SP_ENCODING_H

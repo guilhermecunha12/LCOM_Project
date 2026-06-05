@@ -71,8 +71,16 @@ void render_night_6am(const GameState *state);
  */
 void render_game_over(const GameState *state);
 
+/**
+ * @brief Handler for rendering the Waiting for Data screen, which is shown in the receiver's perspective while waiting for data from the sender to start the night survival mode.
+ * @param state The current GameState.
+ */
 void render_waiting_for_data(const GameState* state);
 
+/**
+ * @brief Handler for rendering the Receiving Data screen, which is shown in the receiver's perspective during the night survival mode, while receiving data from the sender about the animatronic movements. This handler draws the cameras and animatronics in their respective positions based on the data received from the sender through the serial port.
+ * @param state The current GameState.
+ */
 void render_receiving_data(const GameState* state);
 
 #endif /* RENDERER_H */

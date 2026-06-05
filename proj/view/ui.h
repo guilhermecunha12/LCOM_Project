@@ -149,28 +149,32 @@
 
 //////////// RECEIVER MAP ////////////////////////////
 
-#define MAP_CAM_1A_X 135
-#define MAP_CAM_1A_Y 93
-#define MAP_CAM_1B_X 320
+#define MAP_CAM_1A_X 410
+#define MAP_CAM_1A_Y 58
+#define MAP_CAM_1B_X 360
 #define MAP_CAM_1B_Y 140
-#define MAP_CAM_1C_X 235
+#define MAP_CAM_1C_X 180
 #define MAP_CAM_1C_Y 319
-#define MAP_CAM_2A_X 359
+#define MAP_CAM_2A_X 370
 #define MAP_CAM_2A_Y 601
-#define MAP_CAM_2B_X 359
+#define MAP_CAM_2B_X 370
 #define MAP_CAM_2B_Y 702
-#define MAP_CAM_3_X 162
+#define MAP_CAM_3_X 250
 #define MAP_CAM_3_Y 548
 #define MAP_CAM_4A_X 605
 #define MAP_CAM_4A_Y 601
 #define MAP_CAM_4B_X 605
 #define MAP_CAM_4B_Y 702
-#define MAP_CAM_5_X 81
+#define MAP_CAM_5_X 150
 #define MAP_CAM_5_Y 189
 #define MAP_CAM_6_X 833
-#define MAP_CAM_6_Y 302
-#define MAP_CAM_7_X 859
+#define MAP_CAM_6_Y 520
+#define MAP_CAM_7_X 835
 #define MAP_CAM_7_Y 199
+#define MAP_RIGHT_DOOR_X 540
+#define MAP_RIGHT_DOOR_Y 702
+#define MAP_LEFT_DOOR_X 490
+#define MAP_LEFT_DOOR_Y 702
 
 #define ID_OFFSET_X 13
 #define FREDDY_ID_OFFSET_Y 12

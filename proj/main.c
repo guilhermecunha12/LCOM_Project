@@ -51,11 +51,12 @@ void init_game_state(GameState* state) {
 
 int receiver_main_loop() {
 
+    uint8_t timer_irq_set = IRQ_TIMER;
     uint8_t kbd_irq_set = IRQ_KBD;
     uint8_t com1_irq_set = IRQ_COM1;
     uint16_t vbe_mode = VBE_MODE;
     
-    if (subscribe_receiver_devices(&kbd_irq_set, &com1_irq_set, vbe_mode)) return 1;
+    if (subscribe_receiver_devices(&timer_irq_set, &kbd_irq_set, &com1_irq_set, vbe_mode)) return 1;
 
     GameState* current_state = (GameState*) malloc(sizeof(GameState));
     GameEvent* current_event = (GameEvent*) malloc(sizeof(GameEvent));
@@ -78,6 +79,13 @@ int receiver_main_loop() {
             switch(_ENDPOINT_P(msg.m_source)) {
                 case HARDWARE:
                     
+                    // Timer interrupt
+                    if (msg.m_notify.interrupts & timer_irq_set) {
+                        if(update_timer_game_event(current_event) == 0) {
+                            render_frame(current_state);
+                        }
+                    }
+
                     // Keyboard interrupt
                     if (msg.m_notify.interrupts & kbd_irq_set) {
                         if (update_keyboard_game_event(current_event) == 0) {
@@ -89,7 +97,6 @@ int receiver_main_loop() {
                     if (msg.m_notify.interrupts & com1_irq_set) {
                         if (update_serial_port_game_event(current_event) == 0) {
                             process_event(current_state, current_event);
-                            render_frame(current_state);
                         }
                     }
 

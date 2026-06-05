@@ -30,6 +30,12 @@ int update_keyboard_game_event(GameEvent* ge);
  */
 int update_mouse_game_event(GameEvent* ge);
 
+/**
+ * @brief Updates the GameEvent struct based on the serial port data received from the serial port interrupt.
+ * @details This function retrieves the data queue from the serial port event and updates the GameEvent struct with a serial port event type and fills in the event data with the serial port data queue.
+ * @param ge A pointer to the GameEvent struct to be updated with the serial port event information.
+ * @return 0 on success, 1 on error.
+ */
 int update_serial_port_game_event(GameEvent* ge);
 
 #endif /* EVENT_UPDATER_H */
