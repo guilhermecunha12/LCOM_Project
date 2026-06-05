@@ -70,11 +70,11 @@ uint8_t encode_animatronic_data(AnimatronicName name, CameraID position) {
             break; 
         case RIGHT_DOOR:
             camera_number = DOOR;
-            camera_letter = CAMERA_B;
+            camera_letter = CAMERA_A;
             break; 
         case LEFT_DOOR:
             camera_number = DOOR;
-            camera_letter = CAMERA_A;
+            camera_letter = CAMERA_B;
             break;
         case NUM_CAMERAS:
             break;

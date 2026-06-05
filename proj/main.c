@@ -1,4 +1,4 @@
- #include <lcom/lcf.h>
+#include <lcom/lcf.h>
 
 // Device header files
 #include "devices/subscribe.h"
@@ -156,10 +156,9 @@ int(proj_main_loop)(int argc, char* argv[]) {
 
                     // Keyboard interrupt
                     if (msg.m_notify.interrupts & kbd_irq_set) {
-                        
+                            
                         if (update_keyboard_game_event(current_event) == 0) {
-                                process_event(current_state, current_event);
-                            }
+                            process_event(current_state, current_event);
                         }
                     }
 
@@ -173,6 +172,7 @@ int(proj_main_loop)(int argc, char* argv[]) {
                         }                        
                     }
                     break;
+                    
                 default:
                     break;
             }
