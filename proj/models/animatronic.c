@@ -10,7 +10,15 @@
 static CameraID FREDDY_PATH[] = {CAM_1A, CAM_1B, CAM_7, CAM_6, CAM_4B, RIGHT_DOOR};
 static CameraID BONNIE_PATH[] = {CAM_1A, CAM_1B, CAM_5, CAM_3, CAM_2A, CAM_2B, LEFT_DOOR};
 static CameraID CHICA_PATH[]  = {CAM_1A, CAM_1B, CAM_7, CAM_6, CAM_4A, CAM_4B, RIGHT_DOOR};
-static CameraID FOXY_PATH[]   = {CAM_1C, CAM_2A, CAM_2B, LEFT_DOOR};
+
+/*
+    first CAM1_C -> Closed
+    second CAM1_C -> Peeking
+    third CAM1_C -> fully out,
+    3 -> empty, which is the CAM_2A
+*/
+static CameraID FOXY_PATH[]   = {CAM_1C, CAM_1C, CAM_1C, CAM_2A, CAM_2B, LEFT_DOOR};
+// Maybe chang the foxy path to make it easier
 
 /**
  * @brief Array of pointers to the paths, indexed by the AnimatronicName enum. This allows us to easily assign the correct path to each animatronic during initialization.
@@ -18,8 +26,8 @@ static CameraID FOXY_PATH[]   = {CAM_1C, CAM_2A, CAM_2B, LEFT_DOOR};
 static CameraID *PATHS[4] = {
     [FREDDY] = FREDDY_PATH,
     [BONNIE] = BONNIE_PATH,
-    [CHICA]  = CHICA_PATH,
-    [FOXY]   = FOXY_PATH,
+    [CHICA] = CHICA_PATH,
+    [FOXY] = FOXY_PATH,
 };
 
 /**
@@ -28,8 +36,8 @@ static CameraID *PATHS[4] = {
 static const int ANIMATRONIC_PATH_LENGTHS[4] = {
     [FREDDY] = sizeof(FREDDY_PATH) / sizeof(FREDDY_PATH[0]),
     [BONNIE] = sizeof(BONNIE_PATH) / sizeof(BONNIE_PATH[0]),
-    [CHICA]  = sizeof(CHICA_PATH) / sizeof(CHICA_PATH[0]),
-    [FOXY]   = sizeof(FOXY_PATH) / sizeof(FOXY_PATH[0]),
+    [CHICA] = sizeof(CHICA_PATH) / sizeof(CHICA_PATH[0]),
+    [FOXY] = sizeof(FOXY_PATH) / sizeof(FOXY_PATH[0]),
 };
 
 /**
@@ -39,7 +47,7 @@ static const int INITIAL_AI_LEVELS[4][5] = {
     [FREDDY] = {0, 0, 1, 2, 3},
     [BONNIE] = {0, 3, 0, 2, 9},
     [CHICA] = {0, 1, 5, 5, 8},
-    [FOXY] = {0, 1, 2, 6, 9}
+    [FOXY] = {20, 1, 2, 6, 9}
 };
 
 /**
@@ -51,6 +59,8 @@ static const int MOVE_INTERVALS[4] = {
     [CHICA] = 5 * FPS,
     [FOXY] = 5 * FPS,
 };
+
+static const int FOXY_FAST_MOVE_INTERVAL = 2 * FPS;
 
 // Single-entry path for special no-battery Freddy state
 /**
@@ -194,7 +204,11 @@ bool update_animatronic(Animatronic* animatronic, int time_left, bool left_door_
 
     if (animatronic->time_to_move_opportunity <= 0) {
         bool should_move = should_animatronic_move(animatronic);
-        animatronic->time_to_move_opportunity = MOVE_INTERVALS[animatronic->name];
+        // CHECK if it's foxy and updates to FOXY_FAST_MOVE_INTERVAL
+        if (animatronic->name == FOXY && animatronic->path[animatronic->current_position_index] != CAM_1C)
+            animatronic->time_to_move_opportunity = FOXY_FAST_MOVE_INTERVAL;
+        else
+            animatronic->time_to_move_opportunity = MOVE_INTERVALS[animatronic->name];
         if (should_move) {
             if (should_animatronic_attack(animatronic, left_door_closed, right_door_closed)) {
                 return true;
