@@ -14,7 +14,6 @@ static EventHandler eht[NUM_STATES][NUM_EVENTS] = {
 
     [NEWSPAPER] = {
         [TIMER_TICK] = handle_newspaper_timer,
-        [KEYBOARD_PRESS] = go_to_night_survive // TODO: REMOVE! ONLY FOR FASTER TESTING
     },
 
     [NIGHT_INTRO] = {

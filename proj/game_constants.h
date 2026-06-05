@@ -18,7 +18,6 @@
 #define DRAIN_RATE_NIGHT_4 (4 * FPS) // 4 seconds per 1% battery drain
 #define DRAIN_RATE_NIGHT_5 (3 * FPS) // 3 seconds per 1% battery drain
 
-// TODO: CHANGE
 static const int DRAIN_RATE_PER_NIGHT[] = {
     DRAIN_RATE_NIGHT_1,
     DRAIN_RATE_NIGHT_2,
@@ -27,7 +26,6 @@ static const int DRAIN_RATE_PER_NIGHT[] = {
     DRAIN_RATE_NIGHT_5
 };
 
-// TODO: CHANGE to balance the game
 #define DEFAULT_POWER_LEVEL 100
 
 // Adjust this to balance difficulty

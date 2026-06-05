@@ -309,12 +309,19 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
     for(AnimatronicName name = 0; name < NUM_ANIMATRONICS; name++) {
         
         bool attacked = update_animatronic(
+<<<<<<< HEAD
+            &night_state->animatronics[name], 
+            night_state->time_left, 
+            night_state->left_door_closed, 
+            night_state->right_door_closed
+=======
             &night_state->animatronics[name],
             night_state->time_left,
             night_state->left_door_closed,
             night_state->right_door_closed,
             night_state->camera_monitor_up,
             night_state->viewing_camera
+>>>>>>> main
         );
 
         if (attacked) {

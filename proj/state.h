@@ -34,13 +34,12 @@ typedef enum {
     KEY_INVALID,
 } Key;
 
-// Tagged Union - TODO: instead of scancodes and mouse_packets, have enums that represent the keys
 /**
  * @brief Struct that represents an event in the game. It uses a tagged union to store the relevant data for each type of event.
  */
 typedef struct {
     EventType type;
-    union { // TODO: simplify this structs if only one field is needed for each event type
+    union {
         Key key;
         struct {int16_t delta_x; int16_t delta_y;} mouse_coords;
         int timer_ticks;
