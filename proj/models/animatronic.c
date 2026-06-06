@@ -9,9 +9,12 @@
 /**
  * @brief Paths that the animatronics follow to get to the player.
  */
-static CameraID FREDDY_PATH[] = {CAM_1A};
-static CameraID BONNIE_PATH[] = {CAM_1A};
-static CameraID CHICA_PATH[]  = {CAM_1A};
+static CameraID FREDDY_PATH[] = {CAM_1A, CAM_1B, CAM_7, CAM_6, CAM_4B, RIGHT_DOOR};
+static CameraID BONNIE_PATH[] = {CAM_1A, CAM_1B, CAM_5, CAM_3, CAM_2A, CAM_2B, LEFT_DOOR};
+static CameraID CHICA_PATH[]  = {CAM_1A, CAM_1B, CAM_7, CAM_6, CAM_4A, CAM_4B, RIGHT_DOOR};
+static CameraID FOXY_PATH[]   = {CAM_1C, CAM_1C, CAM_1C, CAM_2A, CAM_2B, LEFT_DOOR};
+
+
 
 /*
     first CAM1_C -> Closed
@@ -46,9 +49,9 @@ static const int ANIMATRONIC_PATH_LENGTHS[4] = {
  * @brief Initial AI levels for each animatronic for each night.
  */
 static const int INITIAL_AI_LEVELS[4][5] = {
-    [FREDDY] = {3, 0, 1, 2, 3},
-    [BONNIE] = {3, 3, 0, 2, 9},
-    [CHICA] = {3, 1, 5, 5, 8},
+    [FREDDY] = {0, 0, 1, 2, 3},
+    [BONNIE] = {0, 3, 0, 2, 9},
+    [CHICA] = {0, 1, 5, 5, 8},
     [FOXY] = {0, 1, 2, 6, 9}
 };
 

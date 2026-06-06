@@ -160,42 +160,34 @@ void render_night_survival(const GameState *state) {
         draw_office(state->global_data.background_offset_x);
 
 
-        // Show left door button when looking left
-        if (state->global_data.background_offset_x == 0) {
-            if (state->data.night_survival.left_door_closed)
-                draw_sprite(get_asset(LEFT_BUTTON_GREEN));
-            else
-                draw_sprite(get_asset(LEFT_BUTTON_RED));
+        // LEFT side: only draw when offset hasn't passed center (looking left or center-left)
+        Sprite *left_btn = get_asset(state->data.night_survival.left_door_closed ? LEFT_BUTTON_GREEN : LEFT_BUTTON_RED);
+        left_btn->x = NIGHT_LEFT_DOOR_BUTTON_X + state->global_data.background_offset_x;
+        draw_sprite(left_btn);
 
-            if (state->data.night_survival.left_light_on)
-                draw_sprite(get_asset(LIGHT_ON_LEFT));
-            else
-                draw_sprite(get_asset(LIGHT_OFF_LEFT));
+        Sprite *left_light = get_asset(state->data.night_survival.left_light_on ? LIGHT_ON_LEFT : LIGHT_OFF_LEFT);
+        left_light->x = NIGHT_LEFT_LIGHT_BUTTON_X + state->global_data.background_offset_x;
+        draw_sprite(left_light);
 
-            // Door animations (update sprites)
-            if (state->data.night_survival.left_door_closed || 
-                state->data.night_survival.left_door_animation_playing) {
-                draw_sprite((Sprite*) state->data.night_survival.left_door->sp);
-            }
-        
+        if (state->data.night_survival.left_door_closed ||
+            state->data.night_survival.left_door_animation_playing) {
+            state->data.night_survival.left_door->sp->x = LEFT_DOOR_X + state->global_data.background_offset_x;
+            draw_sprite((Sprite*) state->data.night_survival.left_door->sp);
         }
 
-        // Show right door button when looking right
-        if (state->global_data.background_offset_x == BACKGROUND_MAX_OFFSET) {
-            if (state->data.night_survival.right_door_closed)
-                draw_sprite(get_asset(RIGHT_BUTTON_GREEN));
-            else
-                draw_sprite(get_asset(RIGHT_BUTTON_RED));
+        // RIGHT side: only draw when offset is at or past center (looking right or center-right)
+        Sprite *right_btn = get_asset(state->data.night_survival.right_door_closed ? RIGHT_BUTTON_GREEN : RIGHT_BUTTON_RED);
+        right_btn->x = NIGHT_RIGHT_DOOR_BUTTON_X + (state->global_data.background_offset_x - BACKGROUND_MAX_OFFSET);
+        draw_sprite(right_btn);
 
-            if (state->data.night_survival.right_light_on)
-                draw_sprite(get_asset(LIGHT_ON_RIGHT));
-            else
-                draw_sprite(get_asset(LIGHT_OFF_RIGHT));
-            
-            if (state->data.night_survival.right_door_closed || 
-                state->data.night_survival.right_door_animation_playing) {
-                draw_sprite((Sprite*) state->data.night_survival.right_door->sp);
-            }
+        Sprite *right_light = get_asset(state->data.night_survival.right_light_on ? LIGHT_ON_RIGHT : LIGHT_OFF_RIGHT);
+        right_light->x = NIGHT_RIGHT_LIGHT_BUTTON_X + (state->global_data.background_offset_x - BACKGROUND_MAX_OFFSET);
+        draw_sprite(right_light);
+
+        if (state->data.night_survival.right_door_closed ||
+            state->data.night_survival.right_door_animation_playing) {
+            state->data.night_survival.right_door->sp->x = RIGHT_DOOR_X + (state->global_data.background_offset_x - BACKGROUND_MAX_OFFSET);
+            draw_sprite((Sprite*) state->data.night_survival.right_door->sp);
         }
 
 
