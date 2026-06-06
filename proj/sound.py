@@ -11,19 +11,27 @@ SOUNDS_DIR = os.path.join(SCRIPT_DIR, "sounds")
 # Inicializar o mixer de som na arranque do script
 mixer.init()
 
+# Channel 0: looping background music; Channel 1: one-shot effects
+BG_CHANNEL = mixer.Channel(0)
+FX_CHANNEL = mixer.Channel(1)
+
+# Sounds that loop as background ambience
+BACKGROUND_SOUNDS = {"night_music", "lights_out"}
+
 
 def stop():
-    # Pára instantaneamente todos os sons que estejam a tocar
-    mixer.stop()
+    BG_CHANNEL.stop()
+    FX_CHANNEL.stop()
 
 
-def play(sound_file):
-    # Garante que um som que já esteja a tocar pare
-    stop()
-    # O Pygame pode carregar e iniciar sons sem bloquear o processo
+def play(sound_file, sound_name):
     try:
         sound = mixer.Sound(sound_file)
-        sound.play()
+        if sound_name in BACKGROUND_SOUNDS:
+            BG_CHANNEL.play(sound, loops=-1)
+        else:
+            FX_CHANNEL.stop()
+            FX_CHANNEL.play(sound)
     except Exception as e:
         print(f"[ERROR] Failed to play: {e}", file=sys.stderr)
 
@@ -42,7 +50,7 @@ while True:
             elif content:
                 sound_file = os.path.join(SOUNDS_DIR, content + ".wav")
                 if os.path.exists(sound_file):
-                    play(sound_file)
+                    play(sound_file, content)
                 else:
                     print(f"[ERROR] Sound not found: {sound_file}")
     except Exception as e:

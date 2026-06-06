@@ -193,7 +193,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
         CAMERA_FLIP_BUTTON_Y,
         CAMERA_FLIP_BUTTON_WIDTH,
         CAMERA_FLIP_BUTTON_HEIGHT)) {
-            
+
             play_sound("monitor");
             toggle_camera_monitor(state);
     }
@@ -360,6 +360,8 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
 
 void handle_night_survival_keyboard(GameState* state, const GameEvent* event) {
     if (event->data.key == KEY_SPACE) {
+        
+        play_sound("monitor");
         toggle_camera_monitor(state);
     }
     else if (event->data.key == KEY_LEFT) {
