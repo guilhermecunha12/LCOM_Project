@@ -36,7 +36,7 @@ Sprite* create_sprite(xpm_map_t xpm, int x, uint16_t y){
 }
 
 int draw_sprite(const Sprite* sp) {
-    if (sp == NULL || sp->map == NULL) return 1;
+    if (sp == NULL || sp->map == NULL || sp->x > SCREEN_WIDTH) return 1;
 
     // Start x for drawing the sprite (negative x values for horizontal movement)
     int start_x = (sp->x < 0) ? -sp->x : 0; // the start x within the sprite

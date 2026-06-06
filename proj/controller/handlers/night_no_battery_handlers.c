@@ -3,8 +3,7 @@
 #include "../../sound.h"
 
 void handle_night_no_battery_timer(GameState* state, const GameEvent* event) {
-    
-    printf("Time left: %d\n", state->data.night_no_battery.time_left);
+    general_background_movement(state);
 
     NightNoBatteryState* blackout = &state->data.night_no_battery;
 

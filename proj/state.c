@@ -81,9 +81,7 @@ void init_newspaper(GameState* state) {
     state->type = NEWSPAPER;
     state->data.newspaper = newspaper_state;
 }
-
 void init_night_survival(GameState* state) {
-    send_sp_data(STARTED_NIGHT_SURVIVAL);
     state->type = NIGHT_SURVIVAL;
     state->global_data.background_offset_x = CENTER_BACKGROUND_OFFSET;
     state->global_data.moving = NO_MOVEMENT;
@@ -97,6 +95,10 @@ void init_night_survival(GameState* state) {
     night_survival_state->right_light_on = false;
     night_survival_state->left_door_closed = false;
     night_survival_state->right_door_closed = false;
+    night_survival_state->left_door_animation_playing = false;
+    night_survival_state->right_door_animation_playing = false;
+    night_survival_state->left_door = get_anim_asset(ANIM_DOOR_LEFT);
+    night_survival_state->right_door = get_anim_asset(ANIM_DOOR_RIGHT);
     night_survival_state->camera_monitor_up = false;
     night_survival_state->camera_animation_playing = false;
     night_survival_state->camera_monitor = get_anim_asset(ANIM_CAMERA_MONITOR);
@@ -108,7 +110,6 @@ void init_night_survival(GameState* state) {
     night_survival_state->wait_timer = 0;
 
     initialize_animatronics(night_survival_state->animatronics, state->global_data.current_night);
-
     play_sound("night_music");
 }
 

@@ -133,10 +133,15 @@ typedef struct {
     bool right_light_on;
     bool left_door_closed;
     bool right_door_closed;
+    bool left_door_animation_playing;
+    bool right_door_animation_playing;
     bool camera_monitor_up; // Is the player looking at cameras?
     bool camera_animation_playing;
     AnimSprite* camera_monitor; // The animated sprite for the camera monitor flipping up or down
+    AnimSprite* left_door; // The animated sprite for the left door opening or closing
+    AnimSprite* right_door; // The animated sprite for the right door opening or closing
     CameraID viewing_camera;
+
 
     // For timer-driven animations (e.g., fan spinning, camera static)
     int fan_frame_index;

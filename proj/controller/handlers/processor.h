@@ -115,6 +115,13 @@ void handle_night_no_battery_timer(GameState* state, const GameEvent* event);
 void handle_jumpscare_timer(GameState* state, const GameEvent* event);
 
 
+/**
+ * @brief General handler for background movement in the night survival and night no battery states. This function updates the background offset based on the current movement direction (left or right) and ensures that the background does not move beyond defined limits. It also handles stopping the movement when reaching the leftmost position, rightmost position, or center position.
+ * @param state Pointer to the current game state, which will be modified to update the background offset and movement state based on the current movement direction and position.
+ */
+void general_background_movement(GameState* state);
+
+
                 /* Keyboard Related Handlers */
 
 /**
