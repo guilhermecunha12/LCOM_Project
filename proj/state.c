@@ -133,6 +133,7 @@ void init_night_no_battery(GameState* state) {
 
     state->type = NIGHT_NO_BATTERY;
     state->data.night_no_battery = night_no_battery_state;
+    play_sound("light_out");
 }
 
 void init_win_screen(GameState* state) {
