@@ -34,6 +34,9 @@ typedef enum {
     /* GAME OVER */
     GAME_OVER_SCREEN,
 
+    /* WIN SCREEN */
+    WIN_SCREEN,
+
     /* NEWSPAPER */
     NEWSPAPER_FEUP,
 

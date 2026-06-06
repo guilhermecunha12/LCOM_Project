@@ -318,6 +318,8 @@
 #include "xpm/office/buttons/Right/light_on_r.xpm"
 #include "xpm/office/buttons/Right/light_off_r.xpm"
 
+#include "xpm/win/win_screen.xpm"
+
 
 
 static Sprite* assets[NUM_ASSETS] = {NULL};
@@ -345,6 +347,7 @@ void load_all_assets() {
     assets[NEWSPAPER_FEUP] = create_sprite((xpm_map_t) newspaper_xpm, 0, 0);
     assets[NIGHT_6AM_SCREEN] = create_sprite((xpm_map_t) win_6am_xpm, 0, 0);
     assets[GAME_OVER_SCREEN] = create_sprite((xpm_map_t) game_over_xpm, 0, 0);
+    assets[WIN_SCREEN] = create_sprite((xpm_map_t) win_screen_xpm, 0, 0);
     assets[START_NIGHT1] = create_sprite((xpm_map_t) start_night1_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
     assets[START_NIGHT2] = create_sprite((xpm_map_t) start_night2_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
     assets[START_NIGHT3] = create_sprite((xpm_map_t) start_night3_xpm, SCREEN_TEXT_X, SCREEN_TEXT_Y);
