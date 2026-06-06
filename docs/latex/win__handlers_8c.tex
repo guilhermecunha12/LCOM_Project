@@ -1,0 +1,36 @@
+\doxysection{proj/controller/handlers/win\+\_\+handlers.c File Reference}
+\hypertarget{win__handlers_8c}{}\label{win__handlers_8c}\index{proj/controller/handlers/win\_handlers.c@{proj/controller/handlers/win\_handlers.c}}
+{\ttfamily \#include "{}processor.\+h"{}}\newline
+Include dependency graph for win\+\_\+handlers.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{win__handlers_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{win__handlers_8c_aadaa876f6677bfe1c7256774e596e017}{handle\+\_\+win\+\_\+screen\+\_\+timer}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for timer tick events in the win screen state. This handler manages the countdown for the win screen display and transitions to the main menu state when the duration reaches zero, initializing the main menu state in the process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{win__handlers_8c_aadaa876f6677bfe1c7256774e596e017}\label{win__handlers_8c_aadaa876f6677bfe1c7256774e596e017} 
+\index{win\_handlers.c@{win\_handlers.c}!handle\_win\_screen\_timer@{handle\_win\_screen\_timer}}
+\index{handle\_win\_screen\_timer@{handle\_win\_screen\_timer}!win\_handlers.c@{win\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{handle\_win\_screen\_timer()}{handle\_win\_screen\_timer()}}
+{\footnotesize\ttfamily void handle\+\_\+win\+\_\+screen\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for timer tick events in the win screen state. This handler manages the countdown for the win screen display and transitions to the main menu state when the duration reaches zero, initializing the main menu state in the process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to transition to the next state when the win screen duration ends. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the timer tick data. \\
+\hline
+\end{DoxyParams}

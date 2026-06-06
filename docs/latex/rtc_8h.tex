@@ -1,0 +1,91 @@
+\doxysection{lab1/rtc.h File Reference}
+\hypertarget{rtc_8h}{}\label{rtc_8h}\index{lab1/rtc.h@{lab1/rtc.h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for rtc.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=142pt]{rtc_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{rtc_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structrtc__date}{rtc\+\_\+date}}
+\begin{DoxyCompactList}\small\item\em Structure to hold the date information read from the RTC. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em Structure to hold the time information read from the RTC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{rtc_8h_a40b0d612861625726053db582810457a}{rtc\+\_\+read\+\_\+date}} (\mbox{\hyperlink{structrtc__date}{rtc\+\_\+date}} \texorpdfstring{$\ast$}{*}date)
+\begin{DoxyCompactList}\small\item\em Function to read the current date from the RTC and fill the provided {\ttfamily \doxylink{structrtc__date}{rtc\+\_\+date}} structure. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8h_a1c93057ca748e4cf3d0c3de20054304b}{rtc\+\_\+read\+\_\+time}} (\mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} \texorpdfstring{$\ast$}{*}time)
+\begin{DoxyCompactList}\small\item\em Function to read the current time from the RTC and fill the provided {\ttfamily \doxylink{structrtc__time}{rtc\+\_\+time}} structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rtc_8h_af21c89614126e2fd0b69fd9eef101b37}{util\+\_\+sys\+\_\+inb}} (int port, uint8\+\_\+t \texorpdfstring{$\ast$}{*}byte)
+\begin{DoxyCompactList}\small\item\em Utility function to read a byte from a specified I/O port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{rtc_8h_a40b0d612861625726053db582810457a}\label{rtc_8h_a40b0d612861625726053db582810457a} 
+\index{rtc.h@{rtc.h}!rtc\_read\_date@{rtc\_read\_date}}
+\index{rtc\_read\_date@{rtc\_read\_date}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{rtc\_read\_date()}{rtc\_read\_date()}}
+{\footnotesize\ttfamily int rtc\+\_\+read\+\_\+date (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structrtc__date}{rtc\+\_\+date}} \texorpdfstring{$\ast$}{*}}]{date }\end{DoxyParamCaption})}
+
+
+
+Function to read the current date from the RTC and fill the provided {\ttfamily \doxylink{structrtc__date}{rtc\+\_\+date}} structure. 
+
+This function ensures data consistency by checking the Update In Progress (UIP) flag before reading the date. It also checks the RTC configuration and performs data conversions if necessary (e.\+g. BCD to binary). 
+\begin{DoxyParams}{Parameters}
+{\em date} & Pointer to an {\ttfamily \doxylink{structrtc__date}{rtc\+\_\+date}} structure that will be filled with the current date read from the RTC. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 0 on success, non-\/zero on failure. 
+\end{DoxyReturn}
+\Hypertarget{rtc_8h_a1c93057ca748e4cf3d0c3de20054304b}\label{rtc_8h_a1c93057ca748e4cf3d0c3de20054304b} 
+\index{rtc.h@{rtc.h}!rtc\_read\_time@{rtc\_read\_time}}
+\index{rtc\_read\_time@{rtc\_read\_time}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{rtc\_read\_time()}{rtc\_read\_time()}}
+{\footnotesize\ttfamily int rtc\+\_\+read\+\_\+time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} \texorpdfstring{$\ast$}{*}}]{time }\end{DoxyParamCaption})}
+
+
+
+Function to read the current time from the RTC and fill the provided {\ttfamily \doxylink{structrtc__time}{rtc\+\_\+time}} structure. 
+
+This function ensures data consistency by checking the Update In Progress (UIP) flag before reading the time. It also checks the RTC configuration to determine if the time is in BCD format and converts it to binary if necessary. Additionally, it handles both 12-\/hour and 24-\/hour formats, converting to 24-\/hour format if needed. 
+\begin{DoxyParams}{Parameters}
+{\em time} & Pointer to an {\ttfamily \doxylink{structrtc__time}{rtc\+\_\+time}} structure that will be filled with the current time read from the RTC. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 0 on success, non-\/zero on failure. 
+\end{DoxyReturn}
+\Hypertarget{rtc_8h_af21c89614126e2fd0b69fd9eef101b37}\label{rtc_8h_af21c89614126e2fd0b69fd9eef101b37} 
+\index{rtc.h@{rtc.h}!util\_sys\_inb@{util\_sys\_inb}}
+\index{util\_sys\_inb@{util\_sys\_inb}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{util\_sys\_inb()}{util\_sys\_inb()}}
+{\footnotesize\ttfamily void util\+\_\+sys\+\_\+inb (\begin{DoxyParamCaption}\item[{int}]{port,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{byte }\end{DoxyParamCaption})}
+
+
+
+Utility function to read a byte from a specified I/O port. 
+
+This function is a wrapper around the system call to read from an I/O port. It reads a 32-\/bit value from the port and then casts it to an 8-\/bit value, which is stored in the provided byte pointer. 
+\begin{DoxyParams}{Parameters}
+{\em port} & The I/O port to read from. \\
+\hline
+{\em byte} & Pointer to a uint8\+\_\+t variable where the read byte will be stored. \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,67 @@
+\doxysection{game\+\_\+constants.\+h}
+\hypertarget{game__constants_8h_source}{}\label{game__constants_8h_source}\index{proj/game\_constants.h@{proj/game\_constants.h}}
+\mbox{\hyperlink{game__constants_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SHARED\_GAME\_CONSTANTS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SHARED\_GAME\_CONSTANTS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ FPS\ 30}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ NIGHT\_TIME\ (532\ *\ FPS)}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ HOUR\_DURATION\ (NIGHT\_TIME\ /\ 7)\ }\textcolor{comment}{//\ Duration\ of\ each\ hour\ in\ ticks}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ HOUR\_0\ NIGHT\_TIME\ -\/\ HOUR\_DURATION\ *\ 1}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ HOUR\_1\ NIGHT\_TIME\ -\/\ HOUR\_DURATION\ *\ 2}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ HOUR\_2\ NIGHT\_TIME\ -\/\ HOUR\_DURATION\ *\ 3}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ HOUR\_3\ NIGHT\_TIME\ -\/\ HOUR\_DURATION\ *\ 4}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ HOUR\_4\ NIGHT\_TIME\ -\/\ HOUR\_DURATION\ *\ 5}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ HOUR\_5\ NIGHT\_TIME\ -\/\ HOUR\_DURATION\ *\ 6}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ DRAIN\_RATE\_NIGHT\_1\ (10\ *\ FPS)\ }\textcolor{comment}{//\ 10\ seconds\ per\ 1\%\ battery\ drain}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ DRAIN\_RATE\_NIGHT\_2\ (6\ *\ FPS)\ }\textcolor{comment}{//\ 6\ seconds\ per\ 1\%\ battery\ drain}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ DRAIN\_RATE\_NIGHT\_3\ (5\ *\ FPS)\ }\textcolor{comment}{//\ 5\ seconds\ per\ 1\%\ battery\ drain}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ DRAIN\_RATE\_NIGHT\_4\ (4\ *\ FPS)\ }\textcolor{comment}{//\ 4\ seconds\ per\ 1\%\ battery\ drain}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ DRAIN\_RATE\_NIGHT\_5\ (3\ *\ FPS)\ }\textcolor{comment}{//\ 3\ seconds\ per\ 1\%\ battery\ drain}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ DRAIN\_RATE\_PER\_NIGHT[]\ =\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{game__constants_8h_a5777cdbd4a4daaea3344efb47d03aeda}{DRAIN\_RATE\_NIGHT\_1}},}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{game__constants_8h_aff1b9a455504fc2aca733a116e8fee93}{DRAIN\_RATE\_NIGHT\_2}},}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{game__constants_8h_abc9d569834c9137020a8ec1bb602479f}{DRAIN\_RATE\_NIGHT\_3}},}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{game__constants_8h_a3d70b223f45b0b323790b5b1b8aef66c}{DRAIN\_RATE\_NIGHT\_4}},}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{game__constants_8h_aac84b5275d504500fbf889b7b84b2722}{DRAIN\_RATE\_NIGHT\_5}}}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ DEFAULT\_POWER\_LEVEL\ 100}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ Adjust\ this\ to\ balance\ difficulty}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ BATTERY\_DRAIN\_RATE\_DOOR\ 3\ }}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ BATTERY\_DRAIN\_RATE\_LIGHT\ 2}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ BATTERY\_DRAIN\_RATE\_CAMERA\ 2}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ TICKS\_PER\_CAMERA\_ANIMATION\_FRAME\ (int)\ (0.034f\ *\ FPS)\ }}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ TICKS\_PER\_JUMPSCARE\_FRAME\ (int)\ (0.034f\ *\ FPS)\ \ }\textcolor{comment}{//\ \string~66ms\ per\ frame\ at\ 60Hz\ (\string~15fps\ animation)}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ NUM\_JUMPSCARE\_FOXY\ 21}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ NUM\_JUMPSCARE\_BONNIE\ 11}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ NUM\_JUMPSCARE\_CHICA\ 16}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ NUM\_JUMPSCARE\_FREDDY\_NORMAL\ 24}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ NUM\_JUMPSCARE\_FREDDY\_LIGHTOUT\ 28}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ NEWSPAPER\_DURATION\ (8\ *\ FPS)}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ NIGHT\_INTRO\_DURATION\ (5\ *\ FPS)}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ NIGHT\_6AM\_DURATION\ (5\ *\ FPS)}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ WIN\_SCREEN\_DURATION\ (5\ *\ FPS)}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ STATIC\_SCREEN\_DURATION\ (5\ *\ FPS)}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ GAME\_OVER\_DURATION\ (5\ *\ FPS)}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ STATIC\_SCREEN\_FRAME\_DURATION\ (3\ *\ FPS)\ }\textcolor{comment}{//\ 100ms\ per\ frame}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ NO\_BATTERY\_PHASE\_DURATION\ (20\ *\ FPS)\ }\textcolor{comment}{//\ 20\ seconds\ for\ both\ phases}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ NUM\_NIGHTS\ 6}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{\ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850a91c26507b95565573258030f9a07cbf5}{CAM\_1A}},\ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850a17c32fc63b63a08043e12fc77c32c352}{CAM\_1B}},\ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850a844491b791bc9272f1c86ca232638b2e}{CAM\_2A}},\ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850a0b4e90ad0068107a43fee7511bc9d74b}{CAM\_2B}},\ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850ad5248640cc5bb2527d53feae466198f7}{CAM\_1C}},\ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850ad0974a10f7cd80feb64c25b387d30690}{CAM\_3}},\ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850a68feb4d962c74dc1ef26e58f2de8bcd9}{CAM\_4A}},\ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850ab8061e5504def6d941f275dc52f794f0}{CAM\_4B}},\ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850aec295b68a56af67bffe1eb67a8b71008}{CAM\_5}},\ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850a5b24ff2e8ecbc3185878f805d95e5b65}{CAM\_6}},\ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850aaaf1d071b9965ec2e7559e79a4fc99d9}{CAM\_7}},\ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850ac29c54ffb91666d782b1fc7c2eaa5694}{RIGHT\_DOOR}},\ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850a3ebda8482fdbdeb1894b7934927e54a3}{LEFT\_DOOR}},\ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850a0ad880c59bc32e7782c4197ccc63bcb8}{NUM\_CAMERAS}}\ \}\ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850}{CameraID}};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//SHARED\_GAME\_CONSTANTS\_H}}
+
+\end{DoxyCode}

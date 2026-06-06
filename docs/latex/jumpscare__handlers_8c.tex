@@ -1,0 +1,39 @@
+\doxysection{proj/controller/handlers/jumpscare\+\_\+handlers.c File Reference}
+\hypertarget{jumpscare__handlers_8c}{}\label{jumpscare__handlers_8c}\index{proj/controller/handlers/jumpscare\_handlers.c@{proj/controller/handlers/jumpscare\_handlers.c}}
+{\ttfamily \#include "{}processor.\+h"{}}\newline
+{\ttfamily \#include "{}../../models/assets.\+h"{}}\newline
+{\ttfamily \#include "{}../../models/sprite.\+h"{}}\newline
+{\ttfamily \#include "{}../../sound.\+h"{}}\newline
+Include dependency graph for jumpscare\+\_\+handlers.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jumpscare__handlers_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{jumpscare__handlers_8c_adfcd37776133955bcd340838a0938770}{handle\+\_\+jumpscare\+\_\+timer}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for timer tick events in the jumpscare state. This handler manages the countdown for the jumpscare screen display and transitions to the static screen state when the duration reaches zero, initializing the static screen state in the process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{jumpscare__handlers_8c_adfcd37776133955bcd340838a0938770}\label{jumpscare__handlers_8c_adfcd37776133955bcd340838a0938770} 
+\index{jumpscare\_handlers.c@{jumpscare\_handlers.c}!handle\_jumpscare\_timer@{handle\_jumpscare\_timer}}
+\index{handle\_jumpscare\_timer@{handle\_jumpscare\_timer}!jumpscare\_handlers.c@{jumpscare\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{handle\_jumpscare\_timer()}{handle\_jumpscare\_timer()}}
+{\footnotesize\ttfamily void handle\+\_\+jumpscare\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for timer tick events in the jumpscare state. This handler manages the countdown for the jumpscare screen display and transitions to the static screen state when the duration reaches zero, initializing the static screen state in the process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to transition to the static screen state when the jumpscare duration ends. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the timer tick data. \\
+\hline
+\end{DoxyParams}

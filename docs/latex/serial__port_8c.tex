@@ -1,0 +1,370 @@
+\doxysection{proj/devices/serial\+\_\+port/serial\+\_\+port.c File Reference}
+\hypertarget{serial__port_8c}{}\label{serial__port_8c}\index{proj/devices/serial\_port/serial\_port.c@{proj/devices/serial\_port/serial\_port.c}}
+{\ttfamily \#include "{}serial\+\_\+port.\+h"{}}\newline
+{\ttfamily \#include "{}queue.\+h"{}}\newline
+Include dependency graph for serial\+\_\+port.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{serial__port_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{serial__port_8c_a47203825abd79e9bcbaf30ecbf5cb206}{CHAR\+\_\+\+LENGTH}}~8
+\item 
+\#define \mbox{\hyperlink{serial__port_8c_abd1123d1a3a1f52c36d99b27e993e282}{STOP\+\_\+\+BITS}}~1
+\item 
+\#define \mbox{\hyperlink{serial__port_8c_af6996d12e71a534569c41a25de7d6d52}{PARITY}}~2
+\item 
+\#define \mbox{\hyperlink{serial__port_8c_a5824254b9ee809852f6b67dd76e22cf3}{BIT\+\_\+\+RATE}}~9600
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{serial__port_8c_adc700f915f65c2cb20b344c8d2fb87a3}{setup\+\_\+fifos}} ()
+\begin{DoxyCompactList}\small\item\em Sets up both the receiver and transmitter FIFOs of the serial port, by writing to the FIFO Control Register (FCR) of the serial port, with the appropriate bits set. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8c_a827a911e118ca9df88bbc9a3ef9eadeb}{setup\+\_\+lcr}} (int char\+\_\+length, int stop\+\_\+bits, int parity)
+\begin{DoxyCompactList}\small\item\em Sets up the Line Control Register (LCR) of the serial port with the desired settings for character length, stop bits and parity. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8c_a3be9dfffdd7536df866ecd9c494e1add}{enable\+\_\+received\+\_\+data\+\_\+interrupt}} ()
+\begin{DoxyCompactList}\small\item\em Enables the Received Data Available Interrupt of the IER of the serial port, which allows the serial port to generate an interrupt whenever there is data available to be read from the Receiver Buffer Register (RBR) of the serial port. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8c_ae7e47f0cb380778ba030cc22669d770f}{enable\+\_\+transmitter\+\_\+holding\+\_\+register\+\_\+empty\+\_\+interrupt}} ()
+\begin{DoxyCompactList}\small\item\em Enables the Transmitter Holding Register Empty Interrupt of the IER of the serial port, which allows the serial port to generate an interrupt whenever the Transmitter Holding Register (THR) of the serial port is empty and ready to accept new data to be transmitted. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8c_aa10d34c9ebec034457a5dee4d2d7124a}{enable\+\_\+line\+\_\+status\+\_\+interrupt}} ()
+\begin{DoxyCompactList}\small\item\em Enables the Line Status Interrupt of the IER of the serial port, which allows the serial port to generate an interrupt whenever there is a change in the error bits of the Line Status Register (LSR). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8c_a6ad7507a92d25ac570d0d32eff48fdd0}{get\+\_\+ier}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}ier)
+\begin{DoxyCompactList}\small\item\em Gets the current value of the Interrupt Enable Register (IER) of the serial port and stores it in the location pointed to by the argument. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8c_ad1c6433a13a139c60cd20152442b4dcb}{get\+\_\+lcr}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}lcr)
+\begin{DoxyCompactList}\small\item\em Gets the current value of the Line Control Register (LCR) of the serial port and stores it in the location pointed to by the argument. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8c_a58f3a97f0b5a625c2093073f04960cf5}{get\+\_\+iir}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}iir)
+\item 
+int \mbox{\hyperlink{serial__port_8c_a77a614a707ed7e6ffc8e118fabacfec8}{get\+\_\+lsr}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}lsr)
+\begin{DoxyCompactList}\small\item\em Gets the current value of the Line Status Register (LSR) of the serial port and stores it in the location pointed to by the argument. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8c_af0d53eb5c9c828b62beeda7a897300f0}{set\+\_\+bit\+\_\+rate}} (uint16\+\_\+t bit\+\_\+rate)
+\begin{DoxyCompactList}\small\item\em Sets the bit rate of the serial port by calculating the appropriate divisor for the desired bit rate and writing it to the Divisor Latch LSB (DLL) and Divisor Latch MSB (DLM) registers of the serial port. This function also sets the DLAB bit of the Line Control Register (LCR) to access the divisor registers and then clears it after setting the bit rate. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8c_a9e5988172a95cfb57bedb0be3f5199f6}{serial\+\_\+port\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Subscribes to the serial port interrupts exclusively. This function also stores the bit number of the interrupt in the location pointed to by the argument, which can be used later to identify the interrupt in the interrupt handler. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8c_ac0d05cb1467f49635494aab2b083bee0}{setup\+\_\+serial\+\_\+port\+\_\+receiver}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Gathers setup logic for the serial port in the perspective of a receiver, which includes creating and initializing a receiver queue to store the received data, setting up the FIFOs, configuring the Line Control Register (LCR) with the desired settings (character length, stop bits, parity), enabling the Received Data Available Interrupt and Line Status Interrupt of the serial port, setting the bit rate of the serial port, and subscribing to the serial port interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8c_a964c498ddacebe82cbe49d676ed83752}{setup\+\_\+serial\+\_\+port\+\_\+transmitter}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Gathers setup logic for the serial port in the perspective of a transmitter, which includes setting up the FIFOs, configuring the Line Control Register (LCR) with the desired settings (character length, stop bits, parity), enabling the necessary interrupts (Received Data Available Interrupt and Line Status Interrupt), setting the bit rate of the serial port, and subscribing to the serial port interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8c_afd52bd27bbf8c2323c4f5e2dddc7bc11}{serial\+\_\+port\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes from the serial port interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8c_a63e06f2eeadd92dab1402877294fec7e}{serial\+\_\+port\+\_\+undo}} ()
+\begin{DoxyCompactList}\small\item\em Undoes the setup of the serial port, unsubscribing from the serial port interrupts, and setting every configuration made to the default state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{serial__port_8c_a4ef9025e5ef6a2069aa70b15396a9820}{get\+\_\+received\+\_\+data}} ()
+\begin{DoxyCompactList}\small\item\em Gets the queue of data received from the serial port from the receiver perspective. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8c_a40e27237d070a09a0bdfba280fbca2fb}{send\+\_\+sp\+\_\+data}} (uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Sends data through the serial port, in the perspective of a transmitter. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8c_aeb45773771775f22abeffc9725b0f484}{serial\+\_\+port\+\_\+ih}} ()
+\begin{DoxyCompactList}\small\item\em Interrupt handler for the serial port. Handles various types of interrupts generated by the serial port, namely the Received Data Available Interrupt, which triggers a read of the received data from the Receiver Buffer Register (RBR) of the serial port and stores it in the receiver queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{serial__port_8c_a5824254b9ee809852f6b67dd76e22cf3}\label{serial__port_8c_a5824254b9ee809852f6b67dd76e22cf3} 
+\index{serial\_port.c@{serial\_port.c}!BIT\_RATE@{BIT\_RATE}}
+\index{BIT\_RATE@{BIT\_RATE}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{BIT\_RATE}{BIT\_RATE}}
+{\footnotesize\ttfamily \#define BIT\+\_\+\+RATE~9600}
+
+\Hypertarget{serial__port_8c_a47203825abd79e9bcbaf30ecbf5cb206}\label{serial__port_8c_a47203825abd79e9bcbaf30ecbf5cb206} 
+\index{serial\_port.c@{serial\_port.c}!CHAR\_LENGTH@{CHAR\_LENGTH}}
+\index{CHAR\_LENGTH@{CHAR\_LENGTH}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{CHAR\_LENGTH}{CHAR\_LENGTH}}
+{\footnotesize\ttfamily \#define CHAR\+\_\+\+LENGTH~8}
+
+\Hypertarget{serial__port_8c_af6996d12e71a534569c41a25de7d6d52}\label{serial__port_8c_af6996d12e71a534569c41a25de7d6d52} 
+\index{serial\_port.c@{serial\_port.c}!PARITY@{PARITY}}
+\index{PARITY@{PARITY}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{PARITY}{PARITY}}
+{\footnotesize\ttfamily \#define PARITY~2}
+
+\Hypertarget{serial__port_8c_abd1123d1a3a1f52c36d99b27e993e282}\label{serial__port_8c_abd1123d1a3a1f52c36d99b27e993e282} 
+\index{serial\_port.c@{serial\_port.c}!STOP\_BITS@{STOP\_BITS}}
+\index{STOP\_BITS@{STOP\_BITS}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{STOP\_BITS}{STOP\_BITS}}
+{\footnotesize\ttfamily \#define STOP\+\_\+\+BITS~1}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{serial__port_8c_aa10d34c9ebec034457a5dee4d2d7124a}\label{serial__port_8c_aa10d34c9ebec034457a5dee4d2d7124a} 
+\index{serial\_port.c@{serial\_port.c}!enable\_line\_status\_interrupt@{enable\_line\_status\_interrupt}}
+\index{enable\_line\_status\_interrupt@{enable\_line\_status\_interrupt}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{enable\_line\_status\_interrupt()}{enable\_line\_status\_interrupt()}}
+{\footnotesize\ttfamily int enable\+\_\+line\+\_\+status\+\_\+interrupt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Enables the Line Status Interrupt of the IER of the serial port, which allows the serial port to generate an interrupt whenever there is a change in the error bits of the Line Status Register (LSR). 
+
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8c_a3be9dfffdd7536df866ecd9c494e1add}\label{serial__port_8c_a3be9dfffdd7536df866ecd9c494e1add} 
+\index{serial\_port.c@{serial\_port.c}!enable\_received\_data\_interrupt@{enable\_received\_data\_interrupt}}
+\index{enable\_received\_data\_interrupt@{enable\_received\_data\_interrupt}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{enable\_received\_data\_interrupt()}{enable\_received\_data\_interrupt()}}
+{\footnotesize\ttfamily int enable\+\_\+received\+\_\+data\+\_\+interrupt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Enables the Received Data Available Interrupt of the IER of the serial port, which allows the serial port to generate an interrupt whenever there is data available to be read from the Receiver Buffer Register (RBR) of the serial port. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8c_ae7e47f0cb380778ba030cc22669d770f}\label{serial__port_8c_ae7e47f0cb380778ba030cc22669d770f} 
+\index{serial\_port.c@{serial\_port.c}!enable\_transmitter\_holding\_register\_empty\_interrupt@{enable\_transmitter\_holding\_register\_empty\_interrupt}}
+\index{enable\_transmitter\_holding\_register\_empty\_interrupt@{enable\_transmitter\_holding\_register\_empty\_interrupt}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{enable\_transmitter\_holding\_register\_empty\_interrupt()}{enable\_transmitter\_holding\_register\_empty\_interrupt()}}
+{\footnotesize\ttfamily int enable\+\_\+transmitter\+\_\+holding\+\_\+register\+\_\+empty\+\_\+interrupt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Enables the Transmitter Holding Register Empty Interrupt of the IER of the serial port, which allows the serial port to generate an interrupt whenever the Transmitter Holding Register (THR) of the serial port is empty and ready to accept new data to be transmitted. 
+
+This function is not used in the project. \begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8c_a6ad7507a92d25ac570d0d32eff48fdd0}\label{serial__port_8c_a6ad7507a92d25ac570d0d32eff48fdd0} 
+\index{serial\_port.c@{serial\_port.c}!get\_ier@{get\_ier}}
+\index{get\_ier@{get\_ier}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{get\_ier()}{get\_ier()}}
+{\footnotesize\ttfamily int get\+\_\+ier (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{ier }\end{DoxyParamCaption})}
+
+
+
+Gets the current value of the Interrupt Enable Register (IER) of the serial port and stores it in the location pointed to by the argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ier} & The location where the value of the IER will be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8c_a58f3a97f0b5a625c2093073f04960cf5}\label{serial__port_8c_a58f3a97f0b5a625c2093073f04960cf5} 
+\index{serial\_port.c@{serial\_port.c}!get\_iir@{get\_iir}}
+\index{get\_iir@{get\_iir}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{get\_iir()}{get\_iir()}}
+{\footnotesize\ttfamily int get\+\_\+iir (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{iir }\end{DoxyParamCaption})}
+
+\Hypertarget{serial__port_8c_ad1c6433a13a139c60cd20152442b4dcb}\label{serial__port_8c_ad1c6433a13a139c60cd20152442b4dcb} 
+\index{serial\_port.c@{serial\_port.c}!get\_lcr@{get\_lcr}}
+\index{get\_lcr@{get\_lcr}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{get\_lcr()}{get\_lcr()}}
+{\footnotesize\ttfamily int get\+\_\+lcr (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{lcr }\end{DoxyParamCaption})}
+
+
+
+Gets the current value of the Line Control Register (LCR) of the serial port and stores it in the location pointed to by the argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcr} & The location where the value of the LCR will be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8c_a77a614a707ed7e6ffc8e118fabacfec8}\label{serial__port_8c_a77a614a707ed7e6ffc8e118fabacfec8} 
+\index{serial\_port.c@{serial\_port.c}!get\_lsr@{get\_lsr}}
+\index{get\_lsr@{get\_lsr}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{get\_lsr()}{get\_lsr()}}
+{\footnotesize\ttfamily int get\+\_\+lsr (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{lsr }\end{DoxyParamCaption})}
+
+
+
+Gets the current value of the Line Status Register (LSR) of the serial port and stores it in the location pointed to by the argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lsr} & The location where the value of the LSR will be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8c_a4ef9025e5ef6a2069aa70b15396a9820}\label{serial__port_8c_a4ef9025e5ef6a2069aa70b15396a9820} 
+\index{serial\_port.c@{serial\_port.c}!get\_received\_data@{get\_received\_data}}
+\index{get\_received\_data@{get\_received\_data}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{get\_received\_data()}{get\_received\_data()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*} get\+\_\+received\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the queue of data received from the serial port from the receiver perspective. 
+
+Although the FIFO was set to generate an interrupt whenever there is at least 1 byte in the receiver FIFO, it was noticed that sometimes a single interrupt is generated for multiple bytes received in a short time interval. This is the reason why a queue was used to store the received data, so that all the received data can be processed in the interrupt handler, even if it was received in a single interrupt.
+
+\begin{DoxyReturn}{Returns}
+The queue of data received from the serial port. 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8c_a40e27237d070a09a0bdfba280fbca2fb}\label{serial__port_8c_a40e27237d070a09a0bdfba280fbca2fb} 
+\index{serial\_port.c@{serial\_port.c}!send\_sp\_data@{send\_sp\_data}}
+\index{send\_sp\_data@{send\_sp\_data}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{send\_sp\_data()}{send\_sp\_data()}}
+{\footnotesize\ttfamily int send\+\_\+sp\+\_\+data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+Sends data through the serial port, in the perspective of a transmitter. 
+
+This function waits until the Transmitter Holding Register (THR) of the serial port is empty and ready to accept new data to be transmitted, by checking the corresponding bit in the Line Status Register (LSR) of the serial port, and then writes the data to be transmitted to the THR register of the serial port. 
+\begin{DoxyParams}{Parameters}
+{\em data} & The data to be transmitted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure. 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8c_aeb45773771775f22abeffc9725b0f484}\label{serial__port_8c_aeb45773771775f22abeffc9725b0f484} 
+\index{serial\_port.c@{serial\_port.c}!serial\_port\_ih@{serial\_port\_ih}}
+\index{serial\_port\_ih@{serial\_port\_ih}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{serial\_port\_ih()}{serial\_port\_ih()}}
+{\footnotesize\ttfamily int serial\+\_\+port\+\_\+ih (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Interrupt handler for the serial port. Handles various types of interrupts generated by the serial port, namely the Received Data Available Interrupt, which triggers a read of the received data from the Receiver Buffer Register (RBR) of the serial port and stores it in the receiver queue. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure. 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8c_a9e5988172a95cfb57bedb0be3f5199f6}\label{serial__port_8c_a9e5988172a95cfb57bedb0be3f5199f6} 
+\index{serial\_port.c@{serial\_port.c}!serial\_port\_subscribe\_int@{serial\_port\_subscribe\_int}}
+\index{serial\_port\_subscribe\_int@{serial\_port\_subscribe\_int}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{serial\_port\_subscribe\_int()}{serial\_port\_subscribe\_int()}}
+{\footnotesize\ttfamily int serial\+\_\+port\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Subscribes to the serial port interrupts exclusively. This function also stores the bit number of the interrupt in the location pointed to by the argument, which can be used later to identify the interrupt in the interrupt handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & Initially, a pointer to the bit position in the interrupt mask to be set to 1 in case of an interrupt. On success, its value is updated with the corresponding bit mask with a 1 in the \texorpdfstring{$\ast$}{*}bit\+\_\+no position (i.\+e., 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} \texorpdfstring{$\ast$}{*}bit\+\_\+no). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8c_a63e06f2eeadd92dab1402877294fec7e}\label{serial__port_8c_a63e06f2eeadd92dab1402877294fec7e} 
+\index{serial\_port.c@{serial\_port.c}!serial\_port\_undo@{serial\_port\_undo}}
+\index{serial\_port\_undo@{serial\_port\_undo}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{serial\_port\_undo()}{serial\_port\_undo()}}
+{\footnotesize\ttfamily int serial\+\_\+port\+\_\+undo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Undoes the setup of the serial port, unsubscribing from the serial port interrupts, and setting every configuration made to the default state. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8c_afd52bd27bbf8c2323c4f5e2dddc7bc11}\label{serial__port_8c_afd52bd27bbf8c2323c4f5e2dddc7bc11} 
+\index{serial\_port.c@{serial\_port.c}!serial\_port\_unsubscribe\_int@{serial\_port\_unsubscribe\_int}}
+\index{serial\_port\_unsubscribe\_int@{serial\_port\_unsubscribe\_int}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{serial\_port\_unsubscribe\_int()}{serial\_port\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int serial\+\_\+port\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes from the serial port interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8c_af0d53eb5c9c828b62beeda7a897300f0}\label{serial__port_8c_af0d53eb5c9c828b62beeda7a897300f0} 
+\index{serial\_port.c@{serial\_port.c}!set\_bit\_rate@{set\_bit\_rate}}
+\index{set\_bit\_rate@{set\_bit\_rate}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{set\_bit\_rate()}{set\_bit\_rate()}}
+{\footnotesize\ttfamily int set\+\_\+bit\+\_\+rate (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{bit\+\_\+rate }\end{DoxyParamCaption})}
+
+
+
+Sets the bit rate of the serial port by calculating the appropriate divisor for the desired bit rate and writing it to the Divisor Latch LSB (DLL) and Divisor Latch MSB (DLM) registers of the serial port. This function also sets the DLAB bit of the Line Control Register (LCR) to access the divisor registers and then clears it after setting the bit rate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+rate} & The desired bit rate for the serial port communication. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8c_adc700f915f65c2cb20b344c8d2fb87a3}\label{serial__port_8c_adc700f915f65c2cb20b344c8d2fb87a3} 
+\index{serial\_port.c@{serial\_port.c}!setup\_fifos@{setup\_fifos}}
+\index{setup\_fifos@{setup\_fifos}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{setup\_fifos()}{setup\_fifos()}}
+{\footnotesize\ttfamily int setup\+\_\+fifos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sets up both the receiver and transmitter FIFOs of the serial port, by writing to the FIFO Control Register (FCR) of the serial port, with the appropriate bits set. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8c_a827a911e118ca9df88bbc9a3ef9eadeb}\label{serial__port_8c_a827a911e118ca9df88bbc9a3ef9eadeb} 
+\index{serial\_port.c@{serial\_port.c}!setup\_lcr@{setup\_lcr}}
+\index{setup\_lcr@{setup\_lcr}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{setup\_lcr()}{setup\_lcr()}}
+{\footnotesize\ttfamily int setup\+\_\+lcr (\begin{DoxyParamCaption}\item[{int}]{char\+\_\+length,  }\item[{int}]{stop\+\_\+bits,  }\item[{int}]{parity }\end{DoxyParamCaption})}
+
+
+
+Sets up the Line Control Register (LCR) of the serial port with the desired settings for character length, stop bits and parity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em char\+\_\+length} & The desired character length. \\
+\hline
+{\em stop\+\_\+bits} & The desired number of stop bits. \\
+\hline
+{\em parity} & The desired parity setting. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure. 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8c_ac0d05cb1467f49635494aab2b083bee0}\label{serial__port_8c_ac0d05cb1467f49635494aab2b083bee0} 
+\index{serial\_port.c@{serial\_port.c}!setup\_serial\_port\_receiver@{setup\_serial\_port\_receiver}}
+\index{setup\_serial\_port\_receiver@{setup\_serial\_port\_receiver}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{setup\_serial\_port\_receiver()}{setup\_serial\_port\_receiver()}}
+{\footnotesize\ttfamily int setup\+\_\+serial\+\_\+port\+\_\+receiver (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Gathers setup logic for the serial port in the perspective of a receiver, which includes creating and initializing a receiver queue to store the received data, setting up the FIFOs, configuring the Line Control Register (LCR) with the desired settings (character length, stop bits, parity), enabling the Received Data Available Interrupt and Line Status Interrupt of the serial port, setting the bit rate of the serial port, and subscribing to the serial port interrupts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & The bit number for the serial port interrupt to pass to the subscribe function, which will be updated with the corresponding bit mask on success. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8c_a964c498ddacebe82cbe49d676ed83752}\label{serial__port_8c_a964c498ddacebe82cbe49d676ed83752} 
+\index{serial\_port.c@{serial\_port.c}!setup\_serial\_port\_transmitter@{setup\_serial\_port\_transmitter}}
+\index{setup\_serial\_port\_transmitter@{setup\_serial\_port\_transmitter}!serial\_port.c@{serial\_port.c}}
+\doxysubsubsection{\texorpdfstring{setup\_serial\_port\_transmitter()}{setup\_serial\_port\_transmitter()}}
+{\footnotesize\ttfamily int setup\+\_\+serial\+\_\+port\+\_\+transmitter (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Gathers setup logic for the serial port in the perspective of a transmitter, which includes setting up the FIFOs, configuring the Line Control Register (LCR) with the desired settings (character length, stop bits, parity), enabling the necessary interrupts (Received Data Available Interrupt and Line Status Interrupt), setting the bit rate of the serial port, and subscribing to the serial port interrupts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & The bit number for the serial port interrupt to pass to the subscribe function, which will be updated with the corresponding bit mask on success. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}

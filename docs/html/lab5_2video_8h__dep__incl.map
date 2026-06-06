@@ -1,0 +1,13 @@
+<map id="lab5/video.h" name="lab5/video.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="122,5,225,31"/>
+<area shape="rect" id="Node000002" href="$lab5_8c.html" title=" " alt="" coords="5,79,99,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,40,73,81,71,76,140,35"/>
+<area shape="rect" id="Node000003" href="$lab5_2video_8c.html" title=" " alt="" coords="123,79,224,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="176,44,176,79,171,79,171,44"/>
+<area shape="rect" id="Node000004" href="$subscribe_8h.html" title=" " alt="" coords="248,79,427,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="213,34,312,76,309,81,211,39"/>
+<area shape="rect" id="Node000005" href="$subscribe_8c.html" title=" " alt="" coords="167,152,345,177"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="316,115,271,154,268,150,312,111"/>
+<area shape="rect" id="Node000006" href="$proj_2main_8c.html" title=" " alt="" coords="370,152,465,177"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="362,111,406,150,402,154,358,115"/>
+</map>

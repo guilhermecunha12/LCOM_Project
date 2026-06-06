@@ -1,0 +1,65 @@
+\doxysection{proj/sound.c File Reference}
+\hypertarget{sound_8c}{}\label{sound_8c}\index{proj/sound.c@{proj/sound.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+Include dependency graph for sound.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=156pt]{sound_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{sound_8c_a01a82b56910093138e2c3c6c12bcf1b5}{SOUND\+\_\+\+TRIGGER\+\_\+\+PATH}}~"{}/home/lcom/labs/proj/sound\+\_\+trigger.\+txt"{}
+\begin{DoxyCompactList}\small\item\em This module interacts with a python code that runs on the HOST machine to play sound effects. It does so by writing the name of the sound effect to a specific file, which the python code monitors for changes. When a new sound name is written, the python code plays the corresponding sound effect. This allows for a simple and effective way to trigger sound effects from the game without needing complex audio handling within the game itself. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{sound_8c_a74698c7f1a8480db111985d0544c22f8}{play\+\_\+sound}} (const char \texorpdfstring{$\ast$}{*}sound\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Plays a sound effect based on the provided sound name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sound_8c_a7af29ef84e346502d53907ea1057d2c4}{stop\+\_\+sound}} (void)
+\begin{DoxyCompactList}\small\item\em Stops any currently playing sound effect. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{sound_8c_a01a82b56910093138e2c3c6c12bcf1b5}\label{sound_8c_a01a82b56910093138e2c3c6c12bcf1b5} 
+\index{sound.c@{sound.c}!SOUND\_TRIGGER\_PATH@{SOUND\_TRIGGER\_PATH}}
+\index{SOUND\_TRIGGER\_PATH@{SOUND\_TRIGGER\_PATH}!sound.c@{sound.c}}
+\doxysubsubsection{\texorpdfstring{SOUND\_TRIGGER\_PATH}{SOUND\_TRIGGER\_PATH}}
+{\footnotesize\ttfamily \#define SOUND\+\_\+\+TRIGGER\+\_\+\+PATH~"{}/home/lcom/labs/proj/sound\+\_\+trigger.\+txt"{}}
+
+
+
+This module interacts with a python code that runs on the HOST machine to play sound effects. It does so by writing the name of the sound effect to a specific file, which the python code monitors for changes. When a new sound name is written, the python code plays the corresponding sound effect. This allows for a simple and effective way to trigger sound effects from the game without needing complex audio handling within the game itself. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sound_8c_a74698c7f1a8480db111985d0544c22f8}\label{sound_8c_a74698c7f1a8480db111985d0544c22f8} 
+\index{sound.c@{sound.c}!play\_sound@{play\_sound}}
+\index{play\_sound@{play\_sound}!sound.c@{sound.c}}
+\doxysubsubsection{\texorpdfstring{play\_sound()}{play\_sound()}}
+{\footnotesize\ttfamily void play\+\_\+sound (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{sound\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Plays a sound effect based on the provided sound name. 
+
+This function writes the sound name to the sound device file to trigger the corresponding sound effect. 
+\begin{DoxyParams}{Parameters}
+{\em sound\+\_\+name} & The name of the sound effect to play. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sound_8c_a7af29ef84e346502d53907ea1057d2c4}\label{sound_8c_a7af29ef84e346502d53907ea1057d2c4} 
+\index{sound.c@{sound.c}!stop\_sound@{stop\_sound}}
+\index{stop\_sound@{stop\_sound}!sound.c@{sound.c}}
+\doxysubsubsection{\texorpdfstring{stop\_sound()}{stop\_sound()}}
+{\footnotesize\ttfamily void stop\+\_\+sound (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Stops any currently playing sound effect. 
+
+This function writes a stop command to the sound device file to halt any ongoing sound effects. 

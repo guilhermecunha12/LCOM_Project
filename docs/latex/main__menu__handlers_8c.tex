@@ -1,0 +1,77 @@
+\doxysection{proj/controller/handlers/main\+\_\+menu\+\_\+handlers.c File Reference}
+\hypertarget{main__menu__handlers_8c}{}\label{main__menu__handlers_8c}\index{proj/controller/handlers/main\_menu\_handlers.c@{proj/controller/handlers/main\_menu\_handlers.c}}
+{\ttfamily \#include "{}processor.\+h"{}}\newline
+{\ttfamily \#include "{}../../view/ui.\+h"{}}\newline
+{\ttfamily \#include "{}../../view/ui\+\_\+utils.\+h"{}}\newline
+{\ttfamily \#include "{}../../devices/serial\+\_\+port/serial\+\_\+port.\+h"{}}\newline
+Include dependency graph for main\+\_\+menu\+\_\+handlers.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main__menu__handlers_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main__menu__handlers_8c_a79c2fa2279a2ca6de1bf780510fbed94}{handle\+\_\+main\+\_\+menu\+\_\+mouse\+\_\+click}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for mouse left button click events in the main menu state. It checks if the click was on the "{}\+New Game"{} "{}\+Continue"{} or "{}\+Exit Game"{} buttons and updates the game state accordingly (starting a new game or exiting). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main__menu__handlers_8c_abcfc4975ed0cfab11b3cc906cc93b607}{handle\+\_\+main\+\_\+menu\+\_\+mouse\+\_\+move}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Calls general\+\_\+mouse\+\_\+move and then checks if the mouse is inside any of the main menu options (New Game, Continue, Exit Game) to update the selected option in the main menu state accordingly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main__menu__handlers_8c_ae6428480bce6fd8a3cc502c1809861af}{handle\+\_\+main\+\_\+menu\+\_\+keyboard}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for keyboard events in the main menu state. This handler manages keyboard input for navigating the main menu options (e.\+g., moving selection up/down and executing the selected option). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main__menu__handlers_8c_ae6428480bce6fd8a3cc502c1809861af}\label{main__menu__handlers_8c_ae6428480bce6fd8a3cc502c1809861af} 
+\index{main\_menu\_handlers.c@{main\_menu\_handlers.c}!handle\_main\_menu\_keyboard@{handle\_main\_menu\_keyboard}}
+\index{handle\_main\_menu\_keyboard@{handle\_main\_menu\_keyboard}!main\_menu\_handlers.c@{main\_menu\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{handle\_main\_menu\_keyboard()}{handle\_main\_menu\_keyboard()}}
+{\footnotesize\ttfamily void handle\+\_\+main\+\_\+menu\+\_\+keyboard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for keyboard events in the main menu state. This handler manages keyboard input for navigating the main menu options (e.\+g., moving selection up/down and executing the selected option). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to update the main menu selection. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the keyboard input data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{main__menu__handlers_8c_a79c2fa2279a2ca6de1bf780510fbed94}\label{main__menu__handlers_8c_a79c2fa2279a2ca6de1bf780510fbed94} 
+\index{main\_menu\_handlers.c@{main\_menu\_handlers.c}!handle\_main\_menu\_mouse\_click@{handle\_main\_menu\_mouse\_click}}
+\index{handle\_main\_menu\_mouse\_click@{handle\_main\_menu\_mouse\_click}!main\_menu\_handlers.c@{main\_menu\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{handle\_main\_menu\_mouse\_click()}{handle\_main\_menu\_mouse\_click()}}
+{\footnotesize\ttfamily void handle\+\_\+main\+\_\+menu\+\_\+mouse\+\_\+click (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for mouse left button click events in the main menu state. It checks if the click was on the "{}\+New Game"{} "{}\+Continue"{} or "{}\+Exit Game"{} buttons and updates the game state accordingly (starting a new game or exiting). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified based on the click. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the mouse click data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{main__menu__handlers_8c_abcfc4975ed0cfab11b3cc906cc93b607}\label{main__menu__handlers_8c_abcfc4975ed0cfab11b3cc906cc93b607} 
+\index{main\_menu\_handlers.c@{main\_menu\_handlers.c}!handle\_main\_menu\_mouse\_move@{handle\_main\_menu\_mouse\_move}}
+\index{handle\_main\_menu\_mouse\_move@{handle\_main\_menu\_mouse\_move}!main\_menu\_handlers.c@{main\_menu\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{handle\_main\_menu\_mouse\_move()}{handle\_main\_menu\_mouse\_move()}}
+{\footnotesize\ttfamily void handle\+\_\+main\+\_\+menu\+\_\+mouse\+\_\+move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Calls general\+\_\+mouse\+\_\+move and then checks if the mouse is inside any of the main menu options (New Game, Continue, Exit Game) to update the selected option in the main menu state accordingly. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified based on the mouse coordinates. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the mouse movement data (delta\+\_\+x and delta\+\_\+y). \\
+\hline
+\end{DoxyParams}

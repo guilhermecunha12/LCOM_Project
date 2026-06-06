@@ -1,0 +1,13 @@
+<map id="proj/models/assets.h" name="proj/models/assets.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="41,5,199,31"/>
+<area shape="rect" id="Node000002" href="$sprite_8h.html" title=" " alt="" coords="27,79,98,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,33,83,70,79,66,108,29"/>
+<area shape="rect" id="Node000004" href="$animatronic_8h.html" title=" " alt="" coords="136,79,248,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="134,29,172,67,169,71,130,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,91,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="63,105,56,139,51,138,58,104"/>
+<area shape="rect" id="Node000005" href="$game__constants_8h.html" title=" " alt="" coords="115,152,269,177"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="195,104,195,138,189,138,189,104"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="293,152,376,177"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="216,102,300,143,298,148,214,106"/>
+</map>

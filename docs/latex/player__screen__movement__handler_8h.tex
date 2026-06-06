@@ -1,0 +1,60 @@
+\doxysection{proj/controller/handlers/helpers/player\+\_\+screen\+\_\+movement\+\_\+handler.h File Reference}
+\hypertarget{player__screen__movement__handler_8h}{}\label{player__screen__movement__handler_8h}\index{proj/controller/handlers/helpers/player\_screen\_movement\_handler.h@{proj/controller/handlers/helpers/player\_screen\_movement\_handler.h}}
+{\ttfamily \#include "{}../../../state.\+h"{}}\newline
+{\ttfamily \#include "{}../../../view/ui.\+h"{}}\newline
+Include dependency graph for player\+\_\+screen\+\_\+movement\+\_\+handler.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__screen__movement__handler_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player__screen__movement__handler_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{player__screen__movement__handler_8h_aebb381adb05f8c1907a8f44c3a7c714e}{move\+\_\+player\+\_\+screen\+\_\+left}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Helper function to move the player\textquotesingle{}s screen to the left. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player__screen__movement__handler_8h_ae77dd2d5e71dd806d2b427190989ae70}{move\+\_\+player\+\_\+screen\+\_\+right}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Helper function to move the player\textquotesingle{}s screen to the right. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{player__screen__movement__handler_8h_aebb381adb05f8c1907a8f44c3a7c714e}\label{player__screen__movement__handler_8h_aebb381adb05f8c1907a8f44c3a7c714e} 
+\index{player\_screen\_movement\_handler.h@{player\_screen\_movement\_handler.h}!move\_player\_screen\_left@{move\_player\_screen\_left}}
+\index{move\_player\_screen\_left@{move\_player\_screen\_left}!player\_screen\_movement\_handler.h@{player\_screen\_movement\_handler.h}}
+\doxysubsubsection{\texorpdfstring{move\_player\_screen\_left()}{move\_player\_screen\_left()}}
+{\footnotesize\ttfamily void move\+\_\+player\+\_\+screen\+\_\+left (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Helper function to move the player\textquotesingle{}s screen to the left. 
+
+This function was created since code would be duplicated in both night survival and night no battery handlers, and it is better to have it in a single place. It modifies the background movement direction to LEFT. 
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to update the background movement direction. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{player__screen__movement__handler_8h_ae77dd2d5e71dd806d2b427190989ae70}\label{player__screen__movement__handler_8h_ae77dd2d5e71dd806d2b427190989ae70} 
+\index{player\_screen\_movement\_handler.h@{player\_screen\_movement\_handler.h}!move\_player\_screen\_right@{move\_player\_screen\_right}}
+\index{move\_player\_screen\_right@{move\_player\_screen\_right}!player\_screen\_movement\_handler.h@{player\_screen\_movement\_handler.h}}
+\doxysubsubsection{\texorpdfstring{move\_player\_screen\_right()}{move\_player\_screen\_right()}}
+{\footnotesize\ttfamily void move\+\_\+player\+\_\+screen\+\_\+right (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Helper function to move the player\textquotesingle{}s screen to the right. 
+
+This function was created since code would be duplicated in both night survival and night no battery handlers, and it is better to have it in a single place. It modifies the background movement direction to RIGHT. 
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to update the background movement direction. \\
+\hline
+\end{DoxyParams}

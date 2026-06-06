@@ -1,0 +1,110 @@
+\doxysection{Anim\+Sprite Struct Reference}
+\hypertarget{structAnimSprite}{}\label{structAnimSprite}\index{AnimSprite@{AnimSprite}}
+
+
+Animated sprite structure that extends the basic sprite structure by adding animation-\/related information.  
+
+
+
+
+{\ttfamily \#include $<$sprite.\+h$>$}
+
+
+
+Collaboration diagram for Anim\+Sprite\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{structAnimSprite__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structAnimSprite_a6573ed91ee9f3f9102cc54435af2fd94}{sp}}
+\item 
+int \mbox{\hyperlink{structAnimSprite_aa9c28937b964c0e3a65bf5eb3f4be172}{aspeed}}
+\item 
+int \mbox{\hyperlink{structAnimSprite_a3206cf4225f5833fca57857b8a52dd2f}{cur\+\_\+aspeed}}
+\item 
+int \mbox{\hyperlink{structAnimSprite_a245ddba935a16902ed5227a596087277}{num\+\_\+fig}}
+\item 
+int \mbox{\hyperlink{structAnimSprite_a1d1b9580302ed9fc1c0dde40feb6038e}{cur\+\_\+fig}}
+\item 
+bool \mbox{\hyperlink{structAnimSprite_adeb305259573efe6a14f73fe1c0539b9}{is\+\_\+finished}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structAnimSprite_a165ea8ec364c9098c5014157b83a948a}{map}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Animated sprite structure that extends the basic sprite structure by adding animation-\/related information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sp} & pointer to the standard sprite definition \\
+\hline
+{\em aspeed} & no. frames per pixmap \\
+\hline
+{\em cur\+\_\+aspeed} & no. frames left for the current pixmap \\
+\hline
+{\em num\+\_\+fig} & total number of pixmaps \\
+\hline
+{\em cur\+\_\+fig} & current pixmap \\
+\hline
+{\em is\+\_\+finished} & boolean that indicates if the animation has finished playing (useful for animations that should only play once) \\
+\hline
+{\em map} & array of pointers to pixmaps \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{structAnimSprite_aa9c28937b964c0e3a65bf5eb3f4be172}\label{structAnimSprite_aa9c28937b964c0e3a65bf5eb3f4be172} 
+\index{AnimSprite@{AnimSprite}!aspeed@{aspeed}}
+\index{aspeed@{aspeed}!AnimSprite@{AnimSprite}}
+\doxysubsubsection{\texorpdfstring{aspeed}{aspeed}}
+{\footnotesize\ttfamily int Anim\+Sprite\+::aspeed}
+
+\Hypertarget{structAnimSprite_a3206cf4225f5833fca57857b8a52dd2f}\label{structAnimSprite_a3206cf4225f5833fca57857b8a52dd2f} 
+\index{AnimSprite@{AnimSprite}!cur\_aspeed@{cur\_aspeed}}
+\index{cur\_aspeed@{cur\_aspeed}!AnimSprite@{AnimSprite}}
+\doxysubsubsection{\texorpdfstring{cur\_aspeed}{cur\_aspeed}}
+{\footnotesize\ttfamily int Anim\+Sprite\+::cur\+\_\+aspeed}
+
+\Hypertarget{structAnimSprite_a1d1b9580302ed9fc1c0dde40feb6038e}\label{structAnimSprite_a1d1b9580302ed9fc1c0dde40feb6038e} 
+\index{AnimSprite@{AnimSprite}!cur\_fig@{cur\_fig}}
+\index{cur\_fig@{cur\_fig}!AnimSprite@{AnimSprite}}
+\doxysubsubsection{\texorpdfstring{cur\_fig}{cur\_fig}}
+{\footnotesize\ttfamily int Anim\+Sprite\+::cur\+\_\+fig}
+
+\Hypertarget{structAnimSprite_adeb305259573efe6a14f73fe1c0539b9}\label{structAnimSprite_adeb305259573efe6a14f73fe1c0539b9} 
+\index{AnimSprite@{AnimSprite}!is\_finished@{is\_finished}}
+\index{is\_finished@{is\_finished}!AnimSprite@{AnimSprite}}
+\doxysubsubsection{\texorpdfstring{is\_finished}{is\_finished}}
+{\footnotesize\ttfamily bool Anim\+Sprite\+::is\+\_\+finished}
+
+\Hypertarget{structAnimSprite_a165ea8ec364c9098c5014157b83a948a}\label{structAnimSprite_a165ea8ec364c9098c5014157b83a948a} 
+\index{AnimSprite@{AnimSprite}!map@{map}}
+\index{map@{map}!AnimSprite@{AnimSprite}}
+\doxysubsubsection{\texorpdfstring{map}{map}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Anim\+Sprite\+::map}
+
+\Hypertarget{structAnimSprite_a245ddba935a16902ed5227a596087277}\label{structAnimSprite_a245ddba935a16902ed5227a596087277} 
+\index{AnimSprite@{AnimSprite}!num\_fig@{num\_fig}}
+\index{num\_fig@{num\_fig}!AnimSprite@{AnimSprite}}
+\doxysubsubsection{\texorpdfstring{num\_fig}{num\_fig}}
+{\footnotesize\ttfamily int Anim\+Sprite\+::num\+\_\+fig}
+
+\Hypertarget{structAnimSprite_a6573ed91ee9f3f9102cc54435af2fd94}\label{structAnimSprite_a6573ed91ee9f3f9102cc54435af2fd94} 
+\index{AnimSprite@{AnimSprite}!sp@{sp}}
+\index{sp@{sp}!AnimSprite@{AnimSprite}}
+\doxysubsubsection{\texorpdfstring{sp}{sp}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}\texorpdfstring{$\ast$}{*} Anim\+Sprite\+::sp}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+proj/models/\mbox{\hyperlink{sprite_8h}{sprite.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,116 @@
+\doxysection{serial\+\_\+port.\+h}
+\hypertarget{serial__port_8h_source}{}\label{serial__port_8h_source}\index{proj/devices/serial\_port/serial\_port.h@{proj/devices/serial\_port/serial\_port.h}}
+\mbox{\hyperlink{serial__port_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SERIAL\_PORT\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SERIAL\_PORT\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{queue_8h}{queue.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ IRQ\_COM1\ 4}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ DIVIDED\_CLOCK\_FREQUENCY\ 115200}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ COM1\_BASE\ 0x3F8}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ THR\_OFFSET\ 0}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ RBR\_OFFSET\ 0}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ IER\_OFFSET\ 1}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ IER\_RECEIVED\_DATA\_AVAILABLE\_INTERRUPT\ BIT(0)}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ IER\_TRANSMITTER\_HOLDING\_REGISTER\_EMPTY\_INTERRUPT\ BIT(1)}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ IER\_LINE\_STATUS\_INTERRUPT\ BIT(2)}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ IER\_CLEAR\_INTERRUPTS\ 0xF8\ }\textcolor{comment}{//\ clears\ only\ the\ first\ 3\ bits\ of\ the\ IER}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ IIR\_OFFSET\ 2}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ IIR\_NO\_INTERRUPT\_PENDING\ BIT(0)}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ IIR\_INTERRUPT\_TYPE(iir)\ (iir\ >>\ 1)\ \&\ 0x7\ }\textcolor{comment}{//\ bits\ 1,\ 2\ and\ 3\ of\ the\ IIR\ indicate\ the\ type\ of\ interrupt\ that\ is\ pending}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ IIR\_RECEIVER\_LINE\_STATUS\_INTERRUPT\ 0x3}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ IIR\_RECEIVED\_DATA\_AVAILABLE\_INTERRUPT\ 0x2}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ IIR\_CHARACTER\_TIMEOUT\_INTERRUPT\ 0x6}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ IIR\_TRANSMITTER\_HOLDING\_REGISTER\_EMPTY\_INTERRUPT\ 0x1}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ IIR\_FIFOS\_ENABLED\ BIT(7)\ |\ BIT(6)}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ FCR\_OFFSET\ 2}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ FCR\_ENABLE\_FIFO\ BIT(0)}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ FCR\_CLEAR\_RECEIVER\_FIFO\ BIT(1)}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#define\ FCR\_CLEAR\_TRANSMITTER\_FIFO\ BIT(2)}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ FCR\_1BYTE\_TRIGGER\_LEVEL\ 0x3F}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ LCR\_OFFSET\ 3}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ LCR\_CHAR\_LENGTH\_6\ BIT(0)}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ LCR\_CHAR\_LENGTH\_7\ BIT(1)}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ LCR\_CHAR\_LENGTH\_8\ BIT(1)\ |\ BIT(0)}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ LCR\_STOP\_BIT\_2\ BIT(2)}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#define\ LCR\_ODD\_PARITY\ BIT(3)}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#define\ LCR\_EVEN\_PARITY\ BIT(4)\ |\ BIT(3)}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ LCR\_FORCED1\_PARITY\ BIT(5)\ |\ BIT(3)}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#define\ LCR\_FORCED0\_PARITY\ BIT(5)\ |\ BIT(4)\ |\ BIT(3)}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#define\ LCR\_CLEAR\_EXCEPT\_BREAK\_CONTROL\ 0x40}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#define\ LSR\_OFFSET\ 5}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#define\ LSR\_DATA\_READY\ BIT(0)}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ LSR\_OVERRUN\_ERROR\ BIT(1)}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ LSR\_PARITY\_ERROR\ BIT(2)}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#define\ LSR\_FRAMING\_ERROR\ BIT(3)}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#define\ DLL\_OFFSET\ 0}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#define\ DLM\_OFFSET\ 1}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#define\ LCR\_DLAB\ BIT(7)}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ LSR\_TRANSMITTER\_HOLDING\_REGISTER\_EMPTY\ BIT(5)}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00126\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{serial__port_8h_adc700f915f65c2cb20b344c8d2fb87a3}{setup\_fifos}}();}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00135\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{serial__port_8h_a827a911e118ca9df88bbc9a3ef9eadeb}{setup\_lcr}}(\textcolor{keywordtype}{int}\ char\_length,\ \textcolor{keywordtype}{int}\ stop\_bits,\ \textcolor{keywordtype}{int}\ parity);}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00141\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{serial__port_8h_a3be9dfffdd7536df866ecd9c494e1add}{enable\_received\_data\_interrupt}}();}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00148\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{serial__port_8h_ae7e47f0cb380778ba030cc22669d770f}{enable\_transmitter\_holding\_register\_empty\_interrupt}}();}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00154\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{serial__port_8h_aa10d34c9ebec034457a5dee4d2d7124a}{enable\_line\_status\_interrupt}}();}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00161\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{serial__port_8h_a6ad7507a92d25ac570d0d32eff48fdd0}{get\_ier}}(uint8\_t\ *ier);}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00168\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{serial__port_8h_ad1c6433a13a139c60cd20152442b4dcb}{get\_lcr}}(uint8\_t\ *lcr);}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00175\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{serial__port_8h_a767c942598e55f30a2caee34e27847fb}{get\_irr}}(uint8\_t\ *irr);}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00182\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{serial__port_8h_a77a614a707ed7e6ffc8e118fabacfec8}{get\_lsr}}(uint8\_t\ *lsr);}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00190\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{serial__port_8h_af0d53eb5c9c828b62beeda7a897300f0}{set\_bit\_rate}}(uint16\_t\ bit\_rate);}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \textcolor{comment}{//\ Uses\ flag\ IRQ\_EXCLUSIVE\ because\ MINIX\ has\ a\ default\ interrupt\ handler\ for\ the\ UART.}}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00199\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{serial__port_8h_a9e5988172a95cfb57bedb0be3f5199f6}{serial\_port\_subscribe\_int}}(uint8\_t\ *bit\_no);}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00207\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{serial__port_8h_a964c498ddacebe82cbe49d676ed83752}{setup\_serial\_port\_transmitter}}(uint8\_t\ *bit\_no);}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00215\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{serial__port_8h_ac0d05cb1467f49635494aab2b083bee0}{setup\_serial\_port\_receiver}}(uint8\_t\ *bit\_no);}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00221\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{serial__port_8h_afd52bd27bbf8c2323c4f5e2dddc7bc11}{serial\_port\_unsubscribe\_int}}();}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00227\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{serial__port_8h_a63e06f2eeadd92dab1402877294fec7e}{serial\_port\_undo}}();}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00235\ \mbox{\hyperlink{structQueue}{Queue}}*\ \mbox{\hyperlink{serial__port_8h_a4ef9025e5ef6a2069aa70b15396a9820}{get\_received\_data}}();}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00243\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{serial__port_8h_a40e27237d070a09a0bdfba280fbca2fb}{send\_sp\_data}}(uint8\_t\ data);}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00245\ \textcolor{comment}{//\ To\ receive\ data\ -\/\ called\ after\ a\ received\ data\ interrupt\ is\ generated.}}
+\DoxyCodeLine{00250\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{serial__port_8h_aeb45773771775f22abeffc9725b0f484}{serial\_port\_ih}}();}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00252\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SERIAL\_PORT\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

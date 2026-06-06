@@ -1,0 +1,9 @@
+<map id="proj/controller/handlers/helpers/player_screen_movement_handler.h" name="proj/controller/handlers/helpers/player_screen_movement_handler.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="221,5,395,60"/>
+<area shape="rect" id="Node000002" href="$player__screen__movement__handler_8c.html" title=" " alt="" coords="5,108,179,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="241,68,149,110,147,106,238,63"/>
+<area shape="rect" id="Node000003" href="$night__no__battery__handlers_8c.html" title=" " alt="" coords="203,115,413,155"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="311,74,311,115,305,115,305,74"/>
+<area shape="rect" id="Node000004" href="$night__survival__handlers_8c.html" title=" " alt="" coords="437,115,629,155"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="380,63,492,113,490,118,378,68"/>
+</map>

@@ -1,0 +1,223 @@
+\doxysection{proj/devices/serial\+\_\+port/sp\+\_\+encoding.h File Reference}
+\hypertarget{sp__encoding_8h}{}\label{sp__encoding_8h}\index{proj/devices/serial\_port/sp\_encoding.h@{proj/devices/serial\_port/sp\_encoding.h}}
+{\ttfamily \#include "{}../../models/animatronic.\+h"{}}\newline
+{\ttfamily \#include "{}../../game\+\_\+constants.\+h"{}}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for sp\+\_\+encoding.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sp__encoding_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sp__encoding_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_a65965ae2d122c880d02c68ebc1da0ec2}{ENDED\+\_\+\+NIGHT\+\_\+\+SURVIVAL}}~0x00
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_a581f09f4b3a0871075f42274e1b889d5}{STARTED\+\_\+\+NIGHT\+\_\+\+SURVIVAL}}~0x01
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_ad67449397fd3f65837a2363c1eb7805d}{ENC\+\_\+\+FREDDY}}~0x0
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_a8f7d9151fbf724164600a25907fc0c56}{ENC\+\_\+\+BONNIE}}~0x1
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_a9ce6efc07d015844d2a02b9d972c254c}{ENC\+\_\+\+CHICA}}~0x2
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_a45700b78bd5786d3f99f5b5ccadc7060}{ENC\+\_\+\+FOXY}}~0x3
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_aa19093eb0aa5c5af9c27464ae8f0d2de}{DOOR}}~0xF
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_a5ace47ce119f7e98e51c426343fedc93}{CAMERA\+\_\+1}}~0x1
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_ab7e4c0d6b319e7cf599e6350b4388197}{CAMERA\+\_\+2}}~0x2
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_a544adb3d28273309b1a2a79b580782d0}{CAMERA\+\_\+3}}~0x3
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_ae4109fb9a6d00ce39317ada7a9cde763}{CAMERA\+\_\+4}}~0x4
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_a2f3c815f54297ba250434201150c06b1}{CAMERA\+\_\+5}}~0x5
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_ac3abceb18d438f1beea7530726ce866f}{CAMERA\+\_\+6}}~0x6
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_a28bfb3449e9acafe705b4757b1e3b088}{CAMERA\+\_\+7}}~0x7
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_a4fe6742257bc7ede0b1c269eb4330cae}{CAMERA\+\_\+\+NO\+\_\+\+LETTER}}~0x0
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_a06f79e89a8e7148530c80b21d8da8bea}{CAMERA\+\_\+A}}~0x1
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_a9d9075daeed55ccf42376dd1a2c16680}{CAMERA\+\_\+B}}~0x2
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_aa81bd1028b7409584c3b6a33ec71a187}{CAMERA\+\_\+C}}~0x3
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_af592cb62cd7c8e9b3072c6a1ac8ba9c1}{EXTRACT\+\_\+\+ANIMATRONIC}}(data)~((data $>$$>$ 6) \& 0x03)
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_afd669e4a9203655b9b8965e6179d77b9}{EXTRACT\+\_\+\+CAMERA\+\_\+\+NUMBER}}(data)~((data $>$$>$ 2) \& 0x0F)
+\item 
+\#define \mbox{\hyperlink{sp__encoding_8h_aa7f615b31dd2dfc33061dce739310620}{EXTRACT\+\_\+\+CAMERA\+\_\+\+LETTER}}(data)~(data \& 0x03)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{sp__encoding_8h_af68fb85709e619dbe15890e5fcd466dc}{encode\+\_\+animatronic\+\_\+data}} (\mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4}{Animatronic\+Name}} name, \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850}{Camera\+ID}} position)
+\begin{DoxyCompactList}\small\item\em Encodes the animatronic\textquotesingle{}s name and position (camera) into a single byte of data to be sent through the serial port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{sp__encoding_8h_a5ace47ce119f7e98e51c426343fedc93}\label{sp__encoding_8h_a5ace47ce119f7e98e51c426343fedc93} 
+\index{sp\_encoding.h@{sp\_encoding.h}!CAMERA\_1@{CAMERA\_1}}
+\index{CAMERA\_1@{CAMERA\_1}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{CAMERA\_1}{CAMERA\_1}}
+{\footnotesize\ttfamily \#define CAMERA\+\_\+1~0x1}
+
+\Hypertarget{sp__encoding_8h_ab7e4c0d6b319e7cf599e6350b4388197}\label{sp__encoding_8h_ab7e4c0d6b319e7cf599e6350b4388197} 
+\index{sp\_encoding.h@{sp\_encoding.h}!CAMERA\_2@{CAMERA\_2}}
+\index{CAMERA\_2@{CAMERA\_2}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{CAMERA\_2}{CAMERA\_2}}
+{\footnotesize\ttfamily \#define CAMERA\+\_\+2~0x2}
+
+\Hypertarget{sp__encoding_8h_a544adb3d28273309b1a2a79b580782d0}\label{sp__encoding_8h_a544adb3d28273309b1a2a79b580782d0} 
+\index{sp\_encoding.h@{sp\_encoding.h}!CAMERA\_3@{CAMERA\_3}}
+\index{CAMERA\_3@{CAMERA\_3}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{CAMERA\_3}{CAMERA\_3}}
+{\footnotesize\ttfamily \#define CAMERA\+\_\+3~0x3}
+
+\Hypertarget{sp__encoding_8h_ae4109fb9a6d00ce39317ada7a9cde763}\label{sp__encoding_8h_ae4109fb9a6d00ce39317ada7a9cde763} 
+\index{sp\_encoding.h@{sp\_encoding.h}!CAMERA\_4@{CAMERA\_4}}
+\index{CAMERA\_4@{CAMERA\_4}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{CAMERA\_4}{CAMERA\_4}}
+{\footnotesize\ttfamily \#define CAMERA\+\_\+4~0x4}
+
+\Hypertarget{sp__encoding_8h_a2f3c815f54297ba250434201150c06b1}\label{sp__encoding_8h_a2f3c815f54297ba250434201150c06b1} 
+\index{sp\_encoding.h@{sp\_encoding.h}!CAMERA\_5@{CAMERA\_5}}
+\index{CAMERA\_5@{CAMERA\_5}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{CAMERA\_5}{CAMERA\_5}}
+{\footnotesize\ttfamily \#define CAMERA\+\_\+5~0x5}
+
+\Hypertarget{sp__encoding_8h_ac3abceb18d438f1beea7530726ce866f}\label{sp__encoding_8h_ac3abceb18d438f1beea7530726ce866f} 
+\index{sp\_encoding.h@{sp\_encoding.h}!CAMERA\_6@{CAMERA\_6}}
+\index{CAMERA\_6@{CAMERA\_6}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{CAMERA\_6}{CAMERA\_6}}
+{\footnotesize\ttfamily \#define CAMERA\+\_\+6~0x6}
+
+\Hypertarget{sp__encoding_8h_a28bfb3449e9acafe705b4757b1e3b088}\label{sp__encoding_8h_a28bfb3449e9acafe705b4757b1e3b088} 
+\index{sp\_encoding.h@{sp\_encoding.h}!CAMERA\_7@{CAMERA\_7}}
+\index{CAMERA\_7@{CAMERA\_7}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{CAMERA\_7}{CAMERA\_7}}
+{\footnotesize\ttfamily \#define CAMERA\+\_\+7~0x7}
+
+\Hypertarget{sp__encoding_8h_a06f79e89a8e7148530c80b21d8da8bea}\label{sp__encoding_8h_a06f79e89a8e7148530c80b21d8da8bea} 
+\index{sp\_encoding.h@{sp\_encoding.h}!CAMERA\_A@{CAMERA\_A}}
+\index{CAMERA\_A@{CAMERA\_A}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{CAMERA\_A}{CAMERA\_A}}
+{\footnotesize\ttfamily \#define CAMERA\+\_\+A~0x1}
+
+\Hypertarget{sp__encoding_8h_a9d9075daeed55ccf42376dd1a2c16680}\label{sp__encoding_8h_a9d9075daeed55ccf42376dd1a2c16680} 
+\index{sp\_encoding.h@{sp\_encoding.h}!CAMERA\_B@{CAMERA\_B}}
+\index{CAMERA\_B@{CAMERA\_B}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{CAMERA\_B}{CAMERA\_B}}
+{\footnotesize\ttfamily \#define CAMERA\+\_\+B~0x2}
+
+\Hypertarget{sp__encoding_8h_aa81bd1028b7409584c3b6a33ec71a187}\label{sp__encoding_8h_aa81bd1028b7409584c3b6a33ec71a187} 
+\index{sp\_encoding.h@{sp\_encoding.h}!CAMERA\_C@{CAMERA\_C}}
+\index{CAMERA\_C@{CAMERA\_C}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{CAMERA\_C}{CAMERA\_C}}
+{\footnotesize\ttfamily \#define CAMERA\+\_\+C~0x3}
+
+\Hypertarget{sp__encoding_8h_a4fe6742257bc7ede0b1c269eb4330cae}\label{sp__encoding_8h_a4fe6742257bc7ede0b1c269eb4330cae} 
+\index{sp\_encoding.h@{sp\_encoding.h}!CAMERA\_NO\_LETTER@{CAMERA\_NO\_LETTER}}
+\index{CAMERA\_NO\_LETTER@{CAMERA\_NO\_LETTER}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{CAMERA\_NO\_LETTER}{CAMERA\_NO\_LETTER}}
+{\footnotesize\ttfamily \#define CAMERA\+\_\+\+NO\+\_\+\+LETTER~0x0}
+
+\Hypertarget{sp__encoding_8h_aa19093eb0aa5c5af9c27464ae8f0d2de}\label{sp__encoding_8h_aa19093eb0aa5c5af9c27464ae8f0d2de} 
+\index{sp\_encoding.h@{sp\_encoding.h}!DOOR@{DOOR}}
+\index{DOOR@{DOOR}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{DOOR}{DOOR}}
+{\footnotesize\ttfamily \#define DOOR~0xF}
+
+\Hypertarget{sp__encoding_8h_a8f7d9151fbf724164600a25907fc0c56}\label{sp__encoding_8h_a8f7d9151fbf724164600a25907fc0c56} 
+\index{sp\_encoding.h@{sp\_encoding.h}!ENC\_BONNIE@{ENC\_BONNIE}}
+\index{ENC\_BONNIE@{ENC\_BONNIE}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{ENC\_BONNIE}{ENC\_BONNIE}}
+{\footnotesize\ttfamily \#define ENC\+\_\+\+BONNIE~0x1}
+
+\Hypertarget{sp__encoding_8h_a9ce6efc07d015844d2a02b9d972c254c}\label{sp__encoding_8h_a9ce6efc07d015844d2a02b9d972c254c} 
+\index{sp\_encoding.h@{sp\_encoding.h}!ENC\_CHICA@{ENC\_CHICA}}
+\index{ENC\_CHICA@{ENC\_CHICA}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{ENC\_CHICA}{ENC\_CHICA}}
+{\footnotesize\ttfamily \#define ENC\+\_\+\+CHICA~0x2}
+
+\Hypertarget{sp__encoding_8h_a45700b78bd5786d3f99f5b5ccadc7060}\label{sp__encoding_8h_a45700b78bd5786d3f99f5b5ccadc7060} 
+\index{sp\_encoding.h@{sp\_encoding.h}!ENC\_FOXY@{ENC\_FOXY}}
+\index{ENC\_FOXY@{ENC\_FOXY}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{ENC\_FOXY}{ENC\_FOXY}}
+{\footnotesize\ttfamily \#define ENC\+\_\+\+FOXY~0x3}
+
+\Hypertarget{sp__encoding_8h_ad67449397fd3f65837a2363c1eb7805d}\label{sp__encoding_8h_ad67449397fd3f65837a2363c1eb7805d} 
+\index{sp\_encoding.h@{sp\_encoding.h}!ENC\_FREDDY@{ENC\_FREDDY}}
+\index{ENC\_FREDDY@{ENC\_FREDDY}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{ENC\_FREDDY}{ENC\_FREDDY}}
+{\footnotesize\ttfamily \#define ENC\+\_\+\+FREDDY~0x0}
+
+\Hypertarget{sp__encoding_8h_a65965ae2d122c880d02c68ebc1da0ec2}\label{sp__encoding_8h_a65965ae2d122c880d02c68ebc1da0ec2} 
+\index{sp\_encoding.h@{sp\_encoding.h}!ENDED\_NIGHT\_SURVIVAL@{ENDED\_NIGHT\_SURVIVAL}}
+\index{ENDED\_NIGHT\_SURVIVAL@{ENDED\_NIGHT\_SURVIVAL}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{ENDED\_NIGHT\_SURVIVAL}{ENDED\_NIGHT\_SURVIVAL}}
+{\footnotesize\ttfamily \#define ENDED\+\_\+\+NIGHT\+\_\+\+SURVIVAL~0x00}
+
+\Hypertarget{sp__encoding_8h_af592cb62cd7c8e9b3072c6a1ac8ba9c1}\label{sp__encoding_8h_af592cb62cd7c8e9b3072c6a1ac8ba9c1} 
+\index{sp\_encoding.h@{sp\_encoding.h}!EXTRACT\_ANIMATRONIC@{EXTRACT\_ANIMATRONIC}}
+\index{EXTRACT\_ANIMATRONIC@{EXTRACT\_ANIMATRONIC}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{EXTRACT\_ANIMATRONIC}{EXTRACT\_ANIMATRONIC}}
+{\footnotesize\ttfamily \#define EXTRACT\+\_\+\+ANIMATRONIC(\begin{DoxyParamCaption}\item[{}]{data }\end{DoxyParamCaption})~((data $>$$>$ 6) \& 0x03)}
+
+\Hypertarget{sp__encoding_8h_aa7f615b31dd2dfc33061dce739310620}\label{sp__encoding_8h_aa7f615b31dd2dfc33061dce739310620} 
+\index{sp\_encoding.h@{sp\_encoding.h}!EXTRACT\_CAMERA\_LETTER@{EXTRACT\_CAMERA\_LETTER}}
+\index{EXTRACT\_CAMERA\_LETTER@{EXTRACT\_CAMERA\_LETTER}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{EXTRACT\_CAMERA\_LETTER}{EXTRACT\_CAMERA\_LETTER}}
+{\footnotesize\ttfamily \#define EXTRACT\+\_\+\+CAMERA\+\_\+\+LETTER(\begin{DoxyParamCaption}\item[{}]{data }\end{DoxyParamCaption})~(data \& 0x03)}
+
+\Hypertarget{sp__encoding_8h_afd669e4a9203655b9b8965e6179d77b9}\label{sp__encoding_8h_afd669e4a9203655b9b8965e6179d77b9} 
+\index{sp\_encoding.h@{sp\_encoding.h}!EXTRACT\_CAMERA\_NUMBER@{EXTRACT\_CAMERA\_NUMBER}}
+\index{EXTRACT\_CAMERA\_NUMBER@{EXTRACT\_CAMERA\_NUMBER}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{EXTRACT\_CAMERA\_NUMBER}{EXTRACT\_CAMERA\_NUMBER}}
+{\footnotesize\ttfamily \#define EXTRACT\+\_\+\+CAMERA\+\_\+\+NUMBER(\begin{DoxyParamCaption}\item[{}]{data }\end{DoxyParamCaption})~((data $>$$>$ 2) \& 0x0F)}
+
+\Hypertarget{sp__encoding_8h_a581f09f4b3a0871075f42274e1b889d5}\label{sp__encoding_8h_a581f09f4b3a0871075f42274e1b889d5} 
+\index{sp\_encoding.h@{sp\_encoding.h}!STARTED\_NIGHT\_SURVIVAL@{STARTED\_NIGHT\_SURVIVAL}}
+\index{STARTED\_NIGHT\_SURVIVAL@{STARTED\_NIGHT\_SURVIVAL}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{STARTED\_NIGHT\_SURVIVAL}{STARTED\_NIGHT\_SURVIVAL}}
+{\footnotesize\ttfamily \#define STARTED\+\_\+\+NIGHT\+\_\+\+SURVIVAL~0x01}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sp__encoding_8h_af68fb85709e619dbe15890e5fcd466dc}\label{sp__encoding_8h_af68fb85709e619dbe15890e5fcd466dc} 
+\index{sp\_encoding.h@{sp\_encoding.h}!encode\_animatronic\_data@{encode\_animatronic\_data}}
+\index{encode\_animatronic\_data@{encode\_animatronic\_data}!sp\_encoding.h@{sp\_encoding.h}}
+\doxysubsubsection{\texorpdfstring{encode\_animatronic\_data()}{encode\_animatronic\_data()}}
+{\footnotesize\ttfamily uint8\+\_\+t encode\+\_\+animatronic\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4}{Animatronic\+Name}}}]{name,  }\item[{\mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850}{Camera\+ID}}}]{position }\end{DoxyParamCaption})}
+
+
+
+Encodes the animatronic\textquotesingle{}s name and position (camera) into a single byte of data to be sent through the serial port. 
+
+The encoding uses the 2 most significant bits to represent the animatronic\textquotesingle{}s name, the next 4 bits to represent the camera number, and the 2 least significant bits to represent the camera letter (A, B or C). 
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the animatronic to be encoded. \\
+\hline
+{\em position} & The camera position of the animatronic to be encoded, which includes both the camera number and letter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The encoded byte of data representing the animatronic\textquotesingle{}s name and position. 
+\end{DoxyReturn}

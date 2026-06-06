@@ -1,0 +1,116 @@
+\doxysection{proj/devices/serial\+\_\+port/queue.c File Reference}
+\hypertarget{queue_8c}{}\label{queue_8c}\index{proj/devices/serial\_port/queue.c@{proj/devices/serial\_port/queue.c}}
+{\ttfamily \#include "{}queue.\+h"{}}\newline
+Include dependency graph for queue.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{queue_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structQueue}{Queue}} \mbox{\hyperlink{queue_8c_ab67d854844c0b6f4d2b8cb10865a5ef9}{create\+\_\+queue}} ()
+\begin{DoxyCompactList}\small\item\em Creates and initializes a new \doxylink{structQueue}{Queue} instance. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{queue_8c_a5d9dc78ab99e58c4fda1f6574b566979}{is\+\_\+queue\+\_\+full}} (\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}queue)
+\begin{DoxyCompactList}\small\item\em Checks if the queue is full. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{queue_8c_a4cfb51dbb4ca7e1291a44d61909ca0bc}{is\+\_\+queue\+\_\+empty}} (\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}queue)
+\begin{DoxyCompactList}\small\item\em Checks if the queue is empty. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{queue_8c_af7f07f114d72d9a291212dcae679b660}{enqueue}} (\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}queue, uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Enqueues a byte of data into the queue. If the queue is full, it does not add the data and returns an error code. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{queue_8c_a5d3de84062ba863c62db2da25fc058a6}{dequeue}} (\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}queue, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Dequeues a byte of data from the queue. If the queue is empty, it does not remove any data and returns an error code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{queue_8c_ab67d854844c0b6f4d2b8cb10865a5ef9}\label{queue_8c_ab67d854844c0b6f4d2b8cb10865a5ef9} 
+\index{queue.c@{queue.c}!create\_queue@{create\_queue}}
+\index{create\_queue@{create\_queue}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{create\_queue()}{create\_queue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structQueue}{Queue}} create\+\_\+queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates and initializes a new \doxylink{structQueue}{Queue} instance. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{structQueue}{Queue} object initialized and ready to be used. 
+\end{DoxyReturn}
+\Hypertarget{queue_8c_a5d3de84062ba863c62db2da25fc058a6}\label{queue_8c_a5d3de84062ba863c62db2da25fc058a6} 
+\index{queue.c@{queue.c}!dequeue@{dequeue}}
+\index{dequeue@{dequeue}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{dequeue()}{dequeue()}}
+{\footnotesize\ttfamily int dequeue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}}]{queue,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Dequeues a byte of data from the queue. If the queue is empty, it does not remove any data and returns an error code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & The queue from which the data will be removed. \\
+\hline
+{\em data} & Pointer to the location where the dequeued data will be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the data was successfully dequeued, -\/1 if the queue is empty. 
+\end{DoxyReturn}
+\Hypertarget{queue_8c_af7f07f114d72d9a291212dcae679b660}\label{queue_8c_af7f07f114d72d9a291212dcae679b660} 
+\index{queue.c@{queue.c}!enqueue@{enqueue}}
+\index{enqueue@{enqueue}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{enqueue()}{enqueue()}}
+{\footnotesize\ttfamily int enqueue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}}]{queue,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+Enqueues a byte of data into the queue. If the queue is full, it does not add the data and returns an error code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & The queue to which the data will be added. \\
+\hline
+{\em data} & The data to be enqueued. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the data was successfully enqueued, -\/1 if the queue is full. 
+\end{DoxyReturn}
+\Hypertarget{queue_8c_a4cfb51dbb4ca7e1291a44d61909ca0bc}\label{queue_8c_a4cfb51dbb4ca7e1291a44d61909ca0bc} 
+\index{queue.c@{queue.c}!is\_queue\_empty@{is\_queue\_empty}}
+\index{is\_queue\_empty@{is\_queue\_empty}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{is\_queue\_empty()}{is\_queue\_empty()}}
+{\footnotesize\ttfamily int is\+\_\+queue\+\_\+empty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}}]{queue }\end{DoxyParamCaption})}
+
+
+
+Checks if the queue is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & The queue to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the queue is empty, 0 otherwise. 
+\end{DoxyReturn}
+\Hypertarget{queue_8c_a5d9dc78ab99e58c4fda1f6574b566979}\label{queue_8c_a5d9dc78ab99e58c4fda1f6574b566979} 
+\index{queue.c@{queue.c}!is\_queue\_full@{is\_queue\_full}}
+\index{is\_queue\_full@{is\_queue\_full}!queue.c@{queue.c}}
+\doxysubsubsection{\texorpdfstring{is\_queue\_full()}{is\_queue\_full()}}
+{\footnotesize\ttfamily int is\+\_\+queue\+\_\+full (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}}]{queue }\end{DoxyParamCaption})}
+
+
+
+Checks if the queue is full. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & The queue to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the queue is full, 0 otherwise. 
+\end{DoxyReturn}

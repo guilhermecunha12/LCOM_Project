@@ -1,0 +1,21 @@
+<map id="lab4/mouse.c" name="lab4/mouse.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="141,5,251,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="36,225,121,251"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,33,128,51,84,76,43,111,26,131,12,153,9,170,16,187,30,203,48,216,44,220,27,206,12,190,4,171,7,151,21,128,39,107,81,72,125,46,164,28"/>
+<area shape="rect" id="Node000003" href="$i8042_8h.html" title=" " alt="" coords="21,152,136,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="184,33,135,80,94,141,90,138,131,77,180,29"/>
+<area shape="rect" id="Node000004" href="$kbc_8h.html" title=" " alt="" coords="145,79,247,104"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="199,31,199,65,193,65,193,31"/>
+<area shape="rect" id="Node000007" href="$mouse_8h.html" title=" " alt="" coords="321,79,399,104"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="223,28,322,71,320,76,221,33"/>
+<area shape="rect" id="Node000008" href="$i8042__mouse_8h.html" title=" " alt="" coords="398,152,519,177"/>
+<area shape="poly" id="edge11_Node000001_Node000008" title=" " alt="" coords="251,20,290,26,333,36,375,53,414,77,438,106,453,137,449,140,434,109,410,81,373,58,331,41,289,31,251,25"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="81,178,81,212,76,212,76,178"/>
+<area shape="poly" id="edge7_Node000004_Node000003" title=" " alt="" coords="179,106,111,147,108,142,176,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="161,152,231,177"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="199,104,199,138,193,138,193,104"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="256,152,323,177"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="213,102,265,141,262,146,209,106"/>
+<area shape="poly" id="edge9_Node000007_Node000002" title=" " alt="" coords="363,105,357,141,350,162,336,179,302,198,250,213,136,233,135,228,249,208,300,193,333,175,345,159,352,140,357,104"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="377,102,433,142,430,146,374,106"/>
+</map>

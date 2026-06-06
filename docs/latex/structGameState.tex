@@ -1,0 +1,140 @@
+\doxysection{Game\+State Struct Reference}
+\hypertarget{structGameState}{}\label{structGameState}\index{GameState@{GameState}}
+
+
+Struct that represents the overall game state. It contains a type field that indicates the current state of the game, a union that holds the specific data for each state, and a \doxylink{structPersistentData}{Persistent\+Data} struct that holds data that persists across all states.  
+
+
+
+
+{\ttfamily \#include $<$state.\+h$>$}
+
+
+
+Collaboration diagram for Game\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structGameState__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structPersistentData}{Persistent\+Data}} \mbox{\hyperlink{structGameState_ae11ba071b2a9651bbed59b9f33232c83}{global\+\_\+data}}
+\item 
+\mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5c}{State\+Type}} \mbox{\hyperlink{structGameState_a4023d5e6a32ef55751525820f2a9b165}{type}}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>\mbox{\hyperlink{structMainMenuState}{MainMenuState}} \mbox{\hyperlink{structGameState_a4c586f75bf0e830b5a04874a49a9a9ce}{main\_menu}}\\
+\>\mbox{\hyperlink{structNewspaperState}{NewspaperState}} \mbox{\hyperlink{structGameState_a595d852aba68a710ef82a95720ac9bfa}{newspaper}}\\
+\>\mbox{\hyperlink{structNightIntroState}{NightIntroState}} \mbox{\hyperlink{structGameState_a58545a5c7a156e170528bdc5adf73a28}{night\_intro}}\\
+\>\mbox{\hyperlink{structNightSurvivalState}{NightSurvivalState}} \mbox{\hyperlink{structGameState_aa92cb0ed09a631bc4dbfcd6d938f3372}{night\_survival}}\\
+\>\mbox{\hyperlink{structJumpscareState}{JumpscareState}} \mbox{\hyperlink{structGameState_a6dac27611fe9512e42ec70eddf460a32}{jumpscare}}\\
+\>\mbox{\hyperlink{structNight6AMScreen}{Night6AMScreen}} \mbox{\hyperlink{structGameState_a52d5d3f96a5ba833a2ce54acd3bcc76c}{night\_6am}}\\
+\>\mbox{\hyperlink{structNightNoBatteryState}{NightNoBatteryState}} \mbox{\hyperlink{structGameState_a7e52aec2a772c2dba1bac7a8a1121988}{night\_no\_battery}}\\
+\>\mbox{\hyperlink{structWinState}{WinState}} \mbox{\hyperlink{structGameState_aac8f91db3b8f97e2b61758c127f0aef8}{win}}\\
+\>\mbox{\hyperlink{structStaticScreenState}{StaticScreenState}} \mbox{\hyperlink{structGameState_a841a83483dbe348d9aac58564e8fdf08}{static\_screen}}\\
+\>\mbox{\hyperlink{structGameOverState}{GameOverState}} \mbox{\hyperlink{structGameState_a2f3de9549f21f56f95142cee3e4a8d8b}{game\_over}}\\
+\>\mbox{\hyperlink{structReceivingDataState}{ReceivingDataState}} \mbox{\hyperlink{structGameState_ae2634bb42160d726f5c6f891b768a24a}{receiving\_data}}\\
+\} \mbox{\hyperlink{structGameState_a2aa875c9150d9bdfb2f9a8d4d867762e}{data}}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct that represents the overall game state. It contains a type field that indicates the current state of the game, a union that holds the specific data for each state, and a \doxylink{structPersistentData}{Persistent\+Data} struct that holds data that persists across all states. 
+
+\doxysubsection{Field Documentation}
+\Hypertarget{structGameState_a2aa875c9150d9bdfb2f9a8d4d867762e}\label{structGameState_a2aa875c9150d9bdfb2f9a8d4d867762e} 
+\index{GameState@{GameState}!data@{data}}
+\index{data@{data}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{[union]}{[union]}}
+{\footnotesize\ttfamily union  \{ ... \}  Game\+State\+::data}
+
+\Hypertarget{structGameState_a2f3de9549f21f56f95142cee3e4a8d8b}\label{structGameState_a2f3de9549f21f56f95142cee3e4a8d8b} 
+\index{GameState@{GameState}!game\_over@{game\_over}}
+\index{game\_over@{game\_over}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{game\_over}{game\_over}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structGameOverState}{Game\+Over\+State}} Game\+State\+::game\+\_\+over}
+
+\Hypertarget{structGameState_ae11ba071b2a9651bbed59b9f33232c83}\label{structGameState_ae11ba071b2a9651bbed59b9f33232c83} 
+\index{GameState@{GameState}!global\_data@{global\_data}}
+\index{global\_data@{global\_data}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{global\_data}{global\_data}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structPersistentData}{Persistent\+Data}} Game\+State\+::global\+\_\+data}
+
+\Hypertarget{structGameState_a6dac27611fe9512e42ec70eddf460a32}\label{structGameState_a6dac27611fe9512e42ec70eddf460a32} 
+\index{GameState@{GameState}!jumpscare@{jumpscare}}
+\index{jumpscare@{jumpscare}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{jumpscare}{jumpscare}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structJumpscareState}{Jumpscare\+State}} Game\+State\+::jumpscare}
+
+\Hypertarget{structGameState_a4c586f75bf0e830b5a04874a49a9a9ce}\label{structGameState_a4c586f75bf0e830b5a04874a49a9a9ce} 
+\index{GameState@{GameState}!main\_menu@{main\_menu}}
+\index{main\_menu@{main\_menu}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{main\_menu}{main\_menu}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structMainMenuState}{Main\+Menu\+State}} Game\+State\+::main\+\_\+menu}
+
+\Hypertarget{structGameState_a595d852aba68a710ef82a95720ac9bfa}\label{structGameState_a595d852aba68a710ef82a95720ac9bfa} 
+\index{GameState@{GameState}!newspaper@{newspaper}}
+\index{newspaper@{newspaper}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{newspaper}{newspaper}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structNewspaperState}{Newspaper\+State}} Game\+State\+::newspaper}
+
+\Hypertarget{structGameState_a52d5d3f96a5ba833a2ce54acd3bcc76c}\label{structGameState_a52d5d3f96a5ba833a2ce54acd3bcc76c} 
+\index{GameState@{GameState}!night\_6am@{night\_6am}}
+\index{night\_6am@{night\_6am}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{night\_6am}{night\_6am}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structNight6AMScreen}{Night6\+AMScreen}} Game\+State\+::night\+\_\+6am}
+
+\Hypertarget{structGameState_a58545a5c7a156e170528bdc5adf73a28}\label{structGameState_a58545a5c7a156e170528bdc5adf73a28} 
+\index{GameState@{GameState}!night\_intro@{night\_intro}}
+\index{night\_intro@{night\_intro}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{night\_intro}{night\_intro}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structNightIntroState}{Night\+Intro\+State}} Game\+State\+::night\+\_\+intro}
+
+\Hypertarget{structGameState_a7e52aec2a772c2dba1bac7a8a1121988}\label{structGameState_a7e52aec2a772c2dba1bac7a8a1121988} 
+\index{GameState@{GameState}!night\_no\_battery@{night\_no\_battery}}
+\index{night\_no\_battery@{night\_no\_battery}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{night\_no\_battery}{night\_no\_battery}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structNightNoBatteryState}{Night\+No\+Battery\+State}} Game\+State\+::night\+\_\+no\+\_\+battery}
+
+\Hypertarget{structGameState_aa92cb0ed09a631bc4dbfcd6d938f3372}\label{structGameState_aa92cb0ed09a631bc4dbfcd6d938f3372} 
+\index{GameState@{GameState}!night\_survival@{night\_survival}}
+\index{night\_survival@{night\_survival}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{night\_survival}{night\_survival}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structNightSurvivalState}{Night\+Survival\+State}} Game\+State\+::night\+\_\+survival}
+
+\Hypertarget{structGameState_ae2634bb42160d726f5c6f891b768a24a}\label{structGameState_ae2634bb42160d726f5c6f891b768a24a} 
+\index{GameState@{GameState}!receiving\_data@{receiving\_data}}
+\index{receiving\_data@{receiving\_data}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{receiving\_data}{receiving\_data}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structReceivingDataState}{Receiving\+Data\+State}} Game\+State\+::receiving\+\_\+data}
+
+\Hypertarget{structGameState_a841a83483dbe348d9aac58564e8fdf08}\label{structGameState_a841a83483dbe348d9aac58564e8fdf08} 
+\index{GameState@{GameState}!static\_screen@{static\_screen}}
+\index{static\_screen@{static\_screen}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{static\_screen}{static\_screen}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structStaticScreenState}{Static\+Screen\+State}} Game\+State\+::static\+\_\+screen}
+
+\Hypertarget{structGameState_a4023d5e6a32ef55751525820f2a9b165}\label{structGameState_a4023d5e6a32ef55751525820f2a9b165} 
+\index{GameState@{GameState}!type@{type}}
+\index{type@{type}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5c}{State\+Type}} Game\+State\+::type}
+
+\Hypertarget{structGameState_aac8f91db3b8f97e2b61758c127f0aef8}\label{structGameState_aac8f91db3b8f97e2b61758c127f0aef8} 
+\index{GameState@{GameState}!win@{win}}
+\index{win@{win}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{win}{win}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structWinState}{Win\+State}} Game\+State\+::win}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+proj/\mbox{\hyperlink{state_8h}{state.\+h}}\end{DoxyCompactItemize}

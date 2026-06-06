@@ -1,0 +1,20 @@
+<map id="proj/models/sprite.c" name="proj/models/sprite.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="171,5,322,31"/>
+<area shape="rect" id="Node000002" href="$sprite_8h.html" title=" " alt="" coords="13,79,83,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="216,33,94,76,93,71,214,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,91,177"/>
+<area shape="poly" id="edge9_Node000001_Node000003" title=" " alt="" coords="226,33,148,81,72,144,69,140,145,76,224,29"/>
+<area shape="rect" id="Node000004" href="$proj_2devices_2video_2video_8h.html" title=" " alt="" coords="159,79,335,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="249,31,249,65,244,65,244,31"/>
+<area shape="rect" id="Node000008" href="$ui_8h.html" title=" " alt="" coords="359,79,452,104"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="273,28,368,71,366,75,271,33"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="476,79,551,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="290,28,463,74,462,79,289,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="51,104,51,138,45,138,45,104"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="115,152,189,177"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="233,106,180,146,177,141,230,102"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="214,152,285,177"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="250,104,251,138,246,139,244,104"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="309,152,408,177"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="266,102,330,142,327,147,263,106"/>
+</map>

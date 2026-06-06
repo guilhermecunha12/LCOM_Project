@@ -1,0 +1,38 @@
+\doxysection{kbc.\+h}
+\hypertarget{kbc_8h_source}{}\label{kbc_8h_source}\index{lab3/kbc.h@{lab3/kbc.h}}
+\mbox{\hyperlink{kbc_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ KBC\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ KBC\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{i8042_8h}{i8042.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00012\ void\ (\mbox{\hyperlink{kbc_8h_aea970a154161a35f6894898a092ed70a}{kbc\_ih}})\ ();}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{kbc_8h_aa7a491d4d95eab5ca5326c4000ad67f8}{kbd\_subscribe\_int}}(uint8\_t*\ bit\_no);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{kbc_8h_a5bdf6cfb570c375192b0d87913b65c57}{kbd\_unsubscribe\_int}}();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{kbc_8h_a63e13931a0e0d6e81f7d038f49727618}{read\_scancode}}(uint8\_t\ *\textcolor{keywordtype}{byte});}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00041\ uint8\_t*\ \mbox{\hyperlink{kbc_8h_ab74dfc8cf2410860a157bc07cb09fba8}{get\_scancode}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00048\ uint8\_t\ \mbox{\hyperlink{kbc_8h_a2a0d6ed17d2ce32ad21d0f1320ccdae3}{get\_last\_byte\_read}}();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00056\ uint8\_t\ \mbox{\hyperlink{kbc_8h_ac7c11e630187298eb3660f2ce56d3da6}{is\_make\_code}}(uint8\_t\ scancode[2]);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{kbc_8h_a88f268e999e47eef1b2cf71f5b39796b}{write\_KBC\_command}}(uint8\_t\ port,\ uint8\_t\ command\_byte);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00075\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{kbc_8h_ad0c87a6b0e43557f4ea229f3c12c9c86}{read\_KBC\_output\_buf}}(uint8\_t*\ value,\ \textcolor{keywordtype}{bool}\ mouse\_related\_data);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{kbc_8h_add4833df163c78f0278908ec7c01e2f7}{reset\_interrupts}}();}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00091\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{kbc_8h_a52cdafbefc54adf1665d07891bd3f113}{process\_scancode}}();}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

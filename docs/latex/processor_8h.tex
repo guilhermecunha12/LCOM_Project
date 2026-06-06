@@ -1,0 +1,453 @@
+\doxysection{proj/controller/handlers/processor.h File Reference}
+\hypertarget{processor_8h}{}\label{processor_8h}\index{proj/controller/handlers/processor.h@{proj/controller/handlers/processor.h}}
+{\ttfamily \#include "{}../../state.\+h"{}}\newline
+Include dependency graph for processor.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{processor_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{processor_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{processor_8h_abdab03ed6c7f7f5edf4c067676994b6e}{Event\+Handler}}) (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Type alias for event handler functions (return void and take pointers to \doxylink{structGameState}{Game\+State} and \doxylink{structGameEvent}{Game\+Event}) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{processor_8h_abdab03ed6c7f7f5edf4c067676994b6e}{Event\+Handler}} \mbox{\hyperlink{processor_8h_ac855f04ac22db04e7f37ff963348e96e}{get\+\_\+event\+\_\+handler}} (const \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5c}{State\+Type}} state, const \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6fa}{Event\+Type}} event)
+\begin{DoxyCompactList}\small\item\em Get the appropriate event handler for the given \doxylink{structGameState}{Game\+State} and Event\+Type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_aef2903989e7420a5dc8cf40425de4daa}{process\+\_\+animatronic\+\_\+movements}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}data\+\_\+queue)
+\begin{DoxyCompactList}\small\item\em This function processes the animatronic movements based on the data received from the serial port. It updates the game state with the new positions of the animatronics as they move through the cameras. The function takes in the current game state and a queue of data received from the serial port, which contains information about the animatronic movements. This function must be called inside the. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_a91c6379823a85bb27b6df53b33f7b901}{general\+\_\+mouse\+\_\+move}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for mouse movement events, which updates the mouse coordinates in the global game state. It is used in MAIN\+\_\+\+MENU and NIGHT\+\_\+\+SURVIVAL states. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_abcfc4975ed0cfab11b3cc906cc93b607}{handle\+\_\+main\+\_\+menu\+\_\+mouse\+\_\+move}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Calls general\+\_\+mouse\+\_\+move and then checks if the mouse is inside any of the main menu options (New Game, Continue, Exit Game) to update the selected option in the main menu state accordingly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_a79c2fa2279a2ca6de1bf780510fbed94}{handle\+\_\+main\+\_\+menu\+\_\+mouse\+\_\+click}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for mouse left button click events in the main menu state. It checks if the click was on the "{}\+New Game"{} "{}\+Continue"{} or "{}\+Exit Game"{} buttons and updates the game state accordingly (starting a new game or exiting). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_ad5801301a66ae14d1d076788f0777831}{handle\+\_\+night\+\_\+survival\+\_\+mouse\+\_\+click}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for mouse left button click events in the night survival state. It checks if the click was on any interactive elements and updates the game state accordingly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_a032a8b9e3aaf3bbdca9aa656e2717272}{handle\+\_\+newspaper\+\_\+timer}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for timer tick events in the newspaper state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_ade5011fd5e9c8f31e9466152e8d9add1}{handle\+\_\+night\+\_\+intro\+\_\+timer}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for timer tick events in the night intro state. This handler decrements the duration of the night intro screen and transitions to the night survival state when the duration reaches zero. It also initializes the night survival state with the current night number from the global game state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_a1509564a4700f568cdc08e4871dfc08a}{handle\+\_\+night\+\_\+survival\+\_\+timer}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for timer tick events in the night survival state. This handler manages the countdown of the night survival time, checks for night completion, and handles battery drain based on player actions (doors, lights, camera). It transitions to the night 6AM screen if the player survives the night or to the no battery screen if the battery level reaches zero. It also updates animations and checks for animatronic jumpscares. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_aadaa876f6677bfe1c7256774e596e017}{handle\+\_\+win\+\_\+screen\+\_\+timer}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for timer tick events in the win screen state. This handler manages the countdown for the win screen display and transitions to the main menu state when the duration reaches zero, initializing the main menu state in the process. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_ac303c31942fe95b5f0c722fd619ffa5f}{handle\+\_\+static\+\_\+screen\+\_\+timer}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for timer tick events in the static screen state. This handler manages the countdown for the static screen display and transitions to the game over state when the duration reaches zero, initializing the game over state in the process. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_a32b24ad27bb109034746cc920c753de1}{handle\+\_\+night\+\_\+6am\+\_\+timer}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for timer tick events in the night 6AM state. This handler manages the countdown for the night 6AM screen display and transitions and initializes the night intro state when the duration reaches zero or if it was the last night it will transition to the win state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_a25c12e5e7e5402b2ecbca317a3644972}{handle\+\_\+night\+\_\+no\+\_\+battery\+\_\+timer}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for timer tick events in the night no battery state. This handler manages the countdown for the night no battery screen display and transitions to the night 6AM state when the duration reaches zero, initializing the night 6AM state in the process. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_adfcd37776133955bcd340838a0938770}{handle\+\_\+jumpscare\+\_\+timer}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for timer tick events in the jumpscare state. This handler manages the countdown for the jumpscare screen display and transitions to the static screen state when the duration reaches zero, initializing the static screen state in the process. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_ae6428480bce6fd8a3cc502c1809861af}{handle\+\_\+main\+\_\+menu\+\_\+keyboard}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for keyboard events in the main menu state. This handler manages keyboard input for navigating the main menu options (e.\+g., moving selection up/down and executing the selected option). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_a8aab3c2ce4961a71723a0b1474474b0e}{handle\+\_\+night\+\_\+survival\+\_\+keyboard}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for keyboard events in the night survival state. This handler manages keyboard input for controlling the player\textquotesingle{}s actions during the night survival state (e.\+g., moving the camera view left or right) or consulting the camera menu by pressing space. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_ac938920b20c137f83e257046ab15e8b5}{handle\+\_\+night\+\_\+no\+\_\+battery\+\_\+keyboard}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for keyboard events in the night no battery state. This handler manages keyboard input such as moving the camera view left or right. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_acccaf67c876219245e06b909571f6f67}{handle\+\_\+waiting\+\_\+for\+\_\+data\+\_\+keyboard}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for keyboard events in the waiting for data state, in the receiver\textquotesingle{}s perspective. This handler only listens for the escape key to allow exiting the game while waiting for data, since there is no other interaction possible in this state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_a54252b7a06a5f2c8beba2ca1ad69d38e}{handle\+\_\+receiving\+\_\+data\+\_\+keyboard}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\item 
+void \mbox{\hyperlink{processor_8h_ae769c9c89940668f22bdb031f4af7442}{handle\+\_\+waiting\+\_\+for\+\_\+data\+\_\+serial\+\_\+port}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for serial port data events in the waiting for data state, in the receiver\textquotesingle{}s perspective. This handler listens for data indicating the start of the night survival mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_a7903ce3a25a8bf83b1103b8fa1f8a63e}{handle\+\_\+receiving\+\_\+data\+\_\+serial\+\_\+port}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for serial port data events in the receiving data state, in the receiver\textquotesingle{}s perspective. This handler processes the incoming data from the serial port, which contains information about the animatronic movements. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8h_a22ab40d0ff592026eeea8cc823403b08}{handle\+\_\+game\+\_\+over\+\_\+timer}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for timer tick events in the game over state. This handler manages the countdown for the game over screen display and transitions to the main menu state when the duration reaches zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{processor_8h_abdab03ed6c7f7f5edf4c067676994b6e}\label{processor_8h_abdab03ed6c7f7f5edf4c067676994b6e} 
+\index{processor.h@{processor.h}!EventHandler@{EventHandler}}
+\index{EventHandler@{EventHandler}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{EventHandler}{EventHandler}}
+{\footnotesize\ttfamily typedef void(\texorpdfstring{$\ast$}{*} Event\+Handler) (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*})}
+
+
+
+Type alias for event handler functions (return void and take pointers to \doxylink{structGameState}{Game\+State} and \doxylink{structGameEvent}{Game\+Event}) 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{processor_8h_a91c6379823a85bb27b6df53b33f7b901}\label{processor_8h_a91c6379823a85bb27b6df53b33f7b901} 
+\index{processor.h@{processor.h}!general\_mouse\_move@{general\_mouse\_move}}
+\index{general\_mouse\_move@{general\_mouse\_move}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{general\_mouse\_move()}{general\_mouse\_move()}}
+{\footnotesize\ttfamily void general\+\_\+mouse\+\_\+move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for mouse movement events, which updates the mouse coordinates in the global game state. It is used in MAIN\+\_\+\+MENU and NIGHT\+\_\+\+SURVIVAL states. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified with the new mouse coordinates. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the mouse movement data (delta\+\_\+x and delta\+\_\+y). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_ac855f04ac22db04e7f37ff963348e96e}\label{processor_8h_ac855f04ac22db04e7f37ff963348e96e} 
+\index{processor.h@{processor.h}!get\_event\_handler@{get\_event\_handler}}
+\index{get\_event\_handler@{get\_event\_handler}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{get\_event\_handler()}{get\_event\_handler()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{processor_8h_abdab03ed6c7f7f5edf4c067676994b6e}{Event\+Handler}} get\+\_\+event\+\_\+handler (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5c}{State\+Type}}}]{state,  }\item[{const \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6fa}{Event\+Type}}}]{event }\end{DoxyParamCaption})}
+
+
+
+Get the appropriate event handler for the given \doxylink{structGameState}{Game\+State} and Event\+Type. 
+
+Internally, the implementation uses a 2D array indexed with \doxylink{structGameState}{Game\+State} and Event\+Type to retrieve the correct handler function. If no handler is defined for the given state and event type, it returns NULL. 
+\begin{DoxyParams}{Parameters}
+{\em state} & The current state of the game, used to determine which set of event handlers to use. \\
+\hline
+{\em event} & The current event type, used to determine which specific handler to call. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The appropriate function pointer to a event handler function. 
+\end{DoxyReturn}
+\Hypertarget{processor_8h_a22ab40d0ff592026eeea8cc823403b08}\label{processor_8h_a22ab40d0ff592026eeea8cc823403b08} 
+\index{processor.h@{processor.h}!handle\_game\_over\_timer@{handle\_game\_over\_timer}}
+\index{handle\_game\_over\_timer@{handle\_game\_over\_timer}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_game\_over\_timer()}{handle\_game\_over\_timer()}}
+{\footnotesize\ttfamily void handle\+\_\+game\+\_\+over\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for timer tick events in the game over state. This handler manages the countdown for the game over screen display and transitions to the main menu state when the duration reaches zero. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to transition to the main menu state when the game over duration ends. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the timer tick data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_adfcd37776133955bcd340838a0938770}\label{processor_8h_adfcd37776133955bcd340838a0938770} 
+\index{processor.h@{processor.h}!handle\_jumpscare\_timer@{handle\_jumpscare\_timer}}
+\index{handle\_jumpscare\_timer@{handle\_jumpscare\_timer}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_jumpscare\_timer()}{handle\_jumpscare\_timer()}}
+{\footnotesize\ttfamily void handle\+\_\+jumpscare\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for timer tick events in the jumpscare state. This handler manages the countdown for the jumpscare screen display and transitions to the static screen state when the duration reaches zero, initializing the static screen state in the process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to transition to the static screen state when the jumpscare duration ends. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the timer tick data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_ae6428480bce6fd8a3cc502c1809861af}\label{processor_8h_ae6428480bce6fd8a3cc502c1809861af} 
+\index{processor.h@{processor.h}!handle\_main\_menu\_keyboard@{handle\_main\_menu\_keyboard}}
+\index{handle\_main\_menu\_keyboard@{handle\_main\_menu\_keyboard}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_main\_menu\_keyboard()}{handle\_main\_menu\_keyboard()}}
+{\footnotesize\ttfamily void handle\+\_\+main\+\_\+menu\+\_\+keyboard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for keyboard events in the main menu state. This handler manages keyboard input for navigating the main menu options (e.\+g., moving selection up/down and executing the selected option). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to update the main menu selection. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the keyboard input data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_a79c2fa2279a2ca6de1bf780510fbed94}\label{processor_8h_a79c2fa2279a2ca6de1bf780510fbed94} 
+\index{processor.h@{processor.h}!handle\_main\_menu\_mouse\_click@{handle\_main\_menu\_mouse\_click}}
+\index{handle\_main\_menu\_mouse\_click@{handle\_main\_menu\_mouse\_click}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_main\_menu\_mouse\_click()}{handle\_main\_menu\_mouse\_click()}}
+{\footnotesize\ttfamily void handle\+\_\+main\+\_\+menu\+\_\+mouse\+\_\+click (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for mouse left button click events in the main menu state. It checks if the click was on the "{}\+New Game"{} "{}\+Continue"{} or "{}\+Exit Game"{} buttons and updates the game state accordingly (starting a new game or exiting). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified based on the click. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the mouse click data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_abcfc4975ed0cfab11b3cc906cc93b607}\label{processor_8h_abcfc4975ed0cfab11b3cc906cc93b607} 
+\index{processor.h@{processor.h}!handle\_main\_menu\_mouse\_move@{handle\_main\_menu\_mouse\_move}}
+\index{handle\_main\_menu\_mouse\_move@{handle\_main\_menu\_mouse\_move}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_main\_menu\_mouse\_move()}{handle\_main\_menu\_mouse\_move()}}
+{\footnotesize\ttfamily void handle\+\_\+main\+\_\+menu\+\_\+mouse\+\_\+move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Calls general\+\_\+mouse\+\_\+move and then checks if the mouse is inside any of the main menu options (New Game, Continue, Exit Game) to update the selected option in the main menu state accordingly. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified based on the mouse coordinates. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the mouse movement data (delta\+\_\+x and delta\+\_\+y). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_a032a8b9e3aaf3bbdca9aa656e2717272}\label{processor_8h_a032a8b9e3aaf3bbdca9aa656e2717272} 
+\index{processor.h@{processor.h}!handle\_newspaper\_timer@{handle\_newspaper\_timer}}
+\index{handle\_newspaper\_timer@{handle\_newspaper\_timer}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_newspaper\_timer()}{handle\_newspaper\_timer()}}
+{\footnotesize\ttfamily void handle\+\_\+newspaper\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for timer tick events in the newspaper state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified based on the timer event. \\
+\hline
+{\em event} & Pointer to the current game event. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_a32b24ad27bb109034746cc920c753de1}\label{processor_8h_a32b24ad27bb109034746cc920c753de1} 
+\index{processor.h@{processor.h}!handle\_night\_6am\_timer@{handle\_night\_6am\_timer}}
+\index{handle\_night\_6am\_timer@{handle\_night\_6am\_timer}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_night\_6am\_timer()}{handle\_night\_6am\_timer()}}
+{\footnotesize\ttfamily void handle\+\_\+night\+\_\+6am\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for timer tick events in the night 6AM state. This handler manages the countdown for the night 6AM screen display and transitions and initializes the night intro state when the duration reaches zero or if it was the last night it will transition to the win state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to transition to the next state when the night 6AM duration ends. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the timer tick data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_ade5011fd5e9c8f31e9466152e8d9add1}\label{processor_8h_ade5011fd5e9c8f31e9466152e8d9add1} 
+\index{processor.h@{processor.h}!handle\_night\_intro\_timer@{handle\_night\_intro\_timer}}
+\index{handle\_night\_intro\_timer@{handle\_night\_intro\_timer}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_night\_intro\_timer()}{handle\_night\_intro\_timer()}}
+{\footnotesize\ttfamily void handle\+\_\+night\+\_\+intro\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for timer tick events in the night intro state. This handler decrements the duration of the night intro screen and transitions to the night survival state when the duration reaches zero. It also initializes the night survival state with the current night number from the global game state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to transition to the night survival state when the night intro duration ends. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the timer tick data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_ac938920b20c137f83e257046ab15e8b5}\label{processor_8h_ac938920b20c137f83e257046ab15e8b5} 
+\index{processor.h@{processor.h}!handle\_night\_no\_battery\_keyboard@{handle\_night\_no\_battery\_keyboard}}
+\index{handle\_night\_no\_battery\_keyboard@{handle\_night\_no\_battery\_keyboard}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_night\_no\_battery\_keyboard()}{handle\_night\_no\_battery\_keyboard()}}
+{\footnotesize\ttfamily void handle\+\_\+night\+\_\+no\+\_\+battery\+\_\+keyboard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for keyboard events in the night no battery state. This handler manages keyboard input such as moving the camera view left or right. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified based on the player\textquotesingle{}s keyboard input during the night no battery state. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the keyboard input data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_a25c12e5e7e5402b2ecbca317a3644972}\label{processor_8h_a25c12e5e7e5402b2ecbca317a3644972} 
+\index{processor.h@{processor.h}!handle\_night\_no\_battery\_timer@{handle\_night\_no\_battery\_timer}}
+\index{handle\_night\_no\_battery\_timer@{handle\_night\_no\_battery\_timer}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_night\_no\_battery\_timer()}{handle\_night\_no\_battery\_timer()}}
+{\footnotesize\ttfamily void handle\+\_\+night\+\_\+no\+\_\+battery\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for timer tick events in the night no battery state. This handler manages the countdown for the night no battery screen display and transitions to the night 6AM state when the duration reaches zero, initializing the night 6AM state in the process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to transition to the night 6AM state when the night no battery duration ends. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the timer tick data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_a8aab3c2ce4961a71723a0b1474474b0e}\label{processor_8h_a8aab3c2ce4961a71723a0b1474474b0e} 
+\index{processor.h@{processor.h}!handle\_night\_survival\_keyboard@{handle\_night\_survival\_keyboard}}
+\index{handle\_night\_survival\_keyboard@{handle\_night\_survival\_keyboard}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_night\_survival\_keyboard()}{handle\_night\_survival\_keyboard()}}
+{\footnotesize\ttfamily void handle\+\_\+night\+\_\+survival\+\_\+keyboard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for keyboard events in the night survival state. This handler manages keyboard input for controlling the player\textquotesingle{}s actions during the night survival state (e.\+g., moving the camera view left or right) or consulting the camera menu by pressing space. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified based on the player\textquotesingle{}s keyboard input during the night survival state. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the keyboard input data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_ad5801301a66ae14d1d076788f0777831}\label{processor_8h_ad5801301a66ae14d1d076788f0777831} 
+\index{processor.h@{processor.h}!handle\_night\_survival\_mouse\_click@{handle\_night\_survival\_mouse\_click}}
+\index{handle\_night\_survival\_mouse\_click@{handle\_night\_survival\_mouse\_click}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_night\_survival\_mouse\_click()}{handle\_night\_survival\_mouse\_click()}}
+{\footnotesize\ttfamily void handle\+\_\+night\+\_\+survival\+\_\+mouse\+\_\+click (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for mouse left button click events in the night survival state. It checks if the click was on any interactive elements and updates the game state accordingly. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified based on the click. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the mouse click data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_a1509564a4700f568cdc08e4871dfc08a}\label{processor_8h_a1509564a4700f568cdc08e4871dfc08a} 
+\index{processor.h@{processor.h}!handle\_night\_survival\_timer@{handle\_night\_survival\_timer}}
+\index{handle\_night\_survival\_timer@{handle\_night\_survival\_timer}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_night\_survival\_timer()}{handle\_night\_survival\_timer()}}
+{\footnotesize\ttfamily void handle\+\_\+night\+\_\+survival\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for timer tick events in the night survival state. This handler manages the countdown of the night survival time, checks for night completion, and handles battery drain based on player actions (doors, lights, camera). It transitions to the night 6AM screen if the player survives the night or to the no battery screen if the battery level reaches zero. It also updates animations and checks for animatronic jumpscares. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified based on the night survival timer events, including time left, battery level, and potential jumpscares. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the timer tick data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_a54252b7a06a5f2c8beba2ca1ad69d38e}\label{processor_8h_a54252b7a06a5f2c8beba2ca1ad69d38e} 
+\index{processor.h@{processor.h}!handle\_receiving\_data\_keyboard@{handle\_receiving\_data\_keyboard}}
+\index{handle\_receiving\_data\_keyboard@{handle\_receiving\_data\_keyboard}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_receiving\_data\_keyboard()}{handle\_receiving\_data\_keyboard()}}
+{\footnotesize\ttfamily void handle\+\_\+receiving\+\_\+data\+\_\+keyboard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+\Hypertarget{processor_8h_a7903ce3a25a8bf83b1103b8fa1f8a63e}\label{processor_8h_a7903ce3a25a8bf83b1103b8fa1f8a63e} 
+\index{processor.h@{processor.h}!handle\_receiving\_data\_serial\_port@{handle\_receiving\_data\_serial\_port}}
+\index{handle\_receiving\_data\_serial\_port@{handle\_receiving\_data\_serial\_port}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_receiving\_data\_serial\_port()}{handle\_receiving\_data\_serial\_port()}}
+{\footnotesize\ttfamily void handle\+\_\+receiving\+\_\+data\+\_\+serial\+\_\+port (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for serial port data events in the receiving data state, in the receiver\textquotesingle{}s perspective. This handler processes the incoming data from the serial port, which contains information about the animatronic movements. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which can be modified based on the animatronic movements received from the serial port data. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the serial port data received. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_ac303c31942fe95b5f0c722fd619ffa5f}\label{processor_8h_ac303c31942fe95b5f0c722fd619ffa5f} 
+\index{processor.h@{processor.h}!handle\_static\_screen\_timer@{handle\_static\_screen\_timer}}
+\index{handle\_static\_screen\_timer@{handle\_static\_screen\_timer}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_static\_screen\_timer()}{handle\_static\_screen\_timer()}}
+{\footnotesize\ttfamily void handle\+\_\+static\+\_\+screen\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for timer tick events in the static screen state. This handler manages the countdown for the static screen display and transitions to the game over state when the duration reaches zero, initializing the game over state in the process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to transition to the game over state when the static screen duration ends. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the timer tick data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_acccaf67c876219245e06b909571f6f67}\label{processor_8h_acccaf67c876219245e06b909571f6f67} 
+\index{processor.h@{processor.h}!handle\_waiting\_for\_data\_keyboard@{handle\_waiting\_for\_data\_keyboard}}
+\index{handle\_waiting\_for\_data\_keyboard@{handle\_waiting\_for\_data\_keyboard}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_waiting\_for\_data\_keyboard()}{handle\_waiting\_for\_data\_keyboard()}}
+{\footnotesize\ttfamily void handle\+\_\+waiting\+\_\+for\+\_\+data\+\_\+keyboard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for keyboard events in the waiting for data state, in the receiver\textquotesingle{}s perspective. This handler only listens for the escape key to allow exiting the game while waiting for data, since there is no other interaction possible in this state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to exit the game if the escape key is pressed. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the keyboard input data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_ae769c9c89940668f22bdb031f4af7442}\label{processor_8h_ae769c9c89940668f22bdb031f4af7442} 
+\index{processor.h@{processor.h}!handle\_waiting\_for\_data\_serial\_port@{handle\_waiting\_for\_data\_serial\_port}}
+\index{handle\_waiting\_for\_data\_serial\_port@{handle\_waiting\_for\_data\_serial\_port}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_waiting\_for\_data\_serial\_port()}{handle\_waiting\_for\_data\_serial\_port()}}
+{\footnotesize\ttfamily void handle\+\_\+waiting\+\_\+for\+\_\+data\+\_\+serial\+\_\+port (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for serial port data events in the waiting for data state, in the receiver\textquotesingle{}s perspective. This handler listens for data indicating the start of the night survival mode. 
+
+Only transitions to the receiving data state after a night survival is started. Therefore, if the receiver is set up in the middle of a night, it will only receive data from the next night forward. 
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which can be modified to transition to the receiving data state. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the serial port data received. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_aadaa876f6677bfe1c7256774e596e017}\label{processor_8h_aadaa876f6677bfe1c7256774e596e017} 
+\index{processor.h@{processor.h}!handle\_win\_screen\_timer@{handle\_win\_screen\_timer}}
+\index{handle\_win\_screen\_timer@{handle\_win\_screen\_timer}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{handle\_win\_screen\_timer()}{handle\_win\_screen\_timer()}}
+{\footnotesize\ttfamily void handle\+\_\+win\+\_\+screen\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for timer tick events in the win screen state. This handler manages the countdown for the win screen display and transitions to the main menu state when the duration reaches zero, initializing the main menu state in the process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to transition to the next state when the win screen duration ends. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the timer tick data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8h_aef2903989e7420a5dc8cf40425de4daa}\label{processor_8h_aef2903989e7420a5dc8cf40425de4daa} 
+\index{processor.h@{processor.h}!process\_animatronic\_movements@{process\_animatronic\_movements}}
+\index{process\_animatronic\_movements@{process\_animatronic\_movements}!processor.h@{processor.h}}
+\doxysubsubsection{\texorpdfstring{process\_animatronic\_movements()}{process\_animatronic\_movements()}}
+{\footnotesize\ttfamily void process\+\_\+animatronic\+\_\+movements (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}}]{data\+\_\+queue }\end{DoxyParamCaption})}
+
+
+
+This function processes the animatronic movements based on the data received from the serial port. It updates the game state with the new positions of the animatronics as they move through the cameras. The function takes in the current game state and a queue of data received from the serial port, which contains information about the animatronic movements. This function must be called inside the. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \\
+\hline
+{\em data\+\_\+queue} & \\
+\hline
+\end{DoxyParams}

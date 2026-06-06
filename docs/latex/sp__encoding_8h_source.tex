@@ -1,0 +1,43 @@
+\doxysection{sp\+\_\+encoding.\+h}
+\hypertarget{sp__encoding_8h_source}{}\label{sp__encoding_8h_source}\index{proj/devices/serial\_port/sp\_encoding.h@{proj/devices/serial\_port/sp\_encoding.h}}
+\mbox{\hyperlink{sp__encoding_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SP\_ENCODING\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SP\_ENCODING\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../../models/animatronic.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}../../game\_constants.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ ENDED\_NIGHT\_SURVIVAL\ 0x00}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ STARTED\_NIGHT\_SURVIVAL\ 0x01}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ ENC\_FREDDY\ 0x0}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ ENC\_BONNIE\ 0x1}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ ENC\_CHICA\ 0x2}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ ENC\_FOXY\ 0x3}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ DOOR\ 0xF}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ CAMERA\_1\ 0x1}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ CAMERA\_2\ 0x2}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ CAMERA\_3\ 0x3}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ CAMERA\_4\ 0x4}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ CAMERA\_5\ 0x5}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ CAMERA\_6\ 0x6}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ CAMERA\_7\ 0x7}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ CAMERA\_NO\_LETTER\ 0x0}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ CAMERA\_A\ 0x1}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ CAMERA\_B\ 0x2}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ CAMERA\_C\ 0x3}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ EXTRACT\_ANIMATRONIC(data)\ ((data\ >>\ 6)\ \&\ 0x03)}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ EXTRACT\_CAMERA\_NUMBER(data)\ ((data\ >>\ 2)\ \&\ 0x0F)}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ EXTRACT\_CAMERA\_LETTER(data)\ (data\ \&\ 0x03)}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00042\ uint8\_t\ \mbox{\hyperlink{sp__encoding_8h_af68fb85709e619dbe15890e5fcd466dc}{encode\_animatronic\_data}}(\mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4}{AnimatronicName}}\ name,\ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850}{CameraID}}\ position);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SP\_ENCODING\_H}}
+
+\end{DoxyCode}

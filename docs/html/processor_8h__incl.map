@@ -1,0 +1,26 @@
+<map id="proj/controller/handlers/processor.h" name="proj/controller/handlers/processor.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="285,5,459,45"/>
+<area shape="rect" id="Node000002" href="$state_8h.html" title=" " alt="" coords="327,93,417,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="375,46,375,79,369,79,369,46"/>
+<area shape="rect" id="Node000003" href="$mouse_8h.html" title=" " alt="" coords="5,174,128,199"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="328,121,125,173,124,168,327,116"/>
+<area shape="rect" id="Node000006" href="$animatronic_8h.html" title=" " alt="" coords="350,174,514,199"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="383,117,417,161,413,164,379,120"/>
+<area shape="rect" id="Node000007" href="$game__constants_8h.html" title=" " alt="" coords="287,255,441,280"/>
+<area shape="poly" id="edge8_Node000002_Node000007" title=" " alt="" coords="365,120,351,141,340,167,337,187,340,206,353,241,348,243,335,207,332,187,335,166,346,139,361,117"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="480,255,563,280"/>
+<area shape="poly" id="edge13_Node000002_Node000008" title=" " alt="" coords="418,109,447,115,477,126,505,142,528,165,536,184,538,204,533,242,527,241,533,204,531,185,523,168,502,146,475,130,445,120,417,114"/>
+<area shape="rect" id="Node000009" href="$sprite_8h.html" title=" " alt="" coords="152,174,275,199"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="350,121,250,170,247,166,348,116"/>
+<area shape="rect" id="Node000010" href="$queue_8h.html" title=" " alt="" coords="590,167,735,207"/>
+<area shape="poly" id="edge11_Node000002_Node000010" title=" " alt="" coords="415,116,580,161,579,166,414,121"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="161,255,247,280"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="88,197,173,246,171,250,86,202"/>
+<area shape="rect" id="Node000005" href="$i8042__mouse_8h.html" title=" " alt="" coords="6,255,127,280"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="69,200,69,241,64,241,64,200"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="424,201,385,246,381,243,420,198"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="447,198,500,244,496,248,443,202"/>
+<area shape="poly" id="edge10_Node000009_Node000004" title=" " alt="" coords="215,200,210,241,204,241,209,199"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="627,255,698,280"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="665,207,665,241,660,241,660,207"/>
+</map>

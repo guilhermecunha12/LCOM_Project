@@ -1,0 +1,91 @@
+\doxysection{lab1/bitwise.h File Reference}
+\hypertarget{bitwise_8h}{}\label{bitwise_8h}\index{lab1/bitwise.h@{lab1/bitwise.h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+Include dependency graph for bitwise.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bitwise_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{bitwise_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{bitwise_8h_a4f3ba12545efce4e72eebaf9cc551caa}{MSK\+\_\+\+END}}~-\/1
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{bitwise_8h_a7667e6364de66174e645b885eb72516d}{clear}} (uint8\+\_\+t msk, int pos)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{bitwise_8h_a9e881a5233c898055c39009a9fe8f55f}{set}} (uint8\+\_\+t msk, int pos)
+\item 
+bool \mbox{\hyperlink{bitwise_8h_aa4f7698dd16915b2312abad540788732}{is\+\_\+set}} (uint8\+\_\+t msk, int pos)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{bitwise_8h_adb0d1c296c06f8258996a1925b0030d3}{lsb}} (uint16\+\_\+t wide\+\_\+msk)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{bitwise_8h_a52f14550e1ef2bf9e42305cb288fcd5a}{msb}} (uint16\+\_\+t wide\+\_\+msk)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{bitwise_8h_a3fadb426310c267d94d9c693b8cecdb0}{mask}} (int pos,...)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{bitwise_8h_a4f3ba12545efce4e72eebaf9cc551caa}\label{bitwise_8h_a4f3ba12545efce4e72eebaf9cc551caa} 
+\index{bitwise.h@{bitwise.h}!MSK\_END@{MSK\_END}}
+\index{MSK\_END@{MSK\_END}!bitwise.h@{bitwise.h}}
+\doxysubsubsection{\texorpdfstring{MSK\_END}{MSK\_END}}
+{\footnotesize\ttfamily \#define MSK\+\_\+\+END~-\/1}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{bitwise_8h_a7667e6364de66174e645b885eb72516d}\label{bitwise_8h_a7667e6364de66174e645b885eb72516d} 
+\index{bitwise.h@{bitwise.h}!clear@{clear}}
+\index{clear@{clear}!bitwise.h@{bitwise.h}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily uint8\+\_\+t clear (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{msk,  }\item[{int}]{pos }\end{DoxyParamCaption})}
+
+Yields a new bitmask equal to {\ttfamily msk} with bit at {\ttfamily pos} set to 0. \Hypertarget{bitwise_8h_aa4f7698dd16915b2312abad540788732}\label{bitwise_8h_aa4f7698dd16915b2312abad540788732} 
+\index{bitwise.h@{bitwise.h}!is\_set@{is\_set}}
+\index{is\_set@{is\_set}!bitwise.h@{bitwise.h}}
+\doxysubsubsection{\texorpdfstring{is\_set()}{is\_set()}}
+{\footnotesize\ttfamily bool is\+\_\+set (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{msk,  }\item[{int}]{pos }\end{DoxyParamCaption})}
+
+Returns true if bit at {\ttfamily pos} in {\ttfamily msk} is set to 1, false otherwise. \Hypertarget{bitwise_8h_adb0d1c296c06f8258996a1925b0030d3}\label{bitwise_8h_adb0d1c296c06f8258996a1925b0030d3} 
+\index{bitwise.h@{bitwise.h}!lsb@{lsb}}
+\index{lsb@{lsb}!bitwise.h@{bitwise.h}}
+\doxysubsubsection{\texorpdfstring{lsb()}{lsb()}}
+{\footnotesize\ttfamily uint8\+\_\+t lsb (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{wide\+\_\+msk }\end{DoxyParamCaption})}
+
+Returns the least significant byte of a 16-\/bit wide bitmask. \Hypertarget{bitwise_8h_a3fadb426310c267d94d9c693b8cecdb0}\label{bitwise_8h_a3fadb426310c267d94d9c693b8cecdb0} 
+\index{bitwise.h@{bitwise.h}!mask@{mask}}
+\index{mask@{mask}!bitwise.h@{bitwise.h}}
+\doxysubsubsection{\texorpdfstring{mask()}{mask()}}
+{\footnotesize\ttfamily uint8\+\_\+t mask (\begin{DoxyParamCaption}\item[{int}]{pos,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+Builds a bitmask with bits set at given positions. The variable argument list ends at the sentinel {\ttfamily MSK\+\_\+\+END} value, by convention. \Hypertarget{bitwise_8h_a52f14550e1ef2bf9e42305cb288fcd5a}\label{bitwise_8h_a52f14550e1ef2bf9e42305cb288fcd5a} 
+\index{bitwise.h@{bitwise.h}!msb@{msb}}
+\index{msb@{msb}!bitwise.h@{bitwise.h}}
+\doxysubsubsection{\texorpdfstring{msb()}{msb()}}
+{\footnotesize\ttfamily uint8\+\_\+t msb (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{wide\+\_\+msk }\end{DoxyParamCaption})}
+
+Returns the most significant byte of a 16-\/bit wide bitmask. \Hypertarget{bitwise_8h_a9e881a5233c898055c39009a9fe8f55f}\label{bitwise_8h_a9e881a5233c898055c39009a9fe8f55f} 
+\index{bitwise.h@{bitwise.h}!set@{set}}
+\index{set@{set}!bitwise.h@{bitwise.h}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily uint8\+\_\+t set (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{msk,  }\item[{int}]{pos }\end{DoxyParamCaption})}
+
+Yields a new bitmask equal to {\ttfamily msk} with bit at {\ttfamily pos} set to 1. 

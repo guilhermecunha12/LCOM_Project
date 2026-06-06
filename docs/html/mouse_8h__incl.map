@@ -1,0 +1,7 @@
+<map id="lab4/mouse.h" name="lab4/mouse.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="57,5,167,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,91,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,33,69,70,65,67,99,29"/>
+<area shape="rect" id="Node000003" href="$i8042__mouse_8h.html" title=" " alt="" coords="115,79,237,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="125,29,159,67,155,70,121,33"/>
+</map>

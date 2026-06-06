@@ -1,0 +1,56 @@
+\doxysection{proj/view/view.c File Reference}
+\hypertarget{view_8c}{}\label{view_8c}\index{proj/view/view.c@{proj/view/view.c}}
+{\ttfamily \#include "{}handlers/renderer.\+h"{}}\newline
+{\ttfamily \#include "{}../models/assets.\+h"{}}\newline
+{\ttfamily \#include "{}../models/sprite.\+h"{}}\newline
+{\ttfamily \#include "{}../devices/video/video.\+h"{}}\newline
+Include dependency graph for view.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{view_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{view_8c_a0b7574f70a00d7698f3586e6d435093a}{draw\+\_\+mouse}} (const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Draws the mouse sprite on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{view_8c_aa645a7cd3fe66736c1f0ea7a25d519b7}{render\+\_\+frame}} (const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function to render the current frame based on the game state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{view_8c_a0b7574f70a00d7698f3586e6d435093a}\label{view_8c_a0b7574f70a00d7698f3586e6d435093a} 
+\index{view.c@{view.c}!draw\_mouse@{draw\_mouse}}
+\index{draw\_mouse@{draw\_mouse}!view.c@{view.c}}
+\doxysubsubsection{\texorpdfstring{draw\_mouse()}{draw\_mouse()}}
+{\footnotesize\ttfamily void draw\+\_\+mouse (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Draws the mouse sprite on the screen. 
+
+This function is responsible for drawing the mouse cursor on top of everythin else.
+
+This function draws the mouse in the coordinates given by the global game state and is called after everything else was drawn on the screen. 
+\begin{DoxyParams}{Parameters}
+{\em state} & The current \doxylink{structGameState}{Game\+State}, since the mouse is drawn in certain states. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{view_8c_aa645a7cd3fe66736c1f0ea7a25d519b7}\label{view_8c_aa645a7cd3fe66736c1f0ea7a25d519b7} 
+\index{view.c@{view.c}!render\_frame@{render\_frame}}
+\index{render\_frame@{render\_frame}!view.c@{view.c}}
+\doxysubsubsection{\texorpdfstring{render\_frame()}{render\_frame()}}
+{\footnotesize\ttfamily void render\+\_\+frame (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function to render the current frame based on the game state. 
+
+This function first checks if the state type is valid. It then clears the back buffer and retrieves the appropriate render handler for the current state type. If a handler exists, it calls the handler to render the specific elements of that state. After rendering the state-\/specific elements, it calls {\ttfamily draw\+\_\+mouse} to ensure the mouse cursor is drawn on top of everything else. Finally, it swaps the buffers to display the rendered frame on the screen. 
+\begin{DoxyParams}{Parameters}
+{\em state} & A pointer to the current game state, which contains all the necessary information to determine what to render on the screen. \\
+\hline
+\end{DoxyParams}

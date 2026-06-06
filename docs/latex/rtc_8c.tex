@@ -1,0 +1,271 @@
+\doxysection{lab1/rtc.c File Reference}
+\hypertarget{rtc_8c}{}\label{rtc_8c}\index{lab1/rtc.c@{lab1/rtc.c}}
+{\ttfamily \#include "{}rtc.\+h"{}}\newline
+{\ttfamily \#include $<$minix/sysutil.\+h$>$}\newline
+{\ttfamily \#include $<$minix/syslib.\+h$>$}\newline
+Include dependency graph for rtc.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{rtc_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{rtc_8c_a710b98232df2c563009e6f8a6cd18220}{RTC\+\_\+\+ADDR\+\_\+\+REG}}~0x70
+\begin{DoxyCompactList}\small\item\em I/O port used to select which RTC register to read/write(write-\/only) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rtc_8c_a2f258a00c59c3f347c8d2d4a75471ce0}{RTC\+\_\+\+DATA\+\_\+\+REG}}~0x71
+\begin{DoxyCompactList}\small\item\em I/O port used to read from or write to the selected RTC register. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rtc_8c_ae5ffad506b363f28bed1bb5e5926bd2d}{RTC\+\_\+\+REG\+\_\+A}}~0x0A
+\begin{DoxyCompactList}\small\item\em RTC Register A\+: contains the Update-\/\+In-\/\+Progress (UIP) in bit 7. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rtc_8c_a03954a63ead3f02b7790ce79e9877eea}{RTC\+\_\+\+REG\+\_\+B}}~0x0B
+\begin{DoxyCompactList}\small\item\em RTC Register B\+: contains configuration flags (data format, hour mode, daylight etc.) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rtc_8c_ac3004908ae9724250ed5e259bb79a74a}{RTC\+\_\+\+REG\+\_\+\+SECONDS}}~0x00
+\begin{DoxyCompactList}\small\item\em RTC Data Register address for seconds (0-\/59) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rtc_8c_adaa8204e0b84c74299e592e3f6238749}{RTC\+\_\+\+REG\+\_\+\+MINUTES}}~0x02
+\begin{DoxyCompactList}\small\item\em RTC Data Register address for minutes (0-\/59) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rtc_8c_a54bcd63ccb79d287bda66da425f1ac9f}{RTC\+\_\+\+REG\+\_\+\+HOURS}}~0x04
+\begin{DoxyCompactList}\small\item\em RTC register address for hours (0–23 in 24h mode, 1–12 with PM bit in 12h mode) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rtc_8c_a695494dc4317d4231f55866c6cf2744c}{RTC\+\_\+\+REG\+\_\+\+DAY}}~0x07
+\begin{DoxyCompactList}\small\item\em RTC Data Register address for day (1-\/31) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rtc_8c_aee20e80324cf99d8358df7ede308c657}{RTC\+\_\+\+REG\+\_\+\+MONTH}}~0x08
+\begin{DoxyCompactList}\small\item\em RTC Data Register address for month (1-\/12) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rtc_8c_ad95b07dd9002d89ad203534c9733ab49}{RTC\+\_\+\+REG\+\_\+\+YEAR}}~0x09
+\begin{DoxyCompactList}\small\item\em RTC Data Register address for year. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rtc_8c_a7cf2d90ac807f5620efb32eadf6b6d52}{RTC\+\_\+\+UIP\+\_\+\+MSK}}~(1 $<$$<$ 7)
+\begin{DoxyCompactList}\small\item\em Mask for the Update-\/\+In-\/\+Progress (UIP) flag in RTC Register A (bit 7). When this bit is set, it indicates that the RTC is currently updating its registers and the data may be inconsistent. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rtc_8c_a81137ef67239f024c672ee67ba540b17}{RTC\+\_\+\+DM\+\_\+\+MSK}}~(1 $<$$<$ 2)
+\begin{DoxyCompactList}\small\item\em Mask for the Data Mode (DM) flag in RTC Register B (bit 2). When this bit is set, the RTC data is in binary format; otherwise, it is in Binary-\/\+Coded Decimal (BCD) format. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rtc_8c_a168bfd4dc1b02ac2564fcbfdd0c66ea0}{RTC\+\_\+24\+H\+\_\+\+MSK}}~(1 $<$$<$ 1)
+\begin{DoxyCompactList}\small\item\em Mask for the 24-\/hour mode flag in RTC Register B (bit 1). When this bit is set, the RTC operates in 24-\/hour mode; otherwise, it operates in 12-\/hour mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{rtc_8c_a5cd5f87e0de23cb8abcb41730523ae48}{get\+\_\+dmy}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}d, uint8\+\_\+t \texorpdfstring{$\ast$}{*}m, uint8\+\_\+t \texorpdfstring{$\ast$}{*}y)
+\begin{DoxyCompactList}\small\item\em Helper function to read the day, month, and year from the RTC and store them in the provided pointers. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8c_a40b0d612861625726053db582810457a}{rtc\+\_\+read\+\_\+date}} (\mbox{\hyperlink{structrtc__date}{rtc\+\_\+date}} \texorpdfstring{$\ast$}{*}date)
+\begin{DoxyCompactList}\small\item\em Function to read the current date from the RTC and fill the provided {\ttfamily \doxylink{structrtc__date}{rtc\+\_\+date}} structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rtc_8c_aa5e037d8f554efc08bba1fd2f4f93582}{get\+\_\+hms}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}h, uint8\+\_\+t \texorpdfstring{$\ast$}{*}m, uint8\+\_\+t \texorpdfstring{$\ast$}{*}s)
+\begin{DoxyCompactList}\small\item\em Helper function to read the hours, minutes, and seconds from the RTC and store them in the provided pointers. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8c_a1c93057ca748e4cf3d0c3de20054304b}{rtc\+\_\+read\+\_\+time}} (\mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} \texorpdfstring{$\ast$}{*}time)
+\begin{DoxyCompactList}\small\item\em Function to read the current time from the RTC and fill the provided {\ttfamily \doxylink{structrtc__time}{rtc\+\_\+time}} structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rtc_8c_a7f29499fd3d9bcea0871e8e4c53b6da3}{util\+\_\+sys\+\_\+inclb}} (int port, uint8\+\_\+t \texorpdfstring{$\ast$}{*}byte)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{rtc_8c_a168bfd4dc1b02ac2564fcbfdd0c66ea0}\label{rtc_8c_a168bfd4dc1b02ac2564fcbfdd0c66ea0} 
+\index{rtc.c@{rtc.c}!RTC\_24H\_MSK@{RTC\_24H\_MSK}}
+\index{RTC\_24H\_MSK@{RTC\_24H\_MSK}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{RTC\_24H\_MSK}{RTC\_24H\_MSK}}
+{\footnotesize\ttfamily \#define RTC\+\_\+24\+H\+\_\+\+MSK~(1 $<$$<$ 1)}
+
+
+
+Mask for the 24-\/hour mode flag in RTC Register B (bit 1). When this bit is set, the RTC operates in 24-\/hour mode; otherwise, it operates in 12-\/hour mode. 
+
+\Hypertarget{rtc_8c_a710b98232df2c563009e6f8a6cd18220}\label{rtc_8c_a710b98232df2c563009e6f8a6cd18220} 
+\index{rtc.c@{rtc.c}!RTC\_ADDR\_REG@{RTC\_ADDR\_REG}}
+\index{RTC\_ADDR\_REG@{RTC\_ADDR\_REG}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{RTC\_ADDR\_REG}{RTC\_ADDR\_REG}}
+{\footnotesize\ttfamily \#define RTC\+\_\+\+ADDR\+\_\+\+REG~0x70}
+
+
+
+I/O port used to select which RTC register to read/write(write-\/only) 
+
+\Hypertarget{rtc_8c_a2f258a00c59c3f347c8d2d4a75471ce0}\label{rtc_8c_a2f258a00c59c3f347c8d2d4a75471ce0} 
+\index{rtc.c@{rtc.c}!RTC\_DATA\_REG@{RTC\_DATA\_REG}}
+\index{RTC\_DATA\_REG@{RTC\_DATA\_REG}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{RTC\_DATA\_REG}{RTC\_DATA\_REG}}
+{\footnotesize\ttfamily \#define RTC\+\_\+\+DATA\+\_\+\+REG~0x71}
+
+
+
+I/O port used to read from or write to the selected RTC register. 
+
+\Hypertarget{rtc_8c_a81137ef67239f024c672ee67ba540b17}\label{rtc_8c_a81137ef67239f024c672ee67ba540b17} 
+\index{rtc.c@{rtc.c}!RTC\_DM\_MSK@{RTC\_DM\_MSK}}
+\index{RTC\_DM\_MSK@{RTC\_DM\_MSK}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{RTC\_DM\_MSK}{RTC\_DM\_MSK}}
+{\footnotesize\ttfamily \#define RTC\+\_\+\+DM\+\_\+\+MSK~(1 $<$$<$ 2)}
+
+
+
+Mask for the Data Mode (DM) flag in RTC Register B (bit 2). When this bit is set, the RTC data is in binary format; otherwise, it is in Binary-\/\+Coded Decimal (BCD) format. 
+
+\Hypertarget{rtc_8c_ae5ffad506b363f28bed1bb5e5926bd2d}\label{rtc_8c_ae5ffad506b363f28bed1bb5e5926bd2d} 
+\index{rtc.c@{rtc.c}!RTC\_REG\_A@{RTC\_REG\_A}}
+\index{RTC\_REG\_A@{RTC\_REG\_A}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{RTC\_REG\_A}{RTC\_REG\_A}}
+{\footnotesize\ttfamily \#define RTC\+\_\+\+REG\+\_\+A~0x0A}
+
+
+
+RTC Register A\+: contains the Update-\/\+In-\/\+Progress (UIP) in bit 7. 
+
+\Hypertarget{rtc_8c_a03954a63ead3f02b7790ce79e9877eea}\label{rtc_8c_a03954a63ead3f02b7790ce79e9877eea} 
+\index{rtc.c@{rtc.c}!RTC\_REG\_B@{RTC\_REG\_B}}
+\index{RTC\_REG\_B@{RTC\_REG\_B}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{RTC\_REG\_B}{RTC\_REG\_B}}
+{\footnotesize\ttfamily \#define RTC\+\_\+\+REG\+\_\+B~0x0B}
+
+
+
+RTC Register B\+: contains configuration flags (data format, hour mode, daylight etc.) 
+
+\Hypertarget{rtc_8c_a695494dc4317d4231f55866c6cf2744c}\label{rtc_8c_a695494dc4317d4231f55866c6cf2744c} 
+\index{rtc.c@{rtc.c}!RTC\_REG\_DAY@{RTC\_REG\_DAY}}
+\index{RTC\_REG\_DAY@{RTC\_REG\_DAY}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{RTC\_REG\_DAY}{RTC\_REG\_DAY}}
+{\footnotesize\ttfamily \#define RTC\+\_\+\+REG\+\_\+\+DAY~0x07}
+
+
+
+RTC Data Register address for day (1-\/31) 
+
+\Hypertarget{rtc_8c_a54bcd63ccb79d287bda66da425f1ac9f}\label{rtc_8c_a54bcd63ccb79d287bda66da425f1ac9f} 
+\index{rtc.c@{rtc.c}!RTC\_REG\_HOURS@{RTC\_REG\_HOURS}}
+\index{RTC\_REG\_HOURS@{RTC\_REG\_HOURS}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{RTC\_REG\_HOURS}{RTC\_REG\_HOURS}}
+{\footnotesize\ttfamily \#define RTC\+\_\+\+REG\+\_\+\+HOURS~0x04}
+
+
+
+RTC register address for hours (0–23 in 24h mode, 1–12 with PM bit in 12h mode) 
+
+\Hypertarget{rtc_8c_adaa8204e0b84c74299e592e3f6238749}\label{rtc_8c_adaa8204e0b84c74299e592e3f6238749} 
+\index{rtc.c@{rtc.c}!RTC\_REG\_MINUTES@{RTC\_REG\_MINUTES}}
+\index{RTC\_REG\_MINUTES@{RTC\_REG\_MINUTES}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{RTC\_REG\_MINUTES}{RTC\_REG\_MINUTES}}
+{\footnotesize\ttfamily \#define RTC\+\_\+\+REG\+\_\+\+MINUTES~0x02}
+
+
+
+RTC Data Register address for minutes (0-\/59) 
+
+\Hypertarget{rtc_8c_aee20e80324cf99d8358df7ede308c657}\label{rtc_8c_aee20e80324cf99d8358df7ede308c657} 
+\index{rtc.c@{rtc.c}!RTC\_REG\_MONTH@{RTC\_REG\_MONTH}}
+\index{RTC\_REG\_MONTH@{RTC\_REG\_MONTH}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{RTC\_REG\_MONTH}{RTC\_REG\_MONTH}}
+{\footnotesize\ttfamily \#define RTC\+\_\+\+REG\+\_\+\+MONTH~0x08}
+
+
+
+RTC Data Register address for month (1-\/12) 
+
+\Hypertarget{rtc_8c_ac3004908ae9724250ed5e259bb79a74a}\label{rtc_8c_ac3004908ae9724250ed5e259bb79a74a} 
+\index{rtc.c@{rtc.c}!RTC\_REG\_SECONDS@{RTC\_REG\_SECONDS}}
+\index{RTC\_REG\_SECONDS@{RTC\_REG\_SECONDS}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{RTC\_REG\_SECONDS}{RTC\_REG\_SECONDS}}
+{\footnotesize\ttfamily \#define RTC\+\_\+\+REG\+\_\+\+SECONDS~0x00}
+
+
+
+RTC Data Register address for seconds (0-\/59) 
+
+\Hypertarget{rtc_8c_ad95b07dd9002d89ad203534c9733ab49}\label{rtc_8c_ad95b07dd9002d89ad203534c9733ab49} 
+\index{rtc.c@{rtc.c}!RTC\_REG\_YEAR@{RTC\_REG\_YEAR}}
+\index{RTC\_REG\_YEAR@{RTC\_REG\_YEAR}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{RTC\_REG\_YEAR}{RTC\_REG\_YEAR}}
+{\footnotesize\ttfamily \#define RTC\+\_\+\+REG\+\_\+\+YEAR~0x09}
+
+
+
+RTC Data Register address for year. 
+
+\Hypertarget{rtc_8c_a7cf2d90ac807f5620efb32eadf6b6d52}\label{rtc_8c_a7cf2d90ac807f5620efb32eadf6b6d52} 
+\index{rtc.c@{rtc.c}!RTC\_UIP\_MSK@{RTC\_UIP\_MSK}}
+\index{RTC\_UIP\_MSK@{RTC\_UIP\_MSK}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{RTC\_UIP\_MSK}{RTC\_UIP\_MSK}}
+{\footnotesize\ttfamily \#define RTC\+\_\+\+UIP\+\_\+\+MSK~(1 $<$$<$ 7)}
+
+
+
+Mask for the Update-\/\+In-\/\+Progress (UIP) flag in RTC Register A (bit 7). When this bit is set, it indicates that the RTC is currently updating its registers and the data may be inconsistent. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{rtc_8c_a5cd5f87e0de23cb8abcb41730523ae48}\label{rtc_8c_a5cd5f87e0de23cb8abcb41730523ae48} 
+\index{rtc.c@{rtc.c}!get\_dmy@{get\_dmy}}
+\index{get\_dmy@{get\_dmy}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{get\_dmy()}{get\_dmy()}}
+{\footnotesize\ttfamily void get\+\_\+dmy (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{d,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{m,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{y }\end{DoxyParamCaption})}
+
+
+
+Helper function to read the day, month, and year from the RTC and store them in the provided pointers. 
+
+This function writes the appropriate register addresses to the RTC address register (0x70) to select the day, month, and year registers, and then reads the corresponding values from the RTC data register (0x71) using the {\ttfamily util\+\_\+sys\+\_\+inb} function. The read values are stored in the provided pointers for day, month, and year. 
+\begin{DoxyParams}{Parameters}
+{\em d} & Pointer to a uint8\+\_\+t variable where the day value will be stored. \\
+\hline
+{\em m} & Pointer to a uint8\+\_\+t variable where the month value will be stored. \\
+\hline
+{\em y} & Pointer to a uint8\+\_\+t variable where the year value will be stored. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{rtc_8c_aa5e037d8f554efc08bba1fd2f4f93582}\label{rtc_8c_aa5e037d8f554efc08bba1fd2f4f93582} 
+\index{rtc.c@{rtc.c}!get\_hms@{get\_hms}}
+\index{get\_hms@{get\_hms}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{get\_hms()}{get\_hms()}}
+{\footnotesize\ttfamily void get\+\_\+hms (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{h,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{m,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{s }\end{DoxyParamCaption})}
+
+
+
+Helper function to read the hours, minutes, and seconds from the RTC and store them in the provided pointers. 
+
+This function writes the appropriate register addresses to the RTC address register (0x70) to select the seconds, minutes, and hours registers, and then reads the corresponding values from the RTC data register (0x71) using the {\ttfamily util\+\_\+sys\+\_\+inb} function. The read values are stored in the provided pointers for hours, minutes, and seconds. 
+\begin{DoxyParams}{Parameters}
+{\em h} & Pointer to a uint8\+\_\+t variable where the hours value will be stored. \\
+\hline
+{\em m} & Pointer to a uint8\+\_\+t variable where the minutes value will be stored. \\
+\hline
+{\em s} & Pointer to a uint8\+\_\+t variable where the seconds value will be stored. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{rtc_8c_a40b0d612861625726053db582810457a}\label{rtc_8c_a40b0d612861625726053db582810457a} 
+\index{rtc.c@{rtc.c}!rtc\_read\_date@{rtc\_read\_date}}
+\index{rtc\_read\_date@{rtc\_read\_date}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_read\_date()}{rtc\_read\_date()}}
+{\footnotesize\ttfamily int rtc\+\_\+read\+\_\+date (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structrtc__date}{rtc\+\_\+date}} \texorpdfstring{$\ast$}{*}}]{date }\end{DoxyParamCaption})}
+
+
+
+Function to read the current date from the RTC and fill the provided {\ttfamily \doxylink{structrtc__date}{rtc\+\_\+date}} structure. 
+
+This function ensures data consistency by checking the Update In Progress (UIP) flag before reading the date. It also checks the RTC configuration and performs data conversions if necessary (e.\+g. BCD to binary). 
+\begin{DoxyParams}{Parameters}
+{\em date} & Pointer to an {\ttfamily \doxylink{structrtc__date}{rtc\+\_\+date}} structure that will be filled with the current date read from the RTC. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 0 on success, non-\/zero on failure. 
+\end{DoxyReturn}
+\Hypertarget{rtc_8c_a1c93057ca748e4cf3d0c3de20054304b}\label{rtc_8c_a1c93057ca748e4cf3d0c3de20054304b} 
+\index{rtc.c@{rtc.c}!rtc\_read\_time@{rtc\_read\_time}}
+\index{rtc\_read\_time@{rtc\_read\_time}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_read\_time()}{rtc\_read\_time()}}
+{\footnotesize\ttfamily int rtc\+\_\+read\+\_\+time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} \texorpdfstring{$\ast$}{*}}]{time }\end{DoxyParamCaption})}
+
+
+
+Function to read the current time from the RTC and fill the provided {\ttfamily \doxylink{structrtc__time}{rtc\+\_\+time}} structure. 
+
+This function ensures data consistency by checking the Update In Progress (UIP) flag before reading the time. It also checks the RTC configuration to determine if the time is in BCD format and converts it to binary if necessary. Additionally, it handles both 12-\/hour and 24-\/hour formats, converting to 24-\/hour format if needed. 
+\begin{DoxyParams}{Parameters}
+{\em time} & Pointer to an {\ttfamily \doxylink{structrtc__time}{rtc\+\_\+time}} structure that will be filled with the current time read from the RTC. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 0 on success, non-\/zero on failure. 
+\end{DoxyReturn}
+\Hypertarget{rtc_8c_a7f29499fd3d9bcea0871e8e4c53b6da3}\label{rtc_8c_a7f29499fd3d9bcea0871e8e4c53b6da3} 
+\index{rtc.c@{rtc.c}!util\_sys\_inclb@{util\_sys\_inclb}}
+\index{util\_sys\_inclb@{util\_sys\_inclb}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{util\_sys\_inclb()}{util\_sys\_inclb()}}
+{\footnotesize\ttfamily void util\+\_\+sys\+\_\+inclb (\begin{DoxyParamCaption}\item[{int}]{port,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{byte }\end{DoxyParamCaption})}
+

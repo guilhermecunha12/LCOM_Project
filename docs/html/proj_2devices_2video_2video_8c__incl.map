@@ -1,0 +1,13 @@
+<map id="proj/devices/video/video.c" name="proj/devices/video/video.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="28,5,169,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,91,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,47,65,83,61,80,84,44"/>
+<area shape="rect" id="Node000003" href="$proj_2devices_2video_2video_8h.html" title=" " alt="" coords="115,93,186,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="113,44,138,80,133,83,109,47"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="16,167,91,192"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="137,121,82,160,79,156,133,117"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="115,167,186,192"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="153,119,153,153,148,153,148,119"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="211,167,309,192"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="170,116,232,157,229,161,167,121"/>
+</map>

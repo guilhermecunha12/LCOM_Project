@@ -1,0 +1,49 @@
+\doxysection{sprite.\+h}
+\hypertarget{sprite_8h_source}{}\label{sprite_8h_source}\index{proj/models/sprite.h@{proj/models/sprite.h}}
+\mbox{\hyperlink{sprite_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SPRITE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SPRITE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00016\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structSprite_a5f248b11506dc86738e196e6602d2a2a}{y}};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structSprite_ab36028dcefdd4bf024c52c8d9519a283}{x}};\ }
+\DoxyCodeLine{00018\ \ \ \ \ uint16\_t\ width,\ \mbox{\hyperlink{structSprite_a7d2d72b3ea47dab6db0ada4b36017d7a}{height}};\ \textcolor{comment}{//\ xpm\_image\_type\ comes\ in\ uint16\_t}}
+\DoxyCodeLine{00019\ \ \ \ \ uint8\_t*\ \mbox{\hyperlink{structSprite_abc91f442b915b3f7d49ac911fc5caa8a}{map}};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structSprite_aa27c268686ddcb967ac0e5b16473e03f}{has\_transparency}};}
+\DoxyCodeLine{00021\ \}\ \mbox{\hyperlink{structSprite}{Sprite}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{structSprite}{Sprite}}*\ \mbox{\hyperlink{structAnimSprite_a6573ed91ee9f3f9102cc54435af2fd94}{sp}};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structAnimSprite_aa9c28937b964c0e3a65bf5eb3f4be172}{aspeed}};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structAnimSprite_a3206cf4225f5833fca57857b8a52dd2f}{cur\_aspeed}};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structAnimSprite_a245ddba935a16902ed5227a596087277}{num\_fig}};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structAnimSprite_a1d1b9580302ed9fc1c0dde40feb6038e}{cur\_fig}};}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structAnimSprite_adeb305259573efe6a14f73fe1c0539b9}{is\_finished}};}
+\DoxyCodeLine{00040\ \ \ \ \ uint8\_t\ **\mbox{\hyperlink{structAnimSprite_a165ea8ec364c9098c5014157b83a948a}{map}};}
+\DoxyCodeLine{00041\ \}\ \mbox{\hyperlink{structAnimSprite}{AnimSprite}};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00050\ \mbox{\hyperlink{structSprite}{Sprite}}*\ \mbox{\hyperlink{sprite_8h_a7f7fa48cdb78479d3bd6ab97f4e67342}{create\_sprite}}(xpm\_map\_t\ xpm,\ \textcolor{keywordtype}{int}\ x,\ uint16\_t\ y);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sprite_8h_af16c6befaac9ffb673b9e3c798d542ed}{destroy\_sprite}}(\mbox{\hyperlink{structSprite}{Sprite}}*\ sp);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sprite_8h_a3198eb7af2bcb27a168555745eec4098}{draw\_sprite}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structSprite}{Sprite}}*\ sp);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00076\ \mbox{\hyperlink{structAnimSprite}{AnimSprite}}\ *\mbox{\hyperlink{sprite_8h_aa079b4afbc2d273fefecfe21701061a7}{create\_anim\_sprite}}(uint8\_t\ no\_pic,\ \textcolor{keywordtype}{int}\ x,\ uint16\_t\ y,\ \textcolor{keywordtype}{int}\ aspeed,\ xpm\_map\_t\ pic1,\ ...);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sprite_8h_aa013c9fb10f87361157ec9693a043c37}{animate\_sprite}}(\mbox{\hyperlink{structAnimSprite}{AnimSprite}}\ *sp);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00092\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sprite_8h_a0b26d75352b6fd53784a893a3024a74f}{animate\_sprite\_once}}(\mbox{\hyperlink{structAnimSprite}{AnimSprite}}\ *sp);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00100\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sprite_8h_aa41d305c73ad8047bed64b1c3dccc71a}{animate\_sprite\_once\_reverse}}(\mbox{\hyperlink{structAnimSprite}{AnimSprite}}\ *sp);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00106\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sprite_8h_aff3231a932b9d8f7c0f72cf3552e64fc}{destroy\_anim\_sprite}}(\mbox{\hyperlink{structAnimSprite}{AnimSprite}}\ *sp);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

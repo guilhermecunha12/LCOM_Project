@@ -1,0 +1,184 @@
+\doxysection{ui.\+h}
+\hypertarget{ui_8h_source}{}\label{ui_8h_source}\index{proj/view/ui.h@{proj/view/ui.h}}
+\mbox{\hyperlink{ui_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ UI\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ UI\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Screen\ resolutions\ for\ mode\ 0x14C\ (instead\ of\ having\ getters\ for\ the\ values\ in}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//the\ lab5\ header\ file,\ as\ they\ are\ static\ for\ the\ whole\ project)}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ VBE\_MODE\ 0x14C}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ BYTES\_PER\_PIXEL\ 4}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ SCREEN\_WIDTH\ 1152}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ SCREEN\_HEIGHT\ 864}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ BACKGROUND\_MOVE\_VELOCITY\ (int)\ (8\ *\ 60.0f\ /\ FPS)\ }\textcolor{comment}{//\ For\ lower\ fps,\ the\ number\ of\ updates\ is\ lower\ so\ we\ want\ to\ increase\ the\ velocity\ to\ make\ the\ movement\ smoother\ and\ consistent\ for\ different\ fps\ values.}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ BACKGROUND\_MAX\_OFFSET\ 300}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ CAMERA\_MAX\_OFFSET\ 150}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ CENTER\_CAMERA\_OFFSET\ -\/150}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ CAMERA\_MOVE\_VELOCITY\ (int)\ (2\ *\ 60.0f\ /\ FPS)}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ CAMERA\_MOVEMENT\_WAIT\_TIME\ 1\ *\ FPS}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ CENTER\_BACKGROUND\_OFFSET\ -\/150}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ GAME\_TITLE\_X\ 86}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ GAME\_TITLE\_Y\ 117}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ NEW\_GAME\_SEL\_X\ 75}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ NEW\_GAME\_SEL\_Y\ 407}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ CONTINUE\_SEL\_X\ 73}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ CONTINUE\_SEL\_Y\ 482}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ NEW\_GAME\_X\ 153}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ NEW\_GAME\_Y\ 405}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ CONTINUE\_X\ 148}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ CONTINUE\_Y\ 485}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ EXIT\_GAME\_SEL\_X\ 90}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ EXIT\_GAME\_SEL\_Y\ 588}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ EXIT\_GAME\_X\ 153}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ EXIT\_GAME\_Y\ 588}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ NIGHT\_TEXT\_X\ 280}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ NIGHT\_TEXT\_Y\ 535}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ Use\ this\ for\ both\ exit\ game\ and\ new\ game\ }}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ BOX\_NORMAL\_WIDTH\ 320}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ BOX\_NORMAL\_HEIGHT\ 70}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ BOX\_CONTINUE\_WIDTH\ 300}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ BOX\_CONTINUE\_HEIGHT\ 80}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00047\ \textcolor{comment}{//\ The\ night\ text\ is\ defined\ as\ (Button.x\ +\ 3,\ Button.y\ -\/3)}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ NIGHT\_TEXT\_POS(x,y)\ (x\ +\ 5),\ (y\ +\ 4)}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ Map\ layout\ position}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ MAP\_LAYOUT\_X\ 736}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ MAP\_LAYOUT\_Y\ 488}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{comment}{//\ Size\ of\ each\ of\ the\ night\ cam\ buttons\ (selected\ or\ normal\ ones,\ as\ they\ have\ the\ same\ size)}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ BUTTON\_SIZE\_WIDTH\ 59}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ BUTTON\_SIZE\_HEIGHT\ 40}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{comment}{//\ Text\ saying\ which\ cam\ is\ selected}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ SELECTED\_CAM\_TEXT\_X\ 736}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ SELECTED\_CAM\_TEXT\_Y\ 419}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{comment}{//\ Positions\ of\ each\ button\ in\ the\ map\ layout}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_1A\_X\ 833}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_1A\_Y\ 477}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_1B\_X\ 815}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_1B\_Y\ 528}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_1C\_X\ 777}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_1C\_Y\ 608}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_3\_X\ 748}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_3\_Y\ 702}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_5\_X\ 709}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_5\_Y\ 550}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_7\_X\ 1048}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_7\_Y\ 556}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_6\_X\ 1037}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_6\_Y\ 685}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_2A\_X\ 834}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_2A\_Y\ 725}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_2B\_X\ 834}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_2B\_Y\ 769}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_4A\_X\ 940}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_4A\_Y\ 725}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_4B\_X\ 940}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#define\ NIGHT\_CAMERA\_4B\_Y\ 769}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{comment}{//\ Record\ symbol}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#define\ REC\_SYMBOL\_X\ 56}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#define\ REC\_SYMBOL\_Y\ 48}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{comment}{//\ Maybe\ clear\ screen\ first\ and\ then\ draw\ these\ sprites\ on\ top\ (upon\ selecting\ our\ night)}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#define\ SCREEN\_TEXT\_X\ 450}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#define\ SCREEN\_TEXT\_Y\ 384}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{comment}{//\ Camera\ flip\ button}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#define\ CAMERA\_FLIP\_BUTTON\_X\ 280}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#define\ CAMERA\_FLIP\_BUTTON\_Y\ 780}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#define\ CAMERA\_FLIP\_BUTTON\_WIDTH\ 482}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#define\ CAMERA\_FLIP\_BUTTON\_HEIGHT\ 57}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{comment}{//\ Text\ describing\ current\ night\ and\ hours}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ NIGHT\_HOURS\_TEXT\_X\ 967}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ NIGHT\_HOURS\_TEXT\_Y\ 53}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#define\ AM\_TEXT\_X\ 1028}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#define\ AM\_TEXT\_Y\ 53}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#define\ NIGHT\_COUNT\_TEXT\_X\ 980}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#define\ NIGHT\_COUNT\_TEXT\_Y\ 101}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \textcolor{comment}{//\ Battery\ details\ and\ usage}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \textcolor{comment}{//\ Usage}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#define\ USAGE\_TEXT\_X\ 44}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#define\ USAGE\_TEXT\_Y\ 797}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#define\ INDICATOR\_USAGE\_X\ 150}}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#define\ INDICATOR\_USAGE\_Y\ 799}}
+\DoxyCodeLine{00137\ \textcolor{comment}{//\ Percentage}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#define\ POWER\_LEFT\_TEXT\_X\ 44}}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#define\ POWER\_LEFT\_TEXT\_Y\ 758}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#define\ I\_DIGIT\_POWER\_X\ 213}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#define\ I\_DIGIT\_POWER\_Y\ 760}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#define\ II\_DIGIT\_POWER\_X\ 233}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#define\ II\_DIGIT\_POWER\_Y\ 760}}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#define\ PERCENTAGE\_SIGN\_X\ 255}}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#define\ PERCENTAGE\_SIGN\_Y\ 764}}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_1A\_X\ 410}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_1A\_Y\ 58}}
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_1B\_X\ 360}}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_1B\_Y\ 140}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_1C\_X\ 180}}
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_1C\_Y\ 319}}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_2A\_X\ 370}}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_2A\_Y\ 601}}
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_2B\_X\ 370}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_2B\_Y\ 702}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_3\_X\ 250}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_3\_Y\ 548}}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_4A\_X\ 605}}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_4A\_Y\ 601}}
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_4B\_X\ 605}}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_4B\_Y\ 702}}
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_5\_X\ 150}}
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_5\_Y\ 189}}
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_6\_X\ 833}}
+\DoxyCodeLine{00171\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_6\_Y\ 520}}
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_7\_X\ 835}}
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\#define\ MAP\_CAM\_7\_Y\ 199}}
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\#define\ MAP\_RIGHT\_DOOR\_X\ 570}}
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\#define\ MAP\_RIGHT\_DOOR\_Y\ 702}}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#define\ MAP\_LEFT\_DOOR\_X\ 463}}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\#define\ MAP\_LEFT\_DOOR\_Y\ 685}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\#define\ ID\_OFFSET\_X\ 13}}
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#define\ FREDDY\_ID\_OFFSET\_Y\ 12}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#define\ BONNIE\_ID\_OFFSET\_Y\ 29}}
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\#define\ CHICA\_ID\_OFFSET\_Y\ 49}}
+\DoxyCodeLine{00183\ \textcolor{preprocessor}{\#define\ FOXY\_ID\_OFFSET\_Y\ 67}}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ UI\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

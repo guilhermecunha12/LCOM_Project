@@ -1,0 +1,36 @@
+<map id="GameState" name="GameState">
+<area shape="rect" id="Node000001" title="Struct that represents the overall game state. It contains a type field that indicates the current st..." alt="" coords="720,285,815,310"/>
+<area shape="rect" id="Node000002" href="$structPersistentData.html" title="Enum that defines the global game data that persists across states. This includes the current night,..." alt="" coords="419,13,538,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="552,16,589,17,627,24,665,37,698,58,721,84,739,114,751,146,760,179,768,241,769,285,764,285,763,241,755,180,746,148,734,116,717,87,694,62,662,41,626,29,588,23,552,21"/>
+<area shape="rect" id="Node000003" href="$structMainMenuState.html" title=" " alt="" coords="417,62,541,87"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="555,74,638,82,673,90,698,102,718,122,733,146,754,198,765,247,768,284,763,285,759,248,749,199,729,148,713,125,694,106,672,95,637,88,554,79"/>
+<area shape="rect" id="Node000004" href="$structNewspaperState.html" title=" " alt="" coords="414,111,543,137"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="557,118,592,121,629,128,665,141,698,159,726,188,746,223,759,257,766,284,761,285,754,259,741,225,721,191,694,163,663,145,628,134,591,127,557,124"/>
+<area shape="rect" id="Node000005" href="$structNightIntroState.html" title=" " alt="" coords="418,161,539,186"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="554,174,626,187,663,199,697,215,718,230,736,248,761,283,756,286,732,252,714,234,695,220,661,203,624,192,553,179"/>
+<area shape="rect" id="Node000006" href="$structNightSurvivalState.html" title=" " alt="" coords="407,309,551,334"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="565,322,629,321,696,315,728,307,729,313,696,320,629,326,565,327"/>
+<area shape="rect" id="Node000007" href="$structAnimSprite.html" title="Animated sprite structure that extends the basic sprite structure by adding animation&#45;related informa..." alt="" coords="137,255,231,281"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="236,282,259,288,335,302,407,312,406,317,334,307,258,293,235,287"/>
+<area shape="rect" id="Node000010" href="$structJumpscareState.html" title=" " alt="" coords="417,210,541,235"/>
+<area shape="poly" id="edge10_Node000010_Node000007" title=" " alt="" coords="244,252,258,249,416,227,417,232,259,255,245,257"/>
+<area shape="rect" id="Node000014" href="$structStaticScreenState.html" title=" " alt="" coords="410,259,547,285"/>
+<area shape="poly" id="edge16_Node000014_Node000007" title=" " alt="" coords="245,266,410,268,410,274,245,271"/>
+<area shape="rect" id="Node000008" href="$structSprite.html" title="Basic sprite structure that holds basic information about the sprite now loaded from a XPM." alt="" coords="5,255,65,281"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="79,265,137,265,137,271,79,271"/>
+<area shape="rect" id="Node000009" href="$structAnimatronic.html" title="Struct representing an animatronic, which contains information about it." alt="" coords="133,369,235,394"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="248,366,415,331,416,337,249,371"/>
+<area shape="rect" id="Node000012" href="$structNightNoBatteryState.html" title=" " alt="" coords="400,358,557,383"/>
+<area shape="poly" id="edge13_Node000012_Node000009" title=" " alt="" coords="235,395,259,400,317,406,375,400,399,392,435,381,437,386,401,397,377,405,317,411,258,405,234,400"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="554,229,624,241,697,260,745,282,743,287,695,265,623,246,554,234"/>
+<area shape="rect" id="Node000011" href="$structNight6AMScreen.html" title=" " alt="" coords="413,407,544,433"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="558,420,627,412,662,402,695,387,716,370,734,349,758,309,762,312,738,352,720,374,697,392,664,407,628,417,558,426"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="571,367,633,359,695,343,725,327,750,308,753,312,728,331,697,348,634,365,572,372"/>
+<area shape="rect" id="Node000013" href="$structWinState.html" title=" " alt="" coords="438,457,519,482"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="533,473,572,473,614,469,656,458,694,438,723,409,742,373,755,337,761,310,766,311,760,339,747,375,727,412,698,442,658,463,615,474,572,478,533,478"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="561,277,720,291,719,296,561,282"/>
+<area shape="rect" id="Node000015" href="$structGameOverState.html" title=" " alt="" coords="415,506,542,531"/>
+<area shape="poly" id="edge17_Node000001_Node000015" title=" " alt="" coords="556,526,591,526,628,522,663,511,694,493,714,473,729,450,750,397,760,347,763,310,768,310,765,348,755,399,734,452,718,476,698,497,665,516,629,527,592,531,556,532"/>
+<area shape="rect" id="Node000016" href="$structReceivingDataState.html" title=" " alt="" coords="403,555,554,581"/>
+<area shape="poly" id="edge18_Node000001_Node000016" title=" " alt="" coords="567,579,601,578,634,574,666,563,694,546,707,529,719,503,739,434,762,310,767,311,745,435,724,505,712,532,698,550,668,568,635,579,601,584,567,584"/>
+</map>
