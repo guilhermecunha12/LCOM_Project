@@ -1,0 +1,56 @@
+\doxysection{proj/controller/handlers/waiting\+\_\+for\+\_\+data\+\_\+handlers.c File Reference}
+\hypertarget{waiting__for__data__handlers_8c}{}\label{waiting__for__data__handlers_8c}\index{proj/controller/handlers/waiting\_for\_data\_handlers.c@{proj/controller/handlers/waiting\_for\_data\_handlers.c}}
+{\ttfamily \#include "{}processor.\+h"{}}\newline
+{\ttfamily \#include "{}../../devices/serial\+\_\+port/sp\+\_\+encoding.\+h"{}}\newline
+Include dependency graph for waiting\+\_\+for\+\_\+data\+\_\+handlers.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{waiting__for__data__handlers_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{waiting__for__data__handlers_8c_acccaf67c876219245e06b909571f6f67}{handle\+\_\+waiting\+\_\+for\+\_\+data\+\_\+keyboard}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for keyboard events in the waiting for data state, in the receiver\textquotesingle{}s perspective. This handler only listens for the escape key to allow exiting the game while waiting for data, since there is no other interaction possible in this state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{waiting__for__data__handlers_8c_ae769c9c89940668f22bdb031f4af7442}{handle\+\_\+waiting\+\_\+for\+\_\+data\+\_\+serial\+\_\+port}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for serial port data events in the waiting for data state, in the receiver\textquotesingle{}s perspective. This handler listens for data indicating the start of the night survival mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{waiting__for__data__handlers_8c_acccaf67c876219245e06b909571f6f67}\label{waiting__for__data__handlers_8c_acccaf67c876219245e06b909571f6f67} 
+\index{waiting\_for\_data\_handlers.c@{waiting\_for\_data\_handlers.c}!handle\_waiting\_for\_data\_keyboard@{handle\_waiting\_for\_data\_keyboard}}
+\index{handle\_waiting\_for\_data\_keyboard@{handle\_waiting\_for\_data\_keyboard}!waiting\_for\_data\_handlers.c@{waiting\_for\_data\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{handle\_waiting\_for\_data\_keyboard()}{handle\_waiting\_for\_data\_keyboard()}}
+{\footnotesize\ttfamily void handle\+\_\+waiting\+\_\+for\+\_\+data\+\_\+keyboard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for keyboard events in the waiting for data state, in the receiver\textquotesingle{}s perspective. This handler only listens for the escape key to allow exiting the game while waiting for data, since there is no other interaction possible in this state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to exit the game if the escape key is pressed. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the keyboard input data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{waiting__for__data__handlers_8c_ae769c9c89940668f22bdb031f4af7442}\label{waiting__for__data__handlers_8c_ae769c9c89940668f22bdb031f4af7442} 
+\index{waiting\_for\_data\_handlers.c@{waiting\_for\_data\_handlers.c}!handle\_waiting\_for\_data\_serial\_port@{handle\_waiting\_for\_data\_serial\_port}}
+\index{handle\_waiting\_for\_data\_serial\_port@{handle\_waiting\_for\_data\_serial\_port}!waiting\_for\_data\_handlers.c@{waiting\_for\_data\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{handle\_waiting\_for\_data\_serial\_port()}{handle\_waiting\_for\_data\_serial\_port()}}
+{\footnotesize\ttfamily void handle\+\_\+waiting\+\_\+for\+\_\+data\+\_\+serial\+\_\+port (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for serial port data events in the waiting for data state, in the receiver\textquotesingle{}s perspective. This handler listens for data indicating the start of the night survival mode. 
+
+Only transitions to the receiving data state after a night survival is started. Therefore, if the receiver is set up in the middle of a night, it will only receive data from the next night forward. 
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which can be modified to transition to the receiving data state. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the serial port data received. \\
+\hline
+\end{DoxyParams}

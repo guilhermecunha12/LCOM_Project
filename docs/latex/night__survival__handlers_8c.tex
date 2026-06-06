@@ -1,0 +1,221 @@
+\doxysection{proj/controller/handlers/night\+\_\+survival\+\_\+handlers.c File Reference}
+\hypertarget{night__survival__handlers_8c}{}\label{night__survival__handlers_8c}\index{proj/controller/handlers/night\_survival\_handlers.c@{proj/controller/handlers/night\_survival\_handlers.c}}
+{\ttfamily \#include "{}processor.\+h"{}}\newline
+{\ttfamily \#include "{}../../view/ui.\+h"{}}\newline
+{\ttfamily \#include "{}../../view/ui\+\_\+utils.\+h"{}}\newline
+{\ttfamily \#include "{}../handlers/helpers/player\+\_\+screen\+\_\+movement\+\_\+handler.\+h"{}}\newline
+{\ttfamily \#include "{}../../models/sprite.\+h"{}}\newline
+{\ttfamily \#include "{}../../sound.\+h"{}}\newline
+Include dependency graph for night\+\_\+survival\+\_\+handlers.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{night__survival__handlers_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{night__survival__handlers_8c_a3caa3109a388092bd57933a407b3ec2d}{NIGHT\+\_\+\+LEFT\+\_\+\+DOOR\+\_\+\+BUTTON\+\_\+W}}~50
+\item 
+\#define \mbox{\hyperlink{night__survival__handlers_8c_a71e1237df2ccfa36de31e31cd20f490e}{NIGHT\+\_\+\+LEFT\+\_\+\+DOOR\+\_\+\+BUTTON\+\_\+H}}~50
+\item 
+\#define \mbox{\hyperlink{night__survival__handlers_8c_aee1dcd3f4401c053bc7991011f070955}{NIGHT\+\_\+\+LEFT\+\_\+\+DOOR\+\_\+\+BUTTON\+\_\+X}}~50
+\item 
+\#define \mbox{\hyperlink{night__survival__handlers_8c_ac4022cbddd0094529d31c7a9cf9cc160}{NIGHT\+\_\+\+LEFT\+\_\+\+DOOR\+\_\+\+BUTTON\+\_\+Y}}~400
+\item 
+\#define \mbox{\hyperlink{night__survival__handlers_8c_a22901cef5c8786b1eab47d446b011c7a}{NIGHT\+\_\+\+RIGHT\+\_\+\+DOOR\+\_\+\+BUTTON\+\_\+W}}~50
+\item 
+\#define \mbox{\hyperlink{night__survival__handlers_8c_a0d2b4da827c2dc2bac9f1df660858c3f}{NIGHT\+\_\+\+RIGHT\+\_\+\+DOOR\+\_\+\+BUTTON\+\_\+H}}~50
+\item 
+\#define \mbox{\hyperlink{night__survival__handlers_8c_a2292ada96bf425e7fec8f8b6c49ecde6}{NIGHT\+\_\+\+RIGHT\+\_\+\+DOOR\+\_\+\+BUTTON\+\_\+X}}~500
+\item 
+\#define \mbox{\hyperlink{night__survival__handlers_8c_aa3c370f08cfc354cec091fd34b899418}{NIGHT\+\_\+\+RIGHT\+\_\+\+DOOR\+\_\+\+BUTTON\+\_\+Y}}~400
+\item 
+\#define \mbox{\hyperlink{night__survival__handlers_8c_a4cb45c24afca2b4542ece3d39f716bcd}{NIGHT\+\_\+\+LEFT\+\_\+\+LIGHT\+\_\+\+BUTTON\+\_\+W}}~50
+\item 
+\#define \mbox{\hyperlink{night__survival__handlers_8c_a3781a4f05af376174c1bda07777c70f7}{NIGHT\+\_\+\+LEFT\+\_\+\+LIGHT\+\_\+\+BUTTON\+\_\+H}}~50
+\item 
+\#define \mbox{\hyperlink{night__survival__handlers_8c_aea8475f916d8c4715594acfe0b54229b}{NIGHT\+\_\+\+LEFT\+\_\+\+LIGHT\+\_\+\+BUTTON\+\_\+X}}~150
+\item 
+\#define \mbox{\hyperlink{night__survival__handlers_8c_a85618c4d9f2e112875d537bb8185a870}{NIGHT\+\_\+\+LEFT\+\_\+\+LIGHT\+\_\+\+BUTTON\+\_\+Y}}~400
+\item 
+\#define \mbox{\hyperlink{night__survival__handlers_8c_a761080e07097d4cfc5f95072615cd6aa}{NIGHT\+\_\+\+RIGHT\+\_\+\+LIGHT\+\_\+\+BUTTON\+\_\+W}}~50
+\item 
+\#define \mbox{\hyperlink{night__survival__handlers_8c_ac9e6a48018fcce25caef573927114d06}{NIGHT\+\_\+\+RIGHT\+\_\+\+LIGHT\+\_\+\+BUTTON\+\_\+H}}~50
+\item 
+\#define \mbox{\hyperlink{night__survival__handlers_8c_a943bc55841d24395431af96afef801b6}{NIGHT\+\_\+\+RIGHT\+\_\+\+LIGHT\+\_\+\+BUTTON\+\_\+X}}~400
+\item 
+\#define \mbox{\hyperlink{night__survival__handlers_8c_a29cd5c9ff5e556f09bc68ad8b23f07df}{NIGHT\+\_\+\+RIGHT\+\_\+\+LIGHT\+\_\+\+BUTTON\+\_\+Y}}~400
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{night__survival__handlers_8c_a7041cfe5deeda1505fdfca088a690d95}{toggle\+\_\+camera\+\_\+monitor}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\item 
+void \mbox{\hyperlink{night__survival__handlers_8c_ad5801301a66ae14d1d076788f0777831}{handle\+\_\+night\+\_\+survival\+\_\+mouse\+\_\+click}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for mouse left button click events in the night survival state. It checks if the click was on any interactive elements and updates the game state accordingly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{night__survival__handlers_8c_a1509564a4700f568cdc08e4871dfc08a}{handle\+\_\+night\+\_\+survival\+\_\+timer}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for timer tick events in the night survival state. This handler manages the countdown of the night survival time, checks for night completion, and handles battery drain based on player actions (doors, lights, camera). It transitions to the night 6AM screen if the player survives the night or to the no battery screen if the battery level reaches zero. It also updates animations and checks for animatronic jumpscares. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{night__survival__handlers_8c_a8aab3c2ce4961a71723a0b1474474b0e}{handle\+\_\+night\+\_\+survival\+\_\+keyboard}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for keyboard events in the night survival state. This handler manages keyboard input for controlling the player\textquotesingle{}s actions during the night survival state (e.\+g., moving the camera view left or right) or consulting the camera menu by pressing space. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{night__survival__handlers_8c_a71e1237df2ccfa36de31e31cd20f490e}\label{night__survival__handlers_8c_a71e1237df2ccfa36de31e31cd20f490e} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!NIGHT\_LEFT\_DOOR\_BUTTON\_H@{NIGHT\_LEFT\_DOOR\_BUTTON\_H}}
+\index{NIGHT\_LEFT\_DOOR\_BUTTON\_H@{NIGHT\_LEFT\_DOOR\_BUTTON\_H}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_LEFT\_DOOR\_BUTTON\_H}{NIGHT\_LEFT\_DOOR\_BUTTON\_H}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+LEFT\+\_\+\+DOOR\+\_\+\+BUTTON\+\_\+H~50}
+
+\Hypertarget{night__survival__handlers_8c_a3caa3109a388092bd57933a407b3ec2d}\label{night__survival__handlers_8c_a3caa3109a388092bd57933a407b3ec2d} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!NIGHT\_LEFT\_DOOR\_BUTTON\_W@{NIGHT\_LEFT\_DOOR\_BUTTON\_W}}
+\index{NIGHT\_LEFT\_DOOR\_BUTTON\_W@{NIGHT\_LEFT\_DOOR\_BUTTON\_W}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_LEFT\_DOOR\_BUTTON\_W}{NIGHT\_LEFT\_DOOR\_BUTTON\_W}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+LEFT\+\_\+\+DOOR\+\_\+\+BUTTON\+\_\+W~50}
+
+\Hypertarget{night__survival__handlers_8c_aee1dcd3f4401c053bc7991011f070955}\label{night__survival__handlers_8c_aee1dcd3f4401c053bc7991011f070955} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!NIGHT\_LEFT\_DOOR\_BUTTON\_X@{NIGHT\_LEFT\_DOOR\_BUTTON\_X}}
+\index{NIGHT\_LEFT\_DOOR\_BUTTON\_X@{NIGHT\_LEFT\_DOOR\_BUTTON\_X}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_LEFT\_DOOR\_BUTTON\_X}{NIGHT\_LEFT\_DOOR\_BUTTON\_X}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+LEFT\+\_\+\+DOOR\+\_\+\+BUTTON\+\_\+X~50}
+
+\Hypertarget{night__survival__handlers_8c_ac4022cbddd0094529d31c7a9cf9cc160}\label{night__survival__handlers_8c_ac4022cbddd0094529d31c7a9cf9cc160} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!NIGHT\_LEFT\_DOOR\_BUTTON\_Y@{NIGHT\_LEFT\_DOOR\_BUTTON\_Y}}
+\index{NIGHT\_LEFT\_DOOR\_BUTTON\_Y@{NIGHT\_LEFT\_DOOR\_BUTTON\_Y}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_LEFT\_DOOR\_BUTTON\_Y}{NIGHT\_LEFT\_DOOR\_BUTTON\_Y}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+LEFT\+\_\+\+DOOR\+\_\+\+BUTTON\+\_\+Y~400}
+
+\Hypertarget{night__survival__handlers_8c_a3781a4f05af376174c1bda07777c70f7}\label{night__survival__handlers_8c_a3781a4f05af376174c1bda07777c70f7} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!NIGHT\_LEFT\_LIGHT\_BUTTON\_H@{NIGHT\_LEFT\_LIGHT\_BUTTON\_H}}
+\index{NIGHT\_LEFT\_LIGHT\_BUTTON\_H@{NIGHT\_LEFT\_LIGHT\_BUTTON\_H}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_LEFT\_LIGHT\_BUTTON\_H}{NIGHT\_LEFT\_LIGHT\_BUTTON\_H}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+LEFT\+\_\+\+LIGHT\+\_\+\+BUTTON\+\_\+H~50}
+
+\Hypertarget{night__survival__handlers_8c_a4cb45c24afca2b4542ece3d39f716bcd}\label{night__survival__handlers_8c_a4cb45c24afca2b4542ece3d39f716bcd} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!NIGHT\_LEFT\_LIGHT\_BUTTON\_W@{NIGHT\_LEFT\_LIGHT\_BUTTON\_W}}
+\index{NIGHT\_LEFT\_LIGHT\_BUTTON\_W@{NIGHT\_LEFT\_LIGHT\_BUTTON\_W}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_LEFT\_LIGHT\_BUTTON\_W}{NIGHT\_LEFT\_LIGHT\_BUTTON\_W}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+LEFT\+\_\+\+LIGHT\+\_\+\+BUTTON\+\_\+W~50}
+
+\Hypertarget{night__survival__handlers_8c_aea8475f916d8c4715594acfe0b54229b}\label{night__survival__handlers_8c_aea8475f916d8c4715594acfe0b54229b} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!NIGHT\_LEFT\_LIGHT\_BUTTON\_X@{NIGHT\_LEFT\_LIGHT\_BUTTON\_X}}
+\index{NIGHT\_LEFT\_LIGHT\_BUTTON\_X@{NIGHT\_LEFT\_LIGHT\_BUTTON\_X}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_LEFT\_LIGHT\_BUTTON\_X}{NIGHT\_LEFT\_LIGHT\_BUTTON\_X}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+LEFT\+\_\+\+LIGHT\+\_\+\+BUTTON\+\_\+X~150}
+
+\Hypertarget{night__survival__handlers_8c_a85618c4d9f2e112875d537bb8185a870}\label{night__survival__handlers_8c_a85618c4d9f2e112875d537bb8185a870} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!NIGHT\_LEFT\_LIGHT\_BUTTON\_Y@{NIGHT\_LEFT\_LIGHT\_BUTTON\_Y}}
+\index{NIGHT\_LEFT\_LIGHT\_BUTTON\_Y@{NIGHT\_LEFT\_LIGHT\_BUTTON\_Y}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_LEFT\_LIGHT\_BUTTON\_Y}{NIGHT\_LEFT\_LIGHT\_BUTTON\_Y}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+LEFT\+\_\+\+LIGHT\+\_\+\+BUTTON\+\_\+Y~400}
+
+\Hypertarget{night__survival__handlers_8c_a0d2b4da827c2dc2bac9f1df660858c3f}\label{night__survival__handlers_8c_a0d2b4da827c2dc2bac9f1df660858c3f} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!NIGHT\_RIGHT\_DOOR\_BUTTON\_H@{NIGHT\_RIGHT\_DOOR\_BUTTON\_H}}
+\index{NIGHT\_RIGHT\_DOOR\_BUTTON\_H@{NIGHT\_RIGHT\_DOOR\_BUTTON\_H}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_RIGHT\_DOOR\_BUTTON\_H}{NIGHT\_RIGHT\_DOOR\_BUTTON\_H}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+RIGHT\+\_\+\+DOOR\+\_\+\+BUTTON\+\_\+H~50}
+
+\Hypertarget{night__survival__handlers_8c_a22901cef5c8786b1eab47d446b011c7a}\label{night__survival__handlers_8c_a22901cef5c8786b1eab47d446b011c7a} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!NIGHT\_RIGHT\_DOOR\_BUTTON\_W@{NIGHT\_RIGHT\_DOOR\_BUTTON\_W}}
+\index{NIGHT\_RIGHT\_DOOR\_BUTTON\_W@{NIGHT\_RIGHT\_DOOR\_BUTTON\_W}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_RIGHT\_DOOR\_BUTTON\_W}{NIGHT\_RIGHT\_DOOR\_BUTTON\_W}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+RIGHT\+\_\+\+DOOR\+\_\+\+BUTTON\+\_\+W~50}
+
+\Hypertarget{night__survival__handlers_8c_a2292ada96bf425e7fec8f8b6c49ecde6}\label{night__survival__handlers_8c_a2292ada96bf425e7fec8f8b6c49ecde6} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!NIGHT\_RIGHT\_DOOR\_BUTTON\_X@{NIGHT\_RIGHT\_DOOR\_BUTTON\_X}}
+\index{NIGHT\_RIGHT\_DOOR\_BUTTON\_X@{NIGHT\_RIGHT\_DOOR\_BUTTON\_X}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_RIGHT\_DOOR\_BUTTON\_X}{NIGHT\_RIGHT\_DOOR\_BUTTON\_X}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+RIGHT\+\_\+\+DOOR\+\_\+\+BUTTON\+\_\+X~500}
+
+\Hypertarget{night__survival__handlers_8c_aa3c370f08cfc354cec091fd34b899418}\label{night__survival__handlers_8c_aa3c370f08cfc354cec091fd34b899418} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!NIGHT\_RIGHT\_DOOR\_BUTTON\_Y@{NIGHT\_RIGHT\_DOOR\_BUTTON\_Y}}
+\index{NIGHT\_RIGHT\_DOOR\_BUTTON\_Y@{NIGHT\_RIGHT\_DOOR\_BUTTON\_Y}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_RIGHT\_DOOR\_BUTTON\_Y}{NIGHT\_RIGHT\_DOOR\_BUTTON\_Y}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+RIGHT\+\_\+\+DOOR\+\_\+\+BUTTON\+\_\+Y~400}
+
+\Hypertarget{night__survival__handlers_8c_ac9e6a48018fcce25caef573927114d06}\label{night__survival__handlers_8c_ac9e6a48018fcce25caef573927114d06} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!NIGHT\_RIGHT\_LIGHT\_BUTTON\_H@{NIGHT\_RIGHT\_LIGHT\_BUTTON\_H}}
+\index{NIGHT\_RIGHT\_LIGHT\_BUTTON\_H@{NIGHT\_RIGHT\_LIGHT\_BUTTON\_H}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_RIGHT\_LIGHT\_BUTTON\_H}{NIGHT\_RIGHT\_LIGHT\_BUTTON\_H}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+RIGHT\+\_\+\+LIGHT\+\_\+\+BUTTON\+\_\+H~50}
+
+\Hypertarget{night__survival__handlers_8c_a761080e07097d4cfc5f95072615cd6aa}\label{night__survival__handlers_8c_a761080e07097d4cfc5f95072615cd6aa} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!NIGHT\_RIGHT\_LIGHT\_BUTTON\_W@{NIGHT\_RIGHT\_LIGHT\_BUTTON\_W}}
+\index{NIGHT\_RIGHT\_LIGHT\_BUTTON\_W@{NIGHT\_RIGHT\_LIGHT\_BUTTON\_W}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_RIGHT\_LIGHT\_BUTTON\_W}{NIGHT\_RIGHT\_LIGHT\_BUTTON\_W}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+RIGHT\+\_\+\+LIGHT\+\_\+\+BUTTON\+\_\+W~50}
+
+\Hypertarget{night__survival__handlers_8c_a943bc55841d24395431af96afef801b6}\label{night__survival__handlers_8c_a943bc55841d24395431af96afef801b6} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!NIGHT\_RIGHT\_LIGHT\_BUTTON\_X@{NIGHT\_RIGHT\_LIGHT\_BUTTON\_X}}
+\index{NIGHT\_RIGHT\_LIGHT\_BUTTON\_X@{NIGHT\_RIGHT\_LIGHT\_BUTTON\_X}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_RIGHT\_LIGHT\_BUTTON\_X}{NIGHT\_RIGHT\_LIGHT\_BUTTON\_X}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+RIGHT\+\_\+\+LIGHT\+\_\+\+BUTTON\+\_\+X~400}
+
+\Hypertarget{night__survival__handlers_8c_a29cd5c9ff5e556f09bc68ad8b23f07df}\label{night__survival__handlers_8c_a29cd5c9ff5e556f09bc68ad8b23f07df} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!NIGHT\_RIGHT\_LIGHT\_BUTTON\_Y@{NIGHT\_RIGHT\_LIGHT\_BUTTON\_Y}}
+\index{NIGHT\_RIGHT\_LIGHT\_BUTTON\_Y@{NIGHT\_RIGHT\_LIGHT\_BUTTON\_Y}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_RIGHT\_LIGHT\_BUTTON\_Y}{NIGHT\_RIGHT\_LIGHT\_BUTTON\_Y}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+RIGHT\+\_\+\+LIGHT\+\_\+\+BUTTON\+\_\+Y~400}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{night__survival__handlers_8c_a8aab3c2ce4961a71723a0b1474474b0e}\label{night__survival__handlers_8c_a8aab3c2ce4961a71723a0b1474474b0e} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!handle\_night\_survival\_keyboard@{handle\_night\_survival\_keyboard}}
+\index{handle\_night\_survival\_keyboard@{handle\_night\_survival\_keyboard}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{handle\_night\_survival\_keyboard()}{handle\_night\_survival\_keyboard()}}
+{\footnotesize\ttfamily void handle\+\_\+night\+\_\+survival\+\_\+keyboard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for keyboard events in the night survival state. This handler manages keyboard input for controlling the player\textquotesingle{}s actions during the night survival state (e.\+g., moving the camera view left or right) or consulting the camera menu by pressing space. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified based on the player\textquotesingle{}s keyboard input during the night survival state. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the keyboard input data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{night__survival__handlers_8c_ad5801301a66ae14d1d076788f0777831}\label{night__survival__handlers_8c_ad5801301a66ae14d1d076788f0777831} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!handle\_night\_survival\_mouse\_click@{handle\_night\_survival\_mouse\_click}}
+\index{handle\_night\_survival\_mouse\_click@{handle\_night\_survival\_mouse\_click}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{handle\_night\_survival\_mouse\_click()}{handle\_night\_survival\_mouse\_click()}}
+{\footnotesize\ttfamily void handle\+\_\+night\+\_\+survival\+\_\+mouse\+\_\+click (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for mouse left button click events in the night survival state. It checks if the click was on any interactive elements and updates the game state accordingly. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified based on the click. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the mouse click data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{night__survival__handlers_8c_a1509564a4700f568cdc08e4871dfc08a}\label{night__survival__handlers_8c_a1509564a4700f568cdc08e4871dfc08a} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!handle\_night\_survival\_timer@{handle\_night\_survival\_timer}}
+\index{handle\_night\_survival\_timer@{handle\_night\_survival\_timer}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{handle\_night\_survival\_timer()}{handle\_night\_survival\_timer()}}
+{\footnotesize\ttfamily void handle\+\_\+night\+\_\+survival\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for timer tick events in the night survival state. This handler manages the countdown of the night survival time, checks for night completion, and handles battery drain based on player actions (doors, lights, camera). It transitions to the night 6AM screen if the player survives the night or to the no battery screen if the battery level reaches zero. It also updates animations and checks for animatronic jumpscares. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified based on the night survival timer events, including time left, battery level, and potential jumpscares. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the timer tick data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{night__survival__handlers_8c_a7041cfe5deeda1505fdfca088a690d95}\label{night__survival__handlers_8c_a7041cfe5deeda1505fdfca088a690d95} 
+\index{night\_survival\_handlers.c@{night\_survival\_handlers.c}!toggle\_camera\_monitor@{toggle\_camera\_monitor}}
+\index{toggle\_camera\_monitor@{toggle\_camera\_monitor}!night\_survival\_handlers.c@{night\_survival\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{toggle\_camera\_monitor()}{toggle\_camera\_monitor()}}
+{\footnotesize\ttfamily void toggle\+\_\+camera\+\_\+monitor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+

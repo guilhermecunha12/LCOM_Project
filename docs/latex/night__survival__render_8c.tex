@@ -1,0 +1,90 @@
+\doxysection{proj/view/handlers/night\+\_\+survival\+\_\+render.c File Reference}
+\hypertarget{night__survival__render_8c}{}\label{night__survival__render_8c}\index{proj/view/handlers/night\_survival\_render.c@{proj/view/handlers/night\_survival\_render.c}}
+{\ttfamily \#include "{}../../models/sprite.\+h"{}}\newline
+{\ttfamily \#include "{}../../models/assets.\+h"{}}\newline
+{\ttfamily \#include "{}renderer.\+h"{}}\newline
+{\ttfamily \#include "{}../ui.\+h"{}}\newline
+Include dependency graph for night\+\_\+survival\+\_\+render.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{night__survival__render_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{night__survival__render_8c_ac676a9b92023a2804ce22ae8b27339a8}{draw\+\_\+battery\+\_\+indicator}} (int power\+\_\+level, int power\+\_\+drain\+\_\+speed)
+\begin{DoxyCompactList}\small\item\em Helper function that draws the battery indicator on the screen, which includes the percentage of battery left and the current power drain speed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{night__survival__render_8c_a5fd990da42a87ea2778b0dafb79f45bb}{draw\+\_\+office}} (int background\+\_\+offset\+\_\+x)
+\begin{DoxyCompactList}\small\item\em Helper function that draws the office background on the screen, with the given horizontal offset (used for the camera flip animation). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{night__survival__render_8c_a11f23c9382d0e2849bf4c9f49af7720c}{draw\+\_\+map}} (\mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850}{Camera\+ID}} camera\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Helper function that draws the map of the cameras on the screen, with an indicator of which camera the player is currently viewing. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{night__survival__render_8c_aec44f5e49432e581983e5531ca661771}{render\+\_\+night\+\_\+survival}} (const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Handler for rendering the night survival screen, which is the main gameplay screen during each night. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{night__survival__render_8c_ac676a9b92023a2804ce22ae8b27339a8}\label{night__survival__render_8c_ac676a9b92023a2804ce22ae8b27339a8} 
+\index{night\_survival\_render.c@{night\_survival\_render.c}!draw\_battery\_indicator@{draw\_battery\_indicator}}
+\index{draw\_battery\_indicator@{draw\_battery\_indicator}!night\_survival\_render.c@{night\_survival\_render.c}}
+\doxysubsubsection{\texorpdfstring{draw\_battery\_indicator()}{draw\_battery\_indicator()}}
+{\footnotesize\ttfamily void draw\+\_\+battery\+\_\+indicator (\begin{DoxyParamCaption}\item[{int}]{power\+\_\+level,  }\item[{int}]{power\+\_\+drain\+\_\+speed }\end{DoxyParamCaption})}
+
+
+
+Helper function that draws the battery indicator on the screen, which includes the percentage of battery left and the current power drain speed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em power\+\_\+level} & The current power level of the player, from 0 to 100 \\
+\hline
+{\em power\+\_\+drain\+\_\+speed} & The current power drain speed, from 1 to 20 (the higher, the faster the battery drains) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{night__survival__render_8c_a11f23c9382d0e2849bf4c9f49af7720c}\label{night__survival__render_8c_a11f23c9382d0e2849bf4c9f49af7720c} 
+\index{night\_survival\_render.c@{night\_survival\_render.c}!draw\_map@{draw\_map}}
+\index{draw\_map@{draw\_map}!night\_survival\_render.c@{night\_survival\_render.c}}
+\doxysubsubsection{\texorpdfstring{draw\_map()}{draw\_map()}}
+{\footnotesize\ttfamily void draw\+\_\+map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850}{Camera\+ID}}}]{camera\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Helper function that draws the map of the cameras on the screen, with an indicator of which camera the player is currently viewing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera\+\_\+id} & The camera that the player is currently viewing, used to know which camera indicator to draw on the map and which camera name to write on top of it. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{night__survival__render_8c_a5fd990da42a87ea2778b0dafb79f45bb}\label{night__survival__render_8c_a5fd990da42a87ea2778b0dafb79f45bb} 
+\index{night\_survival\_render.c@{night\_survival\_render.c}!draw\_office@{draw\_office}}
+\index{draw\_office@{draw\_office}!night\_survival\_render.c@{night\_survival\_render.c}}
+\doxysubsubsection{\texorpdfstring{draw\_office()}{draw\_office()}}
+{\footnotesize\ttfamily void draw\+\_\+office (\begin{DoxyParamCaption}\item[{int}]{background\+\_\+offset\+\_\+x }\end{DoxyParamCaption})}
+
+
+
+Helper function that draws the office background on the screen, with the given horizontal offset (used for the camera flip animation). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em background\+\_\+offset\+\_\+x} & The horizontal offset of the office background, used for the camera flip \\
+\hline
+\end{DoxyParams}
+\Hypertarget{night__survival__render_8c_aec44f5e49432e581983e5531ca661771}\label{night__survival__render_8c_aec44f5e49432e581983e5531ca661771} 
+\index{night\_survival\_render.c@{night\_survival\_render.c}!render\_night\_survival@{render\_night\_survival}}
+\index{render\_night\_survival@{render\_night\_survival}!night\_survival\_render.c@{night\_survival\_render.c}}
+\doxysubsubsection{\texorpdfstring{render\_night\_survival()}{render\_night\_survival()}}
+{\footnotesize\ttfamily void render\+\_\+night\+\_\+survival (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Handler for rendering the night survival screen, which is the main gameplay screen during each night. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The current \doxylink{structGameState}{Game\+State}. \\
+\hline
+\end{DoxyParams}

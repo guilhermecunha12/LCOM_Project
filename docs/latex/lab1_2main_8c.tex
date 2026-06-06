@@ -1,0 +1,79 @@
+\doxysection{lab1/main.c File Reference}
+\hypertarget{lab1_2main_8c}{}\label{lab1_2main_8c}\index{lab1/main.c@{lab1/main.c}}
+{\ttfamily \#include "{}bitwise.\+h"{}}\newline
+{\ttfamily \#include "{}rtc.\+h"{}}\newline
+{\ttfamily \#include $<$minix/syslib.\+h$>$}\newline
+{\ttfamily \#include $<$minix/sysutil.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+Include dependency graph for main.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lab1_2main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{lab1_2main_8c_aebf3e0e3e5266f0edeefdd7192cace84}{ASSERT}}(x,  msg)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{lab1_2main_8c_aafdf1c2e320417adfedf13df696c7688}{test\+\_\+bitwise}} ()
+\item 
+void \mbox{\hyperlink{lab1_2main_8c_a017e4605757fe05d95518ccdc2f14bce}{test\+\_\+privileged\+\_\+operation}} ()
+\item 
+void \mbox{\hyperlink{lab1_2main_8c_ae40a9eb5bf3ebd817a1b58b52c324628}{test\+\_\+rtc\+\_\+date}} ()
+\item 
+int \mbox{\hyperlink{lab1_2main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{lab1_2main_8c_aebf3e0e3e5266f0edeefdd7192cace84}\label{lab1_2main_8c_aebf3e0e3e5266f0edeefdd7192cace84} 
+\index{main.c@{main.c}!ASSERT@{ASSERT}}
+\index{ASSERT@{ASSERT}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{ASSERT}{ASSERT}}
+{\footnotesize\ttfamily \#define ASSERT(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{msg }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{if}\ (!(x))\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\ FAILED!\(\backslash\)n"{}},\ msg);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ exit(1);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{else}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\ passed.\(\backslash\)n"{}},\ msg);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{lab1_2main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{lab1_2main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{lab1_2main_8c_aafdf1c2e320417adfedf13df696c7688}\label{lab1_2main_8c_aafdf1c2e320417adfedf13df696c7688} 
+\index{main.c@{main.c}!test\_bitwise@{test\_bitwise}}
+\index{test\_bitwise@{test\_bitwise}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{test\_bitwise()}{test\_bitwise()}}
+{\footnotesize\ttfamily void test\+\_\+bitwise (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{lab1_2main_8c_a017e4605757fe05d95518ccdc2f14bce}\label{lab1_2main_8c_a017e4605757fe05d95518ccdc2f14bce} 
+\index{main.c@{main.c}!test\_privileged\_operation@{test\_privileged\_operation}}
+\index{test\_privileged\_operation@{test\_privileged\_operation}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{test\_privileged\_operation()}{test\_privileged\_operation()}}
+{\footnotesize\ttfamily void test\+\_\+privileged\+\_\+operation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{lab1_2main_8c_ae40a9eb5bf3ebd817a1b58b52c324628}\label{lab1_2main_8c_ae40a9eb5bf3ebd817a1b58b52c324628} 
+\index{main.c@{main.c}!test\_rtc\_date@{test\_rtc\_date}}
+\index{test\_rtc\_date@{test\_rtc\_date}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{test\_rtc\_date()}{test\_rtc\_date()}}
+{\footnotesize\ttfamily void test\+\_\+rtc\+\_\+date (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+

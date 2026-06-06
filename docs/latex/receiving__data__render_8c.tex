@@ -1,0 +1,35 @@
+\doxysection{proj/view/handlers/receiving\+\_\+data\+\_\+render.c File Reference}
+\hypertarget{receiving__data__render_8c}{}\label{receiving__data__render_8c}\index{proj/view/handlers/receiving\_data\_render.c@{proj/view/handlers/receiving\_data\_render.c}}
+{\ttfamily \#include "{}renderer.\+h"{}}\newline
+{\ttfamily \#include "{}../../models/assets.\+h"{}}\newline
+Include dependency graph for receiving\+\_\+data\+\_\+render.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{receiving__data__render_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{receiving__data__render_8c_af914ce3fd0fcb1ee021c214b6f85405a}{render\+\_\+receiving\+\_\+data}} (const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Handler for rendering the Receiving Data screen, which is shown in the receiver\textquotesingle{}s perspective during the night survival mode, while receiving data from the sender about the animatronic movements. This handler draws the cameras and animatronics in their respective positions based on the data received from the sender through the serial port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{receiving__data__render_8c_af914ce3fd0fcb1ee021c214b6f85405a}\label{receiving__data__render_8c_af914ce3fd0fcb1ee021c214b6f85405a} 
+\index{receiving\_data\_render.c@{receiving\_data\_render.c}!render\_receiving\_data@{render\_receiving\_data}}
+\index{render\_receiving\_data@{render\_receiving\_data}!receiving\_data\_render.c@{receiving\_data\_render.c}}
+\doxysubsubsection{\texorpdfstring{render\_receiving\_data()}{render\_receiving\_data()}}
+{\footnotesize\ttfamily void render\+\_\+receiving\+\_\+data (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Handler for rendering the Receiving Data screen, which is shown in the receiver\textquotesingle{}s perspective during the night survival mode, while receiving data from the sender about the animatronic movements. This handler draws the cameras and animatronics in their respective positions based on the data received from the sender through the serial port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The current \doxylink{structGameState}{Game\+State}. \\
+\hline
+\end{DoxyParams}

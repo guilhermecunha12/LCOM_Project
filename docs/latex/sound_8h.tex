@@ -1,0 +1,46 @@
+\doxysection{proj/sound.h File Reference}
+\hypertarget{sound_8h}{}\label{sound_8h}\index{proj/sound.h@{proj/sound.h}}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sound_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{sound_8h_a74698c7f1a8480db111985d0544c22f8}{play\+\_\+sound}} (const char \texorpdfstring{$\ast$}{*}sound\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Plays a sound effect based on the provided sound name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sound_8h_a7af29ef84e346502d53907ea1057d2c4}{stop\+\_\+sound}} (void)
+\begin{DoxyCompactList}\small\item\em Stops any currently playing sound effect. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sound_8h_a74698c7f1a8480db111985d0544c22f8}\label{sound_8h_a74698c7f1a8480db111985d0544c22f8} 
+\index{sound.h@{sound.h}!play\_sound@{play\_sound}}
+\index{play\_sound@{play\_sound}!sound.h@{sound.h}}
+\doxysubsubsection{\texorpdfstring{play\_sound()}{play\_sound()}}
+{\footnotesize\ttfamily void play\+\_\+sound (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{sound\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Plays a sound effect based on the provided sound name. 
+
+This function writes the sound name to the sound device file to trigger the corresponding sound effect. 
+\begin{DoxyParams}{Parameters}
+{\em sound\+\_\+name} & The name of the sound effect to play. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sound_8h_a7af29ef84e346502d53907ea1057d2c4}\label{sound_8h_a7af29ef84e346502d53907ea1057d2c4} 
+\index{sound.h@{sound.h}!stop\_sound@{stop\_sound}}
+\index{stop\_sound@{stop\_sound}!sound.h@{sound.h}}
+\doxysubsubsection{\texorpdfstring{stop\_sound()}{stop\_sound()}}
+{\footnotesize\ttfamily void stop\+\_\+sound (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Stops any currently playing sound effect. 
+
+This function writes a stop command to the sound device file to halt any ongoing sound effects. 

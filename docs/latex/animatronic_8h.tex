@@ -1,0 +1,164 @@
+\doxysection{proj/models/animatronic.h File Reference}
+\hypertarget{animatronic_8h}{}\label{animatronic_8h}\index{proj/models/animatronic.h@{proj/models/animatronic.h}}
+{\ttfamily \#include "{}../game\+\_\+constants.\+h"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+Include dependency graph for animatronic.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{animatronic_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{animatronic_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structAnimatronic}{Animatronic}}
+\begin{DoxyCompactList}\small\item\em Struct representing an animatronic, which contains information about it. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4}{Animatronic\+Name}} \{ \newline
+\mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4aae9e838d60dd3c56f940fc22a2826259}{FREDDY}}
+, \mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4a9c887b8b9c6cceb223054dafa851dcb3}{BONNIE}}
+, \mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4acc84d12a9492612958d05781ab364449}{CHICA}}
+, \mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4a34b5c6729b3170a3e6efaa46fef5a0e7}{FOXY}}
+, \newline
+\mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4a16fb1d1431435826b536112a9b6a2874}{NUM\+\_\+\+ANIMATRONICS}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum with the animatronic names. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{animatronic_8h_a35906bc42a33714130693594b72af561}{initialize\+\_\+animatronics}} (\mbox{\hyperlink{structAnimatronic}{Animatronic}} animatronics\mbox{[}\mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4a16fb1d1431435826b536112a9b6a2874}{NUM\+\_\+\+ANIMATRONICS}}\mbox{]}, int night\+\_\+number)
+\begin{DoxyCompactList}\small\item\em Initializes the animatronic\textquotesingle{}s data for the night based on the night number. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{animatronic_8h_a8fb905df35a3cc88fa49e2c59843d852}{update\+\_\+animatronic}} (\mbox{\hyperlink{structAnimatronic}{Animatronic}} \texorpdfstring{$\ast$}{*}animatronic, int time\+\_\+left, bool left\+\_\+door\+\_\+closed, bool right\+\_\+door\+\_\+closed, bool camera\+\_\+monitor\+\_\+up, \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850}{Camera\+ID}} viewing\+\_\+camera)
+\begin{DoxyCompactList}\small\item\em Updates the animatronic\textquotesingle{}s position and checks if it should attack the player. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structAnimatronic}{Animatronic}} \mbox{\hyperlink{animatronic_8h_a71df91457139e43b1038dea55a666af2}{initialize\+\_\+freddy\+\_\+no\+\_\+battery}} ()
+\begin{DoxyCompactList}\small\item\em Initializes Freddy\textquotesingle{}s data when the player\textquotesingle{}s battery runs out. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{animatronic_8h_ac08555d8ef9f3d201abbece9586e08b8}{update\+\_\+freddy\+\_\+no\+\_\+battery}} (\mbox{\hyperlink{structAnimatronic}{Animatronic}} \texorpdfstring{$\ast$}{*}freddy, int phase1\+\_\+duration, int phase2\+\_\+duration)
+\begin{DoxyCompactList}\small\item\em Updates No-\/\+Battery-\/\+Freddy\textquotesingle{}s state and checks if he should attack the player in a given frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4}\label{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4} 
+\index{animatronic.h@{animatronic.h}!AnimatronicName@{AnimatronicName}}
+\index{AnimatronicName@{AnimatronicName}!animatronic.h@{animatronic.h}}
+\doxysubsubsection{\texorpdfstring{AnimatronicName}{AnimatronicName}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4}{Animatronic\+Name}}}
+
+
+
+Enum with the animatronic names. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FREDDY@{FREDDY}!animatronic.h@{animatronic.h}}\index{animatronic.h@{animatronic.h}!FREDDY@{FREDDY}}}\Hypertarget{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4aae9e838d60dd3c56f940fc22a2826259}\label{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4aae9e838d60dd3c56f940fc22a2826259} 
+FREDDY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BONNIE@{BONNIE}!animatronic.h@{animatronic.h}}\index{animatronic.h@{animatronic.h}!BONNIE@{BONNIE}}}\Hypertarget{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4a9c887b8b9c6cceb223054dafa851dcb3}\label{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4a9c887b8b9c6cceb223054dafa851dcb3} 
+BONNIE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CHICA@{CHICA}!animatronic.h@{animatronic.h}}\index{animatronic.h@{animatronic.h}!CHICA@{CHICA}}}\Hypertarget{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4acc84d12a9492612958d05781ab364449}\label{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4acc84d12a9492612958d05781ab364449} 
+CHICA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FOXY@{FOXY}!animatronic.h@{animatronic.h}}\index{animatronic.h@{animatronic.h}!FOXY@{FOXY}}}\Hypertarget{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4a34b5c6729b3170a3e6efaa46fef5a0e7}\label{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4a34b5c6729b3170a3e6efaa46fef5a0e7} 
+FOXY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NUM\_ANIMATRONICS@{NUM\_ANIMATRONICS}!animatronic.h@{animatronic.h}}\index{animatronic.h@{animatronic.h}!NUM\_ANIMATRONICS@{NUM\_ANIMATRONICS}}}\Hypertarget{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4a16fb1d1431435826b536112a9b6a2874}\label{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4a16fb1d1431435826b536112a9b6a2874} 
+NUM\+\_\+\+ANIMATRONICS&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{animatronic_8h_a35906bc42a33714130693594b72af561}\label{animatronic_8h_a35906bc42a33714130693594b72af561} 
+\index{animatronic.h@{animatronic.h}!initialize\_animatronics@{initialize\_animatronics}}
+\index{initialize\_animatronics@{initialize\_animatronics}!animatronic.h@{animatronic.h}}
+\doxysubsubsection{\texorpdfstring{initialize\_animatronics()}{initialize\_animatronics()}}
+{\footnotesize\ttfamily void initialize\+\_\+animatronics (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structAnimatronic}{Animatronic}}}]{animatronics\mbox{[}\+NUM\+\_\+\+ANIMATRONICS\mbox{]},  }\item[{int}]{night\+\_\+number }\end{DoxyParamCaption})}
+
+
+
+Initializes the animatronic\textquotesingle{}s data for the night based on the night number. 
+
+Initializes the animatronic\textquotesingle{}s name, current position, path, path length, time to move opportunity and AI level. 
+\begin{DoxyParams}{Parameters}
+{\em animatronics} & An array of animatronics to be initialized. \\
+\hline
+{\em night\+\_\+number} & The current night number, used to determine the AI level of the animatronics. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{animatronic_8h_a71df91457139e43b1038dea55a666af2}\label{animatronic_8h_a71df91457139e43b1038dea55a666af2} 
+\index{animatronic.h@{animatronic.h}!initialize\_freddy\_no\_battery@{initialize\_freddy\_no\_battery}}
+\index{initialize\_freddy\_no\_battery@{initialize\_freddy\_no\_battery}!animatronic.h@{animatronic.h}}
+\doxysubsubsection{\texorpdfstring{initialize\_freddy\_no\_battery()}{initialize\_freddy\_no\_battery()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structAnimatronic}{Animatronic}} initialize\+\_\+freddy\+\_\+no\+\_\+battery (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes Freddy\textquotesingle{}s data when the player\textquotesingle{}s battery runs out. 
+
+\begin{DoxyReturn}{Returns}
+An initialized \doxylink{structAnimatronic}{Animatronic} struct representing Freddy in the no battery scenario. This struct has dummy values for certain fields that are not used in this case. 
+\end{DoxyReturn}
+\Hypertarget{animatronic_8h_a8fb905df35a3cc88fa49e2c59843d852}\label{animatronic_8h_a8fb905df35a3cc88fa49e2c59843d852} 
+\index{animatronic.h@{animatronic.h}!update\_animatronic@{update\_animatronic}}
+\index{update\_animatronic@{update\_animatronic}!animatronic.h@{animatronic.h}}
+\doxysubsubsection{\texorpdfstring{update\_animatronic()}{update\_animatronic()}}
+{\footnotesize\ttfamily bool update\+\_\+animatronic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structAnimatronic}{Animatronic}} \texorpdfstring{$\ast$}{*}}]{animatronic,  }\item[{int}]{time\+\_\+left,  }\item[{bool}]{left\+\_\+door\+\_\+closed,  }\item[{bool}]{right\+\_\+door\+\_\+closed,  }\item[{bool}]{camera\+\_\+monitor\+\_\+up,  }\item[{\mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850}{Camera\+ID}}}]{viewing\+\_\+camera }\end{DoxyParamCaption})}
+
+
+
+Updates the animatronic\textquotesingle{}s position and checks if it should attack the player. 
+
+This function updates the animatronic\textquotesingle{}s AI level based on the time left in the night, checks if it\textquotesingle{}s time for the animatronic to move, moves the animatronic forward in its path (or reset it to the start) or attacks the player. 
+\begin{DoxyParams}{Parameters}
+{\em animatronic} & The animatronic to be updated. \\
+\hline
+{\em time\+\_\+left} & The time left in the night, used to update the animatronic\textquotesingle{}s AI level. \\
+\hline
+{\em left\+\_\+door\+\_\+closed} & Whether the left door is closed, used to determine if the animatronic should attack the player. \\
+\hline
+{\em right\+\_\+door\+\_\+closed} & Whether the right door is closed, used to determine if the animatronic should attack the player. \\
+\hline
+{\em camera\+\_\+monitor\+\_\+up} & Whether the player has the camera monitor up, used to prevent Foxy from moving. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the animatronic attacks the player, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{animatronic_8h_ac08555d8ef9f3d201abbece9586e08b8}\label{animatronic_8h_ac08555d8ef9f3d201abbece9586e08b8} 
+\index{animatronic.h@{animatronic.h}!update\_freddy\_no\_battery@{update\_freddy\_no\_battery}}
+\index{update\_freddy\_no\_battery@{update\_freddy\_no\_battery}!animatronic.h@{animatronic.h}}
+\doxysubsubsection{\texorpdfstring{update\_freddy\_no\_battery()}{update\_freddy\_no\_battery()}}
+{\footnotesize\ttfamily bool update\+\_\+freddy\+\_\+no\+\_\+battery (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structAnimatronic}{Animatronic}} \texorpdfstring{$\ast$}{*}}]{freddy,  }\item[{int}]{phase1\+\_\+duration,  }\item[{int}]{phase2\+\_\+duration }\end{DoxyParamCaption})}
+
+
+
+Updates No-\/\+Battery-\/\+Freddy\textquotesingle{}s state and checks if he should attack the player in a given frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em freddy} & The No-\/\+Battery-\/\+Freddy animatronic to be updated. \\
+\hline
+{\em phase1\+\_\+duration} & The duration left of the first phase. \\
+\hline
+{\em phase2\+\_\+duration} & The duration left of the second phase. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if Freddy attacks the player, false otherwise. 
+\end{DoxyReturn}

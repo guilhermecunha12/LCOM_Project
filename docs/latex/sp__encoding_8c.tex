@@ -1,0 +1,39 @@
+\doxysection{proj/devices/serial\+\_\+port/sp\+\_\+encoding.c File Reference}
+\hypertarget{sp__encoding_8c}{}\label{sp__encoding_8c}\index{proj/devices/serial\_port/sp\_encoding.c@{proj/devices/serial\_port/sp\_encoding.c}}
+{\ttfamily \#include "{}sp\+\_\+encoding.\+h"{}}\newline
+Include dependency graph for sp\+\_\+encoding.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sp__encoding_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{sp__encoding_8c_af68fb85709e619dbe15890e5fcd466dc}{encode\+\_\+animatronic\+\_\+data}} (\mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4}{Animatronic\+Name}} name, \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850}{Camera\+ID}} position)
+\begin{DoxyCompactList}\small\item\em Encodes the animatronic\textquotesingle{}s name and position (camera) into a single byte of data to be sent through the serial port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sp__encoding_8c_af68fb85709e619dbe15890e5fcd466dc}\label{sp__encoding_8c_af68fb85709e619dbe15890e5fcd466dc} 
+\index{sp\_encoding.c@{sp\_encoding.c}!encode\_animatronic\_data@{encode\_animatronic\_data}}
+\index{encode\_animatronic\_data@{encode\_animatronic\_data}!sp\_encoding.c@{sp\_encoding.c}}
+\doxysubsubsection{\texorpdfstring{encode\_animatronic\_data()}{encode\_animatronic\_data()}}
+{\footnotesize\ttfamily uint8\+\_\+t encode\+\_\+animatronic\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4}{Animatronic\+Name}}}]{name,  }\item[{\mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850}{Camera\+ID}}}]{position }\end{DoxyParamCaption})}
+
+
+
+Encodes the animatronic\textquotesingle{}s name and position (camera) into a single byte of data to be sent through the serial port. 
+
+The encoding uses the 2 most significant bits to represent the animatronic\textquotesingle{}s name, the next 4 bits to represent the camera number, and the 2 least significant bits to represent the camera letter (A, B or C). 
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the animatronic to be encoded. \\
+\hline
+{\em position} & The camera position of the animatronic to be encoded, which includes both the camera number and letter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The encoded byte of data representing the animatronic\textquotesingle{}s name and position. 
+\end{DoxyReturn}

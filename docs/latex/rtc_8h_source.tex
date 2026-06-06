@@ -1,0 +1,27 @@
+\doxysection{rtc.\+h}
+\hypertarget{rtc_8h_source}{}\label{rtc_8h_source}\index{lab1/rtc.h@{lab1/rtc.h}}
+\mbox{\hyperlink{rtc_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00010\ \ \ uint8\_t\ \mbox{\hyperlink{structrtc__date_aafe421d9a0f25c596f639f15429ca5a3}{day}};}
+\DoxyCodeLine{00011\ \ \ uint8\_t\ \mbox{\hyperlink{structrtc__date_a12a7c52c4de83a5483997a6c7bd331ba}{month}};}
+\DoxyCodeLine{00012\ \ \ uint8\_t\ \mbox{\hyperlink{structrtc__date_a8a2ec430d56591b8f6d3b6cac9e953c5}{year}};}
+\DoxyCodeLine{00013\ \}\ \mbox{\hyperlink{structrtc__date}{rtc\_date}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00020\ \ \ uint8\_t\ \mbox{\hyperlink{structrtc__time_a4367bb8c0db65b04bdcac4e2e1fe9608}{hours}};}
+\DoxyCodeLine{00021\ \ \ uint8\_t\ \mbox{\hyperlink{structrtc__time_acbf1bbd4cfe03cd96fb2f3c2ce48ab92}{minutes}};}
+\DoxyCodeLine{00022\ \ \ uint8\_t\ \mbox{\hyperlink{structrtc__time_a84de8da7e4fd6294adc27fa02974b4a2}{seconds}};}
+\DoxyCodeLine{00023\ \}\ \mbox{\hyperlink{structrtc__time}{rtc\_time}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rtc_8h_a40b0d612861625726053db582810457a}{rtc\_read\_date}}(\mbox{\hyperlink{structrtc__date}{rtc\_date}}\ *date);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rtc_8h_a1c93057ca748e4cf3d0c3de20054304b}{rtc\_read\_time}}(\mbox{\hyperlink{structrtc__time}{rtc\_time}}\ *time);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rtc_8h_af21c89614126e2fd0b69fd9eef101b37}{util\_sys\_inb}}(\textcolor{keywordtype}{int}\ port,\ uint8\_t\ *\textcolor{keywordtype}{byte});}
+
+\end{DoxyCode}

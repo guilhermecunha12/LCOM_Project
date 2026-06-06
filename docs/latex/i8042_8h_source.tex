@@ -1,0 +1,45 @@
+\doxysection{i8042.\+h}
+\hypertarget{i8042_8h_source}{}\label{i8042_8h_source}\index{lab3/i8042.h@{lab3/i8042.h}}
+\mbox{\hyperlink{i8042_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ I8042\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ I8042\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ Keyboard\ must\ respond\ to\ a\ command\ within\ 20ms}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ DELAY\_US\ 20000\ }}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ Keyboard\ Interrupt\ Line\ }}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ KBD\_IRQ\ 1}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ KBC\_OB\ 0x60\ }\textcolor{comment}{//\ kbc\ output\ buffer\ }}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ KBC\_IB\ 0x60\ }\textcolor{comment}{//\ kbc\ input\ buffer}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ KBC\_STATUS\_REG\ 0x64\ }\textcolor{comment}{//\ kbc\ status\ register}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ KBC\_CMD\_REG\ 0x64\ }\textcolor{comment}{//\ kbc\ command\ register}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ MASKS\ FOR\ STATUS\ BYTE}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ KBC\_OBF\ BIT(0)}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ KBC\_IBF\ BIT(1)}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ KBC\_ERROR\ (BIT(6)\ |\ BIT(7))}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ KBC\_MOUSE\_DATA\ BIT(5)}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ ATTEMPT\ NUMBER}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ N\_TRIES\ 10\ }\textcolor{comment}{//\ number\ of\ tries\ to\ read\ from\ the\ kbc}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ Command\ byte\ fields}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ DISABLE\_MOUSE\_INTERFACE\ BIT(5)}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ DISABLE\_KEYBOARD\_INTERFACE\ BIT(4)}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ ENABLE\_MOUSE\_INTERRUPTS\ BIT(1)}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ ENABLE\_KEYBOARD\_INTERRUPTS\ BIT(0)}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ Available\ commands}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ READ\_COMMAND\_BYTE\ 0x20}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ WRITE\_COMMAND\_BYTE\ 0x60}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ Key\ related\ macros}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ ESC\_BREAKCODE\ 0x81\ }\textcolor{comment}{//\ breakcode\ of\ the\ ESC\ key}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ MSB(n)\ (n\ >>\ 7)\ }\textcolor{comment}{//\ MSB\ of\ a\ byte}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ TWO\_BYTE\_PREFIX\ 0xE0\ }\textcolor{comment}{//\ prefix\ of\ 2-\/byte\ long\ scancodes.\ Needed\ to\ know\ if\ the\ current\ scancode\ has\ 1\ or\ 2\ bytes\ (3\ bytes\ not\ supported\ -\/\ lab\ guides).\ This\ is\ the\ only\ valid\ 2-\/byte\ scancode\ prefix\ considered.}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

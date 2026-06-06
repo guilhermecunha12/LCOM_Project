@@ -73,9 +73,9 @@ void render_receiving_data(const GameState* state) {
 
     for (int cam = 0; cam < NUM_CAMERAS; cam++) {
         for (int anim = 0; anim < NUM_ANIMATRONICS; anim++) {
-            if (state->data.receiving_data.animatronics_in_cam[cam][anim]) {
+            //if (state->data.receiving_data.animatronics_in_cam[cam][anim]) {
                 draw_sprite(get_asset(animatronic_asset[cam][anim]));
-            }
+            //}
         }
     }
 }

@@ -1,0 +1,36 @@
+\doxysection{proj/controller/handlers/night\+\_\+6am\+\_\+handlers.c File Reference}
+\hypertarget{night__6am__handlers_8c}{}\label{night__6am__handlers_8c}\index{proj/controller/handlers/night\_6am\_handlers.c@{proj/controller/handlers/night\_6am\_handlers.c}}
+{\ttfamily \#include "{}processor.\+h"{}}\newline
+Include dependency graph for night\+\_\+6am\+\_\+handlers.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{night__6am__handlers_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{night__6am__handlers_8c_a32b24ad27bb109034746cc920c753de1}{handle\+\_\+night\+\_\+6am\+\_\+timer}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for timer tick events in the night 6AM state. This handler manages the countdown for the night 6AM screen display and transitions and initializes the night intro state when the duration reaches zero or if it was the last night it will transition to the win state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{night__6am__handlers_8c_a32b24ad27bb109034746cc920c753de1}\label{night__6am__handlers_8c_a32b24ad27bb109034746cc920c753de1} 
+\index{night\_6am\_handlers.c@{night\_6am\_handlers.c}!handle\_night\_6am\_timer@{handle\_night\_6am\_timer}}
+\index{handle\_night\_6am\_timer@{handle\_night\_6am\_timer}!night\_6am\_handlers.c@{night\_6am\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{handle\_night\_6am\_timer()}{handle\_night\_6am\_timer()}}
+{\footnotesize\ttfamily void handle\+\_\+night\+\_\+6am\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for timer tick events in the night 6AM state. This handler manages the countdown for the night 6AM screen display and transitions and initializes the night intro state when the duration reaches zero or if it was the last night it will transition to the win state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to transition to the next state when the night 6AM duration ends. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the timer tick data. \\
+\hline
+\end{DoxyParams}

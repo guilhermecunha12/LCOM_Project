@@ -1,0 +1,42 @@
+\doxysection{video.\+h}
+\hypertarget{lab5_2video_8h_source}{}\label{lab5_2video_8h_source}\index{lab5/video.h@{lab5/video.h}}
+\mbox{\hyperlink{lab5_2video_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ VIDEO\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ VIDEO\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <lcom/xpm.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ VIDEO\_INTNO\ 0x10}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ VBE\_CALL\_AH\ 0x4F}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ VBE\_SET\_MODE\_FUNCTION\ 0x02}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ SUPPORTED\_FUNCTION\ 0x4F}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ FUNCTION\_CALL\_SUCCESS\ 0x00}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00024\ int(\mbox{\hyperlink{lab5_2video_8h_a1f6b0c5409b6a57f41877ba74d2bb04a}{init\_video\_card}})(uint16\_t\ mode);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00031\ int(\mbox{\hyperlink{lab5_2video_8h_ad4cf64d63dd2db5442d84aef1b651038}{switch\_text\_mode}})(void);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00043\ int(\mbox{\hyperlink{lab5_2video_8h_a8dc3b64d819195e41495b03be84f9db5}{draw\_xpm}})(xpm\_map\_t\ xpm,\ uint16\_t\ x,\ uint16\_t\ y);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00054\ int(\mbox{\hyperlink{lab5_2video_8h_a87b5e2592dcb7b7352ea38e16f9d2f1a}{config\_Vram}})(uint16\_t\ mode);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00063\ int(\mbox{\hyperlink{lab5_2video_8h_a3c67c51f009c19d3471165717afc1244}{vg\_set\_mode}})(uint16\_t\ mode);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00074\ int(\mbox{\hyperlink{lab5_2video_8h_a08c498ffeb0a3962e3b7711b57397741}{vg\_draw\_pixel}})(uint16\_t\ x,\ uint16\_t\ y,\ uint32\_t\ color);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00085\ int(\mbox{\hyperlink{lab5_2video_8h_a5e5b25bd525250f61f40b9e9f212d5e6}{vg\_draw\_hline}})(uint16\_t\ x,\ uint16\_t\ y,\ uint16\_t\ len,\ uint32\_t\ color);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00094\ int(\mbox{\hyperlink{lab5_2video_8h_a252233c089c3c3fbe01fdf0310ae9a84}{initialize\_back\_buffer}})(void);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00100\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{lab5_2video_8h_a6bb0680ffed5557a9d87d0415276c00d}{swap\_buffers}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00105\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{lab5_2video_8h_a48eb5b268cfd97ca864059acd4eb2d70}{clear\_back\_buffer}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

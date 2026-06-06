@@ -1,0 +1,214 @@
+\doxysection{proj/state.c File Reference}
+\hypertarget{state_8c}{}\label{state_8c}\index{proj/state.c@{proj/state.c}}
+{\ttfamily \#include "{}state.\+h"{}}\newline
+{\ttfamily \#include "{}models/assets.\+h"{}}\newline
+{\ttfamily \#include "{}view/ui.\+h"{}}\newline
+{\ttfamily \#include "{}sound.\+h"{}}\newline
+{\ttfamily \#include "{}devices/serial\+\_\+port/serial\+\_\+port.\+h"{}}\newline
+{\ttfamily \#include "{}devices/serial\+\_\+port/sp\+\_\+encoding.\+h"{}}\newline
+{\ttfamily \#include "{}controller/handlers/processor.\+h"{}}\newline
+Include dependency graph for state.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{state_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{state_8c_ab6d1699a0d2b931a3164d8ec3078eeba}{init\+\_\+main\+\_\+menu}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the main menu and sets up the global data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8c_af9c466cf48404fd946bd166a014e38ce}{init\+\_\+jumpscare}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4}{Animatronic\+Name}} animatronic\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the jumpscare state and sets up the relevant data, including the jumpscare sprite based on the animatronic that is performing the jumpscare. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8c_a09a82856f0c759062db8336ce304cfe1}{init\+\_\+night\+\_\+intro}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the night intro state and sets up the relevant data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8c_a2a95499f3c2dabe4d94a2d9e48b6e52f}{init\+\_\+newspaper}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the newspaper state and sets up the relevant data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8c_ab5de9d506122455dc0731222cfc21350}{init\+\_\+night\+\_\+survival}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the night survival state and sets up the relevant data, including the animatronics\textquotesingle{} paths and AI levels based on the current night. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8c_af0d169a10b9ae50b2cf3237901997f70}{init\+\_\+night\+\_\+6am}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the 6 AM screen state and sets up the relevant data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8c_a5b76931d588b40ec8eb59594713b2a79}{init\+\_\+night\+\_\+no\+\_\+battery}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the night no battery state and sets up the relevant data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8c_a36993c80b9ba4b7c4671cf32598fa564}{init\+\_\+win\+\_\+screen}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the win screen state and sets up the relevant data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8c_a6a9f8761d9ae6354cb1dc32f5e7c71dd}{init\+\_\+static\+\_\+screen}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the win screen state and sets up the relevant data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8c_a00b6d29a1647276644223fe525a35e50}{init\+\_\+game\+\_\+over}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the game over state and sets up the relevant data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8c_aa7df519d2f0611e0a0715b50db7b8c38}{init\+\_\+receiving\+\_\+data\+\_\+state}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}data\+\_\+queue)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the receiving data state and sets up the relevant data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{state_8c_a00b6d29a1647276644223fe525a35e50}\label{state_8c_a00b6d29a1647276644223fe525a35e50} 
+\index{state.c@{state.c}!init\_game\_over@{init\_game\_over}}
+\index{init\_game\_over@{init\_game\_over}!state.c@{state.c}}
+\doxysubsubsection{\texorpdfstring{init\_game\_over()}{init\_game\_over()}}
+{\footnotesize\ttfamily void init\+\_\+game\+\_\+over (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the game over state and sets up the relevant data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8c_af9c466cf48404fd946bd166a014e38ce}\label{state_8c_af9c466cf48404fd946bd166a014e38ce} 
+\index{state.c@{state.c}!init\_jumpscare@{init\_jumpscare}}
+\index{init\_jumpscare@{init\_jumpscare}!state.c@{state.c}}
+\doxysubsubsection{\texorpdfstring{init\_jumpscare()}{init\_jumpscare()}}
+{\footnotesize\ttfamily void init\+\_\+jumpscare (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{\mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4}{Animatronic\+Name}}}]{animatronic\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the jumpscare state and sets up the relevant data, including the jumpscare sprite based on the animatronic that is performing the jumpscare. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+{\em animatronic\+\_\+name} & The name of the animatronic that is performing the jumpscare, used to determine which jumpscare sprite to display. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8c_ab6d1699a0d2b931a3164d8ec3078eeba}\label{state_8c_ab6d1699a0d2b931a3164d8ec3078eeba} 
+\index{state.c@{state.c}!init\_main\_menu@{init\_main\_menu}}
+\index{init\_main\_menu@{init\_main\_menu}!state.c@{state.c}}
+\doxysubsubsection{\texorpdfstring{init\_main\_menu()}{init\_main\_menu()}}
+{\footnotesize\ttfamily void init\+\_\+main\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the main menu and sets up the global data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8c_a2a95499f3c2dabe4d94a2d9e48b6e52f}\label{state_8c_a2a95499f3c2dabe4d94a2d9e48b6e52f} 
+\index{state.c@{state.c}!init\_newspaper@{init\_newspaper}}
+\index{init\_newspaper@{init\_newspaper}!state.c@{state.c}}
+\doxysubsubsection{\texorpdfstring{init\_newspaper()}{init\_newspaper()}}
+{\footnotesize\ttfamily void init\+\_\+newspaper (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the newspaper state and sets up the relevant data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8c_af0d169a10b9ae50b2cf3237901997f70}\label{state_8c_af0d169a10b9ae50b2cf3237901997f70} 
+\index{state.c@{state.c}!init\_night\_6am@{init\_night\_6am}}
+\index{init\_night\_6am@{init\_night\_6am}!state.c@{state.c}}
+\doxysubsubsection{\texorpdfstring{init\_night\_6am()}{init\_night\_6am()}}
+{\footnotesize\ttfamily void init\+\_\+night\+\_\+6am (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the 6 AM screen state and sets up the relevant data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8c_a09a82856f0c759062db8336ce304cfe1}\label{state_8c_a09a82856f0c759062db8336ce304cfe1} 
+\index{state.c@{state.c}!init\_night\_intro@{init\_night\_intro}}
+\index{init\_night\_intro@{init\_night\_intro}!state.c@{state.c}}
+\doxysubsubsection{\texorpdfstring{init\_night\_intro()}{init\_night\_intro()}}
+{\footnotesize\ttfamily void init\+\_\+night\+\_\+intro (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the night intro state and sets up the relevant data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8c_a5b76931d588b40ec8eb59594713b2a79}\label{state_8c_a5b76931d588b40ec8eb59594713b2a79} 
+\index{state.c@{state.c}!init\_night\_no\_battery@{init\_night\_no\_battery}}
+\index{init\_night\_no\_battery@{init\_night\_no\_battery}!state.c@{state.c}}
+\doxysubsubsection{\texorpdfstring{init\_night\_no\_battery()}{init\_night\_no\_battery()}}
+{\footnotesize\ttfamily void init\+\_\+night\+\_\+no\+\_\+battery (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the night no battery state and sets up the relevant data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8c_ab5de9d506122455dc0731222cfc21350}\label{state_8c_ab5de9d506122455dc0731222cfc21350} 
+\index{state.c@{state.c}!init\_night\_survival@{init\_night\_survival}}
+\index{init\_night\_survival@{init\_night\_survival}!state.c@{state.c}}
+\doxysubsubsection{\texorpdfstring{init\_night\_survival()}{init\_night\_survival()}}
+{\footnotesize\ttfamily void init\+\_\+night\+\_\+survival (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the night survival state and sets up the relevant data, including the animatronics\textquotesingle{} paths and AI levels based on the current night. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8c_aa7df519d2f0611e0a0715b50db7b8c38}\label{state_8c_aa7df519d2f0611e0a0715b50db7b8c38} 
+\index{state.c@{state.c}!init\_receiving\_data\_state@{init\_receiving\_data\_state}}
+\index{init\_receiving\_data\_state@{init\_receiving\_data\_state}!state.c@{state.c}}
+\doxysubsubsection{\texorpdfstring{init\_receiving\_data\_state()}{init\_receiving\_data\_state()}}
+{\footnotesize\ttfamily void init\+\_\+receiving\+\_\+data\+\_\+state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}}]{data\+\_\+queue }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the receiving data state and sets up the relevant data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+{\em data\+\_\+queue} & The queue containing the data received from the serial port. This is necessary because animatronic\textquotesingle{}s position data is sent in the begginning of the night survival mode (in the same interrupt as the data that starts the night), so we need to process that data to initialize the animatronics\textquotesingle{} positions in the receiving data state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8c_a6a9f8761d9ae6354cb1dc32f5e7c71dd}\label{state_8c_a6a9f8761d9ae6354cb1dc32f5e7c71dd} 
+\index{state.c@{state.c}!init\_static\_screen@{init\_static\_screen}}
+\index{init\_static\_screen@{init\_static\_screen}!state.c@{state.c}}
+\doxysubsubsection{\texorpdfstring{init\_static\_screen()}{init\_static\_screen()}}
+{\footnotesize\ttfamily void init\+\_\+static\+\_\+screen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the win screen state and sets up the relevant data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8c_a36993c80b9ba4b7c4671cf32598fa564}\label{state_8c_a36993c80b9ba4b7c4671cf32598fa564} 
+\index{state.c@{state.c}!init\_win\_screen@{init\_win\_screen}}
+\index{init\_win\_screen@{init\_win\_screen}!state.c@{state.c}}
+\doxysubsubsection{\texorpdfstring{init\_win\_screen()}{init\_win\_screen()}}
+{\footnotesize\ttfamily void init\+\_\+win\+\_\+screen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the win screen state and sets up the relevant data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}

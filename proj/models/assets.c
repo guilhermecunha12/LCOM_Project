@@ -493,7 +493,7 @@ void load_all_assets() {
     
     assets_anim[ANIM_BONNIE_JUMPSCARE] = create_anim_sprite(NUM_JUMPSCARE_BONNIE, 0, 0, TICKS_PER_JUMPSCARE_FRAME,
     (xpm_map_t) bonnie1_xpm, (xpm_map_t) bonnie2_xpm, (xpm_map_t) bonnie3_xpm, (xpm_map_t) bonnie4_xpm, (xpm_map_t) bonnie5_xpm, 
-    (xpm_map_t) bonnie6_xpm, (xpm_map_t) bonnie7_xpm, (xpm_map_t) bonnie8_xpm, (xpm_map_t) bonnie9_xpm, (xpm_map_t) bonnie10_xpm, (xpm_map_t) bonnie11_xpm);
+    (xpm_map_t) bonnie6_xpm, (xpm_map_t) bonnie7_xpm, (xpm_map_t) bonnie8_xpm, (xpm_map_t) bonnie9_xpm, (xpm_map_t) bonnie10_xpm, (xpm_map_t) bonnie11_xpm, (xpm_map_t) bonnie10_xpm, (xpm_map_t) bonnie9_xpm, (xpm_map_t) bonnie8_xpm, (xpm_map_t) bonnie7_xpm, (xpm_map_t) bonnie6_xpm, (xpm_map_t) bonnie5_xpm, (xpm_map_t) bonnie4_xpm, (xpm_map_t) bonnie3_xpm, (xpm_map_t) bonnie2_xpm, (xpm_map_t) bonnie1_xpm);
 
     assets_anim[ANIM_CHICA_JUMPSCARE] = create_anim_sprite(NUM_JUMPSCARE_CHICA, 0, 0, TICKS_PER_JUMPSCARE_FRAME,
     (xpm_map_t) chica1_xpm, (xpm_map_t) chica2_xpm, (xpm_map_t) chica3_xpm, (xpm_map_t) chica4_xpm, (xpm_map_t) chica5_xpm, (xpm_map_t) chica6_xpm, (xpm_map_t) chica7_xpm, (xpm_map_t) chica8_xpm, (xpm_map_t) chica9_xpm, (xpm_map_t) chica10_xpm, (xpm_map_t) chica11_xpm, (xpm_map_t) chica12_xpm, (xpm_map_t) chica13_xpm, (xpm_map_t) chica14_xpm, (xpm_map_t) chica15_xpm, (xpm_map_t) chica16_xpm);
@@ -526,9 +526,7 @@ void load_all_assets() {
     (xpm_map_t) door_r_2_xpm, (xpm_map_t) door_r_3_xpm, (xpm_map_t) door_r_4_xpm, (xpm_map_t) door_r_5_xpm, (xpm_map_t) door_close_xpm);
 }
 
-void load_receiver_assets() {
-    // TODO: load the correct assets for the receiver
-    
+void load_receiver_assets() {    
     assets[WAITING_FOR_DATA_SCREEN] = create_sprite((xpm_map_t) waiting_for_data_xpm, 0, 0);
     assets[MAP_SCREEN] = create_sprite((xpm_map_t) map_sp_xpm, 0, 0);
     assets[FREDDY_CAM_1A] = create_sprite((xpm_map_t) freddy_id_xpm, MAP_CAM_1A_X + ID_OFFSET_X, MAP_CAM_1A_Y + FREDDY_ID_OFFSET_Y);

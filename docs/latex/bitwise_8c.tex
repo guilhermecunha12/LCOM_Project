@@ -1,0 +1,67 @@
+\doxysection{lab1/bitwise.c File Reference}
+\hypertarget{bitwise_8c}{}\label{bitwise_8c}\index{lab1/bitwise.c@{lab1/bitwise.c}}
+{\ttfamily \#include "{}bitwise.\+h"{}}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+Include dependency graph for bitwise.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bitwise_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{bitwise_8c_a7667e6364de66174e645b885eb72516d}{clear}} (uint8\+\_\+t msk, int pos)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{bitwise_8c_a9e881a5233c898055c39009a9fe8f55f}{set}} (uint8\+\_\+t msk, int pos)
+\item 
+bool \mbox{\hyperlink{bitwise_8c_aa4f7698dd16915b2312abad540788732}{is\+\_\+set}} (uint8\+\_\+t msk, int pos)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{bitwise_8c_adb0d1c296c06f8258996a1925b0030d3}{lsb}} (uint16\+\_\+t wide\+\_\+msk)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{bitwise_8c_a52f14550e1ef2bf9e42305cb288fcd5a}{msb}} (uint16\+\_\+t wide\+\_\+msk)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{bitwise_8c_a3fadb426310c267d94d9c693b8cecdb0}{mask}} (int pos,...)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{bitwise_8c_a7667e6364de66174e645b885eb72516d}\label{bitwise_8c_a7667e6364de66174e645b885eb72516d} 
+\index{bitwise.c@{bitwise.c}!clear@{clear}}
+\index{clear@{clear}!bitwise.c@{bitwise.c}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily uint8\+\_\+t clear (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{msk,  }\item[{int}]{pos }\end{DoxyParamCaption})}
+
+Yields a new bitmask equal to {\ttfamily msk} with bit at {\ttfamily pos} set to 0. \Hypertarget{bitwise_8c_aa4f7698dd16915b2312abad540788732}\label{bitwise_8c_aa4f7698dd16915b2312abad540788732} 
+\index{bitwise.c@{bitwise.c}!is\_set@{is\_set}}
+\index{is\_set@{is\_set}!bitwise.c@{bitwise.c}}
+\doxysubsubsection{\texorpdfstring{is\_set()}{is\_set()}}
+{\footnotesize\ttfamily bool is\+\_\+set (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{msk,  }\item[{int}]{pos }\end{DoxyParamCaption})}
+
+Returns true if bit at {\ttfamily pos} in {\ttfamily msk} is set to 1, false otherwise. \Hypertarget{bitwise_8c_adb0d1c296c06f8258996a1925b0030d3}\label{bitwise_8c_adb0d1c296c06f8258996a1925b0030d3} 
+\index{bitwise.c@{bitwise.c}!lsb@{lsb}}
+\index{lsb@{lsb}!bitwise.c@{bitwise.c}}
+\doxysubsubsection{\texorpdfstring{lsb()}{lsb()}}
+{\footnotesize\ttfamily uint8\+\_\+t lsb (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{wide\+\_\+msk }\end{DoxyParamCaption})}
+
+Returns the least significant byte of a 16-\/bit wide bitmask. \Hypertarget{bitwise_8c_a3fadb426310c267d94d9c693b8cecdb0}\label{bitwise_8c_a3fadb426310c267d94d9c693b8cecdb0} 
+\index{bitwise.c@{bitwise.c}!mask@{mask}}
+\index{mask@{mask}!bitwise.c@{bitwise.c}}
+\doxysubsubsection{\texorpdfstring{mask()}{mask()}}
+{\footnotesize\ttfamily uint8\+\_\+t mask (\begin{DoxyParamCaption}\item[{int}]{pos,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+Builds a bitmask with bits set at given positions. The variable argument list ends at the sentinel {\ttfamily MSK\+\_\+\+END} value, by convention. \Hypertarget{bitwise_8c_a52f14550e1ef2bf9e42305cb288fcd5a}\label{bitwise_8c_a52f14550e1ef2bf9e42305cb288fcd5a} 
+\index{bitwise.c@{bitwise.c}!msb@{msb}}
+\index{msb@{msb}!bitwise.c@{bitwise.c}}
+\doxysubsubsection{\texorpdfstring{msb()}{msb()}}
+{\footnotesize\ttfamily uint8\+\_\+t msb (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{wide\+\_\+msk }\end{DoxyParamCaption})}
+
+Returns the most significant byte of a 16-\/bit wide bitmask. \Hypertarget{bitwise_8c_a9e881a5233c898055c39009a9fe8f55f}\label{bitwise_8c_a9e881a5233c898055c39009a9fe8f55f} 
+\index{bitwise.c@{bitwise.c}!set@{set}}
+\index{set@{set}!bitwise.c@{bitwise.c}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily uint8\+\_\+t set (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{msk,  }\item[{int}]{pos }\end{DoxyParamCaption})}
+
+Yields a new bitmask equal to {\ttfamily msk} with bit at {\ttfamily pos} set to 1. 

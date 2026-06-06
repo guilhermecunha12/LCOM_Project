@@ -1,0 +1,98 @@
+\doxysection{Game\+Event Struct Reference}
+\hypertarget{structGameEvent}{}\label{structGameEvent}\index{GameEvent@{GameEvent}}
+
+
+Struct that represents an event in the game. It uses a tagged union to store the relevant data for each type of event.  
+
+
+
+
+{\ttfamily \#include $<$state.\+h$>$}
+
+
+
+Collaboration diagram for Game\+Event\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{structGameEvent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6fa}{Event\+Type}} \mbox{\hyperlink{structGameEvent_a8705cd216825446546eb523778150f38}{type}}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>\mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73}{Key}} \mbox{\hyperlink{structGameEvent_a064f216a9d616d48d5ada81ec26dd030}{key}}\\
+\>struct \{\\
+\>\>int16\_t \mbox{\hyperlink{structGameEvent_abdf4c6558602d4d0ff2c79be2d17b965}{delta\_x}}\\
+\>\>int16\_t \mbox{\hyperlink{structGameEvent_aea7c1fb9155094f5d8b85a08433a0c2d}{delta\_y}}\\
+\>\} \mbox{\hyperlink{structGameEvent_aa759470682a729a19de5d9f00dbbda0b}{mouse\_coords}}\\
+\>int \mbox{\hyperlink{structGameEvent_af5d45ebcb264f9b82d91f2e073e10e47}{timer\_ticks}}\\
+\>\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structGameEvent_ab35121e9502f342b97c11cf939224b7f}{serial\_port\_data}}\\
+\} \mbox{\hyperlink{structGameEvent_ae4927fe142dd49e4feb314238c9eece3}{data}}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct that represents an event in the game. It uses a tagged union to store the relevant data for each type of event. 
+
+\doxysubsection{Field Documentation}
+\Hypertarget{structGameEvent_ae4927fe142dd49e4feb314238c9eece3}\label{structGameEvent_ae4927fe142dd49e4feb314238c9eece3} 
+\index{GameEvent@{GameEvent}!data@{data}}
+\index{data@{data}!GameEvent@{GameEvent}}
+\doxysubsubsection{\texorpdfstring{[union]}{[union]}}
+{\footnotesize\ttfamily union  \{ ... \}  Game\+Event\+::data}
+
+\Hypertarget{structGameEvent_abdf4c6558602d4d0ff2c79be2d17b965}\label{structGameEvent_abdf4c6558602d4d0ff2c79be2d17b965} 
+\index{GameEvent@{GameEvent}!delta\_x@{delta\_x}}
+\index{delta\_x@{delta\_x}!GameEvent@{GameEvent}}
+\doxysubsubsection{\texorpdfstring{delta\_x}{delta\_x}}
+{\footnotesize\ttfamily int16\+\_\+t Game\+Event\+::delta\+\_\+x}
+
+\Hypertarget{structGameEvent_aea7c1fb9155094f5d8b85a08433a0c2d}\label{structGameEvent_aea7c1fb9155094f5d8b85a08433a0c2d} 
+\index{GameEvent@{GameEvent}!delta\_y@{delta\_y}}
+\index{delta\_y@{delta\_y}!GameEvent@{GameEvent}}
+\doxysubsubsection{\texorpdfstring{delta\_y}{delta\_y}}
+{\footnotesize\ttfamily int16\+\_\+t Game\+Event\+::delta\+\_\+y}
+
+\Hypertarget{structGameEvent_a064f216a9d616d48d5ada81ec26dd030}\label{structGameEvent_a064f216a9d616d48d5ada81ec26dd030} 
+\index{GameEvent@{GameEvent}!key@{key}}
+\index{key@{key}!GameEvent@{GameEvent}}
+\doxysubsubsection{\texorpdfstring{key}{key}}
+{\footnotesize\ttfamily \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73}{Key}} Game\+Event\+::key}
+
+\Hypertarget{structGameEvent_aa759470682a729a19de5d9f00dbbda0b}\label{structGameEvent_aa759470682a729a19de5d9f00dbbda0b} 
+\index{GameEvent@{GameEvent}!mouse\_coords@{mouse\_coords}}
+\index{mouse\_coords@{mouse\_coords}!GameEvent@{GameEvent}}
+\doxysubsubsection{\texorpdfstring{[struct]}{[struct]}}
+{\footnotesize\ttfamily struct  \{ ... \}  Game\+Event\+::mouse\+\_\+coords}
+
+\Hypertarget{structGameEvent_ab35121e9502f342b97c11cf939224b7f}\label{structGameEvent_ab35121e9502f342b97c11cf939224b7f} 
+\index{GameEvent@{GameEvent}!serial\_port\_data@{serial\_port\_data}}
+\index{serial\_port\_data@{serial\_port\_data}!GameEvent@{GameEvent}}
+\doxysubsubsection{\texorpdfstring{serial\_port\_data}{serial\_port\_data}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structQueue}{Queue}}\texorpdfstring{$\ast$}{*} Game\+Event\+::serial\+\_\+port\+\_\+data}
+
+\Hypertarget{structGameEvent_af5d45ebcb264f9b82d91f2e073e10e47}\label{structGameEvent_af5d45ebcb264f9b82d91f2e073e10e47} 
+\index{GameEvent@{GameEvent}!timer\_ticks@{timer\_ticks}}
+\index{timer\_ticks@{timer\_ticks}!GameEvent@{GameEvent}}
+\doxysubsubsection{\texorpdfstring{timer\_ticks}{timer\_ticks}}
+{\footnotesize\ttfamily int Game\+Event\+::timer\+\_\+ticks}
+
+\Hypertarget{structGameEvent_a8705cd216825446546eb523778150f38}\label{structGameEvent_a8705cd216825446546eb523778150f38} 
+\index{GameEvent@{GameEvent}!type@{type}}
+\index{type@{type}!GameEvent@{GameEvent}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6fa}{Event\+Type}} Game\+Event\+::type}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+proj/\mbox{\hyperlink{state_8h}{state.\+h}}\end{DoxyCompactItemize}

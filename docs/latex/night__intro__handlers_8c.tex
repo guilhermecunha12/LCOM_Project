@@ -1,0 +1,37 @@
+\doxysection{proj/controller/handlers/night\+\_\+intro\+\_\+handlers.c File Reference}
+\hypertarget{night__intro__handlers_8c}{}\label{night__intro__handlers_8c}\index{proj/controller/handlers/night\_intro\_handlers.c@{proj/controller/handlers/night\_intro\_handlers.c}}
+{\ttfamily \#include "{}processor.\+h"{}}\newline
+{\ttfamily \#include "{}../../view/ui.\+h"{}}\newline
+Include dependency graph for night\+\_\+intro\+\_\+handlers.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{night__intro__handlers_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{night__intro__handlers_8c_ade5011fd5e9c8f31e9466152e8d9add1}{handle\+\_\+night\+\_\+intro\+\_\+timer}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for timer tick events in the night intro state. This handler decrements the duration of the night intro screen and transitions to the night survival state when the duration reaches zero. It also initializes the night survival state with the current night number from the global game state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{night__intro__handlers_8c_ade5011fd5e9c8f31e9466152e8d9add1}\label{night__intro__handlers_8c_ade5011fd5e9c8f31e9466152e8d9add1} 
+\index{night\_intro\_handlers.c@{night\_intro\_handlers.c}!handle\_night\_intro\_timer@{handle\_night\_intro\_timer}}
+\index{handle\_night\_intro\_timer@{handle\_night\_intro\_timer}!night\_intro\_handlers.c@{night\_intro\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{handle\_night\_intro\_timer()}{handle\_night\_intro\_timer()}}
+{\footnotesize\ttfamily void handle\+\_\+night\+\_\+intro\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for timer tick events in the night intro state. This handler decrements the duration of the night intro screen and transitions to the night survival state when the duration reaches zero. It also initializes the night survival state with the current night number from the global game state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to transition to the night survival state when the night intro duration ends. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the timer tick data. \\
+\hline
+\end{DoxyParams}

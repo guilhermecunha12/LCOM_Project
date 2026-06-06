@@ -21,18 +21,18 @@
 #define GAME_TITLE_Y 117
 #define NEW_GAME_SEL_X 75
 #define NEW_GAME_SEL_Y 407
-#define CONTINUE_SEL_X 75
-#define CONTINUE_SEL_Y 485
+#define CONTINUE_SEL_X 73
+#define CONTINUE_SEL_Y 482
 #define NEW_GAME_X 153
 #define NEW_GAME_Y 405
-#define CONTINUE_X 153
+#define CONTINUE_X 148
 #define CONTINUE_Y 485
 #define EXIT_GAME_SEL_X 90
 #define EXIT_GAME_SEL_Y 588
 #define EXIT_GAME_X 153
 #define EXIT_GAME_Y 588
-#define NIGHT_TEXT_X 200
-#define NIGHT_TEXT_Y 550
+#define NIGHT_TEXT_X 280
+#define NIGHT_TEXT_Y 535
 
 // Use this for both exit game and new game 
 #define BOX_NORMAL_WIDTH 320
@@ -171,10 +171,10 @@
 #define MAP_CAM_6_Y 520
 #define MAP_CAM_7_X 835
 #define MAP_CAM_7_Y 199
-#define MAP_RIGHT_DOOR_X 540
+#define MAP_RIGHT_DOOR_X 570
 #define MAP_RIGHT_DOOR_Y 702
-#define MAP_LEFT_DOOR_X 490
-#define MAP_LEFT_DOOR_Y 702
+#define MAP_LEFT_DOOR_X 463
+#define MAP_LEFT_DOOR_Y 685
 
 #define ID_OFFSET_X 13
 #define FREDDY_ID_OFFSET_Y 12

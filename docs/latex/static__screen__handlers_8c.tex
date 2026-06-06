@@ -1,0 +1,36 @@
+\doxysection{proj/controller/handlers/static\+\_\+screen\+\_\+handlers.c File Reference}
+\hypertarget{static__screen__handlers_8c}{}\label{static__screen__handlers_8c}\index{proj/controller/handlers/static\_screen\_handlers.c@{proj/controller/handlers/static\_screen\_handlers.c}}
+{\ttfamily \#include "{}processor.\+h"{}}\newline
+Include dependency graph for static\+\_\+screen\+\_\+handlers.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{static__screen__handlers_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{static__screen__handlers_8c_ac303c31942fe95b5f0c722fd619ffa5f}{handle\+\_\+static\+\_\+screen\+\_\+timer}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for timer tick events in the static screen state. This handler manages the countdown for the static screen display and transitions to the game over state when the duration reaches zero, initializing the game over state in the process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{static__screen__handlers_8c_ac303c31942fe95b5f0c722fd619ffa5f}\label{static__screen__handlers_8c_ac303c31942fe95b5f0c722fd619ffa5f} 
+\index{static\_screen\_handlers.c@{static\_screen\_handlers.c}!handle\_static\_screen\_timer@{handle\_static\_screen\_timer}}
+\index{handle\_static\_screen\_timer@{handle\_static\_screen\_timer}!static\_screen\_handlers.c@{static\_screen\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{handle\_static\_screen\_timer()}{handle\_static\_screen\_timer()}}
+{\footnotesize\ttfamily void handle\+\_\+static\+\_\+screen\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for timer tick events in the static screen state. This handler manages the countdown for the static screen display and transitions to the game over state when the duration reaches zero, initializing the game over state in the process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to transition to the game over state when the static screen duration ends. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the timer tick data. \\
+\hline
+\end{DoxyParams}

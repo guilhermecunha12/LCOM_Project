@@ -1,0 +1,35 @@
+\doxysection{animatronic.\+h}
+\hypertarget{animatronic_8h_source}{}\label{animatronic_8h_source}\index{proj/models/animatronic.h@{proj/models/animatronic.h}}
+\mbox{\hyperlink{animatronic_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ANIMATRONIC\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ANIMATRONIC\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../game\_constants.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{\ \mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4aae9e838d60dd3c56f940fc22a2826259}{FREDDY}},\ \mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4a9c887b8b9c6cceb223054dafa851dcb3}{BONNIE}},\ \mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4acc84d12a9492612958d05781ab364449}{CHICA}},\ \mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4a34b5c6729b3170a3e6efaa46fef5a0e7}{FOXY}},\ \mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4a16fb1d1431435826b536112a9b6a2874}{NUM\_ANIMATRONICS}}\ \}\ \mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4}{AnimatronicName}};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4}{AnimatronicName}}\ \mbox{\hyperlink{structAnimatronic_acf674ca7e89ca17721e07b7e29904670}{name}};}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structAnimatronic_ad5ebdeeb5bf45c1b389e7cdfaadf7e6b}{current\_position\_index}};\ \textcolor{comment}{//\ where\ the\ animatronic\ currently\ is\ on\ the\ map\ (pointer\ to\ a\ CameraID\ in\ the\ path)}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structAnimatronic_ae7c6367d937b31d736535c39a33ebc5a}{path\_length}};\ \textcolor{comment}{//\ length\ of\ the\ path\ array}}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850}{CameraID}}*\ \mbox{\hyperlink{structAnimatronic_ab5d13e41cb81ea6c7f386afca217776a}{path}};\ \textcolor{comment}{//\ where\ the\ animatronic\ is\ trying\ to\ get\ to\ (if\ applicable)}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ This\ is\ in\ ticks}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structAnimatronic_a6000a045894be3025f8c11dc3e9dacad}{time\_to\_move\_opportunity}};\ \textcolor{comment}{//\ counter\ that\ determines\ when\ the\ animatronic\ can\ move\ to\ the\ next\ position\ in\ its\ path\ (when\ this\ number\ reaches\ 0,\ a\ number\ from\ [1,\ 20]\ is\ randomly\ generated\ and\ if\ that\ number\ is\ less\ than\ or\ equal\ to\ the\ IA\_level,\ the\ animatronic\ moves\ to\ the\ next\ position\ in\ its\ path)}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structAnimatronic_a1027161d233f3ee4d17c75bb0dfa923a}{AI\_level}};\ \textcolor{comment}{//\ number\ that\ determines\ the\ probability\ of\ the\ animatronic\ to\ move}}
+\DoxyCodeLine{00025\ \}\ \mbox{\hyperlink{structAnimatronic}{Animatronic}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{animatronic_8h_a35906bc42a33714130693594b72af561}{initialize\_animatronics}}(\mbox{\hyperlink{structAnimatronic}{Animatronic}}\ animatronics[\mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4a16fb1d1431435826b536112a9b6a2874}{NUM\_ANIMATRONICS}}],\ \textcolor{keywordtype}{int}\ night\_number);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{animatronic_8h_a8fb905df35a3cc88fa49e2c59843d852}{update\_animatronic}}(\mbox{\hyperlink{structAnimatronic}{Animatronic}}*\ animatronic,\ \textcolor{keywordtype}{int}\ time\_left,\ \textcolor{keywordtype}{bool}\ left\_door\_closed,\ \textcolor{keywordtype}{bool}\ right\_door\_closed,\ \textcolor{keywordtype}{bool}\ camera\_monitor\_up,\ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850}{CameraID}}\ viewing\_camera);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00051\ \mbox{\hyperlink{structAnimatronic}{Animatronic}}\ \mbox{\hyperlink{animatronic_8h_a71df91457139e43b1038dea55a666af2}{initialize\_freddy\_no\_battery}}();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{animatronic_8h_ac08555d8ef9f3d201abbece9586e08b8}{update\_freddy\_no\_battery}}(\mbox{\hyperlink{structAnimatronic}{Animatronic}}*\ freddy,\ \textcolor{keywordtype}{int}\ phase1\_duration,\ \textcolor{keywordtype}{int}\ phase2\_duration);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ ANIMATRONIC\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

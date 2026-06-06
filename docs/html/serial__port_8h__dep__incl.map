@@ -1,0 +1,22 @@
+<map id="proj/devices/serial_port/serial_port.h" name="proj/devices/serial_port/serial_port.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="590,5,731,45"/>
+<area shape="rect" id="Node000002" href="$main__menu__handlers_8c.html" title=" " alt="" coords="5,93,183,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="577,40,194,96,183,98,182,93,194,91,576,35"/>
+<area shape="rect" id="Node000003" href="$receiving__data__handlers_8c.html" title=" " alt="" coords="207,93,403,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="578,49,383,96,382,91,576,44"/>
+<area shape="rect" id="Node000004" href="$event__updater_8h.html" title=" " alt="" coords="427,93,569,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="614,54,535,96,532,91,612,49"/>
+<area shape="rect" id="Node000006" href="$proj_2main_8c.html" title=" " alt="" coords="560,189,655,214"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="649,59,635,94,621,147,612,189,607,188,616,146,630,93,644,57"/>
+<area shape="rect" id="Node000007" href="$serial__port_8c.html" title=" " alt="" coords="645,93,786,133"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="682,56,705,92,701,95,678,58"/>
+<area shape="rect" id="Node000008" href="$subscribe_8c.html" title=" " alt="" coords="810,101,989,126"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="727,47,868,98,867,103,725,52"/>
+<area shape="rect" id="Node000009" href="$animatronic_8c.html" title=" " alt="" coords="1013,101,1205,126"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="745,40,1050,98,1049,103,744,45"/>
+<area shape="rect" id="Node000010" href="$state_8c.html" title=" " alt="" coords="1229,101,1324,126"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="745,29,960,50,1089,67,1217,91,1245,98,1243,103,1216,96,1088,73,960,55,745,35"/>
+<area shape="rect" id="Node000005" href="$event__updater_8c.html" title=" " alt="" coords="393,181,536,221"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="488,147,475,182,470,180,483,145"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="535,140,594,186,591,190,531,144"/>
+</map>

@@ -1,0 +1,109 @@
+\doxysection{proj/devices/event\+\_\+updater.h File Reference}
+\hypertarget{event__updater_8h}{}\label{event__updater_8h}\index{proj/devices/event\_updater.h@{proj/devices/event\_updater.h}}
+{\ttfamily \#include "{}../state.\+h"{}}\newline
+{\ttfamily \#include "{}../../lab2/timer\+\_\+count.\+h"{}}\newline
+{\ttfamily \#include "{}../../lab3/kbc.\+h"{}}\newline
+{\ttfamily \#include "{}../../lab4/mouse.\+h"{}}\newline
+{\ttfamily \#include "{}serial\+\_\+port/serial\+\_\+port.\+h"{}}\newline
+Include dependency graph for event\+\_\+updater.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{event__updater_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{event__updater_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{event__updater_8h_a343db94ca4bca47e04bff0bdf16e1978}{update\+\_\+timer\+\_\+game\+\_\+event}} (\mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}ge)
+\begin{DoxyCompactList}\small\item\em Updates the \doxylink{structGameEvent}{Game\+Event} struct with timer tick information. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{event__updater_8h_a0b6951dd0a0f6a0f013f264b3b566f98}{update\+\_\+keyboard\+\_\+game\+\_\+event}} (\mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}ge)
+\begin{DoxyCompactList}\small\item\em Updates the \doxylink{structGameEvent}{Game\+Event} struct based on the scancode received from the keyboard interrupt. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{event__updater_8h_ac5e908c405ef31697cc7b1551510fd9d}{update\+\_\+mouse\+\_\+game\+\_\+event}} (\mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}ge)
+\begin{DoxyCompactList}\small\item\em Updates the \doxylink{structGameEvent}{Game\+Event} struct based on the mouse event information received from the mouse interrupt. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{event__updater_8h_a1615776d7f126207c53ba5a0c1e0c6c9}{update\+\_\+serial\+\_\+port\+\_\+game\+\_\+event}} (\mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}ge)
+\begin{DoxyCompactList}\small\item\em Updates the \doxylink{structGameEvent}{Game\+Event} struct based on the serial port data received from the serial port interrupt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{event__updater_8h_a0b6951dd0a0f6a0f013f264b3b566f98}\label{event__updater_8h_a0b6951dd0a0f6a0f013f264b3b566f98} 
+\index{event\_updater.h@{event\_updater.h}!update\_keyboard\_game\_event@{update\_keyboard\_game\_event}}
+\index{update\_keyboard\_game\_event@{update\_keyboard\_game\_event}!event\_updater.h@{event\_updater.h}}
+\doxysubsubsection{\texorpdfstring{update\_keyboard\_game\_event()}{update\_keyboard\_game\_event()}}
+{\footnotesize\ttfamily int update\+\_\+keyboard\+\_\+game\+\_\+event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{ge }\end{DoxyParamCaption})}
+
+
+
+Updates the \doxylink{structGameEvent}{Game\+Event} struct based on the scancode received from the keyboard interrupt. 
+
+This function processes the scancode received from the keyboard interrupt, determines if it\textquotesingle{}s a key press or release, and updates the \doxylink{structGameEvent}{Game\+Event} struct accordingly. It also normalizes the scancode to get the mapped key and updates the event data if the key is relevant for the game. 
+\begin{DoxyParams}{Parameters}
+{\em ge} & A pointer to the \doxylink{structGameEvent}{Game\+Event} struct to be updated with the keyboard event information. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Returns 0 if the \doxylink{structGameEvent}{Game\+Event} was successfully updated with a keyboard event, or 1 if there was an error processing the scancode (e.\+g., no scancode available). 
+\end{DoxyReturn}
+\Hypertarget{event__updater_8h_ac5e908c405ef31697cc7b1551510fd9d}\label{event__updater_8h_ac5e908c405ef31697cc7b1551510fd9d} 
+\index{event\_updater.h@{event\_updater.h}!update\_mouse\_game\_event@{update\_mouse\_game\_event}}
+\index{update\_mouse\_game\_event@{update\_mouse\_game\_event}!event\_updater.h@{event\_updater.h}}
+\doxysubsubsection{\texorpdfstring{update\_mouse\_game\_event()}{update\_mouse\_game\_event()}}
+{\footnotesize\ttfamily int update\+\_\+mouse\+\_\+game\+\_\+event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{ge }\end{DoxyParamCaption})}
+
+
+
+Updates the \doxylink{structGameEvent}{Game\+Event} struct based on the mouse event information received from the mouse interrupt. 
+
+This function processes the mouse event information received from the mouse interrupt, including button states and movement deltas. It updates the \doxylink{structGameEvent}{Game\+Event} struct with the appropriate event type and fills in the event data with the relevant information. 
+\begin{DoxyParams}{Parameters}
+{\em ge} & A pointer to the \doxylink{structGameEvent}{Game\+Event} struct to be updated with the mouse event information. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Returns 0 if the \doxylink{structGameEvent}{Game\+Event} was successfully updated with a mouse event, or 1 if there was no relevant mouse event to process. 
+\end{DoxyReturn}
+\Hypertarget{event__updater_8h_a1615776d7f126207c53ba5a0c1e0c6c9}\label{event__updater_8h_a1615776d7f126207c53ba5a0c1e0c6c9} 
+\index{event\_updater.h@{event\_updater.h}!update\_serial\_port\_game\_event@{update\_serial\_port\_game\_event}}
+\index{update\_serial\_port\_game\_event@{update\_serial\_port\_game\_event}!event\_updater.h@{event\_updater.h}}
+\doxysubsubsection{\texorpdfstring{update\_serial\_port\_game\_event()}{update\_serial\_port\_game\_event()}}
+{\footnotesize\ttfamily int update\+\_\+serial\+\_\+port\+\_\+game\+\_\+event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{ge }\end{DoxyParamCaption})}
+
+
+
+Updates the \doxylink{structGameEvent}{Game\+Event} struct based on the serial port data received from the serial port interrupt. 
+
+This function retrieves the data queue from the serial port event and updates the \doxylink{structGameEvent}{Game\+Event} struct with a serial port event type and fills in the event data with the serial port data queue. 
+\begin{DoxyParams}{Parameters}
+{\em ge} & A pointer to the \doxylink{structGameEvent}{Game\+Event} struct to be updated with the serial port event information. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on error. 
+\end{DoxyReturn}
+\Hypertarget{event__updater_8h_a343db94ca4bca47e04bff0bdf16e1978}\label{event__updater_8h_a343db94ca4bca47e04bff0bdf16e1978} 
+\index{event\_updater.h@{event\_updater.h}!update\_timer\_game\_event@{update\_timer\_game\_event}}
+\index{update\_timer\_game\_event@{update\_timer\_game\_event}!event\_updater.h@{event\_updater.h}}
+\doxysubsubsection{\texorpdfstring{update\_timer\_game\_event()}{update\_timer\_game\_event()}}
+{\footnotesize\ttfamily int update\+\_\+timer\+\_\+game\+\_\+event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{ge }\end{DoxyParamCaption})}
+
+
+
+Updates the \doxylink{structGameEvent}{Game\+Event} struct with timer tick information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ge} & A pointer to the \doxylink{structGameEvent}{Game\+Event} struct to be updated with the timer tick event information. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Returns 0 on success, which always happens. 
+\end{DoxyReturn}

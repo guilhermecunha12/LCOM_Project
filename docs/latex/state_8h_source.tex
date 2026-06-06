@@ -1,0 +1,217 @@
+\doxysection{state.\+h}
+\hypertarget{state_8h_source}{}\label{state_8h_source}\index{proj/state.h@{proj/state.h}}
+\mbox{\hyperlink{state_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ STATE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ STATE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../lab4/mouse.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{animatronic_8h}{models/animatronic.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__constants_8h}{game\_constants.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprite_8h}{models/sprite.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{queue_8h}{devices/serial\_port/queue.h}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faad1110959cd9312a756c5fb1d0f0eab8d}{TIMER\_TICK}},}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faa3ecb0095d44fa055dce98f1a4480a9e7}{MOUSE\_LB\_CLICK}},}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faa7513d383f97428a41f8b44594874d469}{MOUSE\_MOVE}},}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faaf3fc22d8f13b917c166684deaafecdd1}{KEYBOARD\_PRESS}},}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faac124013e27b325be6ffd4ba8e2f4a549}{KEYBOARD\_RELEASE}},}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faa0fe64c1e064dc82996bc906a8e564279}{SERIAL\_PORT\_DATA}},}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faa375c9117363fc3a2454e271606f3e111}{NUM\_EVENTS}}}
+\DoxyCodeLine{00023\ \}\ \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6fa}{EventType}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73a03c064289f6eefa9ff82de78685f5061}{KEY\_MENU\_UP}},}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73a8e9d98afbbe558164e6f5a6ddef7987b}{KEY\_MENU\_DOWN}},}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73a612120b69c7dfd46086db7aaebdbcf65}{KEY\_LEFT}},}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73a6504370d9c6391e1a9da6a1a529b089d}{KEY\_RIGHT}},}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73a2a662d23aadd7106a3a2afdfd5d426ed}{KEY\_ENTER}},}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73a01d2889f9a7550008ad6140c41e733de}{KEY\_SPACE}},}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73a3a471c8b61a5f730dcbdd50fe53f3ab7}{KEY\_ESCAPE}},}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73a90b0b0f6a79820267fd83f5babf1bd36}{KEY\_INVALID}},}
+\DoxyCodeLine{00037\ \}\ \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73}{Key}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6fa}{EventType}}\ \mbox{\hyperlink{structGameEvent_a8705cd216825446546eb523778150f38}{type}};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73}{Key}}\ \mbox{\hyperlink{structGameEvent_a064f216a9d616d48d5ada81ec26dd030}{key}};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{int16\_t\ \mbox{\hyperlink{structGameEvent_abdf4c6558602d4d0ff2c79be2d17b965}{delta\_x}};\ int16\_t\ delta\_y;\}\ mouse\_coords;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGameEvent_af5d45ebcb264f9b82d91f2e073e10e47}{timer\_ticks}};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structQueue}{Queue}}*\ \mbox{\hyperlink{structGameEvent_ab35121e9502f342b97c11cf939224b7f}{serial\_port\_data}};}
+\DoxyCodeLine{00049\ \ \ \ \ \}\ data;}
+\DoxyCodeLine{00050\ \}\ \mbox{\hyperlink{structGameEvent}{GameEvent}};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5cac22743f1fc74de09544ecc9bab74a17b}{MAIN\_MENU}},}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca82078283bf07e3d41fa49df0b69bc400}{NIGHT\_INTRO}},}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca7de65a1ac618e9a26ccca16b898b9f17}{NIGHT\_SURVIVAL}},}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca24ae01d1d8902a3a95d9dcfe9f1cf2c5}{NEWSPAPER}},}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca6d1a005d61df004a7fd918951af4e460}{NIGHT\_6AM}},\ \textcolor{comment}{//\ E.g.,\ The\ "{}6\ AM!\ Next\ Night"{}\ screen}}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5cac70a4629ead8264033b8b9161e42ff38}{JUMPSCARE}},}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca3203a8bfb5d03673a6fde9cb1b7e787c}{NIGHT\_NO\_BATTERY}},\ \textcolor{comment}{//\ countdown\ to\ possible\ Freedie\ jumpscare\ (PHASE\ 1:\ every\ 5\ seconds,\ 20\%\ chance\ of\ jumpscare.\ If\ there\ is\ a\ jumpscare,\ the\ night\ ends.\ Otherwise,\ after\ 4\ failed\ tries,\ go\ to\ PHASE\ 2:\ every\ 2\ seconds,\ 20\%\ chance\ of\ jumpscare,\ max\ 20\ seconds\ (10\ tries).\ If\ those\ 10\ tries\ fail,\ jumpscare\ guaranteed\ and\ night\ ends.\ If\ 6AM\ is\ reached,\ independent\ of\ the\ phase,\ the\ \ night\ ends\ and\ the\ player\ passes\ the\ night)}}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca843dff91ff0b0e5b98a110a512b2f531}{WIN}},}
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca7e333902630810947e032e5b91fb24c0}{STATIC\_SCREEN}},}
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca871723195985a4ae22d7e10d99bf8a00}{GAME\_OVER}},}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca7a10b5d68d31711288e1fe0fa17dbf4f}{EXIT}},}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{//\ States\ for\ the\ receiver\ of\ the\ serial\ port\ data}}
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca5239593040c543b582fb6e84e71c6712}{WAITING\_FOR\_DATA}},}
+\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5cab34cf9f5e9084cffc431d092f39e310c}{RECEIVING\_DATA}},}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca6d9af548db7288db997796afc88aa60d}{NUM\_STATES}}}
+\DoxyCodeLine{00073\ \}\ \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5c}{StateType}};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{state_8h_a0b5e764f0ec9a407e9b8789f0259d754adb45120aafd37a973140edee24708065}{LEFT}},}
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{state_8h_a0b5e764f0ec9a407e9b8789f0259d754aec8379af7490bb9eaaf579cf17876f38}{RIGHT}},}
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{state_8h_a0b5e764f0ec9a407e9b8789f0259d754a4d56177b6a2b746f93d162e92906a800}{NO\_MOVEMENT}}}
+\DoxyCodeLine{00082\ \}\ \mbox{\hyperlink{state_8h_a0b5e764f0ec9a407e9b8789f0259d754}{MovementDirection}};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{comment}{//\ Global\ game\ data\ that\ persists\ across\ states}}
+\DoxyCodeLine{00088\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structPersistentData_ae82a60490377fc553a042878d074f7ea}{current\_night}};\ \textcolor{comment}{//\ 0\ (no\ current\ night),\ 1\ to\ 5\ -\/\ also\ used\ to\ determine\ night's\ gimmicks}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{//\ mouse\ coordinates\ for\ displaying\ it}}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structPersistentData_ac3aa001fd974fc29a9c684230ae5c529}{mouse\_x}};}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structPersistentData_aaa7051cab4c912be9a8ccfb3b720539f}{mouse\_y}};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{//\ Shared\ data\ for\ states\ that\ have\ camera\ movement\ (e.g.,\ night\ survival\ and\ night\ no\ battery)}}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structPersistentData_a1096d7e1ee64abd1fa1e395d456b7aa5}{background\_offset\_x}};}
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{state_8h_a0b5e764f0ec9a407e9b8789f0259d754}{MovementDirection}}\ \mbox{\hyperlink{structPersistentData_a783771d8d7b4ec0633146f48c42a3664}{moving}};\ \textcolor{comment}{//\ -\/1\ for\ moving\ left,\ 0\ for\ not\ moving,\ 1\ for\ moving\ right}}
+\DoxyCodeLine{00098\ \}\ \mbox{\hyperlink{structPersistentData}{PersistentData}};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00103\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{state_8h_a738419ee04f7ab8147651b3c9cc05bdcafd17452de9bec3d185b675ad352ce4bc}{NO\_OPTION}},}
+\DoxyCodeLine{00105\ \ \ \ \ \mbox{\hyperlink{state_8h_a738419ee04f7ab8147651b3c9cc05bdcac9e8468c9768465a565bc176a753e261}{NEW\_GAME}},}
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{state_8h_a738419ee04f7ab8147651b3c9cc05bdca49959dd441dcda75d6898cf2c68fb374}{CONTINUE}},}
+\DoxyCodeLine{00107\ \ \ \ \ \mbox{\hyperlink{state_8h_a738419ee04f7ab8147651b3c9cc05bdca4bf4cbde18067e0600c7c8a7a30ba316}{EXIT\_GAME}}}
+\DoxyCodeLine{00108\ \}\ \mbox{\hyperlink{state_8h_a738419ee04f7ab8147651b3c9cc05bdc}{MainMenuOption}};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{comment}{/*\ GAME\ STATES\ */}}
+\DoxyCodeLine{00111\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structMainMenuState_aa9342bc5624fe1b63db9e881a49bb50a}{num\_options}};\ \textcolor{comment}{//\ number\ of\ options\ to\ display\ in\ the\ main\ menu}}
+\DoxyCodeLine{00113\ \ \ \ \ \mbox{\hyperlink{state_8h_a738419ee04f7ab8147651b3c9cc05bdc}{MainMenuOption}}\ \mbox{\hyperlink{structMainMenuState_ac07481e1291d1e0e30782601c4211b8c}{selected\_option}};\ \textcolor{comment}{//\ for\ keyboard\ navigation\ in\ main\ menu;\ 0\ for\ no\ option\ selected}}
+\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{state_8h_a738419ee04f7ab8147651b3c9cc05bdc}{MainMenuOption}}*\ \mbox{\hyperlink{structMainMenuState_a8f1191ecb3317815bb1082187f040c96}{options}};\ \textcolor{comment}{//\ options\ to\ display\ in\ the\ main\ menu,\ determined\ by\ the\ current\ night\ (if\ current\_night\ is\ 0,\ options\ are\ "{}New\ Game"{}\ and\ "{}Exit"{}.\ If\ current\_night\ is\ greater\ than\ 0,\ options\ are\ "{}New\ Game"{},\ "{}Continue"{},\ and\ "{}Exit"{})}}
+\DoxyCodeLine{00115\ \}\ \mbox{\hyperlink{structMainMenuState}{MainMenuState}};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structNewspaperState_a081667b0a81b9000bca601df4c384847}{duration}};}
+\DoxyCodeLine{00119\ \}\ \mbox{\hyperlink{structNewspaperState}{NewspaperState}};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structNightIntroState_a9cadac8c96a9e4d8aba7e82abc08d3b5}{duration}};}
+\DoxyCodeLine{00123\ \}\ \mbox{\hyperlink{structNightIntroState}{NightIntroState}};}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structNightSurvivalState_a566b9e04c912e070c905adbc5fe7a5db}{time\_left}};}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structNightSurvivalState_a06e2bf15b822d158583096ce02dee2af}{power\_level}};\ \textcolor{comment}{//\ 100\ -\/\ 0}}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structNightSurvivalState_a5275b6e68b980e3b146fda5333faa8a4}{power\_drain\_rate}};\ \textcolor{comment}{//\ number\ of\ units\ needed\ to\ decrement\ power\ by\ 1\ unit}}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structNightSurvivalState_a05e64bd623c35eb4ce400c991fd20533}{power\_drain\_speed}};\ \textcolor{comment}{//\ number\ of\ units\ equivalent\ for\ each\ tick}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structNightSurvivalState_ad4d66ff6144e06353095c10a81fcad0e}{left\_light\_on}};}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structNightSurvivalState_a995f4e80f7643e9b93abaa3e03e45239}{right\_light\_on}};}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structNightSurvivalState_ab01d9e427cd90015a405a9ec819305cd}{left\_door\_closed}};}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structNightSurvivalState_a92e74e6465a28e098d8866655892a5cc}{right\_door\_closed}};}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structNightSurvivalState_aca94ff1844bd5435fea36719c63ea0dd}{camera\_monitor\_up}};\ \textcolor{comment}{//\ Is\ the\ player\ looking\ at\ cameras?}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structNightSurvivalState_a33de69460c703c3ebd934ab32b92d29b}{camera\_animation\_playing}};}
+\DoxyCodeLine{00138\ \ \ \ \ \mbox{\hyperlink{structAnimSprite}{AnimSprite}}*\ \mbox{\hyperlink{structNightSurvivalState_a058b87355b5d4058c7aea91879dd349a}{camera\_monitor}};\ \textcolor{comment}{//\ The\ animated\ sprite\ for\ the\ camera\ monitor\ flipping\ up\ or\ down}}
+\DoxyCodeLine{00139\ \ \ \ \ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850}{CameraID}}\ \mbox{\hyperlink{structNightSurvivalState_a8b43c2cc3ba4e21ab97451755c050c2f}{viewing\_camera}};}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{comment}{//\ For\ timer-\/driven\ animations\ (e.g.,\ fan\ spinning,\ camera\ static)}}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structNightSurvivalState_ac50d61728d544faf5af63712215142f0}{fan\_frame\_index}};}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structNightSurvivalState_a659a01c68eee6e864d9c1a3a166cb853}{static\_animation\_timer}};}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structNightSurvivalState_a51bb2ac3190f39f1a6af0ad4e1d16a76}{wait\_timer}};}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structNightSurvivalState_a5f121955a0357ce4cd6625509e9f98d5}{camera\_offset\_x}};}
+\DoxyCodeLine{00148\ \ \ \ \ \mbox{\hyperlink{state_8h_a0b5e764f0ec9a407e9b8789f0259d754}{MovementDirection}}\ \mbox{\hyperlink{structNightSurvivalState_a6fe24393ee9340b7a8b81c3e3b4c78da}{moving}};\ \textcolor{comment}{//\ -\/1\ for\ moving\ left,\ 0\ for\ not\ moving,\ 1\ for\ moving\ right}}
+\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{state_8h_a0b5e764f0ec9a407e9b8789f0259d754}{MovementDirection}}\ \mbox{\hyperlink{structNightSurvivalState_a501fd9c798e2ea5d295d0c61d572ed2a}{last\_camera\_direction}};\ \textcolor{comment}{//\ used\ to\ determine\ the\ direction\ of\ the\ next\ camera\ movement\ after\ waiting}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \mbox{\hyperlink{structAnimatronic}{Animatronic}}\ animatronics[\mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4a16fb1d1431435826b536112a9b6a2874}{NUM\_ANIMATRONICS}}];\ \textcolor{comment}{//\ Metadata\ for\ each\ animatronic}}
+\DoxyCodeLine{00152\ \}\ \mbox{\hyperlink{structNightSurvivalState}{NightSurvivalState}};}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structNightNoBatteryState_a0e1206256cf0bc3d56a44c300bb4e3c6}{time\_left}};}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structNightNoBatteryState_a74ae67fa4fb7cc0180951742d3800925}{phase1\_duration}};}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structNightNoBatteryState_aa341b4940f040d37e7640c6fac760b8d}{phase2\_duration}};}
+\DoxyCodeLine{00158\ \ \ \ \ \mbox{\hyperlink{structAnimatronic}{Animatronic}}\ \mbox{\hyperlink{structNightNoBatteryState_ac23be877cb05986957621d3b885dda6b}{freddy}};}
+\DoxyCodeLine{00159\ \}\ \mbox{\hyperlink{structNightNoBatteryState}{NightNoBatteryState}};}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \textcolor{comment}{//\ Specific\ data\ for\ a\ sequence\ of\ changing\ images\ without\ player\ input}}
+\DoxyCodeLine{00162\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00163\ \ \ \ \ \mbox{\hyperlink{structAnimSprite}{AnimSprite}}*\ \mbox{\hyperlink{structJumpscareState_a61a14f85d46e0da66b061684287846b3}{jumpscare\_sprite}};}
+\DoxyCodeLine{00164\ \ \ \ \ \mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4}{AnimatronicName}}\ \mbox{\hyperlink{structJumpscareState_a74d8d4f6c3ab0b7c4e1b18a94a2d2f2b}{animatronic\_name}};}
+\DoxyCodeLine{00165\ \}\ \mbox{\hyperlink{structJumpscareState}{JumpscareState}};}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structNight6AMScreen_ade7b43e46263e84dcbebd40be3db27ef}{frame\_index}};}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structNight6AMScreen_a96a9dfc947134ca86cae6971d0ca6957}{tick\_timer}};}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structNight6AMScreen_a0e71a8e721cc7a839b708587b9eda5ed}{duration}};}
+\DoxyCodeLine{00171\ \}\ \mbox{\hyperlink{structNight6AMScreen}{Night6AMScreen}};}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structStaticScreenState_a6cca8d4e6e969426800463350ceb88d6}{duration}};}
+\DoxyCodeLine{00175\ \ \ \ \ \mbox{\hyperlink{structAnimSprite}{AnimSprite}}*\ \mbox{\hyperlink{structStaticScreenState_a19ebb8a94acf1d3cd26b1e887be1f4a6}{static\_sprite}};}
+\DoxyCodeLine{00176\ \}\ \mbox{\hyperlink{structStaticScreenState}{StaticScreenState}};}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structWinState_ab9ee65b642875143524bd3fe9c83aca7}{duration}};\ \textcolor{comment}{//\ Counter\ to\ control\ how\ long\ the\ win\ screen\ is\ displayed}}
+\DoxyCodeLine{00180\ \}\ \mbox{\hyperlink{structWinState}{WinState}};}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordtype}{bool}\ animatronics\_in\_cam[\mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850a0ad880c59bc32e7782c4197ccc63bcb8}{NUM\_CAMERAS}}][\mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4a16fb1d1431435826b536112a9b6a2874}{NUM\_ANIMATRONICS}}];}
+\DoxyCodeLine{00184\ \ \ \ \ \mbox{\hyperlink{game__constants_8h_a731c885d938c53ac3bedf5e2f6226850}{CameraID}}\ animatronic\_current\_cam[\mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4a16fb1d1431435826b536112a9b6a2874}{NUM\_ANIMATRONICS}}];}
+\DoxyCodeLine{00185\ \}\ \mbox{\hyperlink{structReceivingDataState}{ReceivingDataState}};}
+\DoxyCodeLine{00186\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGameOverState_a256761af3581d805bb9ce8fa5b9596cb}{duration}};}
+\DoxyCodeLine{00188\ \}\ \mbox{\hyperlink{structGameOverState}{GameOverState}};}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00193\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00194\ \ \ \ \ \mbox{\hyperlink{structPersistentData}{PersistentData}}\ \mbox{\hyperlink{structGameState_ae11ba071b2a9651bbed59b9f33232c83}{global\_data}};\ \textcolor{comment}{//\ Global\ data\ across\ all\ states}}
+\DoxyCodeLine{00195\ \ \ \ \ \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5c}{StateType}}\ \mbox{\hyperlink{structGameState_a4023d5e6a32ef55751525820f2a9b165}{type}};\ \textcolor{comment}{//\ tag}}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structMainMenuState}{MainMenuState}}\ \mbox{\hyperlink{structGameState_a4c586f75bf0e830b5a04874a49a9a9ce}{main\_menu}};}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNewspaperState}{NewspaperState}}\ \mbox{\hyperlink{structGameState_a595d852aba68a710ef82a95720ac9bfa}{newspaper}};}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNightIntroState}{NightIntroState}}\ \mbox{\hyperlink{structGameState_a58545a5c7a156e170528bdc5adf73a28}{night\_intro}};}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNightSurvivalState}{NightSurvivalState}}\ \mbox{\hyperlink{structGameState_aa92cb0ed09a631bc4dbfcd6d938f3372}{night\_survival}};}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structJumpscareState}{JumpscareState}}\ \mbox{\hyperlink{structGameState_a6dac27611fe9512e42ec70eddf460a32}{jumpscare}};}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNight6AMScreen}{Night6AMScreen}}\ \mbox{\hyperlink{structGameState_a52d5d3f96a5ba833a2ce54acd3bcc76c}{night\_6am}};}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNightNoBatteryState}{NightNoBatteryState}}\ \mbox{\hyperlink{structGameState_a7e52aec2a772c2dba1bac7a8a1121988}{night\_no\_battery}};}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structWinState}{WinState}}\ \mbox{\hyperlink{structGameState_aac8f91db3b8f97e2b61758c127f0aef8}{win}};}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structStaticScreenState}{StaticScreenState}}\ \mbox{\hyperlink{structGameState_a841a83483dbe348d9aac58564e8fdf08}{static\_screen}};}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structGameOverState}{GameOverState}}\ \mbox{\hyperlink{structGameState_a2f3de9549f21f56f95142cee3e4a8d8b}{game\_over}};}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Receiver-\/specific\ state}}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structReceivingDataState}{ReceivingDataState}}\ \mbox{\hyperlink{structGameState_ae2634bb42160d726f5c6f891b768a24a}{receiving\_data}};}
+\DoxyCodeLine{00210\ \ \ \ \ \}\ data;\ \textcolor{comment}{//\ state-\/specific\ data}}
+\DoxyCodeLine{00211\ \}\ \mbox{\hyperlink{structGameState}{GameState}};}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00217\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{state_8h_ab6d1699a0d2b931a3164d8ec3078eeba}{init\_main\_menu}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state);}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00223\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{state_8h_a09a82856f0c759062db8336ce304cfe1}{init\_night\_intro}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state);}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00229\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{state_8h_a2a95499f3c2dabe4d94a2d9e48b6e52f}{init\_newspaper}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state);}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00235\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{state_8h_ab5de9d506122455dc0731222cfc21350}{init\_night\_survival}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state);}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00241\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{state_8h_af0d169a10b9ae50b2cf3237901997f70}{init\_night\_6am}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state);}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00247\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{state_8h_a5b76931d588b40ec8eb59594713b2a79}{init\_night\_no\_battery}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state);}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00254\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{state_8h_af9c466cf48404fd946bd166a014e38ce}{init\_jumpscare}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4}{AnimatronicName}}\ animatronic\_name);}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00260\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{state_8h_a6a9f8761d9ae6354cb1dc32f5e7c71dd}{init\_static\_screen}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state);}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00266\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{state_8h_a00b6d29a1647276644223fe525a35e50}{init\_game\_over}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state);}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00272\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{state_8h_a36993c80b9ba4b7c4671cf32598fa564}{init\_win\_screen}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state);}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00279\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{state_8h_aa7df519d2f0611e0a0715b50db7b8c38}{init\_receiving\_data\_state}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \mbox{\hyperlink{structQueue}{Queue}}*\ data\_queue);}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ STATE\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,182 @@
+\doxysection{proj/models/sprite.c File Reference}
+\hypertarget{sprite_8c}{}\label{sprite_8c}\index{proj/models/sprite.c@{proj/models/sprite.c}}
+{\ttfamily \#include "{}sprite.\+h"{}}\newline
+{\ttfamily \#include "{}../devices/video/video.\+h"{}}\newline
+{\ttfamily \#include "{}../view/ui.\+h"{}}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for sprite.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sprite_8c_a7f7fa48cdb78479d3bd6ab97f4e67342}{create\+\_\+sprite}} (xpm\+\_\+map\+\_\+t xpm, int x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Creates a new sprite from an XPM array. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sprite_8c_a3198eb7af2bcb27a168555745eec4098}{draw\+\_\+sprite}} (const \mbox{\hyperlink{structSprite}{Sprite}} \texorpdfstring{$\ast$}{*}sp)
+\begin{DoxyCompactList}\small\item\em Function responsible for drawing the sprite onto the back buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8c_af16c6befaac9ffb673b9e3c798d542ed}{destroy\+\_\+sprite}} (\mbox{\hyperlink{structSprite}{Sprite}} \texorpdfstring{$\ast$}{*}sp)
+\begin{DoxyCompactList}\small\item\em Destroys the sprite object by freeing its allocated memory. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structAnimSprite}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sprite_8c_aa079b4afbc2d273fefecfe21701061a7}{create\+\_\+anim\+\_\+sprite}} (uint8\+\_\+t no\+\_\+pic, int x, uint16\+\_\+t y, int aspeed, xpm\+\_\+map\+\_\+t pic1,...)
+\begin{DoxyCompactList}\small\item\em Initializes an animated sprite struct from an array of XPMs. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sprite_8c_a6202fe3d7bf9de2a3bd253c03bf1fc6a}{animate\+\_\+sprite}} (\mbox{\hyperlink{structAnimSprite}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}asp)
+\begin{DoxyCompactList}\small\item\em Function responsible for animating the sprite by switching between its pixmaps according to the specified animation speed. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sprite_8c_a464be0f28658fb2e760a59d83a2008c5}{animate\+\_\+sprite\+\_\+once}} (\mbox{\hyperlink{structAnimSprite}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}asp)
+\begin{DoxyCompactList}\small\item\em Function responsible for animating the sprite once, by switching between its pixmaps and then stopping at the last one. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sprite_8c_a203a36dd310be92247470dadd4f4517b}{animate\+\_\+sprite\+\_\+once\+\_\+reverse}} (\mbox{\hyperlink{structAnimSprite}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}asp)
+\begin{DoxyCompactList}\small\item\em Function responsible for animating the sprite once in reverse, by switching between its pixmaps and then stopping at the first one. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8c_af8ab9ca6ebe3c698c405c061ececda76}{destroy\+\_\+anim\+\_\+sprite}} (\mbox{\hyperlink{structAnimSprite}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}asp)
+\begin{DoxyCompactList}\small\item\em Destroys the animated sprite object by freeing its allocated memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sprite_8c_a6202fe3d7bf9de2a3bd253c03bf1fc6a}\label{sprite_8c_a6202fe3d7bf9de2a3bd253c03bf1fc6a} 
+\index{sprite.c@{sprite.c}!animate\_sprite@{animate\_sprite}}
+\index{animate\_sprite@{animate\_sprite}!sprite.c@{sprite.c}}
+\doxysubsubsection{\texorpdfstring{animate\_sprite()}{animate\_sprite()}}
+{\footnotesize\ttfamily int animate\+\_\+sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structAnimSprite}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}}]{sp }\end{DoxyParamCaption})}
+
+
+
+Function responsible for animating the sprite by switching between its pixmaps according to the specified animation speed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em asp} & pointer to the animated sprite that we want to animate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{sprite_8c_a464be0f28658fb2e760a59d83a2008c5}\label{sprite_8c_a464be0f28658fb2e760a59d83a2008c5} 
+\index{sprite.c@{sprite.c}!animate\_sprite\_once@{animate\_sprite\_once}}
+\index{animate\_sprite\_once@{animate\_sprite\_once}!sprite.c@{sprite.c}}
+\doxysubsubsection{\texorpdfstring{animate\_sprite\_once()}{animate\_sprite\_once()}}
+{\footnotesize\ttfamily int animate\+\_\+sprite\+\_\+once (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structAnimSprite}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}}]{sp }\end{DoxyParamCaption})}
+
+
+
+Function responsible for animating the sprite once, by switching between its pixmaps and then stopping at the last one. 
+
+This function is useful for animations that should only play once, such as the camera monitor flip animation. 
+\begin{DoxyParams}{Parameters}
+{\em sp} & pointer to the animated sprite that we want to animate once \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{sprite_8c_a203a36dd310be92247470dadd4f4517b}\label{sprite_8c_a203a36dd310be92247470dadd4f4517b} 
+\index{sprite.c@{sprite.c}!animate\_sprite\_once\_reverse@{animate\_sprite\_once\_reverse}}
+\index{animate\_sprite\_once\_reverse@{animate\_sprite\_once\_reverse}!sprite.c@{sprite.c}}
+\doxysubsubsection{\texorpdfstring{animate\_sprite\_once\_reverse()}{animate\_sprite\_once\_reverse()}}
+{\footnotesize\ttfamily int animate\+\_\+sprite\+\_\+once\+\_\+reverse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structAnimSprite}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}}]{sp }\end{DoxyParamCaption})}
+
+
+
+Function responsible for animating the sprite once in reverse, by switching between its pixmaps and then stopping at the first one. 
+
+This function is useful for animations that should only play once in reverse. 
+\begin{DoxyParams}{Parameters}
+{\em sp} & pointer to the animated sprite that we want to animate in reverse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{sprite_8c_aa079b4afbc2d273fefecfe21701061a7}\label{sprite_8c_aa079b4afbc2d273fefecfe21701061a7} 
+\index{sprite.c@{sprite.c}!create\_anim\_sprite@{create\_anim\_sprite}}
+\index{create\_anim\_sprite@{create\_anim\_sprite}!sprite.c@{sprite.c}}
+\doxysubsubsection{\texorpdfstring{create\_anim\_sprite()}{create\_anim\_sprite()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structAnimSprite}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*} create\+\_\+anim\+\_\+sprite (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{no\+\_\+pic,  }\item[{int}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{int}]{aspeed,  }\item[{xpm\+\_\+map\+\_\+t}]{pic1,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Initializes an animated sprite struct from an array of XPMs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pic\+\_\+no} & number of pixmaps existent pixmaps present in the variable argument list \\
+\hline
+{\em x} & x-\/coordinate of the sprite\textquotesingle{}s position \\
+\hline
+{\em y} & y-\/coordinate of the sprite\textquotesingle{}s position \\
+\hline
+{\em aspeed} & number of frames to wait before switching to the next pixmap \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sprite_8c_a7f7fa48cdb78479d3bd6ab97f4e67342}\label{sprite_8c_a7f7fa48cdb78479d3bd6ab97f4e67342} 
+\index{sprite.c@{sprite.c}!create\_sprite@{create\_sprite}}
+\index{create\_sprite@{create\_sprite}!sprite.c@{sprite.c}}
+\doxysubsubsection{\texorpdfstring{create\_sprite()}{create\_sprite()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}} \texorpdfstring{$\ast$}{*} create\+\_\+sprite (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{xpm,  }\item[{int}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Creates a new sprite from an XPM array. 
+
+Follows closely to the function given in "{}\+Lab5 \& sprites with our indexation mode being XPM\+\_\+8\+\_\+8\+\_\+8\+\_\+8 following our choice of using mode 0x104\+C. We used Gimpo to load the XPMs so colors are represented using 3 bytes (no opacity factor) and thus we can use xpm\+\_\+load without any trouble"{} 
+\begin{DoxyParams}{Parameters}
+{\em xpm} & pointer to xpm array that represents our sprite \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created sprite 
+\end{DoxyReturn}
+\Hypertarget{sprite_8c_af8ab9ca6ebe3c698c405c061ececda76}\label{sprite_8c_af8ab9ca6ebe3c698c405c061ececda76} 
+\index{sprite.c@{sprite.c}!destroy\_anim\_sprite@{destroy\_anim\_sprite}}
+\index{destroy\_anim\_sprite@{destroy\_anim\_sprite}!sprite.c@{sprite.c}}
+\doxysubsubsection{\texorpdfstring{destroy\_anim\_sprite()}{destroy\_anim\_sprite()}}
+{\footnotesize\ttfamily void destroy\+\_\+anim\+\_\+sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structAnimSprite}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}}]{sp }\end{DoxyParamCaption})}
+
+
+
+Destroys the animated sprite object by freeing its allocated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em asp} & pointer to the animated sprite that we want to destroy \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sprite_8c_af16c6befaac9ffb673b9e3c798d542ed}\label{sprite_8c_af16c6befaac9ffb673b9e3c798d542ed} 
+\index{sprite.c@{sprite.c}!destroy\_sprite@{destroy\_sprite}}
+\index{destroy\_sprite@{destroy\_sprite}!sprite.c@{sprite.c}}
+\doxysubsubsection{\texorpdfstring{destroy\_sprite()}{destroy\_sprite()}}
+{\footnotesize\ttfamily void destroy\+\_\+sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSprite}{Sprite}} \texorpdfstring{$\ast$}{*}}]{sp }\end{DoxyParamCaption})}
+
+
+
+Destroys the sprite object by freeing its allocated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sp} & pointer to the sprite that we want destroyed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sprite_8c_a3198eb7af2bcb27a168555745eec4098}\label{sprite_8c_a3198eb7af2bcb27a168555745eec4098} 
+\index{sprite.c@{sprite.c}!draw\_sprite@{draw\_sprite}}
+\index{draw\_sprite@{draw\_sprite}!sprite.c@{sprite.c}}
+\doxysubsubsection{\texorpdfstring{draw\_sprite()}{draw\_sprite()}}
+{\footnotesize\ttfamily int draw\+\_\+sprite (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structSprite}{Sprite}} \texorpdfstring{$\ast$}{*}}]{sp }\end{DoxyParamCaption})}
+
+
+
+Function responsible for drawing the sprite onto the back buffer. 
+
+As in our game the camera will be moving horizontally, we can pass values of x that might be negative thus it is an integer. Also, XPM can specify "{}none"{} values that \texorpdfstring{$\ast$}{*}represent transparent pixels, we must also ignored them by checking the one \texorpdfstring{$\ast$}{*}considered transparent in the XPM file 
+\begin{DoxyParams}{Parameters}
+{\em sp} & pointer to the sprite that we want to draw \\
+\hline
+{\em x} & x-\/coordinate of the sprite\textquotesingle{}s position \\
+\hline
+{\em y} & y-\/coordinate of the sprite\textquotesingle{}s position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}

@@ -1,0 +1,12 @@
+<map id="proj/devices/serial_port/serial_port.c" name="proj/devices/serial_port/serial_port.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="36,5,177,45"/>
+<area shape="rect" id="Node000002" href="$serial__port_8h.html" title=" " alt="" coords="11,93,114,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,47,78,83,74,80,94,44"/>
+<area shape="rect" id="Node000004" href="$queue_8h.html" title=" " alt="" coords="115,167,189,192"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="115,45,147,153,142,154,110,47"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,167,91,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="63,120,56,154,51,153,58,118"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="79,117,128,156,125,160,75,121"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="117,240,187,265"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="155,192,155,226,149,226,149,192"/>
+</map>

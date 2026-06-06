@@ -5,6 +5,25 @@
 #include "../../models/sprite.h"
 #include "../../sound.h"
 
+
+void toggle_camera_monitor(GameState* state) {
+    AnimSprite *mon = state->data.night_survival.camera_monitor;
+    // Reset animation state before playing
+    mon->is_finished = false;
+    mon->cur_aspeed = mon->aspeed;
+
+    if (state->data.night_survival.camera_monitor_up) {
+        // The animation curent fig should be the last one (then animating in reverse)
+        mon->cur_fig = mon->num_fig - 1;
+    } else {
+        // The other way around
+        mon->cur_fig = 0;
+    }
+    mon->sp->map = mon->map[mon->cur_fig];
+    state->data.night_survival.camera_animation_playing = true;
+    state->data.night_survival.camera_monitor_up = !state->data.night_survival.camera_monitor_up; // switch
+}
+
 void handle_night_survival_mouse_click(GameState* state, const GameEvent* event) {
     int mouse_x = state->global_data.mouse_x;
     int mouse_y = state->global_data.mouse_y;
@@ -16,7 +35,8 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
 
-            state->data.night_survival.viewing_camera = CAM_1A;
+                play_sound("blip");
+                state->data.night_survival.viewing_camera = CAM_1A;
             }
 
         else if (is_mouse_inside(mouse_x, mouse_y,
@@ -25,7 +45,8 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
 
-            state->data.night_survival.viewing_camera = CAM_1B;
+                play_sound("blip");
+                state->data.night_survival.viewing_camera = CAM_1B;
             }
 
         else if (is_mouse_inside(mouse_x, mouse_y,
@@ -34,7 +55,8 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
 
-            state->data.night_survival.viewing_camera = CAM_2A;
+                play_sound("blip");
+                state->data.night_survival.viewing_camera = CAM_2A;
             }
 
         else if (is_mouse_inside(mouse_x, mouse_y,
@@ -43,7 +65,8 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
 
-            state->data.night_survival.viewing_camera = CAM_2B;
+                play_sound("blip");
+                state->data.night_survival.viewing_camera = CAM_2B;
             }
 
         else if (is_mouse_inside(mouse_x, mouse_y,
@@ -52,7 +75,8 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
 
-            state->data.night_survival.viewing_camera = CAM_1C;
+                play_sound("blip");
+                state->data.night_survival.viewing_camera = CAM_1C;
             }
 
         else if (is_mouse_inside(mouse_x, mouse_y,
@@ -61,7 +85,8 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
 
-            state->data.night_survival.viewing_camera = CAM_3;
+                play_sound("blip");
+                state->data.night_survival.viewing_camera = CAM_3;
             }
 
         else if (is_mouse_inside(mouse_x, mouse_y,
@@ -69,8 +94,8 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_CAMERA_4A_Y,
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
-
-            state->data.night_survival.viewing_camera = CAM_4A;
+                play_sound("blip");
+                state->data.night_survival.viewing_camera = CAM_4A;
             }
 
         else if (is_mouse_inside(mouse_x, mouse_y,
@@ -78,8 +103,8 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_CAMERA_4B_Y,
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)){
-                
-            state->data.night_survival.viewing_camera = CAM_4B;
+                play_sound("blip");
+                state->data.night_survival.viewing_camera = CAM_4B;
         }
 
         else if (is_mouse_inside(mouse_x, mouse_y,
@@ -88,7 +113,8 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
 
-            state->data.night_survival.viewing_camera = CAM_5;
+                play_sound("blip");
+                state->data.night_survival.viewing_camera = CAM_5;
             }
 
         else if (is_mouse_inside(mouse_x, mouse_y,
@@ -96,8 +122,8 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_CAMERA_6_Y,
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
-
-            state->data.night_survival.viewing_camera = CAM_6;
+                play_sound("blip");
+                state->data.night_survival.viewing_camera = CAM_6;
             }
 
         else if (is_mouse_inside(mouse_x, mouse_y,
@@ -106,7 +132,8 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
 
-            state->data.night_survival.viewing_camera = CAM_7;
+                play_sound("blip");
+                state->data.night_survival.viewing_camera = CAM_7;
         }
 
     } else { // not checking the cameras
@@ -122,6 +149,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             // Resets the animation state 
 
             AnimSprite *door = state->data.night_survival.left_door;
+            play_sound("door");
             state->data.night_survival.left_door_closed = !state->data.night_survival.left_door_closed; // switch
             state->data.night_survival.left_door_animation_playing = true;
 
@@ -140,9 +168,9 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
                 
             AnimSprite *door = state->data.night_survival.right_door;
 
+            play_sound("door");
             state->data.night_survival.right_door_closed = !state->data.night_survival.right_door_closed; // switch
             state->data.night_survival.right_door_animation_playing = true;
-        
             door->is_finished = false;
             door->cur_aspeed = door->aspeed;
             door->cur_fig = state->data.night_survival.right_door_closed ? 0 : door->num_fig - 1;
@@ -156,7 +184,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_LEFT_LIGHT_BUTTON_W,
             NIGHT_LEFT_LIGHT_BUTTON_H)) {
 
-            state->data.night_survival.left_light_on = !state->data.night_survival.left_light_on; // switch
+                state->data.night_survival.left_light_on = !state->data.night_survival.left_light_on; // switch
             }
 
         // Clicked to turn on/off right light
@@ -166,8 +194,18 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_RIGHT_LIGHT_BUTTON_W,
             NIGHT_RIGHT_LIGHT_BUTTON_H)) {
 
-            state->data.night_survival.right_light_on = !state->data.night_survival.right_light_on; // switch
+                state->data.night_survival.right_light_on = !state->data.night_survival.right_light_on; // switch
         }
+    }
+
+     if (is_mouse_inside(mouse_x, mouse_y,
+        CAMERA_FLIP_BUTTON_X,
+        CAMERA_FLIP_BUTTON_Y,
+        CAMERA_FLIP_BUTTON_WIDTH,
+        CAMERA_FLIP_BUTTON_HEIGHT)) {
+
+            play_sound("monitor");
+            toggle_camera_monitor(state);
     }
 }
 
@@ -370,28 +408,18 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
 }
 
 void handle_night_survival_keyboard(GameState* state, const GameEvent* event) {
-    if(event->data.key == KEY_SPACE) {
-        AnimSprite *mon = state->data.night_survival.camera_monitor;
-        // Reset animation state before playing
-        mon->is_finished = false;
-        mon->cur_aspeed = mon->aspeed;
-
-        if (state->data.night_survival.camera_monitor_up) {
-            // The animation curent fig should be the last one (then animating in reverse)
-            mon->cur_fig = mon->num_fig - 1;
-        } else {
-            // The other way around
-            mon->cur_fig = 0;
-        }
-        mon->sp->map = mon->map[mon->cur_fig];
-        state->data.night_survival.camera_animation_playing = true;
-        state->data.night_survival.camera_monitor_up = !state->data.night_survival.camera_monitor_up; // switch
+    if (event->data.key == KEY_SPACE) {
+        
+        play_sound("monitor");
+        toggle_camera_monitor(state);
     }
-    // Add remaining functionality
-    else if(event->data.key == KEY_LEFT) {
+    else if (event->data.key == KEY_LEFT) {
         move_player_screen_left(state);
     }
-    else if(event->data.key == KEY_RIGHT) {
+    else if (event->data.key == KEY_RIGHT) {
         move_player_screen_right(state);
+
+    } else if (event->data.key == KEY_ESCAPE) {
+        init_main_menu(state);
     }
 }

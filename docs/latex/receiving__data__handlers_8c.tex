@@ -1,0 +1,46 @@
+\doxysection{proj/controller/handlers/receiving\+\_\+data\+\_\+handlers.c File Reference}
+\hypertarget{receiving__data__handlers_8c}{}\label{receiving__data__handlers_8c}\index{proj/controller/handlers/receiving\_data\_handlers.c@{proj/controller/handlers/receiving\_data\_handlers.c}}
+{\ttfamily \#include "{}processor.\+h"{}}\newline
+{\ttfamily \#include "{}../../devices/serial\+\_\+port/sp\+\_\+encoding.\+h"{}}\newline
+{\ttfamily \#include "{}../../devices/serial\+\_\+port/serial\+\_\+port.\+h"{}}\newline
+Include dependency graph for receiving\+\_\+data\+\_\+handlers.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{receiving__data__handlers_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{receiving__data__handlers_8c_a54252b7a06a5f2c8beba2ca1ad69d38e}{handle\+\_\+receiving\+\_\+data\+\_\+keyboard}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\item 
+void \mbox{\hyperlink{receiving__data__handlers_8c_a7903ce3a25a8bf83b1103b8fa1f8a63e}{handle\+\_\+receiving\+\_\+data\+\_\+serial\+\_\+port}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for serial port data events in the receiving data state, in the receiver\textquotesingle{}s perspective. This handler processes the incoming data from the serial port, which contains information about the animatronic movements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{receiving__data__handlers_8c_a54252b7a06a5f2c8beba2ca1ad69d38e}\label{receiving__data__handlers_8c_a54252b7a06a5f2c8beba2ca1ad69d38e} 
+\index{receiving\_data\_handlers.c@{receiving\_data\_handlers.c}!handle\_receiving\_data\_keyboard@{handle\_receiving\_data\_keyboard}}
+\index{handle\_receiving\_data\_keyboard@{handle\_receiving\_data\_keyboard}!receiving\_data\_handlers.c@{receiving\_data\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{handle\_receiving\_data\_keyboard()}{handle\_receiving\_data\_keyboard()}}
+{\footnotesize\ttfamily void handle\+\_\+receiving\+\_\+data\+\_\+keyboard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+\Hypertarget{receiving__data__handlers_8c_a7903ce3a25a8bf83b1103b8fa1f8a63e}\label{receiving__data__handlers_8c_a7903ce3a25a8bf83b1103b8fa1f8a63e} 
+\index{receiving\_data\_handlers.c@{receiving\_data\_handlers.c}!handle\_receiving\_data\_serial\_port@{handle\_receiving\_data\_serial\_port}}
+\index{handle\_receiving\_data\_serial\_port@{handle\_receiving\_data\_serial\_port}!receiving\_data\_handlers.c@{receiving\_data\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{handle\_receiving\_data\_serial\_port()}{handle\_receiving\_data\_serial\_port()}}
+{\footnotesize\ttfamily void handle\+\_\+receiving\+\_\+data\+\_\+serial\+\_\+port (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for serial port data events in the receiving data state, in the receiver\textquotesingle{}s perspective. This handler processes the incoming data from the serial port, which contains information about the animatronic movements. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which can be modified based on the animatronic movements received from the serial port data. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the serial port data received. \\
+\hline
+\end{DoxyParams}

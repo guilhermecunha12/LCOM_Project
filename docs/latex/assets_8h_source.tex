@@ -1,0 +1,352 @@
+\doxysection{assets.\+h}
+\hypertarget{assets_8h_source}{}\label{assets_8h_source}\index{proj/models/assets.h@{proj/models/assets.h}}
+\mbox{\hyperlink{assets_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ models/assets.h}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ ASSETS\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ ASSETS\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprite_8h}{sprite.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{animatronic_8h}{animatronic.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{comment}{/*\ CURSOR\ */}}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba63cd5d9b665699b0b17c898a414c63d5}{CURSOR}},}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{comment}{/*\ MAIN\ MENU\ */}}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba9b133e85365c46411e3c2097a60dd84b}{MENU\_BG}},}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba7c646ef62564b0dcc5e6653e223cfc52}{GAME\_TITLE}},}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bab1ee0441f4e016578be76afa17ec9cc8}{OPT\_NEWGAME}},}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baaa1e298fcfbc13eadeda66d0e948fe6f}{OPT\_NEWGAME\_SEL}},}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba3177906f54f1b050ae7e8ed24132a7c5}{OPT\_CONTINUE}},}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bafb4459217d524c19f9e2827b3e8083f9}{OPT\_CONTINUE\_SEL}},}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba08a9c23bb05696396b02eaeedd3d8cc3}{OPT\_EXIT}},}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bac623b3d2ab90477945f1245d120d61f2}{OPT\_EXIT\_SEL}},}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba882973212c33faf6e491d983b9613f96}{MENU\_CUSTOM\_NIGHT}},}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488badd2ded922ce563fc7f3383da19c5c723}{MENU\_NIGHT1}},}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bace75d17b4a5a27286f48ae7946c8fe9b}{MENU\_NIGHT2}},}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba739a6795434aa348876657168024f034}{MENU\_NIGHT3}},}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba92b63f058f23592eb57c84432384bac5}{MENU\_NIGHT4}},}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba6852d1f2a0b12c98463e527b32884d75}{MENU\_NIGHT5}},}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{/*\ NIGHT\ 6AM\ */}}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baa7ae3a2612e9aa4835f890edee344a94}{NIGHT\_6AM\_SCREEN}},}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{/*\ GAME\ OVER\ */}}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bac59e996ea6362f921d0223de036a6b4a}{GAME\_OVER\_SCREEN}},}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{/*\ NEWSPAPER\ */}}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baef51471ed45db127df05ff7bd635e06a}{NEWSPAPER\_FEUP}},}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{/*\ NIGHT\ INTRO\ */}}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba345a7927ebaad5c88323a059336dd7dc}{START\_NIGHT1}},}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba56a378f4c61a56f64334e2c3d312c82c}{START\_NIGHT2}},}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba79dd4e03e4eb6a49e7a68ed2e171c1bd}{START\_NIGHT3}},}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baa87aeb96d0f620f266c2e3d6f424f967}{START\_NIGHT4}},}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba2fb726acffa49726e16295b241e66330}{START\_NIGHT5}},}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{/*\ CAMS\ MAP\ LAYOUT\ */}}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baadb88f9a3289da72a0895d931fbfb200}{CAMS\_MAP}},}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{/*\ CAM\ UI\ BUTTONS\ */}}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bab2d3e34c09e548df822783dc6d346dc7}{CAM\_BUTTON\_ACTIVE}},}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488babf0db0f716d1f48e1af50b7e5049885d}{CAM\_BUTTON\_INACTIVE}},}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{/*\ CAM\ LABEL\ TEXTS\ (drawn\ on\ top\ of\ each\ button)\ */}}
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bafc20d2482810c071661206263f81ad04}{CAM\_TEXT\_1A}},}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba712a7cbea24183f091996ab12a6bfdaa}{CAM\_TEXT\_1B}},}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bad791abd6d79d80aadaf7ec4569feefa9}{CAM\_TEXT\_1C}},}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba0dcc0c82672e5c4b8b044560dc56ec89}{CAM\_TEXT\_2A}},}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bae7075739a31ba5f78324efb1bed0ef3f}{CAM\_TEXT\_2B}},}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bab65eca23cc2df6e641d1d35a333c81e3}{CAM\_TEXT\_3}},}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bae9bf4cec1133366edb5c865bdd110cb9}{CAM\_TEXT\_4A}},}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba06b9310d0302b29ec5615bc3fa3b622d}{CAM\_TEXT\_4B}},}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488babe790fc1807cb40f9aab98d417260c3d}{CAM\_TEXT\_5}},}
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba43241d6816f9f9893932560e901a43b4}{CAM\_TEXT\_6}},}
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba47c6faa91af2266c51dd2d6700c2a957}{CAM\_TEXT\_7}},}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{/*\ SELECTED\ CAMERA\ ROOM\ NAME\ TEXTS\ (drawn\ at\ SELECTED\_CAM\_TEXT\_X/Y)\ */}}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba2af50d5de1c3830c993e87bfdc6fd68a}{SEL\_TEXT\_1A}},}
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bad6bd2d44e5aa8a1ddb49dcf9a0938a74}{SEL\_TEXT\_1B}},}
+\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baf176f0e7276754ecf0b19790722b3ede}{SEL\_TEXT\_1C}},}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baf22ba8847e6018b40240ec07b0f8ee13}{SEL\_TEXT\_2A}},}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bab3078d2e71070d34adb9dcafcffe30d9}{SEL\_TEXT\_2B}},}
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba7dc1659067ca98a43cd71b9b318b9268}{SEL\_TEXT\_3}},}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488badd2b7186bdd8c6fbfca338ea5a924067}{SEL\_TEXT\_4A}},}
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba5d683ee24cfac11515d87c0731eb10ad}{SEL\_TEXT\_4B}},}
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baa938b3a9e8dc14e20791deaa6ebd6071}{SEL\_TEXT\_5}},}
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baab2ffb2101d53ecc3005316ecad6cc29}{SEL\_TEXT\_6}},}
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba9db5e4662f02c0170f386ae2efe1cbc2}{SEL\_TEXT\_7}},}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{/*\ CAMS\ */}}
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba445d18214cc165d011954bbabeb8ffc1}{CAM\_1A\_EMPTY}},}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba726c89afc523afc1b299402779768a10}{CAM\_1A\_FREDDY}},}
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baea7374746b5a0105893ab16bf65bccff}{CAM\_1A\_BONNIE}},}
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba4a8299ad29dc67c56b24273c6050b63e}{CAM\_1A\_CHICA}},}
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba1923e1b9d84aeae37d678d76f81d8f20}{CAM\_1A\_BONNIE\_CHICA}},}
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bac46cc8ad65b8e2e089ed80f8cf5e6a6d}{CAM\_1A\_FREDDY\_BONNIE}},}
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488babe80d564777188c9e9afb968b70f261b}{CAM\_1A\_FREDDY\_BONNIE\_CHICA}},}
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba7769501e7b5a123b763b272aa3429060}{CAM\_1A\_FREDDY\_CHICA}},}
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba20477c9548ebee9cdab785b307a5cd57}{CAM\_1B\_EMPTY}},}
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba0c266f87f12667226fb2ff1fc3fd5282}{CAM\_1B\_FREDDY}},}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bae777c0daf5d15c5f688b868a3c6ebad3}{CAM\_1B\_BONNIE}},}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba61802133930f61a3a82a712e9565632f}{CAM\_1B\_CHICA}},}
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bacada838149a517ff9439b99e847deaa9}{CAM\_1B\_BONNIE\_CHICA}},}
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba1ca6c2252b92942bea04037f5d9f234b}{CAM\_1B\_FREDDY\_BONNIE}},}
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba7e83ab3325ef4d94457aa3bea7e2ab40}{CAM\_1B\_FREDDY\_CHICA}},}
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bab7210ec884a8eeaa905b6001c7b86baa}{CAM\_1B\_FREDDY\_BONNIE\_CHICA}},}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba21656b858eef1d7ae67eec0978f218c1}{CAM\_1C\_EMPTY}},}
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba370a58aa8c505e21f3fcd538dfef8e1f}{CAM\_1C\_FOXY\_1}},}
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba55f6ca49eb32e25acc9033489b743db4}{CAM\_1C\_FOXY\_2}},}
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba46331f8fb7f051c22ba7504f7ff8265c}{CAM\_1C\_FOXY\_3}},}
+\DoxyCodeLine{00102\ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba66b7be2ec4a40e5de7ba735049e26f3e}{CAM\_2A\_EMPTY}},}
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba02f135c41819a69bc8c808144e173f6b}{CAM\_2A\_BONNIE}},}
+\DoxyCodeLine{00105\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bafd0bce78e1cbb12b8a82dabb18a28f82}{CAM\_2A\_FOXY}},}
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba9d53f2a3979b51fb1b5bf94a5273a015}{CAM\_2A\_BONNIE\_FOXY}},}
+\DoxyCodeLine{00107\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bae77e4ee1e08e348145dc2912a13c7262}{CAM\_2B\_EMPTY}},}
+\DoxyCodeLine{00108\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bac8f3d2a9d7ee713f38da0f4b2af56dec}{CAM\_2B\_BONNIE}},}
+\DoxyCodeLine{00109\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba678e03d61d0ad1b439758f165173768e}{CAM\_2B\_FOXY}},}
+\DoxyCodeLine{00110\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bacf0e9a06ea3240bbbb94c0a341e27e6d}{CAM\_2B\_BONNIE\_FOXY}},}
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba9b22d3944e26056b6abce7b34f3a4800}{CAM\_3\_EMPTY}},}
+\DoxyCodeLine{00112\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bae6364165e65b2c73bbb10770553c2993}{CAM\_3\_BONNIE}},}
+\DoxyCodeLine{00113\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba52989f80cd015710929fa05e36ec261c}{CAM\_4A\_EMPTY}},}
+\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba0f7033a6fce355c1be5b65d1d57d4856}{CAM\_4A\_CHICA}},}
+\DoxyCodeLine{00115\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba9520795f668b43e53db054eb3d9d96dc}{CAM\_4B\_EMPTY}},}
+\DoxyCodeLine{00116\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baf7eb674f776f1257f07d4a65ac56f332}{CAM\_4B\_FREDDY}},}
+\DoxyCodeLine{00117\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba10137480799a0548eba0186bdb212942}{CAM\_4B\_CHICA}},}
+\DoxyCodeLine{00118\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba6d1b564fe89e0ed04f33deac7b784aa2}{CAM\_4B\_FREDDY\_CHICA}},}
+\DoxyCodeLine{00119\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bad79c047355ec0f110dab7e79a3d7e0f9}{CAM\_5\_EMPTY}},}
+\DoxyCodeLine{00120\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba73b079cc2bce1389bc092dbee967c7e0}{CAM\_5\_BONNIE}},}
+\DoxyCodeLine{00121\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baebfe6264648b26a4fbd33c5f664eac46}{CAM\_6\_EMPTY}},}
+\DoxyCodeLine{00122\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba25c284f1ff26f5af2148c1cd4e955969}{CAM\_6\_FREDDY}},}
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba41119b2b5689eef3bf8f7157025afe54}{CAM\_6\_CHICA}},}
+\DoxyCodeLine{00124\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba0ae3727b8558dbf1439314c419ac5a3b}{CAM\_6\_FREDDY\_CHICA}},}
+\DoxyCodeLine{00125\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba481f4bf0b540de1a5ace9823bea1dbee}{CAM\_7\_EMPTY}},}
+\DoxyCodeLine{00126\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba9ce538254ab5caee8f60d01a3a2cb12a}{CAM\_7\_FREDDY}},}
+\DoxyCodeLine{00127\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba83229bdb518f845b3f76b570158a6632}{CAM\_7\_CHICA}},}
+\DoxyCodeLine{00128\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488badefbc4035689e07d4667b06871d28595}{CAM\_7\_FREDDY\_CHICA}},}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{/*\ BATTERY\ NUMBERS\ */}}
+\DoxyCodeLine{00131\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba195f693b49136cb0c18877d9c7dd51aa}{I\_POWER0}},}
+\DoxyCodeLine{00132\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba37704cf7ef079996bea318113895454d}{I\_POWER1}},}
+\DoxyCodeLine{00133\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bad3b28a2c7f03f3302aea8d455f88ded5}{I\_POWER2}},}
+\DoxyCodeLine{00134\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba200f83a302201f6c30aac5751f61d546}{I\_POWER3}},}
+\DoxyCodeLine{00135\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba469628a43f276667653e2e185b750016}{I\_POWER4}},}
+\DoxyCodeLine{00136\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba3ca4b76b3bce8902673480a4c4c1eeb8}{I\_POWER5}},}
+\DoxyCodeLine{00137\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba4c352e61a02ae47a330acfa73d75c8cf}{I\_POWER6}},}
+\DoxyCodeLine{00138\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba1b142ca3fad89e6435fab1883d270934}{I\_POWER7}},}
+\DoxyCodeLine{00139\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba5a2ccdfd30191d3a9e18f52c657a3e57}{I\_POWER8}},}
+\DoxyCodeLine{00140\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488babae8f794a81f5cf60a33201c6ea4aec9}{I\_POWER9}},}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba47119e522aaed45b1e3d94ad33a1bf05}{II\_POWER0}},}
+\DoxyCodeLine{00143\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba95c34efc3ee8741459c95c53ba49dd34}{II\_POWER1}},}
+\DoxyCodeLine{00144\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba0950839fff010608b75961d39e7f95a1}{II\_POWER2}},}
+\DoxyCodeLine{00145\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bab6da83acb1d3cfef578a0b0103398898}{II\_POWER3}},}
+\DoxyCodeLine{00146\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba8ce04c63853fe99ca9ab3f0ead07c3b1}{II\_POWER4}},}
+\DoxyCodeLine{00147\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba484e60c9f2ec22260d1f2b811a6e9c9e}{II\_POWER5}},}
+\DoxyCodeLine{00148\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba6e49c232d33a1b8e0f59c84111902ab5}{II\_POWER6}},}
+\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba59b7ce1ebbe7077ff7c95ec0c19eba41}{II\_POWER7}},}
+\DoxyCodeLine{00150\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba66fad3bbff593b3d20abd92b85e08da8}{II\_POWER8}},}
+\DoxyCodeLine{00151\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baa1f49b9e26081e48c6bbbaafa6dea102}{II\_POWER9}},}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba0ff76d6cfd9130ade883d906bace0c03}{PERCENTAGE\_SIGN}},}
+\DoxyCodeLine{00154\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bac2ede3010367bb8fd5bb37e99baf6e6e}{POWER\_USAGE}},}
+\DoxyCodeLine{00155\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba48e6acebf3763f38faa74bb6a741a37f}{POWER\_LEFT}},}
+\DoxyCodeLine{00156\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba248f89598f9d4a6c6d3860920545da2a}{USAGE1}},}
+\DoxyCodeLine{00157\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bab12eb8d8a614d59569731c9b89729148}{USAGE2}},}
+\DoxyCodeLine{00158\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba5d401af515f0617e77f91a6999acfae6}{USAGE3}},}
+\DoxyCodeLine{00159\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba7cc22770c28f1b1511c472133ac0d4c2}{USAGE4}},}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba8fc0445aea3295c8293df9cf5359f8d0}{CAMERA\_FLIP\_BUTTON}},}
+\DoxyCodeLine{00162\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba0bdcc50bb76afddf6afd98c9dfe0c5d8}{HOUR\_12AM}},}
+\DoxyCodeLine{00163\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bafad2456a87c7dc67fccc86eee8b62036}{HOUR\_1AM}},}
+\DoxyCodeLine{00164\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba6402a090295096e401d1ee5895540f9f}{HOUR\_2AM}},}
+\DoxyCodeLine{00165\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baf98c4ba9bac19957407a7cde16c991fa}{HOUR\_3AM}},}
+\DoxyCodeLine{00166\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baff0f6df44385d3b76b74c11030837eaf}{HOUR\_4AM}},}
+\DoxyCodeLine{00167\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba531e07f33574f2d3942ec12cb6f91f08}{HOUR\_5AM}},}
+\DoxyCodeLine{00168\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba256533887ec76c85710122a4741c8915}{AM\_TEXT}},}
+\DoxyCodeLine{00169\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bad31d28a35ed67cea6783f00d368873cc}{NIGHT\_TEXT\_1}},}
+\DoxyCodeLine{00170\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba4b812a63b26f654ca3db66c4dd148c4b}{NIGHT\_TEXT\_2}},}
+\DoxyCodeLine{00171\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baa659d90e2dda6f654046962274b925bc}{NIGHT\_TEXT\_3}},}
+\DoxyCodeLine{00172\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba2c7d42e48f34275a81ceb704c2227119}{NIGHT\_TEXT\_4}},}
+\DoxyCodeLine{00173\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba8b163f31e38db93542bc0a272c06de84}{NIGHT\_TEXT\_5}},}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{comment}{/*\ OFFICE\ */}}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{comment}{//\ assests\ contiguos\ em\ memory\ for\ easier\ access\ in\ jumpscare\ animation\ frames}}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{comment}{/*\ JUMPSCARES\ —\ base\ index\ per\ animatronic,\ use\ FIRST\ +\ frame\_index\ to\ address\ */}}
+\DoxyCodeLine{00178\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baa86ef3403336b634616b897207ccfc13}{JUMPSCARE\_FREDDY\_FIRST}},\ \ \textcolor{comment}{//\ 21\ frames}}
+\DoxyCodeLine{00179\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba59075a31634003846f73e3e82eafabb8}{JUMPSCARE\_FREDDY\_LIGHTOUT\_FIRST}}\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baa86ef3403336b634616b897207ccfc13}{JUMPSCARE\_FREDDY\_FIRST}}\ +\ \mbox{\hyperlink{game__constants_8h_a92afe6d8c3da84ad1831ed9ad8b22030}{NUM\_JUMPSCARE\_FREDDY\_NORMAL}},\ \textcolor{comment}{//\ 28\ frames}}
+\DoxyCodeLine{00180\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488badd8f674c623bab63dec296ccbbcc2009}{JUMPSCARE\_BONNIE\_FIRST}}\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba59075a31634003846f73e3e82eafabb8}{JUMPSCARE\_FREDDY\_LIGHTOUT\_FIRST}}\ +\ \mbox{\hyperlink{game__constants_8h_a255cb1c4a89d1c8e8fd2b5c7a68dc945}{NUM\_JUMPSCARE\_FREDDY\_LIGHTOUT}},\ \textcolor{comment}{//\ 11\ frames}}
+\DoxyCodeLine{00181\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba8a99394f7827f7a5e5013ad53d6364e4}{JUMPSCARE\_CHICA\_FIRST}}\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488badd8f674c623bab63dec296ccbbcc2009}{JUMPSCARE\_BONNIE\_FIRST}}\ +\ \mbox{\hyperlink{game__constants_8h_afc5bd2f0208a1efdb827145fcde47cc0}{NUM\_JUMPSCARE\_BONNIE}},\ \textcolor{comment}{//\ 16\ frames}}
+\DoxyCodeLine{00182\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba174d0b5ad69c29f4f6d7cd3a53e07b59}{JUMPSCARE\_FOXY\_FIRST}}\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba8a99394f7827f7a5e5013ad53d6364e4}{JUMPSCARE\_CHICA\_FIRST}}\ +\ \mbox{\hyperlink{game__constants_8h_a293d8158a79a7d638d7ac7409c90820c}{NUM\_JUMPSCARE\_CHICA}},\ \textcolor{comment}{//\ 21\ frames}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bad3e8a13d880dd57fa1f0bae2b5296a0a}{OFFICE}},}
+\DoxyCodeLine{00185\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba12fbf50ac5a6958d6286423f4532aed1}{OFFICE\_LIGHTS\_OUT}},}
+\DoxyCodeLine{00186\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba46820f5a3153cae89e8c17aaaa27915b}{LEFT\_DOOR\_CLOSED}},}
+\DoxyCodeLine{00187\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba33598371cfa1047ccde89c36aecf8dde}{RIGHT\_DOOR\_CLOSED}},}
+\DoxyCodeLine{00188\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba3a1f1efc4dcbbe3c46ce7b965746a668}{BONNIE\_LEFT\_DOOR}},}
+\DoxyCodeLine{00189\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bacd79dce0d955409b72b9c0caf8be9cb6}{FOXY\_LEFT\_DOOR}},}
+\DoxyCodeLine{00190\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bae9f6d7b2309c07c4d3c791f1c85013a4}{FREDDY\_RIGHT\_DOOR}},}
+\DoxyCodeLine{00191\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba8ced62265675b5b0143afa79bb53fbf8}{CHICA\_RIGHT\_DOOR}},}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{comment}{/*\ RECEIVER\ ASSETS\ */}}
+\DoxyCodeLine{00195\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baeb9520b61d82041e5e403e7b072e5bb4}{WAITING\_FOR\_DATA\_SCREEN}},}
+\DoxyCodeLine{00196\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba6f9c31d9e3c6ef2f0d8e4917d387b871}{MAP\_SCREEN}},}
+\DoxyCodeLine{00197\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba1e0234a35078c261cf200fc206fd52e1}{FREDDY\_CAM\_1A}},}
+\DoxyCodeLine{00198\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba515d1869c0344bc35da94bc0796bf2a6}{BONNIE\_CAM\_1A}},}
+\DoxyCodeLine{00199\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba903a1a856815070f6baa57e7b8dfae55}{CHICA\_CAM\_1A}},}
+\DoxyCodeLine{00200\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba2107957008bb99a01666dca7adb1c29e}{FREDDY\_CAM\_1B}},}
+\DoxyCodeLine{00201\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba12c8caadd42ac10498bc8da8e4121e12}{BONNIE\_CAM\_1B}},}
+\DoxyCodeLine{00202\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baab80ad58a9007f6752917b0f0bd1cc0c}{CHICA\_CAM\_1B}},}
+\DoxyCodeLine{00203\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baf249c558a02c6411af7e4f99a7e63a94}{FOXY\_CAM\_1C}},}
+\DoxyCodeLine{00204\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bac85c79d5e405ece3c485e28912aa44d7}{BONNIE\_CAM\_2A}},}
+\DoxyCodeLine{00205\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba3ee0993fc4fc89954bc9baa731733238}{FOXY\_CAM\_2A}},}
+\DoxyCodeLine{00206\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba3efe469b1e2997591b2a83832a8b71a2}{FREDDY\_CAM\_2B}},}
+\DoxyCodeLine{00207\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baf6204418a8d10f08db5ee5d6d8f8e9b4}{CHICA\_CAM\_2B}},}
+\DoxyCodeLine{00208\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba2afcd60b8837e766f1d4b3c99a771227}{FOXY\_CAM\_2B}},}
+\DoxyCodeLine{00209\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bad834d4ce778532d74bdd4e0f03be0987}{BONNIE\_CAM\_3}},}
+\DoxyCodeLine{00210\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baf0ee146712015bd2ee240cd0269cb6a6}{CHICA\_CAM\_4A}},}
+\DoxyCodeLine{00211\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba566019bb030448681b6eb88549d23bf1}{FREDDY\_CAM\_4B}},}
+\DoxyCodeLine{00212\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bafde1ead810dc857f37ba124c650f31e7}{CHICA\_CAM\_4B}},}
+\DoxyCodeLine{00213\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba13735afea84079a0c6bba2219141d39d}{BONNIE\_CAM\_5}},}
+\DoxyCodeLine{00214\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baca36937cb5cc031a8125f76327bf8676}{FREDDY\_CAM\_6}},}
+\DoxyCodeLine{00215\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba03e1e9b4d5c8e93887a318c15436c0f1}{CHICA\_CAM\_6}},}
+\DoxyCodeLine{00216\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bacbab7f99f2fc73e905da1136051b49d8}{FREDDY\_CAM\_7}},}
+\DoxyCodeLine{00217\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba662712e0165402e11f3eb54380dea7ac}{CHICA\_CAM\_7}},}
+\DoxyCodeLine{00218\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba76fadb3edfd4fbefca0f66dd7c2ee996}{FREDDY\_ID\_RIGHT\_DOOR}},}
+\DoxyCodeLine{00219\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba0fec888de3a40d2d11ece7bf7d4aae74}{BONNIE\_ID\_LEFT\_DOOR}},}
+\DoxyCodeLine{00220\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba5d24e77b4329878b0c588d7d820aa7cd}{CHICA\_ID\_RIGHT\_DOOR}},}
+\DoxyCodeLine{00221\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba6ce07638ec2cc9a62f4667b11c087152}{FOXY\_ID\_LEFT\_DOOR}},}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \ \ \ \ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba4b1c3f854e07addc57e54b8d55880186}{NUM\_ASSETS}}}
+\DoxyCodeLine{00224\ \}\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488b}{xpmASSET}};}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00229\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \mbox{\hyperlink{assets_8h_abc7ef9146e8d2263880efda249d86b03af1fa0a6dcdbcb85c42ea27df7142919f}{ANIM\_CAMERA\_MONITOR}},}
+\DoxyCodeLine{00231\ \ \ \ \ \mbox{\hyperlink{assets_8h_abc7ef9146e8d2263880efda249d86b03ac0eab3154f91219f3a8b69e20586f8fb}{ANIM\_BONNIE\_JUMPSCARE}},}
+\DoxyCodeLine{00232\ \ \ \ \ \mbox{\hyperlink{assets_8h_abc7ef9146e8d2263880efda249d86b03a2baf1fab37959a5a7e7d355f17fd612b}{ANIM\_CHICA\_JUMPSCARE}},}
+\DoxyCodeLine{00233\ \ \ \ \ \mbox{\hyperlink{assets_8h_abc7ef9146e8d2263880efda249d86b03a69ae6552697bee490232cb97ed6d3670}{ANIM\_FOXY\_JUMPSCARE}},}
+\DoxyCodeLine{00234\ \ \ \ \ \mbox{\hyperlink{assets_8h_abc7ef9146e8d2263880efda249d86b03af3eb5f0c6b6dbe6b687609c3429d4f51}{ANIM\_FREDDY\_JUMPSCARE}},}
+\DoxyCodeLine{00235\ \ \ \ \ \mbox{\hyperlink{assets_8h_abc7ef9146e8d2263880efda249d86b03adeba7806260c90143df27e4418e24efb}{ANIM\_STATIC\_SCREEN}},}
+\DoxyCodeLine{00236\ \ \ \ \ \mbox{\hyperlink{assets_8h_abc7ef9146e8d2263880efda249d86b03a6ddb4e23b0cff04d5e61a126c94e4857}{NUM\_ANIM\_ASSETS}}}
+\DoxyCodeLine{00237\ \}\ \mbox{\hyperlink{assets_8h_abc7ef9146e8d2263880efda249d86b03}{AnimAsset}};}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00242\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488b}{xpmASSET}}\ power1\_to\_asset[]\ =\ \{}
+\DoxyCodeLine{00243\ \ \ \ \ [1]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba37704cf7ef079996bea318113895454d}{I\_POWER1}},}
+\DoxyCodeLine{00244\ \ \ \ \ [2]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bad3b28a2c7f03f3302aea8d455f88ded5}{I\_POWER2}},}
+\DoxyCodeLine{00245\ \ \ \ \ [3]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba200f83a302201f6c30aac5751f61d546}{I\_POWER3}},}
+\DoxyCodeLine{00246\ \ \ \ \ [4]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba469628a43f276667653e2e185b750016}{I\_POWER4}},}
+\DoxyCodeLine{00247\ \ \ \ \ [5]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba3ca4b76b3bce8902673480a4c4c1eeb8}{I\_POWER5}},}
+\DoxyCodeLine{00248\ \ \ \ \ [6]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba4c352e61a02ae47a330acfa73d75c8cf}{I\_POWER6}},}
+\DoxyCodeLine{00249\ \ \ \ \ [7]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba1b142ca3fad89e6435fab1883d270934}{I\_POWER7}},}
+\DoxyCodeLine{00250\ \ \ \ \ [8]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba5a2ccdfd30191d3a9e18f52c657a3e57}{I\_POWER8}},}
+\DoxyCodeLine{00251\ \ \ \ \ [9]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488babae8f794a81f5cf60a33201c6ea4aec9}{I\_POWER9}}}
+\DoxyCodeLine{00252\ \};}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00257\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488b}{xpmASSET}}\ power2\_to\_asset[]\ =\ \{}
+\DoxyCodeLine{00258\ \ \ \ \ [0]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba47119e522aaed45b1e3d94ad33a1bf05}{II\_POWER0}},}
+\DoxyCodeLine{00259\ \ \ \ \ [1]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba95c34efc3ee8741459c95c53ba49dd34}{II\_POWER1}},}
+\DoxyCodeLine{00260\ \ \ \ \ [2]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba0950839fff010608b75961d39e7f95a1}{II\_POWER2}},}
+\DoxyCodeLine{00261\ \ \ \ \ [3]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bab6da83acb1d3cfef578a0b0103398898}{II\_POWER3}},}
+\DoxyCodeLine{00262\ \ \ \ \ [4]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba8ce04c63853fe99ca9ab3f0ead07c3b1}{II\_POWER4}},}
+\DoxyCodeLine{00263\ \ \ \ \ [5]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba484e60c9f2ec22260d1f2b811a6e9c9e}{II\_POWER5}},}
+\DoxyCodeLine{00264\ \ \ \ \ [6]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba6e49c232d33a1b8e0f59c84111902ab5}{II\_POWER6}},}
+\DoxyCodeLine{00265\ \ \ \ \ [7]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba59b7ce1ebbe7077ff7c95ec0c19eba41}{II\_POWER7}},}
+\DoxyCodeLine{00266\ \ \ \ \ [8]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba66fad3bbff593b3d20abd92b85e08da8}{II\_POWER8}},}
+\DoxyCodeLine{00267\ \ \ \ \ [9]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baa1f49b9e26081e48c6bbbaafa6dea102}{II\_POWER9}}}
+\DoxyCodeLine{00268\ \};}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00270\ \textcolor{preprocessor}{\#define\ CAM\_EMPTY\ \ 0}}
+\DoxyCodeLine{00271\ \textcolor{preprocessor}{\#define\ CAM\_FREDDY\ (1\ <<\ FREDDY)}}
+\DoxyCodeLine{00272\ \textcolor{preprocessor}{\#define\ CAM\_BONNIE\ (1\ <<\ BONNIE)}}
+\DoxyCodeLine{00273\ \textcolor{preprocessor}{\#define\ CAM\_CHICA\ \ (1\ <<\ CHICA)}}
+\DoxyCodeLine{00274\ \textcolor{preprocessor}{\#define\ CAM\_FOXY\ \ \ (1\ <<\ FOXY)}}
+\DoxyCodeLine{00275\ }
+\DoxyCodeLine{00280\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488b}{xpmASSET}}\ cam1a\_assets[]\ =\ \{}
+\DoxyCodeLine{00281\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ac99b1d7a74cff05259b257c1ac20d73c}{CAM\_EMPTY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba445d18214cc165d011954bbabeb8ffc1}{CAM\_1A\_EMPTY}},}
+\DoxyCodeLine{00282\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a5ef6cbc3781505ba8b04a782c84772a1}{CAM\_FREDDY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba726c89afc523afc1b299402779768a10}{CAM\_1A\_FREDDY}},}
+\DoxyCodeLine{00283\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ad0174f0ba2359b0736b1ae1d61cbdb23}{CAM\_BONNIE}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baea7374746b5a0105893ab16bf65bccff}{CAM\_1A\_BONNIE}},}
+\DoxyCodeLine{00284\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a73f9d8fac99859ac6be6208ced93df6b}{CAM\_CHICA}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba4a8299ad29dc67c56b24273c6050b63e}{CAM\_1A\_CHICA}},}
+\DoxyCodeLine{00285\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ad0174f0ba2359b0736b1ae1d61cbdb23}{CAM\_BONNIE}}\ |\ \mbox{\hyperlink{assets_8h_a73f9d8fac99859ac6be6208ced93df6b}{CAM\_CHICA}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba1923e1b9d84aeae37d678d76f81d8f20}{CAM\_1A\_BONNIE\_CHICA}},}
+\DoxyCodeLine{00286\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a5ef6cbc3781505ba8b04a782c84772a1}{CAM\_FREDDY}}\ |\ \mbox{\hyperlink{assets_8h_ad0174f0ba2359b0736b1ae1d61cbdb23}{CAM\_BONNIE}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bac46cc8ad65b8e2e089ed80f8cf5e6a6d}{CAM\_1A\_FREDDY\_BONNIE}},}
+\DoxyCodeLine{00287\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a5ef6cbc3781505ba8b04a782c84772a1}{CAM\_FREDDY}}\ |\ \mbox{\hyperlink{assets_8h_a73f9d8fac99859ac6be6208ced93df6b}{CAM\_CHICA}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba7769501e7b5a123b763b272aa3429060}{CAM\_1A\_FREDDY\_CHICA}},}
+\DoxyCodeLine{00288\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a5ef6cbc3781505ba8b04a782c84772a1}{CAM\_FREDDY}}\ |\ \mbox{\hyperlink{assets_8h_ad0174f0ba2359b0736b1ae1d61cbdb23}{CAM\_BONNIE}}\ |\ \mbox{\hyperlink{assets_8h_a73f9d8fac99859ac6be6208ced93df6b}{CAM\_CHICA}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488babe80d564777188c9e9afb968b70f261b}{CAM\_1A\_FREDDY\_BONNIE\_CHICA}},}
+\DoxyCodeLine{00289\ \};}
+\DoxyCodeLine{00290\ }
+\DoxyCodeLine{00295\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488b}{xpmASSET}}\ cam1b\_assets[]\ =\ \{}
+\DoxyCodeLine{00296\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ac99b1d7a74cff05259b257c1ac20d73c}{CAM\_EMPTY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba20477c9548ebee9cdab785b307a5cd57}{CAM\_1B\_EMPTY}},}
+\DoxyCodeLine{00297\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a5ef6cbc3781505ba8b04a782c84772a1}{CAM\_FREDDY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba0c266f87f12667226fb2ff1fc3fd5282}{CAM\_1B\_FREDDY}},}
+\DoxyCodeLine{00298\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ad0174f0ba2359b0736b1ae1d61cbdb23}{CAM\_BONNIE}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bae777c0daf5d15c5f688b868a3c6ebad3}{CAM\_1B\_BONNIE}},}
+\DoxyCodeLine{00299\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a73f9d8fac99859ac6be6208ced93df6b}{CAM\_CHICA}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba61802133930f61a3a82a712e9565632f}{CAM\_1B\_CHICA}},}
+\DoxyCodeLine{00300\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ad0174f0ba2359b0736b1ae1d61cbdb23}{CAM\_BONNIE}}\ |\ \mbox{\hyperlink{assets_8h_a73f9d8fac99859ac6be6208ced93df6b}{CAM\_CHICA}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bacada838149a517ff9439b99e847deaa9}{CAM\_1B\_BONNIE\_CHICA}},}
+\DoxyCodeLine{00301\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a5ef6cbc3781505ba8b04a782c84772a1}{CAM\_FREDDY}}\ |\ \mbox{\hyperlink{assets_8h_ad0174f0ba2359b0736b1ae1d61cbdb23}{CAM\_BONNIE}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba1ca6c2252b92942bea04037f5d9f234b}{CAM\_1B\_FREDDY\_BONNIE}},}
+\DoxyCodeLine{00302\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a5ef6cbc3781505ba8b04a782c84772a1}{CAM\_FREDDY}}\ |\ \mbox{\hyperlink{assets_8h_a73f9d8fac99859ac6be6208ced93df6b}{CAM\_CHICA}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba7e83ab3325ef4d94457aa3bea7e2ab40}{CAM\_1B\_FREDDY\_CHICA}},}
+\DoxyCodeLine{00303\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a5ef6cbc3781505ba8b04a782c84772a1}{CAM\_FREDDY}}\ |\ \mbox{\hyperlink{assets_8h_ad0174f0ba2359b0736b1ae1d61cbdb23}{CAM\_BONNIE}}\ |\ \mbox{\hyperlink{assets_8h_a73f9d8fac99859ac6be6208ced93df6b}{CAM\_CHICA}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bab7210ec884a8eeaa905b6001c7b86baa}{CAM\_1B\_FREDDY\_BONNIE\_CHICA}},}
+\DoxyCodeLine{00304\ \};}
+\DoxyCodeLine{00305\ }
+\DoxyCodeLine{00310\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488b}{xpmASSET}}\ cam2a\_assets[]\ =\ \{}
+\DoxyCodeLine{00311\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ac99b1d7a74cff05259b257c1ac20d73c}{CAM\_EMPTY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba66b7be2ec4a40e5de7ba735049e26f3e}{CAM\_2A\_EMPTY}},}
+\DoxyCodeLine{00312\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ad0174f0ba2359b0736b1ae1d61cbdb23}{CAM\_BONNIE}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba02f135c41819a69bc8c808144e173f6b}{CAM\_2A\_BONNIE}},}
+\DoxyCodeLine{00313\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ab896be35a2826910cefedafdf4a5b1a4}{CAM\_FOXY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bafd0bce78e1cbb12b8a82dabb18a28f82}{CAM\_2A\_FOXY}},}
+\DoxyCodeLine{00314\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ad0174f0ba2359b0736b1ae1d61cbdb23}{CAM\_BONNIE}}\ |\ \mbox{\hyperlink{assets_8h_ab896be35a2826910cefedafdf4a5b1a4}{CAM\_FOXY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba9d53f2a3979b51fb1b5bf94a5273a015}{CAM\_2A\_BONNIE\_FOXY}},}
+\DoxyCodeLine{00315\ \};}
+\DoxyCodeLine{00316\ }
+\DoxyCodeLine{00321\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488b}{xpmASSET}}\ cam2b\_assets[]\ =\ \{}
+\DoxyCodeLine{00322\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ac99b1d7a74cff05259b257c1ac20d73c}{CAM\_EMPTY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bae77e4ee1e08e348145dc2912a13c7262}{CAM\_2B\_EMPTY}},}
+\DoxyCodeLine{00323\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ad0174f0ba2359b0736b1ae1d61cbdb23}{CAM\_BONNIE}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bac8f3d2a9d7ee713f38da0f4b2af56dec}{CAM\_2B\_BONNIE}},}
+\DoxyCodeLine{00324\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ab896be35a2826910cefedafdf4a5b1a4}{CAM\_FOXY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba678e03d61d0ad1b439758f165173768e}{CAM\_2B\_FOXY}},}
+\DoxyCodeLine{00325\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ad0174f0ba2359b0736b1ae1d61cbdb23}{CAM\_BONNIE}}\ |\ \mbox{\hyperlink{assets_8h_ab896be35a2826910cefedafdf4a5b1a4}{CAM\_FOXY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bacf0e9a06ea3240bbbb94c0a341e27e6d}{CAM\_2B\_BONNIE\_FOXY}},}
+\DoxyCodeLine{00326\ \};}
+\DoxyCodeLine{00327\ }
+\DoxyCodeLine{00332\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488b}{xpmASSET}}\ cam3\_assets[]\ =\ \{}
+\DoxyCodeLine{00333\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ac99b1d7a74cff05259b257c1ac20d73c}{CAM\_EMPTY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba9b22d3944e26056b6abce7b34f3a4800}{CAM\_3\_EMPTY}},}
+\DoxyCodeLine{00334\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ad0174f0ba2359b0736b1ae1d61cbdb23}{CAM\_BONNIE}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bae6364165e65b2c73bbb10770553c2993}{CAM\_3\_BONNIE}},}
+\DoxyCodeLine{00335\ \};}
+\DoxyCodeLine{00336\ }
+\DoxyCodeLine{00341\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488b}{xpmASSET}}\ cam4a\_assets[]\ =\ \{}
+\DoxyCodeLine{00342\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ac99b1d7a74cff05259b257c1ac20d73c}{CAM\_EMPTY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba52989f80cd015710929fa05e36ec261c}{CAM\_4A\_EMPTY}},}
+\DoxyCodeLine{00343\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a73f9d8fac99859ac6be6208ced93df6b}{CAM\_CHICA}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba0f7033a6fce355c1be5b65d1d57d4856}{CAM\_4A\_CHICA}},}
+\DoxyCodeLine{00344\ \};}
+\DoxyCodeLine{00345\ }
+\DoxyCodeLine{00350\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488b}{xpmASSET}}\ cam4b\_assets[]\ =\ \{}
+\DoxyCodeLine{00351\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ac99b1d7a74cff05259b257c1ac20d73c}{CAM\_EMPTY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba9520795f668b43e53db054eb3d9d96dc}{CAM\_4B\_EMPTY}},}
+\DoxyCodeLine{00352\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a5ef6cbc3781505ba8b04a782c84772a1}{CAM\_FREDDY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baf7eb674f776f1257f07d4a65ac56f332}{CAM\_4B\_FREDDY}},}
+\DoxyCodeLine{00353\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a73f9d8fac99859ac6be6208ced93df6b}{CAM\_CHICA}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba10137480799a0548eba0186bdb212942}{CAM\_4B\_CHICA}},}
+\DoxyCodeLine{00354\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a5ef6cbc3781505ba8b04a782c84772a1}{CAM\_FREDDY}}\ |\ \mbox{\hyperlink{assets_8h_a73f9d8fac99859ac6be6208ced93df6b}{CAM\_CHICA}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba6d1b564fe89e0ed04f33deac7b784aa2}{CAM\_4B\_FREDDY\_CHICA}},}
+\DoxyCodeLine{00355\ \};}
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00361\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488b}{xpmASSET}}\ cam5\_assets[]\ =\ \{}
+\DoxyCodeLine{00362\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ac99b1d7a74cff05259b257c1ac20d73c}{CAM\_EMPTY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488bad79c047355ec0f110dab7e79a3d7e0f9}{CAM\_5\_EMPTY}},}
+\DoxyCodeLine{00363\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ad0174f0ba2359b0736b1ae1d61cbdb23}{CAM\_BONNIE}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba73b079cc2bce1389bc092dbee967c7e0}{CAM\_5\_BONNIE}},}
+\DoxyCodeLine{00364\ \};}
+\DoxyCodeLine{00365\ }
+\DoxyCodeLine{00370\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488b}{xpmASSET}}\ cam6\_assets[]\ =\ \{}
+\DoxyCodeLine{00371\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ac99b1d7a74cff05259b257c1ac20d73c}{CAM\_EMPTY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488baebfe6264648b26a4fbd33c5f664eac46}{CAM\_6\_EMPTY}},}
+\DoxyCodeLine{00372\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a5ef6cbc3781505ba8b04a782c84772a1}{CAM\_FREDDY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba25c284f1ff26f5af2148c1cd4e955969}{CAM\_6\_FREDDY}},}
+\DoxyCodeLine{00373\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a73f9d8fac99859ac6be6208ced93df6b}{CAM\_CHICA}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba41119b2b5689eef3bf8f7157025afe54}{CAM\_6\_CHICA}},}
+\DoxyCodeLine{00374\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a5ef6cbc3781505ba8b04a782c84772a1}{CAM\_FREDDY}}\ |\ \mbox{\hyperlink{assets_8h_a73f9d8fac99859ac6be6208ced93df6b}{CAM\_CHICA}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba0ae3727b8558dbf1439314c419ac5a3b}{CAM\_6\_FREDDY\_CHICA}},}
+\DoxyCodeLine{00375\ \};}
+\DoxyCodeLine{00376\ }
+\DoxyCodeLine{00381\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488b}{xpmASSET}}\ cam7\_assets[]\ =\ \{}
+\DoxyCodeLine{00382\ \ \ \ \ [\mbox{\hyperlink{assets_8h_ac99b1d7a74cff05259b257c1ac20d73c}{CAM\_EMPTY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba481f4bf0b540de1a5ace9823bea1dbee}{CAM\_7\_EMPTY}},}
+\DoxyCodeLine{00383\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a5ef6cbc3781505ba8b04a782c84772a1}{CAM\_FREDDY}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba9ce538254ab5caee8f60d01a3a2cb12a}{CAM\_7\_FREDDY}},}
+\DoxyCodeLine{00384\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a73f9d8fac99859ac6be6208ced93df6b}{CAM\_CHICA}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488ba83229bdb518f845b3f76b570158a6632}{CAM\_7\_CHICA}},}
+\DoxyCodeLine{00385\ \ \ \ \ [\mbox{\hyperlink{assets_8h_a5ef6cbc3781505ba8b04a782c84772a1}{CAM\_FREDDY}}\ |\ \mbox{\hyperlink{assets_8h_a73f9d8fac99859ac6be6208ced93df6b}{CAM\_CHICA}}]\ =\ \mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488badefbc4035689e07d4667b06871d28595}{CAM\_7\_FREDDY\_CHICA}},}
+\DoxyCodeLine{00386\ \};}
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00392\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{assets_8h_a6f4a88a59e9221ac4d0cfb1e5be8438d}{load\_all\_assets}}();}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00394\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{assets_8h_a0dbb26b7ec50215f66404e901ca597be}{load\_receiver\_assets}}();}
+\DoxyCodeLine{00395\ }
+\DoxyCodeLine{00399\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{assets_8h_af8c4ca769bc42276367e40a72a92ceaa}{unload\_all\_assets}}();}
+\DoxyCodeLine{00400\ }
+\DoxyCodeLine{00404\ \mbox{\hyperlink{structSprite}{Sprite}}*\ \mbox{\hyperlink{assets_8h_af689a1b93897f2143a27366c2be88a6c}{get\_asset}}(\mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488b}{xpmASSET}}\ asset);}
+\DoxyCodeLine{00405\ }
+\DoxyCodeLine{00409\ \mbox{\hyperlink{structAnimSprite}{AnimSprite}}*\ \mbox{\hyperlink{assets_8h_accf4266552f4c60ad17c9b63634d110e}{get\_anim\_asset}}(\mbox{\hyperlink{assets_8h_abc7ef9146e8d2263880efda249d86b03}{AnimAsset}}\ asset);}
+\DoxyCodeLine{00410\ }
+\DoxyCodeLine{00411\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,37 @@
+\doxysection{proj/view/handlers/renderer.c File Reference}
+\hypertarget{renderer_8c}{}\label{renderer_8c}\index{proj/view/handlers/renderer.c@{proj/view/handlers/renderer.c}}
+{\ttfamily \#include "{}renderer.\+h"{}}\newline
+Include dependency graph for renderer.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{renderer_8h_a1d155e7697d54dd3cc8f9e4921e8ae62}{Render\+Handler}} \mbox{\hyperlink{renderer_8c_a89676f2eaad6a64024ddd6c14cf65be1}{get\+\_\+render\+\_\+handler}} (const \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5c}{State\+Type}} state)
+\begin{DoxyCompactList}\small\item\em Get the appropriate render handler for the given \doxylink{structGameState}{Game\+State}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{renderer_8c_a89676f2eaad6a64024ddd6c14cf65be1}\label{renderer_8c_a89676f2eaad6a64024ddd6c14cf65be1} 
+\index{renderer.c@{renderer.c}!get\_render\_handler@{get\_render\_handler}}
+\index{get\_render\_handler@{get\_render\_handler}!renderer.c@{renderer.c}}
+\doxysubsubsection{\texorpdfstring{get\_render\_handler()}{get\_render\_handler()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{renderer_8h_a1d155e7697d54dd3cc8f9e4921e8ae62}{Render\+Handler}} get\+\_\+render\+\_\+handler (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5c}{State\+Type}}}]{state }\end{DoxyParamCaption})}
+
+
+
+Get the appropriate render handler for the given \doxylink{structGameState}{Game\+State}. 
+
+Internally, the implementation uses a array indexed with \doxylink{structGameState}{Game\+State} to retrieve the correct handler function. If no handler is defined for the given state, it returns NULL. 
+\begin{DoxyParams}{Parameters}
+{\em state} & The current state of the game, used to determine which set of event handlers to use. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The appropriate function pointer to a render handler function. 
+\end{DoxyReturn}
