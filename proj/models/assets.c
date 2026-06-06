@@ -454,9 +454,7 @@ void load_all_assets() {
     (xpm_map_t) foxy19_xpm, (xpm_map_t) foxy20_xpm, (xpm_map_t) foxy21_xpm);
 }
 
-void load_receiver_assets() {
-    // TODO: load the correct assets for the receiver
-    
+void load_receiver_assets() {    
     assets[WAITING_FOR_DATA_SCREEN] = create_sprite((xpm_map_t) waiting_for_data_xpm, 0, 0);
     assets[MAP_SCREEN] = create_sprite((xpm_map_t) map_sp_xpm, 0, 0);
     assets[FREDDY_CAM_1A] = create_sprite((xpm_map_t) freddy_id_xpm, MAP_CAM_1A_X + ID_OFFSET_X, MAP_CAM_1A_Y + FREDDY_ID_OFFSET_Y);

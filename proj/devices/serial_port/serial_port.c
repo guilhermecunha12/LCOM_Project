@@ -94,7 +94,6 @@ int enable_received_data_interrupt() {
     return sys_outb(COM1_BASE + IER_OFFSET, ier);
 }
 
-//TODO: remove
 int enable_transmitter_holding_register_empty_interrupt() {
     uint8_t ier;
     if (get_ier(&ier)) return 1;

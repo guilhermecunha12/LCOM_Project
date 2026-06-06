@@ -24,8 +24,12 @@ static Key get_key(uint8_t scancode[2]) {
       return KEY_MENU_UP;
     case 0x50: // Down arrow
       return KEY_MENU_DOWN;
+    case 0x1E: // 'A' key
+      return KEY_LEFT;
     case 0x4B: // Left arrow
       return KEY_LEFT;
+    case 0x20: // 'D' key
+      return KEY_RIGHT;
     case 0x4D: // Right arrow
       return KEY_RIGHT;
     case 0x1C: // Enter key
