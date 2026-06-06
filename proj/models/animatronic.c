@@ -12,9 +12,6 @@
 static CameraID FREDDY_PATH[] = {CAM_1A, CAM_1B, CAM_7, CAM_6, CAM_4B, RIGHT_DOOR};
 static CameraID BONNIE_PATH[] = {CAM_1A, CAM_1B, CAM_5, CAM_3, CAM_2A, CAM_2B, LEFT_DOOR};
 static CameraID CHICA_PATH[]  = {CAM_1A, CAM_1B, CAM_7, CAM_6, CAM_4A, CAM_4B, RIGHT_DOOR};
-static CameraID FOXY_PATH[]   = {CAM_1C, CAM_1C, CAM_1C, CAM_2A, CAM_2B, LEFT_DOOR};
-
-
 
 /*
     first CAM1_C -> Closed
@@ -22,7 +19,7 @@ static CameraID FOXY_PATH[]   = {CAM_1C, CAM_1C, CAM_1C, CAM_2A, CAM_2B, LEFT_DO
     third CAM1_C -> fully out,
     3 -> empty, which is the CAM_2A
 */
-static CameraID FOXY_PATH[]   = {CAM_1C};
+static CameraID FOXY_PATH[]   = {CAM_1C, CAM_1C, CAM_1C, CAM_2A, CAM_2B, LEFT_DOOR};
 // Maybe chang the foxy path to make it easier
 
 /**
@@ -215,8 +212,9 @@ bool update_animatronic(Animatronic* animatronic, int time_left, bool left_door_
         bool should_move = should_animatronic_move(animatronic);
         if (animatronic->name == FOXY && camera_monitor_up && animatronic->path[animatronic->current_position_index] == CAM_1C && viewing_camera == CAM_1C) should_move = false;
         // CHECK if it's foxy and updates to FOXY_FAST_MOVE_INTERVAL
-        if (animatronic->name == FOXY && animatronic->path[animatronic->current_position_index] != CAM_1C)
+        if (animatronic->name == FOXY && animatronic->path[animatronic->current_position_index] != CAM_1C){
             animatronic->time_to_move_opportunity = FOXY_FAST_MOVE_INTERVAL;
+        }
         else
             animatronic->time_to_move_opportunity = MOVE_INTERVALS[animatronic->name];
         if (should_move) {
