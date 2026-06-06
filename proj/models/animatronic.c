@@ -46,9 +46,9 @@ static const int ANIMATRONIC_PATH_LENGTHS[4] = {
  * @brief Initial AI levels for each animatronic for each night.
  */
 static const int INITIAL_AI_LEVELS[4][5] = {
-    [FREDDY] = {3, 0, 1, 2, 3},
-    [BONNIE] = {3, 3, 0, 2, 9},
-    [CHICA] = {3, 1, 5, 5, 8},
+    [FREDDY] = {0, 0, 1, 2, 3},
+    [BONNIE] = {0, 3, 0, 2, 9},
+    [CHICA] = {0, 1, 5, 5, 8},
     [FOXY] = {0, 1, 2, 6, 9}
 };
 

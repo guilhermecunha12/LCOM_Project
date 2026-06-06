@@ -1,5 +1,6 @@
 #include "processor.h"
 #include "../handlers/helpers/player_screen_movement_handler.h"
+#include "../../sound.h"
 
 void handle_night_no_battery_timer(GameState* state, const GameEvent* event) {
     

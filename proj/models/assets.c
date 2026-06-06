@@ -440,7 +440,7 @@ void load_all_assets() {
     
     assets_anim[ANIM_BONNIE_JUMPSCARE] = create_anim_sprite(NUM_JUMPSCARE_BONNIE, 0, 0, TICKS_PER_JUMPSCARE_FRAME,
     (xpm_map_t) bonnie1_xpm, (xpm_map_t) bonnie2_xpm, (xpm_map_t) bonnie3_xpm, (xpm_map_t) bonnie4_xpm, (xpm_map_t) bonnie5_xpm, 
-    (xpm_map_t) bonnie6_xpm, (xpm_map_t) bonnie7_xpm, (xpm_map_t) bonnie8_xpm, (xpm_map_t) bonnie9_xpm, (xpm_map_t) bonnie10_xpm, (xpm_map_t) bonnie11_xpm);
+    (xpm_map_t) bonnie6_xpm, (xpm_map_t) bonnie7_xpm, (xpm_map_t) bonnie8_xpm, (xpm_map_t) bonnie9_xpm, (xpm_map_t) bonnie10_xpm, (xpm_map_t) bonnie11_xpm, (xpm_map_t) bonnie10_xpm, (xpm_map_t) bonnie9_xpm, (xpm_map_t) bonnie8_xpm, (xpm_map_t) bonnie7_xpm, (xpm_map_t) bonnie6_xpm, (xpm_map_t) bonnie5_xpm, (xpm_map_t) bonnie4_xpm, (xpm_map_t) bonnie3_xpm, (xpm_map_t) bonnie2_xpm, (xpm_map_t) bonnie1_xpm);
 
     assets_anim[ANIM_CHICA_JUMPSCARE] = create_anim_sprite(NUM_JUMPSCARE_CHICA, 0, 0, TICKS_PER_JUMPSCARE_FRAME,
     (xpm_map_t) chica1_xpm, (xpm_map_t) chica2_xpm, (xpm_map_t) chica3_xpm, (xpm_map_t) chica4_xpm, (xpm_map_t) chica5_xpm, (xpm_map_t) chica6_xpm, (xpm_map_t) chica7_xpm, (xpm_map_t) chica8_xpm, (xpm_map_t) chica9_xpm, (xpm_map_t) chica10_xpm, (xpm_map_t) chica11_xpm, (xpm_map_t) chica12_xpm, (xpm_map_t) chica13_xpm, (xpm_map_t) chica14_xpm, (xpm_map_t) chica15_xpm, (xpm_map_t) chica16_xpm);
