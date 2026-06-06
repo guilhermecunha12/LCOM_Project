@@ -9,8 +9,8 @@
 #include "devices/event_updater.h"
 #include "models/assets.h"
 #include "devices/serial_port/serial_port.h"
-
 #include "view/ui.h"
+#include "sound.h"
 
 int main(int argc, char *argv[]) {
     // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -179,6 +179,7 @@ int(proj_main_loop)(int argc, char* argv[]) {
         }
     }
 
+    exit_sound();
     unload_all_assets();
     if (unsubscribe_devices()) return 1;
     return 0;
