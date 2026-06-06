@@ -87,6 +87,7 @@ static void initialize_animatronic(Animatronic* animatronic, AnimatronicName nam
     animatronic->path_length = ANIMATRONIC_PATH_LENGTHS[name];
     animatronic->time_to_move_opportunity = MOVE_INTERVALS[name];
     animatronic->AI_level = INITIAL_AI_LEVELS[name][night_number - 1];
+    animatronic->saved_AI_level = 0;
 
     // Send initial animatronic data through serial port
     uint8_t encoded_data = encode_animatronic_data(animatronic->name, animatronic->path[animatronic->current_position_index]);
@@ -221,7 +222,22 @@ bool update_animatronic(Animatronic* animatronic, int time_left, bool left_door_
             if (should_animatronic_attack(animatronic, left_door_closed, right_door_closed)) {
                 return true;
             }
+            CameraID prev_position = animatronic->path[animatronic->current_position_index];
             move_animatronic(animatronic);
+
+            if (animatronic->name == FOXY) {
+                CameraID new_position = animatronic->path[animatronic->current_position_index];
+                if (prev_position == CAM_1C && new_position != CAM_1C) {
+                    // Foxy got out of the pirate cove.
+
+                    animatronic->saved_AI_level = animatronic->AI_level;
+                    animatronic->AI_level = 20;
+                } else if (prev_position == LEFT_DOOR) {
+                    // Foxy failed to attack.
+
+                    animatronic->AI_level = animatronic->saved_AI_level;
+                }
+            }
 
             // Send animatronic data through serial port
             uint8_t encoded_data = encode_animatronic_data(animatronic->name, animatronic->path[animatronic->current_position_index]);
