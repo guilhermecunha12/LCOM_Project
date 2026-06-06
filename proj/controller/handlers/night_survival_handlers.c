@@ -51,6 +51,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_CAMERA_1A_Y,
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
+
                 play_sound("blip");
                 state->data.night_survival.viewing_camera = CAM_1A;
             }
@@ -60,6 +61,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_CAMERA_1B_Y,
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
+
                 play_sound("blip");
                 state->data.night_survival.viewing_camera = CAM_1B;
             }
@@ -69,6 +71,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_CAMERA_2A_Y,
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
+
                 play_sound("blip");
                 state->data.night_survival.viewing_camera = CAM_2A;
             }
@@ -78,6 +81,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_CAMERA_2B_Y,
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
+
                 play_sound("blip");
                 state->data.night_survival.viewing_camera = CAM_2B;
             }
@@ -87,6 +91,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_CAMERA_1C_Y,
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
+
                 play_sound("blip");
                 state->data.night_survival.viewing_camera = CAM_1C;
             }
@@ -96,6 +101,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_CAMERA_3_Y,
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
+
                 play_sound("blip");
                 state->data.night_survival.viewing_camera = CAM_3;
             }
@@ -123,6 +129,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_CAMERA_5_Y,
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
+
                 play_sound("blip");
                 state->data.night_survival.viewing_camera = CAM_5;
             }
@@ -141,6 +148,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_CAMERA_7_Y,
             BUTTON_SIZE_WIDTH,
             BUTTON_SIZE_HEIGHT)) {
+
                 play_sound("blip");
                 state->data.night_survival.viewing_camera = CAM_7;
         }
@@ -153,6 +161,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_LEFT_DOOR_BUTTON_Y,
             NIGHT_LEFT_DOOR_BUTTON_W,
             NIGHT_LEFT_DOOR_BUTTON_H)) {
+
                 play_sound("door");
                 state->data.night_survival.left_door_closed = !state->data.night_survival.left_door_closed; // switch
             }
@@ -163,6 +172,7 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_RIGHT_DOOR_BUTTON_Y,
             NIGHT_RIGHT_DOOR_BUTTON_W,
             NIGHT_RIGHT_DOOR_BUTTON_H)) {
+                
                 play_sound("door");
                 state->data.night_survival.right_door_closed = !state->data.night_survival.right_door_closed; // switch
             }

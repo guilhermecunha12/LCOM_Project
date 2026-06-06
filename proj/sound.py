@@ -10,8 +10,9 @@ SOUNDS_DIR = os.path.join(SCRIPT_DIR, "sounds")
 
 # Inicializar o mixer de som na arranque do script
 mixer.init()
+mixer.set_num_channels(2)  # Configura para usar 2 canais de som
 
-# Channel 0: looping background music; Channel 1: one-shot effects
+# Canal 0 para sons de fundo, canal 1 para efeitos sonoros
 BG_CHANNEL = mixer.Channel(0)
 FX_CHANNEL = mixer.Channel(1)
 
