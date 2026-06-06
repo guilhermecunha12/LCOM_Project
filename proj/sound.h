@@ -13,4 +13,10 @@ void play_sound(const char *sound_name);
  */
 void stop_sound(void);
 
+/**
+ * @brief Signals the sound system to exit.
+ * @details This function writes an exit command to the sound device file, which stops the sound system.
+ */
+void exit_sound(void);
+
 #endif // SOUND_H

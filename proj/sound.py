@@ -10,9 +10,9 @@ SOUNDS_DIR = os.path.join(SCRIPT_DIR, "sounds")
 
 # Inicializar o mixer de som na arranque do script
 mixer.init()
-mixer.set_num_channels(3)  # Configura para usar 2 canais de som
+mixer.set_num_channels(3)  # Configura para usar 3 canais de som
 
-# Canal 0 para sons de fundo, canal 1 para efeitos sonoros
+# Canal 0 para sons de fundo, canal 1 para efeitos sonoros, canal 2 para a chamada do telefone na primeira noite
 BG_CHANNEL = mixer.Channel(0)
 FX_CHANNEL = mixer.Channel(1)
 PHONE_CHANNEL = mixer.Channel(2)
@@ -21,7 +21,7 @@ BG_CHANNEL.set_volume(0.4)  # Ajusta o volume de fundo para ser mais baixo
 PHONE_CHANNEL.set_volume(0.2)  # Ajusta o volume do telefone para ser mais baixo
 
 # Sounds that loop as background ambience
-BACKGROUND_SOUNDS = {"night_music", "lights_out"}
+BACKGROUND_SOUNDS = {"night_music", "lights_out", "main_menu_music"}
 
 
 def stop():
@@ -35,7 +35,7 @@ def play(sound_file, sound_name):
         if sound_name in BACKGROUND_SOUNDS:
             BG_CHANNEL.play(sound, loops=-1)
         elif sound_name == "night_phone":
-            PHONE_CHANNEL.play(sound, loops=-1)
+            PHONE_CHANNEL.play(sound)
         else:
             FX_CHANNEL.stop()
             FX_CHANNEL.play(sound)
@@ -54,6 +54,15 @@ while True:
                     f.truncate()
             if content == "stop":
                 stop()
+                
+            elif content == "exit":
+                try:
+                    with open(SHARED_FILE, "w") as f:
+                        f.truncate(0)
+                except Exception as e:
+                    print(f"Error clearing file on exit: {e}", file=sys.stderr)
+                break
+
             elif content:
                 sound_file = os.path.join(SOUNDS_DIR, content + ".wav")
                 if os.path.exists(sound_file):

@@ -18,3 +18,10 @@ void stop_sound(void) {
     fprintf(f, "stop\n");
     fclose(f);
 }
+
+void exit_sound(void) {
+    FILE *f = fopen(SOUND_TRIGGER_PATH, "w");
+    if (!f) return;
+    fprintf(f, "exit\n");
+    fclose(f);
+}

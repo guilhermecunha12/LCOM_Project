@@ -7,6 +7,7 @@
 #include "controller/handlers/processor.h"
 
 void init_main_menu(GameState* state) {
+    stop_sound();
     int current_night = state->global_data.current_night;
     MainMenuState main_menu_state;
     main_menu_state.selected_option = 0;
@@ -29,9 +30,11 @@ void init_main_menu(GameState* state) {
 
     state->type = MAIN_MENU;
     state->data.main_menu = main_menu_state;
+    play_sound("main_menu_music");
 }
 
 void init_jumpscare(GameState* state, AnimatronicName animatronic_name) {
+    stop_sound();
     send_sp_data(ENDED_NIGHT_SURVIVAL);
     JumpscareState jumpscare_state;
     switch (animatronic_name) {
@@ -67,11 +70,13 @@ void init_jumpscare(GameState* state, AnimatronicName animatronic_name) {
 }
 
 void init_night_intro(GameState* state) {
+    stop_sound();
     NightIntroState night_intro_state;
     night_intro_state.duration = NIGHT_INTRO_DURATION;
 
     state->type = NIGHT_INTRO;
     state->data.night_intro = night_intro_state;
+    stop_sound();
 }
 
 void init_newspaper(GameState* state) {
@@ -80,6 +85,7 @@ void init_newspaper(GameState* state) {
 
     state->type = NEWSPAPER;
     state->data.newspaper = newspaper_state;
+    stop_sound();
 }
 void init_night_survival(GameState* state) {
     state->type = NIGHT_SURVIVAL;
@@ -114,6 +120,7 @@ void init_night_survival(GameState* state) {
 }
 
 void init_night_6am(GameState* state) {
+    stop_sound();
     send_sp_data(ENDED_NIGHT_SURVIVAL);
     Night6AMScreen night_6am_state;
     night_6am_state.frame_index = 0;
@@ -127,6 +134,7 @@ void init_night_6am(GameState* state) {
 }
 
 void init_night_no_battery(GameState* state) {
+    stop_sound();
     int duration = state->data.night_survival.time_left;
     NightNoBatteryState night_no_battery_state;
     night_no_battery_state.time_left = duration;
@@ -141,6 +149,7 @@ void init_night_no_battery(GameState* state) {
 }
 
 void init_win_screen(GameState* state) {
+    stop_sound();
     WinState win_state;
     win_state.duration = WIN_SCREEN_DURATION;
 
@@ -149,6 +158,7 @@ void init_win_screen(GameState* state) {
 }
 
 void init_static_screen(GameState* state) {
+    stop_sound();
     StaticScreenState static_screen_state;
     static_screen_state.duration = STATIC_SCREEN_DURATION;
     static_screen_state.static_sprite = get_anim_asset(ANIM_STATIC_SCREEN);
