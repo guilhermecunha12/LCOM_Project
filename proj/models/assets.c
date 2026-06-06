@@ -275,6 +275,7 @@
 #include "xpm/office/doors/Left/light_bonnie_closed.xpm"
 #include "xpm/office/doors/Left/light_foxy_open.xpm"
 #include "xpm/office/doors/Left/light_foxy_closed.xpm"
+#include "xpm/office/doors/Left/door_up_light_left.xpm"
 
 // Left door anim
 #include "xpm/office/doors/Left/door_open_l.xpm"
@@ -299,6 +300,7 @@
 #include "xpm/office/doors/Right/light_freddy_close.xpm"
 #include "xpm/office/doors/Right/light_chica_open.xpm"
 #include "xpm/office/doors/Right/light_chica_close.xpm"
+#include "xpm/office/doors/Left/door_up_light_right.xpm"
 
 // Buttons xpms
 // Left buttons
@@ -517,6 +519,9 @@ void load_all_assets() {
     assets[LIGHT_ON_RIGHT] = create_sprite((xpm_map_t) light_on_r_xpm, NIGHT_RIGHT_LIGHT_BUTTON_X, NIGHT_RIGHT_LIGHT_BUTTON_Y);
 
 
+    assets[LIGHT_DOOR_LEFT] = create_sprite((xpm_map_t) door_up_light_left_xpm, LEFT_DOOR_X, LEFT_DOOR_Y);
+    assets[LIGHT_DOOR_RIGHT] = create_sprite((xpm_map_t) door_up_light_right_xpm, RIGHT_DOOR_X, RIGHT_DOOR_Y);
+    assets[LIGHT_DOOR_RIGHT] =
     assets_anim[ANIM_DOOR_LEFT] = create_anim_sprite(7,LEFT_DOOR_X,LEFT_DOOR_Y,
     TICKS_PER_DOOR_ANIMATION_FRAME, (xpm_map_t) door_open_l_xpm, (xpm_map_t) door_l_1_xpm,
     (xpm_map_t) door_l_2_xpm, (xpm_map_t) door_l_3_xpm, (xpm_map_t) door_l_4_xpm, (xpm_map_t) door_l_5_xpm, (xpm_map_t) door_close_l_xpm);

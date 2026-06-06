@@ -193,21 +193,36 @@ void render_night_survival(const GameState *state) {
 
         for (int i = 0; i < NUM_ANIMATRONICS; i++) {
             if (animatronics[i].path[animatronics[i].current_position_index] == LEFT_DOOR) {
+                bool should_draw_empty = true;
                 if (state->data.night_survival.left_light_on) {
-                    if (animatronics[i].name == BONNIE) 
+                    if (animatronics[i].name == BONNIE) {
+                        should_draw_empty = false;
                         draw_sprite(get_asset(state->data.night_survival.left_door_closed ?LIGHT_BONNIE_CLOSED : LIGHT_BONNIE_OPEN));
-                    else if (animatronics[i].name == FOXY) 
+                    }
+                    else if (animatronics[i].name == FOXY) {
+                        should_draw_empty = false;
                         draw_sprite(get_asset(state->data.night_survival.left_door_closed ? LIGHT_FOXY_CLOSED : LIGHT_FOXY_OPEN));   
+                    }
                 } 
+                if(should_draw_empty && state->data.night_survival.left_light_on) {
+                    draw_sprite(get_asset(LIGHT_DOOR_LEFT));
+                }
             }
 
             if (animatronics[i].path[animatronics[i].current_position_index] == RIGHT_DOOR) {
+                bool should_draw_empty = true;
                 if (state->data.night_survival.right_light_on) {
-                    if (animatronics[i].name == FREDDY) 
+                    if (animatronics[i].name == FREDDY) {
+                        should_draw_empty = false;
                         draw_sprite(get_asset(state->data.night_survival.right_door_closed ? LIGHT_FREDDY_CLOSE : LIGHT_FREDDY_OPEN));
-                    else if (animatronics[i].name == CHICA) 
+                    } else if (animatronics[i].name == CHICA) {
+                        should_draw_empty = false;
                         draw_sprite(get_asset(state->data.night_survival.right_door_closed ? LIGHT_CHICA_CLOSE : LIGHT_CHICA_OPEN));
-                } 
+                    }
+                }
+                if (should_draw_empty && state->data.night_survival.right_light_on) {
+                    draw_sprite(get_asset(LIGHT_DOOR_RIGHT));
+                }
             }
         }
     }
