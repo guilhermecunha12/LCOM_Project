@@ -81,33 +81,18 @@ void general_mouse_move(GameState* state, const GameEvent* event) {
 }
 
 void general_background_movement(GameState* state) {
-    /* if (state->global_data.moving == LEFT && state->global_data.background_offset_x <= 0) {
+    printf("Current background offset: %d, moving: %d\n", state->global_data.background_offset_x, state->global_data.moving);
+    if (state->global_data.moving == LEFT && state->global_data.background_offset_x < 0) {
         state->global_data.background_offset_x += BACKGROUND_MOVE_VELOCITY;
 
         if (state->global_data.background_offset_x == 0 || state->global_data.background_offset_x == CENTER_BACKGROUND_OFFSET) {
             state->global_data.moving = NO_MOVEMENT; // stop movement when reaching the leftmost position or the center
         }
     }
-    else if (state->global_data.moving == RIGHT && state->global_data.background_offset_x >= BACKGROUND_MAX_OFFSET) {
+    else if (state->global_data.moving == RIGHT && state->global_data.background_offset_x > BACKGROUND_MAX_OFFSET) {
         state->global_data.background_offset_x -= BACKGROUND_MOVE_VELOCITY;
-        if(state->global_data.background_offset_x < BACKGROUND_MAX_OFFSET){
-            state->global_data.background_offset_x = BACKGROUND_MAX_OFFSET;
-        }
 
         if (state->global_data.background_offset_x == BACKGROUND_MAX_OFFSET || state->global_data.background_offset_x == CENTER_BACKGROUND_OFFSET) {
-            state->global_data.moving = NO_MOVEMENT;
-        }
-    } */
-
-    if (state->global_data.moving == LEFT && state->global_data.background_offset_x <= 0) {
-        state->global_data.background_offset_x += BACKGROUND_MOVE_VELOCITY;
-        if (state->global_data.background_offset_x > 0 || state->global_data.background_offset_x == CENTER_BACKGROUND_OFFSET) {
-            state->global_data.moving = NO_MOVEMENT; // stop movement when reaching the leftmost position or the center
-        }
-    }
-    else if (state->global_data.moving == RIGHT && state->global_data.background_offset_x >= BACKGROUND_MAX_OFFSET) {
-        state->global_data.background_offset_x -= BACKGROUND_MOVE_VELOCITY;
-        if (state->global_data.background_offset_x < BACKGROUND_MAX_OFFSET || state->global_data.background_offset_x == CENTER_BACKGROUND_OFFSET) {
             state->global_data.moving = NO_MOVEMENT;
         }
     }
