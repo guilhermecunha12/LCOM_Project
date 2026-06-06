@@ -22,6 +22,7 @@ typedef struct {
     // This is in ticks
     int time_to_move_opportunity; // counter that determines when the animatronic can move to the next position in its path (when this number reaches 0, a number from [1, 20] is randomly generated and if that number is less than or equal to the IA_level, the animatronic moves to the next position in its path)
     int AI_level; // number that determines the probability of the animatronic to move
+    int saved_AI_level; // used by Foxy to restore her AI level after being repelled at the door
 } Animatronic;
 
 /**
