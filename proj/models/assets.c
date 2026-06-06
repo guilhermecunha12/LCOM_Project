@@ -276,6 +276,7 @@
 #include "xpm/office/doors/Left/light_foxy_open.xpm"
 #include "xpm/office/doors/Left/light_foxy_closed.xpm"
 #include "xpm/office/doors/Left/door_up_light_left.xpm"
+#include "xpm/office/doors/Left/door_l_closed_light.xpm"
 
 // Left door anim
 #include "xpm/office/doors/Left/door_open_l.xpm"
@@ -286,14 +287,15 @@
 #include "xpm/office/doors/Left/door_l_5.xpm"
 #include "xpm/office/doors/Left/door_close_l.xpm"
 
+
 // Right door anim
-#include "xpm/office/doors/Right/door_open.xpm"
+#include "xpm/office/doors/Right/door_open_r.xpm"
 #include "xpm/office/doors/Right/door_r_1.xpm"
 #include "xpm/office/doors/Right/door_r_2.xpm"
 #include "xpm/office/doors/Right/door_r_3.xpm"
 #include "xpm/office/doors/Right/door_r_4.xpm"
 #include "xpm/office/doors/Right/door_r_5.xpm"
-#include "xpm/office/doors/Right/door_close.xpm"
+#include "xpm/office/doors/Right/door_close_r.xpm"
 
 // Right door static xpms
 #include "xpm/office/doors/Right/light_freddy_open.xpm"
@@ -301,6 +303,7 @@
 #include "xpm/office/doors/Right/light_chica_open.xpm"
 #include "xpm/office/doors/Right/light_chica_close.xpm"
 #include "xpm/office/doors/Right/door_up_light_right.xpm"
+#include "xpm/office/doors/Right/door_r_closed_light.xpm"
 
 // Buttons xpms
 // Left buttons
@@ -355,9 +358,9 @@ void load_all_assets() {
     assets[LIGHT_FOXY_OPEN] = create_sprite((xpm_map_t) light_foxy_open_xpm, LEFT_DOOR_X, LEFT_DOOR_Y);
     assets[LIGHT_FOXY_CLOSED] = create_sprite((xpm_map_t) light_foxy_closed_xpm, LEFT_DOOR_X, LEFT_DOOR_Y);
     assets[LIGHT_FREDDY_OPEN] = create_sprite((xpm_map_t) light_freddy_open_xpm, RIGHT_DOOR_X, RIGHT_DOOR_Y);
-    assets[LIGHT_FREDDY_CLOSE] = create_sprite((xpm_map_t) light_freddy_close_xpm, RIGHT_DOOR_X, RIGHT_DOOR_Y);
+    assets[LIGHT_FREDDY_CLOSED] = create_sprite((xpm_map_t) light_freddy_close_xpm, RIGHT_DOOR_X, RIGHT_DOOR_Y);
     assets[LIGHT_CHICA_OPEN] = create_sprite((xpm_map_t) light_chica_open_xpm, RIGHT_DOOR_X, RIGHT_DOOR_Y);
-    assets[LIGHT_CHICA_CLOSE] = create_sprite((xpm_map_t) light_chica_close_xpm, RIGHT_DOOR_X, RIGHT_DOOR_Y);
+    assets[LIGHT_CHICA_CLOSED] = create_sprite((xpm_map_t) light_chica_close_xpm, RIGHT_DOOR_X, RIGHT_DOOR_Y);
     assets[I_POWER0] = create_sprite((xpm_map_t) p0_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
     assets[I_POWER1] = create_sprite((xpm_map_t) p1_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
     assets[I_POWER2] = create_sprite((xpm_map_t) p2_xpm, I_DIGIT_POWER_X, I_DIGIT_POWER_Y);
@@ -518,7 +521,11 @@ void load_all_assets() {
     assets[LIGHT_OFF_RIGHT] = create_sprite((xpm_map_t) light_off_r_xpm, NIGHT_RIGHT_LIGHT_BUTTON_X, NIGHT_RIGHT_LIGHT_BUTTON_Y);
     assets[LIGHT_ON_RIGHT] = create_sprite((xpm_map_t) light_on_r_xpm, NIGHT_RIGHT_LIGHT_BUTTON_X, NIGHT_RIGHT_LIGHT_BUTTON_Y);
 
+    assets[LIGHT_DOOR_LEFT_CLOSED] = create_sprite((xpm_map_t) door_l_closed_light_xpm, LEFT_DOOR_X, LEFT_DOOR_Y);
+    assets[LIGHT_DOOR_RIGHT_CLOSED] = create_sprite((xpm_map_t) door_r_closed_light_xpm, RIGHT_DOOR_X, RIGHT_DOOR_Y);
 
+    assets[DOOR_LEFT_CLOSED] = create_sprite((xpm_map_t) door_close_l_xpm, LEFT_DOOR_X, LEFT_DOOR_Y);
+    assets[DOOR_RIGHT_CLOSED] = create_sprite((xpm_map_t) door_close_r_xpm, RIGHT_DOOR_X, RIGHT_DOOR_Y);
     assets[LIGHT_DOOR_LEFT] = create_sprite((xpm_map_t) door_up_light_left_xpm, LEFT_DOOR_X, LEFT_DOOR_Y);
     assets[LIGHT_DOOR_RIGHT] = create_sprite((xpm_map_t) door_up_light_right_xpm, RIGHT_DOOR_X, RIGHT_DOOR_Y);
     assets_anim[ANIM_DOOR_LEFT] = create_anim_sprite(7,LEFT_DOOR_X,LEFT_DOOR_Y,
@@ -526,8 +533,8 @@ void load_all_assets() {
     (xpm_map_t) door_l_2_xpm, (xpm_map_t) door_l_3_xpm, (xpm_map_t) door_l_4_xpm, (xpm_map_t) door_l_5_xpm, (xpm_map_t) door_close_l_xpm);
     
     assets_anim[ANIM_DOOR_RIGHT] = create_anim_sprite(7,RIGHT_DOOR_X,RIGHT_DOOR_Y,
-    TICKS_PER_DOOR_ANIMATION_FRAME, (xpm_map_t) door_open_xpm, (xpm_map_t) door_r_1_xpm,
-    (xpm_map_t) door_r_2_xpm, (xpm_map_t) door_r_3_xpm, (xpm_map_t) door_r_4_xpm, (xpm_map_t) door_r_5_xpm, (xpm_map_t) door_close_xpm);
+    TICKS_PER_DOOR_ANIMATION_FRAME, (xpm_map_t) door_open_r_xpm, (xpm_map_t) door_r_1_xpm,
+    (xpm_map_t) door_r_2_xpm, (xpm_map_t) door_r_3_xpm, (xpm_map_t) door_r_4_xpm, (xpm_map_t) door_r_5_xpm, (xpm_map_t) door_close_r_xpm);
 }
 
 void load_receiver_assets() {    
