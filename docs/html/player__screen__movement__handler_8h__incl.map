@@ -1,0 +1,28 @@
+<map id="proj/controller/handlers/helpers/player_screen_movement_handler.h" name="proj/controller/handlers/helpers/player_screen_movement_handler.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="352,5,525,60"/>
+<area shape="rect" id="Node000002" href="$state_8h.html" title=" " alt="" coords="321,108,423,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="420,62,392,99,387,95,416,58"/>
+<area shape="rect" id="Node000012" href="$ui_8h.html" title=" " alt="" coords="448,108,565,133"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="462,58,491,95,487,99,457,62"/>
+<area shape="rect" id="Node000003" href="$mouse_8h.html" title=" " alt="" coords="5,189,128,214"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="328,136,125,188,124,183,327,131"/>
+<area shape="rect" id="Node000006" href="$animatronic_8h.html" title=" " alt="" coords="350,189,514,214"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="383,132,417,176,413,179,379,135"/>
+<area shape="rect" id="Node000007" href="$game__constants_8h.html" title=" " alt="" coords="287,269,441,295"/>
+<area shape="poly" id="edge8_Node000002_Node000007" title=" " alt="" coords="365,135,351,156,340,182,337,201,340,221,353,256,348,258,335,222,332,201,335,181,346,154,361,132"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="480,269,563,295"/>
+<area shape="poly" id="edge13_Node000002_Node000008" title=" " alt="" coords="418,131,483,152,510,165,527,180,536,198,538,219,533,256,527,255,533,219,531,200,523,183,507,170,481,157,416,136"/>
+<area shape="rect" id="Node000009" href="$sprite_8h.html" title=" " alt="" coords="152,189,275,214"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="350,136,250,185,247,180,348,131"/>
+<area shape="rect" id="Node000010" href="$queue_8h.html" title=" " alt="" coords="590,181,735,221"/>
+<area shape="poly" id="edge11_Node000002_Node000010" title=" " alt="" coords="415,131,580,175,579,180,414,136"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="161,269,247,295"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="88,212,173,260,171,265,86,216"/>
+<area shape="rect" id="Node000005" href="$i8042__mouse_8h.html" title=" " alt="" coords="6,269,127,295"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="69,214,69,255,64,255,64,214"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="424,216,385,261,381,257,420,212"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="447,212,500,258,496,262,443,216"/>
+<area shape="poly" id="edge10_Node000009_Node000004" title=" " alt="" coords="215,214,210,256,204,255,209,214"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="627,269,698,295"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="665,222,665,255,660,255,660,222"/>
+</map>

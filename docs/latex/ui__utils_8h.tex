@@ -1,0 +1,55 @@
+\doxysection{proj/view/ui\+\_\+utils.h File Reference}
+\hypertarget{ui__utils_8h}{}\label{ui__utils_8h}\index{proj/view/ui\_utils.h@{proj/view/ui\_utils.h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+Include dependency graph for ui\+\_\+utils.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{ui__utils_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ui__utils_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{ui__utils_8h_a5249c6d708c6dcb1501d0745f46fcb77}{is\+\_\+mouse\+\_\+inside}} (int mouse\+\_\+x, int mouse\+\_\+y, int box\+\_\+x, int box\+\_\+y, int box\+\_\+w, int box\+\_\+h)
+\begin{DoxyCompactList}\small\item\em Utility function to check if the mouse cursor is inside a given rectangular box. This is used for checking if the mouse is hovering over or clicking on interactive elements in the UI. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ui__utils_8h_a5249c6d708c6dcb1501d0745f46fcb77}\label{ui__utils_8h_a5249c6d708c6dcb1501d0745f46fcb77} 
+\index{ui\_utils.h@{ui\_utils.h}!is\_mouse\_inside@{is\_mouse\_inside}}
+\index{is\_mouse\_inside@{is\_mouse\_inside}!ui\_utils.h@{ui\_utils.h}}
+\doxysubsubsection{\texorpdfstring{is\_mouse\_inside()}{is\_mouse\_inside()}}
+{\footnotesize\ttfamily bool is\+\_\+mouse\+\_\+inside (\begin{DoxyParamCaption}\item[{int}]{mouse\+\_\+x,  }\item[{int}]{mouse\+\_\+y,  }\item[{int}]{box\+\_\+x,  }\item[{int}]{box\+\_\+y,  }\item[{int}]{box\+\_\+w,  }\item[{int}]{box\+\_\+h }\end{DoxyParamCaption})}
+
+
+
+Utility function to check if the mouse cursor is inside a given rectangular box. This is used for checking if the mouse is hovering over or clicking on interactive elements in the UI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mouse\+\_\+x} & The current x coordinate of the mouse cursor. \\
+\hline
+{\em mouse\+\_\+y} & The current y coordinate of the mouse cursor. \\
+\hline
+{\em box\+\_\+x} & The x coordinate of the top-\/left cornex of the rectangular box. \\
+\hline
+{\em box\+\_\+y} & The y coordinate of the top-\/left cornex of the rectangular box. \\
+\hline
+{\em box\+\_\+w} & The width of the rectangular box. \\
+\hline
+{\em box\+\_\+h} & The height of the rectangular box. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the mouse cursor is inside the rectangular box and false otherwise. 
+\end{DoxyReturn}

@@ -1,0 +1,38 @@
+\doxysection{proj/controller/handlers/game\+\_\+over\+\_\+handlers.c File Reference}
+\hypertarget{game__over__handlers_8c}{}\label{game__over__handlers_8c}\index{proj/controller/handlers/game\_over\_handlers.c@{proj/controller/handlers/game\_over\_handlers.c}}
+{\ttfamily \#include "{}processor.\+h"{}}\newline
+{\ttfamily \#include "{}../../models/assets.\+h"{}}\newline
+{\ttfamily \#include "{}../../models/sprite.\+h"{}}\newline
+Include dependency graph for game\+\_\+over\+\_\+handlers.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game__over__handlers_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{game__over__handlers_8c_a22ab40d0ff592026eeea8cc823403b08}{handle\+\_\+game\+\_\+over\+\_\+timer}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for timer tick events in the game over state. This handler manages the countdown for the game over screen display and transitions to the main menu state when the duration reaches zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{game__over__handlers_8c_a22ab40d0ff592026eeea8cc823403b08}\label{game__over__handlers_8c_a22ab40d0ff592026eeea8cc823403b08} 
+\index{game\_over\_handlers.c@{game\_over\_handlers.c}!handle\_game\_over\_timer@{handle\_game\_over\_timer}}
+\index{handle\_game\_over\_timer@{handle\_game\_over\_timer}!game\_over\_handlers.c@{game\_over\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{handle\_game\_over\_timer()}{handle\_game\_over\_timer()}}
+{\footnotesize\ttfamily void handle\+\_\+game\+\_\+over\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for timer tick events in the game over state. This handler manages the countdown for the game over screen display and transitions to the main menu state when the duration reaches zero. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to transition to the main menu state when the game over duration ends. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the timer tick data. \\
+\hline
+\end{DoxyParams}

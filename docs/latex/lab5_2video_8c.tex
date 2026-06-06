@@ -1,0 +1,224 @@
+\doxysection{lab5/video.c File Reference}
+\hypertarget{lab5_2video_8c}{}\label{lab5_2video_8c}\index{lab5/video.c@{lab5/video.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}video.\+h"{}}\newline
+Include dependency graph for video.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{lab5_2video_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{lab5_2video_8c_a1f6b0c5409b6a57f41877ba74d2bb04a}{init\+\_\+video\+\_\+card}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Initializes the video card in a VBE graphics mode. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{lab5_2video_8c_ad4cf64d63dd2db5442d84aef1b651038}{switch\+\_\+text\+\_\+mode}} (void)
+\begin{DoxyCompactList}\small\item\em Returns the video card to Minix text mode. \end{DoxyCompactList}\item 
+enum xpm\+\_\+image\+\_\+type() \mbox{\hyperlink{lab5_2video_8c_afdd9d5919e9a1231e7724c4415a61ae4}{get\+\_\+color\+\_\+mode}} ()
+\item 
+int() \mbox{\hyperlink{lab5_2video_8c_a8dc3b64d819195e41495b03be84f9db5}{draw\+\_\+xpm}} (xpm\+\_\+map\+\_\+t xpm, uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Draws an XPM image at the given screen coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lab5_2video_8c_aeeab520cef1d3fdcd042b954164e2b2d}{config\+\_\+\+Vram}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Maps the frame buffer for the given VBE mode. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lab5_2video_8c_a3eaed521041b153cd8f9c5d371b393ff}{vg\+\_\+set\+\_\+mode}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Switches the video card to a VBE graphics mode. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lab5_2video_8c_ae185b401087e550049250c1af1b334ee}{initialize\+\_\+back\+\_\+buffer}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the back buffer that will be used for double buffering. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lab5_2video_8c_a0d157d997329169f936545f9985e334b}{swap\+\_\+buffers}} ()
+\begin{DoxyCompactList}\small\item\em Swaps the RAM contents of the back buffer to video\+RAM to the actual display the pixels on screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lab5_2video_8c_a6c664c7ef53bd67ddad710938d55d293}{clear\+\_\+back\+\_\+buffer}} ()
+\begin{DoxyCompactList}\small\item\em Clears the back buffer before drawing a new frame. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lab5_2video_8c_a6f895de9725f9f231f9a7f74b6087f60}{vg\+\_\+draw\+\_\+pixel}} (uint16\+\_\+t x, uint16\+\_\+t y, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws one pixel in the current frame buffer. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{lab5_2video_8c_a5e5b25bd525250f61f40b9e9f212d5e6}{vg\+\_\+draw\+\_\+hline}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t len, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a horizontal line in the current frame buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{lab5_2video_8c_a6c664c7ef53bd67ddad710938d55d293}\label{lab5_2video_8c_a6c664c7ef53bd67ddad710938d55d293} 
+\index{video.c@{video.c}!clear\_back\_buffer@{clear\_back\_buffer}}
+\index{clear\_back\_buffer@{clear\_back\_buffer}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{clear\_back\_buffer()}{clear\_back\_buffer()}}
+{\footnotesize\ttfamily void clear\+\_\+back\+\_\+buffer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Clears the back buffer before drawing a new frame. 
+
+Clears the back buffer that will be used for double buffering. \Hypertarget{lab5_2video_8c_aeeab520cef1d3fdcd042b954164e2b2d}\label{lab5_2video_8c_aeeab520cef1d3fdcd042b954164e2b2d} 
+\index{video.c@{video.c}!config\_Vram@{config\_Vram}}
+\index{config\_Vram@{config\_Vram}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{config\_Vram()}{config\_Vram()}}
+{\footnotesize\ttfamily int config\+\_\+\+Vram (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Maps the frame buffer for the given VBE mode. 
+
+Retrieves VBE mode information and stores relevant information internally.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & VBE mode whose frame buffer should be mapped. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\Hypertarget{lab5_2video_8c_a8dc3b64d819195e41495b03be84f9db5}\label{lab5_2video_8c_a8dc3b64d819195e41495b03be84f9db5} 
+\index{video.c@{video.c}!draw\_xpm@{draw\_xpm}}
+\index{draw\_xpm@{draw\_xpm}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{draw\_xpm()}{draw\_xpm()}}
+{\footnotesize\ttfamily int() draw\+\_\+xpm (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{xpm,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws an XPM image at the given screen coordinates. 
+
+The XPM is loaded using the color format of the current VBE mode.
+
+
+\begin{DoxyParams}{Parameters}
+{\em xpm} & XPM map to draw. \\
+\hline
+{\em x} & Left coordinate of the image. \\
+\hline
+{\em y} & Top coordinate of the image. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\Hypertarget{lab5_2video_8c_afdd9d5919e9a1231e7724c4415a61ae4}\label{lab5_2video_8c_afdd9d5919e9a1231e7724c4415a61ae4} 
+\index{video.c@{video.c}!get\_color\_mode@{get\_color\_mode}}
+\index{get\_color\_mode@{get\_color\_mode}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{get\_color\_mode()}{get\_color\_mode()}}
+{\footnotesize\ttfamily enum xpm\+\_\+image\+\_\+type() get\+\_\+color\+\_\+mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{lab5_2video_8c_a1f6b0c5409b6a57f41877ba74d2bb04a}\label{lab5_2video_8c_a1f6b0c5409b6a57f41877ba74d2bb04a} 
+\index{video.c@{video.c}!init\_video\_card@{init\_video\_card}}
+\index{init\_video\_card@{init\_video\_card}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{init\_video\_card()}{init\_video\_card()}}
+{\footnotesize\ttfamily int() init\+\_\+video\+\_\+card (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Initializes the video card in a VBE graphics mode. 
+
+Maps VRAM, stores mode information internally, and switches to the requested VBE mode using a linear frame buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & VBE mode to initialize. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\Hypertarget{lab5_2video_8c_ae185b401087e550049250c1af1b334ee}\label{lab5_2video_8c_ae185b401087e550049250c1af1b334ee} 
+\index{video.c@{video.c}!initialize\_back\_buffer@{initialize\_back\_buffer}}
+\index{initialize\_back\_buffer@{initialize\_back\_buffer}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{initialize\_back\_buffer()}{initialize\_back\_buffer()}}
+{\footnotesize\ttfamily int initialize\+\_\+back\+\_\+buffer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the back buffer that will be used for double buffering. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\Hypertarget{lab5_2video_8c_a0d157d997329169f936545f9985e334b}\label{lab5_2video_8c_a0d157d997329169f936545f9985e334b} 
+\index{video.c@{video.c}!swap\_buffers@{swap\_buffers}}
+\index{swap\_buffers@{swap\_buffers}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{swap\_buffers()}{swap\_buffers()}}
+{\footnotesize\ttfamily void swap\+\_\+buffers (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Swaps the RAM contents of the back buffer to video\+RAM to the actual display the pixels on screen. 
+
+\Hypertarget{lab5_2video_8c_ad4cf64d63dd2db5442d84aef1b651038}\label{lab5_2video_8c_ad4cf64d63dd2db5442d84aef1b651038} 
+\index{video.c@{video.c}!switch\_text\_mode@{switch\_text\_mode}}
+\index{switch\_text\_mode@{switch\_text\_mode}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{switch\_text\_mode()}{switch\_text\_mode()}}
+{\footnotesize\ttfamily int() switch\+\_\+text\+\_\+mode (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns the video card to Minix text mode. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\Hypertarget{lab5_2video_8c_a5e5b25bd525250f61f40b9e9f212d5e6}\label{lab5_2video_8c_a5e5b25bd525250f61f40b9e9f212d5e6} 
+\index{video.c@{video.c}!vg\_draw\_hline@{vg\_draw\_hline}}
+\index{vg\_draw\_hline@{vg\_draw\_hline}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_hline()}{vg\_draw\_hline()}}
+{\footnotesize\ttfamily int() vg\+\_\+draw\+\_\+hline (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{len,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a horizontal line in the current frame buffer. 
+
+Draws a horizontal line in the back buffer at given coordinates with a given color.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Horizontal coordinate of the first pixel. \\
+\hline
+{\em y} & Vertical coordinate of the line. \\
+\hline
+{\em len} & Line length in pixels. \\
+\hline
+{\em color} & Pixel color encoded for the current VBE mode. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\Hypertarget{lab5_2video_8c_a6f895de9725f9f231f9a7f74b6087f60}\label{lab5_2video_8c_a6f895de9725f9f231f9a7f74b6087f60} 
+\index{video.c@{video.c}!vg\_draw\_pixel@{vg\_draw\_pixel}}
+\index{vg\_draw\_pixel@{vg\_draw\_pixel}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_pixel()}{vg\_draw\_pixel()}}
+{\footnotesize\ttfamily int vg\+\_\+draw\+\_\+pixel (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws one pixel in the current frame buffer. 
+
+Draws one pixel in the back buffer at given coordinates with a given color.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Horizontal coordinate. \\
+\hline
+{\em y} & Vertical coordinate. \\
+\hline
+{\em color} & Pixel color encoded for the current VBE mode. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\Hypertarget{lab5_2video_8c_a3eaed521041b153cd8f9c5d371b393ff}\label{lab5_2video_8c_a3eaed521041b153cd8f9c5d371b393ff} 
+\index{video.c@{video.c}!vg\_set\_mode@{vg\_set\_mode}}
+\index{vg\_set\_mode@{vg\_set\_mode}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{vg\_set\_mode()}{vg\_set\_mode()}}
+{\footnotesize\ttfamily int vg\+\_\+set\+\_\+mode (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Switches the video card to a VBE graphics mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & VBE mode to set. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise. 
+\end{DoxyReturn}

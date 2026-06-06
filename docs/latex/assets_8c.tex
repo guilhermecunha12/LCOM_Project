@@ -1,0 +1,286 @@
+\doxysection{proj/models/assets.c File Reference}
+\hypertarget{assets_8c}{}\label{assets_8c}\index{proj/models/assets.c@{proj/models/assets.c}}
+{\ttfamily \#include "{}assets.\+h"{}}\newline
+{\ttfamily \#include "{}sprite.\+h"{}}\newline
+{\ttfamily \#include "{}../view/ui.\+h"{}}\newline
+{\ttfamily \#include "{}xpm/cursor.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/menu/menu.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/menu/title.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/menu/newgame.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/menu/newgame\+\_\+sel.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/menu/continue.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/menu/continue\+\_\+sel.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/menu/custom\+\_\+night.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/menu/night1.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/menu/night2.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/menu/night3.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/menu/night4.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/menu/night5.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/menu/exit\+\_\+game.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/menu/exit\+\_\+game\+\_\+sel.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/night\+\_\+start/newspaper.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/night\+\_\+start/night1.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/night\+\_\+start/night2.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/night\+\_\+start/night3.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/night\+\_\+start/night4.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/night\+\_\+start/night5.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/game\+\_\+over.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/win\+\_\+6am.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/office.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/office\+\_\+lights\+\_\+out.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/power\+\_\+nr/0.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/power\+\_\+nr/1.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/power\+\_\+nr/2.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/power\+\_\+nr/3.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/power\+\_\+nr/4.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/power\+\_\+nr/5.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/power\+\_\+nr/6.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/power\+\_\+nr/7.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/power\+\_\+nr/8.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/power\+\_\+nr/9.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/power\+\_\+nr/percentage.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/power.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/usage.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/power\+\_\+nr/usage\+\_\+1.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/power\+\_\+nr/usage\+\_\+2.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/power\+\_\+nr/usage\+\_\+3.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/power\+\_\+nr/usage\+\_\+4.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/flip.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/1.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/2.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/3.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/4.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/5.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/12.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/\+AM.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/night1.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/night2.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/night3.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/night4.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/ui/night5.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/static\+\_\+full/static1.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/static\+\_\+full/static2.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/static\+\_\+full/static3.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/static\+\_\+full/static4.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/static\+\_\+full/static5.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/static\+\_\+full/static6.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/static\+\_\+full/static7.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/static\+\_\+full/static8.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/monitor\+\_\+anim/monitor1.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/monitor\+\_\+anim/monitor2.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/monitor\+\_\+anim/monitor3.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/monitor\+\_\+anim/monitor4.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/monitor\+\_\+anim/monitor5.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/monitor\+\_\+anim/monitor6.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/monitor\+\_\+anim/monitor7.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/monitor\+\_\+anim/monitor8.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/monitor\+\_\+anim/monitor9.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/monitor\+\_\+anim/monitor10.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/monitor\+\_\+anim/monitor11.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/map.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+button\+\_\+active.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+button\+\_\+inactive.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/\+CAM1\+A.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/\+CAM1\+B.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/\+CAM1\+C.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/\+CAM2\+A.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/\+CAM2\+B.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/\+CAM3.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/\+CAM4\+A.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/\+CAM4\+B.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/\+CAM5.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/\+CAM6.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/\+CAM7.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/selected/library\+\_\+lounge.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/selected/computer\+\_\+room.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/selected/council\+\_\+chamber.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/selected/east\+\_\+hall.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/selected/east\+\_\+hall\+\_\+corner.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/selected/lecture\+\_\+hallway.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/selected/locker\+\_\+room.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/selected/west\+\_\+hall.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/selected/west\+\_\+hall\+\_\+corner.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/selected/auditorium.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/cam\+\_\+texts/selected/lcom\+\_\+lab.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/library\+\_\+lounge.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/library\+\_\+lounge\+\_\+b.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/library\+\_\+lounge\+\_\+bc.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/library\+\_\+lounge\+\_\+bf.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/library\+\_\+lounge\+\_\+c.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/library\+\_\+lounge\+\_\+cf.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/library\+\_\+lounge\+\_\+f.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/library\+\_\+lounge\+\_\+all.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/computer\+\_\+room.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/computer\+\_\+room\+\_\+bonnie.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/computer\+\_\+room\+\_\+chica.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/computer\+\_\+room\+\_\+bonnie\+\_\+chica.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/computer\+\_\+room\+\_\+freddy.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/computer\+\_\+room\+\_\+freddy\+\_\+bonnie.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/computer\+\_\+room\+\_\+freddy\+\_\+chica.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/computer\+\_\+room\+\_\+all.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/auditorium\+\_\+empty.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/auditorium\+\_\+stage\+\_\+1.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/auditorium\+\_\+stage\+\_\+2.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/auditorium\+\_\+stage\+\_\+3.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/locker\+\_\+room.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/locker\+\_\+room\+\_\+bonnie.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/council\+\_\+chamber.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/council\+\_\+chamber\+\_\+bonnie\+\_\+close.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/lecture\+\_\+hallway.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/lecture\+\_\+hallway\+\_\+chica.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/lecture\+\_\+hallway\+\_\+freddy.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/lecture\+\_\+hallway\+\_\+freddy\+\_\+chica.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/west\+\_\+hall.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/west\+\_\+hall\+\_\+bonnie.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/west\+\_\+hall\+\_\+foxy.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/west\+\_\+hall\+\_\+foxy\+\_\+bonnie.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/west\+\_\+hall\+\_\+corner.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/west\+\_\+hall\+\_\+corner\+\_\+bonnie.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/west\+\_\+hall\+\_\+corner\+\_\+foxy.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/west\+\_\+hall\+\_\+corner\+\_\+foxy\+\_\+bonnie.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/east\+\_\+hall.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/east\+\_\+hall\+\_\+chica.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/east\+\_\+hall\+\_\+corner.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/east\+\_\+hall\+\_\+corner\+\_\+freddy.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/east\+\_\+hall\+\_\+corner\+\_\+chica.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/cams/rooms/east\+\_\+hall\+\_\+corner\+\_\+chica\+\_\+freddy.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/bonnie/bonnie1.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/bonnie/bonnie2.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/bonnie/bonnie3.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/bonnie/bonnie4.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/bonnie/bonnie5.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/bonnie/bonnie6.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/bonnie/bonnie7.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/bonnie/bonnie8.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/bonnie/bonnie9.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/bonnie/bonnie10.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/bonnie/bonnie11.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/chica/1.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/chica/2.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/chica/3.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/chica/4.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/chica/5.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/chica/6.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/chica/7.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/chica/8.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/chica/9.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/chica/10.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/chica/11.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/chica/12.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/chica/13.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/chica/14.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/chica/15.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/chica/16.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/0.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/1.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/2.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/3.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/4.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/5.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/6.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/7.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/8.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/9.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/10.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/11.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/12.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/13.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/14.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/15.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/16.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/17.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/18.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/19.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/20.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/21.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/22.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/freddy/23.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/receiver/waiting\+\_\+for\+\_\+data.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/receiver/map\+\_\+sp.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/receiver/animatronic\+\_\+ids/bonnie.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/receiver/animatronic\+\_\+ids/chica.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/receiver/animatronic\+\_\+ids/freddy.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/receiver/animatronic\+\_\+ids/foxy.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/1.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/2.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/3.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/4.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/5.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/6.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/7.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/8.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/9.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/10.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/11.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/12.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/13.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/14.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/15.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/16.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/17.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/18.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/19.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/20.\+xpm"{}}\newline
+{\ttfamily \#include "{}xpm/office/jumpscares/foxy/21.\+xpm"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{assets_8c_a6f4a88a59e9221ac4d0cfb1e5be8438d}{load\+\_\+all\+\_\+assets}} ()
+\begin{DoxyCompactList}\small\item\em Loads all the existing assets into memory by initializing them to an array of pointers to sprite objects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{assets_8c_a0dbb26b7ec50215f66404e901ca597be}{load\+\_\+receiver\+\_\+assets}} ()
+\item 
+void \mbox{\hyperlink{assets_8c_af8c4ca769bc42276367e40a72a92ceaa}{unload\+\_\+all\+\_\+assets}} ()
+\begin{DoxyCompactList}\small\item\em Erases all existing assets from memory and evades memory leaks. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{assets_8c_af689a1b93897f2143a27366c2be88a6c}{get\+\_\+asset}} (\mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488b}{xpm\+ASSET}} asset)
+\begin{DoxyCompactList}\small\item\em Getter for a sprite represented by a specific enum values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structAnimSprite}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{assets_8c_accf4266552f4c60ad17c9b63634d110e}{get\+\_\+anim\+\_\+asset}} (\mbox{\hyperlink{assets_8h_abc7ef9146e8d2263880efda249d86b03}{Anim\+Asset}} asset)
+\begin{DoxyCompactList}\small\item\em Getter for an animated sprite represented by a specific enum value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{assets_8c_accf4266552f4c60ad17c9b63634d110e}\label{assets_8c_accf4266552f4c60ad17c9b63634d110e} 
+\index{assets.c@{assets.c}!get\_anim\_asset@{get\_anim\_asset}}
+\index{get\_anim\_asset@{get\_anim\_asset}!assets.c@{assets.c}}
+\doxysubsubsection{\texorpdfstring{get\_anim\_asset()}{get\_anim\_asset()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structAnimSprite}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*} get\+\_\+anim\+\_\+asset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{assets_8h_abc7ef9146e8d2263880efda249d86b03}{Anim\+Asset}}}]{asset }\end{DoxyParamCaption})}
+
+
+
+Getter for an animated sprite represented by a specific enum value. 
+
+\Hypertarget{assets_8c_af689a1b93897f2143a27366c2be88a6c}\label{assets_8c_af689a1b93897f2143a27366c2be88a6c} 
+\index{assets.c@{assets.c}!get\_asset@{get\_asset}}
+\index{get\_asset@{get\_asset}!assets.c@{assets.c}}
+\doxysubsubsection{\texorpdfstring{get\_asset()}{get\_asset()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}} \texorpdfstring{$\ast$}{*} get\+\_\+asset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{assets_8h_a8d78daaf7b1254c0b250bd5d4daf488b}{xpm\+ASSET}}}]{asset }\end{DoxyParamCaption})}
+
+
+
+Getter for a sprite represented by a specific enum values. 
+
+\Hypertarget{assets_8c_a6f4a88a59e9221ac4d0cfb1e5be8438d}\label{assets_8c_a6f4a88a59e9221ac4d0cfb1e5be8438d} 
+\index{assets.c@{assets.c}!load\_all\_assets@{load\_all\_assets}}
+\index{load\_all\_assets@{load\_all\_assets}!assets.c@{assets.c}}
+\doxysubsubsection{\texorpdfstring{load\_all\_assets()}{load\_all\_assets()}}
+{\footnotesize\ttfamily void load\+\_\+all\+\_\+assets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads all the existing assets into memory by initializing them to an array of pointers to sprite objects. 
+
+\Hypertarget{assets_8c_a0dbb26b7ec50215f66404e901ca597be}\label{assets_8c_a0dbb26b7ec50215f66404e901ca597be} 
+\index{assets.c@{assets.c}!load\_receiver\_assets@{load\_receiver\_assets}}
+\index{load\_receiver\_assets@{load\_receiver\_assets}!assets.c@{assets.c}}
+\doxysubsubsection{\texorpdfstring{load\_receiver\_assets()}{load\_receiver\_assets()}}
+{\footnotesize\ttfamily void load\+\_\+receiver\+\_\+assets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{assets_8c_af8c4ca769bc42276367e40a72a92ceaa}\label{assets_8c_af8c4ca769bc42276367e40a72a92ceaa} 
+\index{assets.c@{assets.c}!unload\_all\_assets@{unload\_all\_assets}}
+\index{unload\_all\_assets@{unload\_all\_assets}!assets.c@{assets.c}}
+\doxysubsubsection{\texorpdfstring{unload\_all\_assets()}{unload\_all\_assets()}}
+{\footnotesize\ttfamily void unload\+\_\+all\+\_\+assets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Erases all existing assets from memory and evades memory leaks. 
+

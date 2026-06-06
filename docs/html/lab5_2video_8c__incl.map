@@ -1,0 +1,13 @@
+<map id="lab5/video.c" name="lab5/video.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="48,5,149,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,91,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,33,66,69,62,66,88,29"/>
+<area shape="rect" id="Node000003" href="$lab5_2video_8h.html" title=" " alt="" coords="115,79,186,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="109,29,136,66,132,69,105,33"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="16,152,91,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="137,106,82,146,79,141,133,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="115,152,186,177"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="153,104,153,138,148,138,148,104"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="211,152,309,177"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="170,102,232,142,229,147,167,106"/>
+</map>

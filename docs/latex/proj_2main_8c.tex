@@ -1,0 +1,66 @@
+\doxysection{proj/main.c File Reference}
+\hypertarget{proj_2main_8c}{}\label{proj_2main_8c}\index{proj/main.c@{proj/main.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}devices/subscribe.\+h"{}}\newline
+{\ttfamily \#include "{}state.\+h"{}}\newline
+{\ttfamily \#include "{}controller/controller.\+h"{}}\newline
+{\ttfamily \#include "{}view/view.\+h"{}}\newline
+{\ttfamily \#include "{}devices/event\+\_\+updater.\+h"{}}\newline
+{\ttfamily \#include "{}models/assets.\+h"{}}\newline
+{\ttfamily \#include "{}devices/serial\+\_\+port/serial\+\_\+port.\+h"{}}\newline
+{\ttfamily \#include "{}view/ui.\+h"{}}\newline
+Include dependency graph for main.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{proj_2main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{proj_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{proj_2main_8c_adfbf78ec2641af02e8466dac851c9c2f}{init\+\_\+game\+\_\+state}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Initializes the game state to the main menu and sets up the global data. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{proj_2main_8c_a2e441dedaae45daed21bb19e20cb0ee0}{receiver\+\_\+main\+\_\+loop}} ()
+\item 
+int() \mbox{\hyperlink{proj_2main_8c_a2a16f651eccbd248e1ad3b3b924b143b}{proj\+\_\+main\+\_\+loop}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{proj_2main_8c_adfbf78ec2641af02e8466dac851c9c2f}\label{proj_2main_8c_adfbf78ec2641af02e8466dac851c9c2f} 
+\index{main.c@{main.c}!init\_game\_state@{init\_game\_state}}
+\index{init\_game\_state@{init\_game\_state}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{init\_game\_state()}{init\_game\_state()}}
+{\footnotesize\ttfamily void init\+\_\+game\+\_\+state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Initializes the game state to the main menu and sets up the global data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{proj_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{proj_2main_8c_a0ddf1224851353fc92bfbff6f499fa97} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+\Hypertarget{proj_2main_8c_a2a16f651eccbd248e1ad3b3b924b143b}\label{proj_2main_8c_a2a16f651eccbd248e1ad3b3b924b143b} 
+\index{main.c@{main.c}!proj\_main\_loop@{proj\_main\_loop}}
+\index{proj\_main\_loop@{proj\_main\_loop}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{proj\_main\_loop()}{proj\_main\_loop()}}
+{\footnotesize\ttfamily int() proj\+\_\+main\+\_\+loop (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+\Hypertarget{proj_2main_8c_a2e441dedaae45daed21bb19e20cb0ee0}\label{proj_2main_8c_a2e441dedaae45daed21bb19e20cb0ee0} 
+\index{main.c@{main.c}!receiver\_main\_loop@{receiver\_main\_loop}}
+\index{receiver\_main\_loop@{receiver\_main\_loop}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{receiver\_main\_loop()}{receiver\_main\_loop()}}
+{\footnotesize\ttfamily int receiver\+\_\+main\+\_\+loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+

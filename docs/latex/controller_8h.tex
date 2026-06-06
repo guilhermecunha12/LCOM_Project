@@ -1,0 +1,44 @@
+\doxysection{proj/controller/controller.h File Reference}
+\hypertarget{controller_8h}{}\label{controller_8h}\index{proj/controller/controller.h@{proj/controller/controller.h}}
+{\ttfamily \#include "{}../state.\+h"{}}\newline
+Include dependency graph for controller.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{controller_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{controller_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{controller_8h_a2a64950e03bf83b2e32f7faf43945abe}{process\+\_\+event}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Processes a game event, calling the appropriate event handler and updates the game state accordingly. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{controller_8h_a2a64950e03bf83b2e32f7faf43945abe}\label{controller_8h_a2a64950e03bf83b2e32f7faf43945abe} 
+\index{controller.h@{controller.h}!process\_event@{process\_event}}
+\index{process\_event@{process\_event}!controller.h@{controller.h}}
+\doxysubsubsection{\texorpdfstring{process\_event()}{process\_event()}}
+{\footnotesize\ttfamily void process\+\_\+event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Processes a game event, calling the appropriate event handler and updates the game state accordingly. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified based on the event. \\
+\hline
+{\em event} & Pointer to the game event to be processed. \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,220 @@
+\doxysection{lab3/kbc.h File Reference}
+\hypertarget{kbc_8h}{}\label{kbc_8h}\index{lab3/kbc.h@{lab3/kbc.h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}i8042.\+h"{}}\newline
+Include dependency graph for kbc.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{kbc_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void() \mbox{\hyperlink{kbc_8h_aea970a154161a35f6894898a092ed70a}{kbc\+\_\+ih}} ()
+\begin{DoxyCompactList}\small\item\em Keyboard interrupt handler. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kbc_8h_aa7a491d4d95eab5ca5326c4000ad67f8}{kbd\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Function to subscribe to keyboard interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kbc_8h_a5bdf6cfb570c375192b0d87913b65c57}{kbd\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Function to unsubscribe from keyboard interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kbc_8h_a63e13931a0e0d6e81f7d038f49727618}{read\+\_\+scancode}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}byte)
+\begin{DoxyCompactList}\small\item\em Reads a scancode from the KBC output buffer. \end{DoxyCompactList}\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{kbc_8h_ab74dfc8cf2410860a157bc07cb09fba8}{get\+\_\+scancode}} ()
+\begin{DoxyCompactList}\small\item\em Getter function to access the scancode array. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{kbc_8h_a2a0d6ed17d2ce32ad21d0f1320ccdae3}{get\+\_\+last\+\_\+byte\+\_\+read}} ()
+\begin{DoxyCompactList}\small\item\em Getter function to access the last byte read from the KBC output buffer. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{kbc_8h_ac7c11e630187298eb3660f2ce56d3da6}{is\+\_\+make\+\_\+code}} (uint8\+\_\+t scancode\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Function to determine if a scancode is a make or break code. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kbc_8h_a88f268e999e47eef1b2cf71f5b39796b}{write\+\_\+\+KBC\+\_\+command}} (uint8\+\_\+t port, uint8\+\_\+t command\+\_\+byte)
+\begin{DoxyCompactList}\small\item\em Function that writes a command byte to a specified port, with retries if the KBC input buffer is full. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kbc_8h_ad0c87a6b0e43557f4ea229f3c12c9c86}{read\+\_\+\+KBC\+\_\+output\+\_\+buf}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}value, bool mouse\+\_\+related\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Function to read a byte from the KBC output buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kbc_8h_add4833df163c78f0278908ec7c01e2f7}{reset\+\_\+interrupts}} ()
+\begin{DoxyCompactList}\small\item\em Function to reset the KBC interrupts (turns them back on). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{kbc_8h_a52cdafbefc54adf1665d07891bd3f113}{process\+\_\+scancode}} ()
+\begin{DoxyCompactList}\small\item\em Function to process a key\textquotesingle{}s scancode (one or two bytes). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{kbc_8h_a2a0d6ed17d2ce32ad21d0f1320ccdae3}\label{kbc_8h_a2a0d6ed17d2ce32ad21d0f1320ccdae3} 
+\index{kbc.h@{kbc.h}!get\_last\_byte\_read@{get\_last\_byte\_read}}
+\index{get\_last\_byte\_read@{get\_last\_byte\_read}!kbc.h@{kbc.h}}
+\doxysubsubsection{\texorpdfstring{get\_last\_byte\_read()}{get\_last\_byte\_read()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+last\+\_\+byte\+\_\+read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter function to access the last byte read from the KBC output buffer. 
+
+This function returns the last byte read from the KBC output buffer. \begin{DoxyReturn}{Returns}
+uint8\+\_\+t The last byte read from the KBC output buffer. 
+\end{DoxyReturn}
+\Hypertarget{kbc_8h_ab74dfc8cf2410860a157bc07cb09fba8}\label{kbc_8h_ab74dfc8cf2410860a157bc07cb09fba8} 
+\index{kbc.h@{kbc.h}!get\_scancode@{get\_scancode}}
+\index{get\_scancode@{get\_scancode}!kbc.h@{kbc.h}}
+\doxysubsubsection{\texorpdfstring{get\_scancode()}{get\_scancode()}}
+{\footnotesize\ttfamily uint8\+\_\+t \texorpdfstring{$\ast$}{*} get\+\_\+scancode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter function to access the scancode array. 
+
+This function returns a pointer to the scancode array. \begin{DoxyReturn}{Returns}
+uint8\+\_\+t\texorpdfstring{$\ast$}{*} Pointer to the scancode array. 
+\end{DoxyReturn}
+\Hypertarget{kbc_8h_ac7c11e630187298eb3660f2ce56d3da6}\label{kbc_8h_ac7c11e630187298eb3660f2ce56d3da6} 
+\index{kbc.h@{kbc.h}!is\_make\_code@{is\_make\_code}}
+\index{is\_make\_code@{is\_make\_code}!kbc.h@{kbc.h}}
+\doxysubsubsection{\texorpdfstring{is\_make\_code()}{is\_make\_code()}}
+{\footnotesize\ttfamily uint8\+\_\+t is\+\_\+make\+\_\+code (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{scancode\mbox{[}2\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Function to determine if a scancode is a make or break code. 
+
+A scancode is a make code if its most significant bit is 0, and a break code if the most significant bit is 1. 
+\begin{DoxyParams}{Parameters}
+{\em scancode} & Pointer to the scancode array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 1 if it\textquotesingle{}s a make code, 0 if it\textquotesingle{}s a break code. 
+\end{DoxyReturn}
+\Hypertarget{kbc_8h_aea970a154161a35f6894898a092ed70a}\label{kbc_8h_aea970a154161a35f6894898a092ed70a} 
+\index{kbc.h@{kbc.h}!kbc\_ih@{kbc\_ih}}
+\index{kbc\_ih@{kbc\_ih}!kbc.h@{kbc.h}}
+\doxysubsubsection{\texorpdfstring{kbc\_ih()}{kbc\_ih()}}
+{\footnotesize\ttfamily void() kbc\+\_\+ih (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Keyboard interrupt handler. 
+
+This function is called when a keyboard interrupt occurs. Called through \doxylink{kbc_8h_a52cdafbefc54adf1665d07891bd3f113}{process\+\_\+scancode()}, it simply reads a byte from the KBC output buffer and updates the last\+\_\+byte\+\_\+read variable, which is later used to build the scancode array. Only considers valid reads, as \doxylink{kbc_8h_a63e13931a0e0d6e81f7d038f49727618}{read\+\_\+scancode()} must return 0. \Hypertarget{kbc_8h_aa7a491d4d95eab5ca5326c4000ad67f8}\label{kbc_8h_aa7a491d4d95eab5ca5326c4000ad67f8} 
+\index{kbc.h@{kbc.h}!kbd\_subscribe\_int@{kbd\_subscribe\_int}}
+\index{kbd\_subscribe\_int@{kbd\_subscribe\_int}!kbc.h@{kbc.h}}
+\doxysubsubsection{\texorpdfstring{kbd\_subscribe\_int()}{kbd\_subscribe\_int()}}
+{\footnotesize\ttfamily int kbd\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Function to subscribe to keyboard interrupts. 
+
+The value of \texorpdfstring{$\ast$}{*}bit\+\_\+no can never be greater than 7, otherwise, an overflow will occur when updating it with the bit mask. 
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & Initially, a pointer to the bit position in the interrupt mask to be set to 1 in case of an interrupt. On success, its value is updated with the corresponding bit mask with a 1 in the \texorpdfstring{$\ast$}{*}bit\+\_\+no position (i.\+e., 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} \texorpdfstring{$\ast$}{*}bit\+\_\+no). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Returns 0 on success, 1 otherwise. 
+\end{DoxyReturn}
+\Hypertarget{kbc_8h_a5bdf6cfb570c375192b0d87913b65c57}\label{kbc_8h_a5bdf6cfb570c375192b0d87913b65c57} 
+\index{kbc.h@{kbc.h}!kbd\_unsubscribe\_int@{kbd\_unsubscribe\_int}}
+\index{kbd\_unsubscribe\_int@{kbd\_unsubscribe\_int}!kbc.h@{kbc.h}}
+\doxysubsubsection{\texorpdfstring{kbd\_unsubscribe\_int()}{kbd\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int kbd\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to unsubscribe from keyboard interrupts. 
+
+\begin{DoxyReturn}{Returns}
+int Returns 0 on success, 1 otherwise. 
+\end{DoxyReturn}
+\Hypertarget{kbc_8h_a52cdafbefc54adf1665d07891bd3f113}\label{kbc_8h_a52cdafbefc54adf1665d07891bd3f113} 
+\index{kbc.h@{kbc.h}!process\_scancode@{process\_scancode}}
+\index{process\_scancode@{process\_scancode}!kbc.h@{kbc.h}}
+\doxysubsubsection{\texorpdfstring{process\_scancode()}{process\_scancode()}}
+{\footnotesize\ttfamily bool process\+\_\+scancode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to process a key\textquotesingle{}s scancode (one or two bytes). 
+
+This function is responsible for the bulk of work related to processing a scancode. Works as a higher level wrapper, abstracting lower level details by using the other functions defined in this file. Calls the interrupt handler defined above to read the current byte issued from the KBC and available in the output buffer, then checks whether it\textquotesingle{}s a single-\/byte or two-\/byte scancode and populates the scancode array accordingly. \begin{DoxyReturn}{Returns}
+true if the scancode has been completely read (whether it\textquotesingle{}s a single-\/byte or two-\/byte scancode) 
+
+false if we are still reading a two-\/byte scancode 
+\end{DoxyReturn}
+\Hypertarget{kbc_8h_ad0c87a6b0e43557f4ea229f3c12c9c86}\label{kbc_8h_ad0c87a6b0e43557f4ea229f3c12c9c86} 
+\index{kbc.h@{kbc.h}!read\_KBC\_output\_buf@{read\_KBC\_output\_buf}}
+\index{read\_KBC\_output\_buf@{read\_KBC\_output\_buf}!kbc.h@{kbc.h}}
+\doxysubsubsection{\texorpdfstring{read\_KBC\_output\_buf()}{read\_KBC\_output\_buf()}}
+{\footnotesize\ttfamily int read\+\_\+\+KBC\+\_\+output\+\_\+buf (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{value,  }\item[{bool}]{mouse\+\_\+related\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Function to read a byte from the KBC output buffer. 
+
+This function reads a single byte from the KBC output buffer and stores it in the provided variable. Since both the keyboard and mouse data are read from the same output buffer, the mouse\+\_\+data flag is used to indicate whether we want to read mouse data or keyboard data. 
+\begin{DoxyParams}{Parameters}
+{\em value} & Pointer to the variable where the read byte will be stored. \\
+\hline
+{\em mouse\+\_\+data} & Flag indicating whether to read mouse data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 if successful, 1 otherwise. 
+\end{DoxyReturn}
+\Hypertarget{kbc_8h_a63e13931a0e0d6e81f7d038f49727618}\label{kbc_8h_a63e13931a0e0d6e81f7d038f49727618} 
+\index{kbc.h@{kbc.h}!read\_scancode@{read\_scancode}}
+\index{read\_scancode@{read\_scancode}!kbc.h@{kbc.h}}
+\doxysubsubsection{\texorpdfstring{read\_scancode()}{read\_scancode()}}
+{\footnotesize\ttfamily int read\+\_\+scancode (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{byte }\end{DoxyParamCaption})}
+
+
+
+Reads a scancode from the KBC output buffer. 
+
+This function reads a single byte from the KBC output buffer and stores it in the provided variable. 
+\begin{DoxyParams}{Parameters}
+{\em byte} & Pointer to the variable where the read byte will be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 if successful, 1 otherwise. 
+\end{DoxyReturn}
+\Hypertarget{kbc_8h_add4833df163c78f0278908ec7c01e2f7}\label{kbc_8h_add4833df163c78f0278908ec7c01e2f7} 
+\index{kbc.h@{kbc.h}!reset\_interrupts@{reset\_interrupts}}
+\index{reset\_interrupts@{reset\_interrupts}!kbc.h@{kbc.h}}
+\doxysubsubsection{\texorpdfstring{reset\_interrupts()}{reset\_interrupts()}}
+{\footnotesize\ttfamily int reset\+\_\+interrupts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to reset the KBC interrupts (turns them back on). 
+
+In case of polling, the KBC interrupts are naturally turned off, so this function is used to turn them back on. It does so by issuing a read command byte to the command register, allowing to read the internal settings of the KBC and then setting the bit corresponding to enabling keyboard interrupts before writing the new command byte back to the KBC. \begin{DoxyReturn}{Returns}
+int 0 if successful, 1 otherwise. 
+\end{DoxyReturn}
+\Hypertarget{kbc_8h_a88f268e999e47eef1b2cf71f5b39796b}\label{kbc_8h_a88f268e999e47eef1b2cf71f5b39796b} 
+\index{kbc.h@{kbc.h}!write\_KBC\_command@{write\_KBC\_command}}
+\index{write\_KBC\_command@{write\_KBC\_command}!kbc.h@{kbc.h}}
+\doxysubsubsection{\texorpdfstring{write\_KBC\_command()}{write\_KBC\_command()}}
+{\footnotesize\ttfamily int write\+\_\+\+KBC\+\_\+command (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port,  }\item[{uint8\+\_\+t}]{command\+\_\+byte }\end{DoxyParamCaption})}
+
+
+
+Function that writes a command byte to a specified port, with retries if the KBC input buffer is full. 
+
+This function attempts to write a command byte to a specified port. 
+\begin{DoxyParams}{Parameters}
+{\em port} & The port to which the command byte should be written. \\
+\hline
+{\em command\+\_\+byte} & The command byte to be written to the specified port. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 if the command byte was successfully written, 1 otherwise. 
+\end{DoxyReturn}

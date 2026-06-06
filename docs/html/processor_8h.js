@@ -1,0 +1,26 @@
+var processor_8h =
+[
+    [ "EventHandler", "processor_8h.html#abdab03ed6c7f7f5edf4c067676994b6e", null ],
+    [ "general_mouse_move", "processor_8h.html#a91c6379823a85bb27b6df53b33f7b901", null ],
+    [ "get_event_handler", "processor_8h.html#ac855f04ac22db04e7f37ff963348e96e", null ],
+    [ "handle_game_over_timer", "processor_8h.html#a22ab40d0ff592026eeea8cc823403b08", null ],
+    [ "handle_jumpscare_timer", "processor_8h.html#adfcd37776133955bcd340838a0938770", null ],
+    [ "handle_main_menu_keyboard", "processor_8h.html#ae6428480bce6fd8a3cc502c1809861af", null ],
+    [ "handle_main_menu_mouse_click", "processor_8h.html#a79c2fa2279a2ca6de1bf780510fbed94", null ],
+    [ "handle_main_menu_mouse_move", "processor_8h.html#abcfc4975ed0cfab11b3cc906cc93b607", null ],
+    [ "handle_newspaper_timer", "processor_8h.html#a032a8b9e3aaf3bbdca9aa656e2717272", null ],
+    [ "handle_night_6am_timer", "processor_8h.html#a32b24ad27bb109034746cc920c753de1", null ],
+    [ "handle_night_intro_timer", "processor_8h.html#ade5011fd5e9c8f31e9466152e8d9add1", null ],
+    [ "handle_night_no_battery_keyboard", "processor_8h.html#ac938920b20c137f83e257046ab15e8b5", null ],
+    [ "handle_night_no_battery_timer", "processor_8h.html#a25c12e5e7e5402b2ecbca317a3644972", null ],
+    [ "handle_night_survival_keyboard", "processor_8h.html#a8aab3c2ce4961a71723a0b1474474b0e", null ],
+    [ "handle_night_survival_mouse_click", "processor_8h.html#ad5801301a66ae14d1d076788f0777831", null ],
+    [ "handle_night_survival_timer", "processor_8h.html#a1509564a4700f568cdc08e4871dfc08a", null ],
+    [ "handle_receiving_data_keyboard", "processor_8h.html#a54252b7a06a5f2c8beba2ca1ad69d38e", null ],
+    [ "handle_receiving_data_serial_port", "processor_8h.html#a7903ce3a25a8bf83b1103b8fa1f8a63e", null ],
+    [ "handle_static_screen_timer", "processor_8h.html#ac303c31942fe95b5f0c722fd619ffa5f", null ],
+    [ "handle_waiting_for_data_keyboard", "processor_8h.html#acccaf67c876219245e06b909571f6f67", null ],
+    [ "handle_waiting_for_data_serial_port", "processor_8h.html#ae769c9c89940668f22bdb031f4af7442", null ],
+    [ "handle_win_screen_timer", "processor_8h.html#aadaa876f6677bfe1c7256774e596e017", null ],
+    [ "process_animatronic_movements", "processor_8h.html#aef2903989e7420a5dc8cf40425de4daa", null ]
+];

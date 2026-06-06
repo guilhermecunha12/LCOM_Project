@@ -1,0 +1,80 @@
+\doxysection{proj/controller/handlers/processor.c File Reference}
+\hypertarget{processor_8c}{}\label{processor_8c}\index{proj/controller/handlers/processor.c@{proj/controller/handlers/processor.c}}
+{\ttfamily \#include "{}processor.\+h"{}}\newline
+{\ttfamily \#include "{}../../view/ui.\+h"{}}\newline
+{\ttfamily \#include "{}../../view/ui\+\_\+utils.\+h"{}}\newline
+{\ttfamily \#include "{}../../devices/serial\+\_\+port/sp\+\_\+encoding.\+h"{}}\newline
+Include dependency graph for processor.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{processor_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{processor_8c_a91c6379823a85bb27b6df53b33f7b901}{general\+\_\+mouse\+\_\+move}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for mouse movement events, which updates the mouse coordinates in the global game state. It is used in MAIN\+\_\+\+MENU and NIGHT\+\_\+\+SURVIVAL states. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{processor_8h_abdab03ed6c7f7f5edf4c067676994b6e}{Event\+Handler}} \mbox{\hyperlink{processor_8c_ac855f04ac22db04e7f37ff963348e96e}{get\+\_\+event\+\_\+handler}} (const \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5c}{State\+Type}} state, const \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6fa}{Event\+Type}} event)
+\begin{DoxyCompactList}\small\item\em Get the appropriate event handler for the given \doxylink{structGameState}{Game\+State} and Event\+Type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{processor_8c_aef2903989e7420a5dc8cf40425de4daa}{process\+\_\+animatronic\+\_\+movements}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}data\+\_\+queue)
+\begin{DoxyCompactList}\small\item\em This function processes the animatronic movements based on the data received from the serial port. It updates the game state with the new positions of the animatronics as they move through the cameras. The function takes in the current game state and a queue of data received from the serial port, which contains information about the animatronic movements. This function must be called inside the. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{processor_8c_a91c6379823a85bb27b6df53b33f7b901}\label{processor_8c_a91c6379823a85bb27b6df53b33f7b901} 
+\index{processor.c@{processor.c}!general\_mouse\_move@{general\_mouse\_move}}
+\index{general\_mouse\_move@{general\_mouse\_move}!processor.c@{processor.c}}
+\doxysubsubsection{\texorpdfstring{general\_mouse\_move()}{general\_mouse\_move()}}
+{\footnotesize\ttfamily void general\+\_\+mouse\+\_\+move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for mouse movement events, which updates the mouse coordinates in the global game state. It is used in MAIN\+\_\+\+MENU and NIGHT\+\_\+\+SURVIVAL states. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified with the new mouse coordinates. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the mouse movement data (delta\+\_\+x and delta\+\_\+y). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{processor_8c_ac855f04ac22db04e7f37ff963348e96e}\label{processor_8c_ac855f04ac22db04e7f37ff963348e96e} 
+\index{processor.c@{processor.c}!get\_event\_handler@{get\_event\_handler}}
+\index{get\_event\_handler@{get\_event\_handler}!processor.c@{processor.c}}
+\doxysubsubsection{\texorpdfstring{get\_event\_handler()}{get\_event\_handler()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{processor_8h_abdab03ed6c7f7f5edf4c067676994b6e}{Event\+Handler}} get\+\_\+event\+\_\+handler (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5c}{State\+Type}}}]{state,  }\item[{const \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6fa}{Event\+Type}}}]{event }\end{DoxyParamCaption})}
+
+
+
+Get the appropriate event handler for the given \doxylink{structGameState}{Game\+State} and Event\+Type. 
+
+Internally, the implementation uses a 2D array indexed with \doxylink{structGameState}{Game\+State} and Event\+Type to retrieve the correct handler function. If no handler is defined for the given state and event type, it returns NULL. 
+\begin{DoxyParams}{Parameters}
+{\em state} & The current state of the game, used to determine which set of event handlers to use. \\
+\hline
+{\em event} & The current event type, used to determine which specific handler to call. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The appropriate function pointer to a event handler function. 
+\end{DoxyReturn}
+\Hypertarget{processor_8c_aef2903989e7420a5dc8cf40425de4daa}\label{processor_8c_aef2903989e7420a5dc8cf40425de4daa} 
+\index{processor.c@{processor.c}!process\_animatronic\_movements@{process\_animatronic\_movements}}
+\index{process\_animatronic\_movements@{process\_animatronic\_movements}!processor.c@{processor.c}}
+\doxysubsubsection{\texorpdfstring{process\_animatronic\_movements()}{process\_animatronic\_movements()}}
+{\footnotesize\ttfamily void process\+\_\+animatronic\+\_\+movements (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}}]{data\+\_\+queue }\end{DoxyParamCaption})}
+
+
+
+This function processes the animatronic movements based on the data received from the serial port. It updates the game state with the new positions of the animatronics as they move through the cameras. The function takes in the current game state and a queue of data received from the serial port, which contains information about the animatronic movements. This function must be called inside the. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \\
+\hline
+{\em data\+\_\+queue} & \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,267 @@
+\doxysection{proj/view/handlers/renderer.h File Reference}
+\hypertarget{renderer_8h}{}\label{renderer_8h}\index{proj/view/handlers/renderer.h@{proj/view/handlers/renderer.h}}
+{\ttfamily \#include "{}../../state.\+h"{}}\newline
+Include dependency graph for renderer.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{renderer_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{renderer_8h_a1d155e7697d54dd3cc8f9e4921e8ae62}{Render\+Handler}}) (const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Type alias for render handler functions (return void and take a pointer to \doxylink{structGameState}{Game\+State})) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{renderer_8h_a1d155e7697d54dd3cc8f9e4921e8ae62}{Render\+Handler}} \mbox{\hyperlink{renderer_8h_a89676f2eaad6a64024ddd6c14cf65be1}{get\+\_\+render\+\_\+handler}} (const \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5c}{State\+Type}} state)
+\begin{DoxyCompactList}\small\item\em Get the appropriate render handler for the given \doxylink{structGameState}{Game\+State}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8h_a0b7574f70a00d7698f3586e6d435093a}{draw\+\_\+mouse}} (const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Draws the mouse sprite on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8h_a641f556a14c48ea9988800de32c3c050}{render\+\_\+main\+\_\+menu}} (const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Handler for rendering the Main Menu on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8h_a7eeca4743bb274b3538f6da9fdd5155d}{render\+\_\+newspaper}} (const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Handler for rendering the newspaper when a new game is started. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8h_a2829ccabb5dd6027d6b09e2196b78198}{render\+\_\+night\+\_\+intro}} (const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Handler for rendering each night intro, which is shown at the beginning of each night and introduces it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8h_aec44f5e49432e581983e5531ca661771}{render\+\_\+night\+\_\+survival}} (const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Handler for rendering the night survival screen, which is the main gameplay screen during each night. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8h_a5522fb9a2fbb1169e447ad5782778712}{render\+\_\+jumpscare}} (const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Handler for rendering the jumpscare screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8h_aa100231c5889d8d9ff79f7c1b4dfce86}{render\+\_\+static\+\_\+screen}} (const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Handler for rendering the static screen, which is after a jumpscare occurs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8h_a7323715c100f753dbfa022a314339460}{render\+\_\+night\+\_\+6am}} (const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Handler for rendering the 6 AM screen, which is shown when the player successfully survives a night. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8h_a7792640235f9155b4a78b5675cb1b2b8}{render\+\_\+game\+\_\+over}} (const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Handler for rendering the Game Over screen, which is after the static Screen, when the player loses. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8h_a2ff6517babaf32bede734622118c5c0c}{render\+\_\+night\+\_\+no\+\_\+battery}} (const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Handler for rendering the night no battery screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8h_a49a87f4760da914b2770653f5aac052d}{render\+\_\+waiting\+\_\+for\+\_\+data}} (const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Handler for rendering the Waiting for Data screen, which is shown in the receiver\textquotesingle{}s perspective while waiting for data from the sender to start the night survival mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{renderer_8h_af914ce3fd0fcb1ee021c214b6f85405a}{render\+\_\+receiving\+\_\+data}} (const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Handler for rendering the Receiving Data screen, which is shown in the receiver\textquotesingle{}s perspective during the night survival mode, while receiving data from the sender about the animatronic movements. This handler draws the cameras and animatronics in their respective positions based on the data received from the sender through the serial port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{renderer_8h_a1d155e7697d54dd3cc8f9e4921e8ae62}\label{renderer_8h_a1d155e7697d54dd3cc8f9e4921e8ae62} 
+\index{renderer.h@{renderer.h}!RenderHandler@{RenderHandler}}
+\index{RenderHandler@{RenderHandler}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{RenderHandler}{RenderHandler}}
+{\footnotesize\ttfamily typedef void(\texorpdfstring{$\ast$}{*} Render\+Handler) (const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*})}
+
+
+
+Type alias for render handler functions (return void and take a pointer to \doxylink{structGameState}{Game\+State})) 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{renderer_8h_a0b7574f70a00d7698f3586e6d435093a}\label{renderer_8h_a0b7574f70a00d7698f3586e6d435093a} 
+\index{renderer.h@{renderer.h}!draw\_mouse@{draw\_mouse}}
+\index{draw\_mouse@{draw\_mouse}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{draw\_mouse()}{draw\_mouse()}}
+{\footnotesize\ttfamily void draw\+\_\+mouse (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Draws the mouse sprite on the screen. 
+
+This function draws the mouse in the coordinates given by the global game state and is called after everything else was drawn on the screen. 
+\begin{DoxyParams}{Parameters}
+{\em state} & The current \doxylink{structGameState}{Game\+State}, since the mouse is drawn in certain states. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{renderer_8h_a89676f2eaad6a64024ddd6c14cf65be1}\label{renderer_8h_a89676f2eaad6a64024ddd6c14cf65be1} 
+\index{renderer.h@{renderer.h}!get\_render\_handler@{get\_render\_handler}}
+\index{get\_render\_handler@{get\_render\_handler}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{get\_render\_handler()}{get\_render\_handler()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{renderer_8h_a1d155e7697d54dd3cc8f9e4921e8ae62}{Render\+Handler}} get\+\_\+render\+\_\+handler (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5c}{State\+Type}}}]{state }\end{DoxyParamCaption})}
+
+
+
+Get the appropriate render handler for the given \doxylink{structGameState}{Game\+State}. 
+
+Internally, the implementation uses a array indexed with \doxylink{structGameState}{Game\+State} to retrieve the correct handler function. If no handler is defined for the given state, it returns NULL. 
+\begin{DoxyParams}{Parameters}
+{\em state} & The current state of the game, used to determine which set of event handlers to use. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The appropriate function pointer to a render handler function. 
+\end{DoxyReturn}
+\Hypertarget{renderer_8h_a7792640235f9155b4a78b5675cb1b2b8}\label{renderer_8h_a7792640235f9155b4a78b5675cb1b2b8} 
+\index{renderer.h@{renderer.h}!render\_game\_over@{render\_game\_over}}
+\index{render\_game\_over@{render\_game\_over}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{render\_game\_over()}{render\_game\_over()}}
+{\footnotesize\ttfamily void render\+\_\+game\+\_\+over (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Handler for rendering the Game Over screen, which is after the static Screen, when the player loses. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The current \doxylink{structGameState}{Game\+State}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{renderer_8h_a5522fb9a2fbb1169e447ad5782778712}\label{renderer_8h_a5522fb9a2fbb1169e447ad5782778712} 
+\index{renderer.h@{renderer.h}!render\_jumpscare@{render\_jumpscare}}
+\index{render\_jumpscare@{render\_jumpscare}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{render\_jumpscare()}{render\_jumpscare()}}
+{\footnotesize\ttfamily void render\+\_\+jumpscare (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Handler for rendering the jumpscare screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The current \doxylink{structGameState}{Game\+State}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{renderer_8h_a641f556a14c48ea9988800de32c3c050}\label{renderer_8h_a641f556a14c48ea9988800de32c3c050} 
+\index{renderer.h@{renderer.h}!render\_main\_menu@{render\_main\_menu}}
+\index{render\_main\_menu@{render\_main\_menu}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{render\_main\_menu()}{render\_main\_menu()}}
+{\footnotesize\ttfamily void render\+\_\+main\+\_\+menu (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Handler for rendering the Main Menu on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The current \doxylink{structGameState}{Game\+State}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{renderer_8h_a7eeca4743bb274b3538f6da9fdd5155d}\label{renderer_8h_a7eeca4743bb274b3538f6da9fdd5155d} 
+\index{renderer.h@{renderer.h}!render\_newspaper@{render\_newspaper}}
+\index{render\_newspaper@{render\_newspaper}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{render\_newspaper()}{render\_newspaper()}}
+{\footnotesize\ttfamily void render\+\_\+newspaper (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Handler for rendering the newspaper when a new game is started. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The current \doxylink{structGameState}{Game\+State}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{renderer_8h_a7323715c100f753dbfa022a314339460}\label{renderer_8h_a7323715c100f753dbfa022a314339460} 
+\index{renderer.h@{renderer.h}!render\_night\_6am@{render\_night\_6am}}
+\index{render\_night\_6am@{render\_night\_6am}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{render\_night\_6am()}{render\_night\_6am()}}
+{\footnotesize\ttfamily void render\+\_\+night\+\_\+6am (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Handler for rendering the 6 AM screen, which is shown when the player successfully survives a night. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The current \doxylink{structGameState}{Game\+State}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{renderer_8h_a2829ccabb5dd6027d6b09e2196b78198}\label{renderer_8h_a2829ccabb5dd6027d6b09e2196b78198} 
+\index{renderer.h@{renderer.h}!render\_night\_intro@{render\_night\_intro}}
+\index{render\_night\_intro@{render\_night\_intro}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{render\_night\_intro()}{render\_night\_intro()}}
+{\footnotesize\ttfamily void render\+\_\+night\+\_\+intro (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Handler for rendering each night intro, which is shown at the beginning of each night and introduces it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The current \doxylink{structGameState}{Game\+State}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{renderer_8h_a2ff6517babaf32bede734622118c5c0c}\label{renderer_8h_a2ff6517babaf32bede734622118c5c0c} 
+\index{renderer.h@{renderer.h}!render\_night\_no\_battery@{render\_night\_no\_battery}}
+\index{render\_night\_no\_battery@{render\_night\_no\_battery}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{render\_night\_no\_battery()}{render\_night\_no\_battery()}}
+{\footnotesize\ttfamily void render\+\_\+night\+\_\+no\+\_\+battery (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Handler for rendering the night no battery screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The current \doxylink{structGameState}{Game\+State}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{renderer_8h_aec44f5e49432e581983e5531ca661771}\label{renderer_8h_aec44f5e49432e581983e5531ca661771} 
+\index{renderer.h@{renderer.h}!render\_night\_survival@{render\_night\_survival}}
+\index{render\_night\_survival@{render\_night\_survival}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{render\_night\_survival()}{render\_night\_survival()}}
+{\footnotesize\ttfamily void render\+\_\+night\+\_\+survival (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Handler for rendering the night survival screen, which is the main gameplay screen during each night. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The current \doxylink{structGameState}{Game\+State}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{renderer_8h_af914ce3fd0fcb1ee021c214b6f85405a}\label{renderer_8h_af914ce3fd0fcb1ee021c214b6f85405a} 
+\index{renderer.h@{renderer.h}!render\_receiving\_data@{render\_receiving\_data}}
+\index{render\_receiving\_data@{render\_receiving\_data}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{render\_receiving\_data()}{render\_receiving\_data()}}
+{\footnotesize\ttfamily void render\+\_\+receiving\+\_\+data (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Handler for rendering the Receiving Data screen, which is shown in the receiver\textquotesingle{}s perspective during the night survival mode, while receiving data from the sender about the animatronic movements. This handler draws the cameras and animatronics in their respective positions based on the data received from the sender through the serial port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The current \doxylink{structGameState}{Game\+State}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{renderer_8h_aa100231c5889d8d9ff79f7c1b4dfce86}\label{renderer_8h_aa100231c5889d8d9ff79f7c1b4dfce86} 
+\index{renderer.h@{renderer.h}!render\_static\_screen@{render\_static\_screen}}
+\index{render\_static\_screen@{render\_static\_screen}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{render\_static\_screen()}{render\_static\_screen()}}
+{\footnotesize\ttfamily void render\+\_\+static\+\_\+screen (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Handler for rendering the static screen, which is after a jumpscare occurs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The current \doxylink{structGameState}{Game\+State}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{renderer_8h_a49a87f4760da914b2770653f5aac052d}\label{renderer_8h_a49a87f4760da914b2770653f5aac052d} 
+\index{renderer.h@{renderer.h}!render\_waiting\_for\_data@{render\_waiting\_for\_data}}
+\index{render\_waiting\_for\_data@{render\_waiting\_for\_data}!renderer.h@{renderer.h}}
+\doxysubsubsection{\texorpdfstring{render\_waiting\_for\_data()}{render\_waiting\_for\_data()}}
+{\footnotesize\ttfamily void render\+\_\+waiting\+\_\+for\+\_\+data (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Handler for rendering the Waiting for Data screen, which is shown in the receiver\textquotesingle{}s perspective while waiting for data from the sender to start the night survival mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The current \doxylink{structGameState}{Game\+State}. \\
+\hline
+\end{DoxyParams}

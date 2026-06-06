@@ -1,0 +1,78 @@
+\doxysection{proj/devices/subscribe.c File Reference}
+\hypertarget{subscribe_8c}{}\label{subscribe_8c}\index{proj/devices/subscribe.c@{proj/devices/subscribe.c}}
+{\ttfamily \#include "{}subscribe.\+h"{}}\newline
+{\ttfamily \#include "{}../game\+\_\+constants.\+h"{}}\newline
+{\ttfamily \#include "{}serial\+\_\+port/serial\+\_\+port.\+h"{}}\newline
+Include dependency graph for subscribe.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{subscribe_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{subscribe_8c_a1d57bb34d1579c6449e54a5ebfe1bb7a}{subscribe\+\_\+receiver\+\_\+devices}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}timer\+\_\+bit\+\_\+no, uint8\+\_\+t \texorpdfstring{$\ast$}{*}kbd\+\_\+bit\+\_\+no, uint8\+\_\+t \texorpdfstring{$\ast$}{*}com1\+\_\+bit\+\_\+no, uint16\+\_\+t vbe\+\_\+mode)
+\item 
+int \mbox{\hyperlink{subscribe_8c_a814a17663c6f454892771b4994c6e7c2}{subscribe\+\_\+devices}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}timer\+\_\+bit\+\_\+no, uint8\+\_\+t \texorpdfstring{$\ast$}{*}kbd\+\_\+bit\+\_\+no, uint8\+\_\+t \texorpdfstring{$\ast$}{*}mouse\+\_\+bit\+\_\+no, uint8\+\_\+t \texorpdfstring{$\ast$}{*}com1\+\_\+bit\+\_\+no, uint16\+\_\+t vbe\+\_\+mode)
+\begin{DoxyCompactList}\small\item\em Subscribes to the timer, keyboard and mouse interrupts and sets the VBE mode. If any of the operations fail, it unsubscribes from all devices and returns 1. Otherwise, it returns 0. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{subscribe_8c_ad9b2f6898b67735c1a327f80f259a45c}{unsubscribe\+\_\+receiver\+\_\+devices}} ()
+\item 
+int \mbox{\hyperlink{subscribe_8c_aa5559c11d897932076279a9076bfe347}{unsubscribe\+\_\+devices}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes from the timer, keyboard and mouse interrupts and exits the VBE mode. If any of the operations fail, it returns 1. Otherwise, it returns 0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{subscribe_8c_a814a17663c6f454892771b4994c6e7c2}\label{subscribe_8c_a814a17663c6f454892771b4994c6e7c2} 
+\index{subscribe.c@{subscribe.c}!subscribe\_devices@{subscribe\_devices}}
+\index{subscribe\_devices@{subscribe\_devices}!subscribe.c@{subscribe.c}}
+\doxysubsubsection{\texorpdfstring{subscribe\_devices()}{subscribe\_devices()}}
+{\footnotesize\ttfamily int subscribe\+\_\+devices (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{timer\+\_\+bit\+\_\+no,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{kbd\+\_\+bit\+\_\+no,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{mouse\+\_\+bit\+\_\+no,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{com1\+\_\+bit\+\_\+no,  }\item[{uint16\+\_\+t}]{vbe\+\_\+mode }\end{DoxyParamCaption})}
+
+
+
+Subscribes to the timer, keyboard and mouse interrupts and sets the VBE mode. If any of the operations fail, it unsubscribes from all devices and returns 1. Otherwise, it returns 0. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timer\+\_\+bit\+\_\+no} & Pointer to the variable that will store the bit number of the timer interrupt. \\
+\hline
+{\em kbd\+\_\+bit\+\_\+no} & Pointer to the variable that will store the bit number of the keyboard interrupt. \\
+\hline
+{\em mouse\+\_\+bit\+\_\+no} & Pointer to the variable that will store the bit number of the mouse interrupt. \\
+\hline
+{\em com1\+\_\+bit\+\_\+no} & Pointer to the variable that will store the bit number of the COM1 interrupt. \\
+\hline
+{\em vbe\+\_\+mode} & The VBE mode to set. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if all operations were successful, 1 otherwise. 
+\end{DoxyReturn}
+\Hypertarget{subscribe_8c_a1d57bb34d1579c6449e54a5ebfe1bb7a}\label{subscribe_8c_a1d57bb34d1579c6449e54a5ebfe1bb7a} 
+\index{subscribe.c@{subscribe.c}!subscribe\_receiver\_devices@{subscribe\_receiver\_devices}}
+\index{subscribe\_receiver\_devices@{subscribe\_receiver\_devices}!subscribe.c@{subscribe.c}}
+\doxysubsubsection{\texorpdfstring{subscribe\_receiver\_devices()}{subscribe\_receiver\_devices()}}
+{\footnotesize\ttfamily int subscribe\+\_\+receiver\+\_\+devices (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{timer\+\_\+bit\+\_\+no,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{kbd\+\_\+bit\+\_\+no,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{com1\+\_\+bit\+\_\+no,  }\item[{uint16\+\_\+t}]{vbe\+\_\+mode }\end{DoxyParamCaption})}
+
+\Hypertarget{subscribe_8c_aa5559c11d897932076279a9076bfe347}\label{subscribe_8c_aa5559c11d897932076279a9076bfe347} 
+\index{subscribe.c@{subscribe.c}!unsubscribe\_devices@{unsubscribe\_devices}}
+\index{unsubscribe\_devices@{unsubscribe\_devices}!subscribe.c@{subscribe.c}}
+\doxysubsubsection{\texorpdfstring{unsubscribe\_devices()}{unsubscribe\_devices()}}
+{\footnotesize\ttfamily int unsubscribe\+\_\+devices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes from the timer, keyboard and mouse interrupts and exits the VBE mode. If any of the operations fail, it returns 1. Otherwise, it returns 0. 
+
+\begin{DoxyReturn}{Returns}
+0 if all operations were successful, 1 otherwise. 
+\end{DoxyReturn}
+\Hypertarget{subscribe_8c_ad9b2f6898b67735c1a327f80f259a45c}\label{subscribe_8c_ad9b2f6898b67735c1a327f80f259a45c} 
+\index{subscribe.c@{subscribe.c}!unsubscribe\_receiver\_devices@{unsubscribe\_receiver\_devices}}
+\index{unsubscribe\_receiver\_devices@{unsubscribe\_receiver\_devices}!subscribe.c@{subscribe.c}}
+\doxysubsubsection{\texorpdfstring{unsubscribe\_receiver\_devices()}{unsubscribe\_receiver\_devices()}}
+{\footnotesize\ttfamily int unsubscribe\+\_\+receiver\+\_\+devices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+

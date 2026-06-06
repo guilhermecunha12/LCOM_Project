@@ -1,0 +1,53 @@
+\doxysection{lab3/utils.c File Reference}
+\hypertarget{lab3_2utils_8c}{}\label{lab3_2utils_8c}\index{lab3/utils.c@{lab3/utils.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for utils.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{lab3_2utils_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{lab3_2utils_8c_a81621440b3d65680979425e39aa8c789}{util\+\_\+get\+\_\+\+LSB}} (uint16\+\_\+t val, uint8\+\_\+t \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{bitwise_8c_adb0d1c296c06f8258996a1925b0030d3}{lsb}})
+\item 
+int() \mbox{\hyperlink{lab3_2utils_8c_a6a880076cd2ec468834438b6e0c58836}{util\+\_\+get\+\_\+\+MSB}} (uint16\+\_\+t val, uint8\+\_\+t \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{bitwise_8c_a52f14550e1ef2bf9e42305cb288fcd5a}{msb}})
+\item 
+int() \mbox{\hyperlink{lab3_2utils_8c_a79a031a8611f5b2d6afa4158e92b0fb4}{util\+\_\+sys\+\_\+inb}} (int port, uint8\+\_\+t \texorpdfstring{$\ast$}{*}value)
+\begin{DoxyCompactList}\small\item\em Utility function to read a byte from a specified I/O port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{lab3_2utils_8c_a81621440b3d65680979425e39aa8c789}\label{lab3_2utils_8c_a81621440b3d65680979425e39aa8c789} 
+\index{utils.c@{utils.c}!util\_get\_LSB@{util\_get\_LSB}}
+\index{util\_get\_LSB@{util\_get\_LSB}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{util\_get\_LSB()}{util\_get\_LSB()}}
+{\footnotesize\ttfamily int() util\+\_\+get\+\_\+\+LSB (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{val,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{lsb }\end{DoxyParamCaption})}
+
+\Hypertarget{lab3_2utils_8c_a6a880076cd2ec468834438b6e0c58836}\label{lab3_2utils_8c_a6a880076cd2ec468834438b6e0c58836} 
+\index{utils.c@{utils.c}!util\_get\_MSB@{util\_get\_MSB}}
+\index{util\_get\_MSB@{util\_get\_MSB}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{util\_get\_MSB()}{util\_get\_MSB()}}
+{\footnotesize\ttfamily int() util\+\_\+get\+\_\+\+MSB (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{val,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{msb }\end{DoxyParamCaption})}
+
+\Hypertarget{lab3_2utils_8c_a79a031a8611f5b2d6afa4158e92b0fb4}\label{lab3_2utils_8c_a79a031a8611f5b2d6afa4158e92b0fb4} 
+\index{utils.c@{utils.c}!util\_sys\_inb@{util\_sys\_inb}}
+\index{util\_sys\_inb@{util\_sys\_inb}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{util\_sys\_inb()}{util\_sys\_inb()}}
+{\footnotesize\ttfamily int() util\+\_\+sys\+\_\+inb (\begin{DoxyParamCaption}\item[{int}]{port,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{byte }\end{DoxyParamCaption})}
+
+
+
+Utility function to read a byte from a specified I/O port. 
+
+This function is a wrapper around the system call to read from an I/O port. It reads a 32-\/bit value from the port and then casts it to an 8-\/bit value, which is stored in the provided byte pointer. 
+\begin{DoxyParams}{Parameters}
+{\em port} & The I/O port to read from. \\
+\hline
+{\em byte} & Pointer to a uint8\+\_\+t variable where the read byte will be stored. \\
+\hline
+\end{DoxyParams}

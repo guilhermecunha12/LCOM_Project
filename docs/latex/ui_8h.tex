@@ -1,0 +1,952 @@
+\doxysection{proj/view/ui.h File Reference}
+\hypertarget{ui_8h}{}\label{ui_8h}\index{proj/view/ui.h@{proj/view/ui.h}}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ui_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{ui_8h_ab208dc4bc0e43eff7f62a8841dcf6cb5}{VBE\+\_\+\+MODE}}~0x14C
+\item 
+\#define \mbox{\hyperlink{ui_8h_ae138b2e443649ca9546c99e80957faac}{BYTES\+\_\+\+PER\+\_\+\+PIXEL}}~4
+\item 
+\#define \mbox{\hyperlink{ui_8h_a2cd109632a6dcccaa80b43561b1ab700}{SCREEN\+\_\+\+WIDTH}}~1152
+\item 
+\#define \mbox{\hyperlink{ui_8h_a6974d08a74da681b3957b2fead2608b8}{SCREEN\+\_\+\+HEIGHT}}~864
+\item 
+\#define \mbox{\hyperlink{ui_8h_a1cd7cd6cd9f6b300d23d7f9fd296e253}{BACKGROUND\+\_\+\+MOVE\+\_\+\+VELOCITY}}~(int) (8 \texorpdfstring{$\ast$}{*} 60.\+0f / \mbox{\hyperlink{game__constants_8h_ac92ca5ab87034a348decad7ee8d4bd1b}{FPS}})
+\item 
+\#define \mbox{\hyperlink{ui_8h_afaea1b889b649cbb6b4eccbf9c94f889}{BACKGROUND\+\_\+\+MAX\+\_\+\+OFFSET}}~300
+\item 
+\#define \mbox{\hyperlink{ui_8h_a4756e0c0b1a88e20f7e876295fc9e74b}{CAMERA\+\_\+\+MAX\+\_\+\+OFFSET}}~150
+\item 
+\#define \mbox{\hyperlink{ui_8h_a28c7679900a2fb1538c9e2c31161cf9d}{CENTER\+\_\+\+CAMERA\+\_\+\+OFFSET}}~-\/150
+\item 
+\#define \mbox{\hyperlink{ui_8h_af6b39899e9ca6943e0b2788d68431b2d}{CAMERA\+\_\+\+MOVE\+\_\+\+VELOCITY}}~(int) (2 \texorpdfstring{$\ast$}{*} 60.\+0f / \mbox{\hyperlink{game__constants_8h_ac92ca5ab87034a348decad7ee8d4bd1b}{FPS}})
+\item 
+\#define \mbox{\hyperlink{ui_8h_a2744be813b507c728b4bd66248c8990f}{CAMERA\+\_\+\+MOVEMENT\+\_\+\+WAIT\+\_\+\+TIME}}~1 \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game__constants_8h_ac92ca5ab87034a348decad7ee8d4bd1b}{FPS}}
+\item 
+\#define \mbox{\hyperlink{ui_8h_ac93e04aefb9b0183bb508f21f67e44e4}{CENTER\+\_\+\+BACKGROUND\+\_\+\+OFFSET}}~-\/150
+\item 
+\#define \mbox{\hyperlink{ui_8h_aa83d0a6c543333865121232bc947941e}{GAME\+\_\+\+TITLE\+\_\+X}}~86
+\item 
+\#define \mbox{\hyperlink{ui_8h_abe7e883fa1430703e912b6bcf3dc1efc}{GAME\+\_\+\+TITLE\+\_\+Y}}~117
+\item 
+\#define \mbox{\hyperlink{ui_8h_a6a4132dd59f3c8595dce7ad97dd37ccc}{NEW\+\_\+\+GAME\+\_\+\+SEL\+\_\+X}}~75
+\item 
+\#define \mbox{\hyperlink{ui_8h_aca523e9f2d0ba76b4926aa99d50352bd}{NEW\+\_\+\+GAME\+\_\+\+SEL\+\_\+Y}}~407
+\item 
+\#define \mbox{\hyperlink{ui_8h_a6edfb3f4cbc851e85249c1d7c69add7d}{CONTINUE\+\_\+\+SEL\+\_\+X}}~73
+\item 
+\#define \mbox{\hyperlink{ui_8h_a62acd9dbc120754b9e597190bb97088d}{CONTINUE\+\_\+\+SEL\+\_\+Y}}~482
+\item 
+\#define \mbox{\hyperlink{ui_8h_ac8c4722ada5b54de50f5edc971bce3dd}{NEW\+\_\+\+GAME\+\_\+X}}~153
+\item 
+\#define \mbox{\hyperlink{ui_8h_acad1110f9fe741ae2af5065c2dba932a}{NEW\+\_\+\+GAME\+\_\+Y}}~405
+\item 
+\#define \mbox{\hyperlink{ui_8h_a65376fcb1878b7ea394b58f4c05c41d8}{CONTINUE\+\_\+X}}~148
+\item 
+\#define \mbox{\hyperlink{ui_8h_afea09164eafdc07956fe18922de344d2}{CONTINUE\+\_\+Y}}~485
+\item 
+\#define \mbox{\hyperlink{ui_8h_a0db21afe5d883dd260292bcef5c26f87}{EXIT\+\_\+\+GAME\+\_\+\+SEL\+\_\+X}}~90
+\item 
+\#define \mbox{\hyperlink{ui_8h_a035476a127fac3af978d428add754ff9}{EXIT\+\_\+\+GAME\+\_\+\+SEL\+\_\+Y}}~588
+\item 
+\#define \mbox{\hyperlink{ui_8h_aba5f1de476ddc7d445a36e0cd31a9e88}{EXIT\+\_\+\+GAME\+\_\+X}}~153
+\item 
+\#define \mbox{\hyperlink{ui_8h_ab89b7742146415488c673cce8953bf7e}{EXIT\+\_\+\+GAME\+\_\+Y}}~588
+\item 
+\#define \mbox{\hyperlink{ui_8h_a82e52b6b25e9707a1d4a401bd6a57c65}{NIGHT\+\_\+\+TEXT\+\_\+X}}~280
+\item 
+\#define \mbox{\hyperlink{ui_8h_a4d53e7ff2f27fc62e1576b77658046ec}{NIGHT\+\_\+\+TEXT\+\_\+Y}}~535
+\item 
+\#define \mbox{\hyperlink{ui_8h_ae66b7cf0ee53ddf898aaf37f3d0e5d8c}{BOX\+\_\+\+NORMAL\+\_\+\+WIDTH}}~320
+\item 
+\#define \mbox{\hyperlink{ui_8h_a8025e8f4105bdedda73409b047474d3c}{BOX\+\_\+\+NORMAL\+\_\+\+HEIGHT}}~70
+\item 
+\#define \mbox{\hyperlink{ui_8h_a0235525864c218aa831e897780bc09f9}{BOX\+\_\+\+CONTINUE\+\_\+\+WIDTH}}~300
+\item 
+\#define \mbox{\hyperlink{ui_8h_aedf0aae4ce403082b6f8925d19ff3a57}{BOX\+\_\+\+CONTINUE\+\_\+\+HEIGHT}}~80
+\item 
+\#define \mbox{\hyperlink{ui_8h_a0388e069ccd739d933d5296e38856ef2}{NIGHT\+\_\+\+TEXT\+\_\+\+POS}}(x,  y)~(x + 5), (y + 4)
+\item 
+\#define \mbox{\hyperlink{ui_8h_aff85121eed3d3271ab2ca7b914ea500b}{MAP\+\_\+\+LAYOUT\+\_\+X}}~736
+\item 
+\#define \mbox{\hyperlink{ui_8h_aefbaa1a7b3784c91bd42d520aef87049}{MAP\+\_\+\+LAYOUT\+\_\+Y}}~488
+\item 
+\#define \mbox{\hyperlink{ui_8h_a292ae448a7ffa54e0ff3c8f4bbcafcab}{BUTTON\+\_\+\+SIZE\+\_\+\+WIDTH}}~59
+\item 
+\#define \mbox{\hyperlink{ui_8h_aa0d953e9b0a7c3d20af9de10618d958b}{BUTTON\+\_\+\+SIZE\+\_\+\+HEIGHT}}~40
+\item 
+\#define \mbox{\hyperlink{ui_8h_a1e5fb04553287e5bb0a30930883a7ebb}{SELECTED\+\_\+\+CAM\+\_\+\+TEXT\+\_\+X}}~736
+\item 
+\#define \mbox{\hyperlink{ui_8h_a3f7fb47f81f6019244318788b9a59e39}{SELECTED\+\_\+\+CAM\+\_\+\+TEXT\+\_\+Y}}~419
+\item 
+\#define \mbox{\hyperlink{ui_8h_a1144bfc0a76e5ea003ff243d0f6614c7}{NIGHT\+\_\+\+CAMERA\+\_\+1\+A\+\_\+X}}~833
+\item 
+\#define \mbox{\hyperlink{ui_8h_a2d470fc1ab8ee3f70d37fa4f8b35237c}{NIGHT\+\_\+\+CAMERA\+\_\+1\+A\+\_\+Y}}~477
+\item 
+\#define \mbox{\hyperlink{ui_8h_a71883dbb11d7f55fac1cf4c9ed09b8db}{NIGHT\+\_\+\+CAMERA\+\_\+1\+B\+\_\+X}}~815
+\item 
+\#define \mbox{\hyperlink{ui_8h_aed5e423557dd5bcbd23fde3c0cb97731}{NIGHT\+\_\+\+CAMERA\+\_\+1\+B\+\_\+Y}}~528
+\item 
+\#define \mbox{\hyperlink{ui_8h_a5ef53cd8b3391ab5765410e80d805bd0}{NIGHT\+\_\+\+CAMERA\+\_\+1\+C\+\_\+X}}~777
+\item 
+\#define \mbox{\hyperlink{ui_8h_a3bf2e4ee336a4d4f8ab1824b8710f8af}{NIGHT\+\_\+\+CAMERA\+\_\+1\+C\+\_\+Y}}~608
+\item 
+\#define \mbox{\hyperlink{ui_8h_a4dd0cd0a7b67385c010011e413ea643d}{NIGHT\+\_\+\+CAMERA\+\_\+3\+\_\+X}}~748
+\item 
+\#define \mbox{\hyperlink{ui_8h_aa1c1ff5904069cca7d3d02399d952aae}{NIGHT\+\_\+\+CAMERA\+\_\+3\+\_\+Y}}~702
+\item 
+\#define \mbox{\hyperlink{ui_8h_abb8ae563cfa794dcdb31608bcd3e5486}{NIGHT\+\_\+\+CAMERA\+\_\+5\+\_\+X}}~709
+\item 
+\#define \mbox{\hyperlink{ui_8h_aeb04b0089de2847820d63b46d076af8d}{NIGHT\+\_\+\+CAMERA\+\_\+5\+\_\+Y}}~550
+\item 
+\#define \mbox{\hyperlink{ui_8h_ae187ba6921822b6824df4bf578c6a828}{NIGHT\+\_\+\+CAMERA\+\_\+7\+\_\+X}}~1048
+\item 
+\#define \mbox{\hyperlink{ui_8h_a3c88d425d45d683ba1d18fc0109cf1f9}{NIGHT\+\_\+\+CAMERA\+\_\+7\+\_\+Y}}~556
+\item 
+\#define \mbox{\hyperlink{ui_8h_af5a87a44b27f8e4b0032ff4d93b9618e}{NIGHT\+\_\+\+CAMERA\+\_\+6\+\_\+X}}~1037
+\item 
+\#define \mbox{\hyperlink{ui_8h_a6784b160b590ea80c254b0ea26be3aee}{NIGHT\+\_\+\+CAMERA\+\_\+6\+\_\+Y}}~685
+\item 
+\#define \mbox{\hyperlink{ui_8h_ae9def114c5e415f745322b707ebc289a}{NIGHT\+\_\+\+CAMERA\+\_\+2\+A\+\_\+X}}~834
+\item 
+\#define \mbox{\hyperlink{ui_8h_a82b69d568d81bfd41e7c4f5cb3461c58}{NIGHT\+\_\+\+CAMERA\+\_\+2\+A\+\_\+Y}}~725
+\item 
+\#define \mbox{\hyperlink{ui_8h_aa22392edee22c2439473dd0b97e3713d}{NIGHT\+\_\+\+CAMERA\+\_\+2\+B\+\_\+X}}~834
+\item 
+\#define \mbox{\hyperlink{ui_8h_a5f17d7e29288c46748277a9c7d6f15ca}{NIGHT\+\_\+\+CAMERA\+\_\+2\+B\+\_\+Y}}~769
+\item 
+\#define \mbox{\hyperlink{ui_8h_ac5c3aae09f8b4618f51ae40ce8d8ba0f}{NIGHT\+\_\+\+CAMERA\+\_\+4\+A\+\_\+X}}~940
+\item 
+\#define \mbox{\hyperlink{ui_8h_a05ddcd5230fe364b6f6f327e2746b59a}{NIGHT\+\_\+\+CAMERA\+\_\+4\+A\+\_\+Y}}~725
+\item 
+\#define \mbox{\hyperlink{ui_8h_a2296f45314f0c8736a0a7d782b33ea79}{NIGHT\+\_\+\+CAMERA\+\_\+4\+B\+\_\+X}}~940
+\item 
+\#define \mbox{\hyperlink{ui_8h_abca9369b50241750e47326684a760906}{NIGHT\+\_\+\+CAMERA\+\_\+4\+B\+\_\+Y}}~769
+\item 
+\#define \mbox{\hyperlink{ui_8h_adbd551320ee660882fda95f5a227f742}{REC\+\_\+\+SYMBOL\+\_\+X}}~56
+\item 
+\#define \mbox{\hyperlink{ui_8h_a5688cb235aeb81ed619caddf1ab14824}{REC\+\_\+\+SYMBOL\+\_\+Y}}~48
+\item 
+\#define \mbox{\hyperlink{ui_8h_a72e7493f7cc3d79c9aee7e072d29740f}{SCREEN\+\_\+\+TEXT\+\_\+X}}~450
+\item 
+\#define \mbox{\hyperlink{ui_8h_a278096e8713a04a5048b6e2386584ca3}{SCREEN\+\_\+\+TEXT\+\_\+Y}}~384
+\item 
+\#define \mbox{\hyperlink{ui_8h_a169a6668c530831e1c61f38363dc52a7}{CAMERA\+\_\+\+FLIP\+\_\+\+BUTTON\+\_\+X}}~280
+\item 
+\#define \mbox{\hyperlink{ui_8h_a8b3d2a1e6bfde8aecb54d7ec41ed6cc0}{CAMERA\+\_\+\+FLIP\+\_\+\+BUTTON\+\_\+Y}}~780
+\item 
+\#define \mbox{\hyperlink{ui_8h_a330d5996f10eea1b10e3d7d8f0fed4a3}{CAMERA\+\_\+\+FLIP\+\_\+\+BUTTON\+\_\+\+WIDTH}}~482
+\item 
+\#define \mbox{\hyperlink{ui_8h_aef6d16a35b64db72cae8d839d5f3e0e3}{CAMERA\+\_\+\+FLIP\+\_\+\+BUTTON\+\_\+\+HEIGHT}}~57
+\item 
+\#define \mbox{\hyperlink{ui_8h_aca25ea98665943c0daa4beba85a42ec1}{NIGHT\+\_\+\+HOURS\+\_\+\+TEXT\+\_\+X}}~967
+\item 
+\#define \mbox{\hyperlink{ui_8h_a55dd32fdaa6dccabfb0240da9be39b04}{NIGHT\+\_\+\+HOURS\+\_\+\+TEXT\+\_\+Y}}~53
+\item 
+\#define \mbox{\hyperlink{ui_8h_a2973933c7048eed669ca86b8bfea5b97}{AM\+\_\+\+TEXT\+\_\+X}}~1028
+\item 
+\#define \mbox{\hyperlink{ui_8h_aa05086cb35170a9d04829c1d015a9d1b}{AM\+\_\+\+TEXT\+\_\+Y}}~53
+\item 
+\#define \mbox{\hyperlink{ui_8h_aeb4793f42b71ae177860b44f067e44b9}{NIGHT\+\_\+\+COUNT\+\_\+\+TEXT\+\_\+X}}~980
+\item 
+\#define \mbox{\hyperlink{ui_8h_a2cd1c32021e89943f058f491039571e3}{NIGHT\+\_\+\+COUNT\+\_\+\+TEXT\+\_\+Y}}~101
+\item 
+\#define \mbox{\hyperlink{ui_8h_a0496c5ffa69d953764b8520709d36408}{USAGE\+\_\+\+TEXT\+\_\+X}}~44
+\item 
+\#define \mbox{\hyperlink{ui_8h_ac9fa5d3df7fc121e40393598d20ade61}{USAGE\+\_\+\+TEXT\+\_\+Y}}~797
+\item 
+\#define \mbox{\hyperlink{ui_8h_ab3fc1052b4d55e8542f5cdcdfa831db8}{INDICATOR\+\_\+\+USAGE\+\_\+X}}~150
+\item 
+\#define \mbox{\hyperlink{ui_8h_afbf655435bfa98621b4c90c9a482c447}{INDICATOR\+\_\+\+USAGE\+\_\+Y}}~799
+\item 
+\#define \mbox{\hyperlink{ui_8h_ab2d828bad31dcf46247e9100ae189479}{POWER\+\_\+\+LEFT\+\_\+\+TEXT\+\_\+X}}~44
+\item 
+\#define \mbox{\hyperlink{ui_8h_ab75ef7e802097607c9f9f7d0555829b8}{POWER\+\_\+\+LEFT\+\_\+\+TEXT\+\_\+Y}}~758
+\item 
+\#define \mbox{\hyperlink{ui_8h_aaa648bc819c9a5de25ffac2794e29a80}{I\+\_\+\+DIGIT\+\_\+\+POWER\+\_\+X}}~213
+\item 
+\#define \mbox{\hyperlink{ui_8h_aaacd41772f0006299051565d66d49006}{I\+\_\+\+DIGIT\+\_\+\+POWER\+\_\+Y}}~760
+\item 
+\#define \mbox{\hyperlink{ui_8h_a40f57f2d686933a190b3616fbac79651}{II\+\_\+\+DIGIT\+\_\+\+POWER\+\_\+X}}~233
+\item 
+\#define \mbox{\hyperlink{ui_8h_a554e06acf8e18cc32a3f4dd7f22fc927}{II\+\_\+\+DIGIT\+\_\+\+POWER\+\_\+Y}}~760
+\item 
+\#define \mbox{\hyperlink{ui_8h_a0dd484dd1a84293c9795cb153f0c4942}{PERCENTAGE\+\_\+\+SIGN\+\_\+X}}~255
+\item 
+\#define \mbox{\hyperlink{ui_8h_a883f10ddad094b076dabd733c1d68bd3}{PERCENTAGE\+\_\+\+SIGN\+\_\+Y}}~764
+\item 
+\#define \mbox{\hyperlink{ui_8h_ae80d905b73e1d085aac636db359fa2fd}{MAP\+\_\+\+CAM\+\_\+1\+A\+\_\+X}}~410
+\item 
+\#define \mbox{\hyperlink{ui_8h_a67df82ef8a3bf2122358cb6fe698b16e}{MAP\+\_\+\+CAM\+\_\+1\+A\+\_\+Y}}~58
+\item 
+\#define \mbox{\hyperlink{ui_8h_a8b686f863b7d12a6f9e466573298b6ef}{MAP\+\_\+\+CAM\+\_\+1\+B\+\_\+X}}~360
+\item 
+\#define \mbox{\hyperlink{ui_8h_a9e3e7102949755dad102b58d26f697f2}{MAP\+\_\+\+CAM\+\_\+1\+B\+\_\+Y}}~140
+\item 
+\#define \mbox{\hyperlink{ui_8h_a9921a0fd6479aa3848a2055c07b8237e}{MAP\+\_\+\+CAM\+\_\+1\+C\+\_\+X}}~180
+\item 
+\#define \mbox{\hyperlink{ui_8h_a4544ae5019b66cb5671b9a9ccc505088}{MAP\+\_\+\+CAM\+\_\+1\+C\+\_\+Y}}~319
+\item 
+\#define \mbox{\hyperlink{ui_8h_ad67dbc2b7074f401f2388a0017bea492}{MAP\+\_\+\+CAM\+\_\+2\+A\+\_\+X}}~370
+\item 
+\#define \mbox{\hyperlink{ui_8h_a731f026c368ed418981fa35620793112}{MAP\+\_\+\+CAM\+\_\+2\+A\+\_\+Y}}~601
+\item 
+\#define \mbox{\hyperlink{ui_8h_a269efe724d86213881b7b85aa3a8e4e9}{MAP\+\_\+\+CAM\+\_\+2\+B\+\_\+X}}~370
+\item 
+\#define \mbox{\hyperlink{ui_8h_a63f2c7adf8111f40ed3597990229d72d}{MAP\+\_\+\+CAM\+\_\+2\+B\+\_\+Y}}~702
+\item 
+\#define \mbox{\hyperlink{ui_8h_a243f1086f39e48343f707eeeb5144738}{MAP\+\_\+\+CAM\+\_\+3\+\_\+X}}~250
+\item 
+\#define \mbox{\hyperlink{ui_8h_af001064543528e4ccc673399a0ad91f7}{MAP\+\_\+\+CAM\+\_\+3\+\_\+Y}}~548
+\item 
+\#define \mbox{\hyperlink{ui_8h_a75ef8510942017e28144b8140d611783}{MAP\+\_\+\+CAM\+\_\+4\+A\+\_\+X}}~605
+\item 
+\#define \mbox{\hyperlink{ui_8h_abbc664e2db7b91831d4516075498babc}{MAP\+\_\+\+CAM\+\_\+4\+A\+\_\+Y}}~601
+\item 
+\#define \mbox{\hyperlink{ui_8h_aecbe27addb983558481d9e19da496771}{MAP\+\_\+\+CAM\+\_\+4\+B\+\_\+X}}~605
+\item 
+\#define \mbox{\hyperlink{ui_8h_afff22d7ba5595ab2243793082754f83e}{MAP\+\_\+\+CAM\+\_\+4\+B\+\_\+Y}}~702
+\item 
+\#define \mbox{\hyperlink{ui_8h_a61ea7f2897c7db29f19f0ce7fd2e1bd0}{MAP\+\_\+\+CAM\+\_\+5\+\_\+X}}~150
+\item 
+\#define \mbox{\hyperlink{ui_8h_ac631d25706dccf37056202c3b0232dfe}{MAP\+\_\+\+CAM\+\_\+5\+\_\+Y}}~189
+\item 
+\#define \mbox{\hyperlink{ui_8h_a98cbc4854e8ecb736f09ffebd8bab3fb}{MAP\+\_\+\+CAM\+\_\+6\+\_\+X}}~833
+\item 
+\#define \mbox{\hyperlink{ui_8h_a594545c0489c673cdc7f55653adf7043}{MAP\+\_\+\+CAM\+\_\+6\+\_\+Y}}~520
+\item 
+\#define \mbox{\hyperlink{ui_8h_a2ed1309334d84bcd1c85f9782d87d563}{MAP\+\_\+\+CAM\+\_\+7\+\_\+X}}~835
+\item 
+\#define \mbox{\hyperlink{ui_8h_a202a8257e241694825853ca12649b100}{MAP\+\_\+\+CAM\+\_\+7\+\_\+Y}}~199
+\item 
+\#define \mbox{\hyperlink{ui_8h_acc66a058578f15c7a7e4e94a512be34b}{MAP\+\_\+\+RIGHT\+\_\+\+DOOR\+\_\+X}}~570
+\item 
+\#define \mbox{\hyperlink{ui_8h_a6716810fcca86a1e49322e9f029adb1d}{MAP\+\_\+\+RIGHT\+\_\+\+DOOR\+\_\+Y}}~702
+\item 
+\#define \mbox{\hyperlink{ui_8h_ace2157e7a88b9c546cca1bf1c12d600d}{MAP\+\_\+\+LEFT\+\_\+\+DOOR\+\_\+X}}~463
+\item 
+\#define \mbox{\hyperlink{ui_8h_a42e2daeb9f442347eb66164cf7954e1f}{MAP\+\_\+\+LEFT\+\_\+\+DOOR\+\_\+Y}}~685
+\item 
+\#define \mbox{\hyperlink{ui_8h_ac55d5c27d75e9bb33e9257304d0e975e}{ID\+\_\+\+OFFSET\+\_\+X}}~13
+\item 
+\#define \mbox{\hyperlink{ui_8h_a11907a08e0185120f9ff834028b69478}{FREDDY\+\_\+\+ID\+\_\+\+OFFSET\+\_\+Y}}~12
+\item 
+\#define \mbox{\hyperlink{ui_8h_ae7ba993b06c079486bfb3299c0fe4d11}{BONNIE\+\_\+\+ID\+\_\+\+OFFSET\+\_\+Y}}~29
+\item 
+\#define \mbox{\hyperlink{ui_8h_ad55a19a3b34be9f6b6ee0d398b71246c}{CHICA\+\_\+\+ID\+\_\+\+OFFSET\+\_\+Y}}~49
+\item 
+\#define \mbox{\hyperlink{ui_8h_aff471dbd4f8cc32ee4d4cc305e382b54}{FOXY\+\_\+\+ID\+\_\+\+OFFSET\+\_\+Y}}~67
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{ui_8h_a2973933c7048eed669ca86b8bfea5b97}\label{ui_8h_a2973933c7048eed669ca86b8bfea5b97} 
+\index{ui.h@{ui.h}!AM\_TEXT\_X@{AM\_TEXT\_X}}
+\index{AM\_TEXT\_X@{AM\_TEXT\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{AM\_TEXT\_X}{AM\_TEXT\_X}}
+{\footnotesize\ttfamily \#define AM\+\_\+\+TEXT\+\_\+X~1028}
+
+\Hypertarget{ui_8h_aa05086cb35170a9d04829c1d015a9d1b}\label{ui_8h_aa05086cb35170a9d04829c1d015a9d1b} 
+\index{ui.h@{ui.h}!AM\_TEXT\_Y@{AM\_TEXT\_Y}}
+\index{AM\_TEXT\_Y@{AM\_TEXT\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{AM\_TEXT\_Y}{AM\_TEXT\_Y}}
+{\footnotesize\ttfamily \#define AM\+\_\+\+TEXT\+\_\+Y~53}
+
+\Hypertarget{ui_8h_afaea1b889b649cbb6b4eccbf9c94f889}\label{ui_8h_afaea1b889b649cbb6b4eccbf9c94f889} 
+\index{ui.h@{ui.h}!BACKGROUND\_MAX\_OFFSET@{BACKGROUND\_MAX\_OFFSET}}
+\index{BACKGROUND\_MAX\_OFFSET@{BACKGROUND\_MAX\_OFFSET}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{BACKGROUND\_MAX\_OFFSET}{BACKGROUND\_MAX\_OFFSET}}
+{\footnotesize\ttfamily \#define BACKGROUND\+\_\+\+MAX\+\_\+\+OFFSET~300}
+
+\Hypertarget{ui_8h_a1cd7cd6cd9f6b300d23d7f9fd296e253}\label{ui_8h_a1cd7cd6cd9f6b300d23d7f9fd296e253} 
+\index{ui.h@{ui.h}!BACKGROUND\_MOVE\_VELOCITY@{BACKGROUND\_MOVE\_VELOCITY}}
+\index{BACKGROUND\_MOVE\_VELOCITY@{BACKGROUND\_MOVE\_VELOCITY}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{BACKGROUND\_MOVE\_VELOCITY}{BACKGROUND\_MOVE\_VELOCITY}}
+{\footnotesize\ttfamily \#define BACKGROUND\+\_\+\+MOVE\+\_\+\+VELOCITY~(int) (8 \texorpdfstring{$\ast$}{*} 60.\+0f / \mbox{\hyperlink{game__constants_8h_ac92ca5ab87034a348decad7ee8d4bd1b}{FPS}})}
+
+\Hypertarget{ui_8h_ae7ba993b06c079486bfb3299c0fe4d11}\label{ui_8h_ae7ba993b06c079486bfb3299c0fe4d11} 
+\index{ui.h@{ui.h}!BONNIE\_ID\_OFFSET\_Y@{BONNIE\_ID\_OFFSET\_Y}}
+\index{BONNIE\_ID\_OFFSET\_Y@{BONNIE\_ID\_OFFSET\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{BONNIE\_ID\_OFFSET\_Y}{BONNIE\_ID\_OFFSET\_Y}}
+{\footnotesize\ttfamily \#define BONNIE\+\_\+\+ID\+\_\+\+OFFSET\+\_\+Y~29}
+
+\Hypertarget{ui_8h_aedf0aae4ce403082b6f8925d19ff3a57}\label{ui_8h_aedf0aae4ce403082b6f8925d19ff3a57} 
+\index{ui.h@{ui.h}!BOX\_CONTINUE\_HEIGHT@{BOX\_CONTINUE\_HEIGHT}}
+\index{BOX\_CONTINUE\_HEIGHT@{BOX\_CONTINUE\_HEIGHT}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{BOX\_CONTINUE\_HEIGHT}{BOX\_CONTINUE\_HEIGHT}}
+{\footnotesize\ttfamily \#define BOX\+\_\+\+CONTINUE\+\_\+\+HEIGHT~80}
+
+\Hypertarget{ui_8h_a0235525864c218aa831e897780bc09f9}\label{ui_8h_a0235525864c218aa831e897780bc09f9} 
+\index{ui.h@{ui.h}!BOX\_CONTINUE\_WIDTH@{BOX\_CONTINUE\_WIDTH}}
+\index{BOX\_CONTINUE\_WIDTH@{BOX\_CONTINUE\_WIDTH}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{BOX\_CONTINUE\_WIDTH}{BOX\_CONTINUE\_WIDTH}}
+{\footnotesize\ttfamily \#define BOX\+\_\+\+CONTINUE\+\_\+\+WIDTH~300}
+
+\Hypertarget{ui_8h_a8025e8f4105bdedda73409b047474d3c}\label{ui_8h_a8025e8f4105bdedda73409b047474d3c} 
+\index{ui.h@{ui.h}!BOX\_NORMAL\_HEIGHT@{BOX\_NORMAL\_HEIGHT}}
+\index{BOX\_NORMAL\_HEIGHT@{BOX\_NORMAL\_HEIGHT}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{BOX\_NORMAL\_HEIGHT}{BOX\_NORMAL\_HEIGHT}}
+{\footnotesize\ttfamily \#define BOX\+\_\+\+NORMAL\+\_\+\+HEIGHT~70}
+
+\Hypertarget{ui_8h_ae66b7cf0ee53ddf898aaf37f3d0e5d8c}\label{ui_8h_ae66b7cf0ee53ddf898aaf37f3d0e5d8c} 
+\index{ui.h@{ui.h}!BOX\_NORMAL\_WIDTH@{BOX\_NORMAL\_WIDTH}}
+\index{BOX\_NORMAL\_WIDTH@{BOX\_NORMAL\_WIDTH}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{BOX\_NORMAL\_WIDTH}{BOX\_NORMAL\_WIDTH}}
+{\footnotesize\ttfamily \#define BOX\+\_\+\+NORMAL\+\_\+\+WIDTH~320}
+
+\Hypertarget{ui_8h_aa0d953e9b0a7c3d20af9de10618d958b}\label{ui_8h_aa0d953e9b0a7c3d20af9de10618d958b} 
+\index{ui.h@{ui.h}!BUTTON\_SIZE\_HEIGHT@{BUTTON\_SIZE\_HEIGHT}}
+\index{BUTTON\_SIZE\_HEIGHT@{BUTTON\_SIZE\_HEIGHT}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{BUTTON\_SIZE\_HEIGHT}{BUTTON\_SIZE\_HEIGHT}}
+{\footnotesize\ttfamily \#define BUTTON\+\_\+\+SIZE\+\_\+\+HEIGHT~40}
+
+\Hypertarget{ui_8h_a292ae448a7ffa54e0ff3c8f4bbcafcab}\label{ui_8h_a292ae448a7ffa54e0ff3c8f4bbcafcab} 
+\index{ui.h@{ui.h}!BUTTON\_SIZE\_WIDTH@{BUTTON\_SIZE\_WIDTH}}
+\index{BUTTON\_SIZE\_WIDTH@{BUTTON\_SIZE\_WIDTH}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{BUTTON\_SIZE\_WIDTH}{BUTTON\_SIZE\_WIDTH}}
+{\footnotesize\ttfamily \#define BUTTON\+\_\+\+SIZE\+\_\+\+WIDTH~59}
+
+\Hypertarget{ui_8h_ae138b2e443649ca9546c99e80957faac}\label{ui_8h_ae138b2e443649ca9546c99e80957faac} 
+\index{ui.h@{ui.h}!BYTES\_PER\_PIXEL@{BYTES\_PER\_PIXEL}}
+\index{BYTES\_PER\_PIXEL@{BYTES\_PER\_PIXEL}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{BYTES\_PER\_PIXEL}{BYTES\_PER\_PIXEL}}
+{\footnotesize\ttfamily \#define BYTES\+\_\+\+PER\+\_\+\+PIXEL~4}
+
+\Hypertarget{ui_8h_aef6d16a35b64db72cae8d839d5f3e0e3}\label{ui_8h_aef6d16a35b64db72cae8d839d5f3e0e3} 
+\index{ui.h@{ui.h}!CAMERA\_FLIP\_BUTTON\_HEIGHT@{CAMERA\_FLIP\_BUTTON\_HEIGHT}}
+\index{CAMERA\_FLIP\_BUTTON\_HEIGHT@{CAMERA\_FLIP\_BUTTON\_HEIGHT}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{CAMERA\_FLIP\_BUTTON\_HEIGHT}{CAMERA\_FLIP\_BUTTON\_HEIGHT}}
+{\footnotesize\ttfamily \#define CAMERA\+\_\+\+FLIP\+\_\+\+BUTTON\+\_\+\+HEIGHT~57}
+
+\Hypertarget{ui_8h_a330d5996f10eea1b10e3d7d8f0fed4a3}\label{ui_8h_a330d5996f10eea1b10e3d7d8f0fed4a3} 
+\index{ui.h@{ui.h}!CAMERA\_FLIP\_BUTTON\_WIDTH@{CAMERA\_FLIP\_BUTTON\_WIDTH}}
+\index{CAMERA\_FLIP\_BUTTON\_WIDTH@{CAMERA\_FLIP\_BUTTON\_WIDTH}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{CAMERA\_FLIP\_BUTTON\_WIDTH}{CAMERA\_FLIP\_BUTTON\_WIDTH}}
+{\footnotesize\ttfamily \#define CAMERA\+\_\+\+FLIP\+\_\+\+BUTTON\+\_\+\+WIDTH~482}
+
+\Hypertarget{ui_8h_a169a6668c530831e1c61f38363dc52a7}\label{ui_8h_a169a6668c530831e1c61f38363dc52a7} 
+\index{ui.h@{ui.h}!CAMERA\_FLIP\_BUTTON\_X@{CAMERA\_FLIP\_BUTTON\_X}}
+\index{CAMERA\_FLIP\_BUTTON\_X@{CAMERA\_FLIP\_BUTTON\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{CAMERA\_FLIP\_BUTTON\_X}{CAMERA\_FLIP\_BUTTON\_X}}
+{\footnotesize\ttfamily \#define CAMERA\+\_\+\+FLIP\+\_\+\+BUTTON\+\_\+X~280}
+
+\Hypertarget{ui_8h_a8b3d2a1e6bfde8aecb54d7ec41ed6cc0}\label{ui_8h_a8b3d2a1e6bfde8aecb54d7ec41ed6cc0} 
+\index{ui.h@{ui.h}!CAMERA\_FLIP\_BUTTON\_Y@{CAMERA\_FLIP\_BUTTON\_Y}}
+\index{CAMERA\_FLIP\_BUTTON\_Y@{CAMERA\_FLIP\_BUTTON\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{CAMERA\_FLIP\_BUTTON\_Y}{CAMERA\_FLIP\_BUTTON\_Y}}
+{\footnotesize\ttfamily \#define CAMERA\+\_\+\+FLIP\+\_\+\+BUTTON\+\_\+Y~780}
+
+\Hypertarget{ui_8h_a4756e0c0b1a88e20f7e876295fc9e74b}\label{ui_8h_a4756e0c0b1a88e20f7e876295fc9e74b} 
+\index{ui.h@{ui.h}!CAMERA\_MAX\_OFFSET@{CAMERA\_MAX\_OFFSET}}
+\index{CAMERA\_MAX\_OFFSET@{CAMERA\_MAX\_OFFSET}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{CAMERA\_MAX\_OFFSET}{CAMERA\_MAX\_OFFSET}}
+{\footnotesize\ttfamily \#define CAMERA\+\_\+\+MAX\+\_\+\+OFFSET~150}
+
+\Hypertarget{ui_8h_af6b39899e9ca6943e0b2788d68431b2d}\label{ui_8h_af6b39899e9ca6943e0b2788d68431b2d} 
+\index{ui.h@{ui.h}!CAMERA\_MOVE\_VELOCITY@{CAMERA\_MOVE\_VELOCITY}}
+\index{CAMERA\_MOVE\_VELOCITY@{CAMERA\_MOVE\_VELOCITY}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{CAMERA\_MOVE\_VELOCITY}{CAMERA\_MOVE\_VELOCITY}}
+{\footnotesize\ttfamily \#define CAMERA\+\_\+\+MOVE\+\_\+\+VELOCITY~(int) (2 \texorpdfstring{$\ast$}{*} 60.\+0f / \mbox{\hyperlink{game__constants_8h_ac92ca5ab87034a348decad7ee8d4bd1b}{FPS}})}
+
+\Hypertarget{ui_8h_a2744be813b507c728b4bd66248c8990f}\label{ui_8h_a2744be813b507c728b4bd66248c8990f} 
+\index{ui.h@{ui.h}!CAMERA\_MOVEMENT\_WAIT\_TIME@{CAMERA\_MOVEMENT\_WAIT\_TIME}}
+\index{CAMERA\_MOVEMENT\_WAIT\_TIME@{CAMERA\_MOVEMENT\_WAIT\_TIME}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{CAMERA\_MOVEMENT\_WAIT\_TIME}{CAMERA\_MOVEMENT\_WAIT\_TIME}}
+{\footnotesize\ttfamily \#define CAMERA\+\_\+\+MOVEMENT\+\_\+\+WAIT\+\_\+\+TIME~1 \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game__constants_8h_ac92ca5ab87034a348decad7ee8d4bd1b}{FPS}}}
+
+\Hypertarget{ui_8h_ac93e04aefb9b0183bb508f21f67e44e4}\label{ui_8h_ac93e04aefb9b0183bb508f21f67e44e4} 
+\index{ui.h@{ui.h}!CENTER\_BACKGROUND\_OFFSET@{CENTER\_BACKGROUND\_OFFSET}}
+\index{CENTER\_BACKGROUND\_OFFSET@{CENTER\_BACKGROUND\_OFFSET}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{CENTER\_BACKGROUND\_OFFSET}{CENTER\_BACKGROUND\_OFFSET}}
+{\footnotesize\ttfamily \#define CENTER\+\_\+\+BACKGROUND\+\_\+\+OFFSET~-\/150}
+
+\Hypertarget{ui_8h_a28c7679900a2fb1538c9e2c31161cf9d}\label{ui_8h_a28c7679900a2fb1538c9e2c31161cf9d} 
+\index{ui.h@{ui.h}!CENTER\_CAMERA\_OFFSET@{CENTER\_CAMERA\_OFFSET}}
+\index{CENTER\_CAMERA\_OFFSET@{CENTER\_CAMERA\_OFFSET}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{CENTER\_CAMERA\_OFFSET}{CENTER\_CAMERA\_OFFSET}}
+{\footnotesize\ttfamily \#define CENTER\+\_\+\+CAMERA\+\_\+\+OFFSET~-\/150}
+
+\Hypertarget{ui_8h_ad55a19a3b34be9f6b6ee0d398b71246c}\label{ui_8h_ad55a19a3b34be9f6b6ee0d398b71246c} 
+\index{ui.h@{ui.h}!CHICA\_ID\_OFFSET\_Y@{CHICA\_ID\_OFFSET\_Y}}
+\index{CHICA\_ID\_OFFSET\_Y@{CHICA\_ID\_OFFSET\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{CHICA\_ID\_OFFSET\_Y}{CHICA\_ID\_OFFSET\_Y}}
+{\footnotesize\ttfamily \#define CHICA\+\_\+\+ID\+\_\+\+OFFSET\+\_\+Y~49}
+
+\Hypertarget{ui_8h_a6edfb3f4cbc851e85249c1d7c69add7d}\label{ui_8h_a6edfb3f4cbc851e85249c1d7c69add7d} 
+\index{ui.h@{ui.h}!CONTINUE\_SEL\_X@{CONTINUE\_SEL\_X}}
+\index{CONTINUE\_SEL\_X@{CONTINUE\_SEL\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{CONTINUE\_SEL\_X}{CONTINUE\_SEL\_X}}
+{\footnotesize\ttfamily \#define CONTINUE\+\_\+\+SEL\+\_\+X~73}
+
+\Hypertarget{ui_8h_a62acd9dbc120754b9e597190bb97088d}\label{ui_8h_a62acd9dbc120754b9e597190bb97088d} 
+\index{ui.h@{ui.h}!CONTINUE\_SEL\_Y@{CONTINUE\_SEL\_Y}}
+\index{CONTINUE\_SEL\_Y@{CONTINUE\_SEL\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{CONTINUE\_SEL\_Y}{CONTINUE\_SEL\_Y}}
+{\footnotesize\ttfamily \#define CONTINUE\+\_\+\+SEL\+\_\+Y~482}
+
+\Hypertarget{ui_8h_a65376fcb1878b7ea394b58f4c05c41d8}\label{ui_8h_a65376fcb1878b7ea394b58f4c05c41d8} 
+\index{ui.h@{ui.h}!CONTINUE\_X@{CONTINUE\_X}}
+\index{CONTINUE\_X@{CONTINUE\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{CONTINUE\_X}{CONTINUE\_X}}
+{\footnotesize\ttfamily \#define CONTINUE\+\_\+X~148}
+
+\Hypertarget{ui_8h_afea09164eafdc07956fe18922de344d2}\label{ui_8h_afea09164eafdc07956fe18922de344d2} 
+\index{ui.h@{ui.h}!CONTINUE\_Y@{CONTINUE\_Y}}
+\index{CONTINUE\_Y@{CONTINUE\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{CONTINUE\_Y}{CONTINUE\_Y}}
+{\footnotesize\ttfamily \#define CONTINUE\+\_\+Y~485}
+
+\Hypertarget{ui_8h_a0db21afe5d883dd260292bcef5c26f87}\label{ui_8h_a0db21afe5d883dd260292bcef5c26f87} 
+\index{ui.h@{ui.h}!EXIT\_GAME\_SEL\_X@{EXIT\_GAME\_SEL\_X}}
+\index{EXIT\_GAME\_SEL\_X@{EXIT\_GAME\_SEL\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{EXIT\_GAME\_SEL\_X}{EXIT\_GAME\_SEL\_X}}
+{\footnotesize\ttfamily \#define EXIT\+\_\+\+GAME\+\_\+\+SEL\+\_\+X~90}
+
+\Hypertarget{ui_8h_a035476a127fac3af978d428add754ff9}\label{ui_8h_a035476a127fac3af978d428add754ff9} 
+\index{ui.h@{ui.h}!EXIT\_GAME\_SEL\_Y@{EXIT\_GAME\_SEL\_Y}}
+\index{EXIT\_GAME\_SEL\_Y@{EXIT\_GAME\_SEL\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{EXIT\_GAME\_SEL\_Y}{EXIT\_GAME\_SEL\_Y}}
+{\footnotesize\ttfamily \#define EXIT\+\_\+\+GAME\+\_\+\+SEL\+\_\+Y~588}
+
+\Hypertarget{ui_8h_aba5f1de476ddc7d445a36e0cd31a9e88}\label{ui_8h_aba5f1de476ddc7d445a36e0cd31a9e88} 
+\index{ui.h@{ui.h}!EXIT\_GAME\_X@{EXIT\_GAME\_X}}
+\index{EXIT\_GAME\_X@{EXIT\_GAME\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{EXIT\_GAME\_X}{EXIT\_GAME\_X}}
+{\footnotesize\ttfamily \#define EXIT\+\_\+\+GAME\+\_\+X~153}
+
+\Hypertarget{ui_8h_ab89b7742146415488c673cce8953bf7e}\label{ui_8h_ab89b7742146415488c673cce8953bf7e} 
+\index{ui.h@{ui.h}!EXIT\_GAME\_Y@{EXIT\_GAME\_Y}}
+\index{EXIT\_GAME\_Y@{EXIT\_GAME\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{EXIT\_GAME\_Y}{EXIT\_GAME\_Y}}
+{\footnotesize\ttfamily \#define EXIT\+\_\+\+GAME\+\_\+Y~588}
+
+\Hypertarget{ui_8h_aff471dbd4f8cc32ee4d4cc305e382b54}\label{ui_8h_aff471dbd4f8cc32ee4d4cc305e382b54} 
+\index{ui.h@{ui.h}!FOXY\_ID\_OFFSET\_Y@{FOXY\_ID\_OFFSET\_Y}}
+\index{FOXY\_ID\_OFFSET\_Y@{FOXY\_ID\_OFFSET\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{FOXY\_ID\_OFFSET\_Y}{FOXY\_ID\_OFFSET\_Y}}
+{\footnotesize\ttfamily \#define FOXY\+\_\+\+ID\+\_\+\+OFFSET\+\_\+Y~67}
+
+\Hypertarget{ui_8h_a11907a08e0185120f9ff834028b69478}\label{ui_8h_a11907a08e0185120f9ff834028b69478} 
+\index{ui.h@{ui.h}!FREDDY\_ID\_OFFSET\_Y@{FREDDY\_ID\_OFFSET\_Y}}
+\index{FREDDY\_ID\_OFFSET\_Y@{FREDDY\_ID\_OFFSET\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{FREDDY\_ID\_OFFSET\_Y}{FREDDY\_ID\_OFFSET\_Y}}
+{\footnotesize\ttfamily \#define FREDDY\+\_\+\+ID\+\_\+\+OFFSET\+\_\+Y~12}
+
+\Hypertarget{ui_8h_aa83d0a6c543333865121232bc947941e}\label{ui_8h_aa83d0a6c543333865121232bc947941e} 
+\index{ui.h@{ui.h}!GAME\_TITLE\_X@{GAME\_TITLE\_X}}
+\index{GAME\_TITLE\_X@{GAME\_TITLE\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{GAME\_TITLE\_X}{GAME\_TITLE\_X}}
+{\footnotesize\ttfamily \#define GAME\+\_\+\+TITLE\+\_\+X~86}
+
+\Hypertarget{ui_8h_abe7e883fa1430703e912b6bcf3dc1efc}\label{ui_8h_abe7e883fa1430703e912b6bcf3dc1efc} 
+\index{ui.h@{ui.h}!GAME\_TITLE\_Y@{GAME\_TITLE\_Y}}
+\index{GAME\_TITLE\_Y@{GAME\_TITLE\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{GAME\_TITLE\_Y}{GAME\_TITLE\_Y}}
+{\footnotesize\ttfamily \#define GAME\+\_\+\+TITLE\+\_\+Y~117}
+
+\Hypertarget{ui_8h_aaa648bc819c9a5de25ffac2794e29a80}\label{ui_8h_aaa648bc819c9a5de25ffac2794e29a80} 
+\index{ui.h@{ui.h}!I\_DIGIT\_POWER\_X@{I\_DIGIT\_POWER\_X}}
+\index{I\_DIGIT\_POWER\_X@{I\_DIGIT\_POWER\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{I\_DIGIT\_POWER\_X}{I\_DIGIT\_POWER\_X}}
+{\footnotesize\ttfamily \#define I\+\_\+\+DIGIT\+\_\+\+POWER\+\_\+X~213}
+
+\Hypertarget{ui_8h_aaacd41772f0006299051565d66d49006}\label{ui_8h_aaacd41772f0006299051565d66d49006} 
+\index{ui.h@{ui.h}!I\_DIGIT\_POWER\_Y@{I\_DIGIT\_POWER\_Y}}
+\index{I\_DIGIT\_POWER\_Y@{I\_DIGIT\_POWER\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{I\_DIGIT\_POWER\_Y}{I\_DIGIT\_POWER\_Y}}
+{\footnotesize\ttfamily \#define I\+\_\+\+DIGIT\+\_\+\+POWER\+\_\+Y~760}
+
+\Hypertarget{ui_8h_ac55d5c27d75e9bb33e9257304d0e975e}\label{ui_8h_ac55d5c27d75e9bb33e9257304d0e975e} 
+\index{ui.h@{ui.h}!ID\_OFFSET\_X@{ID\_OFFSET\_X}}
+\index{ID\_OFFSET\_X@{ID\_OFFSET\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{ID\_OFFSET\_X}{ID\_OFFSET\_X}}
+{\footnotesize\ttfamily \#define ID\+\_\+\+OFFSET\+\_\+X~13}
+
+\Hypertarget{ui_8h_a40f57f2d686933a190b3616fbac79651}\label{ui_8h_a40f57f2d686933a190b3616fbac79651} 
+\index{ui.h@{ui.h}!II\_DIGIT\_POWER\_X@{II\_DIGIT\_POWER\_X}}
+\index{II\_DIGIT\_POWER\_X@{II\_DIGIT\_POWER\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{II\_DIGIT\_POWER\_X}{II\_DIGIT\_POWER\_X}}
+{\footnotesize\ttfamily \#define II\+\_\+\+DIGIT\+\_\+\+POWER\+\_\+X~233}
+
+\Hypertarget{ui_8h_a554e06acf8e18cc32a3f4dd7f22fc927}\label{ui_8h_a554e06acf8e18cc32a3f4dd7f22fc927} 
+\index{ui.h@{ui.h}!II\_DIGIT\_POWER\_Y@{II\_DIGIT\_POWER\_Y}}
+\index{II\_DIGIT\_POWER\_Y@{II\_DIGIT\_POWER\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{II\_DIGIT\_POWER\_Y}{II\_DIGIT\_POWER\_Y}}
+{\footnotesize\ttfamily \#define II\+\_\+\+DIGIT\+\_\+\+POWER\+\_\+Y~760}
+
+\Hypertarget{ui_8h_ab3fc1052b4d55e8542f5cdcdfa831db8}\label{ui_8h_ab3fc1052b4d55e8542f5cdcdfa831db8} 
+\index{ui.h@{ui.h}!INDICATOR\_USAGE\_X@{INDICATOR\_USAGE\_X}}
+\index{INDICATOR\_USAGE\_X@{INDICATOR\_USAGE\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{INDICATOR\_USAGE\_X}{INDICATOR\_USAGE\_X}}
+{\footnotesize\ttfamily \#define INDICATOR\+\_\+\+USAGE\+\_\+X~150}
+
+\Hypertarget{ui_8h_afbf655435bfa98621b4c90c9a482c447}\label{ui_8h_afbf655435bfa98621b4c90c9a482c447} 
+\index{ui.h@{ui.h}!INDICATOR\_USAGE\_Y@{INDICATOR\_USAGE\_Y}}
+\index{INDICATOR\_USAGE\_Y@{INDICATOR\_USAGE\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{INDICATOR\_USAGE\_Y}{INDICATOR\_USAGE\_Y}}
+{\footnotesize\ttfamily \#define INDICATOR\+\_\+\+USAGE\+\_\+Y~799}
+
+\Hypertarget{ui_8h_ae80d905b73e1d085aac636db359fa2fd}\label{ui_8h_ae80d905b73e1d085aac636db359fa2fd} 
+\index{ui.h@{ui.h}!MAP\_CAM\_1A\_X@{MAP\_CAM\_1A\_X}}
+\index{MAP\_CAM\_1A\_X@{MAP\_CAM\_1A\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_1A\_X}{MAP\_CAM\_1A\_X}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+1\+A\+\_\+X~410}
+
+\Hypertarget{ui_8h_a67df82ef8a3bf2122358cb6fe698b16e}\label{ui_8h_a67df82ef8a3bf2122358cb6fe698b16e} 
+\index{ui.h@{ui.h}!MAP\_CAM\_1A\_Y@{MAP\_CAM\_1A\_Y}}
+\index{MAP\_CAM\_1A\_Y@{MAP\_CAM\_1A\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_1A\_Y}{MAP\_CAM\_1A\_Y}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+1\+A\+\_\+Y~58}
+
+\Hypertarget{ui_8h_a8b686f863b7d12a6f9e466573298b6ef}\label{ui_8h_a8b686f863b7d12a6f9e466573298b6ef} 
+\index{ui.h@{ui.h}!MAP\_CAM\_1B\_X@{MAP\_CAM\_1B\_X}}
+\index{MAP\_CAM\_1B\_X@{MAP\_CAM\_1B\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_1B\_X}{MAP\_CAM\_1B\_X}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+1\+B\+\_\+X~360}
+
+\Hypertarget{ui_8h_a9e3e7102949755dad102b58d26f697f2}\label{ui_8h_a9e3e7102949755dad102b58d26f697f2} 
+\index{ui.h@{ui.h}!MAP\_CAM\_1B\_Y@{MAP\_CAM\_1B\_Y}}
+\index{MAP\_CAM\_1B\_Y@{MAP\_CAM\_1B\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_1B\_Y}{MAP\_CAM\_1B\_Y}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+1\+B\+\_\+Y~140}
+
+\Hypertarget{ui_8h_a9921a0fd6479aa3848a2055c07b8237e}\label{ui_8h_a9921a0fd6479aa3848a2055c07b8237e} 
+\index{ui.h@{ui.h}!MAP\_CAM\_1C\_X@{MAP\_CAM\_1C\_X}}
+\index{MAP\_CAM\_1C\_X@{MAP\_CAM\_1C\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_1C\_X}{MAP\_CAM\_1C\_X}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+1\+C\+\_\+X~180}
+
+\Hypertarget{ui_8h_a4544ae5019b66cb5671b9a9ccc505088}\label{ui_8h_a4544ae5019b66cb5671b9a9ccc505088} 
+\index{ui.h@{ui.h}!MAP\_CAM\_1C\_Y@{MAP\_CAM\_1C\_Y}}
+\index{MAP\_CAM\_1C\_Y@{MAP\_CAM\_1C\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_1C\_Y}{MAP\_CAM\_1C\_Y}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+1\+C\+\_\+Y~319}
+
+\Hypertarget{ui_8h_ad67dbc2b7074f401f2388a0017bea492}\label{ui_8h_ad67dbc2b7074f401f2388a0017bea492} 
+\index{ui.h@{ui.h}!MAP\_CAM\_2A\_X@{MAP\_CAM\_2A\_X}}
+\index{MAP\_CAM\_2A\_X@{MAP\_CAM\_2A\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_2A\_X}{MAP\_CAM\_2A\_X}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+2\+A\+\_\+X~370}
+
+\Hypertarget{ui_8h_a731f026c368ed418981fa35620793112}\label{ui_8h_a731f026c368ed418981fa35620793112} 
+\index{ui.h@{ui.h}!MAP\_CAM\_2A\_Y@{MAP\_CAM\_2A\_Y}}
+\index{MAP\_CAM\_2A\_Y@{MAP\_CAM\_2A\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_2A\_Y}{MAP\_CAM\_2A\_Y}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+2\+A\+\_\+Y~601}
+
+\Hypertarget{ui_8h_a269efe724d86213881b7b85aa3a8e4e9}\label{ui_8h_a269efe724d86213881b7b85aa3a8e4e9} 
+\index{ui.h@{ui.h}!MAP\_CAM\_2B\_X@{MAP\_CAM\_2B\_X}}
+\index{MAP\_CAM\_2B\_X@{MAP\_CAM\_2B\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_2B\_X}{MAP\_CAM\_2B\_X}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+2\+B\+\_\+X~370}
+
+\Hypertarget{ui_8h_a63f2c7adf8111f40ed3597990229d72d}\label{ui_8h_a63f2c7adf8111f40ed3597990229d72d} 
+\index{ui.h@{ui.h}!MAP\_CAM\_2B\_Y@{MAP\_CAM\_2B\_Y}}
+\index{MAP\_CAM\_2B\_Y@{MAP\_CAM\_2B\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_2B\_Y}{MAP\_CAM\_2B\_Y}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+2\+B\+\_\+Y~702}
+
+\Hypertarget{ui_8h_a243f1086f39e48343f707eeeb5144738}\label{ui_8h_a243f1086f39e48343f707eeeb5144738} 
+\index{ui.h@{ui.h}!MAP\_CAM\_3\_X@{MAP\_CAM\_3\_X}}
+\index{MAP\_CAM\_3\_X@{MAP\_CAM\_3\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_3\_X}{MAP\_CAM\_3\_X}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+3\+\_\+X~250}
+
+\Hypertarget{ui_8h_af001064543528e4ccc673399a0ad91f7}\label{ui_8h_af001064543528e4ccc673399a0ad91f7} 
+\index{ui.h@{ui.h}!MAP\_CAM\_3\_Y@{MAP\_CAM\_3\_Y}}
+\index{MAP\_CAM\_3\_Y@{MAP\_CAM\_3\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_3\_Y}{MAP\_CAM\_3\_Y}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+3\+\_\+Y~548}
+
+\Hypertarget{ui_8h_a75ef8510942017e28144b8140d611783}\label{ui_8h_a75ef8510942017e28144b8140d611783} 
+\index{ui.h@{ui.h}!MAP\_CAM\_4A\_X@{MAP\_CAM\_4A\_X}}
+\index{MAP\_CAM\_4A\_X@{MAP\_CAM\_4A\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_4A\_X}{MAP\_CAM\_4A\_X}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+4\+A\+\_\+X~605}
+
+\Hypertarget{ui_8h_abbc664e2db7b91831d4516075498babc}\label{ui_8h_abbc664e2db7b91831d4516075498babc} 
+\index{ui.h@{ui.h}!MAP\_CAM\_4A\_Y@{MAP\_CAM\_4A\_Y}}
+\index{MAP\_CAM\_4A\_Y@{MAP\_CAM\_4A\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_4A\_Y}{MAP\_CAM\_4A\_Y}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+4\+A\+\_\+Y~601}
+
+\Hypertarget{ui_8h_aecbe27addb983558481d9e19da496771}\label{ui_8h_aecbe27addb983558481d9e19da496771} 
+\index{ui.h@{ui.h}!MAP\_CAM\_4B\_X@{MAP\_CAM\_4B\_X}}
+\index{MAP\_CAM\_4B\_X@{MAP\_CAM\_4B\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_4B\_X}{MAP\_CAM\_4B\_X}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+4\+B\+\_\+X~605}
+
+\Hypertarget{ui_8h_afff22d7ba5595ab2243793082754f83e}\label{ui_8h_afff22d7ba5595ab2243793082754f83e} 
+\index{ui.h@{ui.h}!MAP\_CAM\_4B\_Y@{MAP\_CAM\_4B\_Y}}
+\index{MAP\_CAM\_4B\_Y@{MAP\_CAM\_4B\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_4B\_Y}{MAP\_CAM\_4B\_Y}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+4\+B\+\_\+Y~702}
+
+\Hypertarget{ui_8h_a61ea7f2897c7db29f19f0ce7fd2e1bd0}\label{ui_8h_a61ea7f2897c7db29f19f0ce7fd2e1bd0} 
+\index{ui.h@{ui.h}!MAP\_CAM\_5\_X@{MAP\_CAM\_5\_X}}
+\index{MAP\_CAM\_5\_X@{MAP\_CAM\_5\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_5\_X}{MAP\_CAM\_5\_X}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+5\+\_\+X~150}
+
+\Hypertarget{ui_8h_ac631d25706dccf37056202c3b0232dfe}\label{ui_8h_ac631d25706dccf37056202c3b0232dfe} 
+\index{ui.h@{ui.h}!MAP\_CAM\_5\_Y@{MAP\_CAM\_5\_Y}}
+\index{MAP\_CAM\_5\_Y@{MAP\_CAM\_5\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_5\_Y}{MAP\_CAM\_5\_Y}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+5\+\_\+Y~189}
+
+\Hypertarget{ui_8h_a98cbc4854e8ecb736f09ffebd8bab3fb}\label{ui_8h_a98cbc4854e8ecb736f09ffebd8bab3fb} 
+\index{ui.h@{ui.h}!MAP\_CAM\_6\_X@{MAP\_CAM\_6\_X}}
+\index{MAP\_CAM\_6\_X@{MAP\_CAM\_6\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_6\_X}{MAP\_CAM\_6\_X}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+6\+\_\+X~833}
+
+\Hypertarget{ui_8h_a594545c0489c673cdc7f55653adf7043}\label{ui_8h_a594545c0489c673cdc7f55653adf7043} 
+\index{ui.h@{ui.h}!MAP\_CAM\_6\_Y@{MAP\_CAM\_6\_Y}}
+\index{MAP\_CAM\_6\_Y@{MAP\_CAM\_6\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_6\_Y}{MAP\_CAM\_6\_Y}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+6\+\_\+Y~520}
+
+\Hypertarget{ui_8h_a2ed1309334d84bcd1c85f9782d87d563}\label{ui_8h_a2ed1309334d84bcd1c85f9782d87d563} 
+\index{ui.h@{ui.h}!MAP\_CAM\_7\_X@{MAP\_CAM\_7\_X}}
+\index{MAP\_CAM\_7\_X@{MAP\_CAM\_7\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_7\_X}{MAP\_CAM\_7\_X}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+7\+\_\+X~835}
+
+\Hypertarget{ui_8h_a202a8257e241694825853ca12649b100}\label{ui_8h_a202a8257e241694825853ca12649b100} 
+\index{ui.h@{ui.h}!MAP\_CAM\_7\_Y@{MAP\_CAM\_7\_Y}}
+\index{MAP\_CAM\_7\_Y@{MAP\_CAM\_7\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_CAM\_7\_Y}{MAP\_CAM\_7\_Y}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+CAM\+\_\+7\+\_\+Y~199}
+
+\Hypertarget{ui_8h_aff85121eed3d3271ab2ca7b914ea500b}\label{ui_8h_aff85121eed3d3271ab2ca7b914ea500b} 
+\index{ui.h@{ui.h}!MAP\_LAYOUT\_X@{MAP\_LAYOUT\_X}}
+\index{MAP\_LAYOUT\_X@{MAP\_LAYOUT\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_LAYOUT\_X}{MAP\_LAYOUT\_X}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+LAYOUT\+\_\+X~736}
+
+\Hypertarget{ui_8h_aefbaa1a7b3784c91bd42d520aef87049}\label{ui_8h_aefbaa1a7b3784c91bd42d520aef87049} 
+\index{ui.h@{ui.h}!MAP\_LAYOUT\_Y@{MAP\_LAYOUT\_Y}}
+\index{MAP\_LAYOUT\_Y@{MAP\_LAYOUT\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_LAYOUT\_Y}{MAP\_LAYOUT\_Y}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+LAYOUT\+\_\+Y~488}
+
+\Hypertarget{ui_8h_ace2157e7a88b9c546cca1bf1c12d600d}\label{ui_8h_ace2157e7a88b9c546cca1bf1c12d600d} 
+\index{ui.h@{ui.h}!MAP\_LEFT\_DOOR\_X@{MAP\_LEFT\_DOOR\_X}}
+\index{MAP\_LEFT\_DOOR\_X@{MAP\_LEFT\_DOOR\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_LEFT\_DOOR\_X}{MAP\_LEFT\_DOOR\_X}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+LEFT\+\_\+\+DOOR\+\_\+X~463}
+
+\Hypertarget{ui_8h_a42e2daeb9f442347eb66164cf7954e1f}\label{ui_8h_a42e2daeb9f442347eb66164cf7954e1f} 
+\index{ui.h@{ui.h}!MAP\_LEFT\_DOOR\_Y@{MAP\_LEFT\_DOOR\_Y}}
+\index{MAP\_LEFT\_DOOR\_Y@{MAP\_LEFT\_DOOR\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_LEFT\_DOOR\_Y}{MAP\_LEFT\_DOOR\_Y}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+LEFT\+\_\+\+DOOR\+\_\+Y~685}
+
+\Hypertarget{ui_8h_acc66a058578f15c7a7e4e94a512be34b}\label{ui_8h_acc66a058578f15c7a7e4e94a512be34b} 
+\index{ui.h@{ui.h}!MAP\_RIGHT\_DOOR\_X@{MAP\_RIGHT\_DOOR\_X}}
+\index{MAP\_RIGHT\_DOOR\_X@{MAP\_RIGHT\_DOOR\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_RIGHT\_DOOR\_X}{MAP\_RIGHT\_DOOR\_X}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+RIGHT\+\_\+\+DOOR\+\_\+X~570}
+
+\Hypertarget{ui_8h_a6716810fcca86a1e49322e9f029adb1d}\label{ui_8h_a6716810fcca86a1e49322e9f029adb1d} 
+\index{ui.h@{ui.h}!MAP\_RIGHT\_DOOR\_Y@{MAP\_RIGHT\_DOOR\_Y}}
+\index{MAP\_RIGHT\_DOOR\_Y@{MAP\_RIGHT\_DOOR\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{MAP\_RIGHT\_DOOR\_Y}{MAP\_RIGHT\_DOOR\_Y}}
+{\footnotesize\ttfamily \#define MAP\+\_\+\+RIGHT\+\_\+\+DOOR\+\_\+Y~702}
+
+\Hypertarget{ui_8h_a6a4132dd59f3c8595dce7ad97dd37ccc}\label{ui_8h_a6a4132dd59f3c8595dce7ad97dd37ccc} 
+\index{ui.h@{ui.h}!NEW\_GAME\_SEL\_X@{NEW\_GAME\_SEL\_X}}
+\index{NEW\_GAME\_SEL\_X@{NEW\_GAME\_SEL\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NEW\_GAME\_SEL\_X}{NEW\_GAME\_SEL\_X}}
+{\footnotesize\ttfamily \#define NEW\+\_\+\+GAME\+\_\+\+SEL\+\_\+X~75}
+
+\Hypertarget{ui_8h_aca523e9f2d0ba76b4926aa99d50352bd}\label{ui_8h_aca523e9f2d0ba76b4926aa99d50352bd} 
+\index{ui.h@{ui.h}!NEW\_GAME\_SEL\_Y@{NEW\_GAME\_SEL\_Y}}
+\index{NEW\_GAME\_SEL\_Y@{NEW\_GAME\_SEL\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NEW\_GAME\_SEL\_Y}{NEW\_GAME\_SEL\_Y}}
+{\footnotesize\ttfamily \#define NEW\+\_\+\+GAME\+\_\+\+SEL\+\_\+Y~407}
+
+\Hypertarget{ui_8h_ac8c4722ada5b54de50f5edc971bce3dd}\label{ui_8h_ac8c4722ada5b54de50f5edc971bce3dd} 
+\index{ui.h@{ui.h}!NEW\_GAME\_X@{NEW\_GAME\_X}}
+\index{NEW\_GAME\_X@{NEW\_GAME\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NEW\_GAME\_X}{NEW\_GAME\_X}}
+{\footnotesize\ttfamily \#define NEW\+\_\+\+GAME\+\_\+X~153}
+
+\Hypertarget{ui_8h_acad1110f9fe741ae2af5065c2dba932a}\label{ui_8h_acad1110f9fe741ae2af5065c2dba932a} 
+\index{ui.h@{ui.h}!NEW\_GAME\_Y@{NEW\_GAME\_Y}}
+\index{NEW\_GAME\_Y@{NEW\_GAME\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NEW\_GAME\_Y}{NEW\_GAME\_Y}}
+{\footnotesize\ttfamily \#define NEW\+\_\+\+GAME\+\_\+Y~405}
+
+\Hypertarget{ui_8h_a1144bfc0a76e5ea003ff243d0f6614c7}\label{ui_8h_a1144bfc0a76e5ea003ff243d0f6614c7} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_1A\_X@{NIGHT\_CAMERA\_1A\_X}}
+\index{NIGHT\_CAMERA\_1A\_X@{NIGHT\_CAMERA\_1A\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_1A\_X}{NIGHT\_CAMERA\_1A\_X}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+1\+A\+\_\+X~833}
+
+\Hypertarget{ui_8h_a2d470fc1ab8ee3f70d37fa4f8b35237c}\label{ui_8h_a2d470fc1ab8ee3f70d37fa4f8b35237c} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_1A\_Y@{NIGHT\_CAMERA\_1A\_Y}}
+\index{NIGHT\_CAMERA\_1A\_Y@{NIGHT\_CAMERA\_1A\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_1A\_Y}{NIGHT\_CAMERA\_1A\_Y}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+1\+A\+\_\+Y~477}
+
+\Hypertarget{ui_8h_a71883dbb11d7f55fac1cf4c9ed09b8db}\label{ui_8h_a71883dbb11d7f55fac1cf4c9ed09b8db} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_1B\_X@{NIGHT\_CAMERA\_1B\_X}}
+\index{NIGHT\_CAMERA\_1B\_X@{NIGHT\_CAMERA\_1B\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_1B\_X}{NIGHT\_CAMERA\_1B\_X}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+1\+B\+\_\+X~815}
+
+\Hypertarget{ui_8h_aed5e423557dd5bcbd23fde3c0cb97731}\label{ui_8h_aed5e423557dd5bcbd23fde3c0cb97731} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_1B\_Y@{NIGHT\_CAMERA\_1B\_Y}}
+\index{NIGHT\_CAMERA\_1B\_Y@{NIGHT\_CAMERA\_1B\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_1B\_Y}{NIGHT\_CAMERA\_1B\_Y}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+1\+B\+\_\+Y~528}
+
+\Hypertarget{ui_8h_a5ef53cd8b3391ab5765410e80d805bd0}\label{ui_8h_a5ef53cd8b3391ab5765410e80d805bd0} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_1C\_X@{NIGHT\_CAMERA\_1C\_X}}
+\index{NIGHT\_CAMERA\_1C\_X@{NIGHT\_CAMERA\_1C\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_1C\_X}{NIGHT\_CAMERA\_1C\_X}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+1\+C\+\_\+X~777}
+
+\Hypertarget{ui_8h_a3bf2e4ee336a4d4f8ab1824b8710f8af}\label{ui_8h_a3bf2e4ee336a4d4f8ab1824b8710f8af} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_1C\_Y@{NIGHT\_CAMERA\_1C\_Y}}
+\index{NIGHT\_CAMERA\_1C\_Y@{NIGHT\_CAMERA\_1C\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_1C\_Y}{NIGHT\_CAMERA\_1C\_Y}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+1\+C\+\_\+Y~608}
+
+\Hypertarget{ui_8h_ae9def114c5e415f745322b707ebc289a}\label{ui_8h_ae9def114c5e415f745322b707ebc289a} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_2A\_X@{NIGHT\_CAMERA\_2A\_X}}
+\index{NIGHT\_CAMERA\_2A\_X@{NIGHT\_CAMERA\_2A\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_2A\_X}{NIGHT\_CAMERA\_2A\_X}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+2\+A\+\_\+X~834}
+
+\Hypertarget{ui_8h_a82b69d568d81bfd41e7c4f5cb3461c58}\label{ui_8h_a82b69d568d81bfd41e7c4f5cb3461c58} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_2A\_Y@{NIGHT\_CAMERA\_2A\_Y}}
+\index{NIGHT\_CAMERA\_2A\_Y@{NIGHT\_CAMERA\_2A\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_2A\_Y}{NIGHT\_CAMERA\_2A\_Y}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+2\+A\+\_\+Y~725}
+
+\Hypertarget{ui_8h_aa22392edee22c2439473dd0b97e3713d}\label{ui_8h_aa22392edee22c2439473dd0b97e3713d} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_2B\_X@{NIGHT\_CAMERA\_2B\_X}}
+\index{NIGHT\_CAMERA\_2B\_X@{NIGHT\_CAMERA\_2B\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_2B\_X}{NIGHT\_CAMERA\_2B\_X}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+2\+B\+\_\+X~834}
+
+\Hypertarget{ui_8h_a5f17d7e29288c46748277a9c7d6f15ca}\label{ui_8h_a5f17d7e29288c46748277a9c7d6f15ca} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_2B\_Y@{NIGHT\_CAMERA\_2B\_Y}}
+\index{NIGHT\_CAMERA\_2B\_Y@{NIGHT\_CAMERA\_2B\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_2B\_Y}{NIGHT\_CAMERA\_2B\_Y}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+2\+B\+\_\+Y~769}
+
+\Hypertarget{ui_8h_a4dd0cd0a7b67385c010011e413ea643d}\label{ui_8h_a4dd0cd0a7b67385c010011e413ea643d} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_3\_X@{NIGHT\_CAMERA\_3\_X}}
+\index{NIGHT\_CAMERA\_3\_X@{NIGHT\_CAMERA\_3\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_3\_X}{NIGHT\_CAMERA\_3\_X}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+3\+\_\+X~748}
+
+\Hypertarget{ui_8h_aa1c1ff5904069cca7d3d02399d952aae}\label{ui_8h_aa1c1ff5904069cca7d3d02399d952aae} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_3\_Y@{NIGHT\_CAMERA\_3\_Y}}
+\index{NIGHT\_CAMERA\_3\_Y@{NIGHT\_CAMERA\_3\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_3\_Y}{NIGHT\_CAMERA\_3\_Y}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+3\+\_\+Y~702}
+
+\Hypertarget{ui_8h_ac5c3aae09f8b4618f51ae40ce8d8ba0f}\label{ui_8h_ac5c3aae09f8b4618f51ae40ce8d8ba0f} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_4A\_X@{NIGHT\_CAMERA\_4A\_X}}
+\index{NIGHT\_CAMERA\_4A\_X@{NIGHT\_CAMERA\_4A\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_4A\_X}{NIGHT\_CAMERA\_4A\_X}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+4\+A\+\_\+X~940}
+
+\Hypertarget{ui_8h_a05ddcd5230fe364b6f6f327e2746b59a}\label{ui_8h_a05ddcd5230fe364b6f6f327e2746b59a} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_4A\_Y@{NIGHT\_CAMERA\_4A\_Y}}
+\index{NIGHT\_CAMERA\_4A\_Y@{NIGHT\_CAMERA\_4A\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_4A\_Y}{NIGHT\_CAMERA\_4A\_Y}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+4\+A\+\_\+Y~725}
+
+\Hypertarget{ui_8h_a2296f45314f0c8736a0a7d782b33ea79}\label{ui_8h_a2296f45314f0c8736a0a7d782b33ea79} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_4B\_X@{NIGHT\_CAMERA\_4B\_X}}
+\index{NIGHT\_CAMERA\_4B\_X@{NIGHT\_CAMERA\_4B\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_4B\_X}{NIGHT\_CAMERA\_4B\_X}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+4\+B\+\_\+X~940}
+
+\Hypertarget{ui_8h_abca9369b50241750e47326684a760906}\label{ui_8h_abca9369b50241750e47326684a760906} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_4B\_Y@{NIGHT\_CAMERA\_4B\_Y}}
+\index{NIGHT\_CAMERA\_4B\_Y@{NIGHT\_CAMERA\_4B\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_4B\_Y}{NIGHT\_CAMERA\_4B\_Y}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+4\+B\+\_\+Y~769}
+
+\Hypertarget{ui_8h_abb8ae563cfa794dcdb31608bcd3e5486}\label{ui_8h_abb8ae563cfa794dcdb31608bcd3e5486} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_5\_X@{NIGHT\_CAMERA\_5\_X}}
+\index{NIGHT\_CAMERA\_5\_X@{NIGHT\_CAMERA\_5\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_5\_X}{NIGHT\_CAMERA\_5\_X}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+5\+\_\+X~709}
+
+\Hypertarget{ui_8h_aeb04b0089de2847820d63b46d076af8d}\label{ui_8h_aeb04b0089de2847820d63b46d076af8d} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_5\_Y@{NIGHT\_CAMERA\_5\_Y}}
+\index{NIGHT\_CAMERA\_5\_Y@{NIGHT\_CAMERA\_5\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_5\_Y}{NIGHT\_CAMERA\_5\_Y}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+5\+\_\+Y~550}
+
+\Hypertarget{ui_8h_af5a87a44b27f8e4b0032ff4d93b9618e}\label{ui_8h_af5a87a44b27f8e4b0032ff4d93b9618e} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_6\_X@{NIGHT\_CAMERA\_6\_X}}
+\index{NIGHT\_CAMERA\_6\_X@{NIGHT\_CAMERA\_6\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_6\_X}{NIGHT\_CAMERA\_6\_X}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+6\+\_\+X~1037}
+
+\Hypertarget{ui_8h_a6784b160b590ea80c254b0ea26be3aee}\label{ui_8h_a6784b160b590ea80c254b0ea26be3aee} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_6\_Y@{NIGHT\_CAMERA\_6\_Y}}
+\index{NIGHT\_CAMERA\_6\_Y@{NIGHT\_CAMERA\_6\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_6\_Y}{NIGHT\_CAMERA\_6\_Y}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+6\+\_\+Y~685}
+
+\Hypertarget{ui_8h_ae187ba6921822b6824df4bf578c6a828}\label{ui_8h_ae187ba6921822b6824df4bf578c6a828} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_7\_X@{NIGHT\_CAMERA\_7\_X}}
+\index{NIGHT\_CAMERA\_7\_X@{NIGHT\_CAMERA\_7\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_7\_X}{NIGHT\_CAMERA\_7\_X}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+7\+\_\+X~1048}
+
+\Hypertarget{ui_8h_a3c88d425d45d683ba1d18fc0109cf1f9}\label{ui_8h_a3c88d425d45d683ba1d18fc0109cf1f9} 
+\index{ui.h@{ui.h}!NIGHT\_CAMERA\_7\_Y@{NIGHT\_CAMERA\_7\_Y}}
+\index{NIGHT\_CAMERA\_7\_Y@{NIGHT\_CAMERA\_7\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_CAMERA\_7\_Y}{NIGHT\_CAMERA\_7\_Y}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+CAMERA\+\_\+7\+\_\+Y~556}
+
+\Hypertarget{ui_8h_aeb4793f42b71ae177860b44f067e44b9}\label{ui_8h_aeb4793f42b71ae177860b44f067e44b9} 
+\index{ui.h@{ui.h}!NIGHT\_COUNT\_TEXT\_X@{NIGHT\_COUNT\_TEXT\_X}}
+\index{NIGHT\_COUNT\_TEXT\_X@{NIGHT\_COUNT\_TEXT\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_COUNT\_TEXT\_X}{NIGHT\_COUNT\_TEXT\_X}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+COUNT\+\_\+\+TEXT\+\_\+X~980}
+
+\Hypertarget{ui_8h_a2cd1c32021e89943f058f491039571e3}\label{ui_8h_a2cd1c32021e89943f058f491039571e3} 
+\index{ui.h@{ui.h}!NIGHT\_COUNT\_TEXT\_Y@{NIGHT\_COUNT\_TEXT\_Y}}
+\index{NIGHT\_COUNT\_TEXT\_Y@{NIGHT\_COUNT\_TEXT\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_COUNT\_TEXT\_Y}{NIGHT\_COUNT\_TEXT\_Y}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+COUNT\+\_\+\+TEXT\+\_\+Y~101}
+
+\Hypertarget{ui_8h_aca25ea98665943c0daa4beba85a42ec1}\label{ui_8h_aca25ea98665943c0daa4beba85a42ec1} 
+\index{ui.h@{ui.h}!NIGHT\_HOURS\_TEXT\_X@{NIGHT\_HOURS\_TEXT\_X}}
+\index{NIGHT\_HOURS\_TEXT\_X@{NIGHT\_HOURS\_TEXT\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_HOURS\_TEXT\_X}{NIGHT\_HOURS\_TEXT\_X}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+HOURS\+\_\+\+TEXT\+\_\+X~967}
+
+\Hypertarget{ui_8h_a55dd32fdaa6dccabfb0240da9be39b04}\label{ui_8h_a55dd32fdaa6dccabfb0240da9be39b04} 
+\index{ui.h@{ui.h}!NIGHT\_HOURS\_TEXT\_Y@{NIGHT\_HOURS\_TEXT\_Y}}
+\index{NIGHT\_HOURS\_TEXT\_Y@{NIGHT\_HOURS\_TEXT\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_HOURS\_TEXT\_Y}{NIGHT\_HOURS\_TEXT\_Y}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+HOURS\+\_\+\+TEXT\+\_\+Y~53}
+
+\Hypertarget{ui_8h_a0388e069ccd739d933d5296e38856ef2}\label{ui_8h_a0388e069ccd739d933d5296e38856ef2} 
+\index{ui.h@{ui.h}!NIGHT\_TEXT\_POS@{NIGHT\_TEXT\_POS}}
+\index{NIGHT\_TEXT\_POS@{NIGHT\_TEXT\_POS}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_TEXT\_POS}{NIGHT\_TEXT\_POS}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+TEXT\+\_\+\+POS(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})~(x + 5), (y + 4)}
+
+\Hypertarget{ui_8h_a82e52b6b25e9707a1d4a401bd6a57c65}\label{ui_8h_a82e52b6b25e9707a1d4a401bd6a57c65} 
+\index{ui.h@{ui.h}!NIGHT\_TEXT\_X@{NIGHT\_TEXT\_X}}
+\index{NIGHT\_TEXT\_X@{NIGHT\_TEXT\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_TEXT\_X}{NIGHT\_TEXT\_X}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+TEXT\+\_\+X~280}
+
+\Hypertarget{ui_8h_a4d53e7ff2f27fc62e1576b77658046ec}\label{ui_8h_a4d53e7ff2f27fc62e1576b77658046ec} 
+\index{ui.h@{ui.h}!NIGHT\_TEXT\_Y@{NIGHT\_TEXT\_Y}}
+\index{NIGHT\_TEXT\_Y@{NIGHT\_TEXT\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{NIGHT\_TEXT\_Y}{NIGHT\_TEXT\_Y}}
+{\footnotesize\ttfamily \#define NIGHT\+\_\+\+TEXT\+\_\+Y~535}
+
+\Hypertarget{ui_8h_a0dd484dd1a84293c9795cb153f0c4942}\label{ui_8h_a0dd484dd1a84293c9795cb153f0c4942} 
+\index{ui.h@{ui.h}!PERCENTAGE\_SIGN\_X@{PERCENTAGE\_SIGN\_X}}
+\index{PERCENTAGE\_SIGN\_X@{PERCENTAGE\_SIGN\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{PERCENTAGE\_SIGN\_X}{PERCENTAGE\_SIGN\_X}}
+{\footnotesize\ttfamily \#define PERCENTAGE\+\_\+\+SIGN\+\_\+X~255}
+
+\Hypertarget{ui_8h_a883f10ddad094b076dabd733c1d68bd3}\label{ui_8h_a883f10ddad094b076dabd733c1d68bd3} 
+\index{ui.h@{ui.h}!PERCENTAGE\_SIGN\_Y@{PERCENTAGE\_SIGN\_Y}}
+\index{PERCENTAGE\_SIGN\_Y@{PERCENTAGE\_SIGN\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{PERCENTAGE\_SIGN\_Y}{PERCENTAGE\_SIGN\_Y}}
+{\footnotesize\ttfamily \#define PERCENTAGE\+\_\+\+SIGN\+\_\+Y~764}
+
+\Hypertarget{ui_8h_ab2d828bad31dcf46247e9100ae189479}\label{ui_8h_ab2d828bad31dcf46247e9100ae189479} 
+\index{ui.h@{ui.h}!POWER\_LEFT\_TEXT\_X@{POWER\_LEFT\_TEXT\_X}}
+\index{POWER\_LEFT\_TEXT\_X@{POWER\_LEFT\_TEXT\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{POWER\_LEFT\_TEXT\_X}{POWER\_LEFT\_TEXT\_X}}
+{\footnotesize\ttfamily \#define POWER\+\_\+\+LEFT\+\_\+\+TEXT\+\_\+X~44}
+
+\Hypertarget{ui_8h_ab75ef7e802097607c9f9f7d0555829b8}\label{ui_8h_ab75ef7e802097607c9f9f7d0555829b8} 
+\index{ui.h@{ui.h}!POWER\_LEFT\_TEXT\_Y@{POWER\_LEFT\_TEXT\_Y}}
+\index{POWER\_LEFT\_TEXT\_Y@{POWER\_LEFT\_TEXT\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{POWER\_LEFT\_TEXT\_Y}{POWER\_LEFT\_TEXT\_Y}}
+{\footnotesize\ttfamily \#define POWER\+\_\+\+LEFT\+\_\+\+TEXT\+\_\+Y~758}
+
+\Hypertarget{ui_8h_adbd551320ee660882fda95f5a227f742}\label{ui_8h_adbd551320ee660882fda95f5a227f742} 
+\index{ui.h@{ui.h}!REC\_SYMBOL\_X@{REC\_SYMBOL\_X}}
+\index{REC\_SYMBOL\_X@{REC\_SYMBOL\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{REC\_SYMBOL\_X}{REC\_SYMBOL\_X}}
+{\footnotesize\ttfamily \#define REC\+\_\+\+SYMBOL\+\_\+X~56}
+
+\Hypertarget{ui_8h_a5688cb235aeb81ed619caddf1ab14824}\label{ui_8h_a5688cb235aeb81ed619caddf1ab14824} 
+\index{ui.h@{ui.h}!REC\_SYMBOL\_Y@{REC\_SYMBOL\_Y}}
+\index{REC\_SYMBOL\_Y@{REC\_SYMBOL\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{REC\_SYMBOL\_Y}{REC\_SYMBOL\_Y}}
+{\footnotesize\ttfamily \#define REC\+\_\+\+SYMBOL\+\_\+Y~48}
+
+\Hypertarget{ui_8h_a6974d08a74da681b3957b2fead2608b8}\label{ui_8h_a6974d08a74da681b3957b2fead2608b8} 
+\index{ui.h@{ui.h}!SCREEN\_HEIGHT@{SCREEN\_HEIGHT}}
+\index{SCREEN\_HEIGHT@{SCREEN\_HEIGHT}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{SCREEN\_HEIGHT}{SCREEN\_HEIGHT}}
+{\footnotesize\ttfamily \#define SCREEN\+\_\+\+HEIGHT~864}
+
+\Hypertarget{ui_8h_a72e7493f7cc3d79c9aee7e072d29740f}\label{ui_8h_a72e7493f7cc3d79c9aee7e072d29740f} 
+\index{ui.h@{ui.h}!SCREEN\_TEXT\_X@{SCREEN\_TEXT\_X}}
+\index{SCREEN\_TEXT\_X@{SCREEN\_TEXT\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{SCREEN\_TEXT\_X}{SCREEN\_TEXT\_X}}
+{\footnotesize\ttfamily \#define SCREEN\+\_\+\+TEXT\+\_\+X~450}
+
+\Hypertarget{ui_8h_a278096e8713a04a5048b6e2386584ca3}\label{ui_8h_a278096e8713a04a5048b6e2386584ca3} 
+\index{ui.h@{ui.h}!SCREEN\_TEXT\_Y@{SCREEN\_TEXT\_Y}}
+\index{SCREEN\_TEXT\_Y@{SCREEN\_TEXT\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{SCREEN\_TEXT\_Y}{SCREEN\_TEXT\_Y}}
+{\footnotesize\ttfamily \#define SCREEN\+\_\+\+TEXT\+\_\+Y~384}
+
+\Hypertarget{ui_8h_a2cd109632a6dcccaa80b43561b1ab700}\label{ui_8h_a2cd109632a6dcccaa80b43561b1ab700} 
+\index{ui.h@{ui.h}!SCREEN\_WIDTH@{SCREEN\_WIDTH}}
+\index{SCREEN\_WIDTH@{SCREEN\_WIDTH}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{SCREEN\_WIDTH}{SCREEN\_WIDTH}}
+{\footnotesize\ttfamily \#define SCREEN\+\_\+\+WIDTH~1152}
+
+\Hypertarget{ui_8h_a1e5fb04553287e5bb0a30930883a7ebb}\label{ui_8h_a1e5fb04553287e5bb0a30930883a7ebb} 
+\index{ui.h@{ui.h}!SELECTED\_CAM\_TEXT\_X@{SELECTED\_CAM\_TEXT\_X}}
+\index{SELECTED\_CAM\_TEXT\_X@{SELECTED\_CAM\_TEXT\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{SELECTED\_CAM\_TEXT\_X}{SELECTED\_CAM\_TEXT\_X}}
+{\footnotesize\ttfamily \#define SELECTED\+\_\+\+CAM\+\_\+\+TEXT\+\_\+X~736}
+
+\Hypertarget{ui_8h_a3f7fb47f81f6019244318788b9a59e39}\label{ui_8h_a3f7fb47f81f6019244318788b9a59e39} 
+\index{ui.h@{ui.h}!SELECTED\_CAM\_TEXT\_Y@{SELECTED\_CAM\_TEXT\_Y}}
+\index{SELECTED\_CAM\_TEXT\_Y@{SELECTED\_CAM\_TEXT\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{SELECTED\_CAM\_TEXT\_Y}{SELECTED\_CAM\_TEXT\_Y}}
+{\footnotesize\ttfamily \#define SELECTED\+\_\+\+CAM\+\_\+\+TEXT\+\_\+Y~419}
+
+\Hypertarget{ui_8h_a0496c5ffa69d953764b8520709d36408}\label{ui_8h_a0496c5ffa69d953764b8520709d36408} 
+\index{ui.h@{ui.h}!USAGE\_TEXT\_X@{USAGE\_TEXT\_X}}
+\index{USAGE\_TEXT\_X@{USAGE\_TEXT\_X}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{USAGE\_TEXT\_X}{USAGE\_TEXT\_X}}
+{\footnotesize\ttfamily \#define USAGE\+\_\+\+TEXT\+\_\+X~44}
+
+\Hypertarget{ui_8h_ac9fa5d3df7fc121e40393598d20ade61}\label{ui_8h_ac9fa5d3df7fc121e40393598d20ade61} 
+\index{ui.h@{ui.h}!USAGE\_TEXT\_Y@{USAGE\_TEXT\_Y}}
+\index{USAGE\_TEXT\_Y@{USAGE\_TEXT\_Y}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{USAGE\_TEXT\_Y}{USAGE\_TEXT\_Y}}
+{\footnotesize\ttfamily \#define USAGE\+\_\+\+TEXT\+\_\+Y~797}
+
+\Hypertarget{ui_8h_ab208dc4bc0e43eff7f62a8841dcf6cb5}\label{ui_8h_ab208dc4bc0e43eff7f62a8841dcf6cb5} 
+\index{ui.h@{ui.h}!VBE\_MODE@{VBE\_MODE}}
+\index{VBE\_MODE@{VBE\_MODE}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{VBE\_MODE}{VBE\_MODE}}
+{\footnotesize\ttfamily \#define VBE\+\_\+\+MODE~0x14C}
+

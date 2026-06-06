@@ -1,0 +1,70 @@
+\doxysection{processor.\+h}
+\hypertarget{processor_8h_source}{}\label{processor_8h_source}\index{proj/controller/handlers/processor.h@{proj/controller/handlers/processor.h}}
+\mbox{\hyperlink{processor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PROCESSOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PROCESSOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../../state.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{typedef}\ void\ (*\mbox{\hyperlink{processor_8h_abdab03ed6c7f7f5edf4c067676994b6e}{EventHandler}})(\mbox{\hyperlink{structGameState}{GameState}}*,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*);}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00018\ \mbox{\hyperlink{processor_8h_abdab03ed6c7f7f5edf4c067676994b6e}{EventHandler}}\ \mbox{\hyperlink{processor_8h_ac855f04ac22db04e7f37ff963348e96e}{get\_event\_handler}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5c}{StateType}}\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6fa}{EventType}}\ event);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_aef2903989e7420a5dc8cf40425de4daa}{process\_animatronic\_movements}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \mbox{\hyperlink{structQueue}{Queue}}*\ data\_queue);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Mouse\ \ Related\ Handlers\ */}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_a91c6379823a85bb27b6df53b33f7b901}{general\_mouse\_move}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_abcfc4975ed0cfab11b3cc906cc93b607}{handle\_main\_menu\_mouse\_move}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_a79c2fa2279a2ca6de1bf780510fbed94}{handle\_main\_menu\_mouse\_click}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_ad5801301a66ae14d1d076788f0777831}{handle\_night\_survival\_mouse\_click}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Timer\ Related\ Handlers\ */}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_a032a8b9e3aaf3bbdca9aa656e2717272}{handle\_newspaper\_timer}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00073\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_ade5011fd5e9c8f31e9466152e8d9add1}{handle\_night\_intro\_timer}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00080\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_a1509564a4700f568cdc08e4871dfc08a}{handle\_night\_survival\_timer}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00087\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_aadaa876f6677bfe1c7256774e596e017}{handle\_win\_screen\_timer}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00094\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_ac303c31942fe95b5f0c722fd619ffa5f}{handle\_static\_screen\_timer}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00101\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_a32b24ad27bb109034746cc920c753de1}{handle\_night\_6am\_timer}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00108\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_a25c12e5e7e5402b2ecbca317a3644972}{handle\_night\_no\_battery\_timer}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00115\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_adfcd37776133955bcd340838a0938770}{handle\_jumpscare\_timer}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Keyboard\ Related\ Handlers\ */}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00125\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_ae6428480bce6fd8a3cc502c1809861af}{handle\_main\_menu\_keyboard}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00133\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_a8aab3c2ce4961a71723a0b1474474b0e}{handle\_night\_survival\_keyboard}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00140\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_ac938920b20c137f83e257046ab15e8b5}{handle\_night\_no\_battery\_keyboard}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00148\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_acccaf67c876219245e06b909571f6f67}{handle\_waiting\_for\_data\_keyboard}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_a54252b7a06a5f2c8beba2ca1ad69d38e}{handle\_receiving\_data\_keyboard}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \textcolor{comment}{/*\ Serial\ Port\ Related\ Handlers\ */}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00161\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_ae769c9c89940668f22bdb031f4af7442}{handle\_waiting\_for\_data\_serial\_port}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00168\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_a7903ce3a25a8bf83b1103b8fa1f8a63e}{handle\_receiving\_data\_serial\_port}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00175\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{processor_8h_a22ab40d0ff592026eeea8cc823403b08}{handle\_game\_over\_timer}}(\mbox{\hyperlink{structGameState}{GameState}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structGameEvent}{GameEvent}}*\ event);}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ PROCESSOR\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

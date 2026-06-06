@@ -1,0 +1,7 @@
+<map id="proj/models/animatronic.h" name="proj/models/animatronic.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="56,5,249,31"/>
+<area shape="rect" id="Node000002" href="$game__constants_8h.html" title=" " alt="" coords="5,79,159,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,33,105,71,101,67,139,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="183,79,266,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="166,29,205,67,201,71,163,33"/>
+</map>

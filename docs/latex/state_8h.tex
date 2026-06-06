@@ -1,0 +1,516 @@
+\doxysection{proj/state.h File Reference}
+\hypertarget{state_8h}{}\label{state_8h}\index{proj/state.h@{proj/state.h}}
+{\ttfamily \#include "{}../lab4/mouse.\+h"{}}\newline
+{\ttfamily \#include "{}models/animatronic.\+h"{}}\newline
+{\ttfamily \#include "{}game\+\_\+constants.\+h"{}}\newline
+{\ttfamily \#include "{}models/sprite.\+h"{}}\newline
+{\ttfamily \#include "{}devices/serial\+\_\+port/queue.\+h"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+Include dependency graph for state.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{state_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{state_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structGameEvent}{Game\+Event}}
+\begin{DoxyCompactList}\small\item\em Struct that represents an event in the game. It uses a tagged union to store the relevant data for each type of event. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structPersistentData}{Persistent\+Data}}
+\begin{DoxyCompactList}\small\item\em Enum that defines the global game data that persists across states. This includes the current night, mouse coordinates for displaying the cursor, and shared data for states that have camera movement. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structMainMenuState}{Main\+Menu\+State}}
+\item 
+struct \mbox{\hyperlink{structNewspaperState}{Newspaper\+State}}
+\item 
+struct \mbox{\hyperlink{structNightIntroState}{Night\+Intro\+State}}
+\item 
+struct \mbox{\hyperlink{structNightSurvivalState}{Night\+Survival\+State}}
+\item 
+struct \mbox{\hyperlink{structNightNoBatteryState}{Night\+No\+Battery\+State}}
+\item 
+struct \mbox{\hyperlink{structJumpscareState}{Jumpscare\+State}}
+\item 
+struct \mbox{\hyperlink{structNight6AMScreen}{Night6\+AMScreen}}
+\item 
+struct \mbox{\hyperlink{structStaticScreenState}{Static\+Screen\+State}}
+\item 
+struct \mbox{\hyperlink{structWinState}{Win\+State}}
+\item 
+struct \mbox{\hyperlink{structReceivingDataState}{Receiving\+Data\+State}}
+\item 
+struct \mbox{\hyperlink{structGameOverState}{Game\+Over\+State}}
+\item 
+struct \mbox{\hyperlink{structGameState}{Game\+State}}
+\begin{DoxyCompactList}\small\item\em Struct that represents the overall game state. It contains a type field that indicates the current state of the game, a union that holds the specific data for each state, and a \doxylink{structPersistentData}{Persistent\+Data} struct that holds data that persists across all states. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6fa}{Event\+Type}} \{ \newline
+\mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faad1110959cd9312a756c5fb1d0f0eab8d}{TIMER\+\_\+\+TICK}}
+, \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faa3ecb0095d44fa055dce98f1a4480a9e7}{MOUSE\+\_\+\+LB\+\_\+\+CLICK}}
+, \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faa7513d383f97428a41f8b44594874d469}{MOUSE\+\_\+\+MOVE}}
+, \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faaf3fc22d8f13b917c166684deaafecdd1}{KEYBOARD\+\_\+\+PRESS}}
+, \newline
+\mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faac124013e27b325be6ffd4ba8e2f4a549}{KEYBOARD\+\_\+\+RELEASE}}
+, \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faa0fe64c1e064dc82996bc906a8e564279}{SERIAL\+\_\+\+PORT\+\_\+\+DATA}}
+, \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faa375c9117363fc3a2454e271606f3e111}{NUM\+\_\+\+EVENTS}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum that defines the type of events that can occur in the game. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73}{Key}} \{ \newline
+\mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73a03c064289f6eefa9ff82de78685f5061}{KEY\+\_\+\+MENU\+\_\+\+UP}}
+, \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73a8e9d98afbbe558164e6f5a6ddef7987b}{KEY\+\_\+\+MENU\+\_\+\+DOWN}}
+, \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73a612120b69c7dfd46086db7aaebdbcf65}{KEY\+\_\+\+LEFT}}
+, \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73a6504370d9c6391e1a9da6a1a529b089d}{KEY\+\_\+\+RIGHT}}
+, \newline
+\mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73a2a662d23aadd7106a3a2afdfd5d426ed}{KEY\+\_\+\+ENTER}}
+, \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73a01d2889f9a7550008ad6140c41e733de}{KEY\+\_\+\+SPACE}}
+, \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73a3a471c8b61a5f730dcbdd50fe53f3ab7}{KEY\+\_\+\+ESCAPE}}
+, \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73a90b0b0f6a79820267fd83f5babf1bd36}{KEY\+\_\+\+INVALID}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum that defines the keys that can be pressed in the game. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5c}{State\+Type}} \{ \newline
+\mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5cac22743f1fc74de09544ecc9bab74a17b}{MAIN\+\_\+\+MENU}}
+, \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca82078283bf07e3d41fa49df0b69bc400}{NIGHT\+\_\+\+INTRO}}
+, \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca7de65a1ac618e9a26ccca16b898b9f17}{NIGHT\+\_\+\+SURVIVAL}}
+, \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca24ae01d1d8902a3a95d9dcfe9f1cf2c5}{NEWSPAPER}}
+, \newline
+\mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca6d1a005d61df004a7fd918951af4e460}{NIGHT\+\_\+6\+AM}}
+, \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5cac70a4629ead8264033b8b9161e42ff38}{JUMPSCARE}}
+, \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca3203a8bfb5d03673a6fde9cb1b7e787c}{NIGHT\+\_\+\+NO\+\_\+\+BATTERY}}
+, \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca843dff91ff0b0e5b98a110a512b2f531}{WIN}}
+, \newline
+\mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca7e333902630810947e032e5b91fb24c0}{STATIC\+\_\+\+SCREEN}}
+, \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca871723195985a4ae22d7e10d99bf8a00}{GAME\+\_\+\+OVER}}
+, \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca7a10b5d68d31711288e1fe0fa17dbf4f}{EXIT}}
+, \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca5239593040c543b582fb6e84e71c6712}{WAITING\+\_\+\+FOR\+\_\+\+DATA}}
+, \newline
+\mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5cab34cf9f5e9084cffc431d092f39e310c}{RECEIVING\+\_\+\+DATA}}
+, \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5ca6d9af548db7288db997796afc88aa60d}{NUM\+\_\+\+STATES}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum that defines the different states of the game. Each state can have its own specific data, but they all share the same global data defined in the \doxylink{structGameState}{Game\+State} struct. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{state_8h_a0b5e764f0ec9a407e9b8789f0259d754}{Movement\+Direction}} \{ \mbox{\hyperlink{state_8h_a0b5e764f0ec9a407e9b8789f0259d754adb45120aafd37a973140edee24708065}{LEFT}}
+, \mbox{\hyperlink{state_8h_a0b5e764f0ec9a407e9b8789f0259d754aec8379af7490bb9eaaf579cf17876f38}{RIGHT}}
+, \mbox{\hyperlink{state_8h_a0b5e764f0ec9a407e9b8789f0259d754a4d56177b6a2b746f93d162e92906a800}{NO\+\_\+\+MOVEMENT}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum that defines the direction of movement for states that have camera movement. This is used to determine the direction of the next camera movement after waiting. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{state_8h_a738419ee04f7ab8147651b3c9cc05bdc}{Main\+Menu\+Option}} \{ \mbox{\hyperlink{state_8h_a738419ee04f7ab8147651b3c9cc05bdcafd17452de9bec3d185b675ad352ce4bc}{NO\+\_\+\+OPTION}}
+, \mbox{\hyperlink{state_8h_a738419ee04f7ab8147651b3c9cc05bdcac9e8468c9768465a565bc176a753e261}{NEW\+\_\+\+GAME}}
+, \mbox{\hyperlink{state_8h_a738419ee04f7ab8147651b3c9cc05bdca49959dd441dcda75d6898cf2c68fb374}{CONTINUE}}
+, \mbox{\hyperlink{state_8h_a738419ee04f7ab8147651b3c9cc05bdca4bf4cbde18067e0600c7c8a7a30ba316}{EXIT\+\_\+\+GAME}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum that defines the options available in the main menu. This is used to determine which options to display in the main menu based on the current night. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{state_8h_ab6d1699a0d2b931a3164d8ec3078eeba}{init\+\_\+main\+\_\+menu}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the main menu and sets up the global data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8h_a09a82856f0c759062db8336ce304cfe1}{init\+\_\+night\+\_\+intro}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the night intro state and sets up the relevant data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8h_a2a95499f3c2dabe4d94a2d9e48b6e52f}{init\+\_\+newspaper}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the newspaper state and sets up the relevant data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8h_ab5de9d506122455dc0731222cfc21350}{init\+\_\+night\+\_\+survival}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the night survival state and sets up the relevant data, including the animatronics\textquotesingle{} paths and AI levels based on the current night. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8h_af0d169a10b9ae50b2cf3237901997f70}{init\+\_\+night\+\_\+6am}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the 6 AM screen state and sets up the relevant data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8h_a5b76931d588b40ec8eb59594713b2a79}{init\+\_\+night\+\_\+no\+\_\+battery}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the night no battery state and sets up the relevant data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8h_af9c466cf48404fd946bd166a014e38ce}{init\+\_\+jumpscare}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4}{Animatronic\+Name}} animatronic\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the jumpscare state and sets up the relevant data, including the jumpscare sprite based on the animatronic that is performing the jumpscare. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8h_a6a9f8761d9ae6354cb1dc32f5e7c71dd}{init\+\_\+static\+\_\+screen}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the win screen state and sets up the relevant data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8h_a00b6d29a1647276644223fe525a35e50}{init\+\_\+game\+\_\+over}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the game over state and sets up the relevant data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8h_a36993c80b9ba4b7c4671cf32598fa564}{init\+\_\+win\+\_\+screen}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the win screen state and sets up the relevant data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8h_aa7df519d2f0611e0a0715b50db7b8c38}{init\+\_\+receiving\+\_\+data\+\_\+state}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}data\+\_\+queue)
+\begin{DoxyCompactList}\small\item\em Function that initializes the game state to the receiving data state and sets up the relevant data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{state_8h_a2628ea8d12e8b2563c32f05dc7fff6fa}\label{state_8h_a2628ea8d12e8b2563c32f05dc7fff6fa} 
+\index{state.h@{state.h}!EventType@{EventType}}
+\index{EventType@{EventType}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{EventType}{EventType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{state_8h_a2628ea8d12e8b2563c32f05dc7fff6fa}{Event\+Type}}}
+
+
+
+Enum that defines the type of events that can occur in the game. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TIMER\_TICK@{TIMER\_TICK}!state.h@{state.h}}\index{state.h@{state.h}!TIMER\_TICK@{TIMER\_TICK}}}\Hypertarget{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faad1110959cd9312a756c5fb1d0f0eab8d}\label{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faad1110959cd9312a756c5fb1d0f0eab8d} 
+TIMER\+\_\+\+TICK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOUSE\_LB\_CLICK@{MOUSE\_LB\_CLICK}!state.h@{state.h}}\index{state.h@{state.h}!MOUSE\_LB\_CLICK@{MOUSE\_LB\_CLICK}}}\Hypertarget{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faa3ecb0095d44fa055dce98f1a4480a9e7}\label{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faa3ecb0095d44fa055dce98f1a4480a9e7} 
+MOUSE\+\_\+\+LB\+\_\+\+CLICK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOUSE\_MOVE@{MOUSE\_MOVE}!state.h@{state.h}}\index{state.h@{state.h}!MOUSE\_MOVE@{MOUSE\_MOVE}}}\Hypertarget{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faa7513d383f97428a41f8b44594874d469}\label{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faa7513d383f97428a41f8b44594874d469} 
+MOUSE\+\_\+\+MOVE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEYBOARD\_PRESS@{KEYBOARD\_PRESS}!state.h@{state.h}}\index{state.h@{state.h}!KEYBOARD\_PRESS@{KEYBOARD\_PRESS}}}\Hypertarget{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faaf3fc22d8f13b917c166684deaafecdd1}\label{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faaf3fc22d8f13b917c166684deaafecdd1} 
+KEYBOARD\+\_\+\+PRESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEYBOARD\_RELEASE@{KEYBOARD\_RELEASE}!state.h@{state.h}}\index{state.h@{state.h}!KEYBOARD\_RELEASE@{KEYBOARD\_RELEASE}}}\Hypertarget{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faac124013e27b325be6ffd4ba8e2f4a549}\label{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faac124013e27b325be6ffd4ba8e2f4a549} 
+KEYBOARD\+\_\+\+RELEASE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SERIAL\_PORT\_DATA@{SERIAL\_PORT\_DATA}!state.h@{state.h}}\index{state.h@{state.h}!SERIAL\_PORT\_DATA@{SERIAL\_PORT\_DATA}}}\Hypertarget{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faa0fe64c1e064dc82996bc906a8e564279}\label{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faa0fe64c1e064dc82996bc906a8e564279} 
+SERIAL\+\_\+\+PORT\+\_\+\+DATA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NUM\_EVENTS@{NUM\_EVENTS}!state.h@{state.h}}\index{state.h@{state.h}!NUM\_EVENTS@{NUM\_EVENTS}}}\Hypertarget{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faa375c9117363fc3a2454e271606f3e111}\label{state_8h_a2628ea8d12e8b2563c32f05dc7fff6faa375c9117363fc3a2454e271606f3e111} 
+NUM\+\_\+\+EVENTS&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{state_8h_ab3c7af4820830f9166ede9e5623c4e73}\label{state_8h_ab3c7af4820830f9166ede9e5623c4e73} 
+\index{state.h@{state.h}!Key@{Key}}
+\index{Key@{Key}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{Key}{Key}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{state_8h_ab3c7af4820830f9166ede9e5623c4e73}{Key}}}
+
+
+
+Enum that defines the keys that can be pressed in the game. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_MENU\_UP@{KEY\_MENU\_UP}!state.h@{state.h}}\index{state.h@{state.h}!KEY\_MENU\_UP@{KEY\_MENU\_UP}}}\Hypertarget{state_8h_ab3c7af4820830f9166ede9e5623c4e73a03c064289f6eefa9ff82de78685f5061}\label{state_8h_ab3c7af4820830f9166ede9e5623c4e73a03c064289f6eefa9ff82de78685f5061} 
+KEY\+\_\+\+MENU\+\_\+\+UP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_MENU\_DOWN@{KEY\_MENU\_DOWN}!state.h@{state.h}}\index{state.h@{state.h}!KEY\_MENU\_DOWN@{KEY\_MENU\_DOWN}}}\Hypertarget{state_8h_ab3c7af4820830f9166ede9e5623c4e73a8e9d98afbbe558164e6f5a6ddef7987b}\label{state_8h_ab3c7af4820830f9166ede9e5623c4e73a8e9d98afbbe558164e6f5a6ddef7987b} 
+KEY\+\_\+\+MENU\+\_\+\+DOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_LEFT@{KEY\_LEFT}!state.h@{state.h}}\index{state.h@{state.h}!KEY\_LEFT@{KEY\_LEFT}}}\Hypertarget{state_8h_ab3c7af4820830f9166ede9e5623c4e73a612120b69c7dfd46086db7aaebdbcf65}\label{state_8h_ab3c7af4820830f9166ede9e5623c4e73a612120b69c7dfd46086db7aaebdbcf65} 
+KEY\+\_\+\+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_RIGHT@{KEY\_RIGHT}!state.h@{state.h}}\index{state.h@{state.h}!KEY\_RIGHT@{KEY\_RIGHT}}}\Hypertarget{state_8h_ab3c7af4820830f9166ede9e5623c4e73a6504370d9c6391e1a9da6a1a529b089d}\label{state_8h_ab3c7af4820830f9166ede9e5623c4e73a6504370d9c6391e1a9da6a1a529b089d} 
+KEY\+\_\+\+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_ENTER@{KEY\_ENTER}!state.h@{state.h}}\index{state.h@{state.h}!KEY\_ENTER@{KEY\_ENTER}}}\Hypertarget{state_8h_ab3c7af4820830f9166ede9e5623c4e73a2a662d23aadd7106a3a2afdfd5d426ed}\label{state_8h_ab3c7af4820830f9166ede9e5623c4e73a2a662d23aadd7106a3a2afdfd5d426ed} 
+KEY\+\_\+\+ENTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_SPACE@{KEY\_SPACE}!state.h@{state.h}}\index{state.h@{state.h}!KEY\_SPACE@{KEY\_SPACE}}}\Hypertarget{state_8h_ab3c7af4820830f9166ede9e5623c4e73a01d2889f9a7550008ad6140c41e733de}\label{state_8h_ab3c7af4820830f9166ede9e5623c4e73a01d2889f9a7550008ad6140c41e733de} 
+KEY\+\_\+\+SPACE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_ESCAPE@{KEY\_ESCAPE}!state.h@{state.h}}\index{state.h@{state.h}!KEY\_ESCAPE@{KEY\_ESCAPE}}}\Hypertarget{state_8h_ab3c7af4820830f9166ede9e5623c4e73a3a471c8b61a5f730dcbdd50fe53f3ab7}\label{state_8h_ab3c7af4820830f9166ede9e5623c4e73a3a471c8b61a5f730dcbdd50fe53f3ab7} 
+KEY\+\_\+\+ESCAPE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_INVALID@{KEY\_INVALID}!state.h@{state.h}}\index{state.h@{state.h}!KEY\_INVALID@{KEY\_INVALID}}}\Hypertarget{state_8h_ab3c7af4820830f9166ede9e5623c4e73a90b0b0f6a79820267fd83f5babf1bd36}\label{state_8h_ab3c7af4820830f9166ede9e5623c4e73a90b0b0f6a79820267fd83f5babf1bd36} 
+KEY\+\_\+\+INVALID&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{state_8h_a738419ee04f7ab8147651b3c9cc05bdc}\label{state_8h_a738419ee04f7ab8147651b3c9cc05bdc} 
+\index{state.h@{state.h}!MainMenuOption@{MainMenuOption}}
+\index{MainMenuOption@{MainMenuOption}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{MainMenuOption}{MainMenuOption}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{state_8h_a738419ee04f7ab8147651b3c9cc05bdc}{Main\+Menu\+Option}}}
+
+
+
+Enum that defines the options available in the main menu. This is used to determine which options to display in the main menu based on the current night. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_OPTION@{NO\_OPTION}!state.h@{state.h}}\index{state.h@{state.h}!NO\_OPTION@{NO\_OPTION}}}\Hypertarget{state_8h_a738419ee04f7ab8147651b3c9cc05bdcafd17452de9bec3d185b675ad352ce4bc}\label{state_8h_a738419ee04f7ab8147651b3c9cc05bdcafd17452de9bec3d185b675ad352ce4bc} 
+NO\+\_\+\+OPTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NEW\_GAME@{NEW\_GAME}!state.h@{state.h}}\index{state.h@{state.h}!NEW\_GAME@{NEW\_GAME}}}\Hypertarget{state_8h_a738419ee04f7ab8147651b3c9cc05bdcac9e8468c9768465a565bc176a753e261}\label{state_8h_a738419ee04f7ab8147651b3c9cc05bdcac9e8468c9768465a565bc176a753e261} 
+NEW\+\_\+\+GAME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CONTINUE@{CONTINUE}!state.h@{state.h}}\index{state.h@{state.h}!CONTINUE@{CONTINUE}}}\Hypertarget{state_8h_a738419ee04f7ab8147651b3c9cc05bdca49959dd441dcda75d6898cf2c68fb374}\label{state_8h_a738419ee04f7ab8147651b3c9cc05bdca49959dd441dcda75d6898cf2c68fb374} 
+CONTINUE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXIT\_GAME@{EXIT\_GAME}!state.h@{state.h}}\index{state.h@{state.h}!EXIT\_GAME@{EXIT\_GAME}}}\Hypertarget{state_8h_a738419ee04f7ab8147651b3c9cc05bdca4bf4cbde18067e0600c7c8a7a30ba316}\label{state_8h_a738419ee04f7ab8147651b3c9cc05bdca4bf4cbde18067e0600c7c8a7a30ba316} 
+EXIT\+\_\+\+GAME&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{state_8h_a0b5e764f0ec9a407e9b8789f0259d754}\label{state_8h_a0b5e764f0ec9a407e9b8789f0259d754} 
+\index{state.h@{state.h}!MovementDirection@{MovementDirection}}
+\index{MovementDirection@{MovementDirection}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{MovementDirection}{MovementDirection}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{state_8h_a0b5e764f0ec9a407e9b8789f0259d754}{Movement\+Direction}}}
+
+
+
+Enum that defines the direction of movement for states that have camera movement. This is used to determine the direction of the next camera movement after waiting. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEFT@{LEFT}!state.h@{state.h}}\index{state.h@{state.h}!LEFT@{LEFT}}}\Hypertarget{state_8h_a0b5e764f0ec9a407e9b8789f0259d754adb45120aafd37a973140edee24708065}\label{state_8h_a0b5e764f0ec9a407e9b8789f0259d754adb45120aafd37a973140edee24708065} 
+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RIGHT@{RIGHT}!state.h@{state.h}}\index{state.h@{state.h}!RIGHT@{RIGHT}}}\Hypertarget{state_8h_a0b5e764f0ec9a407e9b8789f0259d754aec8379af7490bb9eaaf579cf17876f38}\label{state_8h_a0b5e764f0ec9a407e9b8789f0259d754aec8379af7490bb9eaaf579cf17876f38} 
+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_MOVEMENT@{NO\_MOVEMENT}!state.h@{state.h}}\index{state.h@{state.h}!NO\_MOVEMENT@{NO\_MOVEMENT}}}\Hypertarget{state_8h_a0b5e764f0ec9a407e9b8789f0259d754a4d56177b6a2b746f93d162e92906a800}\label{state_8h_a0b5e764f0ec9a407e9b8789f0259d754a4d56177b6a2b746f93d162e92906a800} 
+NO\+\_\+\+MOVEMENT&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{state_8h_a1615968a92950438f6e67a28e9d56e5c}\label{state_8h_a1615968a92950438f6e67a28e9d56e5c} 
+\index{state.h@{state.h}!StateType@{StateType}}
+\index{StateType@{StateType}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{StateType}{StateType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{state_8h_a1615968a92950438f6e67a28e9d56e5c}{State\+Type}}}
+
+
+
+Enum that defines the different states of the game. Each state can have its own specific data, but they all share the same global data defined in the \doxylink{structGameState}{Game\+State} struct. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAIN\_MENU@{MAIN\_MENU}!state.h@{state.h}}\index{state.h@{state.h}!MAIN\_MENU@{MAIN\_MENU}}}\Hypertarget{state_8h_a1615968a92950438f6e67a28e9d56e5cac22743f1fc74de09544ecc9bab74a17b}\label{state_8h_a1615968a92950438f6e67a28e9d56e5cac22743f1fc74de09544ecc9bab74a17b} 
+MAIN\+\_\+\+MENU&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NIGHT\_INTRO@{NIGHT\_INTRO}!state.h@{state.h}}\index{state.h@{state.h}!NIGHT\_INTRO@{NIGHT\_INTRO}}}\Hypertarget{state_8h_a1615968a92950438f6e67a28e9d56e5ca82078283bf07e3d41fa49df0b69bc400}\label{state_8h_a1615968a92950438f6e67a28e9d56e5ca82078283bf07e3d41fa49df0b69bc400} 
+NIGHT\+\_\+\+INTRO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NIGHT\_SURVIVAL@{NIGHT\_SURVIVAL}!state.h@{state.h}}\index{state.h@{state.h}!NIGHT\_SURVIVAL@{NIGHT\_SURVIVAL}}}\Hypertarget{state_8h_a1615968a92950438f6e67a28e9d56e5ca7de65a1ac618e9a26ccca16b898b9f17}\label{state_8h_a1615968a92950438f6e67a28e9d56e5ca7de65a1ac618e9a26ccca16b898b9f17} 
+NIGHT\+\_\+\+SURVIVAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NEWSPAPER@{NEWSPAPER}!state.h@{state.h}}\index{state.h@{state.h}!NEWSPAPER@{NEWSPAPER}}}\Hypertarget{state_8h_a1615968a92950438f6e67a28e9d56e5ca24ae01d1d8902a3a95d9dcfe9f1cf2c5}\label{state_8h_a1615968a92950438f6e67a28e9d56e5ca24ae01d1d8902a3a95d9dcfe9f1cf2c5} 
+NEWSPAPER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NIGHT\_6AM@{NIGHT\_6AM}!state.h@{state.h}}\index{state.h@{state.h}!NIGHT\_6AM@{NIGHT\_6AM}}}\Hypertarget{state_8h_a1615968a92950438f6e67a28e9d56e5ca6d1a005d61df004a7fd918951af4e460}\label{state_8h_a1615968a92950438f6e67a28e9d56e5ca6d1a005d61df004a7fd918951af4e460} 
+NIGHT\+\_\+6\+AM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{JUMPSCARE@{JUMPSCARE}!state.h@{state.h}}\index{state.h@{state.h}!JUMPSCARE@{JUMPSCARE}}}\Hypertarget{state_8h_a1615968a92950438f6e67a28e9d56e5cac70a4629ead8264033b8b9161e42ff38}\label{state_8h_a1615968a92950438f6e67a28e9d56e5cac70a4629ead8264033b8b9161e42ff38} 
+JUMPSCARE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NIGHT\_NO\_BATTERY@{NIGHT\_NO\_BATTERY}!state.h@{state.h}}\index{state.h@{state.h}!NIGHT\_NO\_BATTERY@{NIGHT\_NO\_BATTERY}}}\Hypertarget{state_8h_a1615968a92950438f6e67a28e9d56e5ca3203a8bfb5d03673a6fde9cb1b7e787c}\label{state_8h_a1615968a92950438f6e67a28e9d56e5ca3203a8bfb5d03673a6fde9cb1b7e787c} 
+NIGHT\+\_\+\+NO\+\_\+\+BATTERY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WIN@{WIN}!state.h@{state.h}}\index{state.h@{state.h}!WIN@{WIN}}}\Hypertarget{state_8h_a1615968a92950438f6e67a28e9d56e5ca843dff91ff0b0e5b98a110a512b2f531}\label{state_8h_a1615968a92950438f6e67a28e9d56e5ca843dff91ff0b0e5b98a110a512b2f531} 
+WIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATIC\_SCREEN@{STATIC\_SCREEN}!state.h@{state.h}}\index{state.h@{state.h}!STATIC\_SCREEN@{STATIC\_SCREEN}}}\Hypertarget{state_8h_a1615968a92950438f6e67a28e9d56e5ca7e333902630810947e032e5b91fb24c0}\label{state_8h_a1615968a92950438f6e67a28e9d56e5ca7e333902630810947e032e5b91fb24c0} 
+STATIC\+\_\+\+SCREEN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_OVER@{GAME\_OVER}!state.h@{state.h}}\index{state.h@{state.h}!GAME\_OVER@{GAME\_OVER}}}\Hypertarget{state_8h_a1615968a92950438f6e67a28e9d56e5ca871723195985a4ae22d7e10d99bf8a00}\label{state_8h_a1615968a92950438f6e67a28e9d56e5ca871723195985a4ae22d7e10d99bf8a00} 
+GAME\+\_\+\+OVER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXIT@{EXIT}!state.h@{state.h}}\index{state.h@{state.h}!EXIT@{EXIT}}}\Hypertarget{state_8h_a1615968a92950438f6e67a28e9d56e5ca7a10b5d68d31711288e1fe0fa17dbf4f}\label{state_8h_a1615968a92950438f6e67a28e9d56e5ca7a10b5d68d31711288e1fe0fa17dbf4f} 
+EXIT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WAITING\_FOR\_DATA@{WAITING\_FOR\_DATA}!state.h@{state.h}}\index{state.h@{state.h}!WAITING\_FOR\_DATA@{WAITING\_FOR\_DATA}}}\Hypertarget{state_8h_a1615968a92950438f6e67a28e9d56e5ca5239593040c543b582fb6e84e71c6712}\label{state_8h_a1615968a92950438f6e67a28e9d56e5ca5239593040c543b582fb6e84e71c6712} 
+WAITING\+\_\+\+FOR\+\_\+\+DATA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RECEIVING\_DATA@{RECEIVING\_DATA}!state.h@{state.h}}\index{state.h@{state.h}!RECEIVING\_DATA@{RECEIVING\_DATA}}}\Hypertarget{state_8h_a1615968a92950438f6e67a28e9d56e5cab34cf9f5e9084cffc431d092f39e310c}\label{state_8h_a1615968a92950438f6e67a28e9d56e5cab34cf9f5e9084cffc431d092f39e310c} 
+RECEIVING\+\_\+\+DATA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NUM\_STATES@{NUM\_STATES}!state.h@{state.h}}\index{state.h@{state.h}!NUM\_STATES@{NUM\_STATES}}}\Hypertarget{state_8h_a1615968a92950438f6e67a28e9d56e5ca6d9af548db7288db997796afc88aa60d}\label{state_8h_a1615968a92950438f6e67a28e9d56e5ca6d9af548db7288db997796afc88aa60d} 
+NUM\+\_\+\+STATES&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{state_8h_a00b6d29a1647276644223fe525a35e50}\label{state_8h_a00b6d29a1647276644223fe525a35e50} 
+\index{state.h@{state.h}!init\_game\_over@{init\_game\_over}}
+\index{init\_game\_over@{init\_game\_over}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{init\_game\_over()}{init\_game\_over()}}
+{\footnotesize\ttfamily void init\+\_\+game\+\_\+over (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the game over state and sets up the relevant data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8h_af9c466cf48404fd946bd166a014e38ce}\label{state_8h_af9c466cf48404fd946bd166a014e38ce} 
+\index{state.h@{state.h}!init\_jumpscare@{init\_jumpscare}}
+\index{init\_jumpscare@{init\_jumpscare}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{init\_jumpscare()}{init\_jumpscare()}}
+{\footnotesize\ttfamily void init\+\_\+jumpscare (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{\mbox{\hyperlink{animatronic_8h_a32f0f4417c28e3d435e7c6f2c4ee9dc4}{Animatronic\+Name}}}]{animatronic\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the jumpscare state and sets up the relevant data, including the jumpscare sprite based on the animatronic that is performing the jumpscare. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+{\em animatronic\+\_\+name} & The name of the animatronic that is performing the jumpscare, used to determine which jumpscare sprite to display. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8h_ab6d1699a0d2b931a3164d8ec3078eeba}\label{state_8h_ab6d1699a0d2b931a3164d8ec3078eeba} 
+\index{state.h@{state.h}!init\_main\_menu@{init\_main\_menu}}
+\index{init\_main\_menu@{init\_main\_menu}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{init\_main\_menu()}{init\_main\_menu()}}
+{\footnotesize\ttfamily void init\+\_\+main\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the main menu and sets up the global data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8h_a2a95499f3c2dabe4d94a2d9e48b6e52f}\label{state_8h_a2a95499f3c2dabe4d94a2d9e48b6e52f} 
+\index{state.h@{state.h}!init\_newspaper@{init\_newspaper}}
+\index{init\_newspaper@{init\_newspaper}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{init\_newspaper()}{init\_newspaper()}}
+{\footnotesize\ttfamily void init\+\_\+newspaper (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the newspaper state and sets up the relevant data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8h_af0d169a10b9ae50b2cf3237901997f70}\label{state_8h_af0d169a10b9ae50b2cf3237901997f70} 
+\index{state.h@{state.h}!init\_night\_6am@{init\_night\_6am}}
+\index{init\_night\_6am@{init\_night\_6am}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{init\_night\_6am()}{init\_night\_6am()}}
+{\footnotesize\ttfamily void init\+\_\+night\+\_\+6am (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the 6 AM screen state and sets up the relevant data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8h_a09a82856f0c759062db8336ce304cfe1}\label{state_8h_a09a82856f0c759062db8336ce304cfe1} 
+\index{state.h@{state.h}!init\_night\_intro@{init\_night\_intro}}
+\index{init\_night\_intro@{init\_night\_intro}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{init\_night\_intro()}{init\_night\_intro()}}
+{\footnotesize\ttfamily void init\+\_\+night\+\_\+intro (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the night intro state and sets up the relevant data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8h_a5b76931d588b40ec8eb59594713b2a79}\label{state_8h_a5b76931d588b40ec8eb59594713b2a79} 
+\index{state.h@{state.h}!init\_night\_no\_battery@{init\_night\_no\_battery}}
+\index{init\_night\_no\_battery@{init\_night\_no\_battery}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{init\_night\_no\_battery()}{init\_night\_no\_battery()}}
+{\footnotesize\ttfamily void init\+\_\+night\+\_\+no\+\_\+battery (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the night no battery state and sets up the relevant data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8h_ab5de9d506122455dc0731222cfc21350}\label{state_8h_ab5de9d506122455dc0731222cfc21350} 
+\index{state.h@{state.h}!init\_night\_survival@{init\_night\_survival}}
+\index{init\_night\_survival@{init\_night\_survival}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{init\_night\_survival()}{init\_night\_survival()}}
+{\footnotesize\ttfamily void init\+\_\+night\+\_\+survival (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the night survival state and sets up the relevant data, including the animatronics\textquotesingle{} paths and AI levels based on the current night. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8h_aa7df519d2f0611e0a0715b50db7b8c38}\label{state_8h_aa7df519d2f0611e0a0715b50db7b8c38} 
+\index{state.h@{state.h}!init\_receiving\_data\_state@{init\_receiving\_data\_state}}
+\index{init\_receiving\_data\_state@{init\_receiving\_data\_state}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{init\_receiving\_data\_state()}{init\_receiving\_data\_state()}}
+{\footnotesize\ttfamily void init\+\_\+receiving\+\_\+data\+\_\+state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}}]{data\+\_\+queue }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the receiving data state and sets up the relevant data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+{\em data\+\_\+queue} & The queue containing the data received from the serial port. This is necessary because animatronic\textquotesingle{}s position data is sent in the begginning of the night survival mode (in the same interrupt as the data that starts the night), so we need to process that data to initialize the animatronics\textquotesingle{} positions in the receiving data state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8h_a6a9f8761d9ae6354cb1dc32f5e7c71dd}\label{state_8h_a6a9f8761d9ae6354cb1dc32f5e7c71dd} 
+\index{state.h@{state.h}!init\_static\_screen@{init\_static\_screen}}
+\index{init\_static\_screen@{init\_static\_screen}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{init\_static\_screen()}{init\_static\_screen()}}
+{\footnotesize\ttfamily void init\+\_\+static\+\_\+screen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the win screen state and sets up the relevant data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8h_a36993c80b9ba4b7c4671cf32598fa564}\label{state_8h_a36993c80b9ba4b7c4671cf32598fa564} 
+\index{state.h@{state.h}!init\_win\_screen@{init\_win\_screen}}
+\index{init\_win\_screen@{init\_win\_screen}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{init\_win\_screen()}{init\_win\_screen()}}
+{\footnotesize\ttfamily void init\+\_\+win\+\_\+screen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Function that initializes the game state to the win screen state and sets up the relevant data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the \doxylink{structGameState}{Game\+State} struct to initialize. \\
+\hline
+\end{DoxyParams}

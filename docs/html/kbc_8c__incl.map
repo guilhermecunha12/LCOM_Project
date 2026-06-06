@@ -1,0 +1,15 @@
+<map id="lab3/kbc.c" name="lab3/kbc.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="41,5,129,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,225,91,251"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,32,53,93,42,135,40,177,45,211,40,212,35,177,37,134,48,92,76,30"/>
+<area shape="rect" id="Node000003" href="$i8042_8h.html" title=" " alt="" coords="50,152,121,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="88,31,88,138,83,138,83,31"/>
+<area shape="rect" id="Node000004" href="$kbc_8h.html" title=" " alt="" coords="137,79,194,104"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="100,29,144,68,140,72,96,33"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="82,179,63,215,58,212,77,176"/>
+<area shape="poly" id="edge7_Node000004_Node000003" title=" " alt="" coords="154,106,110,145,107,141,151,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="145,152,215,177"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="170,104,177,138,172,139,165,105"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="240,152,307,177"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="184,102,246,142,243,147,181,106"/>
+</map>

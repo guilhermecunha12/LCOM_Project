@@ -1,0 +1,88 @@
+\doxysection{lab4/i8042\+\_\+mouse.h File Reference}
+\hypertarget{i8042__mouse_8h}{}\label{i8042__mouse_8h}\index{lab4/i8042\_mouse.h@{lab4/i8042\_mouse.h}}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{i8042__mouse_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{i8042__mouse_8h_a85964cb90343bb1a029b1d1b4229f910}{MOUSE\+\_\+\+IRQ}}~12
+\begin{DoxyCompactList}\small\item\em Mouse interrupt request line number. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042__mouse_8h_a4a4c3f303810619730c9446542f4cc2a}{WRITE\+\_\+\+BYTE\+\_\+\+TO\+\_\+\+MOUSE\+\_\+\+CMD}}~0x\+D4
+\begin{DoxyCompactList}\small\item\em Command to write a byte to the mouse via the KBC. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042__mouse_8h_a9c64a38cca5c7aabe0ab2d8c5e21e723}{ENABLE\+\_\+\+DATA\+\_\+\+REPORTING}}~0x\+F4
+\begin{DoxyCompactList}\small\item\em Enable Mouse Data Reporting Command (stream mode only) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042__mouse_8h_a8e51dfaa390f8cfb4b1b286fb3b22aff}{DISABLE\+\_\+\+DATA\+\_\+\+REPORTING}}~0x\+F5
+\begin{DoxyCompactList}\small\item\em Disable Mouse Data Reporting Command (stream mode only) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042__mouse_8h_a6f6489887e08bff4887d0bc5dcf214d8}{ACK}}~0x\+FA
+\begin{DoxyCompactList}\small\item\em Acknowledgment byte response from the mouse, after sending a byte to it. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042__mouse_8h_a958518a45b12053ae33606ee7cb68a55}{NACK}}~0x\+FE
+\begin{DoxyCompactList}\small\item\em Byte response from the mouse after sending a byte to it, that signals an error. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{i8042__mouse_8h_a6f6489887e08bff4887d0bc5dcf214d8}\label{i8042__mouse_8h_a6f6489887e08bff4887d0bc5dcf214d8} 
+\index{i8042\_mouse.h@{i8042\_mouse.h}!ACK@{ACK}}
+\index{ACK@{ACK}!i8042\_mouse.h@{i8042\_mouse.h}}
+\doxysubsubsection{\texorpdfstring{ACK}{ACK}}
+{\footnotesize\ttfamily \#define ACK~0x\+FA}
+
+
+
+Acknowledgment byte response from the mouse, after sending a byte to it. 
+
+\Hypertarget{i8042__mouse_8h_a8e51dfaa390f8cfb4b1b286fb3b22aff}\label{i8042__mouse_8h_a8e51dfaa390f8cfb4b1b286fb3b22aff} 
+\index{i8042\_mouse.h@{i8042\_mouse.h}!DISABLE\_DATA\_REPORTING@{DISABLE\_DATA\_REPORTING}}
+\index{DISABLE\_DATA\_REPORTING@{DISABLE\_DATA\_REPORTING}!i8042\_mouse.h@{i8042\_mouse.h}}
+\doxysubsubsection{\texorpdfstring{DISABLE\_DATA\_REPORTING}{DISABLE\_DATA\_REPORTING}}
+{\footnotesize\ttfamily \#define DISABLE\+\_\+\+DATA\+\_\+\+REPORTING~0x\+F5}
+
+
+
+Disable Mouse Data Reporting Command (stream mode only) 
+
+\Hypertarget{i8042__mouse_8h_a9c64a38cca5c7aabe0ab2d8c5e21e723}\label{i8042__mouse_8h_a9c64a38cca5c7aabe0ab2d8c5e21e723} 
+\index{i8042\_mouse.h@{i8042\_mouse.h}!ENABLE\_DATA\_REPORTING@{ENABLE\_DATA\_REPORTING}}
+\index{ENABLE\_DATA\_REPORTING@{ENABLE\_DATA\_REPORTING}!i8042\_mouse.h@{i8042\_mouse.h}}
+\doxysubsubsection{\texorpdfstring{ENABLE\_DATA\_REPORTING}{ENABLE\_DATA\_REPORTING}}
+{\footnotesize\ttfamily \#define ENABLE\+\_\+\+DATA\+\_\+\+REPORTING~0x\+F4}
+
+
+
+Enable Mouse Data Reporting Command (stream mode only) 
+
+\Hypertarget{i8042__mouse_8h_a85964cb90343bb1a029b1d1b4229f910}\label{i8042__mouse_8h_a85964cb90343bb1a029b1d1b4229f910} 
+\index{i8042\_mouse.h@{i8042\_mouse.h}!MOUSE\_IRQ@{MOUSE\_IRQ}}
+\index{MOUSE\_IRQ@{MOUSE\_IRQ}!i8042\_mouse.h@{i8042\_mouse.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_IRQ}{MOUSE\_IRQ}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+IRQ~12}
+
+
+
+Mouse interrupt request line number. 
+
+\Hypertarget{i8042__mouse_8h_a958518a45b12053ae33606ee7cb68a55}\label{i8042__mouse_8h_a958518a45b12053ae33606ee7cb68a55} 
+\index{i8042\_mouse.h@{i8042\_mouse.h}!NACK@{NACK}}
+\index{NACK@{NACK}!i8042\_mouse.h@{i8042\_mouse.h}}
+\doxysubsubsection{\texorpdfstring{NACK}{NACK}}
+{\footnotesize\ttfamily \#define NACK~0x\+FE}
+
+
+
+Byte response from the mouse after sending a byte to it, that signals an error. 
+
+\Hypertarget{i8042__mouse_8h_a4a4c3f303810619730c9446542f4cc2a}\label{i8042__mouse_8h_a4a4c3f303810619730c9446542f4cc2a} 
+\index{i8042\_mouse.h@{i8042\_mouse.h}!WRITE\_BYTE\_TO\_MOUSE\_CMD@{WRITE\_BYTE\_TO\_MOUSE\_CMD}}
+\index{WRITE\_BYTE\_TO\_MOUSE\_CMD@{WRITE\_BYTE\_TO\_MOUSE\_CMD}!i8042\_mouse.h@{i8042\_mouse.h}}
+\doxysubsubsection{\texorpdfstring{WRITE\_BYTE\_TO\_MOUSE\_CMD}{WRITE\_BYTE\_TO\_MOUSE\_CMD}}
+{\footnotesize\ttfamily \#define WRITE\+\_\+\+BYTE\+\_\+\+TO\+\_\+\+MOUSE\+\_\+\+CMD~0x\+D4}
+
+
+
+Command to write a byte to the mouse via the KBC. 
+

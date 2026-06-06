@@ -1,0 +1,30 @@
+\doxysection{subscribe.\+h}
+\hypertarget{subscribe_8h_source}{}\label{subscribe_8h_source}\index{proj/devices/subscribe.h@{proj/devices/subscribe.h}}
+\mbox{\hyperlink{subscribe_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SUBSCRIBE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SUBSCRIBE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../../lab2/timer\_count.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}../../lab3/kbc.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}../../lab4/mouse.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}../../lab5/video.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ IRQ\_TIMER\ 0}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ IRQ\_KBD\ 1}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ IRQ\_MOUSE\ 2}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ IRQ\_COM1\ 4}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{subscribe_8h_a1d57bb34d1579c6449e54a5ebfe1bb7a}{subscribe\_receiver\_devices}}(uint8\_t*\ timer\_bit\_no,\ uint8\_t*\ kbd\_bit\_no,\ uint8\_t\ *com1\_bit\_no,\ uint16\_t\ vbe\_mode);}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00028\ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{subscribe_8h_a814a17663c6f454892771b4994c6e7c2}{subscribe\_devices}}(uint8\_t\ *timer\_bit\_no,\ uint8\_t\ *kbd\_bit\_no,\ uint8\_t\ *mouse\_bit\_no,\ uint8\_t\ *com1\_bit\_no,\ uint16\_t\ vbe\_mode);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{subscribe_8h_ad9b2f6898b67735c1a327f80f259a45c}{unsubscribe\_receiver\_devices}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{subscribe_8h_aa5559c11d897932076279a9076bfe347}{unsubscribe\_devices}}();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SUBSCRIBE\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

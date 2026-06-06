@@ -1,0 +1,56 @@
+\doxysection{proj/controller/handlers/night\+\_\+no\+\_\+battery\+\_\+handlers.c File Reference}
+\hypertarget{night__no__battery__handlers_8c}{}\label{night__no__battery__handlers_8c}\index{proj/controller/handlers/night\_no\_battery\_handlers.c@{proj/controller/handlers/night\_no\_battery\_handlers.c}}
+{\ttfamily \#include "{}processor.\+h"{}}\newline
+{\ttfamily \#include "{}../handlers/helpers/player\+\_\+screen\+\_\+movement\+\_\+handler.\+h"{}}\newline
+Include dependency graph for night\+\_\+no\+\_\+battery\+\_\+handlers.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{night__no__battery__handlers_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{night__no__battery__handlers_8c_a25c12e5e7e5402b2ecbca317a3644972}{handle\+\_\+night\+\_\+no\+\_\+battery\+\_\+timer}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for timer tick events in the night no battery state. This handler manages the countdown for the night no battery screen display and transitions to the night 6AM state when the duration reaches zero, initializing the night 6AM state in the process. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{night__no__battery__handlers_8c_ac938920b20c137f83e257046ab15e8b5}{handle\+\_\+night\+\_\+no\+\_\+battery\+\_\+keyboard}} (\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Handler for keyboard events in the night no battery state. This handler manages keyboard input such as moving the camera view left or right. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{night__no__battery__handlers_8c_ac938920b20c137f83e257046ab15e8b5}\label{night__no__battery__handlers_8c_ac938920b20c137f83e257046ab15e8b5} 
+\index{night\_no\_battery\_handlers.c@{night\_no\_battery\_handlers.c}!handle\_night\_no\_battery\_keyboard@{handle\_night\_no\_battery\_keyboard}}
+\index{handle\_night\_no\_battery\_keyboard@{handle\_night\_no\_battery\_keyboard}!night\_no\_battery\_handlers.c@{night\_no\_battery\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{handle\_night\_no\_battery\_keyboard()}{handle\_night\_no\_battery\_keyboard()}}
+{\footnotesize\ttfamily void handle\+\_\+night\+\_\+no\+\_\+battery\+\_\+keyboard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for keyboard events in the night no battery state. This handler manages keyboard input such as moving the camera view left or right. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified based on the player\textquotesingle{}s keyboard input during the night no battery state. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the keyboard input data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{night__no__battery__handlers_8c_a25c12e5e7e5402b2ecbca317a3644972}\label{night__no__battery__handlers_8c_a25c12e5e7e5402b2ecbca317a3644972} 
+\index{night\_no\_battery\_handlers.c@{night\_no\_battery\_handlers.c}!handle\_night\_no\_battery\_timer@{handle\_night\_no\_battery\_timer}}
+\index{handle\_night\_no\_battery\_timer@{handle\_night\_no\_battery\_timer}!night\_no\_battery\_handlers.c@{night\_no\_battery\_handlers.c}}
+\doxysubsubsection{\texorpdfstring{handle\_night\_no\_battery\_timer()}{handle\_night\_no\_battery\_timer()}}
+{\footnotesize\ttfamily void handle\+\_\+night\+\_\+no\+\_\+battery\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameState}{Game\+State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{const \mbox{\hyperlink{structGameEvent}{Game\+Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+
+
+Handler for timer tick events in the night no battery state. This handler manages the countdown for the night no battery screen display and transitions to the night 6AM state when the duration reaches zero, initializing the night 6AM state in the process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the current game state, which will be modified to transition to the night 6AM state when the night no battery duration ends. \\
+\hline
+{\em event} & Pointer to the current game event, which contains the timer tick data. \\
+\hline
+\end{DoxyParams}
