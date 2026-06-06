@@ -35,6 +35,7 @@ static const int DRAIN_RATE_PER_NIGHT[] = {
 
 #define TICKS_PER_CAMERA_ANIMATION_FRAME (int) (0.034f * FPS) 
 #define TICKS_PER_JUMPSCARE_FRAME (int) (0.034f * FPS)  // ~66ms per frame at 60Hz (~15fps animation)
+#define TICKS_PER_DOOR_ANIMATION_FRAME (int) (0.05f * FPS) // 50ms per frame at 60Hz (~20fps animation)
 
 #define NUM_JUMPSCARE_FOXY 21
 #define NUM_JUMPSCARE_BONNIE 11

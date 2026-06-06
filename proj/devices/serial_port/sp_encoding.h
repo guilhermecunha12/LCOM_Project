@@ -14,7 +14,7 @@
 #define ENC_CHICA 0x2
 #define ENC_FOXY 0x3
 
-#define DOOR 0xFF
+#define DOOR 0xF
 #define CAMERA_1 0x1
 #define CAMERA_2 0x2
 #define CAMERA_3 0x3

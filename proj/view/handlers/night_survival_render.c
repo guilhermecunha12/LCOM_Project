@@ -66,11 +66,13 @@ void draw_office(int background_offset_x) {
     draw_sprite(office_sprite);
 }
 
+
 /** 
  * @brief Helper function that draws the map of the cameras on the screen, with an indicator of which camera the player is currently viewing.
  * @param camera_id The camera that the player is currently viewing, used to know which camera indicator to draw on the map and which camera name to write on top of it.
  */
 void draw_map(CameraID camera_id) {
+    // TODO: Review this struct
     static const struct {
         int x, y;
         xpmASSET text;
@@ -157,30 +159,63 @@ void render_night_survival(const GameState *state) {
         // Player is looking at the office
         draw_office(state->global_data.background_offset_x);
 
-        // Check if light is on or not.
-        if (state->data.night_survival.left_door_closed) {
-            draw_sprite(get_asset(LEFT_DOOR_CLOSED));
+
+        // Show left door button when looking left
+        if (state->global_data.background_offset_x == 0) {
+            if (state->data.night_survival.left_door_closed)
+                draw_sprite(get_asset(LEFT_BUTTON_GREEN));
+            else
+                draw_sprite(get_asset(LEFT_BUTTON_RED));
+
+            if (state->data.night_survival.left_light_on)
+                draw_sprite(get_asset(LIGHT_ON_LEFT));
+            else
+                draw_sprite(get_asset(LIGHT_OFF_LEFT));
+
+            // Door animations (update sprites)
+            if (state->data.night_survival.left_door_closed || 
+                state->data.night_survival.left_door_animation_playing) {
+                draw_sprite((Sprite*) state->data.night_survival.left_door->sp);
+            }
+        
         }
-        if (state->data.night_survival.right_door_closed) {
-            draw_sprite(get_asset(RIGHT_DOOR_CLOSED));
+
+        // Show right door button when looking right
+        if (state->global_data.background_offset_x == BACKGROUND_MAX_OFFSET) {
+            if (state->data.night_survival.right_door_closed)
+                draw_sprite(get_asset(RIGHT_BUTTON_GREEN));
+            else
+                draw_sprite(get_asset(RIGHT_BUTTON_RED));
+
+            if (state->data.night_survival.right_light_on)
+                draw_sprite(get_asset(LIGHT_ON_RIGHT));
+            else
+                draw_sprite(get_asset(LIGHT_OFF_RIGHT));
+            
+            if (state->data.night_survival.right_door_closed || 
+                state->data.night_survival.right_door_animation_playing) {
+                draw_sprite((Sprite*) state->data.night_survival.right_door->sp);
+            }
         }
+
 
         for (int i = 0; i < NUM_ANIMATRONICS; i++) {
             if (animatronics[i].path[animatronics[i].current_position_index] == LEFT_DOOR) {
-                // LEFT side
-                if (animatronics[i].name == BONNIE) {
-                    draw_sprite(get_asset(BONNIE_LEFT_DOOR));
-                } else if (animatronics[i].name == FOXY) {
-                    draw_sprite(get_asset(FOXY_LEFT_DOOR));
-                }
+                if (state->data.night_survival.left_light_on) {
+                    if (animatronics[i].name == BONNIE) 
+                        draw_sprite(get_asset(state->data.night_survival.left_door_closed ?LIGHT_BONNIE_CLOSED : LIGHT_BONNIE_OPEN));
+                    else if (animatronics[i].name == FOXY) 
+                        draw_sprite(get_asset(state->data.night_survival.left_door_closed ? LIGHT_FOXY_CLOSED : LIGHT_FOXY_OPEN));   
+                } 
             }
+
             if (animatronics[i].path[animatronics[i].current_position_index] == RIGHT_DOOR) {
-                // RIGHT side
-                if (animatronics[i].name == FREDDY) {
-                    draw_sprite(get_asset(FREDDY_RIGHT_DOOR));
-                } else if (animatronics[i].name == CHICA) {
-                    draw_sprite(get_asset(CHICA_RIGHT_DOOR));
-                }
+                if (state->data.night_survival.right_light_on) {
+                    if (animatronics[i].name == FREDDY) 
+                        draw_sprite(get_asset(state->data.night_survival.right_door_closed ? LIGHT_FREDDY_CLOSE : LIGHT_FREDDY_OPEN));
+                    else if (animatronics[i].name == CHICA) 
+                        draw_sprite(get_asset(state->data.night_survival.right_door_closed ? LIGHT_CHICA_CLOSE : LIGHT_CHICA_OPEN));
+                } 
             }
         }
     }

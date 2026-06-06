@@ -5,23 +5,6 @@
 #include "../../models/sprite.h"
 #include "../../sound.h"
 
-#define NIGHT_LEFT_DOOR_BUTTON_W 50
-#define NIGHT_LEFT_DOOR_BUTTON_H 50
-#define NIGHT_LEFT_DOOR_BUTTON_X 50
-#define NIGHT_LEFT_DOOR_BUTTON_Y 400
-#define NIGHT_RIGHT_DOOR_BUTTON_W 50
-#define NIGHT_RIGHT_DOOR_BUTTON_H 50
-#define NIGHT_RIGHT_DOOR_BUTTON_X 500
-#define NIGHT_RIGHT_DOOR_BUTTON_Y 400
-#define NIGHT_LEFT_LIGHT_BUTTON_W 50
-#define NIGHT_LEFT_LIGHT_BUTTON_H 50
-#define NIGHT_LEFT_LIGHT_BUTTON_X 150
-#define NIGHT_LEFT_LIGHT_BUTTON_Y 400
-#define NIGHT_RIGHT_LIGHT_BUTTON_W 50
-#define NIGHT_RIGHT_LIGHT_BUTTON_H 50
-#define NIGHT_RIGHT_LIGHT_BUTTON_X 400
-#define NIGHT_RIGHT_LIGHT_BUTTON_Y 400
-
 void handle_night_survival_mouse_click(GameState* state, const GameEvent* event) {
     int mouse_x = state->global_data.mouse_x;
     int mouse_y = state->global_data.mouse_y;
@@ -135,7 +118,17 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_LEFT_DOOR_BUTTON_W,
             NIGHT_LEFT_DOOR_BUTTON_H)) {
 
+            // Maybe change this into a function as it is equal for the right door
+            // Resets the animation state 
+
+            AnimSprite *door = state->data.night_survival.left_door;
             state->data.night_survival.left_door_closed = !state->data.night_survival.left_door_closed; // switch
+            state->data.night_survival.left_door_animation_playing = true;
+
+            door->is_finished = false;
+            door->cur_aspeed = door->aspeed;
+            door->cur_fig = state->data.night_survival.left_door_closed ? 0 : door->num_fig - 1;
+            door->sp->map = door->map[door->cur_fig];
             }
 
         // Clicked to close right door
@@ -144,8 +137,16 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
             NIGHT_RIGHT_DOOR_BUTTON_Y,
             NIGHT_RIGHT_DOOR_BUTTON_W,
             NIGHT_RIGHT_DOOR_BUTTON_H)) {
+                
+            AnimSprite *door = state->data.night_survival.right_door;
 
             state->data.night_survival.right_door_closed = !state->data.night_survival.right_door_closed; // switch
+            state->data.night_survival.right_door_animation_playing = true;
+        
+            door->is_finished = false;
+            door->cur_aspeed = door->aspeed;
+            door->cur_fig = state->data.night_survival.right_door_closed ? 0 : door->num_fig - 1;
+            door->sp->map = door->map[door->cur_fig];
             }
 
         // Clicked to turn on/off left light
@@ -209,19 +210,25 @@ static void clamp_left_side(NightSurvivalState* night_state) {
 }
 
 
-
 void handle_night_survival_timer(GameState* state, const GameEvent* event) {
-
     // Update background offset based on movement
     if (state->global_data.moving == LEFT && state->global_data.background_offset_x <= 0) {
         state->global_data.background_offset_x += BACKGROUND_MOVE_VELOCITY;
-        if (state->global_data.background_offset_x > 0 || state->global_data.background_offset_x == CENTER_BACKGROUND_OFFSET) {
+        if(state->global_data.background_offset_x > 0){
+            state->global_data.background_offset_x = 0;
+        }
+
+        if (state->global_data.background_offset_x == 0 || state->global_data.background_offset_x == CENTER_BACKGROUND_OFFSET) {
             state->global_data.moving = NO_MOVEMENT; // stop movement when reaching the leftmost position or the center
         }
     }
-    else if (state->global_data.moving == RIGHT && state->global_data.background_offset_x >= -BACKGROUND_MAX_OFFSET) {
+    else if (state->global_data.moving == RIGHT && state->global_data.background_offset_x >= BACKGROUND_MAX_OFFSET) {
         state->global_data.background_offset_x -= BACKGROUND_MOVE_VELOCITY;
-        if (state->global_data.background_offset_x < -BACKGROUND_MAX_OFFSET || state->global_data.background_offset_x == CENTER_BACKGROUND_OFFSET) {
+        if(state->global_data.background_offset_x < BACKGROUND_MAX_OFFSET){
+            state->global_data.background_offset_x = BACKGROUND_MAX_OFFSET;
+        }
+
+        if (state->global_data.background_offset_x == BACKGROUND_MAX_OFFSET || state->global_data.background_offset_x == CENTER_BACKGROUND_OFFSET) {
             state->global_data.moving = NO_MOVEMENT;
         }
     }
@@ -232,7 +239,6 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
 
     // Check if the player has survived the night
     if(night_state->time_left <= 0) {
-        stop_sound();
         init_night_6am(state);
         return;
     }
@@ -303,7 +309,6 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
     }
 
     if (night_state->power_level == 0) {
-        stop_sound();
         init_night_no_battery(state);
         return;
     }
@@ -322,9 +327,44 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
         );
 
         if (attacked) {
-            stop_sound();
             init_jumpscare(state, night_state->animatronics[name].name);
             return;
+        }
+    }
+
+    /* DOOR MOVEMENT */
+
+    // LEFT DOOR
+    if(night_state->left_door_animation_playing){
+        // If closed play the animation normally as it is in the animSprite
+        if(night_state->left_door_closed){
+            animate_sprite_once(night_state->left_door);
+            if(night_state->left_door->is_finished){
+                night_state->left_door_animation_playing = false;
+            }
+        }
+
+        else{ // otherwise we play the reverse (to open the door up)
+            animate_sprite_once_reverse(night_state->left_door);
+            if(night_state->left_door->is_finished){
+                night_state->left_door_animation_playing = false;
+            }
+        }
+    }
+
+    // RIGHT DOOR (same logic as left door)
+    if(night_state->right_door_animation_playing){
+        if(night_state->right_door_closed){
+            animate_sprite_once(night_state->right_door);
+            if(night_state->right_door->is_finished){
+                night_state->right_door_animation_playing = false;
+            }
+        }
+        else{
+            animate_sprite_once_reverse(night_state->right_door);
+            if(night_state->right_door->is_finished){
+                night_state->right_door_animation_playing = false;
+            }
         }
     }
 }

@@ -9,9 +9,9 @@
 /**
  * @brief Paths that the animatronics follow to get to the player.
  */
-static CameraID FREDDY_PATH[] = {CAM_1A, CAM_1B, CAM_7, CAM_6, CAM_4B, RIGHT_DOOR};
-static CameraID BONNIE_PATH[] = {CAM_1A, CAM_1B, CAM_5, CAM_3, CAM_2A, CAM_2B, LEFT_DOOR};
-static CameraID CHICA_PATH[]  = {CAM_1A, CAM_1B, CAM_7, CAM_6, CAM_4A, CAM_4B, RIGHT_DOOR};
+static CameraID FREDDY_PATH[] = {CAM_1A};
+static CameraID BONNIE_PATH[] = {CAM_1A};
+static CameraID CHICA_PATH[]  = {CAM_1A};
 
 /*
     first CAM1_C -> Closed
@@ -19,7 +19,7 @@ static CameraID CHICA_PATH[]  = {CAM_1A, CAM_1B, CAM_7, CAM_6, CAM_4A, CAM_4B, R
     third CAM1_C -> fully out,
     3 -> empty, which is the CAM_2A
 */
-static CameraID FOXY_PATH[]   = {CAM_1C, CAM_1C, CAM_1C, CAM_2A, CAM_2B, LEFT_DOOR};
+static CameraID FOXY_PATH[]   = {CAM_1C};
 // Maybe chang the foxy path to make it easier
 
 /**
