@@ -66,6 +66,12 @@ void render_static_screen(const GameState *state);
 void render_night_6am(const GameState *state);
 
 /**
+ * @brief Handler for rendering the Win screen, which is shown when the player successfully survives all five nights.
+ * @param state The current GameState.
+ */
+void render_win_screen(const GameState* state);
+
+/**
  * @brief Handler for rendering the Game Over screen, which is after the static Screen, when the player loses.
  * @param state The current GameState.
  */

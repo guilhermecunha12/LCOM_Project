@@ -256,7 +256,7 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
     NightSurvivalState* night_state = &state->data.night_survival;
     night_state->time_left--; // This is in ticks
 
-    if(night_state->time_left == TIMER_TO_PHONE_AFTER_NIGHT_START) {
+    if(night_state->time_left == TIMER_TO_PHONE_AFTER_NIGHT_START && state->global_data.current_night == 1) {
         play_sound("night_phone");
     }
 
