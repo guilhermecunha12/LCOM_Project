@@ -269,9 +269,12 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
     NightSurvivalState* night_state = &state->data.night_survival;
     night_state->time_left--; // This is in ticks
 
+    if(night_state->time_left == TIMER_TO_PHONE_AFTER_NIGHT_START) {
+        play_sound("night_phone");
+    }
+
     // Check if the player has survived the night
     if(night_state->time_left <= 0) {
-        stop_sound();
         init_night_6am(state);
         return;
     }
@@ -342,7 +345,6 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
     }
 
     if (night_state->power_level == 0) {
-        stop_sound();
         init_night_no_battery(state);
         return;
     }
@@ -361,7 +363,6 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
         );
 
         if (attacked) {
-            stop_sound();
             init_jumpscare(state, night_state->animatronics[name].name);
             return;
         }
