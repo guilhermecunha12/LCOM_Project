@@ -54,8 +54,15 @@ while True:
                     f.truncate()
             if content == "stop":
                 stop()
+                
             elif content == "exit":
+                try:
+                    with open(SHARED_FILE, "w") as f:
+                        f.truncate(0)
+                except Exception as e:
+                    print(f"Error clearing file on exit: {e}", file=sys.stderr)
                 break
+
             elif content:
                 sound_file = os.path.join(SOUNDS_DIR, content + ".wav")
                 if os.path.exists(sound_file):
