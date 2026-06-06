@@ -22,6 +22,25 @@
 #define NIGHT_RIGHT_LIGHT_BUTTON_X 400
 #define NIGHT_RIGHT_LIGHT_BUTTON_Y 400
 
+
+void toggle_camera_monitor(GameState* state) {
+    AnimSprite *mon = state->data.night_survival.camera_monitor;
+    // Reset animation state before playing
+    mon->is_finished = false;
+    mon->cur_aspeed = mon->aspeed;
+
+    if (state->data.night_survival.camera_monitor_up) {
+        // The animation curent fig should be the last one (then animating in reverse)
+        mon->cur_fig = mon->num_fig - 1;
+    } else {
+        // The other way around
+        mon->cur_fig = 0;
+    }
+    mon->sp->map = mon->map[mon->cur_fig];
+    state->data.night_survival.camera_animation_playing = true;
+    state->data.night_survival.camera_monitor_up = !state->data.night_survival.camera_monitor_up; // switch
+}
+
 void handle_night_survival_mouse_click(GameState* state, const GameEvent* event) {
     int mouse_x = state->global_data.mouse_x;
     int mouse_y = state->global_data.mouse_y;
@@ -167,6 +186,15 @@ void handle_night_survival_mouse_click(GameState* state, const GameEvent* event)
 
             state->data.night_survival.right_light_on = !state->data.night_survival.right_light_on; // switch
         }
+    }
+
+     if (is_mouse_inside(mouse_x, mouse_y,
+        CAMERA_FLIP_BUTTON_X,
+        CAMERA_FLIP_BUTTON_Y,
+        CAMERA_FLIP_BUTTON_WIDTH,
+        CAMERA_FLIP_BUTTON_HEIGHT)) {
+
+        toggle_camera_monitor(state);
     }
 }
 
@@ -330,28 +358,16 @@ void handle_night_survival_timer(GameState* state, const GameEvent* event) {
 }
 
 void handle_night_survival_keyboard(GameState* state, const GameEvent* event) {
-    if(event->data.key == KEY_SPACE) {
-        AnimSprite *mon = state->data.night_survival.camera_monitor;
-        // Reset animation state before playing
-        mon->is_finished = false;
-        mon->cur_aspeed = mon->aspeed;
-
-        if (state->data.night_survival.camera_monitor_up) {
-            // The animation curent fig should be the last one (then animating in reverse)
-            mon->cur_fig = mon->num_fig - 1;
-        } else {
-            // The other way around
-            mon->cur_fig = 0;
-        }
-        mon->sp->map = mon->map[mon->cur_fig];
-        state->data.night_survival.camera_animation_playing = true;
-        state->data.night_survival.camera_monitor_up = !state->data.night_survival.camera_monitor_up; // switch
+    if (event->data.key == KEY_SPACE) {
+        toggle_camera_monitor(state);
     }
-    // Add remaining functionality
-    else if(event->data.key == KEY_LEFT) {
+    else if (event->data.key == KEY_LEFT) {
         move_player_screen_left(state);
     }
-    else if(event->data.key == KEY_RIGHT) {
+    else if (event->data.key == KEY_RIGHT) {
         move_player_screen_right(state);
+
+    } else if (event->data.key == KEY_ESCAPE) {
+        init_main_menu(state);
     }
 }

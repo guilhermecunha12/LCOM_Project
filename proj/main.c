@@ -108,7 +108,7 @@ int receiver_main_loop() {
         }
     }
 
-    unload_all_assets(); // TODO: review - Frees the heap memory cleanly before Minix exits
+    unload_all_assets();
     if (unsubscribe_receiver_devices()) return 1;
     return 0;
 }

@@ -142,6 +142,7 @@ int enable_received_data_interrupt();
 
 /**
  * @brief Enables the Transmitter Holding Register Empty Interrupt of the IER of the serial port, which allows the serial port to generate an interrupt whenever the Transmitter Holding Register (THR) of the serial port is empty and ready to accept new data to be transmitted.
+ * @details This function is not used in the project.
  * @return 0 on success, 1 on failure 
  */
 int enable_transmitter_holding_register_empty_interrupt();
