@@ -5,5 +5,7 @@
 
 
 void render_night_no_battery(const GameState* state) {
-    draw_sprite(get_asset(OFFICE_LIGHTS_OUT));
+    Sprite* office_sprite = get_asset(OFFICE_LIGHTS_OUT);
+    office_sprite->x = state->global_data.background_offset_x;
+    draw_sprite(office_sprite);
 }

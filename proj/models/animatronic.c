@@ -260,6 +260,7 @@ Animatronic initialize_freddy_no_battery() {
     
     freddy.time_to_move_opportunity = FREDDY_NO_BATTERY_MOVE_INTERVAL_PHASE_1;
     freddy.AI_level = 5; // 20% chance to attack the player
+    send_sp_data(encode_animatronic_data(freddy.name, RIGHT_DOOR)); // Freddy is right at the door in this state
     return freddy;
 }
 
