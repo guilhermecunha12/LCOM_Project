@@ -1,5 +1,5 @@
 /* XPM */
-static char * door_close_xpm[] = {
+static char * door_close_r_xpm[] = {
 "117 574 1784 2",
 "  	c None",
 ". 	c #07090C",

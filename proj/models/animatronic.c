@@ -62,7 +62,7 @@ static const int MOVE_INTERVALS[4] = {
     [FOXY] = 5 * FPS,
 };
 
-static const int FOXY_FAST_MOVE_INTERVAL = 2 * FPS;
+static const int FOXY_FAST_MOVE_INTERVAL = 3 * FPS;
 
 // Single-entry path for special no-battery Freddy state
 /**

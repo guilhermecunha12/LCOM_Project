@@ -2,6 +2,8 @@
 #include "../../models/assets.h"
 #include "renderer.h"
 #include "../ui.h"
+#include "../ui_utils.h"
+
 
 /**
  * @brief Helper function that returns a key representing which animatronics are currently in the given camera.
@@ -159,75 +161,17 @@ void render_night_survival(const GameState *state) {
         // Player is looking at the office
         draw_office(state->global_data.background_offset_x);
 
-
-        // LEFT side: only draw when offset hasn't passed center (looking left or center-left)
-        Sprite *left_btn = get_asset(state->data.night_survival.left_door_closed ? LEFT_BUTTON_GREEN : LEFT_BUTTON_RED);
-        left_btn->x = NIGHT_LEFT_DOOR_BUTTON_X + state->global_data.background_offset_x;
-        draw_sprite(left_btn);
-
-        Sprite *left_light = get_asset(state->data.night_survival.left_light_on ? LIGHT_ON_LEFT : LIGHT_OFF_LEFT);
-        left_light->x = NIGHT_LEFT_LIGHT_BUTTON_X + state->global_data.background_offset_x;
-        draw_sprite(left_light);
-
-        if (state->data.night_survival.left_door_closed ||
-            state->data.night_survival.left_door_animation_playing) {
-            state->data.night_survival.left_door->sp->x = LEFT_DOOR_X + state->global_data.background_offset_x;
-            draw_sprite((Sprite*) state->data.night_survival.left_door->sp);
-        }
-
-        // RIGHT side: only draw when offset is at or past center (looking right or center-right)
-        Sprite *right_btn = get_asset(state->data.night_survival.right_door_closed ? RIGHT_BUTTON_GREEN : RIGHT_BUTTON_RED);
-        right_btn->x = NIGHT_RIGHT_DOOR_BUTTON_X + (state->global_data.background_offset_x - BACKGROUND_MAX_OFFSET);
-        draw_sprite(right_btn);
-
-        Sprite *right_light = get_asset(state->data.night_survival.right_light_on ? LIGHT_ON_RIGHT : LIGHT_OFF_RIGHT);
-        right_light->x = NIGHT_RIGHT_LIGHT_BUTTON_X + (state->global_data.background_offset_x - BACKGROUND_MAX_OFFSET);
-        draw_sprite(right_light);
-
-        if (state->data.night_survival.right_door_closed ||
-            state->data.night_survival.right_door_animation_playing) {
-            state->data.night_survival.right_door->sp->x = RIGHT_DOOR_X + (state->global_data.background_offset_x - BACKGROUND_MAX_OFFSET);
-            draw_sprite((Sprite*) state->data.night_survival.right_door->sp);
-        }
-
-
-        for (int i = 0; i < NUM_ANIMATRONICS; i++) {
-            if (animatronics[i].path[animatronics[i].current_position_index] == LEFT_DOOR) {
-                bool should_draw_empty = true;
-                if (state->data.night_survival.left_light_on) {
-                    if (animatronics[i].name == BONNIE) {
-                        should_draw_empty = false;
-                        draw_sprite(get_asset(state->data.night_survival.left_door_closed ?LIGHT_BONNIE_CLOSED : LIGHT_BONNIE_OPEN));
-                    }
-                    else if (animatronics[i].name == FOXY) {
-                        should_draw_empty = false;
-                        draw_sprite(get_asset(state->data.night_survival.left_door_closed ? LIGHT_FOXY_CLOSED : LIGHT_FOXY_OPEN));   
-                    }
-                } 
-                if(should_draw_empty && state->data.night_survival.left_light_on) {
-                    draw_sprite(get_asset(LIGHT_DOOR_LEFT));
-                }
-            }
-
-            if (animatronics[i].path[animatronics[i].current_position_index] == RIGHT_DOOR) {
-                bool should_draw_empty = true;
-                if (state->data.night_survival.right_light_on) {
-                    if (animatronics[i].name == FREDDY) {
-                        should_draw_empty = false;
-                        draw_sprite(get_asset(state->data.night_survival.right_door_closed ? LIGHT_FREDDY_CLOSE : LIGHT_FREDDY_OPEN));
-                    } else if (animatronics[i].name == CHICA) {
-                        should_draw_empty = false;
-                        draw_sprite(get_asset(state->data.night_survival.right_door_closed ? LIGHT_CHICA_CLOSE : LIGHT_CHICA_OPEN));
-                    }
-                }
-                if (should_draw_empty && state->data.night_survival.right_light_on) {
-                    draw_sprite(get_asset(LIGHT_DOOR_RIGHT));
-                }
-            }
-        }
+        draw_left_door_button(state);
+        draw_left_light_button(state);
+        draw_left_door(state);
+        
+        draw_right_door(state);
+        draw_right_door_button(state);
+        draw_right_light_button(state);
     }
 
-    // Draw the animation for when the player flips the camera monitor, both up or down, in thiis case (should be "overlaid" on top of the office or camera feed)    
+
+    // Draw the animation for when the player flips the camera monitor, both up or down, in thiis case (should be "overlaid" on top of the office or camera feed) 
     if(state->data.night_survival.camera_animation_playing) {
         // The sp field of the AnimSprite struct already points to the current frame of the animation, so we can just draw it (updated by animate_sprite_once in the handlers)
         draw_sprite((Sprite*) state->data.night_survival.camera_monitor->sp);
