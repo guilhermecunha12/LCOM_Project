@@ -88,6 +88,7 @@ void init_newspaper(GameState* state) {
     stop_sound();
 }
 void init_night_survival(GameState* state) {
+    send_sp_data(STARTED_NIGHT_SURVIVAL);
     state->type = NIGHT_SURVIVAL;
     state->global_data.background_offset_x = CENTER_BACKGROUND_OFFSET;
     state->global_data.moving = NO_MOVEMENT;
