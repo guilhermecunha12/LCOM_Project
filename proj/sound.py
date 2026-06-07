@@ -27,6 +27,7 @@ BACKGROUND_SOUNDS = {"night_music", "lights_out", "main_menu_music"}
 def stop():
     BG_CHANNEL.stop()
     FX_CHANNEL.stop()
+    PHONE_CHANNEL.stop()
 
 
 def play(sound_file, sound_name):
