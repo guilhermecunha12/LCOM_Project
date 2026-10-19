@@ -15,3 +15,4 @@ proj/proj
 proj/libproj.a
 *.swp
 *.gdbinit
+proj/sound_trigger.txt

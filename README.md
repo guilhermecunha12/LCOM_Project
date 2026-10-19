@@ -1,81 +1,90 @@
-# Template
+# Five Nights at FEUP
 
+## Overview
 
+The goal of our project - Five Nights at FEUP (FNAF) - was to recreate the feeling of the popular horror game, Five Nights at Freddy’s (FNAF), in a well-known environment of our faculty, FEUP.
 
-## Getting started
+Inside it, our job is to work as a FEUP security guard and survive our shift from 12 AM until 6 AM, while animatronics are roaming coming into our office to attack us. To prevent that, we can monitor their movement through cameras, close the doors and turn on the lights of our office, whilst keeping an eye on the current available battery that runs all our defense systems.
 
-Welcome to your LCOM code repository. This is where your team should deliver all the required artifacts, including code.
-Please take your time to get acquainted with GitLab and its functionalities. The way your team uses Git and GitLab to collaborate will be evaluated. 
+If we survive the night, we move on to the next night, or, if we survive the 5th night, we win the game. If we don’t survive the night, we get jumpscared by the animatronic that caught us and we lose the night and go back to the main menu, from where we can either start a new game or continue from the beginning of the night we lost.
 
-## Boilerplate
+## Screenshots
 
-In this repository, you will find some pre-loaded files and an initial setup of your team's project board. 
-Along the semester, you will be adding files and folders to this repository.
-Make sure you expand on the issues and milestones for your project, helping your team to coordinate and meet all the deadlines. Major deadlines are already setup but you should add your own sub-issues, additional issues, and deadlines. 
+![Game Cover](docs/Game_Cover.png)
 
-## GitLab Setup 
+![Newspaper](docs/Newspaper.png)
 
-### Add your files
+![Office Room](docs/Office_Room.png)
 
-* [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+![Animatronics](docs/Animatronics.png)
 
+![West Hall](docs/West_Hall.png)
+
+## How to Play
+
+Inside a MINIX-LCOM virtual machine, in the project's root directory (`proj/`) compile all source code files with the command:
+
+```shell
+make all
 ```
-cd existing_repo
-git remote add origin https://gitlab.up.pt/lcom-26/template.git
-git branch -M main
-git push -uf origin main
+
+Then, run the project with the command:
+
+```shell
+lcom_run proj
 ```
 
-### Integrate with your tools
+### Play Sound
 
-* [Set up project integrations](https://gitlab.up.pt/lcom-26/template/-/settings/integrations)
+To play the game's sound, in the Host PC, in the project's root directory (`proj/`), create and activate a Python virtual environment and install requirements with the commands:
 
-### Collaborate with your team
+```shell
+python3 venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-* [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+After that, execute the `sound.py` file with the command:
 
-### Test and Deploy
+```shell
+python3 sound.py
+```
 
-Use the built-in continuous integration in GitLab.
+After exiting the game, stop the execution of this file with `CTRL+C`.
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+### Monitor Gameplay
 
-***
+Another type of gameplay is possible when running the game in a separate virtual machine (connected via serial port to the first one) at the same time as the game is being played in the original virtual machine.
 
-## License
-For open source projects, say how it is licensed.
+This alternative gameplay displays a map of the game being played in the original virtual machine and real-time animatronics’ positions.
 
-## Declaration of Responsible AI Use
+![Alternative Gameplay](docs/alternative_gameplay.png)
+*Monitoring Gameplay*
 
-We declare that:
+Connect via serial port another MINIX-LCOM virtual machine (Clone) with the first one (Original) with the following configurations:
 
-1. We are responsible for all code and documentation in this repository, and we understand that we must be able to explain and justify any part of it on request.  
-2. We have used AI-based tools (e.g., code assistants, chatbots, or generators) only to support my learning, not to bypass the intended learning outcomes or any assessment rules.  
-3. Wherever AI tools contributed to this work, we have:  
-   - Used them within the limits set by the course policies and institutional regulations.  
-   - Reviewed, tested, and, where necessary, edited the outputs, taking full responsibility for their correctness, originality, and legality.  
-   - Ensured that no confidential, personal, or sensitive data were shared with AI tools.  
-4. We have not used AI tools to generate complete solutions that we present as entirely our own unaided work, and we have avoided plagiarism, whether from AI outputs or other sources.  
-5. If asked, we will provide details of which tools we used, for which files or parts of the project, and how we verified and adapted their outputs.
+![Original Serial Port Definitions](docs/Original_SP_Definitions.png)
+*Original Serial Port Definitions*
 
-Signed: `Gabriel Magalhães`, `Guilherme Cunha`, `José Archer`, `Pedro Pires`  
-Date: `2026/02/26`
+![Clone Serial Port Definitions](docs/Clone_SP_Definitions.png)
+*Clone Serial Port Definitions*
 
-## Authors and acknowledgment
+Start the clone virtual machine, and inside the project's root directory (`proj/`) (assuming all source files are compiled) run the command:
 
-LCOM Project for group GRUPO_2LEIC13_1.
-Group members:
+```shell
+lcom_run proj "receiver"
+```
 
-Gabriel Magalhães (<up202405890@up.pt>)
-Guilherme Cunha (<up202405961@up.pt>)
-José Archer (<up202307614@up.pt>)
-Pedro Pires (<up202405967@up.pt>)
+After that, you are in the "monitoring" gameplay.
+
+To exit, press the "ESC" key.
+
+
+## Developers
+
+This project was developed by:
+
+* Gabriel Magalhães (<up202405890@up.pt>)
+* Guilherme Cunha (<up202405961@up.pt>)
+* José Archer (<up202307614@up.pt>)
+* Pedro Pires (<up202405967@up.pt>)
