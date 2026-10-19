@@ -16,3 +16,9 @@ proj/libproj.a
 *.swp
 *.gdbinit
 proj/sound_trigger.txt
+
+# Core dumps
+core
+core.*
+*.core
+EOF
